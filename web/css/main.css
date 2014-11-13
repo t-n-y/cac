@@ -28,6 +28,10 @@
 	text-align: center;
 }
 
+.navbar-nav{
+	margin: 0px;
+}
+
 .navbar-default .navbar-nav > li > a {
 color: #000;
 }
@@ -49,6 +53,13 @@ color: #000;
 
 
 
+@media (max-width: 768px) {
+    .navbar-nav > .pull-right {
+        float: none !important;
+    }
+}
+
+
 
 
 /*****************BODY*****************/
@@ -56,5 +67,5 @@ color: #000;
 .mainContaineur{
 	background-image: url('../img/texture.png');
 	min-height: 1000px;
-
+	padding-top: 80px; 
 }
