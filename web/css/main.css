@@ -1,3 +1,10 @@
+/*****************GENERAL*****************/
+
+.noPadding{
+	padding: 0px;
+}
+
+
 /*****************HEADER*****************/
 
 .navbar-default{
@@ -33,7 +40,7 @@
 }
 
 .navbar-default .navbar-nav > li > a {
-color: #000;
+	color: #000;
 }
 
 .navbar-nav > li {
@@ -66,6 +73,13 @@ color: #000;
 
 .mainContaineur{
 	background-image: url('../img/texture.png');
-	min-height: 1000px;
 	padding-top: 80px; 
+}
+
+.topPage{
+	height: 360px;
+	background-image: url('../img/accueil.png');
+	background-size: cover;
+	background-repeat: no-repeat;
+	border-bottom: 6px solid #5ac4d4;
 }
