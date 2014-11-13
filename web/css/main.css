@@ -32,6 +32,10 @@
 color: #000;
 }
 
+.navbar-nav > li {
+	margin-left: 60px;
+}
+
 .navbar-nav > li > a{
 	padding-top: 30px;
 	padding-bottom: 26px;
@@ -41,10 +45,6 @@ color: #000;
 .navbar-nav > li > a:hover{
 	border-bottom: 4px solid #5ac4d4;
 
-}
-
-.right > li {
-	float: right;
 }
 
 
