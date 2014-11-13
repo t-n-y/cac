@@ -2,12 +2,21 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <title>{% block title %}Click and Cheers{% endblock %}</title>
+        {% block stylesheets %}
+            <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.css')}}">
+            <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap-theme.css')}}">
+        {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
+        {% block navbar %}
+            {% include '::navbar.html.twig' %}
+        {% endblock navbar %}
+
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+            <script src="{{ asset('js/bootstrap.min.js') }}" type="text/javascript" /></script>
+        {% endblock %}
     </body>
 </html>
