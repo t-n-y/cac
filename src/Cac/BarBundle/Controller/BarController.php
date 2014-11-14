@@ -9,13 +9,17 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class BarController extends Controller
 {
     /**
-     * @Route("liste-bars")
+     * @Route("bars")
      * @Template()
      */
     public function indexAction()
     {
+        $em = $this->getDoctrine()->getManager();
+    
+        $entities = $em->getRepository('CacBarBundle:Bar')->findAll();
+
         return array(
-                // ...
+                'bars' => $entities
             );    
     }
 

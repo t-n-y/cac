@@ -85,14 +85,16 @@ class Bar
     private $access;
 
     /**
-     * @ORM\OneToOne(targetEntity="Cac\BarBundle\Entity\Manager")
+     * @ORM\ManyToOne(targetEntity="Cac\BarBundle\Entity\Manager", inversedBy="createdBars")
+     * @ORM\JoinColumn(name="author_id", referencedColumnName="id")
      */
     private $author;
 
     /**
-     * @ORM\OneToOne(targetEntity="Cac\BarBundle\Entity\Manager")
+     * @ORM\ManyToMany(targetEntity="Cac\BarBundle\Entity\Manager", inversedBy="managedBars")
+     * @ORM\JoinColumn(name="manager_id", referencedColumnName="id")
      */
-    private $manager;
+    private $managers;
 
     /**
      * Get id
@@ -332,5 +334,46 @@ class Bar
     public function getAuthor()
     {
         return $this->author;
+    }
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->managers = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add managers
+     *
+     * @param \Cac\BarBundle\Entity\Manager $managers
+     * @return Bar
+     */
+    public function addManager(\Cac\BarBundle\Entity\Manager $managers)
+    {
+        $this->managers[] = $managers;
+
+        return $this;
+    }
+
+    /**
+     * Remove managers
+     *
+     * @param \Cac\BarBundle\Entity\Manager $managers
+     */
+    public function removeManager(\Cac\BarBundle\Entity\Manager $managers)
+    {
+        $this->managers->removeElement($managers);
+    }
+
+    /**
+     * Get managers
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getManagers()
+    {
+        return $this->managers;
     }
 }
