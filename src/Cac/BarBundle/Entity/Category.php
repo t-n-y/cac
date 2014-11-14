@@ -29,7 +29,7 @@ class Category
     private $name;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Cac\BarBundle\Entity\Bar", mappedBy="bar")
+     * @ORM\ManyToMany(targetEntity="Cac\BarBundle\Entity\Bar", mappedBy="categories")
      */
     protected $bars;
 

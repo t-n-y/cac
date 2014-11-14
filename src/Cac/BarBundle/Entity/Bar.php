@@ -319,6 +319,16 @@ class Bar
         return $this->access;
     }
 
+    
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->managers = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->categories = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
     /**
      * Set author
      *
@@ -340,15 +350,6 @@ class Bar
     public function getAuthor()
     {
         return $this->author;
-    }
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->managers = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->categoriess = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**

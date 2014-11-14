@@ -51,22 +51,14 @@ class Manager extends BaseUser
     private $siret;
 
     /**
-     * @ORM\OneToMany(targetEntity="Cac\BarBundle\Entity\Bar", mappedBy="bar")
+     * @ORM\OneToMany(targetEntity="Cac\BarBundle\Entity\Bar", mappedBy="author")
      */
     protected $createdBars;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Cac\BarBundle\Entity\Bar", mappedBy="bar")
+     * @ORM\ManyToMany(targetEntity="Cac\BarBundle\Entity\Bar", mappedBy="managers")
      */
     protected $managedBars;
-
-
-    public function __construct()
-    {
-        $this->createdBars = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->managedBars = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
 
     /**
      * Get id
@@ -168,6 +160,16 @@ class Manager extends BaseUser
     public function getSiret()
     {
         return $this->siret;
+    }
+
+    
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->createdBars = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->managedBars = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
