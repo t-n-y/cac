@@ -105,14 +105,135 @@ class BarController extends Controller
     }
 
     /**
-     * @Route("/edit")
+     * Displays a form to edit an existing Bar entity.
+     *
+     * @Route("/{id}/edit", name="bar_edit")
+     * @Method("GET")
      * @Template()
      */
-    public function editAction()
+    public function editAction($id)
     {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('CacBarBundle:Bar')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Le bar demandé n\'existe pas.');
+        }
+
+        $editForm = $this->createEditForm($entity);
+        $deleteForm = $this->createDeleteForm($id);
+
         return array(
-                // ...
-            );    
+            'bar'      => $entity,
+            'edit_form'   => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        );
+    }
+
+    /**
+    * Creates a form to edit a Bar entity.
+    *
+    * @param Bar $entity The entity
+    *
+    * @return \Symfony\Component\Form\Form The form
+    */
+    private function createEditForm(Bar $entity)
+    {
+        $form = $this->createForm(new BarType(), $entity, array(
+            'action' => $this->generateUrl('bar_update', array('id' => $entity->getId())),
+            'method' => 'PUT',
+        ));
+
+        $form->add('submit', 
+            'submit', 
+            array(
+                'label' => 'Mettre à jour'
+            )
+        );
+
+        return $form;
+    }
+
+    /**
+     * Edits an existing Bar entity.
+     *
+     * @Route("/{id}", name="bar_update")
+     * @Method("PUT")
+     * @Template("CacBarBundle:Bar:edit.html.twig")
+     */
+    public function updateAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('CacBarBundle:Bar')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('L\'établissement demandé n\'existe pas.');
+        }
+
+        $deleteForm = $this->createDeleteForm($id);
+        $editForm = $this->createEditForm($entity);
+        $editForm->handleRequest($request);
+
+        if ($editForm->isValid()) {
+            $em->flush();
+            return $this->redirect($this->generateUrl('bar_show', array('id' => $id)));
+        }
+
+        return array(
+            'bar'      => $entity,
+            'edit_form'   => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        );
+    }
+
+    /**
+     * Deletes a Bar entity.
+     *
+     * @Route("/{id}", name="bar_delete")
+     * @Method("DELETE")
+     */
+    public function deleteAction(Request $request, $id)
+    {
+        $form = $this->createDeleteForm($id);
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $entity = $em->getRepository('CacBarBundle:Bar')->find($id);
+
+            if (!$entity) {
+                throw $this->createNotFoundException('L\'établissement demandé est introuvable.');
+            }
+
+            $em->remove($entity);
+            $em->flush();
+        }
+
+        return $this->redirect($this->generateUrl('bars'));
+    }
+
+    /**
+     * Creates a form to delete a Bar entity by id.
+     *
+     * @param mixed $id The entity id
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createDeleteForm($id)
+    {
+        return $this->createFormBuilder()
+            ->setAction($this->generateUrl('bar_delete', array('id' => $id)))
+            ->setMethod('DELETE')
+            ->add('submit', 
+                'submit', 
+                array(
+                    'label' => 'Supprimer'
+                )
+            )
+            ->getForm()
+        ;
     }
 
     /**
@@ -127,20 +248,14 @@ class BarController extends Controller
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository('CacBarBundle:Bar')->find($id);
 
-        return array(
-            'bar'      => $entity
-        );
-    }
+        $editForm = $this->createEditForm($entity);
+        $deleteForm = $this->createDeleteForm($id);
 
-    /**
-     * @Route("/delete")
-     * @Template()
-     */
-    public function deleteAction()
-    {
         return array(
-                // ...
-            );    
+            'bar'      => $entity,
+            'edit_form'   => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        );
     }
 
     /**

@@ -24,4 +24,9 @@
 		{% endfor %}
 	</ul>
 </ul>
+
+<h2>Editer le bar</h2>
+<a href="{{ path('bar_edit', { 'id': bar.id }) }}">Editer</a> 
+<h2>Supprimer le bar</h2>
+{{ form(delete_form) }}
 {% endblock %}
