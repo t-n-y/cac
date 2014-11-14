@@ -63,8 +63,8 @@ class Manager extends BaseUser
 
     public function __construct()
     {
-        $this->createdBars = new ArrayCollection();
-        $this->managedBars = new ArrayCollection();
+        $this->createdBars = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->managedBars = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
 

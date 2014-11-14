@@ -97,6 +97,12 @@ class Bar
     private $managers;
 
     /**
+     * @ORM\ManyToMany(targetEntity="Cac\BarBundle\Entity\Category", inversedBy="bars")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     */
+    protected $categories;
+
+    /**
      * Get id
      *
      * @return integer 

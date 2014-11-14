@@ -97,6 +97,12 @@ class Bar
     private $managers;
 
     /**
+     * @ORM\ManyToMany(targetEntity="Cac\BarBundle\Entity\Category", inversedBy="bars")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     */
+    protected $categories;
+
+    /**
      * Get id
      *
      * @return integer 
@@ -342,6 +348,7 @@ class Bar
     public function __construct()
     {
         $this->managers = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->categoriess = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -375,5 +382,38 @@ class Bar
     public function getManagers()
     {
         return $this->managers;
+    }
+
+    /**
+     * Add categories
+     *
+     * @param \Cac\BarBundle\Entity\Category $categories
+     * @return Bar
+     */
+    public function addCategory(\Cac\BarBundle\Entity\Category $categories)
+    {
+        $this->categories[] = $categories;
+
+        return $this;
+    }
+
+    /**
+     * Remove categories
+     *
+     * @param \Cac\BarBundle\Entity\Category $categories
+     */
+    public function removeCategory(\Cac\BarBundle\Entity\Category $categories)
+    {
+        $this->categories->removeElement($categories);
+    }
+
+    /**
+     * Get categories
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCategories()
+    {
+        return $this->categories;
     }
 }
