@@ -31,7 +31,7 @@ class Bar
     /**
      * @var string
      *
-     * @ORM\Column(name="adress", type="text")
+     * @ORM\Column(name="adress", type="string", length=255)
      */
     private $adress;
 
@@ -59,7 +59,7 @@ class Bar
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="editedAt", type="datetime")
+     * @ORM\Column(name="editedAt", type="datetime", nullable=true)
      */
     private $editedAt;
 
@@ -73,14 +73,14 @@ class Bar
     /**
      * @var string
      *
-     * @ORM\Column(name="schedule", type="blob")
+     * @ORM\Column(name="schedule", type="blob", nullable=true)
      */
     private $schedule;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="access", type="blob")
+     * @ORM\Column(name="access", type="blob", nullable=true)
      */
     private $access;
 
@@ -327,6 +327,7 @@ class Bar
     {
         $this->managers = new \Doctrine\Common\Collections\ArrayCollection();
         $this->categories = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->creationDate = new \Datetime();
     }
 
     /**
