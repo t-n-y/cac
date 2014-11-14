@@ -16,6 +16,12 @@
 		<li>{{ bar.author }}</li>
 		<ul>
 			{% for manager in bar.managers %}
+				{{ manager }}
+			{% endfor %}
+		</ul>
+		<ul>
+			{% for category in bar.categories %}
+				{{ category }}
 			{% endfor %}
 		</ul>
 	</ul>
