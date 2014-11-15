@@ -103,6 +103,62 @@ class Bar
     protected $categories;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="priceRange", type="integer")
+     */
+    private $priceRange;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="dressCode", type="integer")
+     */
+    private $dressCode;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="valet", type="boolean")
+     */
+    private $valet;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="valetCost", type="integer")
+     */
+    private $valetCost;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="handicappedAccess", type="boolean")
+     */
+    private $handicappedAccess;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="patio", type="boolean")
+     */
+    private $patio;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="smokingArea", type="boolean")
+     */
+    private $smokingArea;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="breathalyser", type="boolean")
+     */
+    private $breathalyser;
+
+    /**
      * Get id
      *
      * @return integer 
@@ -417,5 +473,189 @@ class Bar
     public function getCategories()
     {
         return $this->categories;
+    }
+
+    /**
+     * Set priceRange
+     *
+     * @param integer $priceRange
+     * @return Bar
+     */
+    public function setPriceRange($priceRange)
+    {
+        $this->priceRange = $priceRange;
+
+        return $this;
+    }
+
+    /**
+     * Get priceRange
+     *
+     * @return integer 
+     */
+    public function getPriceRange()
+    {
+        return $this->priceRange;
+    }
+
+    /**
+     * Set dressCode
+     *
+     * @param integer $dressCode
+     * @return Bar
+     */
+    public function setDressCode($dressCode)
+    {
+        $this->dressCode = $dressCode;
+
+        return $this;
+    }
+
+    /**
+     * Get dressCode
+     *
+     * @return integer 
+     */
+    public function getDressCode()
+    {
+        return $this->dressCode;
+    }
+
+    /**
+     * Set valet
+     *
+     * @param boolean $valet
+     * @return Bar
+     */
+    public function setValet($valet)
+    {
+        $this->valet = $valet;
+
+        return $this;
+    }
+
+    /**
+     * Get valet
+     *
+     * @return boolean 
+     */
+    public function getValet()
+    {
+        return $this->valet;
+    }
+
+    /**
+     * Set valetCost
+     *
+     * @param integer $valetCost
+     * @return Bar
+     */
+    public function setValetCost($valetCost)
+    {
+        $this->valetCost = $valetCost;
+
+        return $this;
+    }
+
+    /**
+     * Get valetCost
+     *
+     * @return integer 
+     */
+    public function getValetCost()
+    {
+        return $this->valetCost;
+    }
+
+    /**
+     * Set handicappedAccess
+     *
+     * @param boolean $handicappedAccess
+     * @return Bar
+     */
+    public function setHandicappedAccess($handicappedAccess)
+    {
+        $this->handicappedAccess = $handicappedAccess;
+
+        return $this;
+    }
+
+    /**
+     * Get handicappedAccess
+     *
+     * @return boolean 
+     */
+    public function getHandicappedAccess()
+    {
+        return $this->handicappedAccess;
+    }
+
+    /**
+     * Set patio
+     *
+     * @param boolean $patio
+     * @return Bar
+     */
+    public function setPatio($patio)
+    {
+        $this->patio = $patio;
+
+        return $this;
+    }
+
+    /**
+     * Get patio
+     *
+     * @return boolean 
+     */
+    public function getPatio()
+    {
+        return $this->patio;
+    }
+
+    /**
+     * Set smokingArea
+     *
+     * @param boolean $smokingArea
+     * @return Bar
+     */
+    public function setSmokingArea($smokingArea)
+    {
+        $this->smokingArea = $smokingArea;
+
+        return $this;
+    }
+
+    /**
+     * Get smokingArea
+     *
+     * @return boolean 
+     */
+    public function getSmokingArea()
+    {
+        return $this->smokingArea;
+    }
+
+    /**
+     * Set breathalyser
+     *
+     * @param boolean $breathalyser
+     * @return Bar
+     */
+    public function setBreathalyser($breathalyser)
+    {
+        $this->breathalyser = $breathalyser;
+
+        return $this;
+    }
+
+    /**
+     * Get breathalyser
+     *
+     * @return boolean 
+     */
+    public function getBreathalyser()
+    {
+        return $this->breathalyser;
     }
 }

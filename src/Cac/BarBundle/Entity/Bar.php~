@@ -31,7 +31,7 @@ class Bar
     /**
      * @var string
      *
-     * @ORM\Column(name="adress", type="text")
+     * @ORM\Column(name="adress", type="string", length=255)
      */
     private $adress;
 
@@ -59,7 +59,7 @@ class Bar
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="editedAt", type="datetime")
+     * @ORM\Column(name="editedAt", type="datetime", nullable=true)
      */
     private $editedAt;
 
@@ -73,14 +73,14 @@ class Bar
     /**
      * @var string
      *
-     * @ORM\Column(name="schedule", type="blob")
+     * @ORM\Column(name="schedule", type="blob", nullable=true)
      */
     private $schedule;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="access", type="blob")
+     * @ORM\Column(name="access", type="blob", nullable=true)
      */
     private $access;
 
@@ -101,6 +101,62 @@ class Bar
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      */
     protected $categories;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="priceRange", type="integer")
+     */
+    private $priceRange;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="dressCode", type="integer")
+     */
+    private $dressCode;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="valet", type="boolean")
+     */
+    private $valet;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="valetCost", type="integer")
+     */
+    private $valetCost;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="handicappedAccess", type="boolean")
+     */
+    private $handicappedAccess;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="patio", type="boolean")
+     */
+    private $patio;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="smokingArea", type="boolean")
+     */
+    private $smokingArea;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="breathalyser", type="boolean")
+     */
+    private $breathalyser;
 
     /**
      * Get id
@@ -320,4 +376,148 @@ class Bar
     }
 
     
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->managers = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->categories = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->creationDate = new \Datetime();
+    }
+
+    /**
+     * Set author
+     *
+     * @param \Cac\BarBundle\Entity\Manager $author
+     * @return Bar
+     */
+    public function setAuthor(\Cac\BarBundle\Entity\Manager $author = null)
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
+    /**
+     * Get author
+     *
+     * @return \Cac\BarBundle\Entity\Manager 
+     */
+    public function getAuthor()
+    {
+        return $this->author;
+    }
+
+    /**
+     * Add managers
+     *
+     * @param \Cac\BarBundle\Entity\Manager $managers
+     * @return Bar
+     */
+    public function addManager(\Cac\BarBundle\Entity\Manager $managers)
+    {
+        $this->managers[] = $managers;
+
+        return $this;
+    }
+
+    /**
+     * Remove managers
+     *
+     * @param \Cac\BarBundle\Entity\Manager $managers
+     */
+    public function removeManager(\Cac\BarBundle\Entity\Manager $managers)
+    {
+        $this->managers->removeElement($managers);
+    }
+
+    /**
+     * Get managers
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getManagers()
+    {
+        return $this->managers;
+    }
+
+    /**
+     * Add categories
+     *
+     * @param \Cac\BarBundle\Entity\Category $categories
+     * @return Bar
+     */
+    public function addCategory(\Cac\BarBundle\Entity\Category $categories)
+    {
+        $this->categories[] = $categories;
+
+        return $this;
+    }
+
+    /**
+     * Remove categories
+     *
+     * @param \Cac\BarBundle\Entity\Category $categories
+     */
+    public function removeCategory(\Cac\BarBundle\Entity\Category $categories)
+    {
+        $this->categories->removeElement($categories);
+    }
+
+    /**
+     * Get categories
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCategories()
+    {
+        return $this->categories;
+    }
+
+    /**
+     * Set priceRange
+     *
+     * @param integer $priceRange
+     * @return Bar
+     */
+    public function setPriceRange($priceRange)
+    {
+        $this->priceRange = $priceRange;
+
+        return $this;
+    }
+
+    /**
+     * Get priceRange
+     *
+     * @return integer 
+     */
+    public function getPriceRange()
+    {
+        return $this->priceRange;
+    }
+
+    /**
+     * Set dressCode
+     *
+     * @param integer $dressCode
+     * @return Bar
+     */
+    public function setDressCode($dressCode)
+    {
+        $this->dressCode = $dressCode;
+
+        return $this;
+    }
+
+    /**
+     * Get dressCode
+     *
+     * @return integer 
+     */
+    public function getDressCode()
+    {
+        return $this->dressCode;
+    }
 }

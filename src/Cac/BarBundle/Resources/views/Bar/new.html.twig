@@ -4,5 +4,31 @@
 
 {% block body %}
 <h1>Welcome to the Bar:new page</h1>
-{{ form(form) }}
+<h2>Formulaire classique</h2> 	
+<!-- @KEVIN Formulaire préconstruit -->
+{{ form(form) }} <!-- @KEVIN supprime cette ligne si tu veux faire apparaitre les champs form_widget de la seconde partie -->
+<!-- @KEVIN Formulaire décomposé -->
+<h2>Exemple 1</h2> 	
+{{ form_label(form.name) }}
+{{ form_errors(form.name) }}
+{{ form_widget(form.name) }}
+
+<h2>Exemple 2</h2> 
+{{ form_label(form.town) }} 
+<!-- 
+	@KEVIN Pour ajouter les champs regarde 
+	ceux existants dans Cac\BarBundle\Form\Type\BarType.php 
+	et tu remplace le form.town par form.champquetuveux.
+	Prends bien la premiere partie.
+	form_label correspond au label indiqué dans l'array 'label'
+	form_error est le message d'erreur apparaissant s'il y a une erreur au traitement php
+	form_widget correspond au champ en lui même, si tu veux le changer il se modifie dans BarType
+-->
+{{ form_errors(form.town) }}
+{{ form_widget(form.town) }}
+
+<h2>Exemple 3</h2>  
+{{ form_label(form.zipcode) }}
+{{ form_errors(form.zipcode) }}
+{{ form_widget(form.zipcode) }}
 {% endblock %}
