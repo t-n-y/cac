@@ -23,6 +23,22 @@
 			{{ category }}
 		{% endfor %}
 	</ul>
+	<li>
+		{% for category in bar.categories %}
+			{{ category }}
+			{% if not loop.last %}
+			, 
+			{% endif %}
+		{% endfor %}
+	</li>
+	<li>{{ bar.priceRange }}</li>
+	<li>{{ bar.dressCode }}</li>
+	<li>{{ bar.valet }}</li>
+	<li>{{ bar.valetCost }}</li>
+	<li>{{ bar.handicappedAccess }}</li>
+	<li>{{ bar.patio }}</li>
+	<li>{{ bar.smokingArea }}</li>
+	<li>{{ bar.breathalyser }}</li>
 </ul>
 
 <h2>Editer le bar</h2>

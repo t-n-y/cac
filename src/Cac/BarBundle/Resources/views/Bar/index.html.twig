@@ -9,21 +9,6 @@
 		<li>{{ bar.name }}</li>
 		<li>{{ bar.adress }}</li>
 		<li>{{ bar.town }}</li>
-		<li>{{ bar.country }}</li>
-		<li>{{ bar.zipcode }}</li>
-		<li>{{ bar.schedule }}</li>
-		<li>{{ bar.access }}</li>
-		<li>{{ bar.author }}</li>
-		<ul>
-			{% for manager in bar.managers %}
-				{{ manager }}
-			{% endfor %}
-		</ul>
-		<ul>
-			{% for category in bar.categories %}
-				{{ category }}
-			{% endfor %}
-		</ul>
 	</ul>
 {% endfor %}
 {% endblock %}

@@ -40,12 +40,12 @@ class BarType extends AbstractType
                 'required'  => false,
                 )
             )
-            ->add('valet', null, array('label' => 'Voiturier'))
-            ->add('valetCost', 'text', array('label' => 'Prix'))
-            ->add('handicappedAccess', null, array('label' => 'Accès handicapés'))
-            ->add('patio', null, array('label' => 'Terrasse'))
-            ->add('smokingArea', null, array('label' => 'Espace fumeurs'))
-            ->add('breathalyser', null, array('label' => 'Alcotests gratuits'))
+            ->add('valet', null, array('label' => 'Voiturier', 'required'  => false))
+            ->add('valetCost', 'text', array('label' => 'Prix', 'required'  => false))
+            ->add('handicappedAccess', null, array('label' => 'Accès handicapés', 'required'  => false))
+            ->add('patio', null, array('label' => 'Terrasse', 'required'  => false))
+            ->add('smokingArea', null, array('label' => 'Espace fumeurs', 'required'  => false))
+            ->add('breathalyser', null, array('label' => 'Alcotests gratuits', 'required'  => false))
         ;
     }
     
