@@ -34,7 +34,7 @@ class ResettingController extends Controller
      */
     public function requestAction()
     {
-        return $this->render('BarBundle:Resetting:request.html.twig');
+        return $this->render('CacBarBundle:Resetting:request.html.twig');
     }
 
     /**
@@ -54,7 +54,7 @@ class ResettingController extends Controller
         }
 
         if ($user->isPasswordRequestNonExpired($this->container->getParameter('fos_user.resetting.token_ttl'))) {
-            return $this->render('BarBundle:Resetting:passwordAlreadyRequested.html.twig');
+            return $this->render('CacBarBundle:Resetting:passwordAlreadyRequested.html.twig');
         }
 
         if (null === $user->getConfirmationToken()) {
@@ -84,7 +84,7 @@ class ResettingController extends Controller
             return new RedirectResponse($this->generateUrl('fos_user_resetting_request'));
         }
 
-        return $this->render('BarBundle:Resetting:checkEmail.html.twig', array(
+        return $this->render('CacBarBundle:Resetting:checkEmail.html.twig', array(
             'email' => $email,
         ));
     }
@@ -135,7 +135,7 @@ class ResettingController extends Controller
             return $response;
         }
 
-        return $this->render('BarBundle:Resetting:reset.html.twig', array(
+        return $this->render('CacBarBundle:Resetting:reset.html.twig', array(
             'token' => $token,
             'form' => $form->createView(),
         ));

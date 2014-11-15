@@ -76,7 +76,7 @@ class ChangePasswordController extends Controller
             return $response;
         }
 
-        return $this->render('BarBundle:ChangePassword:changePassword.html.twig', array(
+        return $this->render('CacBarBundle:ChangePassword:changePassword.html.twig', array(
             'form' => $form->createView()
         ));
     }
