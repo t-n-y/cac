@@ -168,6 +168,7 @@ class Manager extends BaseUser
      */
     public function __construct()
     {
+        parent::__construct();
         $this->createdBars = new \Doctrine\Common\Collections\ArrayCollection();
         $this->managedBars = new \Doctrine\Common\Collections\ArrayCollection();
     }
