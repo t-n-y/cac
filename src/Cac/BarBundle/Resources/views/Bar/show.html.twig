@@ -45,4 +45,20 @@
 <a href="{{ path('bar_edit', { 'id': bar.id }) }}">Editer</a> 
 <h2>Supprimer le bar</h2>
 {{ form(delete_form) }}
+
+<h2>Notes</h2>
+{% for comment in bar.comments %}
+{{ comment.note }} - {{ comment.comment }}<br>
+{% endfor %}
+
+<h2>Noter le bar</h2>
+
+<form id="note">
+    <label>Commentaire <span>(255 caractères maximum)</span></label>
+    <input type="text" class="commentText" name="comment" required><br>
+    <label>Note <span>(sur 10)</span></label>
+    <input type="text" class="noteText" name="note" required><br>
+    <input type="hidden" class="barId" name="barId" value="{{ bar.id }}">
+    <button type="submit">Noter</button>
+</form>
 {% endblock %}

@@ -7,8 +7,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpFoundation\Response;
 use Cac\BarBundle\Entity\Bar;
+use Cac\BarBundle\Entity\Comment;
 use Cac\BarBundle\Form\Type\BarType;
+use Cac\BarBundle\Form\Type\EvalType;
 /**
  * Bar controller.
  *
@@ -270,14 +273,23 @@ class BarController extends Controller
     }
 
     /**
-     * @Route("evaluate")
+     * @Route("/note/{id}/{text}/{note}", name="bar_eval", options={"expose"=true})
      * @Template()
      */
-    public function evalAction()
+    public function evalAction($id, $text, $note)
     {
-        return array(
-                // ...
-            );    
-    }
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('CacBarBundle:Bar')->find($id);
 
+        $em = $this->getDoctrine()->getManager();
+        $comment = new Comment();
+        $comment->setBar($entity);
+        $comment->setComment($text);
+        $comment->setNote($note);
+        $comment->setCreatedAt(new DateTime());
+        $em->persist($comment);
+        $em->flush();
+
+        return new Response('comment');
+    }
 }

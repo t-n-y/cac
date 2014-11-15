@@ -105,58 +105,63 @@ class Bar
     /**
      * @var integer
      *
-     * @ORM\Column(name="priceRange", type="integer")
+     * @ORM\Column(name="priceRange", type="integer", nullable=true)
      */
     private $priceRange;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="dressCode", type="integer")
+     * @ORM\Column(name="dressCode", type="integer", nullable=true)
      */
     private $dressCode;
 
     /**
      * @var boolean
      *
-     * @ORM\Column(name="valet", type="boolean")
+     * @ORM\Column(name="valet", type="boolean", nullable=true)
      */
     private $valet;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="valetCost", type="integer")
+     * @ORM\Column(name="valetCost", type="integer", nullable=true)
      */
     private $valetCost;
 
     /**
      * @var boolean
      *
-     * @ORM\Column(name="handicappedAccess", type="boolean")
+     * @ORM\Column(name="handicappedAccess", type="boolean", nullable=true)
      */
     private $handicappedAccess;
 
     /**
      * @var boolean
      *
-     * @ORM\Column(name="patio", type="boolean")
+     * @ORM\Column(name="patio", type="boolean", nullable=true)
      */
     private $patio;
 
     /**
      * @var boolean
      *
-     * @ORM\Column(name="smokingArea", type="boolean")
+     * @ORM\Column(name="smokingArea", type="boolean", nullable=true)
      */
     private $smokingArea;
 
     /**
      * @var boolean
      *
-     * @ORM\Column(name="breathalyser", type="boolean")
+     * @ORM\Column(name="breathalyser", type="boolean", nullable=true)
      */
     private $breathalyser;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Cac\BarBundle\Entity\Comment", mappedBy="bar")
+     */
+    private $comments;
 
     /**
      * Get id
@@ -657,5 +662,38 @@ class Bar
     public function getBreathalyser()
     {
         return $this->breathalyser;
+    }
+
+    /**
+     * Add comments
+     *
+     * @param \Cac\BarBundle\Entity\Comment $comments
+     * @return Bar
+     */
+    public function addComment(\Cac\BarBundle\Entity\Comment $comments)
+    {
+        $this->comments[] = $comments;
+
+        return $this;
+    }
+
+    /**
+     * Remove comments
+     *
+     * @param \Cac\BarBundle\Entity\Comment $comments
+     */
+    public function removeComment(\Cac\BarBundle\Entity\Comment $comments)
+    {
+        $this->comments->removeElement($comments);
+    }
+
+    /**
+     * Get comments
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getComments()
+    {
+        return $this->comments;
     }
 }
