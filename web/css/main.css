@@ -151,13 +151,14 @@
 .shadowHover h3{
 	color : #fff;
 	border-top: 1px solid #fff;
-	font-size: 15px;
+	font-size: 12px;
 	position: absolute;
 	bottom: 0;
 	left: 0;
 	margin-left: 10px;
 	width: 80%;
 	text-align: left;
+	
 }
 
 .jaloux{

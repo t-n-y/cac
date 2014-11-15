@@ -21,10 +21,10 @@ $('.vignetteBar').on("hover",function(){
 
 $(document).ready(function(){
   $(".vignetteBar").mouseenter(function(){
-    $(this).find('.shadowHover').stop(true,true).fadeIn(300);
+    $(this).find('.shadowHover h3').stop(true,true).animate({marginBottom:"25px"});
   });
   $(".vignetteBar").mouseleave(function(){
-    //$(this).find('.shadowHover').stop(true,true).fadeOut(300);
+    $(this).find('.shadowHover h3').stop(true,true).animate({marginBottom:"10px"});
   });
 });
 
