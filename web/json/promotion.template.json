@@ -1,0 +1,93 @@
+{
+	"Lundi": {
+        "promotion": {
+            "value": "",
+		    "quantity": "",
+            "condition": ""
+        },
+        "happy-hour": {
+            "value": "",
+            "beginning": "",
+            "ending": "",
+            "condition": ""
+        }
+    },
+    "Mardi": {
+        "promotion": {
+            "value": "",
+            "quantity": "",
+            "condition": ""
+        },
+        "happy-hour": {
+            "value": "",
+            "beginning": "",
+            "ending": "",
+            "condition": ""
+        }
+    },
+    "Mercredi": {
+        "promotion": {
+            "value": "",
+            "quantity": "",
+            "condition": ""
+        },
+        "happy-hour": {
+            "value": "",
+            "beginning": "",
+            "ending": "",
+            "condition": ""
+        }
+    },
+    "Jeudi": {
+        "promotion": {
+            "value": "",
+            "quantity": "",
+            "condition": ""
+        },
+        "happy-hour": {
+            "value": "",
+            "beginning": "",
+            "ending": "",
+            "condition": ""
+        }
+    },
+    "Vendredi": {
+        "promotion": {
+            "value": "",
+            "quantity": "",
+            "condition": ""
+        },
+        "happy-hour": {
+            "value": "",
+            "beginning": "",
+            "ending": "",
+            "condition": ""
+        }
+    },
+    "Samedi": {
+        "promotion": {
+            "value": "",
+            "quantity": "",
+            "condition": ""
+        },
+        "happy-hour": {
+            "value": "",
+            "beginning": "",
+            "ending": "",
+            "condition": ""
+        }
+    },
+    "Dimanche": {
+        "promotion": {
+            "value": "",
+            "quantity": "",
+            "condition": ""
+        },
+        "happy-hour": {
+            "value": "",
+            "beginning": "",
+            "ending": "",
+            "condition": ""
+        }
+    }
+}

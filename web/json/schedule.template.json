@@ -1,0 +1,37 @@
+{
+	"Lundi": {
+        "status": "Ouvert",
+        "open": "",
+        "close": ""
+    },
+    "Mardi": {
+        "status": "Ouvert",
+        "open": "",
+        "close": ""
+    },
+    "Mercredi": {
+        "status": "Ouvert",
+        "open": "",
+        "close": ""
+    },
+    "Jeudi": {
+        "status": "Ouvert",
+        "open": "",
+        "close": ""
+    },
+    "Vendredi": {
+        "status": "Ouvert",
+        "open": "",
+        "close": ""
+    },
+    "Samedi": {
+        "status": "Ouvert",
+        "open": "",
+        "close": ""
+    },
+    "Dimanche": {
+        "status": "Ouvert",
+        "open": "",
+        "close": ""
+    }
+}
