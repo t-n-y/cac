@@ -6,12 +6,12 @@ use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
 
 /**
- * Manager
+ * Bigboss
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Cac\BarBundle\Entity\ManagerRepository")
+ * @ORM\Entity(repositoryClass="Cac\BarBundle\Entity\BigbossRepository")
  */
-class Manager extends BaseUser
+class Bigboss extends BaseUser
 {
     /**
      * @var integer
@@ -56,9 +56,21 @@ class Manager extends BaseUser
     protected $createdBars;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Cac\BarBundle\Entity\Bar", mappedBy="managers")
+     * @ORM\ManyToMany(targetEntity="Cac\BarBundle\Entity\Bar", mappedBy="Bigboss")
      */
     protected $managedBars;
+
+    /**
+     * @var integer
+     * @ORM\Column(name="mobile_phone", type="integer")
+     */
+    private $mobile_phone;
+
+    /**
+     * @var integer
+     * @ORM\Column(name="fix_phone", type="integer")
+     */
+    private $fix_phone;
 
     /**
      * Get id
@@ -74,7 +86,7 @@ class Manager extends BaseUser
      * Set name
      *
      * @param string $name
-     * @return Manager
+     * @return Bigboss
      */
     public function setName($name)
     {
@@ -97,7 +109,7 @@ class Manager extends BaseUser
      * Set firstname
      *
      * @param string $firstname
-     * @return Manager
+     * @return Bigboss
      */
     public function setFirstname($firstname)
     {
@@ -120,7 +132,7 @@ class Manager extends BaseUser
      * Set company
      *
      * @param string $company
-     * @return Manager
+     * @return Bigboss
      */
     public function setCompany($company)
     {
@@ -143,7 +155,7 @@ class Manager extends BaseUser
      * Set siret
      *
      * @param string $siret
-     * @return Manager
+     * @return Bigboss
      */
     public function setSiret($siret)
     {
@@ -177,7 +189,7 @@ class Manager extends BaseUser
      * Add createdBars
      *
      * @param \Cac\BarBundle\Entity\Bar $createdBars
-     * @return Manager
+     * @return Bigboss
      */
     public function addCreatedBar(\Cac\BarBundle\Entity\Bar $createdBars)
     {
@@ -210,7 +222,7 @@ class Manager extends BaseUser
      * Add managedBars
      *
      * @param \Cac\BarBundle\Entity\Bar $managedBars
-     * @return Manager
+     * @return Bigboss
      */
     public function addManagedBar(\Cac\BarBundle\Entity\Bar $managedBars)
     {
@@ -237,5 +249,51 @@ class Manager extends BaseUser
     public function getManagedBars()
     {
         return $this->managedBars;
+    }
+
+    /**
+     * Set mobile_phone
+     *
+     * @param integer $mobilePhone
+     * @return Bigboss
+     */
+    public function setMobilePhone($mobilePhone)
+    {
+        $this->mobile_phone = $mobilePhone;
+
+        return $this;
+    }
+
+    /**
+     * Get mobile_phone
+     *
+     * @return integer 
+     */
+    public function getMobilePhone()
+    {
+        return $this->mobile_phone;
+    }
+
+    /**
+     * Set fix_phone
+     *
+     * @param integer $fixPhone
+     * @return Bigboss
+     */
+    public function setFixPhone($fixPhone)
+    {
+        $this->fix_phone = $fixPhone;
+
+        return $this;
+    }
+
+    /**
+     * Get fix_phone
+     *
+     * @return integer 
+     */
+    public function getFixPhone()
+    {
+        return $this->fix_phone;
     }
 }

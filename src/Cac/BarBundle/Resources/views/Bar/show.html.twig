@@ -14,8 +14,8 @@
 	<li>Acces : {{ bar.access }}</li>
 	<li>Auteur : {% if bar.author.username is defined %}{{ bar.author.username }}{% endif %}</li>
 	<ul>
-		{% for manager in bar.managers %}
-			<li>{{ manager }}</li>
+		{% for boss in bar.bigboss %}
+			<li>{{ boss }}</li>
 		{% endfor %}
 	</ul>
 	<ul>

@@ -41,7 +41,7 @@ class RegistrationController extends Controller
 
         $user = $userManager->createUser();
         $user->setEnabled(true);
-        $user->addRole('ROLE_MANAGER');
+        $user->addRole('ROLE_BIGBOSS');
 
         $event = new GetResponseUserEvent($user, $request);
         $dispatcher->dispatch(FOSUserEvents::REGISTRATION_INITIALIZE, $event);

@@ -85,16 +85,16 @@ class Bar
     private $access;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Cac\BarBundle\Entity\Manager", inversedBy="createdBars")
+     * @ORM\ManyToOne(targetEntity="Cac\BarBundle\Entity\Bigboss", inversedBy="createdBars")
      * @ORM\JoinColumn(name="author_id", referencedColumnName="id")
      */
     private $author;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Cac\BarBundle\Entity\Manager", inversedBy="managedBars")
-     * @ORM\JoinColumn(name="manager_id", referencedColumnName="id")
+     * @ORM\ManyToMany(targetEntity="Cac\BarBundle\Entity\Bigboss", inversedBy="managedBars")
+     * @ORM\JoinColumn(name="Bigboss_id", referencedColumnName="id")
      */
-    private $managers;
+    private $bigboss;
 
     /**
      * @ORM\ManyToMany(targetEntity="Cac\BarBundle\Entity\Category", inversedBy="bars")
@@ -391,7 +391,7 @@ class Bar
      */
     public function __construct()
     {
-        $this->managers = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->bigboss = new \Doctrine\Common\Collections\ArrayCollection();
         $this->categories = new \Doctrine\Common\Collections\ArrayCollection();
         $this->creationDate = new \Datetime();
     }
@@ -399,10 +399,10 @@ class Bar
     /**
      * Set author
      *
-     * @param \Cac\BarBundle\Entity\Manager $author
+     * @param \Cac\BarBundle\Entity\Bigboss $author
      * @return Bar
      */
-    public function setAuthor(\Cac\BarBundle\Entity\Manager $author = null)
+    public function setAuthor(\Cac\BarBundle\Entity\Bigboss $author = null)
     {
         $this->author = $author;
 
@@ -412,7 +412,7 @@ class Bar
     /**
      * Get author
      *
-     * @return \Cac\BarBundle\Entity\Manager 
+     * @return \Cac\BarBundle\Entity\Bigboss 
      */
     public function getAuthor()
     {
@@ -420,36 +420,36 @@ class Bar
     }
 
     /**
-     * Add managers
+     * Add bigboss
      *
-     * @param \Cac\BarBundle\Entity\Manager $managers
+     * @param \Cac\BarBundle\Entity\Bigboss $bigboss
      * @return Bar
      */
-    public function addManager(\Cac\BarBundle\Entity\Manager $managers)
+    public function addBigboss(\Cac\BarBundle\Entity\Bigboss $bigboss)
     {
-        $this->managers[] = $managers;
+        $this->bigboss[] = $bigboss;
 
         return $this;
     }
 
     /**
-     * Remove managers
+     * Remove bigboss
      *
-     * @param \Cac\BarBundle\Entity\Manager $managers
+     * @param \Cac\BarBundle\Entity\Bigboss $bigboos
      */
-    public function removeManager(\Cac\BarBundle\Entity\Manager $managers)
+    public function removeBigboss(\Cac\BarBundle\Entity\Bigboss $bigboss)
     {
-        $this->managers->removeElement($managers);
+        $this->bigboss->removeElement($bigboss);
     }
 
     /**
-     * Get managers
+     * Get bigboss
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getManagers()
+    public function getBigboss()
     {
-        return $this->managers;
+        return $this->bigboss;
     }
 
     /**
