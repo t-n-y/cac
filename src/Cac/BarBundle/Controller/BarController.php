@@ -10,6 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Response;
 use Cac\BarBundle\Entity\Bar;
 use Cac\BarBundle\Entity\Comment;
+use Cac\BarBundle\Entity\Promotion;
 use Cac\BarBundle\Form\Type\BarType;
 use Cac\BarBundle\Form\Type\EvalType;
 /**

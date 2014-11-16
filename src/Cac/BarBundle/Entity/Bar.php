@@ -73,14 +73,14 @@ class Bar
     /**
      * @var string
      *
-     * @ORM\Column(name="schedule", type="blob", nullable=true)
+     * @ORM\Column(name="schedule", type="text", nullable=true)
      */
     private $schedule;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="access", type="blob", nullable=true)
+     * @ORM\Column(name="access", type="text", nullable=true)
      */
     private $access;
 
@@ -162,6 +162,11 @@ class Bar
      * @ORM\OneToMany(targetEntity="Cac\BarBundle\Entity\Comment", mappedBy="bar")
      */
     private $comments;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Cac\BarBundle\Entity\Promotion", mappedBy="bar")
+     */
+    private $promotion;
 
     /**
      * Get id

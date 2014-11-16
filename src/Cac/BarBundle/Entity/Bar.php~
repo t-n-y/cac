@@ -73,7 +73,7 @@ class Bar
     /**
      * @var string
      *
-     * @ORM\Column(name="schedule", type="blob", nullable=true)
+     * @ORM\Column(name="schedule", type="text", nullable=true)
      */
     private $schedule;
 
