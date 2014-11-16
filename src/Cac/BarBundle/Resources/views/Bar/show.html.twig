@@ -5,22 +5,22 @@
 {% block body %}
 <h1>Welcome to the Bar:show page</h1>
 <ul>
-	<li>{{ bar.name }}</li>
-	<li>{{ bar.adress }}</li>
-	<li>{{ bar.town }}</li>
-	<li>{{ bar.country }}</li>
-	<li>{{ bar.zipcode }}</li>
-	<li>{{ bar.schedule }}</li>
-	<li>{{ bar.access }}</li>
-	<li>{{ bar.author }}</li>
+	<li>Nom de l'établissement : {{ bar.name }}</li>
+	<li>Adresse : {{ bar.adress }}</li>
+	<li>Ville : {{ bar.town }}</li>
+	<li>Pays : {{ bar.country }}</li>
+	<li>Code postal : {{ bar.zipcode }}</li>
+	<li>Horaires : {{ bar.schedule }}</li>
+	<li>Acces : {{ bar.access }}</li>
+	<li>Auteur : {% if bar.author.username is defined %}{{ bar.author.username }}{% endif %}</li>
 	<ul>
 		{% for manager in bar.managers %}
-			{{ manager }}
+			<li>{{ manager }}</li>
 		{% endfor %}
 	</ul>
 	<ul>
 		{% for category in bar.categories %}
-			{{ category }}
+			<li>{{ category }}</li>
 		{% endfor %}
 	</ul>
 	<li>
@@ -31,14 +31,14 @@
 			{% endif %}
 		{% endfor %}
 	</li>
-	<li>{{ bar.priceRange }}</li>
-	<li>{{ bar.dressCode }}</li>
-	<li>{{ bar.valet }}</li>
-	<li>{{ bar.valetCost }}</li>
-	<li>{{ bar.handicappedAccess }}</li>
-	<li>{{ bar.patio }}</li>
-	<li>{{ bar.smokingArea }}</li>
-	<li>{{ bar.breathalyser }}</li>
+	<li>Ordre des prix : {{ bar.priceRange }}</li>
+	<li>Dresscode : {{ bar.dressCode }}</li>
+	<li>Voiturier : {{ bar.valet }}</li>
+	<li>Prix voiturier{{ bar.valetCost }}</li>
+	<li>Acces handicapé : {{ bar.handicappedAccess }}</li>
+	<li>Terrasse : {{ bar.patio }}</li>
+	<li>Espace fumeur : {{ bar.smokingArea }}</li>
+	<li>Alcotests gratuits : {{ bar.breathalyser }}</li>
 </ul>
 
 <h2>Editer le bar</h2>
@@ -61,4 +61,7 @@
     <input type="hidden" class="barId" name="barId" value="{{ bar.id }}">
     <button type="submit">Noter</button>
 </form>
+
+<h2>Ajouter un manager</h2>
+<a href="{{ path('bar_add_manager', { id : bar.id }) }}">Ajouter un manager</a>
 {% endblock %}

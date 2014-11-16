@@ -91,9 +91,11 @@ class BarController extends Controller
 
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
+        $user = $this->get('security.context')->getToken()->getUser();
 
         if ($form->isValid()) {
 
+            $entity->setAuthor($user);
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
@@ -291,5 +293,19 @@ class BarController extends Controller
         $em->flush();
 
         return new Response('comment');
+    }
+
+    /**
+     * Displays a form to add a manager to an existing Bar entity.
+     *
+     * @Route("/{id}/add-manager", name="bar_add_manager")
+     * @Method("GET")
+     * @Template()
+     */
+    public function addManagerAction()
+    {
+        return array(
+                // ...
+            );    
     }
 }
