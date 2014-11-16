@@ -701,4 +701,27 @@ class Bar
     {
         return $this->comments;
     }
+
+    /**
+     * Set promotion
+     *
+     * @param \Cac\BarBundle\Entity\Promotion $promotion
+     * @return Bar
+     */
+    public function setPromotion(\Cac\BarBundle\Entity\Promotion $promotion = null)
+    {
+        $this->promotion = $promotion;
+
+        return $this;
+    }
+
+    /**
+     * Get promotion
+     *
+     * @return \Cac\BarBundle\Entity\Promotion 
+     */
+    public function getPromotion()
+    {
+        return $this->promotion;
+    }
 }
