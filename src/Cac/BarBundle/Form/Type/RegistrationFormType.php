@@ -49,6 +49,8 @@ class RegistrationFormType extends AbstractType
             ->add('firstname', null, array('label' => 'Prénom'))
             ->add('company', null, array('label' => 'Société'))
             ->add('siret', null, array('label' => 'Numéro SIRET'))
+            ->add('fix_phone', 'text', array('label' => 'Téléphone fixe'))
+            ->add('mobile_phone', 'text', array('label' => 'Mobile'))
         ;
     }
 
