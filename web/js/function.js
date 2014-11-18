@@ -13,11 +13,20 @@ var heightImg = $('.vignetteBar img').height();
 
 $('.shadowHover').css('width', widthImg + 'px');
 $('.shadowHover').css('height', heightImg + 'px');
-},100);
-$('.vignetteBar').on("hover",function(){
-	
 
-});
+
+
+},100);
+
+/*HEIGHT MAP*/
+var heightsuperInfoBar = $('.superInfoBar').height();
+
+heightsuperInfoBar = heightsuperInfoBar - 40;
+
+$('.mapView iframe').css('height', heightsuperInfoBar + 'px');
+
+/************/
+
 
 $(document).ready(function(){
   $(".vignetteBar").mouseenter(function(){

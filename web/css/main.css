@@ -16,6 +16,10 @@
 	float: right;
 }
 
+.center{
+	text-align: center;
+}
+
 
 /*****************HEADER*****************/
 
@@ -269,12 +273,13 @@
 }
 
 .infoBar{
-	height: 170px;
 	background-color: #fff;
+	padding-top: 20px;
+	padding-bottom: 20px
 }
 
 .noteBar{
-	padding-top: 35px;
+	
 }
 
 .turn{
@@ -368,9 +373,59 @@ p.topPosition{
 	margin: 0 0 0 0;
 }
 
+.contentSuperInfoBar{
+	height: 650px;
+	background-image: url('../img/fondFicheBar.png');
+	background-size: cover;
+	background-repeat: no-repeat;
+}
 
 .superInfoBar{
-	height: 1000px;
+	width: 70%;
+	margin: auto;
+	margin-top: 50px;
+	background-color: #fff;
+	height: 550px;
+}
+
+.superInfoBar h2{
+	color: #5ac4d4;
+	border-bottom: 1px solid #5ac4d4;
+	font-size: 17px;
+	margin-left: 20px;
+}
+
+.superInfoBar p{
+	font-size: 15px;
+	margin-left: 20px;
+	margin-bottom: 0px;
+}
+
+.superInfoBar span{
+	font-size: 15px;
+	margin-left: 20px;
+	color : #5ac4d4;
+	margin-left: 5px;
+}
+
+.superInfoBar span.ouverture{
+	color: #99d1c1;
+}
+
+.superInfoBar span.fermeture{
+	color: #d2232d;
+}
+
+.mapView{
+	margin: auto;
+	width: 80%;
+	margin-top: 20px;
+
+}
+
+.mapView iframe{
+	width: 99%;
+	height: 100%;
 }
 
 
