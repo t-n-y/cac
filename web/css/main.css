@@ -12,6 +12,10 @@
 	color: #fff !important;
 }
 
+.right{
+	float: right;
+}
+
 
 /*****************HEADER*****************/
 
@@ -231,6 +235,145 @@
 	width: 100%;
 	margin-bottom: 30px;
 }
+
+/********FICHE BAR********/
+
+.topBar{
+	position: relative;
+	max-height:508px;
+}
+
+.topBar img{
+	width: 100%;
+	height: 100%;
+	max-height:508px;
+}
+
+.infoNameBar{
+	position: absolute;
+	width: 100%;
+	height: 20%;
+	max-height: 80px;
+	min-height: 60px;
+	bottom: 0;
+	left: 0;
+	background-color: rgba(0,0,0,0.5);
+	color: #fff;
+}
+
+.infoNameBar h1{
+	float: left;
+	padding: 0 20px;
+	font-size: 25px;
+	margin: 0px;
+}
+
+.infoBar{
+	height: 170px;
+	background-color: #fff;
+}
+
+.noteBar{
+	padding-top: 35px;
+}
+
+.turn{
+	padding-left: 35px;
+}
+
+.turn p, .turn div{
+	float: left;
+	font-size: 25px;
+}
+
+p.topNote{
+	color: #99d1c1;
+	font-size: 30px;
+
+}
+
+p.bottomNote, p.bottomPosition{
+	margin-top: 25px;
+}
+
+p.comNote{
+	color: #99d1c1;
+	font-size: 20px;
+}
+.slash{
+	width: 1px;
+	height: 60px;
+	background-color: #000;
+		-ms-transform: rotate(35deg); /* IE 9 */
+    -webkit-transform: rotate(35deg); /* Chrome, Safari, Opera */
+    transform: rotate(35deg);
+    margin: 0 7px 0 10px;
+}
+
+
+.turnPosition{
+	float: right;
+	padding-right: 35px;
+}
+
+.turnPosition p, .turnPosition div{
+	float: left;
+	font-size: 25px;
+}
+
+p.comPosition{
+	color: #5ac4d4;
+	font-size: 15px;
+	text-align: right;
+	padding-right: 42px;
+}
+
+p.topPosition{
+	color: #5ac4d4;
+	font-size: 30px;
+
+}
+
+
+
+.ticketBarTop{
+	width: 250px;
+	height: 80px;
+	background-color: #5ac4d4;
+	color: #fff;
+	text-align: center;
+}
+
+.ticketBarTop h2{
+	font-size: 17px;
+	margin: 0 0 0 0;
+}
+
+.ticketBarTop h3{
+	font-size: 15px;
+	margin: 0 0 0 0;
+}
+
+.ticketBarBottom{
+	width: 250px;
+	height: 20px;
+	background-color: #323232;
+	color: #fff;
+	text-align: center;
+	margin-top: 1px;
+}
+
+.ticketBarBottom p{
+	font-size: 13px;
+	margin: 0 0 0 0;
+}
+
+
+.superInfoBar{
+	height: 1000px;
+}
+
+
 
 
 
