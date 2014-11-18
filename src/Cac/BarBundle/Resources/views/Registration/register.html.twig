@@ -1,6 +1,14 @@
 {% extends '::base.html.twig' %} 
 {% block body %}
-{% block fos_user_content %}
-{% include "FOSUserBundle:Registration:register_content.html.twig" %}
-{% endblock fos_user_content %}
+<div class="mainContaineur">
+	<div class="formBar col-xs-12 col-sm-12 col-md-12 noPadding">
+		<h1>Bonjour, faisons connaissance</h1>
+		<div class="separation1"></div>
+		<div class="separation2"></div>
+	</div>
+	{% block fos_user_content %}
+	{% include "FOSUserBundle:Registration:register_content.html.twig" %}
+	{% endblock fos_user_content %}
+	<div class="clear"></div>
+</div>
 {% endblock %}

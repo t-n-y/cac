@@ -1,7 +1,38 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 <form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
-    {{ form_widget(form) }}
+
+    {{ form_label(form.name) }}
+	{{ form_errors(form.name) }}
+	{{ form_widget(form.name) }}
+
+	{{ form_label(form.firstname) }}
+	{{ form_errors(form.firstname) }}
+	{{ form_widget(form.firstname) }}
+
+	{{ form_label(form.company) }}
+	{{ form_errors(form.company) }}
+	{{ form_widget(form.company) }}
+
+	{{ form_label(form.siret) }}
+	{{ form_errors(form.siret) }}
+	{{ form_widget(form.siret) }}
+
+	{{ form_label(form.mobile_phone) }}
+	{{ form_errors(form.mobile_phone) }}
+	{{ form_widget(form.mobile_phone) }}
+
+	{{ form_label(form.fix_phone) }}
+	{{ form_errors(form.fix_phone) }}
+	{{ form_widget(form.fix_phone) }}
+
+	{{ form_label(form.email) }}
+	{{ form_errors(form.email) }}
+	{{ form_widget(form.email) }}
+
+
+
+
     <div>
         <input type="submit" value="{{ 'registration.submit'|trans }}" />
     </div>

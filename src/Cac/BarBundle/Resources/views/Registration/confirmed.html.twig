@@ -1,13 +1,25 @@
 {% extends '::base.html.twig' %} 
 {% block body %}
 {% trans_default_domain 'FOSUserBundle' %}
+	<div class="mainContaineur">
+	<div class="formBar col-xs-12 col-sm-12 col-md-12 noPadding">
+		<h1>Bienvenue Mr {{ user.name }}<br/>Créez maintenant la fiche de votre établissement</h1>
+		<div class="separation1"></div>
+		<div class="separation2"></div>
+	</div>
+	{% block fos_user_content %}
+	    {% if app.session is not empty %}
+	        {% set targetUrl = app.session.get('_security.' ~ app.security.token.providerKey ~ '.target_path') %}
+	        {% if targetUrl is not empty %}<p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>{% endif %}
+	    {% endif %}
+	    <div class="center">
+		    <p>Mon établissement</p>
+		    <a href="{{ path('bar_new') }}">Créer</a>
 
-{% block fos_user_content %}
-    <p>Bienvenue {{ user.username }}</p>
-    {% if app.session is not empty %}
-        {% set targetUrl = app.session.get('_security.' ~ app.security.token.providerKey ~ '.target_path') %}
-        {% if targetUrl is not empty %}<p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>{% endif %}
-    {% endif %}
-    <a href="{{ path('bar_new') }}">Ajouter un établissement</a>
-{% endblock fos_user_content %}
+		    <p>Créez une fiche pour votre bar et commencez à acquérir de nouveaux clients</p>
+		    <h2>Vous allez adorer !</h2>
+	    </div>
+	{% endblock fos_user_content %}
+		<div class="clear"></div>
+	</div>
 {% endblock %}

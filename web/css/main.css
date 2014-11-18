@@ -352,6 +352,7 @@ p.topPosition{
 .ticketBarTop h2{
 	font-size: 17px;
 	margin: 0 0 0 0;
+	padding-top: 25px;
 }
 
 .ticketBarTop h3{
@@ -371,6 +372,7 @@ p.topPosition{
 .ticketBarBottom p{
 	font-size: 13px;
 	margin: 0 0 0 0;
+	padding-top: 2px;
 }
 
 .contentSuperInfoBar{
@@ -427,6 +429,37 @@ p.topPosition{
 	width: 99%;
 	height: 100%;
 }
+
+
+/*********FORM BAR***********/
+
+.formBar{
+	margin-top: 100px;
+	text-align: center;
+}
+
+.formBar h1{
+	color : #5ac4d4;
+	font-size: 25px;
+}
+
+.separation1{
+	width: 300px;
+	height: 1px;
+	background-color: #4d4d4d;
+	margin: auto;
+	margin-top: 15px;
+}
+
+.separation2{
+	width: 150px;
+	height: 1px;
+	background-color: #4d4d4d;
+	margin: auto;
+	margin-top: 5px;
+}
+
+/****************************/
 
 
 
