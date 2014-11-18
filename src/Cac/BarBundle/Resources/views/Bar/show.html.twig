@@ -9,7 +9,15 @@
 			<img src="{{asset('img/pershing.png')}}" alt="pershing">
 			<div class="infoNameBar">
 				<h1>{{ bar.name }}</h1>
+				{% if bar.priceRange ==  1 %}
+				<p>€</p>
+				{% elseif bar.priceRange ==  2 %}
 				<p>€€</p>
+				{% elseif bar.priceRange ==  3 %}
+				<p>€€€</p>
+				{% else %}
+				<p>€€€€</p>
+				{% endif %}
 			</div>
 		</div>
 		<div class="infoBar col-xs-12 col-sm-12 col-md-12 noPadding">
