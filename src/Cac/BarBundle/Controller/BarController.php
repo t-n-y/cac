@@ -13,6 +13,7 @@ use Cac\BarBundle\Entity\Comment;
 use Cac\BarBundle\Entity\Promotion;
 use Cac\BarBundle\Form\Type\BarType;
 use Cac\BarBundle\Form\Type\EvalType;
+use Cac\BarBundle\Form\Type\PromotionType;
 /**
  * Bar controller.
  *
@@ -83,7 +84,7 @@ class BarController extends Controller
      *
      * @Route("/", name="bar_create")
      * @Method("POST")
-     * @Template("BarBundle:Bar:new.html.twig")
+     * @Template("CacBarBundle:Bar:new.html.twig")
      */
     public function createAction(Request $request)
     {
@@ -308,5 +309,85 @@ class BarController extends Controller
         return array(
                 // ...
             );    
+    }
+
+    /**
+     * Displays the promotion and happy-hours interface for an existing Bar entity.
+     *
+     * @Route("/{id}/edit/promotion", name="bar_edit_promotion")
+     * @Method("GET")
+     * @Template("CacBarBundle:Bar:promotion.html.twig")
+     */
+    public function editPromotionAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('CacBarBundle:Bar')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Le bar demandé n\'existe pas.');
+        }
+
+        $editForm = $this->createEditForm($entity);
+
+        return array(
+            'bar'      => $entity,
+            'edit_form'   => $editForm->createView()
+        );
+    }
+
+    /**
+    * Creates a form to edit a Bar entity.
+    *
+    * @param Bar $entity The entity
+    *
+    * @return \Symfony\Component\Form\Form The form
+    */
+    private function createEditPromotionForm(Bar $entity)
+    {
+        $form = $this->createForm(new PromotionType(), $entity, array(
+            'action' => $this->generateUrl('bar_update_promotion', array('id' => $entity->getId())),
+            'method' => 'PUT',
+        ));
+
+        $form->add('submit', 
+            'submit', 
+            array(
+                'label' => 'Valider'
+            )
+        );
+
+        return $form;
+    }
+
+    /**
+     * Edits an existing Bar entity.
+     *
+     * @Route("/{id}", name="bar_update_promotion")
+     * @Method("PUT")
+     * @Template("CacBarBundle:Bar:promotion.html.twig")
+     */
+    public function updatePromotionAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('CacBarBundle:Bar')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Le bar demandé n\'existe pas.');
+        }
+
+        $editForm = $this->createEditPromotionForm($entity);
+        $editForm->handleRequest($request);
+
+        if ($editForm->isValid()) {
+            $em->flush();
+            return $this->redirect($this->generateUrl('bar_show', array('id' => $id)));
+        }
+
+        return array(
+            'bar'      => $entity,
+            'edit_form'   => $editForm->createView()
+        );
     }
 }

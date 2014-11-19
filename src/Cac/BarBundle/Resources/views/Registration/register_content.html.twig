@@ -2,38 +2,56 @@
 
 <form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
 
+	{{ form_label(form.username) }}
+	{{ form_errors(form.username) }}
+	{{ form_widget(form.username) }}
+	<br>
+	<br>
     {{ form_label(form.name) }}
 	{{ form_errors(form.name) }}
 	{{ form_widget(form.name) }}
-
+	<br>
+	<br>
 	{{ form_label(form.firstname) }}
 	{{ form_errors(form.firstname) }}
 	{{ form_widget(form.firstname) }}
-
+	<br>
+	<br>
+    {{ form_label(form.gender) }}
+	{{ form_errors(form.gender) }}
+	{{ form_widget(form.gender) }}
+	<br>
+	<br>
 	{{ form_label(form.company) }}
 	{{ form_errors(form.company) }}
 	{{ form_widget(form.company) }}
-
+	<br>
+	<br>
 	{{ form_label(form.siret) }}
 	{{ form_errors(form.siret) }}
 	{{ form_widget(form.siret) }}
-
+	<br>
+	<br>
 	{{ form_label(form.mobile_phone) }}
 	{{ form_errors(form.mobile_phone) }}
 	{{ form_widget(form.mobile_phone) }}
-
+	<br>
+	<br>
 	{{ form_label(form.fix_phone) }}
 	{{ form_errors(form.fix_phone) }}
 	{{ form_widget(form.fix_phone) }}
-
-	{{ form_label(form.email) }}
+	<br>
+	<br>
 	{{ form_errors(form.email) }}
 	{{ form_widget(form.email) }}
+	<br>
+	<br>
+	{{ form_errors(form.plainPassword) }}
+	{{ form_widget(form.plainPassword) }}
 
-
-
+	{{ form_widget(form._token) }}
 
     <div>
-        <input type="submit" value="{{ 'registration.submit'|trans }}" />
+        <input type="submit" value="On peut changer les valeurs même si tu vois des doubles accolades ;)">
     </div>
 </form>

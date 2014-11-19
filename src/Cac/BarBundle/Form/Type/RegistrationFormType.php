@@ -32,6 +32,7 @@ class RegistrationFormType extends AbstractType
         $builder
             ->add('username', null, array('label' => 'Nom d\'utilisateur'))
             ->add('plainPassword', 'repeated', array(
+                'label' => 'Mot de passe',
                 'type' => 'password',
                 'options' => array('translation_domain' => 'FOSUserBundle'),
                 'first_options' => array('label' => 'Mot de passe'),
@@ -47,7 +48,7 @@ class RegistrationFormType extends AbstractType
             ))
             ->add('name', null, array('label' => 'Nom'))
             ->add('firstname', null, array('label' => 'Prénom'))
-            ->add('firstname', 'choice', array(
+            ->add('gender', 'choice', array(
                 'label' => 'Genre',
                 'choices'   => array('1' => 'Homme', '2' => 'Femme', '3' => 'Transgenre (masculin)', '4' => 'Transgenre (feminin)')
                 )
