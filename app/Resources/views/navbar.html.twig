@@ -24,7 +24,7 @@
 	      	</div>
        	</div>
       </div>
-      <ul class="nav navbar-nav col-xs-12 col-sm-5 col-md-5 pull-right">
+      <ul class="nav navbar-nav col-xs-12 col-sm-5 col-md-5">
         {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
         <li class="pull-right"><a href="{{ path('fos_user_security_login') }}">{{ app.user.username }}</a></li>
         <li class="pull-right"><a href="{{ path('bars') }}">Créer un bar</a></li>
