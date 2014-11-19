@@ -47,6 +47,11 @@ class RegistrationFormType extends AbstractType
             ))
             ->add('name', null, array('label' => 'Nom'))
             ->add('firstname', null, array('label' => 'Prénom'))
+            ->add('firstname', 'choice', array(
+                'label' => 'Genre',
+                'choices'   => array('1' => 'Homme', '2' => 'Femme', '3' => 'Transgenre')
+                )
+            )
             ->add('company', null, array('label' => 'Société'))
             ->add('siret', null, array('label' => 'Numéro SIRET'))
             ->add('fix_phone', 'text', array('label' => 'Téléphone fixe'))

@@ -39,6 +39,13 @@ class Bigboss extends BaseUser
     /**
      * @var string
      *
+     * @ORM\Column(name="gender", type="string", length=255)
+     */
+    private $gender;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="company", type="string", length=255)
      */
     private $company;
@@ -295,5 +302,28 @@ class Bigboss extends BaseUser
     public function getFixPhone()
     {
         return $this->fix_phone;
+    }
+
+    /**
+     * Set gender
+     *
+     * @param string $gender
+     * @return Bigboss
+     */
+    public function setGender($gender)
+    {
+        $this->gender = $gender;
+
+        return $this;
+    }
+
+    /**
+     * Get gender
+     *
+     * @return string 
+     */
+    public function getGender()
+    {
+        return $this->gender;
     }
 }
