@@ -158,8 +158,10 @@
 				<li>Horaires : {{ bar.schedule }}</li>
 				<li>Acces : {{ bar.access }}</li>
 				<li>Auteur : {% if bar.author.username is defined %}{{ bar.author.username }}{% endif %}</li>
+				
 				<ul>
-					{% for boss in bar.bigboss %}
+					Ca sert a quoi ca ? vu qu'on a deja l auteur au dessus
+					{% for boss in bar.author %}
 						<li>{{ boss }}</li>
 					{% endfor %}
 				</ul>
