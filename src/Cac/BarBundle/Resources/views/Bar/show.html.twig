@@ -148,6 +148,9 @@
 			
 		</div>
 		<div class="col-xs-12 col-sm-12 col-md-12">
+			{% if app.user == bar.author %}
+				<a href="">Ajouter un barman à ce bar</a>
+			{% endif %}
 			<h1>Welcome to the Bar:show page</h1>
 			<ul>
 				<li>Nom de l'établissement : {{ bar.name }}</li>
