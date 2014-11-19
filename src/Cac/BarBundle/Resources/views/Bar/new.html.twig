@@ -10,10 +10,7 @@
 		<div class="separation1"></div>
 		<div class="separation2"></div>
 	</div>
-<h2>Formulaire De gauche</h2> 	
-<!-- @KEVIN Formulaire préconstruit -->
-<!--  form(form)}} @KEVIN supprime cette ligne si tu veux faire apparaitre les champs form_widget de la seconde partie -->
-<!-- @KEVIN Formulaire décomposé -->
+<h2>Formulaire De gauche</h2>
 
 {{ form_label(form.name) }}
 {{ form_errors(form.name) }}
@@ -33,7 +30,60 @@
 {{ form_errors(form.access) }}
 {{ form_widget(form.access) }}
 
-HORAIRE
+<div>
+	{{ form_label(form.schedule) }}	
+	{{ form_errors(form.schedule) }}
+	{{ form_widget(form.schedule) }}
+
+	<h1>Lundi</h1>
+	De 
+	<input class="clockpicker" type="text" value="18:00" data-day="Lundi" data-when="open">
+	 à 
+	<input class="clockpicker" type="text" value="23:00" data-day="Lundi" data-when="close">
+	Ouvert <input class="close-day" type="checkbox" data-day="Lundi" name="close-day" checked>
+	
+	<h1>Mardi</h1>
+	De 
+	<input class="clockpicker" type="text" value="18:00" data-day="Mardi" data-when="open">
+	 à 
+	<input class="clockpicker" type="text" value="23:00" data-day="Mardi" data-when="close">
+	Ouvert <input class="close-day" type="checkbox" data-day="Mardi" name="close-day" checked>
+
+	<h1>Mercredi</h1>
+	De 
+	<input class="clockpicker" type="text" value="18:00" data-day="Mercredi" data-when="open">
+	 à 
+	<input class="clockpicker" type="text" value="23:00" data-day="Mercredi" data-when="close">
+	Ouvert <input class="close-day" type="checkbox" data-day="Mercredi" name="close-day" checked>
+
+	<h1>Jeudi</h1>
+	De 
+	<input class="clockpicker" type="text" value="18:00" data-day="Jeudi" data-when="open">
+	 à 
+	<input class="clockpicker" type="text" value="23:00" data-day="Jeudi" data-when="close">
+	Ouvert <input class="close-day" type="checkbox" data-day="Jeudi" name="close-day" checked>
+
+	<h1>Vendredi</h1>
+	De 
+	<input class="clockpicker" type="text" value="18:00" data-day="Vendredi" data-when="open">
+	 à 
+	<input class="clockpicker" type="text" value="23:00" data-day="Vendredi" data-when="close">
+	Ouvert <input class="close-day" type="checkbox" data-day="Vendredi" name="close-day" checked>
+
+	<h1>Samedi</h1>
+	De 
+	<input class="clockpicker" type="text" value="18:00" data-day="Samedi" data-when="open">
+	 à 
+	<input class="clockpicker" type="text" value="23:00" data-day="Samedi" data-when="close">
+	Ouvert <input class="close-day" type="checkbox" data-day="Samedi" name="close-day" checked>
+
+	<h1>Dimanche</h1>
+	De 
+	<input class="clockpicker" type="text" value="18:00" data-day="Dimanche" data-when="open">
+	 à 
+	<input class="clockpicker" type="text" value="23:00" data-day="Dimanche" data-when="close">
+	Ouvert <input class="close-day" type="checkbox" data-day="Dimanche" name="close-day" checked>
+</div>
 
 <h2>Les petits plus</h2> 
 
@@ -58,22 +108,6 @@ Climatisation
 {{ form_label(form.valetCost) }}
 {{ form_errors(form.valetCost) }}
 {{ form_widget(form.valetCost) }}
-
-
-
-<!--<h2>Exemple JO</h2>  
-{{ form_label(form.town) }} 
- 
-	@KEVIN Pour ajouter les champs regarde 
-	ceux existants dans Cac\BarBundle\Form\Type\BarType.php 
-	et tu remplace le form.town par form.champquetuveux.
-	Prends bien la premiere partie.
-	form_label correspond au label indiqué dans l'array 'label'
-	form_error est le message d'erreur apparaissant s'il y a une erreur au traitement php
-	form_widget correspond au champ en lui même, si tu veux le changer il se modifie dans BarType
-
-{{ form_errors(form.town) }}
-{{ form_widget(form.town) }}-->
 
     <div>
         <input type="submit" value="Coucou Kevin !">

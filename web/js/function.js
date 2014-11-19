@@ -44,12 +44,50 @@ $(document).ready(function(){
     $(this).find('.shadowHover').css("background", '-moz-linear-gradient(bottom,rgba(000000,0,0,0.6),rgba(000000,0,0,0))');
     $(this).find('.shadowHover').css("background", 'linear-gradient(bottom,rgba(000000,0,0,0.6),rgba(000000,0,0,0))');
   });
+
+  /* Clock Picker for schedule and promotions */
+  $('.clockpicker').clockpicker({
+      placement: 'top',
+      align: 'left',
+      donetext: 'Ok',
+      autoclose: true
+  });
+
+  $('.clockpicker').change(function(){
+    var day = $(this).attr('data-day');
+    var when = $(this).attr('data-when');
+    var time = $(this).val();
+    var hidden = $('#cac_barbundle_bar_schedule').val();
+    hidden = JSON.parse(hidden);
+    hidden[day][when] = time;
+    $('#cac_barbundle_bar_schedule').val(JSON.stringify(hidden));
+  });
+
+  $('.close-day').change(function() {
+    var day = $(this).attr('data-day');
+    var hidden = $('#cac_barbundle_bar_schedule').val();
+    hidden = JSON.parse(hidden);
+    if(hidden[day].status == 'Ouvert') {
+      hidden[day].status = 'Fermé';
+    } else {
+      hidden[day].status = 'Ouvert';
+    }
+    $('#cac_barbundle_bar_schedule').val(JSON.stringify(hidden));
+  });
+
+  function loadTemplate(template) {
+    $.getJSON( "http://localhost/cac/web/json/" + template + ".template.json", function( data ) {
+      $('#cac_barbundle_bar_schedule').val(JSON.stringify(data));
+    });
+  }
+
+  loadTemplate('schedule');
+
 });
 
 setInterval(function(){
 	var widthShadow = $('.shadowHover').width();
-	widthShadow = widthShadow / 2
+	widthShadow = widthShadow / 2;
 	$('.shadowHover').css('margin-left', -widthShadow + 'px');
 });
-
 
