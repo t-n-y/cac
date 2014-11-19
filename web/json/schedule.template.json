@@ -1,37 +1,37 @@
 {
 	"Lundi": {
         "status": "Ouvert",
-        "open": "",
-        "close": ""
+        "open": "18:00",
+        "close": "23:00"
     },
     "Mardi": {
         "status": "Ouvert",
-        "open": "",
-        "close": ""
+        "open": "18:00",
+        "close": "23:00"
     },
     "Mercredi": {
         "status": "Ouvert",
-        "open": "",
-        "close": ""
+        "open": "18:00",
+        "close": "23:00"
     },
     "Jeudi": {
         "status": "Ouvert",
-        "open": "",
-        "close": ""
+        "open": "18:00",
+        "close": "23:00"
     },
     "Vendredi": {
         "status": "Ouvert",
-        "open": "",
-        "close": ""
+        "open": "18:00",
+        "close": "23:00"
     },
     "Samedi": {
         "status": "Ouvert",
-        "open": "",
-        "close": ""
+        "open": "18:00",
+        "close": "23:00"
     },
     "Dimanche": {
         "status": "Ouvert",
-        "open": "",
-        "close": ""
+        "open": "18:00",
+        "close": "23:00"
     }
 }
