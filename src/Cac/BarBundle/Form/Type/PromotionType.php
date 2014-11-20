@@ -15,10 +15,7 @@ class PromotionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', null, array('label' => 'Nom de l\'établissement'))
-            ->add('adress', null, array('label' => 'Adresse'))
-            ->add('zipcode', null, array('label' => 'Code Postal'))
-            ->add('town', null, array('label' => 'Ville'))
+            ->add('promotion', 'hidden', array('label' => 'Promotion'))
         ;
     }
     
@@ -28,8 +25,7 @@ class PromotionType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Cac\BarBundle\Entity\Bar',
-            'intention'  => 'registration',
+            'data_class' => 'Cac\BarBundle\Entity\Promotion'
         ));
     }
 
@@ -38,6 +34,6 @@ class PromotionType extends AbstractType
      */
     public function getName()
     {
-        return 'cac_barbundle_bar';
+        return 'cac_barbundle_promotion';
     }
 }

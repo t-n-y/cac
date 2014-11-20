@@ -90,6 +90,7 @@ class BarController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $entity = new Bar();
+        $promotion = new Promotion();
 
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
@@ -98,8 +99,12 @@ class BarController extends Controller
         if ($form->isValid()) {
 
             $entity->setAuthor($user);
+            $entity->setPromotion($promotion);
+            $promotion->setPromotion('');
+            $promotion->setBar($entity);
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
+            $em->persist($promotion);
             $em->flush();
 
             return $this->redirect($this->generateUrl('bar_show', array('id' => $entity->getId())));
@@ -314,7 +319,7 @@ class BarController extends Controller
     /**
      * Displays the promotion and happy-hours interface for an existing Bar entity.
      *
-     * @Route("/{id}/edit/promotion", name="bar_edit_promotion")
+     * @Route("/{id}/promotion/edit", name="bar_edit_promotion")
      * @Method("GET")
      * @Template("CacBarBundle:Bar:promotion.html.twig")
      */
@@ -323,12 +328,13 @@ class BarController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('CacBarBundle:Bar')->find($id);
+        $promotion = $entity->getPromotion();
 
         if (!$entity) {
             throw $this->createNotFoundException('Le bar demandé n\'existe pas.');
         }
 
-        $editForm = $this->createEditForm($entity);
+        $editForm = $this->createEditPromotionForm($promotion);
 
         return array(
             'bar'      => $entity,
@@ -343,10 +349,10 @@ class BarController extends Controller
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createEditPromotionForm(Bar $entity)
+    private function createEditPromotionForm(Promotion $promotion)
     {
-        $form = $this->createForm(new PromotionType(), $entity, array(
-            'action' => $this->generateUrl('bar_update_promotion', array('id' => $entity->getId())),
+        $form = $this->createForm(new PromotionType(), $promotion, array(
+            'action' => $this->generateUrl('bar_update_promotion', array('id' => $promotion->getId())),
             'method' => 'PUT',
         ));
 
@@ -371,18 +377,19 @@ class BarController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('CacBarBundle:Bar')->find($id);
+        $promotion = $em->getRepository('CacBarBundle:Promotion')->find($id);
+        $entity = $promotion->getBar();
 
         if (!$entity) {
             throw $this->createNotFoundException('Le bar demandé n\'existe pas.');
         }
 
-        $editForm = $this->createEditPromotionForm($entity);
+        $editForm = $this->createEditPromotionForm($promotion);
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
             $em->flush();
-            return $this->redirect($this->generateUrl('bar_show', array('id' => $id)));
+            return $this->redirect($this->generateUrl('bar_show', array('id' => $entity->getId())));
         }
 
         return array(
