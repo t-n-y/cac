@@ -42,21 +42,23 @@ class RegistrationFormType extends AbstractType
             ->add('email', 'repeated', array(
                     'type' => 'email',
                     'options' => array('translation_domain' => 'FOSUserBundle'),
-                    'first_options' => array('label' => 'Courriel'),
-                    'second_options' => array('label' => 'Confirmez votre courriel'),
+                    'first_options' => array('label' => 'E-mail'),
+                    'second_options' => array('label' => 'Confirmez votre e-mail'),
                     'invalid_message' => 'fos_user.email.mismatch',
             ))
             ->add('name', null, array('label' => 'Nom'))
             ->add('firstname', null, array('label' => 'Prénom'))
             ->add('gender', 'choice', array(
                 'label' => 'Genre',
-                'choices'   => array('1' => 'Homme', '2' => 'Femme', '3' => 'Transgenre (masculin)', '4' => 'Transgenre (feminin)')
+                'choices'   => array('1' => 'Mr', '2' => 'Mme', '3' => 'Mlle'),
+                'expanded' => true,
+                'multiple' => false
                 )
             )
             ->add('company', null, array('label' => 'Société'))
             ->add('siret', null, array('label' => 'Numéro SIRET'))
             ->add('fix_phone', 'text', array('label' => 'Téléphone fixe'))
-            ->add('mobile_phone', 'text', array('label' => 'Mobile'))
+            ->add('mobile_phone', 'text', array('label' => 'Téléphone mobile'))
         ;
     }
 

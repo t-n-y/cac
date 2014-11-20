@@ -462,6 +462,56 @@ p.topPosition{
 /****************************/
 
 
+/************FORM INSCRIPTION***********/
+
+.inscription{
+	margin-top: 60px;
+}
+
+.inscription input[type=radio]{
+	margin-left: 20px;
+}
+
+.inscription input[type=radio]:nth-child(1){
+	margin-left: 0px;
+}
+
+.inscription input[type=text], .inscription input[type=email], .inscription input[type=password]{
+	width: 350px;
+}
+
+.inscription input[type=submit]{
+	margin: 40px 0;
+	color: #fff;
+	background-color: #5ac4d4;
+	border: none;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	width: 150px;
+}
+
+ .boutton{
+	padding: 5px 70px;
+	color: #fff;
+	background-color: #5ac4d4;
+	border: none;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+
+ a.boutton:hover{
+	text-decoration: none;
+	color: #fff;
+}
+
+p.pCreez{
+	margin-top: 40px;
+}
+
+/***************************************/
+
 
 
 

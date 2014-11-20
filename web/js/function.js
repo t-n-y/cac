@@ -10,9 +10,12 @@ middlejaloux = middlejaloux / 2;
 setInterval(function(){
 var widthImg = $('.vignetteBar img').width();
 var heightImg = $('.vignetteBar img').height();
+var heightWindow = $(window).height();
+
 
 $('.shadowHover').css('width', widthImg + 'px');
 $('.shadowHover').css('height', heightImg + 'px');
+$('.mainContaineur').css('min-height', heightWindow + 'px');
 
 
 
@@ -44,6 +47,15 @@ $(document).ready(function(){
     $(this).find('.shadowHover').css("background", '-moz-linear-gradient(bottom,rgba(000000,0,0,0.6),rgba(000000,0,0,0))');
     $(this).find('.shadowHover').css("background", 'linear-gradient(bottom,rgba(000000,0,0,0.6),rgba(000000,0,0,0))');
   });
+
+
+setInterval(function(){
+  var widthShadow = $('.shadowHover').width();
+  widthShadow = widthShadow / 2;
+  $('.shadowHover').css('margin-left', -widthShadow + 'px');
+});
+
+
 
   /* Clock Picker for schedule and promotions */
   $('.clockpicker').clockpicker({
@@ -83,11 +95,5 @@ $(document).ready(function(){
 
   loadTemplate('schedule');
 
-});
-
-setInterval(function(){
-	var widthShadow = $('.shadowHover').width();
-	widthShadow = widthShadow / 2;
-	$('.shadowHover').css('margin-left', -widthShadow + 'px');
 });
 
