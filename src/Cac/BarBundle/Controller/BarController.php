@@ -303,20 +303,6 @@ class BarController extends Controller
     }
 
     /**
-     * Displays a form to add a manager to an existing Bar entity.
-     *
-     * @Route("/{id}/add-manager", name="bar_add_manager")
-     * @Method("GET")
-     * @Template()
-     */
-    public function addManagerAction()
-    {
-        return array(
-                // ...
-            );    
-    }
-
-    /**
      * Displays the promotion and happy-hours interface for an existing Bar entity.
      *
      * @Route("/{id}/promotion/edit", name="bar_edit_promotion")
