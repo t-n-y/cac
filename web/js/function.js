@@ -77,11 +77,17 @@ $(document).ready(function(){
 
   function loadTemplate(template) {
     $.getJSON( "http://localhost/cac/web/json/" + template + ".template.json", function( data ) {
-      $('#cac_barbundle_bar_schedule').val(JSON.stringify(data));
+      var bundle = {
+        "schedule": "bar",
+        "promotion": "promotion"
+      };
+      $('#cac_barbundle_' + bundle[template] + '_' + template).val(JSON.stringify(data));
+      console.log(data);
     });
   }
 
   loadTemplate('schedule');
+  loadTemplate('promotion');
 
 });
 

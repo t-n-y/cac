@@ -6,3 +6,10 @@
 <h1>Welcome to the Bar:edit page</h1>
 {{ form(edit_form) }}
 {% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('js/jquery-2.1.0.js') }}" type="text/javascript" /></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}" type="text/javascript" /></script>
+    <script src="{{ asset('js/clockpicker.js') }}" type="text/javascript" /></script>
+    <script src="{{ asset('js/function.js') }}" type="text/javascript" /></script>
+{% endblock %}
+
