@@ -543,17 +543,34 @@ p.pCreez{
 	float: left;
 }
 
-.choice:hover, .choice100:hover{
+.choice:hover, .petitplus:hover{
 	background-color: #5ac4d4;
 	color: #fff;
 }
 
-.choice100{
+.noLeft{
 	width: 40%;
 	margin: 5% auto;
 	background-color: #fff;
 	color: #4d4d4d;
 	border: 1px solid #a8a8a8;
+	float: none;
+}
+
+.contentPetitPlus{
+	width: 100%;
+	padding: 0 10%;
+	text-align: center;
+}
+
+.petitplus{
+	width: 18%;
+	margin-left: 2%;
+	padding: 0 10px;
+	background-color: #fff;
+	color: #4d4d4d;
+	border: 1px solid #a8a8a8;
+	float: left;
 }
 
 /***************************************/
