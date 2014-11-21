@@ -32,6 +32,7 @@ class BarType extends AbstractType
                 'label' => 'Ordre de prix',
                 'choices'   => array('1' => 'Pas cher', '2' => 'Pas trop cher', '3' => 'Un peu cher', '4' => 'Cher'),
                 'required'  => false,
+                'expanded' => true
                 )
             )
             ->add('dressCode', 'choice', array(
