@@ -40,7 +40,7 @@ class PromotionController extends Controller
 
         return array(
             'promotion'      => $promotion,
-            'edit_form'   => $editForm->createView()
+            'form'   => $editForm->createView()
         );
     }
 
@@ -96,7 +96,7 @@ class PromotionController extends Controller
 
         return array(
             'bar'      => $entity,
-            'edit_form'   => $editForm->createView()
+            'form'   => $editForm->createView()
         );
     }
 
@@ -116,7 +116,7 @@ class PromotionController extends Controller
 
         return array(
             'bar'      => $entity,
-            'edit_form'   => $editForm->createView()
+            'form'   => $editForm->createView()
         );
     }
 }

@@ -55,16 +55,6 @@ setInterval(function(){
   $('.shadowHover').css('margin-left', -widthShadow + 'px');
 });
 
-
-
-  /* Clock Picker for schedule and promotions */
-  $('.clockpicker').clockpicker({
-      placement: 'top',
-      align: 'left',
-      donetext: 'Ok',
-      autoclose: true
-  });
-
   $('.clockpicker').change(function(){
     var day = $(this).attr('data-day');
     var when = $(this).attr('data-when');
@@ -94,7 +84,6 @@ setInterval(function(){
         "promotion": "promotion"
       };
       $('#cac_barbundle_' + bundle[template] + '_' + template).val(JSON.stringify(data));
-      console.log(data);
     });
   }
 
