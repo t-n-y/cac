@@ -48,8 +48,17 @@
 			<br>
 			<br>
 			<div class="border">
+				
 				{{ form_label(form.dressCode) }}
 				<br>
+
+				<div class="choice">
+					Décontracté
+				</div>
+				<div class="choice">
+					Chic
+				</div>
+
 				{{ form_errors(form.dressCode) }}
 				{{ form_widget(form.dressCode) }}
 			</div>
@@ -58,6 +67,23 @@
 			<div class="border">
 				{{ form_label(form.priceRange) }}
 				<br>
+
+				<div class="choice">
+					5€
+				</div>
+				<div class="choice">
+					10€
+				</div>
+				<div class="choice">
+					15€
+				</div>
+				<div class="choice">
+					20€
+				</div>
+				<div class="clear"></div>
+				<div class="choice100">
+					+ 20€
+				</div>
 				{{ form_errors(form.priceRange) }}
 				{{ form_widget(form.priceRange) }}
 			</div>
@@ -65,7 +91,7 @@
 
 		<div class="inscription center col-xs-6 col-sm-6 col-md-6">
 
-			<div class="border">
+			<div class="border access">
 				{{ form_label(form.access) }}
 				{{ form_errors(form.access) }}
 				{{ form_widget(form.access) }}
@@ -105,7 +131,7 @@
 							{% endfor %}
 						</select>
 					</div>
-					<div class="col-xs-2 col-sm-2 col-md-2 noPadding">
+					<div class="col-xs-3 col-sm-3 col-md-3 noPadding">
 						Ouvert <input class="close-day" type="checkbox" data-day="Lundi" name="close-day" checked>
 					</div>
 				</div>
@@ -138,7 +164,7 @@
 							{% endfor %}
 						</select>
 					</div>
-					<div class="col-xs-2 col-sm-2 col-md-2 noPadding">
+					<div class="col-xs-3 col-sm-3 col-md-3 noPadding">
 						Ouvert <input class="close-day" type="checkbox" data-day="Mardi" name="close-day" checked>
 					</div>
 				</div>
@@ -171,7 +197,7 @@
 							{% endfor %}
 						</select>
 					</div>
-					<div class="col-xs-2 col-sm-2 col-md-2 noPadding">
+					<div class="col-xs-3 col-sm-3 col-md-3 noPadding">
 						Ouvert <input class="close-day" type="checkbox" data-day="Mercredi" name="close-day" checked>
 					</div>
 				</div>
@@ -204,7 +230,7 @@
 							{% endfor %}
 						</select>
 					</div>
-					<div class="col-xs-2 col-sm-2 col-md-2 noPadding">
+					<div class="col-xs-3 col-sm-3 col-md-3 noPadding">
 						Ouvert <input class="close-day" type="checkbox" data-day="Jeudi" name="close-day" checked>
 					</div>
 				</div>
@@ -237,7 +263,7 @@
 							{% endfor %}
 						</select>
 					</div>
-					<div class="col-xs-2 col-sm-2 col-md-2 noPadding">
+					<div class="col-xs-3 col-sm-3 col-md-3 noPadding">
 						Ouvert <input class="close-day" type="checkbox" data-day="Vendredi" name="close-day" checked>
 					</div>
 				</div>
@@ -270,7 +296,7 @@
 							{% endfor %}
 						</select>
 					</div>
-					<div class="col-xs-2 col-sm-2 col-md-2 noPadding">
+					<div class="col-xs-3 col-sm-3 col-md-3 noPadding">
 						Ouvert <input class="close-day" type="checkbox" data-day="Samedi" name="close-day" checked>
 					</div>
 				</div>
@@ -303,7 +329,7 @@
 							{% endfor %}
 						</select>
 					</div>
-					<div class="col-xs-2 col-sm-2 col-md-2 noPadding">
+					<div class="col-xs-3 col-sm-3 col-md-3 noPadding">
 						Ouvert <input class="close-day" type="checkbox" data-day="Dimanche" name="close-day" checked>
 					</div>
 				</div>
@@ -336,6 +362,7 @@
 			{{ form_label(form.valetCost) }}
 			{{ form_errors(form.valetCost) }}
 			{{ form_widget(form.valetCost) }}
+
 
 			{{ form_widget(form._token) }}
 
