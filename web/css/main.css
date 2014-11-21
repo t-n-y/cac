@@ -20,6 +20,18 @@
 	text-align: center;
 }
 
+.border{
+	border: 1px solid #a8a8a8;
+	width: 400px;
+	margin: auto;
+	padding: 20px 0px;
+}
+
+.left{
+	text-align: left;
+	padding-left: 15px;
+}
+
 
 /*****************HEADER*****************/
 
@@ -508,6 +520,10 @@ p.topPosition{
 
 p.pCreez{
 	margin-top: 40px;
+}
+
+.heure{
+	margin-top: 15px;
 }
 
 /***************************************/

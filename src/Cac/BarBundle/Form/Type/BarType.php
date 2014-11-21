@@ -23,7 +23,7 @@ class BarType extends AbstractType
             ->add('schedule', 'hidden', array('label' => 'Horaires'))
             ->add('access', 'choice', array(
                 'label' => 'Accès',
-                'choices'   => array('1' => 'Metro', '2' => 'RER', '3' => 'Transilien'),
+                'choices'   => array('1' => 'Metro', '2' => 'RER'),
                 'required'  => false,
                 )
             )
