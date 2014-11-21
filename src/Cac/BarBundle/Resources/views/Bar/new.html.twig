@@ -15,104 +15,361 @@
 		<div class="separation2"></div>
 	</div>
 	<form action="{{ path('bar_create') }}" {{ form_enctype(form) }} method="POST">
-		<h2>Formulaire De gauche</h2>
+		<div class="inscription center col-xs-6 col-sm-6 col-md-6">
 
-		{{ form_label(form.name) }}
-		{{ form_errors(form.name) }}
-		{{ form_widget(form.name) }}
+			{{ form_label(form.name) }}
+			<br>
+			{{ form_errors(form.name) }}
+			{{ form_widget(form.name) }}
+			<br>
+			<br>
+			{{ form_label(form.adress) }}
+			<br>
+			{{ form_errors(form.adress) }}
+			{{ form_widget(form.adress) }}
+			<br>
+			<br>
+			{{ form_label(form.zipcode) }}
+			<br>
+			{{ form_errors(form.zipcode) }}
+			{{ form_widget(form.zipcode) }}
+			<br>
+			<br>
+			{{ form_label(form.town) }}
+			<br>
+			{{ form_errors(form.town) }}
+			{{ form_widget(form.town) }}
+			<br>
+			<br>
+			{{ form_label(form.country) }}
+			<br>
+			{{ form_errors(form.country) }}
+			{{ form_widget(form.country) }}
+			<br>
+			<br>
+			<div class="border">
+				
+				{{ form_label(form.dressCode) }}
+				<br>
 
-		{{ form_label(form.adress) }}
-		{{ form_errors(form.adress) }}
-		{{ form_widget(form.adress) }}
+				<div class="choice">
+					Décontracté
+				</div>
+				<div class="choice">
+					Chic
+				</div>
 
-		{{ form_label(form.zipcode) }}
-		{{ form_errors(form.zipcode) }}
-		{{ form_widget(form.zipcode) }}
+				{{ form_errors(form.dressCode) }}
+				{{ form_widget(form.dressCode) }}
+			</div>
+			<br>
+			<br>
+			<div class="border">
+				{{ form_label(form.priceRange) }}
+				<br>
 
-		{{ form_label(form.town) }}
-		{{ form_errors(form.town) }}
-		{{ form_widget(form.town) }}
-		{{ form_label(form.country) }}
-		{{ form_errors(form.country) }}
-		{{ form_widget(form.country) }}
-
-		{{ form_label(form.dressCode) }}
-		{{ form_errors(form.dressCode) }}
-		{{ form_widget(form.dressCode) }}
-
-		{{ form_label(form.priceRange) }}
-		{{ form_errors(form.priceRange) }}
-		{{ form_widget(form.priceRange) }}
-
-		<h2>Formulaire de droite</h2> 
-
-		{{ form_label(form.access) }}
-		{{ form_errors(form.access) }}
-		{{ form_widget(form.access) }}
-
-		<div>
-			{{ form_label(form.schedule) }}	
-			{{ form_errors(form.schedule) }}
-			{{ form_widget(form.schedule) }}
-
-			<h1>Lundi</h1>
-			De <input class="clockpicker" type="text" value="18:00" data-day="Lundi" data-when="open"> à <input class="clockpicker" type="text" value="23:00" data-day="Lundi" data-when="close">
-			Ouvert <input class="close-day" type="checkbox" data-day="Lundi" name="close-day" checked>
-
-			<h1>Mardi</h1>
-			De <input class="clockpicker" type="text" value="18:00" data-day="Mardi" data-when="open"> à <input class="clockpicker" type="text" value="23:00" data-day="Mardi" data-when="close">
-			Ouvert <input class="close-day" type="checkbox" data-day="Mardi" name="close-day" checked>
-
-			<h1>Mercredi</h1>
-			De <input class="clockpicker" type="text" value="18:00" data-day="Mercredi" data-when="open"> à <input class="clockpicker" type="text" value="23:00" data-day="Mercredi" data-when="close">
-			Ouvert <input class="close-day" type="checkbox" data-day="Mercredi" name="close-day" checked>
-
-			<h1>Jeudi</h1>
-			De <input class="clockpicker" type="text" value="18:00" data-day="Jeudi" data-when="open"> à <input class="clockpicker" type="text" value="23:00" data-day="Jeudi" data-when="close">
-			Ouvert <input class="close-day" type="checkbox" data-day="Jeudi" name="close-day" checked>
-
-			<h1>Vendredi</h1>
-			De <input class="clockpicker" type="text" value="18:00" data-day="Vendredi" data-when="open"> à <input class="clockpicker" type="text" value="23:00" data-day="Vendredi" data-when="close">
-			Ouvert <input class="close-day" type="checkbox" data-day="Vendredi" name="close-day" checked>
-
-			<h1>Samedi</h1>
-			De <input class="clockpicker" type="text" value="18:00" data-day="Samedi" data-when="open"> à <input class="clockpicker" type="text" value="23:00" data-day="Samedi" data-when="close">
-			Ouvert <input class="close-day" type="checkbox" data-day="Samedi" name="close-day" checked>
-
-			<h1>Dimanche</h1>
-			De <input class="clockpicker" type="text" value="18:00" data-day="Dimanche" data-when="open"> à <input class="clockpicker" type="text" value="23:00" data-day="Dimanche" data-when="close">
-			Ouvert <input class="close-day" type="checkbox" data-day="Dimanche" name="close-day" checked>
+				<div class="choice">
+					5€
+				</div>
+				<div class="choice">
+					10€
+				</div>
+				<div class="choice">
+					15€
+				</div>
+				<div class="choice">
+					20€
+				</div>
+				<div class="clear"></div>
+				<div class="choice100">
+					+ 20€
+				</div>
+				{{ form_errors(form.priceRange) }}
+				{{ form_widget(form.priceRange) }}
+			</div>
 		</div>
 
-		<h2>Les petits plus</h2> 
+		<div class="inscription center col-xs-6 col-sm-6 col-md-6">
 
-		Climatisation
+			<div class="border access">
+				{{ form_label(form.access) }}
+				{{ form_errors(form.access) }}
+				{{ form_widget(form.access) }}
+			</div>
+			<br>
+			<br>
+			<div class="border">
+				{{ form_label(form.schedule) }}	
+				{{ form_errors(form.schedule) }}
+				{{ form_widget(form.schedule) }}
 
-		{{ form_label(form.handicappedAccess) }}
-		{{ form_errors(form.handicappedAccess) }}
-		{{ form_widget(form.handicappedAccess) }}
+				<div class="heure center col-xs-12 col-sm-12 col-md-12 noPadding">
+					<div class="left col-xs-3 col-sm-3 col-md-3 noPadding">
+						Lundi
+					</div>
+					<div class="col-xs-1 col-sm-1 col-md-1 noPadding">
+						de
+					</div>
+					<div class="col-xs-2 col-sm-2 col-md-2 noPadding">
+						<select class="clockpicker" data-day="Lundi" data-when="open">
+							<option></option>
+							{% for i in 0..23 %}
+							    <option value="{{i}}">{{i}}h00</option>
+							{% endfor %}
+						</select>
+					</div>
+					
+					<div class="col-xs-1 col-sm-1 col-md-1 noPadding">
+						à
+					</div>
 
-		{{ form_label(form.patio) }}
-		{{ form_errors(form.patio) }}
-		{{ form_widget(form.patio) }}
+					<div class="col-xs-2 col-sm-2 col-md-2 noPadding">
+						<select class="clockpicker" data-day="Lundi" data-when="close">
+								<option></option>
+							{% for i in 0..23 %}
+							    <option value="{{i}}">{{i}}h00</option>
+							{% endfor %}
+						</select>
+					</div>
+					<div class="col-xs-3 col-sm-3 col-md-3 noPadding">
+						Ouvert <input class="close-day" type="checkbox" data-day="Lundi" name="close-day" checked>
+					</div>
+				</div>
 
-		{{ form_label(form.breathalyser) }}
-		{{ form_errors(form.breathalyser) }}
-		{{ form_widget(form.breathalyser) }}
+				<div class="heure center col-xs-12 col-sm-12 col-md-12 noPadding">
+					<div class="left col-xs-3 col-sm-3 col-md-3 noPadding">
+						Mardi
+					</div>
+					<div class="col-xs-1 col-sm-1 col-md-1 noPadding">
+						de
+					</div>
+					<div class="col-xs-2 col-sm-2 col-md-2 noPadding">
+						<select class="clockpicker" data-day="Mardi" data-when="open">
+							<option></option>
+							{% for i in 0..23 %}
+							    <option value="{{i}}">{{i}}h00</option>
+							{% endfor %}
+						</select>
+					</div>
+					
+					<div class="col-xs-1 col-sm-1 col-md-1 noPadding">
+						à
+					</div>
 
-		{{ form_label(form.valet) }}
-		{{ form_errors(form.valet) }}
-		{{ form_widget(form.valet) }}
+					<div class="col-xs-2 col-sm-2 col-md-2 noPadding">
+						<select class="clockpicker" data-day="Mardi" data-when="close">
+								<option></option>
+							{% for i in 0..23 %}
+							    <option value="{{i}}">{{i}}h00</option>
+							{% endfor %}
+						</select>
+					</div>
+					<div class="col-xs-3 col-sm-3 col-md-3 noPadding">
+						Ouvert <input class="close-day" type="checkbox" data-day="Mardi" name="close-day" checked>
+					</div>
+				</div>
 
-		{{ form_label(form.valetCost) }}
-		{{ form_errors(form.valetCost) }}
-		{{ form_widget(form.valetCost) }}
+				<div class="heure center col-xs-12 col-sm-12 col-md-12 noPadding">
+					<div class="left col-xs-3 col-sm-3 col-md-3 noPadding">
+						Mercredi
+					</div>
+					<div class="col-xs-1 col-sm-1 col-md-1 noPadding">
+						de
+					</div>
+					<div class="col-xs-2 col-sm-2 col-md-2 noPadding">
+						<select class="clockpicker" data-day="Mercredi" data-when="open">
+							<option></option>
+							{% for i in 0..23 %}
+							    <option value="{{i}}">{{i}}h00</option>
+							{% endfor %}
+						</select>
+					</div>
+					
+					<div class="col-xs-1 col-sm-1 col-md-1 noPadding">
+						à
+					</div>
 
-		{{ form_widget(form._token) }}
+					<div class="col-xs-2 col-sm-2 col-md-2 noPadding">
+						<select class="clockpicker" data-day="Mercredi" data-when="close">
+								<option></option>
+							{% for i in 0..23 %}
+							    <option value="{{i}}">{{i}}h00</option>
+							{% endfor %}
+						</select>
+					</div>
+					<div class="col-xs-3 col-sm-3 col-md-3 noPadding">
+						Ouvert <input class="close-day" type="checkbox" data-day="Mercredi" name="close-day" checked>
+					</div>
+				</div>
 
-	    <div>
-	        <input type="submit" value="Coucou Kevin !">
-	    </div>
+				<div class="heure center col-xs-12 col-sm-12 col-md-12 noPadding">
+					<div class="left col-xs-3 col-sm-3 col-md-3 noPadding">
+						Jeudi
+					</div>
+					<div class="col-xs-1 col-sm-1 col-md-1 noPadding">
+						de
+					</div>
+					<div class="col-xs-2 col-sm-2 col-md-2 noPadding">
+						<select class="clockpicker" data-day="Jeudi" data-when="open">
+							<option></option>
+							{% for i in 0..23 %}
+							    <option value="{{i}}">{{i}}h00</option>
+							{% endfor %}
+						</select>
+					</div>
+					
+					<div class="col-xs-1 col-sm-1 col-md-1 noPadding">
+						à
+					</div>
+
+					<div class="col-xs-2 col-sm-2 col-md-2 noPadding">
+						<select class="clockpicker" data-day="Jeudi" data-when="close">
+								<option></option>
+							{% for i in 0..23 %}
+							    <option value="{{i}}">{{i}}h00</option>
+							{% endfor %}
+						</select>
+					</div>
+					<div class="col-xs-3 col-sm-3 col-md-3 noPadding">
+						Ouvert <input class="close-day" type="checkbox" data-day="Jeudi" name="close-day" checked>
+					</div>
+				</div>
+
+				<div class="heure center col-xs-12 col-sm-12 col-md-12 noPadding">
+					<div class="left col-xs-3 col-sm-3 col-md-3 noPadding">
+						Vendredi
+					</div>
+					<div class="col-xs-1 col-sm-1 col-md-1 noPadding">
+						de
+					</div>
+					<div class="col-xs-2 col-sm-2 col-md-2 noPadding">
+						<select class="clockpicker" data-day="Vendredi" data-when="open">
+							<option></option>
+							{% for i in 0..23 %}
+							    <option value="{{i}}">{{i}}h00</option>
+							{% endfor %}
+						</select>
+					</div>
+					
+					<div class="col-xs-1 col-sm-1 col-md-1 noPadding">
+						à
+					</div>
+
+					<div class="col-xs-2 col-sm-2 col-md-2 noPadding">
+						<select class="clockpicker" data-day="Vendredi" data-when="close">
+								<option></option>
+							{% for i in 0..23 %}
+							    <option value="{{i}}">{{i}}h00</option>
+							{% endfor %}
+						</select>
+					</div>
+					<div class="col-xs-3 col-sm-3 col-md-3 noPadding">
+						Ouvert <input class="close-day" type="checkbox" data-day="Vendredi" name="close-day" checked>
+					</div>
+				</div>
+
+				<div class="heure center col-xs-12 col-sm-12 col-md-12 noPadding">
+					<div class="left col-xs-3 col-sm-3 col-md-3 noPadding">
+						Samedi
+					</div>
+					<div class="col-xs-1 col-sm-1 col-md-1 noPadding">
+						de
+					</div>
+					<div class="col-xs-2 col-sm-2 col-md-2 noPadding">
+						<select class="clockpicker" data-day="Samedi" data-when="open">
+							<option></option>
+							{% for i in 0..23 %}
+							    <option value="{{i}}">{{i}}h00</option>
+							{% endfor %}
+						</select>
+					</div>
+					
+					<div class="col-xs-1 col-sm-1 col-md-1 noPadding">
+						à
+					</div>
+
+					<div class="col-xs-2 col-sm-2 col-md-2 noPadding">
+						<select class="clockpicker" data-day="Samedi" data-when="close">
+								<option></option>
+							{% for i in 0..23 %}
+							    <option value="{{i}}">{{i}}h00</option>
+							{% endfor %}
+						</select>
+					</div>
+					<div class="col-xs-3 col-sm-3 col-md-3 noPadding">
+						Ouvert <input class="close-day" type="checkbox" data-day="Samedi" name="close-day" checked>
+					</div>
+				</div>
+
+				<div class="heure center col-xs-12 col-sm-12 col-md-12 noPadding">
+					<div class="left col-xs-3 col-sm-3 col-md-3 noPadding">
+						Dimanche
+					</div>
+					<div class="col-xs-1 col-sm-1 col-md-1 noPadding">
+						de
+					</div>
+					<div class="col-xs-2 col-sm-2 col-md-2 noPadding">
+						<select class="clockpicker" data-day="Dimanche" data-when="open">
+							<option></option>
+							{% for i in 0..23 %}
+							    <option value="{{i}}">{{i}}h00</option>
+							{% endfor %}
+						</select>
+					</div>
+					
+					<div class="col-xs-1 col-sm-1 col-md-1 noPadding">
+						à
+					</div>
+
+					<div class="col-xs-2 col-sm-2 col-md-2 noPadding">
+						<select class="clockpicker" data-day="Dimanche" data-when="close">
+								<option></option>
+							{% for i in 0..23 %}
+							    <option value="{{i}}">{{i}}h00</option>
+							{% endfor %}
+						</select>
+					</div>
+					<div class="col-xs-3 col-sm-3 col-md-3 noPadding">
+						Ouvert <input class="close-day" type="checkbox" data-day="Dimanche" name="close-day" checked>
+					</div>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div class="inscription center col-xs-12 col-sm-12 col-md-12">
+			<h2>Vos petits plus à vous</h2> 
+
+			{{ form_label(form.smokingArea) }}
+			{{ form_errors(form.smokingArea) }}
+			{{ form_widget(form.smokingArea) }}
+
+			{{ form_label(form.handicappedAccess) }}
+			{{ form_errors(form.handicappedAccess) }}
+			{{ form_widget(form.handicappedAccess) }}
+
+			{{ form_label(form.patio) }}
+			{{ form_errors(form.patio) }}
+			{{ form_widget(form.patio) }}
+
+			{{ form_label(form.breathalyser) }}
+			{{ form_errors(form.breathalyser) }}
+			{{ form_widget(form.breathalyser) }}
+
+			{{ form_label(form.valet) }}
+			{{ form_errors(form.valet) }}
+			{{ form_widget(form.valet) }}
+
+			{{ form_label(form.valetCost) }}
+			{{ form_errors(form.valetCost) }}
+			{{ form_widget(form.valetCost) }}
+
+
+			{{ form_widget(form._token) }}
+
+		    <div>
+		        <input type="submit" value="VALIDER">
+		    </div>
+		</div>
 	</form>
 	<div class="clear"></div>
 </div>
