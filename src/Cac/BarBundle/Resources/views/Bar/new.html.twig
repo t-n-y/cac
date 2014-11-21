@@ -116,7 +116,7 @@
 							{{ params[k]['word'] }}
 						</div>
 						<div class="col-xs-2 col-sm-2 col-md-2 noPadding">
-							<select class="clockpicker" data-day="{{ days[j] }}" data-when="{{ params[k]['when'] }}">
+							<select class="schedule-picker" data-day="{{ days[j] }}" data-when="{{ params[k]['when'] }}">
 								<option></option>
 								{% for i in 0..23 %}
 								    <option value="{{i}}">{{i}}h</option>
