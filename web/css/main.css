@@ -402,6 +402,22 @@ p.topPosition{
 	height: 550px;
 }
 
+.petitplusInfoBar{
+	width: 70%;
+	margin: auto;
+	margin-top: 50px;
+	height: 550px;
+}
+
+.petitplusInfoBar p{
+width: 19%;
+text-align: center;
+float: left;
+background-color: rgba(255,255,255,0.4);
+margin-left: 1%;
+
+}
+
 .superInfoBar h2{
 	color: #5ac4d4;
 	border-bottom: 1px solid #5ac4d4;

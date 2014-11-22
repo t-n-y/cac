@@ -123,21 +123,22 @@
 				<div class="clear"></div>
 			</div>
 
-			<div class="col-xs-12 col-sm-12 col-md-12">
+			<div class="petitplusInfoBar">
 				{% if bar.handicappedAccess == 1 %}
-					Handicapé
+					<p>Accessible<br>aux PMR</p>
 				{% endif %}
 				{% if bar.patio == 1%}
-					Terrasse
+					<p>Terrasse<br>sympa</p>
 				{% endif %}
 				{% if bar.smokingArea == 1%}
 				{% endif %}
-					Espace Fumeur
+					<p>Espace<br>Fumeur</p>
+					 
 				{% if bar.breathalyser == 1%}
-					Alcotest
+					<p>Ethylotest<br>gratuit</p>
 				{% endif %}
 				{% if bar.valet == 1%}
-					voiturier, prix : {{ bar.valetCost }}€
+					<p>Service<br>Voiturier</p>, prix : {{ bar.valetCost }}€
 				{% endif %}
 			</div>
 			
