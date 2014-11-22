@@ -388,7 +388,7 @@ p.topPosition{
 }
 
 .contentSuperInfoBar{
-	height: 650px;
+	height: 950px;
 	background-image: url('../img/fondFicheBar.png');
 	background-size: cover;
 	background-repeat: no-repeat;
