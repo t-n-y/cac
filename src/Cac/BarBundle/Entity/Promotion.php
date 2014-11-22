@@ -68,6 +68,16 @@ class Promotion
     }
 
     /**
+     * Get promotion
+     *
+     * @return array 
+     */
+    public function getPromotionArray() 
+    {
+        return json_decode($this->promotion, true);
+    }
+
+    /**
      * Set bar
      *
      * @param \Cac\BarBundle\Entity\Bar $bar
