@@ -3,7 +3,6 @@
 {% block title %}CacBarBundle:Bar:show{% endblock %}
 
 {% block body %}
-<div class="mainContaineur">
 		<div class="topBar col-xs-12 col-sm-12 col-md-12 noPadding">
 			<img src="{{asset('img/pershing.png')}}" alt="pershing">
 			<div class="infoNameBar">
@@ -210,6 +209,4 @@
 			<h2>Ajouter un manager</h2>
 			<a href="{{ path('bar_add_manager', { id : bar.id }) }}">Ajouter un manager</a>
 		</div>
-	</div>
-
 {% endblock %}
