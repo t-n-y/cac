@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new Cac\BarBundle\CacBarBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new RaulFraile\Bundle\LadybugBundle\RaulFraileLadybugBundle(),
+            new Cac\AdminBundle\CacAdminBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

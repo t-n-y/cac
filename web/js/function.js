@@ -169,7 +169,9 @@ setInterval(function(){
         "schedule": "bar",
         "promotion": "promotion"
       };
-      $('#cac_barbundle_' + bundle[template] + '_' + template).val(JSON.stringify(data));
+      if($('#cac_barbundle_' + bundle[template] + '_' + template).val() == '') {
+        $('#cac_barbundle_' + bundle[template] + '_' + template).val(JSON.stringify(data));
+      }
     });
   }
 
