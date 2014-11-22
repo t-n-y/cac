@@ -4,4 +4,14 @@
 
 {% block body %}
 <h1>Welcome to the Restriction:index page</h1>
+<div>
+	<ul>
+		{% for restriction in restrictions %}
+		<li>{{ restriction.restriction }} <button data-id="{{ restriction.id }}" class="glyphicon glyphicon-remove"></li>
+		{% endfor %}
+	</ul>
+</div>
+<div>
+	{{ form(form) }}
+</div>
 {% endblock %}
