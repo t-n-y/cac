@@ -353,6 +353,16 @@ class Bar
      */
     public function getSchedule()
     {
+        return $this->schedule;
+    }
+
+    /**
+     * Get schedule
+     *
+     * @return array 
+     */
+    public function getScheduleArray()
+    {
         return json_decode($this->schedule, true);
     }
 

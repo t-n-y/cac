@@ -64,6 +64,16 @@ class Promotion
      */
     public function getPromotion()
     {
+        return $this->promotion;
+    }
+
+    /**
+     * Get promotion
+     *
+     * @return array 
+     */
+    public function getPromotionArray() 
+    {
         return json_decode($this->promotion, true);
     }
 
