@@ -183,14 +183,14 @@ setInterval(function(){
     if(scrollTop > 150 && $('.navbar-afterscroll').hasClass('stuck')) {
       $('.navbar-afterscroll').stop().animate({
         top: '0px'},
-        300
+        400
       );
       $('.navbar-afterscroll').removeClass('stuck');
     } 
     if(scrollTop < 150 && !$('.navbar-afterscroll').hasClass('stuck')) {
       $('.navbar-afterscroll').stop().animate({
         top: '-150px'},
-        300
+        250
       );
       $('.navbar-afterscroll').addClass('stuck');
     }

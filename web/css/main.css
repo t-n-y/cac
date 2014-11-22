@@ -100,6 +100,11 @@
 	border-bottom: 4px solid #fff;
 }
 
+.navbar-afterscroll .navbar-nav > li > a{
+	padding-top: 15px;
+	padding-bottom: 13px;
+}
+
 .navbar-nav > li > a:hover{
 	border-bottom: 4px solid #5ac4d4;
 
