@@ -40,18 +40,12 @@
 							</select>
 						</div>
 					</div>
-					{% set conditions = {
-						'1': 'Exemple de condition 1', 
-						'2': 'Exemple de condition 2', 
-						'3': 'Exemple de condition 3', 
-						'4': 'Exemple de condition 4'
-					} %}
 					<div class="row">
 						<div class="col-xs-12 col-sm-12 col-md-12 noPadding">
 							<select class="promotion-condition-picker" data-day="{{ days[j] }}">
-								<option>Condition</option>
-								{% for i in 1..4 %}
-								    <option value="{{i}}">{{conditions[i]}}</option>
+									<option>Conditions</option>
+								{% for restriction in restrictions %}
+								    <option value="{{ restriction.restriction }}">{{ restriction.restriction }}</option>
 								{% endfor %}
 							</select>
 						</div>
@@ -113,18 +107,12 @@
 							</select>
 						</div>
 					</div>
-					{% set conditions = {
-						'1': 'Exemple de condition 1', 
-						'2': 'Exemple de condition 2', 
-						'3': 'Exemple de condition 3', 
-						'4': 'Exemple de condition 4'
-					} %}
 					<div class="row">
 						<div class="col-xs-12 col-sm-12 col-md-12 noPadding">
 							<select class="hh-condition-picker" data-day="{{ days[j] }}">
-								<option>Condition</option>
-								{% for i in 1..4 %}
-								    <option value="{{i}}">{{conditions[i]}}</option>
+									<option>Conditions</option>
+								{% for restriction in restrictions %}
+								    <option value="{{ restriction.restriction }}">{{ restriction.restriction }}</option>
 								{% endfor %}
 							</select>
 						</div>

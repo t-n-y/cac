@@ -32,6 +32,8 @@ class PromotionController extends Controller
         $entity = $em->getRepository('CacBarBundle:Bar')->find($id);
         $promotion = $entity->getPromotion();
 
+        $restrictions = $em->getRepository('CacBarBundle:Restriction')->findAll();
+
         if (!$entity) {
             throw $this->createNotFoundException('Le bar demandé n\'existe pas.');
         }
@@ -40,7 +42,8 @@ class PromotionController extends Controller
 
         return array(
             'promotion'      => $promotion,
-            'form'   => $editForm->createView()
+            'form'   => $editForm->createView(),
+            'restrictions' => $restrictions
         );
     }
 
@@ -111,12 +114,14 @@ class PromotionController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository('CacBarBundle:Bar')->find($id);
+        $restrictions = $em->getRepository('CacBarBundle:Restriction')->findAll();
 
         $editForm = $this->createEditForm($entity->getPromotion());
 
         return array(
             'bar'      => $entity,
-            'form'   => $editForm->createView()
+            'form'   => $editForm->createView(),
+            'restrictions' => $restrictions
         );
     }
 }
