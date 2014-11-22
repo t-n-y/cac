@@ -169,12 +169,32 @@ setInterval(function(){
         "schedule": "bar",
         "promotion": "promotion"
       };
-      $('#cac_barbundle_' + bundle[template] + '_' + template).val(JSON.stringify(data));
+      if($('#cac_barbundle_' + bundle[template] + '_' + template).val() == '') {
+        $('#cac_barbundle_' + bundle[template] + '_' + template).val(JSON.stringify(data));
+      }
     });
   }
 
   loadTemplate('schedule');
   loadTemplate('promotion');
+
+  $(window).scroll(function() {
+    var scrollTop = $(window).scrollTop();
+    if(scrollTop > 150 && $('.navbar-afterscroll').hasClass('stuck')) {
+      $('.navbar-afterscroll').stop().animate({
+        top: '0px'},
+        400
+      );
+      $('.navbar-afterscroll').removeClass('stuck');
+    } 
+    if(scrollTop < 150 && !$('.navbar-afterscroll').hasClass('stuck')) {
+      $('.navbar-afterscroll').stop().animate({
+        top: '-150px'},
+        250
+      );
+      $('.navbar-afterscroll').addClass('stuck');
+    }
+  });
 
 });
 

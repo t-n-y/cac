@@ -28,4 +28,4 @@ security:
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/bars/new, role: ROLE_BIGBOSS }
-        - { path: ^/admin/, role: ROLE_ADMIN }
+        - { path: ^/whostheboss/, role: ROLE_ADMIN }

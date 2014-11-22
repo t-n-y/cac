@@ -1,3 +1,8 @@
+cac_admin:
+    resource: "@CacAdminBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 cac_bar:
     resource: "@CacBarBundle/Controller/"
     type:     annotation

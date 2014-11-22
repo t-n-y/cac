@@ -38,7 +38,26 @@
 .navbar-default{
 	background-color: #fff;
 	border: 0px solid;
+	left: 0;
+    position: absolute;
+    right: 0;
+    z-index: 1030;
 }
+
+.navbar-afterscroll {
+	background-color: #fff;
+	border: 0px solid;
+	left: 0;
+    position: fixed;
+    right: 0;
+    z-index: 1030;
+    top: -150px;
+}
+
+.logo-afterscroll img {
+	height: 50px;
+}
+
 .containeurLogo{
 	width:150px;
 	margin: auto;
@@ -81,6 +100,11 @@
 	border-bottom: 4px solid #fff;
 }
 
+.navbar-afterscroll .navbar-nav > li > a{
+	padding-top: 15px;
+	padding-bottom: 13px;
+}
+
 .navbar-nav > li > a:hover{
 	border-bottom: 4px solid #5ac4d4;
 
@@ -99,7 +123,7 @@
 
 /*****************BODY*****************/
 
-.mainContaineur{
+.mainContainer{
 	background-image: url('../img/texture.png');
 	padding-top: 80px; 
 }
