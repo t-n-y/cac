@@ -95,6 +95,24 @@
 				</div>
 				<div class="clear"></div>
 			</div>
+
+			<div class="col-xs-12 col-sm-12 col-md-12">
+				{% if bar.handicappedAccess == 1 %}
+					Handicapé
+				{% endif %}
+				{% if bar.patio == 1%}
+					Terrasse
+				{% endif %}
+				{% if bar.smokingArea == 1%}
+				{% endif %}
+					Espace Fumeur
+				{% if bar.breathalyser == 1%}
+					Alcotest
+				{% endif %}
+				{% if bar.valet == 1%}
+					voiturier, prix : {{ bar.valetCost }}€
+				{% endif %}
+			</div>
 			
 		</div>
 		<div class="col-xs-12 col-sm-12 col-md-12">
@@ -134,7 +152,7 @@
 				<li>Ordre des prix : {{ bar.priceRange }}</li>
 				<li>Dresscode : {{ bar.dressCode }}</li>
 				<li>Voiturier : {{ bar.valet }}</li>
-				<li>Prix voiturier{{ bar.valetCost }}</li>
+				<li>Prix voiturier : {{ bar.valetCost }}</li>
 				<li>Acces handicapé : {{ bar.handicappedAccess }}</li>
 				<li>Terrasse : {{ bar.patio }}</li>
 				<li>Espace fumeur : {{ bar.smokingArea }}</li>
