@@ -472,6 +472,16 @@ p.topPosition{
 	margin-top: 5px;
 }
 
+.subtitlePageRegister{
+	width: 10%
+}
+
+.subtitlePageRegister p{
+	text-align: right;
+	padding-left: 20px;
+	border-bottom: 2px solid #5ac4d4;
+}
+
 /****************************/
 
 

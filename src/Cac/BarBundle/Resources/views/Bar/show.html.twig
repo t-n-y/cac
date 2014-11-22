@@ -72,12 +72,18 @@
 					<div class="col-xs-4 col-sm-4 col-md-4 noPadding">
 						<p>{{ days[i] }}</p>
 					</div>
+					{% if bar.scheduleArray[days[i]].status == "Ouvert" %}
 					<div class="col-xs-4 col-sm-4 col-md-4 noPadding">
 						<span class="ouverture">{{ bar.scheduleArray[days[i]].open }}h</span>
 					</div>
 					<div class="col-xs-4 col-sm-4 col-md-4 noPadding">
 						<span class="fermeture">{{ bar.scheduleArray[days[i]].close }}h</span>
 					</div>
+					{% else %}
+					<div class="center col-xs-5 col-sm-5 col-md-5 noPadding">
+						<span class="fermeture">FERMER</span>
+					</div>
+					{% endif %}
 					{% endfor %}
 				</div>
 				<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
@@ -131,6 +137,7 @@
 				<li>Code postal : {{ bar.zipcode }}</li>
 				<li>Acces : {{ bar.access }}</li>
 				<li>Auteur : {% if bar.author.username is defined %}{{ bar.author.username }}{% endif %}</li>
+				<li>{{bar.schedule}}</li>
 				
 				<ul>
 					Ca sert a quoi ca ? vu qu'on a deja l auteur au dessus
