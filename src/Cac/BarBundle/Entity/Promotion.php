@@ -64,7 +64,7 @@ class Promotion
      */
     public function getPromotion()
     {
-        return $this->promotion;
+        return json_decode($this->promotion, true);
     }
 
     /**

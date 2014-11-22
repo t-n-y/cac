@@ -4,7 +4,6 @@
 
 {% block body %}
 <div class="mainContaineur">
-	
 		<div class="topBar col-xs-12 col-sm-12 col-md-12 noPadding">
 			<img src="{{asset('img/pershing.png')}}" alt="pershing">
 			<div class="infoNameBar">
@@ -60,81 +59,26 @@
 					<p>{{ bar.adress }}</p>
 					<p>{{ bar.zipcode }}<span>{{ bar.town }}</span></p>
 					<h2>LES HORAIRES</h2>
+					{% set days = {
+						'1': 'Lundi', 
+						'2': 'Mardi', 
+						'3': 'Mercredi', 
+						'4': 'Jeudi', 
+						'5': 'Vendredi', 
+						'6': 'Samedi', 
+						'7': 'Dimanche'
+					} %}
+					{% for i in 1..7 %}
 					<div class="col-xs-4 col-sm-4 col-md-4 noPadding">
-						<p>Lundi</p>
-					</div>
-					<div class="col-xs-4 col-sm-4 col-md-4 noPadding">
-						<span class="ouverture">2h</span>
-					</div>
-					<div class="col-xs-4 col-sm-4 col-md-4 noPadding">
-						<span class="fermeture">2h</span>
-					</div>
-
-					<div class="col-xs-4 col-sm-4 col-md-4 noPadding">
-						<p>Mardi</p>
-					</div>
-					<div class="col-xs-4 col-sm-4 col-md-4 noPadding">
-						<span class="ouverture">2h</span>
+						<p>{{ days[i] }}</p>
 					</div>
 					<div class="col-xs-4 col-sm-4 col-md-4 noPadding">
-						<span class="fermeture">2h</span>
-					</div>
-
-					<div class="col-xs-4 col-sm-4 col-md-4 noPadding">
-						<p>Mercredi</p>
+						<span class="ouverture">{{ bar.schedule[days[i]].open }}h</span>
 					</div>
 					<div class="col-xs-4 col-sm-4 col-md-4 noPadding">
-						<span class="ouverture">2h</span>
+						<span class="fermeture">{{ bar.schedule[days[i]].close }}h</span>
 					</div>
-					<div class="col-xs-4 col-sm-4 col-md-4 noPadding">
-						<span class="fermeture">2h</span>
-					</div>
-
-					<div class="col-xs-4 col-sm-4 col-md-4 noPadding">
-						<p>Jeudi</p>
-					</div>
-					<div class="col-xs-4 col-sm-4 col-md-4 noPadding">
-						<span class="ouverture">2h</span>
-					</div>
-					<div class="col-xs-4 col-sm-4 col-md-4 noPadding">
-						<span class="fermeture">2h</span>
-					</div>
-
-					<div class="col-xs-4 col-sm-4 col-md-4 noPadding">
-						<p>Vendredi</p>
-					</div>
-					<div class="col-xs-4 col-sm-4 col-md-4 noPadding">
-						<span class="ouverture">2h</span>
-					</div>
-					<div class="col-xs-4 col-sm-4 col-md-4 noPadding">
-						<span class="fermeture">2h</span>
-					</div>
-
-					<div class="col-xs-4 col-sm-4 col-md-4 noPadding">
-						<p>Samedi</p>
-					</div>
-					<div class="col-xs-4 col-sm-4 col-md-4 noPadding">
-						<span class="ouverture">2h</span>
-					</div>
-					<div class="col-xs-4 col-sm-4 col-md-4 noPadding">
-						<span class="fermeture">2h</span>
-					</div>
-
-					<div class="col-xs-4 col-sm-4 col-md-4 noPadding">
-						<p>Dimanche</p>
-					</div>
-					{% if bar.dressCode ==  0 %}
-					<div class="col-xs-4 col-sm-4 col-md-4 noPadding">
-						<span class="ouverture">2h</span>
-					</div>
-					<div class="col-xs-4 col-sm-4 col-md-4 noPadding">
-						<span class="fermeture">2h</span>
-					</div>
-					{% else %}
-					<div class="center col-xs-5 col-sm-5 col-md-5 noPadding">
-						<span class="fermeture">FERMER</span>
-					</div>
-					{% endif %}
+					{% endfor %}
 				</div>
 
 				<div class="col-xs-7 col-sm-7 col-md-7">
@@ -158,7 +102,6 @@
 				<li>Ville : {{ bar.town }}</li>
 				<li>Pays : {{ bar.country }}</li>
 				<li>Code postal : {{ bar.zipcode }}</li>
-				<li>Horaires : {{ bar.schedule }}</li>
 				<li>Acces : {{ bar.access }}</li>
 				<li>Auteur : {% if bar.author.username is defined %}{{ bar.author.username }}{% endif %}</li>
 				

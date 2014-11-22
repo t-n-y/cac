@@ -4,6 +4,33 @@
 
 {% block body %}
 <div class="mainContaineur">
-	{{ bar.promotion.promotion }}
+	{% set days = {
+		'1': 'Lundi', 
+		'2': 'Mardi', 
+		'3': 'Mercredi', 
+		'4': 'Jeudi', 
+		'5': 'Vendredi', 
+		'6': 'Samedi', 
+		'7': 'Dimanche'
+	} %}
+	{% for i in 1..7 %}
+		<ul>
+			<li>{{ days[i] }}</li>
+			<ul><li>Happy Hour</li>
+				<ul>
+					<li>Begins : {{ bar.promotion.promotion[days[i]]['happy-hour'].beginning }}</li>
+					<li>Ends : {{ bar.promotion.promotion[days[i]]['happy-hour'].ending }}</li>
+					<li>Value : {{ bar.promotion.promotion[days[i]]['happy-hour'].value }}%</li>
+					<li>Condition : {{ bar.promotion.promotion[days[i]]['happy-hour'].condition }}</li>
+				</ul>
+				<li>Promotion C&C</li>
+				<ul>
+					<li>Quantité : {{ bar.promotion.promotion[days[i]].promotion.quantity }}</li>
+					<li>Value : {{ bar.promotion.promotion[days[i]].promotion.value }}%</li>
+					<li>Condition : {{ bar.promotion.promotion[days[i]].promotion.condition }}</li>
+				</ul>
+			</ul>
+		</ul>
+	{% endfor %}
 </div>
 {% endblock %}
