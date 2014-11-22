@@ -178,5 +178,23 @@ setInterval(function(){
   loadTemplate('schedule');
   loadTemplate('promotion');
 
+  $(window).scroll(function() {
+    var scrollTop = $(window).scrollTop();
+    if(scrollTop > 150 && $('.navbar-afterscroll').hasClass('stuck')) {
+      $('.navbar-afterscroll').stop().animate({
+        top: '0px'},
+        300
+      );
+      $('.navbar-afterscroll').removeClass('stuck');
+    } 
+    if(scrollTop < 150 && !$('.navbar-afterscroll').hasClass('stuck')) {
+      $('.navbar-afterscroll').stop().animate({
+        top: '-150px'},
+        300
+      );
+      $('.navbar-afterscroll').addClass('stuck');
+    }
+  });
+
 });
 
