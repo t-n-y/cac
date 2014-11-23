@@ -426,72 +426,7 @@ p.topPosition{
 	height: 550px;
 }
 
-.petitplusInfoBar{
-	width: 70%;
-	margin: auto;
-	margin-top: 50px;
-	height: 550px;
-}
 
-
-.vignettePetitPlus{
-	
-	text-align: center;
-	color: #000;
-	height : 50px;
-}
-
-.vignettePetitPlusPrix{
-	
-	text-align: center;	
-	color: #000;
-	height : 50px;
-}
-
-.vignettePetitPlus:nth-child(1){
-	margin-left: 0%;
-}
-
-.vignettePetitPlusContent{
-	width: 90%;
-	margin: auto;
-	background-color: rgba(255,255,255,0.4);
-}
-
-.petitplusInfoBar img{
-	float: left;
-	
-}
-
-.petitplusInfoBar p{
-	
-	font-size: 14px;
-}
-
-.vignettePetitPlusPrix p{
-	margin: 0;
-
-}
-
-
-
-.vignettePetitPlusPrix span{
-	font-size: 13px
-}
-
-@media (max-width: 1160px) {
-  .petitplusInfoBar p{
-	margin: 0;
-	padding-top:8px;
-	font-size: 12px;
-}
-
-.vignettePetitPlusPrix p{
-	margin: 0;
-	padding:12px;
-	font-size: 18px
-}
- }
 
 .superInfoBar h2{
 	color: #5ac4d4;
@@ -534,6 +469,93 @@ p.topPosition{
 	height: 100%;
 }
 
+.petitplusInfoBar{
+	width: 70%;
+	margin: auto;
+	margin-top: 50px;
+}
+
+
+.vignettePetitPlus{
+	
+	text-align: center;
+	color: #000;
+	height : 50px;
+}
+
+.vignettePetitPlusPrix{
+	
+	text-align: center;	
+	color: #000;
+	height : 50px;
+}
+
+.vignettePetitPlus:nth-child(1){
+	margin-left: 0%;
+}
+
+.vignettePetitPlusContent{
+	width: 90%;
+	margin: auto;
+	background-color: rgba(255,255,255,0.4);
+}
+
+.petitplusInfoBar img{
+	float: left;
+	
+}
+
+.petitplusInfoBar p{
+	
+	font-size: 14px;
+}
+
+.vignettePetitPlusPrix p{
+	margin: 0;
+
+}
+
+.dresscode{
+	position: absolute;
+	right: 0;
+	bottom: 0;
+}
+
+
+
+.vignettePetitPlusPrix span{
+	font-size: 13px
+}
+
+
+
+.vignettePetitPlusPrix p{
+	margin: 0;
+	padding:12px;
+	font-size: 18px
+}
+
+
+.descriptionBar{
+	width: 70%;
+	margin: auto;
+	margin-top: 50px;
+	background-color: #fff;
+}
+
+.descriptionBar h2{
+	color: #5ac4d4;
+	border-bottom: 1px solid #5ac4d4;
+	font-size: 17px;
+	margin-left: 20px;
+}
+
+@media (max-width: 1160px) {
+  .petitplusInfoBar p{
+	margin: 0;
+	padding-top:8px;
+	font-size: 12px;
+}
 
 /*********FORM BAR***********/
 

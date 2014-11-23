@@ -26,9 +26,9 @@
       </div>
       <ul class="nav navbar-nav col-xs-12 col-sm-5 col-md-5">
         {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-        <li class="pull-right"><a href="{{ path('fos_user_security_login') }}">{{ app.user.username }}</a></li>
-        <li class="pull-right"><a href="{{ path('bar_new') }}">Créer un bar</a></li>
-        <li class="pull-right"><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
+          <li class="pull-right"><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
+          <li class="pull-right"><a href="{{ path('fos_user_security_login') }}">{{ app.user.username }}</a></li>
+          <li class="pull-right"><a href="{{ path('bar_new') }}">Créer un bar</a></li>
         {% else %}
         <li class="pull-right"><a href="{{ path('fos_user_security_login') }}">Connexion</a> | <a href="{{ path('fos_user_registration_register') }}">Créer un compte</a></li>
         {% endif %}
@@ -64,9 +64,9 @@
       </ul>
       <ul class="nav navbar-nav col-xs-12 col-sm-5 col-md-5">
         {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-        <li class="pull-right"><a href="{{ path('fos_user_security_login') }}">{{ app.user.username }}</a></li>
-        <li class="pull-right"><a href="{{ path('bar_new') }}">Créer un bar</a></li>
-        <li class="pull-right"><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
+          <li class="pull-right"><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
+          <li class="pull-right"><a href="{{ path('fos_user_security_login') }}">{{ app.user.username }}</a></li>
+          <li class="pull-right"><a href="{{ path('bar_new') }}">Créer un bar</a></li>
         {% else %}
         <li class="pull-right"><a href="{{ path('fos_user_security_login') }}">Connexion</a> | <a href="{{ path('fos_user_registration_register') }}">Créer un compte</a></li>
         {% endif %}
