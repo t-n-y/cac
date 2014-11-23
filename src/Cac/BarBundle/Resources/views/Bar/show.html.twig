@@ -124,20 +124,44 @@
 
 			<div class="petitplusInfoBar">
 				{% if bar.handicappedAccess == 1 %}
-					<p>Accessible<br>aux PMR</p>
+					<div class="vignettePetitPlus col-xs-2 col-sm-2 col-md-2 noPadding">
+						<div class="vignettePetitPlusContent">
+							<img src="{{asset('img/pmr.png')}}" alt="Click and Cheers"><p>Accessible<br>aux PMR</p>
+						</div>
+					</div>
 				{% endif %}
 				{% if bar.patio == 1%}
-					<p>Terrasse<br>sympa</p>
+					<div class="vignettePetitPlus col-xs-2 col-sm-2 col-md-2 noPadding">
+						<div class="vignettePetitPlusContent">
+							<img src="{{asset('img/terrasse.png')}}" alt="Click and Cheers"><p>Terrasse<br>sympa</p>
+						</div>
+					</div>
 				{% endif %}
 				{% if bar.smokingArea == 1%}
 				{% endif %}
-					<p>Espace<br>Fumeur</p>
-					 
+					<div class="vignettePetitPlus col-xs-2 col-sm-2 col-md-2 noPadding">
+						<div class="vignettePetitPlusContent">
+							<img src="{{asset('img/terrasse.png')}}" alt="Click and Cheers"><p>Espace<br>Fumeur</p>
+						</div>
+					</div> 
 				{% if bar.breathalyser == 1%}
-					<p>Ethylotest<br>gratuit</p>
+					<div class="vignettePetitPlus col-xs-2 col-sm-2 col-md-2 noPadding">
+						<div class="vignettePetitPlusContent">
+							<img src="{{asset('img/ethylotest.png')}}" alt="Click and Cheers"><p>Ethylotest<br>gratuit</p>
+						</div>
+					</div>
 				{% endif %}
 				{% if bar.valet == 1%}
-					<p>Service<br>Voiturier</p>, prix : {{ bar.valetCost }}€
+					<div class="vignettePetitPlus col-xs-2 col-sm-2 col-md-2 noPadding">
+						<div class="vignettePetitPlusContent">
+							<img src="{{asset('img/voiturier.png')}}" alt="Click and Cheers"><p>Service<br>Voiturier</p>
+						</div>
+					</div>
+					<div class="vignettePetitPlusPrix col-xs-2 col-sm-2 col-md-2 noPadding">
+						<div class="vignettePetitPlusContent">
+							<p>{{ bar.valetCost }}<span>€</span></p>
+						</div>
+					</div>
 				{% endif %}
 			</div>
 			

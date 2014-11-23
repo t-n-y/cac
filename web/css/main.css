@@ -433,14 +433,65 @@ p.topPosition{
 	height: 550px;
 }
 
+
+.vignettePetitPlus{
+	
+	text-align: center;
+	color: #000;
+	height : 50px;
+}
+
+.vignettePetitPlusPrix{
+	
+	text-align: center;	
+	color: #000;
+	height : 50px;
+}
+
+.vignettePetitPlus:nth-child(1){
+	margin-left: 0%;
+}
+
+.vignettePetitPlusContent{
+	width: 90%;
+	margin: auto;
+	background-color: rgba(255,255,255,0.4);
+}
+
+.petitplusInfoBar img{
+	float: left;
+	
+}
+
 .petitplusInfoBar p{
-width: 19%;
-text-align: center;
-float: left;
-background-color: rgba(255,255,255,0.4);
-margin-left: 1%;
+	
+	font-size: 14px;
+}
+
+.vignettePetitPlusPrix p{
+	margin: 0;
 
 }
+
+
+
+.vignettePetitPlusPrix span{
+	font-size: 13px
+}
+
+@media (max-width: 1160px) {
+  .petitplusInfoBar p{
+	margin: 0;
+	padding-top:8px;
+	font-size: 12px;
+}
+
+.vignettePetitPlusPrix p{
+	margin: 0;
+	padding:12px;
+	font-size: 18px
+}
+ }
 
 .superInfoBar h2{
 	color: #5ac4d4;
