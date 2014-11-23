@@ -424,8 +424,8 @@ p.topPosition{
 	margin-top: 50px;
 	background-color: #fff;
 	height: 550px;
+	position: relative;
 }
-
 
 
 .superInfoBar h2{
@@ -454,6 +454,41 @@ p.topPosition{
 
 .superInfoBar span.fermeture{
 	color: #d2232d;
+}
+
+.ongletBar{
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.ongletBar h3{
+	font-size: 15px;
+	padding-top: 42px;
+	margin: 0;
+}
+
+.avisBar{
+	display: none;
+}
+
+.information{
+	width: 160px;
+	background-color: rgba(255,255,255,0.4);
+	margin-left: -160px;
+	text-align: center;
+	height: 100px;
+	cursor:pointer;
+}
+
+.avis{
+	width: 150px;
+	background-color: rgba(255,255,255,0.4);
+	margin-left: -150px;
+	text-align: center;
+	height: 100px;
+	margin-top: 10px;
+	cursor:pointer;
 }
 
 .mapView{

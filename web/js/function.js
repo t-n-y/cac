@@ -198,3 +198,30 @@ setInterval(function(){
 
 });
 
+
+
+
+
+/********PAGE SHOW BAR*****/
+
+$('body').on("click", ".information",function(){
+  $('.informationBar').css("display" , "block");
+  $('.avisBar').css("display" , "none");
+  $('.information').css("width" , "160px");
+  $('.information').css("margin-left" , "-160px");
+  $('.avis').css("width" , "150px");
+  $('.avis').css("margin-left" , "-150px");
+});
+
+$('body').on("click", ".avis",function(){
+  $('.informationBar').css("display" , "none");
+  $('.avisBar').css("display" , "block");
+  $('.avis').css("width" , "160px");
+  $('.avis').css("margin-left" , "-160px");
+  $('.information').css("width" , "150px");
+  $('.information').css("margin-left" , "-150px");
+});
+
+
+/***************************/
+
