@@ -112,11 +112,7 @@
 
 
 
-@media (max-width: 768px) {
-    .navbar-nav > .pull-right {
-        float: none !important;
-    }
-}
+
 
 
 
@@ -585,12 +581,7 @@ p.topPosition{
 	margin-left: 20px;
 }
 
-@media (max-width: 1160px) {
-  .petitplusInfoBar p{
-	margin: 0;
-	padding-top:8px;
-	font-size: 12px;
-}
+
 
 /*********FORM BAR***********/
 
@@ -637,6 +628,15 @@ p.topPosition{
 
 .inscription{
 	margin-top: 60px;
+}
+
+.inscription label{
+	margin-top: 10px;
+	margin-bottom: 0px;
+}
+
+.inscription label:nth-child(1){
+	margin-top: 0px;
 }
 
 .inscription input[type=radio]{
@@ -734,6 +734,19 @@ p.pCreez{
 
 /***************************************/
 
+
+@media (max-width: 1160px) {
+  .petitplusInfoBar p{
+	margin: 0;
+	padding-top:8px;
+	font-size: 12px;
+}
+
+@media (max-width: 768px) {
+    .navbar-nav > .pull-right {
+        float: none !important;
+    }
+}
 
 
 

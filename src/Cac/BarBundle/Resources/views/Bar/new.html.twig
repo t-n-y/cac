@@ -8,7 +8,7 @@
 {% endblock %}
 {% block body %}
 
-<div class="mainContaineur">
+
 	<div class="formBar col-xs-12 col-sm-12 col-md-12 noPadding">
 		<h1>Votre établissement</h1>
 		<div class="separation1"></div>
@@ -16,35 +16,32 @@
 	</div>
 	<form action="{{ path('bar_create') }}" {{ form_enctype(form) }} method="POST">
 		<div class="inscription center col-xs-6 col-sm-6 col-md-6">
-
-			{{ form_label(form.name) }}
-			<br>
-			{{ form_errors(form.name) }}
-			{{ form_widget(form.name) }}
-			<br>
-			<br>
-			{{ form_label(form.adress) }}
-			<br>
-			{{ form_errors(form.adress) }}
-			{{ form_widget(form.adress) }}
-			<br>
-			<br>
-			{{ form_label(form.zipcode) }}
-			<br>
-			{{ form_errors(form.zipcode) }}
-			{{ form_widget(form.zipcode) }}
-			<br>
-			<br>
-			{{ form_label(form.town) }}
-			<br>
-			{{ form_errors(form.town) }}
-			{{ form_widget(form.town) }}
-			<br>
-			<br>
-			{{ form_label(form.country) }}
-			<br>
-			{{ form_errors(form.country) }}
-			{{ form_widget(form.country) }}
+			<div class="border">
+				{{ form_label(form.name) }}
+				<br>
+				{{ form_errors(form.name) }}
+				{{ form_widget(form.name) }}
+				<br>
+				{{ form_label(form.adress) }}
+				<br>
+				{{ form_errors(form.adress) }}
+				{{ form_widget(form.adress) }}
+				<br>
+				{{ form_label(form.zipcode) }}
+				<br>
+				{{ form_errors(form.zipcode) }}
+				{{ form_widget(form.zipcode) }}
+				<br>
+				{{ form_label(form.town) }}
+				<br>
+				{{ form_errors(form.town) }}
+				{{ form_widget(form.town) }}
+				<br>
+				{{ form_label(form.country) }}
+				<br>
+				{{ form_errors(form.country) }}
+				{{ form_widget(form.country) }}
+			</div>
 			<br>
 			<br>
 			<div class="border">
@@ -194,7 +191,7 @@
 		</div>
 	</form>
 	<div class="clear"></div>
-</div>
+
 
 
 {% endblock %}

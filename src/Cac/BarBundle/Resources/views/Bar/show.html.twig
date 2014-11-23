@@ -184,7 +184,11 @@
 				<div class="clear"></div>
 			</div>
 			<div class="dresscode">
-				chic
+				{% if bar.dresscode == 1%}
+					chic
+				{% elseif bar.dresscode == 2%}
+					Décontracté
+				{% endif %}
 			</div>
 		</div>
 		<div class="col-xs-12 col-sm-12 col-md-12">

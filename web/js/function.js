@@ -15,7 +15,7 @@ var heightWindow = $(window).height();
 
 $('.shadowHover').css('width', widthImg + 'px');
 $('.shadowHover').css('height', heightImg + 'px');
-$('.mainContaineur').css('min-height', heightWindow + 'px');
+$('.mainContainer').css('min-height', heightWindow + 'px');
 
 
 

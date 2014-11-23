@@ -1,7 +1,7 @@
 {% extends '::base.html.twig' %} 
 {% block body %}
 {% trans_default_domain 'FOSUserBundle' %}
-	<div class="mainContaineur">
+	
 	<div class="formBar col-xs-12 col-sm-12 col-md-12 noPadding">
 		<h1>Bienvenue 
 		{% if user.gender == 1 %}
@@ -32,5 +32,4 @@
 			
 		</div>
 		<div class="clear"></div>
-	</div>
 {% endblock %}
