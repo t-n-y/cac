@@ -50,7 +50,7 @@ class RegistrationFormType extends AbstractType
             ->add('firstname', null, array('label' => 'Prénom'))
             ->add('gender', 'choice', array(
                 'label' => 'Genre',
-                'choices'   => array('1' => 'Mr', '2' => 'Mme', '3' => 'Mlle'),
+                'choices'   => array('1' => 'Mr', '2' => 'Mme'),
                 'expanded' => true,
                 'multiple' => false
                 )
