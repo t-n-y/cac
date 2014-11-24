@@ -3,15 +3,18 @@
 namespace Cac\BarBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use FOS\UserBundle\Model\User as BaseUser;
+use PUGX\MultiUserBundle\Validator\Constraints\UniqueEntity;
 
 /**
  * Bigboss
  *
+ * @ORM\Entity
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Cac\BarBundle\Entity\BigbossRepository")
+ * @UniqueEntity(fields = "username", targetClass = "Cac\BarBundle\Entity\User", message="fos_user.username.already_used")
+ * @UniqueEntity(fields = "email", targetClass = "Cac\BarBundle\Entity\User", message="fos_user.email.already_used")
  */
-class Bigboss extends BaseUser
+class Bigboss extends User
 {
     /**
      * @var integer

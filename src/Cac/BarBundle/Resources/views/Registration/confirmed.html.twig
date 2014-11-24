@@ -4,14 +4,8 @@
 	
 	<div class="formBar col-xs-12 col-sm-12 col-md-12 noPadding">
 		<h1>Bienvenue 
-		{% if user.gender == 1 %}
-			Mr
-		{% elseif user.gender == 2 %}
-			Mme
-		{% elseif user.gender == 3 %}
-			Mlle
-		{% endif %}
-			{{ user.name }}<br/>Créez maintenant la fiche de votre établissement</h1>
+		<!-- @KEVIN, j'ai retiré le test sur le genre et j'ai remplacé le name par le username, ils bloquent pour le moment le message de confirmation quand on enregistre un barman, je cherche une solution -->
+			{{ user.username }}<br/>Créez maintenant la fiche de votre établissement</h1>
 		<div class="separation1"></div>
 		<div class="separation2"></div>
 	</div>

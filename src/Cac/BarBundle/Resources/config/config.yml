@@ -1,0 +1,29 @@
+# Cac/BarBundle/Resources/config/config.yml
+
+pugx_multi_user:
+  users:
+    bigboss:
+        entity: 
+          class: Cac\BarBundle\Entity\Bigboss
+#          factory: 
+        registration:
+          form: 
+            type: Cac\BarBundle\Form\Type\BigbossFormType
+#            name: fos_user_registration_form
+#            validation_groups:  [Registration, Default]
+          template: CacBarBundle:Bigboss:register.html.twig
+        profile:
+          form:
+            type: Cac\BarBundle\Form\Type\BigbossFormType
+#            name: fos_user_profile_form
+#            validation_groups:  [Profile, Default] 
+    barman:
+        entity: 
+          class: Cac\BarBundle\Entity\Barman
+        registration:
+          form: 
+            type: Cac\BarBundle\Form\Type\BarmanFormType
+          template: CacBarBundle:Barman:register.html.twig
+        profile:
+          form: 
+            type: Cac\BarBundle\Form\Type\BarmanFormType

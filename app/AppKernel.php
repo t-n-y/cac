@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new RaulFraile\Bundle\LadybugBundle\RaulFraileLadybugBundle(),
             new Cac\AdminBundle\CacAdminBundle(),
+            new PUGX\MultiUserBundle\PUGXMultiUserBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

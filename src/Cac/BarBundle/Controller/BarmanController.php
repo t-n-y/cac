@@ -8,7 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Cac\BarBundle\Entity\Barman;
-use Cac\BarBundle\Form\BarmanType;
+use Cac\BarBundle\Form\RegistrationBarmanFormType;
 
 /**
  * Barman controller.
@@ -17,6 +17,18 @@ use Cac\BarBundle\Form\BarmanType;
  */
 class BarmanController extends Controller
 {
+    /**
+     * Register new Barman entities.
+     *
+     * @Route("/register", name="barman_register")
+     * @Template()
+     */
+    public function registerAction()
+    {
+        return $this->container
+                    ->get('pugx_multi_user.registration_manager')
+                    ->register('Cac\BarBundle\Entity\Barman');
+    }
 
     /**
      * Lists all Barman entities.
