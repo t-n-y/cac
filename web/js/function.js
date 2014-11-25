@@ -236,9 +236,11 @@ $('body').on("click", ".avis",function(){
 });*/
 
 
+/**********SLIDER HOME*************************/
+
 var nbImage = $( ".topPage img" ).length;
     var compteur = 0;
-    var annimationTime = 10000;   /******REGLER VITESSE DU SLIDER PROJET******/
+    var annimationTime = 10000;   /******REGLER VITESSE DU SLIDER******/
 
     $(".borderTopImage").animate({
     width: "100%"
@@ -281,4 +283,69 @@ var nbImage = $( ".topPage img" ).length;
             
 
     },annimationTime);
+
+
+
+/*****************************************************************************/
+
+
+/*****************************************SLIDER HOME*************************/
+
+    var nbImageBar = $( ".topBar img" ).length;
+    var compteurBar = 0;
+    var annimationTimeBar = 10000;   /******REGLER VITESSE DU SLIDER******/
+
+
+   setInterval(function(){
+
+        
+        
+        $($(".topBar img")[compteurBar]).fadeOut(300);
+        $($(".topBar img")[compteurBar]).removeClass("current");
+        $($(".topBar img")[compteurBar +1]).addClass("current");
+        $($(".topBar img")[compteurBar +1]).fadeIn(300);
+        
+
+        compteurBar ++;
+
+        if($( ".topBar img" ).last().hasClass( "current" )){ 
+
+                setTimeout(function() {  
+
+                    compteurBar = 0;
+                   $(".topBar img").fadeIn(300);
+                  
+
+                },annimationTimeBar);
+
+            }
+            
+
+    },annimationTimeBar);
+
+
+$( ".topBar" ).mouseenter(function() {
+    setTimeout(function() {  
+
+       $(".topBar").animate({
+              height: "600px"
+          }, 300);
+                  
+
+    },1000);
+  });
+  $( ".topBar" ).mouseleave(function() {
+    setTimeout(function() {  
+
+       $(".topBar").animate({
+              height: "508px"
+          }, 300);
+                  
+
+    },1000);
+  });
+
+/*****************************************************************************/
+
+  
 
