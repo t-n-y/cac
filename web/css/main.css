@@ -129,8 +129,9 @@
 	/*background-image: url('../img/accueil.png');*/
 	background-size: cover;
 	background-repeat: no-repeat;
-	border-bottom: 6px solid #5ac4d4;
-	margin-bottom: 50px;
+	/*border-bottom: 6px solid #5ac4d4;*/
+
+
 	overflow: hidden
 }
 
@@ -148,6 +149,14 @@
 .topPage img:nth-child(1){
 	
 	display: block;
+}
+
+.borderTopImage{
+	width: 0%;
+	height: 6px;
+	background-color: #5ac4d4;
+	margin-top: 360px;
+	margin-bottom: 50px;
 }
 
 .contentPage{

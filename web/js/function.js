@@ -240,22 +240,43 @@ var nbImage = $( ".topPage img" ).length;
     var compteur = 0;
     var annimationTime = 10000;   /******REGLER VITESSE DU SLIDER PROJET******/
 
+    $(".borderTopImage").animate({
+    width: "100%"
+  }, annimationTime);
+
+    setInterval(function(){
+        $(".borderTopImage").css("width","0%");
+
+          $(".borderTopImage").animate({
+              width: "100%"
+          }, annimationTime-10);
+
+          
+
+       },annimationTime);
 
    setInterval(function(){
 
-
+        
+        
         $($(".topPage img")[compteur]).fadeOut(300);
         $($(".topPage img")[compteur]).removeClass("current");
         $($(".topPage img")[compteur +1]).addClass("current");
         $($(".topPage img")[compteur +1]).fadeIn(300);
+        
 
         compteur ++;
 
-        if($( ".topPage img" ).last().hasClass( "current" )){    
-                setTimeout(function() {   
+        if($( ".topPage img" ).last().hasClass( "current" )){ 
+
+                setTimeout(function() {  
+
                     compteur = 0;
                    $(".topPage img").fadeIn(300);
+                  
+
                 },annimationTime);
+
             }
             
 
