@@ -1,12 +1,12 @@
 <?php
 
-namespace Cac\BarBundle\Form\Type;
+namespace Cac\UserBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class BigbossFormType extends AbstractType
+class BarmanFormType extends AbstractType
 {
     private $class;
 
@@ -37,19 +37,6 @@ class BigbossFormType extends AbstractType
                     'second_options' => array('label' => 'Confirmez votre e-mail'),
                     'invalid_message' => 'fos_user.email.mismatch',
             ))
-            ->add('name', null, array('label' => 'Nom'))
-            ->add('firstname', null, array('label' => 'Prénom'))
-            ->add('gender', 'choice', array(
-                'label' => 'Genre',
-                'choices'   => array('1' => 'Mr', '2' => 'Mme'),
-                'expanded' => true,
-                'multiple' => false
-                )
-            )
-            ->add('company', null, array('label' => 'Société'))
-            ->add('siret', null, array('label' => 'Numéro SIRET'))
-            ->add('fix_phone', 'text', array('label' => 'Téléphone fixe'))
-            ->add('mobile_phone', 'text', array('label' => 'Téléphone mobile'))
         ;
     }
 
@@ -63,6 +50,6 @@ class BigbossFormType extends AbstractType
 
     public function getName()
     {
-        return 'cac_bigboss_registration';
+        return 'cac_barman_registration';
     }
 }

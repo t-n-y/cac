@@ -85,7 +85,7 @@ class Bar
     private $access;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Cac\BarBundle\Entity\Bigboss", inversedBy="createdBars")
+     * @ORM\ManyToOne(targetEntity="Cac\UserBundle\Entity\Bigboss", inversedBy="createdBars")
      * @ORM\JoinColumn(name="author_id", referencedColumnName="id")
      */
     private $author;
@@ -403,10 +403,10 @@ class Bar
     /**
      * Set author
      *
-     * @param \Cac\BarBundle\Entity\Bigboss $author
+     * @param \Cac\UserBundle\Entity\Bigboss $author
      * @return Bar
      */
-    public function setAuthor(\Cac\BarBundle\Entity\Bigboss $author = null)
+    public function setAuthor(\Cac\UserBundle\Entity\Bigboss $author = null)
     {
         $this->author = $author;
 
@@ -416,7 +416,7 @@ class Bar
     /**
      * Get author
      *
-     * @return \Cac\BarBundle\Entity\Bigboss 
+     * @return \Cac\UserBundle\Entity\Bigboss 
      */
     public function getAuthor()
     {

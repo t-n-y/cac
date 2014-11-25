@@ -1,12 +1,21 @@
 <?php
 
-namespace Cac\BarBundle\Form\Type;
+/*
+ * This file is part of the FOSUserBundle package.
+ *
+ * (c) FriendsOfSymfony <http://friendsofsymfony.github.com/>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+namespace Cac\UserBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class BarmanFormType extends AbstractType
+class RegistrationFormType extends AbstractType
 {
     private $class;
 
@@ -37,6 +46,19 @@ class BarmanFormType extends AbstractType
                     'second_options' => array('label' => 'Confirmez votre e-mail'),
                     'invalid_message' => 'fos_user.email.mismatch',
             ))
+            ->add('name', null, array('label' => 'Nom'))
+            ->add('firstname', null, array('label' => 'Prénom'))
+            ->add('gender', 'choice', array(
+                'label' => 'Genre',
+                'choices'   => array('1' => 'Mr', '2' => 'Mme'),
+                'expanded' => true,
+                'multiple' => false
+                )
+            )
+            ->add('company', null, array('label' => 'Société'))
+            ->add('siret', null, array('label' => 'Numéro SIRET'))
+            ->add('fix_phone', 'text', array('label' => 'Téléphone fixe'))
+            ->add('mobile_phone', 'text', array('label' => 'Téléphone mobile'))
         ;
     }
 
@@ -50,6 +72,6 @@ class BarmanFormType extends AbstractType
 
     public function getName()
     {
-        return 'cac_barman_registration';
+        return 'cac_user_registration';
     }
 }

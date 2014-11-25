@@ -1,7 +1,7 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
-    - { resource: ../../src/Cac/BarBundle/Resources/config/config.yml }
+    - { resource: ../../src/Cac/UserBundle/Resources/config/config.yml }
 
 framework:
     #esi:             ~
@@ -75,7 +75,7 @@ swiftmailer:
 fos_user:
     db_driver: orm
     firewall_name: main
-    user_class: Cac\BarBundle\Entity\User
+    user_class: Cac\UserBundle\Entity\User
 #    registration:
 #        form:
 #            type: cac_bigboss_registration

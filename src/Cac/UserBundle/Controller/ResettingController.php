@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Cac\BarBundle\Controller;
+namespace Cac\UserBundle\Controller;
 
 use FOS\UserBundle\FOSUserEvents;
 use FOS\UserBundle\Event\FormEvent;
@@ -34,7 +34,7 @@ class ResettingController extends Controller
      */
     public function requestAction()
     {
-        return $this->render('CacBarBundle:Resetting:request.html.twig');
+        return $this->render('CacUserBundle:Resetting:request.html.twig');
     }
 
     /**
@@ -48,13 +48,13 @@ class ResettingController extends Controller
         $user = $this->get('fos_user.user_manager')->findUserByUsernameOrEmail($username);
 
         if (null === $user) {
-            return $this->render('BarBundle:Resetting:request.html.twig', array(
+            return $this->render('UserBundle:Resetting:request.html.twig', array(
                 'invalid_username' => $username
             ));
         }
 
         if ($user->isPasswordRequestNonExpired($this->container->getParameter('fos_user.resetting.token_ttl'))) {
-            return $this->render('CacBarBundle:Resetting:passwordAlreadyRequested.html.twig');
+            return $this->render('CacUserBundle:Resetting:passwordAlreadyRequested.html.twig');
         }
 
         if (null === $user->getConfirmationToken()) {
@@ -84,7 +84,7 @@ class ResettingController extends Controller
             return new RedirectResponse($this->generateUrl('fos_user_resetting_request'));
         }
 
-        return $this->render('CacBarBundle:Resetting:checkEmail.html.twig', array(
+        return $this->render('CacUserBundle:Resetting:checkEmail.html.twig', array(
             'email' => $email,
         ));
     }
@@ -135,7 +135,7 @@ class ResettingController extends Controller
             return $response;
         }
 
-        return $this->render('CacBarBundle:Resetting:reset.html.twig', array(
+        return $this->render('CacUserBundle:Resetting:reset.html.twig', array(
             'token' => $token,
             'form' => $form->createView(),
         ));

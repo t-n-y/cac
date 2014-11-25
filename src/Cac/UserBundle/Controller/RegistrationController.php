@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Cac\BarBundle\Controller;
+namespace Cac\UserBundle\Controller;
 
 use FOS\UserBundle\FOSUserEvents;
 use FOS\UserBundle\Event\FormEvent;
@@ -71,7 +71,7 @@ class RegistrationController extends Controller
             return $response;
         }
 
-        return $this->render('CacBarBundle:Registration:register.html.twig', array(
+        return $this->render('CacUserBundle:Registration:register.html.twig', array(
             'form' => $form->createView(),
         ));
     }
@@ -89,7 +89,7 @@ class RegistrationController extends Controller
             throw new NotFoundHttpException(sprintf('The user with email "%s" does not exist', $email));
         }
 
-        return $this->render('CacBarBundle:Registration:checkEmail.html.twig', array(
+        return $this->render('CacUserBundle:Registration:checkEmail.html.twig', array(
             'user' => $user,
         ));
     }
@@ -139,7 +139,7 @@ class RegistrationController extends Controller
             throw new AccessDeniedException('This user does not have access to this section.');
         }
 
-        return $this->render('CacBarBundle:Registration:confirmed.html.twig', array(
+        return $this->render('CacUserBundle:Registration:confirmed.html.twig', array(
             'user' => $user,
         ));
     }
