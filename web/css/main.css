@@ -139,9 +139,9 @@
 	
 	width: 100%;
 	/*background-image: url('../img/accueil.png');*/
+	min-height: 360px;
 	background-size: cover;
 	background-repeat: no-repeat;
-	border-bottom: 6px solid #5ac4d4;
 	margin-bottom: 50px;
 	display: none;
 }
@@ -209,6 +209,10 @@
 	display: block;
 }
 
+.elementHover{
+	overflow: hidden;
+}
+
 .contentPage .vignetteBar:nth-child(2) .shadowHover, .contentPage .vignetteBar:nth-child(6) .shadowHover{
 	left: 0;
 	margin-left: 0px !important;
@@ -244,7 +248,7 @@
 	right: 0;
 	margin-right: 25%;
 	text-align: left;
-	margin-bottom: 8px;
+	margin-bottom: 23px;
 }
 
 .shadowHover p.reduc{
@@ -256,7 +260,7 @@
 	right: 0;
 	margin-right: 15%;
 	text-align: left;
-	margin-bottom: 8px;
+	margin-bottom: 23px;
 }
 
 .heart{
@@ -278,6 +282,7 @@
 	right: 0;
 	margin-right: 15%;
 	margin-top: 18px;
+
 }
 
 .shadowHover span{

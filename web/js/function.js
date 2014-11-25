@@ -34,14 +34,14 @@ $('.mapView iframe').css('height', heightsuperInfoBar + 'px');
 $(document).ready(function(){
   $(".vignetteBar").mouseenter(function(){
     $(this).find('.shadowHover h3').stop(true,true).animate({marginBottom:"25px"});
-    $(this).find('.shadowHover p').stop(true,true).fadeIn(400);
-    $(this).find('.shadowHover p').stop(true,true).animate({marginBottom:"23px"});
+    $(this).find('.shadowHover p').stop(true,true).fadeIn(600);
+    $(this).find('.shadowHover p').stop(true,true).animate({marginBottom:"8px",opacity:"1"});
     $(this).find('.shadowHover').css("background", 'rgba(0,0,0,0.5)');
   });
   $(".vignetteBar").mouseleave(function(){
     $(this).find('.shadowHover h3').stop(true,true).animate({marginBottom:"10px"});
-    $(this).find('.shadowHover p').stop(true,true).fadeOut(400);
-    $(this).find('.shadowHover p').stop(true,true).animate({marginBottom:"8px"});
+    $(this).find('.shadowHover p').stop(true,true).fadeOut(600);
+    $(this).find('.shadowHover p').stop(true,true).animate({marginBottom:"23px",opacity:"0"});
     $(this).find('.shadowHover').css("background", '-webkit-linear-gradient(bottom,rgba(000000,0,0,0.6),rgba(000000,0,0,0))');
     $(this).find('.shadowHover').css("background", '-o-linear-gradient(bottom,rgba(000000,0,0,0.6),rgba(000000,0,0,0))');
     $(this).find('.shadowHover').css("background", '-moz-linear-gradient(bottom,rgba(000000,0,0,0.6),rgba(000000,0,0,0))');
