@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Cac\BarBundle\Controller;
+namespace Cac\UserBundle\Controller;
 
 use FOS\UserBundle\FOSUserEvents;
 use FOS\UserBundle\Event\FormEvent;
@@ -76,7 +76,7 @@ class ChangePasswordController extends Controller
             return $response;
         }
 
-        return $this->render('CacBarBundle:ChangePassword:changePassword.html.twig', array(
+        return $this->render('CacUserBundle:ChangePassword:changePassword.html.twig', array(
             'form' => $form->createView()
         ));
     }

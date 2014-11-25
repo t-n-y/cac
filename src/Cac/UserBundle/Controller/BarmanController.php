@@ -1,14 +1,14 @@
 <?php
 
-namespace Cac\BarBundle\Controller;
+namespace Cac\UserBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Cac\BarBundle\Entity\Barman;
-use Cac\BarBundle\Form\BarmanType;
+use Cac\UserBundle\Entity\Barman;
+use Cac\UserBundle\Form\RegistrationBarmanFormType;
 
 /**
  * Barman controller.
@@ -17,6 +17,18 @@ use Cac\BarBundle\Form\BarmanType;
  */
 class BarmanController extends Controller
 {
+    /**
+     * Register new Barman entities.
+     *
+     * @Route("/register", name="barman_register")
+     * @Template()
+     */
+    public function registerAction()
+    {
+        return $this->container
+                    ->get('pugx_multi_user.registration_manager')
+                    ->register('Cac\UserBundle\Entity\Barman');
+    }
 
     /**
      * Lists all Barman entities.
@@ -29,7 +41,7 @@ class BarmanController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('CacBarBundle:Barman')->findAll();
+        $entities = $em->getRepository('CacUserBundle:Barman')->findAll();
 
         return array(
             'entities' => $entities,
@@ -40,7 +52,7 @@ class BarmanController extends Controller
      *
      * @Route("/", name="barman_create")
      * @Method("POST")
-     * @Template("CacBarBundle:Barman:new.html.twig")
+     * @Template("CacUserBundle:Barman:new.html.twig")
      */
     public function createAction(Request $request)
     {
@@ -110,7 +122,7 @@ class BarmanController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('CacBarBundle:Barman')->find($id);
+        $entity = $em->getRepository('CacUserBundle:Barman')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Barman entity.');
@@ -135,7 +147,7 @@ class BarmanController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('CacBarBundle:Barman')->find($id);
+        $entity = $em->getRepository('CacUserBundle:Barman')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Barman entity.');
@@ -174,13 +186,13 @@ class BarmanController extends Controller
      *
      * @Route("/{id}", name="barman_update")
      * @Method("PUT")
-     * @Template("CacBarBundle:Barman:edit.html.twig")
+     * @Template("CacUserBundle:Barman:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('CacBarBundle:Barman')->find($id);
+        $entity = $em->getRepository('CacUserBundle:Barman')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Barman entity.');
@@ -215,7 +227,7 @@ class BarmanController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('CacBarBundle:Barman')->find($id);
+            $entity = $em->getRepository('CacUserBundle:Barman')->find($id);
 
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Barman entity.');

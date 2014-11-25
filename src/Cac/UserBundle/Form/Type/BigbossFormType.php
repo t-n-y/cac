@@ -1,21 +1,12 @@
 <?php
 
-/*
- * This file is part of the FOSUserBundle package.
- *
- * (c) FriendsOfSymfony <http://friendsofsymfony.github.com/>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
-namespace Cac\BarBundle\Form\Type;
+namespace Cac\UserBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class RegistrationFormType extends AbstractType
+class BigbossFormType extends AbstractType
 {
     private $class;
 
@@ -72,6 +63,6 @@ class RegistrationFormType extends AbstractType
 
     public function getName()
     {
-        return 'cac_user_registration';
+        return 'cac_bigboss_registration';
     }
 }

@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Cac\BarBundle\Controller;
+namespace Cac\UserBundle\Controller;
 
 use FOS\UserBundle\FOSUserEvents;
 use FOS\UserBundle\Event\FormEvent;
@@ -38,7 +38,7 @@ class ProfileController extends Controller
             throw new AccessDeniedException('This user does not have access to this section.');
         }
 
-        return $this->render('CacBarBundle:Profile:show.html.twig', array(
+        return $this->render('CacUserBundle:Profile:show.html.twig', array(
             'user' => $user
         ));
     }
@@ -90,7 +90,7 @@ class ProfileController extends Controller
             return $response;
         }
 
-        return $this->render('CacBarBundle:Profile:edit.html.twig', array(
+        return $this->render('CacUserBundle:Profile:edit.html.twig', array(
             'form' => $form->createView()
         ));
     }

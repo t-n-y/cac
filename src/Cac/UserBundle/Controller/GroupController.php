@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Cac\BarBundle\Controller;
+namespace Cac\UserBundle\Controller;
 
 use FOS\UserBundle\FOSUserEvents;
 use FOS\UserBundle\Event\FilterGroupResponseEvent;
@@ -36,7 +36,7 @@ class GroupController extends Controller
     {
         $groups = $this->get('fos_user.group_manager')->findGroups();
 
-        return $this->render('CacBarBundle:Group:list.html.twig', array(
+        return $this->render('CacUserBundle:Group:list.html.twig', array(
             'groups' => $groups
         ));
     }
@@ -48,7 +48,7 @@ class GroupController extends Controller
     {
         $group = $this->findGroupBy('name', $groupName);
 
-        return $this->render('CacBarBundle:Group:show.html.twig', array(
+        return $this->render('CacUserBundle:Group:show.html.twig', array(
             'group' => $group
         ));
     }
@@ -97,7 +97,7 @@ class GroupController extends Controller
             return $response;
         }
 
-        return $this->render('CacBarBundle:Group:edit.html.twig', array(
+        return $this->render('CacUserBundle:Group:edit.html.twig', array(
             'form'      => $form->createview(),
             'group_name'  => $group->getName(),
         ));
@@ -140,7 +140,7 @@ class GroupController extends Controller
             return $response;
         }
 
-        return $this->render('CacBarBundle:Group:new.html.twig', array(
+        return $this->render('CacUserBundle:Group:new.html.twig', array(
             'form' => $form->createview(),
         ));
     }

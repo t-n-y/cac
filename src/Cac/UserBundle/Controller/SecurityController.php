@@ -1,6 +1,6 @@
 <?php
 
-namespace Cac\BarBundle\Controller;
+namespace Cac\UserBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -52,7 +52,7 @@ class SecurityController extends Controller
      */
     protected function renderLogin(array $data)
     {
-        return $this->render('CacBarBundle:Security:login.html.twig', $data);
+        return $this->render('CacUserBundle:Security:login.html.twig', $data);
     }
 
     public function checkAction()

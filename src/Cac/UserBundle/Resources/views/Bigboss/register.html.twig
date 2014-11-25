@@ -1,6 +1,11 @@
-{% trans_default_domain 'FOSUserBundle' %}
+{% extends '::base.html.twig' %}
 
-<form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register col-xs-12 col-sm-12 col-md-12">
+{% block body -%}
+    <h1>Bigboss creation</h1>
+
+    {% trans_default_domain 'FOSUserBundle' %}
+
+<form action="{{ path('bigboss_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register col-xs-12 col-sm-12 col-md-12">
 	
 	<div class="inscription center col-xs-6 col-sm-6 col-md-6">
 		{{ form_errors(form.gender) }}
@@ -81,8 +86,10 @@
 
 		{{ form_widget(form._token) }}
 		<br>
-        <input type="submit" value="VALIDER">
+        <input type="submit" value="Valider">
     </div>
 
     
 </form>
+
+{% endblock %}
