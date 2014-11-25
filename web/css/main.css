@@ -126,11 +126,28 @@
 
 .topPage{
 	height: 360px;
-	background-image: url('../img/accueil.png');
+	/*background-image: url('../img/accueil.png');*/
 	background-size: cover;
 	background-repeat: no-repeat;
 	border-bottom: 6px solid #5ac4d4;
 	margin-bottom: 50px;
+	overflow: hidden
+}
+
+.topPage img{
+	
+	width: 100%;
+	/*background-image: url('../img/accueil.png');*/
+	background-size: cover;
+	background-repeat: no-repeat;
+	border-bottom: 6px solid #5ac4d4;
+	margin-bottom: 50px;
+	display: none;
+}
+
+.topPage img:nth-child(1){
+	
+	display: block;
 }
 
 .contentPage{
@@ -612,13 +629,32 @@ p.topPosition{
 }
 
 .subtitlePageRegister{
-	width: 10%
+	width: 10%;
+	position: relative;
 }
 
-.subtitlePageRegister p{
+.subtitlePageRegisterBig{
+	width: 13%;
+	position: relative;
+}
+
+.subtitlePageRegister p, .subtitlePageRegisterBig p{
 	text-align: right;
 	padding-left: 20px;
 	border-bottom: 2px solid #5ac4d4;
+}
+
+.bulle{
+	position: absolute;
+	top:0;
+	right: 0;
+	width: 5px;
+	height: 5px;
+	background-color: #5ac4d4;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	margin-top: 187px;
 }
 
 /****************************/

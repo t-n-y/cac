@@ -225,3 +225,39 @@ $('body').on("click", ".avis",function(){
 
 /***************************/
 
+
+
+
+/*$(document).ready(function(){
+  $("button").click(function(){
+    var x=$(".navbar-nav li:nth-child(2)").offset();
+    alert("Top: " + x.top + " Left: " + x.left);
+  });
+});*/
+
+
+var nbImage = $( ".topPage img" ).length;
+    var compteur = 0;
+    var annimationTime = 10000;   /******REGLER VITESSE DU SLIDER PROJET******/
+
+
+   setInterval(function(){
+
+
+        $($(".topPage img")[compteur]).fadeOut(300);
+        $($(".topPage img")[compteur]).removeClass("current");
+        $($(".topPage img")[compteur +1]).addClass("current");
+        $($(".topPage img")[compteur +1]).fadeIn(300);
+
+        compteur ++;
+
+        if($( ".topPage img" ).last().hasClass( "current" )){    
+                setTimeout(function() {   
+                    compteur = 0;
+                   $(".topPage img").fadeIn(300);
+                },annimationTime);
+            }
+            
+
+    },annimationTime);
+

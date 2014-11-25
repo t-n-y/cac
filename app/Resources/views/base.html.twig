@@ -9,7 +9,7 @@
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
-    <body>
+    <body onmousemove="souris(event);">
         {% block navbar %}
             {% include '::navbar.html.twig' %}
         {% endblock navbar %}
