@@ -78,6 +78,11 @@ class Bigboss extends User
     private $fix_phone;
 
     /**
+     * @var array
+     */
+    protected $roles;
+
+    /**
      * Get id
      *
      * @return integer 
@@ -187,6 +192,7 @@ class Bigboss extends User
     {
         parent::__construct();
         $this->createdBars = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->roles = array('ROLE_BIGBOSS');
     }
 
     /**

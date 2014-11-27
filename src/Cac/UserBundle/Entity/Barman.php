@@ -25,6 +25,20 @@ class Barman extends User
     protected $id;
 
     /**
+     * @var array
+     */
+    protected $roles;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        $this->roles = array('ROLE_BARMAN');
+    }
+
+    /**
      * Get id
      *
      * @return integer 
