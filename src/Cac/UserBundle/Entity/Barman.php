@@ -30,6 +30,12 @@ class Barman extends User
     protected $roles;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Cac\BarBundle\Entity\Bar", inversedBy="barman")
+     * @ORM\JoinColumn(name="bar_id", referencedColumnName="id")
+     */
+    protected $bar;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -46,5 +52,28 @@ class Barman extends User
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set bar
+     *
+     * @param \Cac\BarBundle\Entity\Bar $bar
+     * @return Barman
+     */
+    public function setBar(\Cac\BarBundle\Entity\Bar $bar = null)
+    {
+        $this->bar = $bar;
+
+        return $this;
+    }
+
+    /**
+     * Get bar
+     *
+     * @return \Cac\BarBundle\Entity\Bar 
+     */
+    public function getBar()
+    {
+        return $this->bar;
     }
 }

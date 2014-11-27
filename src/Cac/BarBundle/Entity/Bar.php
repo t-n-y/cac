@@ -163,6 +163,22 @@ class Bar
     private $promotion;
 
     /**
+     * @ORM\OneToMany(targetEntity="Cac\UserBundle\Entity\Barman", mappedBy="bar")
+     */
+    protected $barman;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->bigboss = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->categories = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->creationDate = new \Datetime();
+        $this->barman = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
      * Get id
      *
      * @return integer 
@@ -387,17 +403,6 @@ class Bar
     public function getAccess()
     {
         return $this->access;
-    }
-
-    
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->bigboss = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->categories = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->creationDate = new \Datetime();
     }
 
     /**
@@ -694,5 +699,38 @@ class Bar
     public function getPromotion()
     {
         return $this->promotion;
+    }
+
+    /**
+     * Add barman
+     *
+     * @param \Cac\UserBundle\Entity\Barman $barman
+     * @return Bar
+     */
+    public function addBarman(\Cac\UserBundle\Entity\Barman $barman)
+    {
+        $this->barman[] = $barman;
+
+        return $this;
+    }
+
+    /**
+     * Remove barman
+     *
+     * @param \Cac\UserBundle\Entity\Barman $barman
+     */
+    public function removeBarman(\Cac\UserBundle\Entity\Barman $barman)
+    {
+        $this->barman->removeElement($barman);
+    }
+
+    /**
+     * Get barman
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getBarman()
+    {
+        return $this->barman;
     }
 }
