@@ -4,7 +4,11 @@
     <h1>Barman creation</h1>
 
     {% trans_default_domain 'FOSUserBundle' %}
-
+{% for flashMessage in app.session.flashbag.get('notice') %}
+    <div class="flash-notice">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
 <form action="{{ path('barman_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register col-xs-12 col-sm-12 col-md-12">
 
 	<div class="inscription center col-xs-6 col-sm-6 col-md-6">
@@ -23,7 +27,11 @@
 		<br>
 		{{ form_errors(form.email.second) }}
 		{{ form_widget(form.email.second) }}
-		
+		<br>
+		{{ form_label(form.bar) }}
+		<br>
+		{{ form_errors(form.bar) }}
+		{{ form_widget(form.bar) }}
 	</div>
 	<div class="inscription center col-xs-12 col-sm-12 col-md-12">
 		{{ form_label(form.plainPassword.first) }}
@@ -36,6 +44,7 @@
 		<br>
 		{{ form_errors(form.plainPassword.second) }}
 		{{ form_widget(form.plainPassword.second) }}
+
 
 		{{ form_widget(form._token) }}
 		<br>

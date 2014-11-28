@@ -13,6 +13,7 @@ namespace Cac\UserBundle\Controller;
 
 use FOS\UserBundle\FOSUserEvents;
 use FOS\UserBundle\Event\FormEvent;
+use Symfony\Component\HttpFoundation\Response;
 use FOS\UserBundle\Event\GetResponseUserEvent;
 use FOS\UserBundle\Event\FilterUserResponseEvent;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -32,6 +33,7 @@ class RegistrationController extends Controller
 {
     public function registerAction(Request $request)
     {
+
         /** @var $formFactory \FOS\UserBundle\Form\Factory\FactoryInterface */
         $formFactory = $this->get('fos_user.registration.form.factory');
         /** @var $userManager \FOS\UserBundle\Model\UserManagerInterface */
@@ -60,9 +62,16 @@ class RegistrationController extends Controller
 
             $userManager->updateUser($user);
 
-            if (null === $response = $event->getResponse()) {
+            if (null === $response = $event->getResponse() && strpos($request->getPathInfo(), "/barman/") !== 0) {
                 $url = $this->generateUrl('fos_user_registration_confirmed');
                 $response = new RedirectResponse($url);
+            }
+            elseif (strpos($request->getPathInfo(), "/barman/") === 0) {
+                $this->get('session')->getFlashBag()->add(
+                    'notice',
+                    'Le barman a était créé !'
+                );
+                $response = new Response('barman');
             }
 
             $dispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, new FilterUserResponseEvent($user, $request, $response));

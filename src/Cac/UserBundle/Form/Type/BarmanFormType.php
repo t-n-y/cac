@@ -5,10 +5,12 @@ namespace Cac\UserBundle\Form\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\Security\Core\SecurityContext;
 
 class BarmanFormType extends AbstractType
 {
     private $class;
+    // private $context;
 
     /**
      * @param string $class The User class name
@@ -16,10 +18,14 @@ class BarmanFormType extends AbstractType
     public function __construct($class)
     {
         $this->class = $class;
+        // $this->securityContext = $securityContext; SecurityContext $securityContext
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        // $user = $this->securityContext->getToken()->getUser();
+        // ldd($user);
+        $id = 5;
         $builder
             ->add('username', null, array('label' => 'Nom d\'utilisateur'))
             ->add('plainPassword', 'repeated', array(
@@ -37,6 +43,11 @@ class BarmanFormType extends AbstractType
                     'second_options' => array('label' => 'Confirmez votre e-mail'),
                     'invalid_message' => 'fos_user.email.mismatch',
             ))
+            ->add('bar', 'entity', array('class' => 'CacBarBundle:Bar', 'property' => 'name', 'attr' => array('placeholder' => 'Bar'),
+                'query_builder' => function(\Cac\BarBundle\Entity\BarRepository $er) use ($id) {
+                    return $er->getBarByAuthorId($id);
+                }
+            ));
         ;
     }
 

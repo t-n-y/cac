@@ -82,6 +82,16 @@ class Bigboss extends User
      */
     protected $roles;
 
+     /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        $this->createdBars = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->roles = array('ROLE_BIGBOSS');
+    }
+
     /**
      * Get id
      *
@@ -182,17 +192,6 @@ class Bigboss extends User
     public function getSiret()
     {
         return $this->siret;
-    }
-
-    
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        parent::__construct();
-        $this->createdBars = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->roles = array('ROLE_BIGBOSS');
     }
 
     /**
