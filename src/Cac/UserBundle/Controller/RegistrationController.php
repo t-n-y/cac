@@ -33,7 +33,6 @@ class RegistrationController extends Controller
 {
     public function registerAction(Request $request)
     {
-
         /** @var $formFactory \FOS\UserBundle\Form\Factory\FactoryInterface */
         $formFactory = $this->get('fos_user.registration.form.factory');
         /** @var $userManager \FOS\UserBundle\Model\UserManagerInterface */
@@ -52,6 +51,9 @@ class RegistrationController extends Controller
         }
 
         $form = $formFactory->createForm();
+
+        // ldd($form);
+
         $form->setData($user);
 
         $form->handleRequest($request);
@@ -62,18 +64,18 @@ class RegistrationController extends Controller
 
             $userManager->updateUser($user);
 
-            if (null === $response = $event->getResponse() && strpos($request->getPathInfo(), "/barman/") !== 0) {
-                $url = $this->generateUrl('fos_user_registration_confirmed');
-                $response = new RedirectResponse($url);
+            if (null === $response = $event->getResponse()) {
+                if (strpos($request->getPathInfo(), "/barman/") === false) {
+                    $url = $this->generateUrl('fos_user_registration_confirmed');
+                    $response = new RedirectResponse($url);
+                }
+                else
+                {
+                    $this->get('session')->getFlashBag()->add('notice','Le barman a était créé !');
+                    $response = new Response('barman');
+                }
             }
-            elseif (strpos($request->getPathInfo(), "/barman/") === 0) {
-                $this->get('session')->getFlashBag()->add(
-                    'notice',
-                    'Le barman a était créé !'
-                );
-                $response = new Response('barman');
-            }
-
+            
             $dispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
 
             return $response;

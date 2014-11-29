@@ -20,12 +20,5 @@
             <argument>%fos_user.model.user.class%</argument>
         </service>
 
-        <service id="cac.type.cac_barman_registration" class="Cac\UserBundle\Form\Type\BarmanFormType" scope="request">
-            <argument type="service" id="request"/>
-            <argument type="service" id="security.context"/>
-            <argument>%fos_user.model.user.class%</argument>
-            <tag name="form.type" alias="cac_barman_registration" />
-        </service>
-
     </services>
 </container>
