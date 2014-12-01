@@ -47,6 +47,7 @@ class BarType extends AbstractType
             ->add('patio', null, array('label' => 'Terrasse', 'required'  => false))
             ->add('smokingArea', null, array('label' => 'Espace fumeurs', 'required'  => false))
             ->add('breathalyser', null, array('label' => 'Alcotests gratuits', 'required'  => false))
+            ->add('description', null, array('label' => 'Description de votre établissement', 'required'  => false))
         ;
     }
     

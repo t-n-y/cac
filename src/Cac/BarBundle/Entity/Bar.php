@@ -29,6 +29,13 @@ class Bar
     private $name;
 
     /**
+     * @var text $description
+     *
+     * @ORM\Column(name="description", type="text", nullable=true)
+     */
+    private $description;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="adress", type="string", length=255)
@@ -772,5 +779,28 @@ class Bar
     public function getImages()
     {
         return $this->images;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return Bar
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 }
