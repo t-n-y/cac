@@ -339,6 +339,12 @@
 	padding: 0 20px;
 	font-size: 25px;
 	margin: 0px;
+	margin-top: 25px;
+	text-transform: uppercase;
+}
+
+.infoNameBar p{
+	margin-top: 30px;
 }
 
 .infoBar{
@@ -445,10 +451,10 @@ p.topPosition{
 }
 
 .contentSuperInfoBar{
-	height: 950px;
 	background-image: url('../img/fondFicheBar.png');
 	background-size: cover;
 	background-repeat: no-repeat;
+	padding-bottom: 30px;
 }
 
 .superInfoBar{
