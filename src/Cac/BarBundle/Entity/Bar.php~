@@ -181,8 +181,6 @@ class Bar
         $this->categories = new \Doctrine\Common\Collections\ArrayCollection();
         $this->creationDate = new \Datetime();
         $this->barman = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->comments = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->images = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -739,38 +737,5 @@ class Bar
     public function getBarman()
     {
         return $this->barman;
-    }
-
-    /**
-     * Add images
-     *
-     * @param \Cac\BarBundle\Entity\Image $images
-     * @return Bar
-     */
-    public function addImage(\Cac\BarBundle\Entity\Image $images)
-    {
-        $this->images[] = $images;
-
-        return $this;
-    }
-
-    /**
-     * Remove images
-     *
-     * @param \Cac\BarBundle\Entity\Image $images
-     */
-    public function removeImage(\Cac\BarBundle\Entity\Image $images)
-    {
-        $this->images->removeElement($images);
-    }
-
-    /**
-     * Get images
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getImages()
-    {
-        return $this->images;
     }
 }

@@ -8,12 +8,14 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Cac\BarBundle\Entity\Bar;
 use Cac\BarBundle\Entity\Comment;
 use Cac\BarBundle\Entity\Promotion;
+use Cac\BarBundle\Entity\Image;
 use Cac\BarBundle\Form\Type\BarType;
-use Cac\BarBundle\Form\Type\EvalType;
 use Cac\BarBundle\Form\Type\PromotionType;
+use Cac\BarBundle\Form\Type\ImageType;
 /**
  * Bar controller.
  *
@@ -119,7 +121,7 @@ class BarController extends Controller
     /**
      * Displays a form to edit an existing Bar entity.
      *
-     * @Route("/{id}/edit", name="bar_edit")
+     * @Route("/edit/{id}", name="bar_edit")
      * @Method("GET")
      * @Template()
      */
@@ -197,6 +199,82 @@ class BarController extends Controller
             'bar'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
+        );
+    }
+
+    /**
+    * Creates a form to upload an Image entity.
+    *
+    * @param Image $entity The entity
+    *
+    * @return \Symfony\Component\Form\Form The form
+    */
+    private function createUploadForm(Image $entity, $id)
+    {
+        $form = $this->createForm(new ImageType(), $entity, array(
+            'action' => $this->generateUrl('bar_save_image', array('id' => $id)),
+            'method' => 'PUT',
+        ));
+
+        $form->add('submit', 
+            'submit', 
+            array(
+                'label' => 'Ajouter'
+            )
+        );
+
+        return $form;
+    }
+
+    /**
+     * Form to upload images a Bar entity.
+     *
+     * @Route("/upload/{id}", name="bar_upload")
+     * @Method("GET")
+     * @Template()
+     */
+    public function uploadAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $bar = $em->getRepository('CacBarBundle:Bar')->find($id);
+        $image = new Image();
+
+        $form = $this->createUploadForm($image, $id);
+
+        return array(
+            'bar' => $bar,
+            'form'   => $form->createView()
+        );
+    }
+
+    /**
+     * Save an Image entity.
+     *
+     * @Route("/save/{id}", name="bar_save_image")
+     * @Method("POST")
+     * @Template("CacBarBundle:Bar:upload.html.twig")
+     */
+    public function saveImageAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $bar = $em->getRepository('CacBarBundle:Bar')->find($id);
+        $image = new Image();
+
+        if (!$bar) {
+            throw $this->createNotFoundException('L\'établissement demandé n\'existe pas.');
+        }
+
+        $form = $this->createUploadForm($image, $id);
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $em->flush();
+            //return $this->redirect($this->generateUrl('bar_show', array('id' => $id)));
+        }
+
+        return array(
+            'bar' => $bar,
+            'form'   => $form->createView()
         );
     }
 

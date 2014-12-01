@@ -1,0 +1,31 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}CacBarBundle:Bar:upload{% endblock %}
+{% block body %}
+
+
+	<div class="formBar col-xs-12 col-sm-12 col-md-12 noPadding">
+		<h1>Ajouter une photo</h1>
+		<div class="separation1"></div>
+		<div class="separation2"></div>
+	</div>
+	<form action="{{ path('bar_save_image', {'id': bar.id}) }}" {{ form_enctype(form) }} method="POST">
+		<div class="inscription center col-xs-12 col-sm-12 col-md-12">
+
+				{{ form_label(form.name) }}
+				<br>
+				{{ form_errors(form.name) }}
+				{{ form_widget(form.name) }}
+				<br><br>
+				{{ form_widget(form.file) }}
+				{{ form_widget(form.position) }}
+		    <div>
+		        <input type="submit" value="Ajouter">
+		    </div>
+		</div>
+	</form>
+	<div class="clear"></div>
+
+
+
+{% endblock %}
