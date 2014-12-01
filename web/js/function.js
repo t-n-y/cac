@@ -222,6 +222,18 @@ $('body').on("click", ".avis",function(){
   $('.information').css("margin-left" , "-150px");
 });
 
+$('.ticket').hover(function(){
+    $('.ticketPromotion').stop(true,true).show(500);
+  },function(){
+    $('.ticketPromotion').stop(true,true).hide(500);
+});
+
+$('.ticketVerre').hover(function(){
+    $('.ticketCode').stop(true,true).show(500);
+  },function(){
+    $('.ticketCode').stop(true,true).hide(500);
+});
+
 
 /***************************/
 
