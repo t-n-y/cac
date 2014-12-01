@@ -240,7 +240,7 @@ $('body').on("click", ".avis",function(){
 
 var nbImage = $( ".topPage img" ).length;
     var compteur = 0;
-    var annimationTime = 10000;   /******REGLER VITESSE DU SLIDER******/
+    var annimationTime = 5000;   /******REGLER VITESSE DU SLIDER******/
 
     $(".borderTopImage").animate({
     width: "100%"
@@ -251,7 +251,7 @@ var nbImage = $( ".topPage img" ).length;
 
           $(".borderTopImage").animate({
               width: "100%"
-          }, annimationTime-10);
+          }, annimationTime-100);
 
           
 
@@ -293,7 +293,7 @@ var nbImage = $( ".topPage img" ).length;
 
     var nbImageBar = $( ".topBar img" ).length;
     var compteurBar = 0;
-    var annimationTimeBar = 10000;   /******REGLER VITESSE DU SLIDER******/
+    var annimationTimeBar = 5000;   /******REGLER VITESSE DU SLIDER******/
 
 
    setInterval(function(){
