@@ -32,6 +32,12 @@
 	padding-left: 15px;
 }
 
+.italic{
+	font-family: "HelveticaNeue", Arial;
+  	font-weight: lighter;
+  	font-size: 15px;
+  	font-style: italic;
+}
 
 /*****************HEADER*****************/
 
@@ -415,6 +421,9 @@ p.topPosition{
 }
 
 
+.ticket{
+	width: 250px;
+}
 
 .ticketBarTop{
 	width: 250px;
@@ -617,6 +626,10 @@ p.topPosition{
 
 }
 
+.petitplus{
+	margin-top: 10px;
+}
+
 .dresscode{
 	position: absolute;
 	right: 0;
@@ -750,6 +763,11 @@ p.topPosition{
 	-moz-border-radius: 3px;
 	border-radius: 3px;
 	width: 150px;
+}
+
+.inscription textarea{
+	width: 430px;
+	height: 200px;
 }
 
  .boutton{

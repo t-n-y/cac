@@ -223,15 +223,15 @@ $('body').on("click", ".avis",function(){
 });
 
 $('.ticket').hover(function(){
-    $('.ticketPromotion').stop(true,true).show(500);
+    $('.ticketPromotion').stop(true,true).show(300);
   },function(){
-    $('.ticketPromotion').stop(true,true).hide(500);
+    $('.ticketPromotion').stop(true,true).hide(300);
 });
 
 $('.ticketVerre').hover(function(){
-    $('.ticketCode').stop(true,true).show(500);
+    $('.ticketCode').stop(true,true).show(300);
   },function(){
-    $('.ticketCode').stop(true,true).hide(500);
+    $('.ticketCode').stop(true,true).hide(300);
 });
 
 
@@ -301,7 +301,7 @@ var nbImage = $( ".topPage img" ).length;
 /*****************************************************************************/
 
 
-/*****************************************SLIDER HOME*************************/
+/*****************************************SLIDER Page Bar*************************/
 
     var nbImageBar = $( ".topBar img" ).length;
     var compteurBar = 0;
@@ -336,7 +336,7 @@ var nbImage = $( ".topPage img" ).length;
     },annimationTimeBar);
 
 
-$( ".topBar" ).mouseenter(function() {
+/*$( ".topBar" ).mouseenter(function() {
     setTimeout(function() {  
 
        $(".topBar").animate({
@@ -347,15 +347,37 @@ $( ".topBar" ).mouseenter(function() {
     },1000);
   });
   $( ".topBar" ).mouseleave(function() {
-    setTimeout(function() {  
+  
+    $(".topBar").animate({
+      height: "508px"
+    }, 300);
 
-       $(".topBar").animate({
-              height: "508px"
+  });*/
+
+$(document).ready(function() {
+$(".topBar").animate({
+      height: "508px"
+    }, 300);
+
+    var timer;
+    $(".topBar").hover(function() {
+        timer = setTimeout(function() {
+            $(".topBar").animate({
+              height: "600px"
           }, 300);
-                  
+        },1000);
+    },function() {
+        clearTimeout(timer);
+    });
 
-    },1000);
+    $( ".topBar" ).mouseleave(function() {
+  
+    $(".topBar").animate({
+      height: "508px"
+    }, 300);
+
   });
+});
 
 /*****************************************************************************/
 
