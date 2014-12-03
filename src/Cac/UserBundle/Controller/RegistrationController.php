@@ -52,8 +52,18 @@ class RegistrationController extends Controller
 
         $form = $formFactory->createForm();
 
-        // ldd($form);
-
+        if (strpos($request->getPathInfo(), "/barman/") !== false) {
+            $idUser = $this->container->get('security.context')->getToken()->getUser()->getId();
+            $form->add('bar', 'entity', array('class' => 'CacBarBundle:Bar', 'property' => 'name', 'attr' => array('placeholder' => 'Bar'),
+                'query_builder' => function (\Cac\BarBundle\Entity\BarRepository $repository) use ($idUser)
+                             {
+                                 return $repository->createQueryBuilder('b')
+                                        ->where('b.author = :id')
+                                        ->setParameter(':id', $idUser);
+                             }
+            ));
+        }
+               
         $form->setData($user);
 
         $form->handleRequest($request);
@@ -68,6 +78,7 @@ class RegistrationController extends Controller
                 if (strpos($request->getPathInfo(), "/barman/") === false) {
                     $url = $this->generateUrl('fos_user_registration_confirmed');
                     $response = new RedirectResponse($url);
+                    $dispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
                 }
                 else
                 {
@@ -76,8 +87,6 @@ class RegistrationController extends Controller
                 }
             }
             
-            $dispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
-
             return $response;
         }
 

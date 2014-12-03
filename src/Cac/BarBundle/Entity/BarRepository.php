@@ -12,12 +12,4 @@ use Doctrine\ORM\EntityRepository;
  */
 class BarRepository extends EntityRepository
 {
-	public function getBarByAuthorId($id) {
-	    $qb=$this->createQueryBuilder('m');
-	    $qb->from('CacBarBundle:Bar', 'b')
-	    ->where('b.author = :id')                
-	    ->setParameter('id', $id)
-	    ->getQuery()->getResult();
-		return $qb;
-	}
 }
