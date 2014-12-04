@@ -3,15 +3,27 @@
 {% block title %}CacBarBundle:Bar:index{% endblock %}
 
 {% block body %}
-<h1>Welcome to the Bar:index page</h1>
+
+<div class="topListBar col-xs-12 col-sm-12 col-md-12 noPadding">
+			<img src="{{asset('img/accueil.png')}}" alt="">
+			<img src="{{asset('img/pershing.png')}}" alt="">
+			<img src="{{asset('img/fondFicheBar.png')}}" alt="">
+			<div class="infoNameBar">
+				
+			</div>
+</div>
+<div class="barList col-xs-12 col-sm-12 col-md-12 noPadding">
 {% for bar in bars %}
-	<ul>
-		<li>{{ bar.name }}</li>
-		<li>{{ bar.adress }}</li>
-		<li>{{ bar.town }}</li>
-		<li><a href="{{ path('bar_show', { id : bar.id }) }}">Consulter</a></li>
-	</ul>
+	<div class="barInList col-xs-3 col-sm-3 col-md-3 noPadding">
+	<img src="{{asset('img/accueil.png')}}" alt="">
+		<a href="{{ path('bar_show', { id : bar.id }) }}"><div class="shadowbarInList col-xs-12 col-sm-12 col-md-12">
+			<h3 id="firstWord{{ bar.id }}">{{ bar.name }}</h3>
+		</div></a>
+	</div>
+
 {% endfor %}
 
+</div>
 
+<div class="clear"></div>
 {% endblock %}

@@ -356,14 +356,14 @@ var nbImage = $( ".topPage img" ).length;
 
 $(document).ready(function() {
 $(".topBar").animate({
-      height: "508px"
+      height: "400px"
     }, 300);
 
     var timer;
     $(".topBar").hover(function() {
         timer = setTimeout(function() {
             $(".topBar").animate({
-              height: "600px"
+              height: "550px"
           }, 300);
         },1000);
     },function() {
@@ -373,13 +373,73 @@ $(".topBar").animate({
     $( ".topBar" ).mouseleave(function() {
   
     $(".topBar").animate({
-      height: "508px"
+      height: "400px"
     }, 300);
 
   });
 });
 
-/*****************************************************************************/
+/*********************************************************************************/
 
-  
+/*****************************************SLIDER Page Bar*************************/
+
+    var nbImageListBar = $( ".topListBar img" ).length;
+    var compteurListBar = 0;
+    var annimationTimeListBar = 5000;   /******REGLER VITESSE DU SLIDER******/
+
+
+   setInterval(function(){
+
+        
+        
+        $($(".topListBar img")[compteurListBar]).fadeOut(300);
+        $($(".topListBar img")[compteurListBar]).removeClass("current");
+        $($(".topListBar img")[compteurListBar +1]).addClass("current");
+        $($(".topListBar img")[compteurListBar +1]).fadeIn(300);
+        
+
+        compteurListBar ++;
+
+        if($( ".topListBar img" ).last().hasClass( "current" )){ 
+
+                setTimeout(function() {  
+
+                    compteurListBar = 0;
+                   $(".topListBar img").fadeIn(300);
+                  
+
+                },annimationTimeListBar);
+
+            }
+            
+
+    },annimationTimeListBar);
+
+/********************************************************************************/
+
+
+/**********************************Page Show Bar*********************************/
+$.fn.firstWord = function() {
+  var text = this.text().trim().split(" ");
+  var first = text.shift();
+  this.html((text.length > -1 ? "<span class='firstWords'>"+ first + "</span> " : first) + text.join(" "));
+};
+
+for(var i = 0; i<1000; i++){
+  $("#firstWord"+[i]).firstWord();
+}
+
+
+
+
+$(".barInList").mouseenter(function(){
+    $(this).find('.shadowbarInList h3').stop(true,true).animate({marginBottom:"25px"});
+  });
+  $(".barInList").mouseleave(function(){
+    $(this).find('.shadowbarInList h3').stop(true,true).animate({marginBottom:"10px"});
+
+  });
+
+
+/********************************************************************************/
 
