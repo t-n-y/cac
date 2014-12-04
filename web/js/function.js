@@ -336,24 +336,6 @@ var nbImage = $( ".topPage img" ).length;
     },annimationTimeBar);
 
 
-/*$( ".topBar" ).mouseenter(function() {
-    setTimeout(function() {  
-
-       $(".topBar").animate({
-              height: "600px"
-          }, 300);
-                  
-
-    },1000);
-  });
-  $( ".topBar" ).mouseleave(function() {
-  
-    $(".topBar").animate({
-      height: "508px"
-    }, 300);
-
-  });*/
-
 $(document).ready(function() {
 $(".topBar").animate({
       height: "400px"

@@ -51,13 +51,14 @@
 }
 
 .navbar-afterscroll {
-	background-color: #fff;
+	background-color: rgba(255,255,255,0.8);
 	border: 0px solid;
 	left: 0;
     position: fixed;
     right: 0;
     z-index: 1030;
     top: -150px;
+    color: #000;
 }
 
 .logo-afterscroll img {
@@ -68,6 +69,7 @@
 	width:150px;
 	margin: auto;
 	position: relative;
+	text-align: center;
 }
 
 .logoradius{
@@ -93,7 +95,7 @@
 }
 
 .navbar-default .navbar-nav > li > a {
-	color: #000;
+	color: #323232;
 }
 
 .navbar-nav > li {
@@ -103,17 +105,18 @@
 .navbar-nav > li > a{
 	padding-top: 30px;
 	padding-bottom: 26px;
-	border-bottom: 4px solid #fff;
+	border-bottom: 4px solid rgba(255,255,255,0);
 }
 
 .navbar-afterscroll .navbar-nav > li > a{
 	padding-top: 15px;
 	padding-bottom: 13px;
+	color: #323232;
 }
 
 .navbar-nav > li > a:hover{
 	border-bottom: 4px solid #5ac4d4;
-
+	background-color: rgba(255,255,255,0);
 }
 
 
@@ -861,6 +864,21 @@ p.pCreez{
 	display: block;
 }
 
+.headerList{
+	background-color: #5ac4d4;
+	color: #fff;
+	height: 60px;
+	text-align: center;
+	font-family: "HelveticaNeue-Regular", Arial;
+  	font-weight: normal;
+  	padding-top: 20px;
+  	cursor: pointer;
+}
+
+.menuHeaderList:hover{
+	text-decoration: underline;
+}
+
 
 .barList{
 	margin-top: 20px;
@@ -942,6 +960,10 @@ p.pCreez{
 }
 
 @media (max-width: 767px) {
+
+	.mainContainer {
+		padding-top: 50px;
+	}
 
 	.barInList{
 
