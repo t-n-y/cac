@@ -39,6 +39,17 @@ class BarController extends Controller
     }
 
     /**
+     * @Route("/abonnement/{id}", name="bars_abonnement")
+     * @Template()
+     */
+    public function abonnementAction($id)
+    {
+        return array(
+                
+            );    
+    }
+
+    /**
     * Creates a form to create a Bar entity.
     *
     * @param Bar $entity The entity
