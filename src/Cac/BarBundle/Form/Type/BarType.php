@@ -47,6 +47,10 @@ class BarType extends AbstractType
             ->add('patio', null, array('label' => 'Terrasse', 'required'  => false))
             ->add('smokingArea', null, array('label' => 'Espace fumeurs', 'required'  => false))
             ->add('breathalyser', null, array('label' => 'Alcotests gratuits', 'required'  => false))
+            //->add('babyfoot', null, array('label' => 'Baby Foot', 'required'  => false))
+            //->add('billard', null, array('label' => 'Billard', 'required'  => false))
+            //->add('flipper', null, array('label' => 'Flipper', 'required'  => false))
+            //->add('canape', null, array('label' => 'Canapé', 'required'  => false))
             ->add('description', null, array('label' => 'Description de votre établissement', 'required'  => false))
         ;
     }
