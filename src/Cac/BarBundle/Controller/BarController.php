@@ -15,7 +15,7 @@ use Cac\BarBundle\Entity\Promotion;
 use Cac\BarBundle\Entity\Image;
 use Cac\BarBundle\Form\Type\BarType;
 use Cac\BarBundle\Form\Type\PromotionType;
-use Cac\BarBundle\Form\Type\ImageType;
+use Cac\BarBundle\Form\Type\BarEditType;
 /**
  * Bar controller.
  *
@@ -85,7 +85,6 @@ class BarController extends Controller
     {
         $entity = new Bar();
         $form   = $this->createCreateForm($entity);
-
         return array(
             'bar' => $entity,
             'form'   => $form->createView(),
@@ -120,13 +119,44 @@ class BarController extends Controller
             $em->persist($promotion);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('bar_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('bar_new_part2', array('id' => $entity->getId())));
         }
 
         return array(
             'bar' => $entity,
             'form'   => $form->createView(),
         );
+    }
+
+    /**
+     * Displays a form to create a new Article entity.
+     *
+     * @Route("/{id}/new-part2", name="bar_new_part2")
+     * @Method({"GET","POST"})
+     * @Template()
+     */
+    public function newPart2Action(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('CacBarBundle:Bar')->find($id);
+
+        $form = $this->createFormBuilder($entity)
+            ->add('file')
+            ->add("Let's go !", 'submit')
+            ->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $entity->preUpload();
+            $em->persist($entity);
+            $em->flush();
+            return $this->redirect($this->generateUrl('bar_show', array('id' => $id)));
+        }
+
+        return $this->render('CacBarBundle:Bar:newPart2.html.twig', array(
+            'form' => $form->createView(),
+        ));
     }
 
     /**
@@ -165,7 +195,7 @@ class BarController extends Controller
     */
     private function createEditForm(Bar $entity)
     {
-        $form = $this->createForm(new BarType(), $entity, array(
+        $form = $this->createForm(new BarEditType(), $entity, array(
             'action' => $this->generateUrl('bar_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));

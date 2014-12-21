@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class BarType extends AbstractType
+class BarEditType extends AbstractType
 {
         /**
      * @param FormBuilderInterface $builder
@@ -52,6 +52,7 @@ class BarType extends AbstractType
             ->add('flipper', null, array('label' => 'Flipper', 'required'  => false))
             ->add('canape', null, array('label' => 'Canapé', 'required'  => false))
             ->add('description', null, array('label' => 'Description de votre établissement', 'required'  => false))
+            ->add('file')
         ;
     }
     
