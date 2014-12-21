@@ -48,45 +48,50 @@
 			</div>
 			<br>
 			<br>
-			<div class="border">
+			<div class="border dressCodeBar">
 				
-				{{ form_label(form.dressCode) }}
+				<!--{{ form_label(form.dressCode) }}-->
 				<br>
 
-				<div class="choice">
-					Décontracté
-				</div>
-				<div class="choice">
-					Chic
+				<div class="btn-group width100" data-toggle="buttons">
+				  <label class="btn btn-primary active choice">
+				    <input type="radio" name="cac_barbundle_bar[dressCode]" id="cac_barbundle_bar_dressCode" value="1" checked> Chic
+				  </label>
+				  <label class="btn btn-primary choice">
+				    <input type="radio" name="cac_barbundle_bar[dressCode]" id="cac_barbundle_bar_dressCode" value="2"> Décontracté
+				  </label>
 				</div>
 
-				{{ form_errors(form.dressCode) }}
-				{{ form_widget(form.dressCode) }}
+				<!--<div class="choice" value="1">
+					Décontracté
+				</div>
+				<div class="choice" value="2">
+					Chic
+				</div>-->
+
+				<!--{{ form_errors(form.dressCode) }}
+				{{ form_widget(form.dressCode) }}-->
+				<div class="clear"></div>
 			</div>
 			<br>
 			<br>
 			<div class="border">
-				{{ form_label(form.priceRange) }}
-				<br>
 
-				<div class="choice">
-					5€
+
+				<div class="btn-group width100" data-toggle="buttons">
+				  <label class="btn btn-primary active choice">
+				    <input type="radio" name="cac_barbundle_bar[priceRange]" id="cac_barbundle_bar_priceRange_0" value="1" checked> 5€
+				  </label>
+				  <label class="btn btn-primary choice">
+				    <input type="radio" name="cac_barbundle_bar[priceRange]" id="cac_barbundle_bar_priceRange_1" value="2"> 10€
+				  </label>
+				  <label class="btn btn-primary choice">
+				    <input type="radio" name="cac_barbundle_bar[priceRange]" id="cac_barbundle_bar_priceRange_2" value="3"> 15€
+				  </label>
+				  <label class="btn btn-primary choice">
+				    <input type="radio" name="cac_barbundle_bar[priceRange]" id="cac_barbundle_bar_priceRange_3" value="4"> +15€
+				  </label>
 				</div>
-				<div class="choice">
-					10€
-				</div>
-				<div class="choice">
-					15€
-				</div>
-				<div class="choice">
-					20€
-				</div>
-				<div class="clear"></div>
-				<div class="choice noLeft">
-					+ 20€
-				</div>
-				{{ form_errors(form.priceRange) }}
-				{{ form_widget(form.priceRange) }}
 			</div>
 		</div>
 
@@ -138,7 +143,24 @@
 			<h2>Vos petits plus à vous</h2> 
 
 			<div class="contentPetitPlus">
-				<div class="petitplus">
+				<div class="btn-group width100" data-toggle="buttons">
+				  <label class="btn btn-primary-checkbox petitplus">
+				    <input type="checkbox" name="cac_barbundle_bar[smokingArea]" id="cac_barbundle_bar_smokingArea" value="1"> Espace fumeur
+				  </label>
+				  <label class="btn btn-primary-checkbox petitplus">
+				    <input type="checkbox" name="cac_barbundle_bar[handicappedAccess]" id="cac_barbundle_bar_handicappedAccess" value="1"> Accès handicapés
+				  </label>
+				  <label class="btn btn-primary-checkbox petitplus">
+				    <input type="checkbox" name="cac_barbundle_bar[patio]" id="cac_barbundle_bar_patio" value="1"> Terrasse
+				  </label>
+				  <label class="btn btn-primary-checkbox petitplus">
+				    <input type="checkbox" name="cac_barbundle_bar[breathalyser]" id="cac_barbundle_bar_breathalyser" value="1"> Alcotests gratuits
+				  </label>
+				  <label class="btn btn-primary-checkbox petitplus">
+				    <input type="checkbox" name="cac_barbundle_bar[valet]" id="cac_barbundle_bar_valet" value="1"> Voiturier
+				  </label>
+				</div>
+				<!--<div class="petitplus">
 					Espace fumeur
 				</div>
 
@@ -173,12 +195,12 @@
 				<div class="petitplus">
 					Canapés
 				</div>
-				<div class="clear"></div>
+				<div class="clear"></div>-->
 			</div>
 			
 
 
-			{{ form_label(form.smokingArea) }}
+			<!--{{ form_label(form.smokingArea) }}
 			{{ form_errors(form.smokingArea) }}
 			{{ form_widget(form.smokingArea) }}
 
@@ -200,7 +222,10 @@
 
 			{{ form_label(form.valetCost) }}
 			{{ form_errors(form.valetCost) }}
-			{{ form_widget(form.valetCost) }}
+			{{ form_widget(form.valetCost) }}-->
+
+			
+			
 			<br><br><br>
 			{{ form_label(form.description) }}
 			<p class="italic">Utiliser un ton cool, chaleureux, qui donne envie de venir chez vous</p>
