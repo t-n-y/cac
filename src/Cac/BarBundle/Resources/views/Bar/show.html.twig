@@ -3,6 +3,7 @@
 {% block title %}CacBarBundle:Bar:show{% endblock %}
 
 {% block body %}
+<img src="{{ asset('uploads/bar/'~bar.path) }}">
 		<div class="topBar col-xs-12 col-sm-12 col-md-12 noPadding">
 			<img src="{{asset('img/accueil.png')}}" alt="">
 			<img src="{{asset('img/pershing.png')}}" alt="">
