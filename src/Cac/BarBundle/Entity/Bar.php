@@ -164,6 +164,34 @@ class Bar
     private $breathalyser;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="babyfoot", type="boolean", nullable=true)
+     */
+    private $babyfoot;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="billard", type="boolean", nullable=true)
+     */
+    private $billard;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="flipper", type="boolean", nullable=true)
+     */
+    private $flipper;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="canape", type="boolean", nullable=true)
+     */
+    private $canape;
+
+    /**
      * @ORM\OneToMany(targetEntity="Cac\BarBundle\Entity\Comment", mappedBy="bar")
      */
     private $comments;
@@ -177,11 +205,6 @@ class Bar
      * @ORM\OneToMany(targetEntity="Cac\UserBundle\Entity\Barman", mappedBy="bar")
      */
     protected $barman;
-
-    /**
-     * @ORM\OneToMany(targetEntity="Cac\BarBundle\Entity\Image", mappedBy="bar")
-     */
-    private $images;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -860,5 +883,97 @@ class Bar
         if ($file = $this->getAbsolutePath()) {
             unlink($file);
         }
+    }
+
+    /**
+     * Set babyfoot
+     *
+     * @param boolean $babyfoot
+     * @return Bar
+     */
+    public function setBabyfoot($babyfoot)
+    {
+        $this->babyfoot = $babyfoot;
+
+        return $this;
+    }
+
+    /**
+     * Get babyfoot
+     *
+     * @return boolean 
+     */
+    public function getBabyfoot()
+    {
+        return $this->babyfoot;
+    }
+
+    /**
+     * Set billard
+     *
+     * @param boolean $billard
+     * @return Bar
+     */
+    public function setBillard($billard)
+    {
+        $this->billard = $billard;
+
+        return $this;
+    }
+
+    /**
+     * Get billard
+     *
+     * @return boolean 
+     */
+    public function getBillard()
+    {
+        return $this->billard;
+    }
+
+    /**
+     * Set flipper
+     *
+     * @param boolean $flipper
+     * @return Bar
+     */
+    public function setFlipper($flipper)
+    {
+        $this->flipper = $flipper;
+
+        return $this;
+    }
+
+    /**
+     * Get flipper
+     *
+     * @return boolean 
+     */
+    public function getFlipper()
+    {
+        return $this->flipper;
+    }
+
+    /**
+     * Set canape
+     *
+     * @param boolean $canape
+     * @return Bar
+     */
+    public function setCanape($canape)
+    {
+        $this->canape = $canape;
+
+        return $this;
+    }
+
+    /**
+     * Get canape
+     *
+     * @return boolean 
+     */
+    public function getCanape()
+    {
+        return $this->canape;
     }
 }
