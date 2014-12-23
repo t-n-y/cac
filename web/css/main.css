@@ -4,6 +4,10 @@
 	padding: 0px;
 }
 
+.padding10{
+	padding-top: 10px;
+}
+
 .clear{
 	clear:both;
 }
@@ -602,14 +606,16 @@ p.topPosition{
 	
 	text-align: center;
 	color: #000;
-	height : 50px;
+	height : 40px;
+	margin-bottom: 15px;
 }
 
 .vignettePetitPlusPrix{
 	
 	text-align: center;	
 	color: #000;
-	height : 50px;
+	height : 40px;
+	margin-bottom: 15px;
 }
 
 .vignettePetitPlus:nth-child(1){
@@ -618,13 +624,22 @@ p.topPosition{
 
 .vignettePetitPlusContent{
 	width: 90%;
+	height: 40px;
 	margin: auto;
 	background-color: rgba(255,255,255,0.4);
 }
 
+.vignettePetitPlusPrixContent{
+	width: 40px;
+	height: 40px;
+	margin: auto;
+	background-color: rgba(255,255,255,0.4);
+	float: left;
+}
+
 .petitplusInfoBar img{
 	float: left;
-	
+	padding-left: 10px;	
 }
 
 .petitplusInfoBar p{
@@ -656,8 +671,7 @@ p.topPosition{
 
 
 .vignettePetitPlusPrix p{
-	margin: 0;
-	padding:12px;
+	margin-top: 7px;
 	font-size: 18px
 }
 
@@ -841,7 +855,7 @@ p.pCreez{
 
 .btn-primary-checkbox{
 	width: 18% !important;
-	margin-top: 0px !important;
+	margin-top: 15px !important;
 	margin-left: 2% !important; 
 	background-color: #fff !important;
 	color: #4d4d4d !important;

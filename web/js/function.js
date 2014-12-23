@@ -307,6 +307,8 @@ var nbImage = $( ".topPage img" ).length;
     var compteurBar = 0;
     var annimationTimeBar = 5000;   /******REGLER VITESSE DU SLIDER******/
 
+ if(nbImageBar !=1){
+
 
    setInterval(function(){
 
@@ -334,6 +336,7 @@ var nbImage = $( ".topPage img" ).length;
             
 
     },annimationTimeBar);
+   }
 
 
 $(document).ready(function() {
@@ -363,41 +366,7 @@ $(".topBar").animate({
 
 /*********************************************************************************/
 
-/*****************************************SLIDER Page Bar*************************/
 
-    var nbImageListBar = $( ".topListBar img" ).length;
-    var compteurListBar = 0;
-    var annimationTimeListBar = 5000;   /******REGLER VITESSE DU SLIDER******/
-
-
-   setInterval(function(){
-
-        
-        
-        $($(".topListBar img")[compteurListBar]).fadeOut(300);
-        $($(".topListBar img")[compteurListBar]).removeClass("current");
-        $($(".topListBar img")[compteurListBar +1]).addClass("current");
-        $($(".topListBar img")[compteurListBar +1]).fadeIn(300);
-        
-
-        compteurListBar ++;
-
-        if($( ".topListBar img" ).last().hasClass( "current" )){ 
-
-                setTimeout(function() {  
-
-                    compteurListBar = 0;
-                   $(".topListBar img").fadeIn(300);
-                  
-
-                },annimationTimeListBar);
-
-            }
-            
-
-    },annimationTimeListBar);
-
-/********************************************************************************/
 
 
 /**********************************Page Show Bar*********************************/
