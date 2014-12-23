@@ -15,7 +15,7 @@ use Cac\BarBundle\Entity\Promotion;
 use Cac\BarBundle\Entity\Image;
 use Cac\BarBundle\Form\Type\BarType;
 use Cac\BarBundle\Form\Type\PromotionType;
-use Cac\BarBundle\Form\Type\ImageType;
+use Cac\BarBundle\Form\Type\BarEditType;
 /**
  * Bar controller.
  *
@@ -85,7 +85,6 @@ class BarController extends Controller
     {
         $entity = new Bar();
         $form   = $this->createCreateForm($entity);
-
         return array(
             'bar' => $entity,
             'form'   => $form->createView(),
@@ -120,13 +119,44 @@ class BarController extends Controller
             $em->persist($promotion);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('bar_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('bar_new_part2', array('id' => $entity->getId())));
         }
 
         return array(
             'bar' => $entity,
             'form'   => $form->createView(),
         );
+    }
+
+    /**
+     * Displays a form to create a new Article entity.
+     *
+     * @Route("/{id}/new-part2", name="bar_new_part2")
+     * @Method({"GET","POST"})
+     * @Template()
+     */
+    public function newPart2Action(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('CacBarBundle:Bar')->find($id);
+
+        $form = $this->createFormBuilder($entity)
+            ->add('file')
+            ->add("Let's go !", 'submit')
+            ->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $entity->preUpload();
+            $em->persist($entity);
+            $em->flush();
+            return $this->redirect($this->generateUrl('bar_show', array('id' => $id)));
+        }
+
+        return $this->render('CacBarBundle:Bar:newPart2.html.twig', array(
+            'form' => $form->createView(),
+        ));
     }
 
     /**
@@ -165,7 +195,7 @@ class BarController extends Controller
     */
     private function createEditForm(Bar $entity)
     {
-        $form = $this->createForm(new BarType(), $entity, array(
+        $form = $this->createForm(new BarEditType(), $entity, array(
             'action' => $this->generateUrl('bar_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
@@ -202,6 +232,7 @@ class BarController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+            $entity->setEditedAt(new \DateTime('now'));
             $em->flush();
             return $this->redirect($this->generateUrl('bar_show', array('id' => $id)));
         }
@@ -210,82 +241,6 @@ class BarController extends Controller
             'bar'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        );
-    }
-
-    /**
-    * Creates a form to upload an Image entity.
-    *
-    * @param Image $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
-    private function createUploadForm(Image $entity, $id)
-    {
-        $form = $this->createForm(new ImageType(), $entity, array(
-            'action' => $this->generateUrl('bar_save_image', array('id' => $id)),
-            'method' => 'PUT',
-        ));
-
-        $form->add('submit', 
-            'submit', 
-            array(
-                'label' => 'Ajouter'
-            )
-        );
-
-        return $form;
-    }
-
-    /**
-     * Form to upload images a Bar entity.
-     *
-     * @Route("/upload/{id}", name="bar_upload")
-     * @Method("GET")
-     * @Template()
-     */
-    public function uploadAction($id)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $bar = $em->getRepository('CacBarBundle:Bar')->find($id);
-        $image = new Image();
-
-        $form = $this->createUploadForm($image, $id);
-
-        return array(
-            'bar' => $bar,
-            'form'   => $form->createView()
-        );
-    }
-
-    /**
-     * Save an Image entity.
-     *
-     * @Route("/save/{id}", name="bar_save_image")
-     * @Method("POST")
-     * @Template("CacBarBundle:Bar:upload.html.twig")
-     */
-    public function saveImageAction(Request $request, $id)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $bar = $em->getRepository('CacBarBundle:Bar')->find($id);
-        $image = new Image();
-
-        if (!$bar) {
-            throw $this->createNotFoundException('L\'établissement demandé n\'existe pas.');
-        }
-
-        $form = $this->createUploadForm($image, $id);
-        $form->handleRequest($request);
-
-        if ($form->isValid()) {
-            $em->flush();
-            //return $this->redirect($this->generateUrl('bar_show', array('id' => $id)));
-        }
-
-        return array(
-            'bar' => $bar,
-            'form'   => $form->createView()
         );
     }
 
@@ -384,7 +339,7 @@ class BarController extends Controller
         $comment->setBar($entity);
         $comment->setComment($text);
         $comment->setNote($note);
-        $comment->setCreatedAt(new DateTime());
+        $comment->setCreatedAt(new \DateTime('now'));
         $em->persist($comment);
         $em->flush();
 
