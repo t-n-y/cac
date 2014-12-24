@@ -296,7 +296,7 @@ class BarController extends Controller
      * Finds and displays a Bar entity.
      *
      * @Route("/{id}", name="bar_show")
-     * @Method("GET")
+     * @Method({"GET", "POST"})
      * @Template()
      */
     public function showAction($id)
