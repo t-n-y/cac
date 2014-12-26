@@ -256,7 +256,7 @@ var nbImage = $( ".topPage img" ).length;
 
     $(".borderTopImage").animate({
     width: "100%"
-  }, annimationTime);
+  }, annimationTime-100);
 
     setInterval(function(){
         $(".borderTopImage").css("width","0%");
@@ -265,7 +265,6 @@ var nbImage = $( ".topPage img" ).length;
               width: "100%"
           }, annimationTime-100);
 
-          
 
        },annimationTime);
 
