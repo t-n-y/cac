@@ -29,7 +29,9 @@
         {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
           <li class="pull-right"><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
           <li class="pull-right"><a href="{{ path('fos_user_profile_show') }}">{{ app.user.username }}</a></li>
-          <li class="pull-right"><a href="{{ path('bar_new') }}">Créer un bar</a></li>
+          {% if is_granted('ROLE_BIGBOSS') %}
+            <li class="pull-right"><a href="{{ path('bar_new') }}">Créer un bar</a></li>
+          {% endif %}
         {% else %}
         <li class="pull-right"><a class="pull-right" href="{{ path('fos_user_registration_register') }}">Créer un compte</a><p class="pull-right">|</p> <a class="pull-right" href="{{ path('fos_user_security_login') }}">Connexion</a></li>
         {% endif %}
