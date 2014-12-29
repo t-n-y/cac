@@ -31,7 +31,8 @@
 	</div>
 
 	{{ form(form) }}
-	<img id="blah" src="#" alt="your image" />
 
+	<img id="blah" src="#" alt="your image" />
+	<a href="{{ path("bar_show", {'id': id }) }}">Passer cette étape</a>
 
 {% endblock %}

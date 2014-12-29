@@ -156,6 +156,7 @@ class BarController extends Controller
 
         return $this->render('CacBarBundle:Bar:newPart2.html.twig', array(
             'form' => $form->createView(),
+            'id' => $id,
         ));
     }
 
