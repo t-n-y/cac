@@ -20,6 +20,12 @@ class BarType extends AbstractType
             ->add('zipcode', null, array('label' => 'Code Postal'))
             ->add('town', null, array('label' => 'Ville'))
             ->add('country', null, array('label' => 'Pays'))
+            ->add('country', 'choice', array(
+                'label' => 'Pays',
+                'choices'   => array('france' => 'France'),
+                'required'  => true,
+                )
+            )
             ->add('schedule', 'hidden', array('label' => 'Horaires'))
             ->add('access', 'choice', array(
                 'label' => 'Accès',
