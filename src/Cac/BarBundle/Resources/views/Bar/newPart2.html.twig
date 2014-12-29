@@ -2,23 +2,7 @@
 
 {% block body %}
 
-<script type="text/javascript">
-	function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            
-            reader.onload = function (e) {
-                $('#blah').attr('src', e.target.result);
-            }
-            
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-    
-    $("#form_file").change(function(){
-        readURL(this);
-    });
- </script>
+
 
 	<div class="formBar col-xs-12 col-sm-12 col-md-12 noPadding">
 		<h1>Vendez du rêve</h1>
@@ -29,10 +13,19 @@
 		<p>Vos photos</p>
 
 	</div>
+	<div class="file_button_container">
 
-	{{ form(form) }}
+		{{ form_start(form) }}
+    		{{ form_errors(form) }}
 
-	<img id="blah" src="#" alt="your image" />
+    		    {{ form_row(form.file) }}
+
+    		    <img id="blah" src="#" alt="Votre image" />
+
+    	{{ form_end(form) }}
+
+	 </div>
+
 	<a href="{{ path("bar_show", {'id': id }) }}">Passer cette étape</a>
 
 {% endblock %}

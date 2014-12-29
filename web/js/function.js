@@ -393,3 +393,24 @@ $(".barInList").mouseenter(function(){
 
 /********************************************************************************/
 
+
+
+
+  function readURL(input) {
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            
+            reader.onload = function (e) {
+                $('#blah').attr('src', e.target.result);
+            }
+            
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    
+    $("#form_file").change(function(){
+        readURL(this);
+        $(".file_button_container img").stop(true,true).show(300);
+    });
+

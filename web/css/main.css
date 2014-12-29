@@ -51,6 +51,47 @@
 	width: 100%;
 }
 
+
+.file_button_container{
+   overflow: hidden;
+   position: relative;
+   text-align: center;
+}
+
+.file_button_container img{
+	   display: none;
+	   margin-top: 70px;
+	}
+    
+.file_button_container input {
+   opacity: 1;
+   position: absolute;
+    top: -40px;
+    left: 0px;
+}
+
+.file_button_container input:focus {
+	outline: 0;
+}
+
+.file_button_container input::before {
+   content: "+ Ajouter une photo";
+   color: #56a946;
+    height: 10px;
+    width: 110%;
+    position: absolute;
+    top: 70px;
+    left: 100px;
+    z-index: 6;
+    font-size: 15px;
+    cursor: pointer;
+
+}
+
+.file_button_container button[type=submit] {
+	margin-top: 10px;
+}
+
 /*****************HEADER*****************/
 
 .navbar-default{
