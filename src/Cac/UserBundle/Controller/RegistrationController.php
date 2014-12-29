@@ -63,11 +63,10 @@ class RegistrationController extends Controller
                              }
             ));
         }
-               
+              
         $form->setData($user);
 
         $form->handleRequest($request);
-
         if ($form->isValid()) {
             $event = new FormEvent($form, $request);
             $dispatcher->dispatch(FOSUserEvents::REGISTRATION_SUCCESS, $event);
@@ -89,10 +88,17 @@ class RegistrationController extends Controller
             
             return $response;
         }
-
-        return $this->render('CacUserBundle:Registration:register.html.twig', array(
-            'form' => $form->createView(),
-        ));
+        if (strpos($request->getPathInfo(), "/barman/") !== false) {
+            return $this->render('CacUserBundle:Barman:register.html.twig', array(
+                'form' => $form->createView(),
+            ));
+        }
+        else
+        {
+            return $this->render('CacUserBundle:Registration:register.html.twig', array(
+                'form' => $form->createView(),
+            ));
+        }
     }
 
     /**
