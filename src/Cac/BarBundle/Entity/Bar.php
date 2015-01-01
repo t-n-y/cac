@@ -52,6 +52,14 @@ class Bar
      * @var string
      *
      * @Assert\NotBlank()
+     * @ORM\Column(name="region", type="string", length=255)
+     */
+    private $region;
+
+    /**
+     * @var string
+     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="town", type="string", length=255)
      */
     private $town;
@@ -988,5 +996,51 @@ class Bar
     public function getCanape()
     {
         return $this->canape;
+    }
+
+    /**
+     * Set region
+     *
+     * @param string $region
+     * @return Bar
+     */
+    public function setRegion($region)
+    {
+        $this->region = $region;
+
+        return $this;
+    }
+
+    /**
+     * Get region
+     *
+     * @return string 
+     */
+    public function getRegion()
+    {
+        return $this->region;
+    }
+
+    /**
+     * Set path
+     *
+     * @param string $path
+     * @return Bar
+     */
+    public function setPath($path)
+    {
+        $this->path = $path;
+
+        return $this;
+    }
+
+    /**
+     * Get path
+     *
+     * @return string 
+     */
+    public function getPath()
+    {
+        return $this->path;
     }
 }

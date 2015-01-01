@@ -5,10 +5,10 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.css')}}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css')}}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/clockpicker.css')}}">
+    <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places"></script>
 {% endblock %}
 {% block body %}
-
-
 	<div class="formBar col-xs-12 col-sm-12 col-md-12 noPadding">
 		<h1>Votre établissement</h1>
 		<div class="separation1"></div>
@@ -16,7 +16,6 @@
 	</div>
 	<div class="subtitlePageRegisterBig">
 		<p>Votre établissement</p>
-
 	</div>
 	<form action="{{ path('bar_create') }}" {{ form_enctype(form) }} method="POST">
 		<div class="inscription center col-xs-6 col-sm-6 col-md-6">
@@ -34,17 +33,22 @@
 				{{ form_label(form.zipcode) }}
 				<br>
 				{{ form_errors(form.zipcode) }}
-				{{ form_widget(form.zipcode) }}
+				{{ form_widget(form.zipcode, { 'id': 'postal_code' }) }}
 				<br>
 				{{ form_label(form.town) }}
 				<br>
 				{{ form_errors(form.town) }}
-				{{ form_widget(form.town) }}
+				{{ form_widget(form.town, { 'id': 'locality' } ) }}
+				<br>
+				{{ form_label(form.region) }}
+				<br>
+				{{ form_errors(form.region) }}
+				{{ form_widget(form.region, { 'id': 'administrative_area_level_1' } ) }}
 				<br>
 				{{ form_label(form.country) }}
 				<br>
 				{{ form_errors(form.country) }}
-				{{ form_widget(form.country) }}
+				{{ form_widget(form.country, { 'id': 'country' }) }}
 			</div>
 			<br>
 			<br>
@@ -76,8 +80,6 @@
 			<br>
 			<br>
 			<div class="border">
-
-
 				<div class="btn-group width100" data-toggle="buttons">
 				  <label class="btn btn-primary active choice">
 				    <input type="radio" name="cac_barbundle_bar[priceRange]" id="cac_barbundle_bar_priceRange_0" value="1" checked> 5€
@@ -255,7 +257,8 @@
 		</div>
 	</form>
 	<div class="clear"></div>
-
-
-
+    {% block javascripts %}
+        {{ parent() }}
+        <script src="{{ asset('js/autocomplete-adress.js') }}" type="text/javascript" /></script>
+    {% endblock %}
 {% endblock %}

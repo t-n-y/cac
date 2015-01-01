@@ -19,6 +19,7 @@ class BarEditType extends AbstractType
             ->add('adress', null, array('label' => 'Adresse'))
             ->add('zipcode', null, array('label' => 'Code Postal'))
             ->add('town', null, array('label' => 'Ville'))
+            ->add('region', null, array('label' => 'Région'))
             ->add('country', null, array('label' => 'Pays'))
             ->add('schedule', 'hidden', array('label' => 'Horaires'))
             ->add('access', 'choice', array(

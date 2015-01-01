@@ -1,7 +1,10 @@
 {% extends "::base.html.twig" %}
 
 {% block title %}CacBarBundle:Bar:edit{% endblock %}
-
+{% block stylesheets %}
+   {{ parent() }}
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places"></script>
+{% endblock %}
 {% block body %}
 
 {{ form_start(edit_form) }}
@@ -22,17 +25,22 @@
 {{ form_label(edit_form.zipcode) }}
 <br>
 {{ form_errors(edit_form.zipcode) }}
-{{ form_widget(edit_form.zipcode) }}
+{{ form_widget(edit_form.zipcode, { 'id': 'postal_code' }) }}
 <br>
 {{ form_label(edit_form.town) }}
 <br>
 {{ form_errors(edit_form.town) }}
-{{ form_widget(edit_form.town) }}
+{{ form_widget(edit_form.town, { 'id': 'locality' } ) }}
+<br>
+{{ form_label(edit_form.region) }}
+<br>
+{{ form_errors(edit_form.region) }}
+{{ form_widget(edit_form.region, { 'id': 'administrative_area_level_1' }) }}
 <br>
 {{ form_label(edit_form.country) }}
 <br>
 {{ form_errors(edit_form.country) }}
-{{ form_widget(edit_form.country) }}
+{{ form_widget(edit_form.country, { 'id': 'country' }) }}
 
 </div>
 <br>
@@ -316,4 +324,8 @@ Fermé <input class="close-day" type="checkbox" data-day="{{ days[j] }}" name="c
 
 {{ form_end(edit_form) }}
 
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/autocomplete-adress.js') }}" type="text/javascript" /></script>
 {% endblock %}
