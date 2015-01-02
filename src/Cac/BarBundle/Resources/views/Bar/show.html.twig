@@ -11,13 +11,15 @@
 			<div class="infoNameBar">
 				<h1>{{ bar.name }}</h1>
 				{% if bar.priceRange ==  1 %}
-				<p>€</p>
+				<p>€<span>€€€€</span></p>
 				{% elseif bar.priceRange ==  2 %}
-				<p>€€</p>
+				<p>€€<span>€€€</span></p>
 				{% elseif bar.priceRange ==  3 %}
-				<p>€€€</p>
+				<p>€€€<span>€€</span></p>
+				{% elseif bar.priceRange ==  4 %}
+				<p>€€€€<span>€</span></p>
 				{% else %}
-				<p>€€€€</p>
+				<p>€€€€€</p>
 				{% endif %}
 
 				<a href="{{ path('bar_edit', { 'id': bar.id }) }}">Editer ce bar</a> 

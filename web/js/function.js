@@ -411,6 +411,7 @@ $(".barInList").mouseenter(function(){
     
     $("#form_file").change(function(){
         readURL(this);
+        $(".showImg").stop(true,true).show(300);
         $(".file_button_container img").stop(true,true).show(300);
     });
 

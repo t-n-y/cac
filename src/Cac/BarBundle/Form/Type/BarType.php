@@ -37,7 +37,7 @@ class BarType extends AbstractType
             //->add('categories', null, array('label' => 'Catégories'))  ==> utilisé ?
             ->add('priceRange', 'choice', array(
                 'label' => 'Ordre de prix',
-                'choices'   => array('1' => 'Pas cher', '2' => 'Pas trop cher', '3' => 'Un peu cher', '4' => 'Cher'),
+                'choices'   => array('1' => 'Pas cher', '2' => 'Pas trop cher', '3' => 'Un peu cher', '4' => 'Cher', '5' => 'Tres cher' ),
                 'required'  => false,
                 'expanded' => true
                 )
