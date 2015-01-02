@@ -29,7 +29,7 @@
 <div class="barList col-xs-12 col-sm-12 col-md-12 noPadding">
 {% for bar in bars %}
 	<div class="barInList col-xs-12 col-sm-6 col-md-3 noPadding">
-	<img src="{{asset('img/accueil.png')}}" alt="">
+	<img src="{{ asset('uploads/bar/'~bar.path) }}">
 		<a href="{{ path('bar_show', { id : bar.id }) }}"><div class="shadowbarInList col-xs-12 col-sm-12 col-md-12">
 			<h3 id="firstWord{{ bar.id }}">{{ bar.name }}</h3>
 		</div></a>

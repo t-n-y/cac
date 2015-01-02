@@ -51,15 +51,16 @@
 			<div class="border dressCodeBar">
 				
 				<!--{{ form_label(form.dressCode) }}-->
-				<br>
 
 				<div class="btn-group width100" data-toggle="buttons">
-				  <label class="btn btn-primary active choice">
-				    <input type="radio" name="cac_barbundle_bar[dressCode]" id="cac_barbundle_bar_dressCode" value="1" checked> Chic
-				  </label>
-				  <label class="btn btn-primary choice">
-				    <input type="radio" name="cac_barbundle_bar[dressCode]" id="cac_barbundle_bar_dressCode" value="2"> Décontracté
-				  </label>
+					{{ form_label(form.dressCode) }}
+					<br>
+					<label class="btn btn-primary active choice">
+						<input type="radio" name="cac_barbundle_bar[dressCode]" id="cac_barbundle_bar_dressCode" value="1" checked> Chic
+				  	</label>
+				  	<label class="btn btn-primary choice">
+				    	<input type="radio" name="cac_barbundle_bar[dressCode]" id="cac_barbundle_bar_dressCode" value="2"> Décontracté
+				  	</label>
 				</div>
 
 				<!--<div class="choice" value="1">
@@ -79,6 +80,8 @@
 
 
 				<div class="btn-group width100" data-toggle="buttons">
+					{{ form_label(form.priceRange) }}
+					<br>
 				  <label class="btn btn-primary active choice">
 				    <input type="radio" name="cac_barbundle_bar[priceRange]" id="cac_barbundle_bar_priceRange_0" value="1" checked> 5€
 				  </label>
@@ -89,7 +92,10 @@
 				    <input type="radio" name="cac_barbundle_bar[priceRange]" id="cac_barbundle_bar_priceRange_2" value="3"> 15€
 				  </label>
 				  <label class="btn btn-primary choice">
-				    <input type="radio" name="cac_barbundle_bar[priceRange]" id="cac_barbundle_bar_priceRange_3" value="4"> +15€
+				    <input type="radio" name="cac_barbundle_bar[priceRange]" id="cac_barbundle_bar_priceRange_3" value="4"> 20€
+				  </label>
+				  <label class="btn btn-primary-center choice">
+				    <input type="radio" name="cac_barbundle_bar[priceRange]" id="cac_barbundle_bar_priceRange_4" value="5"> +20€
 				  </label>
 				</div>
 			</div>

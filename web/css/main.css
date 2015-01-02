@@ -74,17 +74,17 @@
 	outline: 0;
 }
 
-.file_button_container input::before {
-   content: "+ Ajouter une photo";
-   color: #56a946;
+.file_button_container input:before {
+   	content: "+ Ajouter une photo";
+   	color: #56a946;
     height: 10px;
-    width: 110%;
     position: absolute;
     top: 70px;
     left: 100px;
     z-index: 6;
     font-size: 15px;
     cursor: pointer;
+    display: block;
 
 }
 
@@ -104,7 +104,7 @@
 }
 
 .navbar-afterscroll {
-	background-color: rgba(255,255,255,0.8);
+	background-color: rgba(255,255,255,0.9);
 	border: 0px solid;
 	left: 0;
     position: fixed;
@@ -112,6 +112,9 @@
     z-index: 1030;
     top: -150px;
     color: #000;
+    border-radius: 0px;
+    -webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
 }
 
 .logo-afterscroll img {
@@ -407,6 +410,10 @@
 
 .infoNameBar p{
 	margin-top: 30px;
+}
+
+.infoNameBar p span{
+	color:#aaa;
 }
 
 .infoBar{
@@ -893,6 +900,23 @@ p.pCreez{
 	border-radius: 0px !important;
 	padding: 0px;
 }
+
+.btn-primary-center{
+	width: 40% !important;
+	background-color: #fff !important;
+	color: #4d4d4d !important;
+	border: 1px solid #a8a8a8 !important;
+	float: left !important;
+	cursor: pointer !important;
+
+	-webkit-border-radius: 0px !important;
+	-moz-border-radius: 0px !important;
+	border-radius: 0px !important;
+	padding: 0px;
+	float: center !important;
+}
+
+
 
 .btn-primary-checkbox{
 	width: 18% !important;

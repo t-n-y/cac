@@ -11,13 +11,15 @@
 			<div class="infoNameBar">
 				<h1>{{ bar.name }}</h1>
 				{% if bar.priceRange ==  1 %}
-				<p>€</p>
+				<p>€<span>€€€€</span></p>
 				{% elseif bar.priceRange ==  2 %}
-				<p>€€</p>
+				<p>€€<span>€€€</span></p>
 				{% elseif bar.priceRange ==  3 %}
-				<p>€€€</p>
+				<p>€€€<span>€€</span></p>
+				{% elseif bar.priceRange ==  4 %}
+				<p>€€€€<span>€</span></p>
 				{% else %}
-				<p>€€€€</p>
+				<p>€€€€€</p>
 				{% endif %}
 			</div>
 		</div>
@@ -224,12 +226,14 @@
 				{% endif %}
 				<div class="clear"></div>
 			</div>
+
 			<div class="descriptionBar noPadding">
 
-				<h2 class="col-xs-5 col-sm-5 col-md-5 noPadding">DESCRPITION</h2>
+				<h2 class="col-xs-5 col-sm-5 col-md-5 noPadding">DESCRIPTION</h2>
 				<p class="col-xs-12 col-sm-12 col-md-12">{{bar.description}}</p>
 				<div class="clear"></div>
 			</div>
+
 			<div class="dresscode">
 				{% if bar.dresscode == 1%}
 					chic
