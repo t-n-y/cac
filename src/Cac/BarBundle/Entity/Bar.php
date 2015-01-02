@@ -28,6 +28,7 @@ class Bar
     /**
      * @var string
      *
+     * @Assert\NotBlank()
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
@@ -42,6 +43,7 @@ class Bar
     /**
      * @var string
      *
+     * @Assert\NotBlank()
      * @ORM\Column(name="adress", type="string", length=255)
      */
     private $adress;
@@ -49,6 +51,15 @@ class Bar
     /**
      * @var string
      *
+     * @Assert\NotBlank()
+     * @ORM\Column(name="region", type="string", length=255)
+     */
+    private $region;
+
+    /**
+     * @var string
+     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="town", type="string", length=255)
      */
     private $town;
@@ -56,6 +67,7 @@ class Bar
     /**
      * @var string
      *
+     * @Assert\NotBlank()
      * @ORM\Column(name="country", type="string", length=255)
      */
     private $country;
@@ -77,6 +89,15 @@ class Bar
     /**
      * @var string
      *
+     * @Assert\NotBlank()
+     * @Assert\Type(type="integer", message="Le code postal doit être un chiffre.")
+     * @Assert\Length(
+     *      min = "5",
+     *      max = "5",
+     *      minMessage = "Votre nom doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Votre nom ne peut pas être plus long que {{ limit }} caractères",
+     *      exactMessage = "Le code postal doit contenir 5 chiffres"
+     * )
      * @ORM\Column(name="zipcode", type="string", length=255)
      */
     private $zipcode;
@@ -975,5 +996,51 @@ class Bar
     public function getCanape()
     {
         return $this->canape;
+    }
+
+    /**
+     * Set region
+     *
+     * @param string $region
+     * @return Bar
+     */
+    public function setRegion($region)
+    {
+        $this->region = $region;
+
+        return $this;
+    }
+
+    /**
+     * Get region
+     *
+     * @return string 
+     */
+    public function getRegion()
+    {
+        return $this->region;
+    }
+
+    /**
+     * Set path
+     *
+     * @param string $path
+     * @return Bar
+     */
+    public function setPath($path)
+    {
+        $this->path = $path;
+
+        return $this;
+    }
+
+    /**
+     * Get path
+     *
+     * @return string 
+     */
+    public function getPath()
+    {
+        return $this->path;
     }
 }

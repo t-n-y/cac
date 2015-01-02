@@ -11,24 +11,28 @@
 			<div class="infoNameBar">
 				<h1>{{ bar.name }}</h1>
 				{% if bar.priceRange ==  1 %}
-				<p>€<span>€€€€</span></p>
+				<p>€</p>
 				{% elseif bar.priceRange ==  2 %}
-				<p>€€<span>€€€</span></p>
+				<p>€€</p>
 				{% elseif bar.priceRange ==  3 %}
-				<p>€€€<span>€€</span></p>
-				{% elseif bar.priceRange ==  4 %}
-				<p>€€€€<span>€</span></p>
+				<p>€€€</p>
 				{% else %}
-				<p>€€€€€</p>
+				<p>€€€€</p>
 				{% endif %}
+
+				<a href="{{ path('bar_edit', { 'id': bar.id }) }}">Editer ce bar</a> 
 			</div>
 		</div>
 		<div class="infoBar col-xs-12 col-sm-12 col-md-12 noPadding">
 			<div class="noteBar col-xs-3 col-sm-3 col-md-3">
+				{#
 				<div class="turn"><p class="topNote">8</p><div class="slash"></div><p class="bottomNote">10</p></div>
 				<div class="clear"></div>
 				<p class="comNote">Bonne adresse</p>
+				a remettre apres
+			#}
 			</div>
+			
 			<div class="noteBar col-xs-3 col-sm-3 col-md-3">
 				<div class="right">
 					<div class="ticketVerre">
@@ -61,9 +65,11 @@
 				</div>
 			</div>
 			<div class="noteBar col-xs-3 col-sm-3 col-md-3">
+				{#
 				<p class="comPosition">POSITION</p>
 				<div class="turnPosition"><p class="topPosition">6</p><div class="slash"></div><p class="bottomPosition">535</p></div>
-				
+				a remettre apres
+			#}
 			</div>
 		</div>
 		<div class="contentSuperInfoBar col-xs-12 col-sm-12 col-md-12 noPadding">
@@ -226,14 +232,13 @@
 				{% endif %}
 				<div class="clear"></div>
 			</div>
-
-			<div class="descriptionBar noPadding">
-
-				<h2 class="col-xs-5 col-sm-5 col-md-5 noPadding">DESCRIPTION</h2>
-				<p class="col-xs-12 col-sm-12 col-md-12">{{bar.description}}</p>
-				<div class="clear"></div>
-			</div>
-
+			{% if bar.description %}
+				<div class="descriptionBar noPadding">
+					<h2 class="col-xs-5 col-sm-5 col-md-5 noPadding">DESCRPITION</h2>
+					<p class="col-xs-12 col-sm-12 col-md-12">{{bar.description}}</p>
+					<div class="clear"></div>
+				</div>
+			{% endif %}
 			<div class="dresscode">
 				{% if bar.dresscode == 1%}
 					chic

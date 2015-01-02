@@ -1,7 +1,10 @@
 {% extends "::base.html.twig" %}
 
 {% block title %}CacBarBundle:Bar:edit{% endblock %}
-
+{% block stylesheets %}
+   {{ parent() }}
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places"></script>
+{% endblock %}
 {% block body %}
 
 {{ form_start(edit_form) }}
@@ -22,26 +25,31 @@
 {{ form_label(edit_form.zipcode) }}
 <br>
 {{ form_errors(edit_form.zipcode) }}
-{{ form_widget(edit_form.zipcode) }}
+{{ form_widget(edit_form.zipcode, { 'id': 'postal_code' }) }}
 <br>
 {{ form_label(edit_form.town) }}
 <br>
 {{ form_errors(edit_form.town) }}
-{{ form_widget(edit_form.town) }}
+{{ form_widget(edit_form.town, { 'id': 'locality' } ) }}
+<br>
+{{ form_label(edit_form.region) }}
+<br>
+{{ form_errors(edit_form.region) }}
+{{ form_widget(edit_form.region, { 'id': 'administrative_area_level_1' }) }}
 <br>
 {{ form_label(edit_form.country) }}
 <br>
 {{ form_errors(edit_form.country) }}
-{{ form_widget(edit_form.country) }}
+{{ form_widget(edit_form.country, { 'id': 'country' }) }}
 
 </div>
 <br>
 <br>
 <div class="border dressCodeBar">
+
+<br>
 {% if edit_form.vars.value.dressCode == 1 %}
 <div class="btn-group width100" data-toggle="buttons">
-{{ form_label(edit_form.dressCode) }}
-<br>
  <label class="btn btn-primary active choice">
    <input type="radio" name="cac_barbundle_bar[dressCode]" id="cac_barbundle_bar_dressCode" value="1"> Chic
  </label>
@@ -51,8 +59,6 @@
 </div>
 {% else %}
 <div class="btn-group width100" data-toggle="buttons">
-{{ form_label(edit_form.dressCode) }}
-<br>
  <label class="btn btn-primary choice">
    <input type="radio" name="cac_barbundle_bar[dressCode]" id="cac_barbundle_bar_dressCode" value="1"> Chic
  </label>
@@ -71,8 +77,6 @@
 <div class="border">
 
 <div class="btn-group width100" data-toggle="buttons">
-{{ form_label(edit_form.priceRange) }}
-<br>
 {% if edit_form.vars.value.priceRange == 1 %}
  <label class="btn btn-primary active choice">
    <input type="radio" name="cac_barbundle_bar[priceRange]" id="cac_barbundle_bar_priceRange_0" value="1" checked> 5€
@@ -105,21 +109,11 @@
 
 {% if edit_form.vars.value.priceRange == 4 %}
  <label class="btn btn-primary active choice">
-   <input type="radio" name="cac_barbundle_bar[priceRange]" id="cac_barbundle_bar_priceRange_3" value="4"> 20€
+   <input type="radio" name="cac_barbundle_bar[priceRange]" id="cac_barbundle_bar_priceRange_3" value="4"> +15€
  </label>
 {% else %} 
  <label class="btn btn-primary choice">
-   <input type="radio" name="cac_barbundle_bar[priceRange]" id="cac_barbundle_bar_priceRange_3" value="4"> 20€
- </label>
-{% endif %}
-
-{% if edit_form.vars.value.priceRange == 5 %}
- <label class="btn btn-primary-center active choice">
-   <input type="radio" name="cac_barbundle_bar[priceRange]" id="cac_barbundle_bar_priceRange_4" value="5"> +20€
- </label>
-{% else %} 
-<label class="btn btn-primary-center choice">
-   <input type="radio" name="cac_barbundle_bar[priceRange]" id="cac_barbundle_bar_priceRange_4" value="5"> +20€
+   <input type="radio" name="cac_barbundle_bar[priceRange]" id="cac_barbundle_bar_priceRange_3" value="4"> +15€
  </label>
 {% endif %}
  
@@ -307,7 +301,8 @@ Fermé <input class="close-day" type="checkbox" data-day="{{ days[j] }}" name="c
 <p>Vos photos</p>
 </div>
 
-
+{{ form_row(edit_form.file) }}
+<img src="{{ asset('uploads/bar/'~bar.path) }}">
     
     <!--{{ form_row(edit_form.schedule) }}
     {{ form_row(edit_form.access) }}
@@ -327,8 +322,10 @@ Fermé <input class="close-day" type="checkbox" data-day="{{ days[j] }}" name="c
     {{ form_row(edit_form.description) }}
     {{ form_row(edit_form.file) }}-->
 
-    <br>
-
 {{ form_end(edit_form) }}
 
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/autocomplete-adress.js') }}" type="text/javascript" /></script>
 {% endblock %}
