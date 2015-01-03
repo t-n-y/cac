@@ -222,16 +222,59 @@ $('body').on("click", ".avis",function(){
   $('.information').css("margin-left" , "-150px");
 });
 
-$('.ticket').hover(function(){
+/*$('.ticket').hover(function(){
     $('.ticketPromotion').stop(true,true).show(300);
   },function(){
     $('.ticketPromotion').stop(true,true).hide(300);
+});*/
+
+$(document).ready(function(){
+  $(".ticket").mouseenter(function(){
+    //$(".ticket .ticketBarTop").css("margin-top","-10px");
+    $(".ticket .ticketBarTop").stop(true,false).animate({
+              marginTop: "-10px"
+          }, 300);
+    $(".ticket .ticketPromotion").stop(true,false).animate({
+              marginTop: "0px"
+          }, 300);
+    $('.ticket .ticketPromotion').css("display" , "block");
+  });
+  $(".ticket").mouseleave(function(){
+    $(".ticket .ticketBarTop").stop(true,false).animate({
+              marginTop: "0px"
+          }, 300);
+    $(".ticket .ticketPromotion").stop(true,false).animate({
+              marginTop: "-38px"
+          }, 300);
+    setTimeout(function() {  
+      $('.ticket .ticketPromotion').css("display" , "none");
+    },300);
+  });
 });
 
-$('.ticketVerre').hover(function(){
-    $('.ticketCode').stop(true,true).show(300);
-  },function(){
-    $('.ticketCode').stop(true,true).hide(300);
+
+$(document).ready(function(){
+  $(".ticketVerre").mouseenter(function(){
+    //$(".ticket .ticketBarTop").css("margin-top","-10px");
+    $(".ticketVerre .ticketBarTop").stop(true,false).animate({
+              marginTop: "-10px"
+          }, 300);
+    $(".ticketVerre .ticketCode").stop(true,false).animate({
+              marginTop: "0px"
+          }, 300);
+    $('.ticketVerre .ticketCode').css("display" , "block");
+  });
+  $(".ticketVerre").mouseleave(function(){
+    $(".ticketVerre .ticketBarTop").stop(true,false).animate({
+              marginTop: "0px"
+          }, 300);
+    $(".ticketVerre .ticketCode").stop(true,false).animate({
+              marginTop: "-46px"
+          }, 300);
+    setTimeout(function() {  
+      $('.ticketVerre .ticketCode').css("display" , "none");
+    },300);
+  });
 });
 
 
