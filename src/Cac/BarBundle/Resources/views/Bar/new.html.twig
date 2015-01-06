@@ -186,12 +186,6 @@
 
 			</div>
 			
-
-
-
-
-			
-			
 			<br><br><br>
 			{{ form_label(form.description) }}
 			<p class="italic">Utiliser un ton cool, chaleureux, qui donne envie de venir chez vous</p>
@@ -206,10 +200,8 @@
 		</div>
 	</form>
 	<div class="clear"></div>
-
-	<!--{% block javascripts %}
-        {{ parent() }}
-        <script src="{{ asset('js/autocomplete-adress.js') }}" type="text/javascript" /></script>
-    {% endblock %}-->
-
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/autocomplete-adress.js') }}" type="text/javascript" /></script>
 {% endblock %}

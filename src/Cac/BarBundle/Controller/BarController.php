@@ -141,7 +141,7 @@ class BarController extends Controller
         $entity = $em->getRepository('CacBarBundle:Bar')->find($id);
 
         $form = $this->createFormBuilder($entity)
-            ->add('file')
+            ->add('file', null, array('label' => '+ Ajouter une photo'))
             ->add("Let's go !", 'submit')
             ->getForm();
 
