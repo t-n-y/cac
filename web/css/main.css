@@ -918,7 +918,7 @@ p.pCreez{
 	border: 1px solid #a8a8a8 !important;
 	float: left !important;
 	cursor: pointer !important;
-
+	margin: 10px 30% !important;
 	-webkit-border-radius: 0px !important;
 	-moz-border-radius: 0px !important;
 	border-radius: 0px !important;
