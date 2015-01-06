@@ -59,7 +59,21 @@
 						<h3>SUR UNE CONSOMATION</h3>
 					</div>
 					<div class="ticketPromotion">
-						<p>Happy Hours le Lundi -70%</p>
+					<!--<script language="javascript">
+						var lejour = new Date();
+						document.write(lejour.getDay());
+						
+					</script>-->
+					{% set days = {
+						'1': 'Lundi', 
+						'2': 'Mardi', 
+						'3': 'Mercredi', 
+						'4': 'Jeudi', 
+						'5': 'Vendredi', 
+						'6': 'Samedi', 
+						'7': 'Dimanche'
+					} %}
+						<p>Happy Hours le {{days[3]}} -{{ bar.promotion.promotionArray[days[3]]['happy-hour'].value }}%</p>
 					</div>
 					<div class="ticketBarBottom">
 						<p>OBTENIR LA PROMO</p>

@@ -3,7 +3,15 @@
 {% block title %}CacBarBundle:Bar:edit_promotion{% endblock %}
 
 {% block body %}
-<h1>Welcome to the Bar:edit page</h1>
+	<div class="formBar col-xs-12 col-sm-12 col-md-12 noPadding">
+		<h1>Vendez du rêve</h1>
+		<div class="separation1"></div>
+		<div class="separation2"></div>
+	</div>
+	<div class="subtitlePageRegisterBig">
+		<p>Vos promos</p>
+
+	</div>
 	{{ form_start(form) }}
 		{{ form_errors(form.promotion) }}
 		{{ form_widget(form.promotion) }}
@@ -123,5 +131,6 @@
 			</div>
 		</div>
 	{{ form_end(form) }}
+	<div class="clear"></div>
 	<a href="{{ path("bar_show", {'id': id }) }}">Passer cette étape</a>
 {% endblock %}

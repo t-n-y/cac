@@ -81,18 +81,15 @@
 	outline: 0;
 }
 
-.file_button_container input:before {
-   	content: "+ Ajouter une photo";
+.file_button_container label{
    	color: #56a946;
-    height: 10px;
-    position: absolute;
-    top: 70px;
-    left: 100px;
-    z-index: 6;
     font-size: 15px;
     cursor: pointer;
     display: block;
-
+    font-weight: normal;
+    text-align: left;
+    margin-left: 100px;
+    margin-top: 50px;
 }
 
 .file_button_container button[type=submit] {
