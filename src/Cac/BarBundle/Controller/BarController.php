@@ -151,7 +151,7 @@ class BarController extends Controller
             $entity->preUpload();
             $em->persist($entity);
             $em->flush();
-            return $this->redirect($this->generateUrl('bar_show', array('id' => $id)));
+            return $this->redirect($this->generateUrl('promotion_create', array('id' => $id)));
         }
 
         return $this->render('CacBarBundle:Bar:newPart2.html.twig', array(

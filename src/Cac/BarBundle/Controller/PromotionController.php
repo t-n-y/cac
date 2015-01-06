@@ -21,11 +21,11 @@ class PromotionController extends Controller
 	/**
      * Displays the promotion and happy-hours interface for an existing Bar entity.
      *
-     * @Route("/{id}/edit", name="promotion_edit")
+     * @Route("/{id}/new-part3", name="promotion_create")
      * @Method("GET")
-     * @Template("CacBarBundle:Promotion:edit.html.twig")
+     * @Template("CacBarBundle:Promotion:createPromo.html.twig")
      */
-    public function editAction($id)
+    public function createPromoAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -43,7 +43,8 @@ class PromotionController extends Controller
         return array(
             'promotion'      => $promotion,
             'form'   => $editForm->createView(),
-            'restrictions' => $restrictions
+            'restrictions' => $restrictions,
+            'id' => $entity->getId()
         );
     }
 
@@ -76,7 +77,7 @@ class PromotionController extends Controller
      *
      * @Route("/{id}", name="promotion_update")
      * @Method("PUT")
-     * @Template("CacBarBundle:Promotion:edit.html.twig")
+     * @Template("CacBarBundle:Promotion:createPromo.html.twig")
      */
     public function updateAction(Request $request, $id)
     {
@@ -94,7 +95,8 @@ class PromotionController extends Controller
 
         if ($editForm->isValid()) {
             $em->flush();
-            return $this->redirect($this->generateUrl('promotion_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('bar_show', array('id' => $entity->getId())));
+            // return $this->redirect($this->generateUrl('promotion_show', array('id' => $entity->getId())));
         }
 
         return array(

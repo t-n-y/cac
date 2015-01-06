@@ -87,7 +87,7 @@ class Bar
     private $editedAt;
 
     /**
-     * @var string
+     * @var integer
      *
      * @Assert\NotBlank()
      * @Assert\Type(type="integer", message="Le code postal doit être un chiffre.")
@@ -98,7 +98,7 @@ class Bar
      *      maxMessage = "Votre nom ne peut pas être plus long que {{ limit }} caractères",
      *      exactMessage = "Le code postal doit contenir 5 chiffres"
      * )
-     * @ORM\Column(name="zipcode", type="string", length=255)
+     * @ORM\Column(name="zipcode", type="integer", length=255)
      */
     private $zipcode;
 
