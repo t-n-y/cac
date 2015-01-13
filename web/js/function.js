@@ -15,6 +15,7 @@ var heightWindow = $(window).height();
   $('.shadowHover').css('width', widthImg + 'px');
   $('.shadowHover').css('height', heightImg + 'px');
   $('.mainContainer').css('min-height', heightWindow + 'px');
+  $('.isConnexion').css('min-height', heightWindow + 'px');
 
 },100);
 
@@ -26,6 +27,20 @@ heightsuperInfoBar = heightsuperInfoBar - 40;
 $('.mapView iframe').css('height', heightsuperInfoBar + 'px');
 
 /************/
+
+/*******CONNEXION*******/
+$(document).ready(function(){
+  $(".animConnexion").on('click',function(){
+    $(".isConnexion").css("display","block");
+    $(".forConnexion").css("display","block");
+  });
+
+  $(".isConnexion").on('click',function(){
+    $(".isConnexion").css("display","none");
+    $(".forConnexion").css("display","none");
+  });
+});
+/***********************/
 
 
 $(document).ready(function(){

@@ -96,6 +96,50 @@
 	margin-top: 10px;
 }
 
+.isConnexion{
+	width: 100%;
+	height: 100px;
+	background-color: rgba(0,0,0,0.9);
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 10000;
+	display: none;
+}
+
+.forConnexion{
+	width: 300px;
+	height: 300px;
+	background-color: #fff;
+	position: fixed;
+	top: 50%;
+	margin-top: -150px;
+	left:50%;
+	margin-left: -150px;
+	z-index: 10001;
+	display: none;
+	border: 3px solid #5ac4d4;
+	color: #000;
+    text-align: center;
+}
+
+.forConnexion h2{
+	font-size: 18px;
+}
+
+.inscrivezVous{
+	position: absolute;
+	width: 100%;
+	height: 50px;
+	background-color: #5ac4d4;
+	bottom: 0;
+	color: #fff;
+}
+
+.inscrivezVous h2{
+	margin-top: 17px;
+}
+
 /*****************HEADER*****************/
 
 .navbar-default{

@@ -1,3 +1,12 @@
+<div class="isConnexion">
+</div>
+  <div class="forConnexion">
+    <h2>CONNEXION</h2>
+    
+    <div class="inscrivezVous">
+      <h2>INSCRIVEZ VOUS</h2>
+    </div>
+  </div>
 <nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
 
@@ -33,7 +42,12 @@
             <li class="pull-right"><a href="{{ path('bar_new') }}">Créer un bar</a></li>
           {% endif %}
         {% else %}
-        <li class="pull-right"><a class="pull-right" href="{{ path('fos_user_registration_register') }}">Créer un compte</a><p class="pull-right">|</p> <a class="pull-right" href="{{ path('fos_user_security_login') }}">Connexion</a></li>
+        <li class="pull-right">
+          <a class="pull-right" href="{{ path('fos_user_registration_register') }}">Créer un compte</a>
+          <p class="pull-right">|</p> 
+          <!--<a class="pull-right" href="{{ path('fos_user_security_login') }}">Connexion</a>-->
+          <a class="pull-right animConnexion" href="#">Connexion</a>
+        </li>
         {% endif %}
       </ul>
     </div><!-- /.navbar-collapse -->
