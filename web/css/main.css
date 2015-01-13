@@ -123,6 +123,25 @@
     text-align: center;
 }
 
+.forConfirmation{
+	width: 300px;
+	height: 220px;
+	background-color: #fff;
+	position: fixed;
+	top: 50%;
+	margin-top: -150px;
+	left:50%;
+	margin-left: -150px;
+	z-index: 10001;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top: 55px;
+	display: none;
+	border: 3px solid #5ac4d4;
+	color: #000;
+    text-align: center;
+}
+
 .forConnexion h2{
 	font-size: 18px;
 }
