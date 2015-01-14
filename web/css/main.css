@@ -1045,6 +1045,32 @@ p.pCreez{
 	float: left;
 }
 
+.contentPrixValet{
+	position: absolute;
+right: 0;
+bottom: 0;
+background-color: #fff;
+height: 30px;
+border: 1px solid #a8a8a8;
+padding: 5px;
+}
+
+.contentPrixValet input{
+border: none;
+    outline:none;
+}
+
+.contentPrixValet p{
+float: left;
+}
+.prixValet{
+	height: 20px;
+	width: 75px;
+	border: 0;
+	float: left;
+
+}
+
 /***************************************/
 
 /**************LISTES BAR***************/
