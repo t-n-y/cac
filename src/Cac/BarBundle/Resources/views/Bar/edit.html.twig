@@ -58,7 +58,7 @@
    <input type="radio" name="cac_barbundle_bar[dressCode]" id="cac_barbundle_bar_dressCode" value="2"> Décontracté
  </label>
 </div>
-{% else %}
+{% elseif edit_form.vars.value.dressCode == 2 %}
 <div class="btn-group width100" data-toggle="buttons">
  <label class="btn btn-primary choice">
    <input type="radio" name="cac_barbundle_bar[dressCode]" id="cac_barbundle_bar_dressCode" value="1"> Chic
@@ -260,7 +260,7 @@ Fermé <input class="close-day" type="checkbox" data-day="{{ days[j] }}" name="c
 {% endif %}
 
 {% if edit_form.vars.value.billard == 1 %}
- <label class="btn btn-primary-checkbox avtive petitplus">
+ <label class="btn btn-primary-checkbox active petitplus">
    <input type="checkbox" name="cac_barbundle_bar[billard]" id="cac_barbundle_bar_billard" value="1"> Billard
  </label>
 {% else %}
@@ -270,7 +270,7 @@ Fermé <input class="close-day" type="checkbox" data-day="{{ days[j] }}" name="c
 {% endif %}
 
 {% if edit_form.vars.value.flipper == 1 %}
- <label class="btn btn-primary-checkbox active petitplus">
+ <label class="btn btn-primary-checkbox petitplus active">
    <input type="checkbox" name="cac_barbundle_bar[flipper]" id="cac_barbundle_bar_flipper" value="1"> Flipper
  </label>
 {% else %}
@@ -280,7 +280,7 @@ Fermé <input class="close-day" type="checkbox" data-day="{{ days[j] }}" name="c
 {% endif %}
 
 {% if edit_form.vars.value.canape == 1 %}
- <label class="btn btn-primary-checkbox petitplus">
+ <label class="btn btn-primary-checkbox petitplus active">
    <input type="checkbox" name="cac_barbundle_bar[canape]" id="cac_barbundle_bar_canape" value="1"> Canapé
  </label>
 {% else %}

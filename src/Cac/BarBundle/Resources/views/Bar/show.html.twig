@@ -18,8 +18,10 @@
 				<p>€€€<span>€€</span></p>
 				{% elseif bar.priceRange ==  4 %}
 				<p>€€€€<span>€</span></p>
-				{% else %}
+				{% elseif bar.priceRange ==  5 %}
 				<p>€€€€€</p>
+				{% else %}
+				<p></p>
 				{% endif %}
 
 				<a href="{{ path('bar_edit', { 'id': bar.id }) }}">Editer ce bar</a> 
@@ -219,7 +221,7 @@
 					</div>
 				{% endif %}
 
-				{% if bar.flipper == 1%}
+				{% if bar.flipper == 1 %}
 					<div class="vignettePetitPlus col-xs-2 col-sm-2 col-md-2 noPadding">
 						<div class="vignettePetitPlusContent">
 							<img src="{{asset('img/ethylotest.png')}}" alt="Click and Cheers"><p class="padding10">Flipper</p>
