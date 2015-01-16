@@ -12,125 +12,129 @@
 		<p>Vos promos</p>
 
 	</div>
-	{{ form_start(form) }}
-		{{ form_errors(form.promotion) }}
-		{{ form_widget(form.promotion) }}
-		<div class="promotions center col-xs-6 col-sm-6 col-md-6">
-			<div class="border">
-				<p>Promotions</p>
-				{% set days = {
-					'1': 'Lundi', 
-					'2': 'Mardi', 
-					'3': 'Mercredi', 
-					'4': 'Jeudi', 
-					'5': 'Vendredi', 
-					'6': 'Samedi', 
-					'7': 'Dimanche'
-				} %}
-				{% for j in 1..7 %}
-				<div>
-					<div class="row">
-						<div>
-							{{ days[j] }}
-						</div>
+	<div class="widthFormPromo">
+		{{ form_start(form) }}
+			{{ form_errors(form.promotion) }}
+			{{ form_widget(form.promotion) }}
+			<div class="promotions center col-xs-6 col-sm-6 col-md-6">
 
-						<div>
-							<input type="text" class="promotion-qt-picker" data-day="{{ days[j] }}">
-							<br>illimité <input type="checkbox" class="promotion-unlimited" data-day="{{ days[j] }}">
-						</div>
-
-						<div>
-							<select class="promotion-value-picker" data-day="{{ days[j] }}">
-								<option>Valeur</option>
-								{% for i in 2..6 %}
-								    <option value="{{i}}0">{{i}}0%</option>
-								{% endfor %}
-							</select>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-xs-12 col-sm-12 col-md-12 noPadding">
-							<select class="promotion-condition-picker" data-day="{{ days[j] }}">
-									<option>Conditions</option>
-								{% for restriction in restrictions %}
-								    <option value="{{ restriction.restriction }}">{{ restriction.restriction }}</option>
-								{% endfor %}
-							</select>
-						</div>
-					</div>
-				</div>
-				{% endfor %}
-				<div class="clear"></div>
-			</div>
-		</div>
-		<div class="happy-hours center col-xs-6 col-sm-6 col-md-6">
-			<div class="border">
-				<p>Happy Hour</p>
-				{% set days = {
-					'1': 'Lundi', 
-					'2': 'Mardi', 
-					'3': 'Mercredi', 
-					'4': 'Jeudi', 
-					'5': 'Vendredi', 
-					'6': 'Samedi', 
-					'7': 'Dimanche'
-				} %}
-				{% set params = {
-					'1': {
-						'when':'beginning', 
-						'word': 'de'
-					}, 
-					'2': {
-						'when':'ending', 
-						'word': 'à'
-					}
-				} %}
-				{% for j in 1..7 %}
-				<div class="heure center col-xs-12 col-sm-12 col-md-12 noPadding">
-					<div class="row">
-						<div class="left col-xs-3 col-sm-3 col-md-3 noPadding">
-							{{ days[j] }}
-						</div>
-
-						{% for k in 1..2 %}
-							<div class="col-xs-1 col-sm-1 col-md-1 noPadding">
-								{{ params[k]['word'] }}
+					<p>Promo du jour</p>
+					{% set days = {
+						'1': 'Lundi', 
+						'2': 'Mardi', 
+						'3': 'Mercredi', 
+						'4': 'Jeudi', 
+						'5': 'Vendredi', 
+						'6': 'Samedi', 
+						'7': 'Dimanche'
+					} %}
+					{% for j in 1..7 %}
+					<div class="etapePromotion col-xs-12 col-sm-12 col-md-12">
+						<div class="row">
+							<div class="left col-xs-3 col-sm-3 col-md-3 noPadding">
+								{{ days[j] }}
 							</div>
-							<div class="col-xs-2 col-sm-2 col-md-2 noPadding">
-								<select class="hh-picker" data-day="{{ days[j] }}" data-when="{{ params[k]['when'] }}">
-									<option></option>
-									{% for i in 0..23 %}
-									    <option value="{{i}}">{{i}}h</option>
+
+							<div class="left col-xs-5 col-sm-5 col-md-5 noPadding">
+								<select class="promotion-qt-picker" data-day="{{ days[j] }}">
+									<option>Nombre de verre offert</option>
+									{% for k in 1..100 %}
+										<option value="{{k}}">{{k}}</option>
+									{% endfor %}
+								</select>
+								<br>illimité <input type="checkbox" class="promotion-unlimited" data-day="{{ days[j] }}">
+							</div>
+
+							<div class="left col-xs-3 col-sm-3 col-md-3 noPadding">
+								<select class="promotion-value-picker" data-day="{{ days[j] }}">
+									<option>Valeur</option>
+									{% for i in 2..6 %}
+									    <option value="{{i}}0">{{i}}0%</option>
 									{% endfor %}
 								</select>
 							</div>
-						{% endfor %}
+						</div>
+						<!--<div class="row">
+							<div class="col-xs-12 col-sm-12 col-md-12 noPadding">
+								<select class="promotion-condition-picker" data-day="{{ days[j] }}">
+										<option>Conditions</option>
+									{% for restriction in restrictions %}
+									    <option value="{{ restriction.restriction }}">{{ restriction.restriction }}</option>
+									{% endfor %}
+								</select>
+							</div>
+						</div>-->
+					</div>
+					{% endfor %}
+					<div class="clear"></div>
 
-						<div class="col-xs-3 col-sm-3 col-md-3 noPadding">
-							<select class="hh-value-picker" data-day="{{ days[j] }}">
-								<option>Valeur</option>
-								{% for i in 3..7 %}
-								    <option value="{{i}}0">{{i}}0%</option>
-								{% endfor %}
-							</select>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-xs-12 col-sm-12 col-md-12 noPadding">
-							<select class="hh-condition-picker" data-day="{{ days[j] }}">
-									<option>Conditions</option>
-								{% for restriction in restrictions %}
-								    <option value="{{ restriction.restriction }}">{{ restriction.restriction }}</option>
-								{% endfor %}
-							</select>
-						</div>
-					</div>
-				</div>
-				{% endfor %}
-				<div class="clear"></div>
 			</div>
-		</div>
-	{{ form_end(form) }}
+			<div class="happy-hours center col-xs-6 col-sm-6 col-md-6">
+				
+					<p>Happy Hour</p>
+					{% set days = {
+						'1': 'Lundi', 
+						'2': 'Mardi', 
+						'3': 'Mercredi', 
+						'4': 'Jeudi', 
+						'5': 'Vendredi', 
+						'6': 'Samedi', 
+						'7': 'Dimanche'
+					} %}
+					{% set params = {
+						'1': {
+							'when':'beginning', 
+							'word': 'de'
+						}, 
+						'2': {
+							'when':'ending', 
+							'word': 'à'
+						}
+					} %}
+					{% for j in 1..7 %}
+					<div class="happyHours center col-xs-12 col-sm-12 col-md-12 noPadding">
+						<div class="row">
+							{% for k in 1..2 %}
+								<div class="col-xs-1 col-sm-1 col-md-1 noPadding">
+									{{ params[k]['word'] }}
+								</div>
+								<div class="col-xs-2 col-sm-2 col-md-2 noPadding">
+									<select class="hh-picker" data-day="{{ days[j] }}" data-when="{{ params[k]['when'] }}">
+										<option></option>
+										{% for i in 0..23 %}
+										    <option value="{{i}}">{{i}}h</option>
+										{% endfor %}
+									</select>
+								</div>
+							{% endfor %}
+
+							<div class="col-xs-3 col-sm-3 col-md-3 noPadding">
+								<select class="hh-value-picker" data-day="{{ days[j] }}">
+									<option>Valeur</option>
+									{% for i in 3..7 %}
+									    <option value="{{i}}0">{{i}}0%</option>
+									{% endfor %}
+								</select>
+							</div>
+						</div>
+						<br>
+						<!--<div class="row">
+							<div class="col-xs-12 col-sm-12 col-md-12 noPadding">
+								<select class="hh-condition-picker" data-day="{{ days[j] }}">
+										<option>Conditions</option>
+									{% for restriction in restrictions %}
+									    <option value="{{ restriction.restriction }}">{{ restriction.restriction }}</option>
+									{% endfor %}
+								</select>
+							</div>
+						</div>-->
+					</div>
+					{% endfor %}
+					<div class="clear"></div>
+				
+			</div>
+		{{ form_end(form) }}
+	</div>
 	<div class="clear"></div>
 	<a href="{{ path("bar_show", {'id': id }) }}">Passer cette étape</a>
 {% endblock %}
