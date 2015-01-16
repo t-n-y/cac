@@ -693,6 +693,33 @@ p.topPosition{
 	display: none;
 }
 
+.avisBar p{
+	color: #989898;
+}
+
+.avisBar p.texte{
+	margin-top: 19px;
+	margin-left: -40px;
+	color: #5ac4d4;
+}
+
+.racontezNous{
+	text-align: center;
+	margin-top: 100px;
+}
+
+
+.racontezNous p{
+	color: #5ac4d4;
+}
+
+.racontezNous img{
+	width: 25%;
+	min-width: 250px;
+	margin-top: 20px;
+}
+
+
 .information{
 	width: 160px;
 	background-color: rgba(255,255,255,0.4);
