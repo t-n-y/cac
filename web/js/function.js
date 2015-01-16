@@ -243,7 +243,7 @@ $(document).ready(function(){
               marginTop: "0px"
           }, 300);
     $(".ticket .ticketPromotion").stop(true,false).animate({
-              marginTop: "-38px"
+              marginTop: "-42px"
           }, 300);
     setTimeout(function() {  
       $('.ticket .ticketPromotion').css("display" , "none");

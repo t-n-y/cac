@@ -57,10 +57,10 @@
 			<div class="noteBar col-xs-3 col-sm-3 col-md-3">
 				<div class="ticket">
 					<div class="ticketBarTop">
-						<h2>-50%</h2>
+						<h2 class="font30">-50%</h2>
 						<h3>SUR UNE CONSOMATION</h3>
 					</div>
-					<div class="ticketPromotion">
+					<div class="ticketPromotion col-xs-12 col-sm-12 col-md-12">
 					<!--<script language="javascript">
 						var lejour = new Date();
 						document.write(lejour.getDay());
@@ -75,8 +75,17 @@
 						'6': 'Samedi', 
 						'7': 'Dimanche'
 					} %}
-						<p>Happy Hours le {{days[2]}} -{{ bar.promotion.promotionArray[days[2]]['happy-hour'].value }}%</p>
+						<div class="col-xs-7 col-sm-7 col-md-7">
+							<p class="bold">Happy Hours</p>
+							<p>De 16h à 18h</p>
+						</div>
+						<div class="col-xs-5 col-sm-5 col-md-5">
+							<p class="reductionHappyHour">-70%</p> 
+						</div>
+						
+						<!--le {{days[2]}} -{{ bar.promotion.promotionArray[days[2]]['happy-hour'].value }}%</p>-->
 					</div>
+					<div class="clear"></div>
 					<div class="ticketBarBottom">
 						<p>OBTENIR LA PROMO</p>
 					</div>
