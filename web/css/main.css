@@ -171,6 +171,11 @@ h2.font30{
 
 /*****************HEADER*****************/
 
+.nav li.pull-right{
+	margin-left: 0px;
+	font-size: 12px;
+}
+
 .navbar-default{
 	background-color: #fff;
 	border: 0px solid;
