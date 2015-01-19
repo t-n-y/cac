@@ -30,6 +30,12 @@ $('.mapView iframe').css('height', heightsuperInfoBar + 'px');
 
 /*******CONNEXION*******/
 $(document).ready(function(){
+
+$('.active').each(function() {
+  $( this ).click();
+  $( this ).click();
+});
+
   $(".animConnexion").on('click',function(){
     $(".isConnexion").css("display","block");
     $(".forConnexion").css("display","block");
