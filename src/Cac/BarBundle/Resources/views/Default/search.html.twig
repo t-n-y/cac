@@ -1,0 +1,16 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}CacBarBundle:Bar:index{% endblock %}
+
+{% block body %}
+
+		{% for searchResult in searchResults %}
+		<img src="{{ asset('uploads/bar/'~searchResult.path) }}">
+						{{searchResult.name}}
+		{% endfor %}
+			<h2>Recherche</h2>
+			<p>
+				Vous avez recherché : {{ searchParams }}
+				<br>Nombre de résultat : {{ searchResults|length }}
+			</p>
+{% endblock %}

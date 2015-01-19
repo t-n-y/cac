@@ -20,7 +20,8 @@
         "incenteev/composer-parameter-handler": "~2.0",
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "raulfraile/ladybug-bundle": "~1.0",
-        "pugx/multi-user-bundle": "3.0.*@dev"
+        "pugx/multi-user-bundle": "3.0.*@dev",
+        "friendsofsymfony/jsrouting-bundle": "@stable"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"

@@ -12,4 +12,11 @@ use Doctrine\ORM\EntityRepository;
  */
 class BarRepository extends EntityRepository
 {
+	public function getSearchResult($value)
+	{
+		return $this->getEntityManager()
+	            ->createQuery('SELECT b FROM CacBarBundle:Bar b Where b.name LIKE :Value')
+	            ->setParameters(array('Value' => $value))
+	            ->getResult();
+	}
 }

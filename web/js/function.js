@@ -31,11 +31,22 @@ $('.mapView iframe').css('height', heightsuperInfoBar + 'px');
 /*******CONNEXION*******/
 $(document).ready(function(){
 
-$('.active').each(function() {
-  $( this ).click();
-  $( this ).click();
-});
+  $('.active').each(function() {
+    $( this ).click();
+    $( this ).click();
+  });
 
+  $('#recherche input').keypress(function(e) {
+    if(e.which == 13) {
+      $('#recherche button').click();
+    }});
+  $('#recherche button').on('click', function() {
+    var searchValue = $("#recherche input").val();
+    if(searchValue.length > 0){
+      window.location = Routing.generate('search', { value: searchValue });
+    }
+  });
+  
   $(".animConnexion").on('click',function(){
     $(".isConnexion").css("display","block");
     $(".forConnexion").css("display","block");
