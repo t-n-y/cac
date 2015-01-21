@@ -18,7 +18,7 @@
 		<p>Votre établissement</p>
 	</div>
 	<form action="{{ path('bar_create') }}" {{ form_enctype(form) }} method="POST">
-		<div class="inscription center col-xs-6 col-sm-6 col-md-6">
+		<div class="inscription center col-xs-12 col-sm-6 col-md-6">
 			<div class="border">
 				{{ form_label(form.name) }}
 				<br>
@@ -103,7 +103,7 @@
 			</div>
 		</div>
 
-		<div class="inscription center col-xs-6 col-sm-6 col-md-6">
+		<div class="inscription center col-xs-12 col-sm-6 col-md-6">
 
 			<div class="border access">
 				{{ form_label(form.access) }}

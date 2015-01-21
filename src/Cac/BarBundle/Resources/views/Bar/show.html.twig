@@ -252,16 +252,18 @@
 					</div>
 				{% endif %}
 				{% if bar.valet == 1%}
-					<div class="vignettePetitPlus col-xs-6 col-sm-3 col-md-3 noPadding">
+				<div class="col-xs-6 col-sm-5 col-md-5 noPadding">
+					<div class="vignettePetitPlus col-xs-10 col-sm-7 col-md-7 noPadding">
 						<div class="vignettePetitPlusContent">
 							<img src="{{asset('img/voiturier.png')}}" alt="Click and Cheers"><p>Service<br>Voiturier</p>
 						</div>
 					</div>
-					<div class="vignettePetitPlusPrix col-xs-3 col-sm-2 col-md-2 noPadding">
+					<div class="vignettePetitPlusPrix col-xs-1 col-sm-4 col-md-4 noPadding">
 						<div class="vignettePetitPlusPrixContent">
 							<p>{{ bar.valetCost }}<span> €</span></p>
 						</div>
 					</div>
+				</div>
 				{% endif %}
 				<div class="clear"></div>
 			</div>

@@ -31,7 +31,8 @@ h2.font30{
 
 .border{
 	border: 1px solid #a8a8a8;
-	width: 400px;
+	width: 100%; 
+	max-width: 400px;
 	margin: auto;
 	padding: 20px 0px;
 }
@@ -964,7 +965,8 @@ p.topPosition{
 }
 
 .inscription input[type=text], .inscription input[type=email], .inscription input[type=password]{
-	width: 350px;
+	max-width: 350px;
+	width: 97%;
 }
 
 .inscription input[type=submit]{
@@ -979,7 +981,8 @@ p.topPosition{
 }
 
 .inscription textarea{
-	width: 430px;
+	max-width: 430px;
+	width: 97%;
 	height: 200px;
 }
 
@@ -1384,6 +1387,10 @@ float: left;
 	.superInfoBar{
 		width: 65%;
 	}
+
+	.subtitlePageRegisterBig{
+		width: 17%;
+	}
 }
 
 @media (max-width: 1013px) {
@@ -1418,6 +1425,14 @@ float: left;
 		padding-left: 10px;
 		padding-right: 10px;
 	}
+
+	.subtitlePageRegisterBig{
+		width: 19%;
+	}
+
+	.contentPetitPlus{
+		padding: 0 5%;
+	}
 }
 
 @media (max-width: 880px) {
@@ -1435,6 +1450,10 @@ float: left;
 
 	.ticket, .ticketPromotion, .ticketVerre, .ticketBarTop, .ticketCode, .ticketBarBottom{
 		width: 200px;
+	}
+
+	.contentPetitPlus{
+		padding: 0 0%;
 	}
 }
 
@@ -1469,6 +1488,10 @@ float: left;
     .mapView{
     	height: 300px;
     }
+
+    .subtitlePageRegisterBig{
+		width: 23%;
+	}
 }
 
 
