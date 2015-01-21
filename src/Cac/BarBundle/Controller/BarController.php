@@ -201,12 +201,14 @@ class BarController extends Controller
             'method' => 'PUT',
         ));
 
+
         $form->add('submit', 
             'submit', 
             array(
                 'label' => 'Mettre à jour'
             )
-        );
+        )
+         ->add('file', null, array('label' => '+ Ajouter une photo'));
 
         return $form;
     }

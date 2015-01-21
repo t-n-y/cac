@@ -460,3 +460,10 @@ $(".barInList").mouseenter(function(){
         $(".file_button_container img").stop(true,true).show(300);
     });
 
+    $("#cac_barbundle_bar_file").change(function(){
+        readURL(this);
+        $(".showImg").stop(true,true).show(300);
+        $(".file_button_container img").stop(true,true).show(300);
+        $("#lastPicture").stop(true,true).hide(300);
+    });
+

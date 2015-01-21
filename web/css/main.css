@@ -281,6 +281,7 @@ h2.font30{
 .mainContainer{
 	background-image: url('../img/texture.png');
 	padding-top: 80px; 
+	width: 100%;
 }
 
 .topPage{
@@ -942,6 +943,9 @@ p.topPosition{
 
 
 /************FORM INSCRIPTION***********/
+.edit{
+	text-align: center;
+}
 
 .inscription{
 	margin-top: 60px;
@@ -969,8 +973,8 @@ p.topPosition{
 	width: 97%;
 }
 
-.inscription input[type=submit]{
-	margin: 40px 0;
+.inscription input[type=submit], .mainContainer button[type=submit] {
+	margin: 40px auto;
 	color: #fff;
 	background-color: #5ac4d4;
 	border: none;
