@@ -199,6 +199,17 @@ h2.font30{
 	-moz-border-radius: 0px;
 }
 
+.navbar-header{
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.navbar-toggle{
+	position: absolute;
+	top: 5px;
+	margin-left: 20px;
+}
+
 .logo-afterscroll img {
 	height: 50px;
 }
@@ -1368,6 +1379,11 @@ float: left;
 	margin: 0;
 	padding-top:8px;
 	font-size: 12px;
+	}
+
+	.superInfoBar{
+		width: 65%;
+	}
 }
 
 @media (max-width: 1013px) {
@@ -1404,11 +1420,21 @@ float: left;
 	}
 }
 
+@media (max-width: 880px) {
+    .ticket, .ticketPromotion, .ticketVerre, .ticketBarTop, .ticketCode, .ticketBarBottom{
+		width: 220px;
+	}
+}
+
 @media (max-width: 825px) {
 
 	.navbar-nav > li.pull-right a{
 		padding-left: 6px;
 		padding-right: 6px;
+	}
+
+	.ticket, .ticketPromotion, .ticketVerre, .ticketBarTop, .ticketCode, .ticketBarBottom{
+		width: 200px;
 	}
 }
 
@@ -1427,14 +1453,21 @@ float: left;
 	.navbar-nav > li {
 		margin-left: 0px;
 	}
-}
 
-@media (max-width: 767px) {
 	.navbar-afterscroll{
 		display: none;
 	}
     .navbar-nav > .pull-right {
         float: none !important;
+    }
+
+    .superInfoBar{
+    	height: auto;
+    	padding-bottom: 20px;
+    }
+
+    .mapView{
+    	height: 300px;
     }
 }
 
