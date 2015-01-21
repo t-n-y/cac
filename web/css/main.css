@@ -716,6 +716,7 @@ p.topPosition{
 
 .racontezNous p{
 	color: #5ac4d4;
+	margin: 0px;
 }
 
 .racontezNous img{
@@ -1360,6 +1361,8 @@ float: left;
 
 /***************************************/
 
+
+
 @media (max-width: 1160px) {
   .petitplusInfoBar p{
 	margin: 0;
@@ -1367,7 +1370,17 @@ float: left;
 	font-size: 12px;
 }
 
+@media (max-width: 1013px) {
+  .navbar-nav > li {
+		margin-left: 40px;
+	}
+}
+
 @media (max-width: 991px) {
+
+	.navbar-nav > li {
+		margin-left: 30px;
+	}
 
 	.barInList:nth-child(2n+1){
 
@@ -1377,6 +1390,25 @@ float: left;
 	.barInList:nth-child(2n+2){
 
 		border-right: 0px solid rgba(0,0,0,0);
+	}
+}
+
+@media (max-width: 945px) {
+  .navbar-nav > li {
+		margin-left: 10px;
+	}
+
+	.navbar-nav > li.pull-right a{
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+}
+
+@media (max-width: 825px) {
+
+	.navbar-nav > li.pull-right a{
+		padding-left: 6px;
+		padding-right: 6px;
 	}
 }
 
@@ -1391,9 +1423,16 @@ float: left;
 		border-left: 0px solid rgba(0,0,0,0);
 		border-right: 0px solid rgba(0,0,0,0);
 	}
+
+	.navbar-nav > li {
+		margin-left: 0px;
+	}
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
+	.navbar-afterscroll{
+		display: none;
+	}
     .navbar-nav > .pull-right {
         float: none !important;
     }

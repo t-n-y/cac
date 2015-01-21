@@ -51,7 +51,7 @@
 <br>
 {% if edit_form.vars.value.dressCode == 1 %}
 <div class="btn-group width100" data-toggle="buttons">
- <label class="btn btn-primary active choice">
+ <label class="btn btn-primary choice active">
    <input type="radio" name="cac_barbundle_bar[dressCode]" id="cac_barbundle_bar_dressCode" value="1"> Chic
  </label>
  <label class="btn btn-primary choice">
@@ -63,7 +63,16 @@
  <label class="btn btn-primary choice">
    <input type="radio" name="cac_barbundle_bar[dressCode]" id="cac_barbundle_bar_dressCode" value="1"> Chic
  </label>
- <label class="btn btn-primary active choice">
+ <label class="btn btn-primary choice active">
+   <input type="radio" name="cac_barbundle_bar[dressCode]" id="cac_barbundle_bar_dressCode" value="2"> Décontracté
+ </label>
+</div>
+{% else %}
+<div class="btn-group width100" data-toggle="buttons">
+ <label class="btn btn-primary choice">
+   <input type="radio" name="cac_barbundle_bar[dressCode]" id="cac_barbundle_bar_dressCode" value="1"> Chic
+ </label>
+ <label class="btn btn-primary choice">
    <input type="radio" name="cac_barbundle_bar[dressCode]" id="cac_barbundle_bar_dressCode" value="2"> Décontracté
  </label>
 </div>
