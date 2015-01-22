@@ -26,8 +26,17 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $entities = $em->getRepository('CacBarBundle:Bar')->findBy(array(), array('priceRange'=>'ASC'));
+        return array('bars' => $entities);
+    }
 
-        //return $this->render('CacBarBundle:Default:sortByPrice.html.twig',$entities);
+    /**
+     * @Route("/sort/date", name="sortByDate", options={"expose"=true}) 
+     * @Template()
+     */
+    public function sortByDateAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $entities = $em->getRepository('CacBarBundle:Bar')->findBy(array(), array('creationDate'=>'ASC'));
         return array('bars' => $entities);
     }
 
