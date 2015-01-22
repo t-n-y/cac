@@ -20,7 +20,7 @@
 		<p>Les nouveaux</p>
 	</div>
 	<div class="menuHeaderList col-xs-3 col-sm-3 col-md-3 noPadding">
-		<p>Les petits prix</p>
+		<p class="small-price">Les petits prix</p>
 	</div>
 	<div class="col-xs-3 col-sm-3 col-md-3 noPadding">
 		<div id="recherche">
@@ -43,4 +43,8 @@
 </div>
 
 <div class="clear"></div>
+{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+    <script src="{{ asset('js/sort-affichage.js') }}" type="text/javascript" /></script>
 {% endblock %}
