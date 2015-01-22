@@ -208,7 +208,7 @@ class BarController extends Controller
                 'label' => 'Mettre à jour'
             )
         )
-         ->add('file', null, array('label' => '+ Ajouter une photo'));
+         ->add('file', null, array('label' => 'Modifier la photo'));
 
         return $form;
     }
