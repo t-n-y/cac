@@ -16,6 +16,7 @@ use Cac\BarBundle\Entity\Image;
 use Cac\BarBundle\Form\Type\BarType;
 use Cac\BarBundle\Form\Type\PromotionType;
 use Cac\BarBundle\Form\Type\BarEditType;
+use Cac\AdminBundle\Entity\Visited;
 /**
  * Bar controller.
  *
@@ -306,6 +307,16 @@ class BarController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository('CacBarBundle:Bar')->find($id);
+        $user = $this->get('security.context')->getToken()->getUser();
+
+        $visit = new Visited();
+        $visit->setBar($entity);
+        if (is_object($user)) {
+            $visit->setUser($user);
+        }
+        $visit->setCreatedAt(new \DateTime('now'));
+        $em->persist($visit);
+        $em->flush();
 
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($id);
@@ -318,17 +329,6 @@ class BarController extends Controller
     }
 
     /**
-     * @Route("/search")
-     * @Template()
-     */
-    public function searchAction()
-    {
-        return array(
-                // ...
-            );    
-    }
-
-    /**
      * @Route("/note/{id}/{text}/{note}", name="bar_eval", options={"expose"=true})
      * @Template()
      */
@@ -337,7 +337,6 @@ class BarController extends Controller
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository('CacBarBundle:Bar')->find($id);
 
-        $em = $this->getDoctrine()->getManager();
         $comment = new Comment();
         $comment->setBar($entity);
         $comment->setComment($text);
