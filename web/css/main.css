@@ -1179,16 +1179,19 @@ float: left;
 .headerList{
 	background-color: #5ac4d4;
 	color: #fff;
-	height: 60px;
 	text-align: center;
 	font-family: "HelveticaNeue-Regular", Arial;
   	font-weight: normal;
-  	padding-top: 20px;
+  	padding-top: 10px;
   	cursor: pointer;
 }
 
 .menuHeaderList:hover{
 	text-decoration: underline;
+}
+
+.menuHeaderList p{
+	font-size: 20px;
 }
 
 
@@ -1201,6 +1204,33 @@ float: left;
 	height: 170px;
 	overflow: hidden;
 	border: 5px solid rgba(0,0,0,0);
+}
+
+#recherche{
+	background-color : #1aacd5;
+	position: relative;
+}
+
+#recherche span{
+	font-size: 20px;
+}
+
+.headerList input{
+	background-color : #1aacd5;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	font-size: 20px;
+	border: 0px solid #000;
+	border:none;
+	padding-left: 10px;
+	border: none;
+	outline: none;
+}
+
+.headerList button{
+	border:none;
+	background:none;
 }
 
 .barInList:nth-child(4n+1){
