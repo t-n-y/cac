@@ -194,7 +194,8 @@
 				{% if bar.handicappedAccess == 1 %}
 					<div class="vignettePetitPlus col-xs-6 col-sm-3 col-md-3 noPadding">
 						<div class="vignettePetitPlusContent">
-							<img src="{{asset('img/pmr.png')}}" alt="Click and Cheers"><p>Accessible<br>aux PMR</p>
+							<img class="col-xs-3 col-sm-3 col-md-3 noPadding" src="{{asset('img/pmr.png')}}" alt="Click and Cheers" />
+							<p class="col-xs-9 col-sm-9 col-md-9 noPadding">Accessible<br>aux PMR</p>
 						</div>
 					</div>
 				{% endif %}
@@ -208,7 +209,8 @@
 				{% if bar.smokingArea == 1%}
 					<div class="vignettePetitPlus col-xs-6 col-sm-3 col-md-3 noPadding">
 						<div class="vignettePetitPlusContent">
-							<img src="{{asset('img/terrasse.png')}}" alt="Click and Cheers"><p>Espace<br>Fumeur</p>
+							<img class="col-xs-3 col-sm-3 col-md-3 noPadding" src="{{asset('img/terrasse.png')}}" alt="Click and Cheers" />
+							<p class="col-xs-9 col-sm-9 col-md-9 noPadding">Espace<br>Fumeur</p>
 						</div>
 					</div> 
 				{% endif %}
@@ -231,7 +233,8 @@
 				{% if bar.billard == 1%}
 					<div class="vignettePetitPlus col-xs-6 col-sm-3 col-md-3 noPadding">
 						<div class="vignettePetitPlusContent">
-							<img src="{{asset('img/ethylotest.png')}}" alt="Click and Cheers"><p class="padding10">Billard</p>
+							<img class="col-xs-3 col-sm-3 col-md-3 noPadding" src="{{asset('img/ethylotest.png')}}" alt="Click and Cheers">
+							<p class="col-xs-9 col-sm-9 col-md-9 noPadding padding10">Billard</p>
 						</div>
 					</div>
 				{% endif %}
@@ -252,18 +255,13 @@
 					</div>
 				{% endif %}
 				{% if bar.valet == 1%}
-				<div class="col-xs-6 col-sm-5 col-md-5 noPadding">
-					<div class="vignettePetitPlus col-xs-10 col-sm-7 col-md-7 noPadding">
+					<div class="vignettePetitPlus col-xs-6 col-sm-3 col-md-3 noPadding">
 						<div class="vignettePetitPlusContent">
-							<img src="{{asset('img/voiturier.png')}}" alt="Click and Cheers"><p>Service<br>Voiturier</p>
+							<img class="col-xs-3 col-sm-3 col-md-3 noPadding" src="{{asset('img/voiturier.png')}}" alt="Click and Cheers">
+							<p class="col-xs-6 col-sm-6 col-md-6 noPadding">Service<br>Voiturier</p>
+							<p class="col-xs-3 col-sm-3 col-md-3 noPadding vignettePetitPlusPrix">{{ bar.valetCost }}<span> €</span></p>
 						</div>
 					</div>
-					<div class="vignettePetitPlusPrix col-xs-1 col-sm-4 col-md-4 noPadding">
-						<div class="vignettePetitPlusPrixContent">
-							<p>{{ bar.valetCost }}<span> €</span></p>
-						</div>
-					</div>
-				</div>
 				{% endif %}
 				<div class="clear"></div>
 			</div>

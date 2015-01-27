@@ -816,6 +816,8 @@ p.topPosition{
 .petitplusInfoBar img{
 	float: left;
 	padding-left: 10px;	
+	max-width: 48px;
+	margin-top: 2px;
 }
 
 .petitplusInfoBar p{
@@ -840,13 +842,13 @@ p.topPosition{
 
 
 
-.vignettePetitPlusPrix span{
+span .vignettePetitPlusPrix{
 	font-size: 13px
 }
 
 
 
-.vignettePetitPlusPrix p{
+p.vignettePetitPlusPrix{
 	margin-top: 7px;
 	font-size: 18px
 }
@@ -1209,6 +1211,9 @@ float: left;
 #recherche{
 	background-color : #1aacd5;
 	position: relative;
+			-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
 }
 
 #recherche span{
@@ -1231,6 +1236,7 @@ float: left;
 .headerList button{
 	border:none;
 	background:none;
+	outline: none;
 }
 
 .barInList:nth-child(4n+1){
@@ -1412,11 +1418,11 @@ float: left;
 
 
 @media (max-width: 1160px) {
-  .petitplusInfoBar p{
+/*  .petitplusInfoBar p{
 	margin: 0;
 	padding-top:8px;
 	font-size: 12px;
-	}
+	}*/
 
 	.superInfoBar{
 		width: 65%;
@@ -1464,9 +1470,9 @@ float: left;
 		width: 19%;
 	}
 
-	.contentPetitPlus{
+/*	.contentPetitPlus{
 		padding: 0 5%;
-	}
+	}*/
 }
 
 @media (max-width: 880px) {
@@ -1486,9 +1492,9 @@ float: left;
 		width: 200px;
 	}
 
-	.contentPetitPlus{
+/*	.contentPetitPlus{
 		padding: 0 0%;
-	}
+	}*/
 }
 
 @media (max-width: 767px) {
