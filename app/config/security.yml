@@ -28,6 +28,7 @@ security:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/bars/new, role: ROLE_BIGBOSS }
         - { path: ^/bars/edit, role: ROLE_BARMAN }
+        - { path: ^/bars/new, role: ROLE_BIGBOSS }
+        - { path: ^/barman/register, role: ROLE_BIGBOSS }
         - { path: ^/whostheboss/, role: ROLE_ADMIN }

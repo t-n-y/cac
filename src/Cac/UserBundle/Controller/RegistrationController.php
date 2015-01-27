@@ -54,6 +54,9 @@ class RegistrationController extends Controller
 
         if (strpos($request->getPathInfo(), "/barman/") !== false) {
             $idUser = $this->container->get('security.context')->getToken()->getUser()->getId();
+            if (!$idUser) {
+                throw $this->createNotFoundException('Vous n\'avez pas accés à ce contenu.');
+            }
             $form->add('bar', 'entity', array('class' => 'CacBarBundle:Bar', 'property' => 'name', 'attr' => array('placeholder' => 'Bar'),
                 'query_builder' => function (\Cac\BarBundle\Entity\BarRepository $repository) use ($idUser)
                              {
