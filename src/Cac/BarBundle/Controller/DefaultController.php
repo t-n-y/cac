@@ -31,12 +31,23 @@ class DefaultController extends Controller
 
     /**
      * @Route("/sort/date", name="sortByDate", options={"expose"=true}) 
-     * @Template()
+     * @Template("CacBarBundle:Default:sortByPrice.html.twig")
      */
     public function sortByDateAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $entities = $em->getRepository('CacBarBundle:Bar')->findBy(array(), array('creationDate'=>'ASC'));
+        $entities = $em->getRepository('CacBarBundle:Bar')->findBy(array(), array('creationDate'=>'DESC'));
+        return array('bars' => $entities);
+    }
+
+    /**
+     * @Route("/sort/best", name="sortByBest", options={"expose"=true}) 
+     * @Template("CacBarBundle:Default:sortByPrice.html.twig")
+     */
+    public function sortByBestAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $entities = $em->getRepository('CacBarBundle:Bar')->findBy(array(), array('score'=>'DESC'));
         return array('bars' => $entities);
     }
 

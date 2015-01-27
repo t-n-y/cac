@@ -19,6 +19,16 @@ $(document).ready(function(){
             }
         } );
     });
+    $( ".menuHeaderList .best" ).on( "click", function() {
+        $.ajax( {
+            type: 'GET',
+            url: Routing.generate('sortByBest'),
+            data: 'json',
+            success: function (data) {
+              $('.barList').html(data);
+            }
+        } );
+    });
 });
 
 

@@ -238,6 +238,13 @@ class Bar
     public $file;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="score", type="integer")
+     */
+    private $score;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -1042,5 +1049,28 @@ class Bar
     public function getPath()
     {
         return $this->path;
+    }
+
+    /**
+     * Set score
+     *
+     * @param integer $score
+     * @return Bar
+     */
+    public function setScore($score)
+    {
+        $this->score = $score;
+
+        return $this;
+    }
+
+    /**
+     * Get score
+     *
+     * @return integer 
+     */
+    public function getScore()
+    {
+        return $this->score;
     }
 }
