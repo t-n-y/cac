@@ -387,7 +387,7 @@ var nbImage = $( ".topPage img" ).length;
 
 $(document).ready(function() {
 $(".topBar").animate({
-      height: "400px"
+      height: "360px"
     }, 300);
 
     var timer;
@@ -404,7 +404,7 @@ $(".topBar").animate({
     $( ".topBar" ).mouseleave(function() {
   
     $(".topBar").animate({
-      height: "400px"
+      height: "360px"
     }, 300);
 
   });
