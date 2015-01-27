@@ -110,7 +110,7 @@ class BarController extends Controller
         $user = $this->get('security.context')->getToken()->getUser();
 
         if ($form->isValid()) {
-
+            $entity->setAdress(explode(",",$entity->getAdress())[0]);
             $entity->setAuthor($user);
             $entity->setPromotion($promotion);
             $promotion->setPromotion('');
