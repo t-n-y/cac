@@ -3,7 +3,8 @@ security:
         FOS\UserBundle\Model\UserInterface: sha512
 
     role_hierarchy:
-        ROLE_BIGBOSS:       ROLE_USER
+        ROLE_BARMAN:       ROLE_USER
+        ROLE_BIGBOSS:       ROLE_BARMAN
         ROLE_ADMIN:       [ROLE_BIGBOSS, ROLE_USER]
         ROLE_SUPER_ADMIN: ROLE_ADMIN
 
@@ -28,4 +29,5 @@ security:
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/bars/new, role: ROLE_BIGBOSS }
+        - { path: ^/bars/edit, role: ROLE_BARMAN }
         - { path: ^/whostheboss/, role: ROLE_ADMIN }

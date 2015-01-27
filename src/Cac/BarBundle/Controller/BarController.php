@@ -177,7 +177,9 @@ class BarController extends Controller
         if (!$entity) {
             throw $this->createNotFoundException('Le bar demandé n\'existe pas.');
         }
-
+        if ($this->get('security.context')->getToken()->getUser() != $entity->getAuthor()) {
+            throw $this->createNotFoundException('Vous n\'avez pas accés à ce contenu.');
+        }
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($id);
 
