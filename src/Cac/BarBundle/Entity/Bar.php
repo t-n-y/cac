@@ -240,7 +240,7 @@ class Bar
     /**
      * @var integer
      *
-     * @ORM\Column(name="score", type="integer")
+     * @ORM\Column(name="score", type="integer", nullable=true)
      */
     private $score;
 
