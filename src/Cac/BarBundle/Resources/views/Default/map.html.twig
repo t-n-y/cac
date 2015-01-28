@@ -1,0 +1,41 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Map{% endblock %}
+
+{% block body %}
+
+<div id="map_canvas" style="width: 500px;height: 500px;"></div>
+
+{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			var adress = {{ adress|json_encode() |raw }};
+		    var map;
+		    var elevator;
+		    var myOptions = {
+		        zoom: 1,
+		        center: new google.maps.LatLng(0, 0),
+		        mapTypeId: 'terrain'
+		    };
+		    map = new google.maps.Map($('#map_canvas')[0], myOptions);
+
+		    // var addresses = ['25 rue des norias, pezenas, france', 'Africa'];
+		    var addresses = ($.parseJSON(adress));
+
+		    for (var x = 0; x < addresses.length; x++) {
+		        $.getJSON('http://maps.googleapis.com/maps/api/geocode/json?address='+addresses[x]+'&sensor=false', null, function (data) {
+		            var p = data.results[0].geometry.location
+		            var latlng = new google.maps.LatLng(p.lat, p.lng);
+		            new google.maps.Marker({
+		                position: latlng,
+		                map: map
+		            });
+
+		        });
+		    }
+		});
+	</script>
+{% endblock %}

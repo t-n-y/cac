@@ -19,6 +19,24 @@ class DefaultController extends Controller
     }
 
     /**
+     * @Route("/map", name="map") 
+     * @Template()
+     */
+    public function mapAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $entities = $em->getRepository('CacBarBundle:Bar')->findAll();
+
+        $adress = array();
+        $i = 0;
+        foreach ($entities as $entity) {
+            $adress[$i] = $entity->getAdress().' , '.$entity->getTown().' , '.$entity->getCountry();
+            $i++;
+        }
+        return array('adress' => json_encode($adress));
+    }
+
+    /**
      * @Route("/sort/price", name="sortByPrice", options={"expose"=true}) 
      * @Template()
      */
