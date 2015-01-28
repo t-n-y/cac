@@ -55,6 +55,20 @@
 					</div>
 				</div>
 			</div>
+			<ul><li>Happy Hour</li>
+				<ul>
+					<li>Begins : {{ bar.promotion.promotionArray[today]['happy-hour'].beginning }}</li>
+					<li>Ends : {{ bar.promotion.promotionArray[today]['happy-hour'].ending }}</li>
+					<li>Value : {{ bar.promotion.promotionArray[today]['happy-hour'].value }}%</li>
+					<li>Condition : {{ bar.promotion.promotionArray[today]['happy-hour'].condition }}</li>
+				</ul>
+				<li>Promotion C&C</li>
+				<ul>
+					<li>Quantité : {{ bar.promotion.promotionArray[today].promotion.quantity }}</li>
+					<li>Value : {{ bar.promotion.promotionArray[today].promotion.value }}%</li>
+					<li>Condition : {{ bar.promotion.promotionArray[today].promotion.condition }}</li>
+				</ul>
+			</ul>
 			<div class="noteBar col-xs-6 col-sm-3 col-md-3">
 				<div class="ticket">
 					<div class="ticketBarTop">
@@ -62,20 +76,6 @@
 						<h3>SUR UNE CONSOMATION</h3>
 					</div>
 					<div class="ticketPromotion col-xs-12 col-sm-12 col-md-12">
-					<!--<script language="javascript">
-						var lejour = new Date();
-						document.write(lejour.getDay());
-						
-					</script>-->
-					{% set days = {
-						'1': 'Lundi', 
-						'2': 'Mardi', 
-						'3': 'Mercredi', 
-						'4': 'Jeudi', 
-						'5': 'Vendredi', 
-						'6': 'Samedi', 
-						'7': 'Dimanche'
-					} %}
 						<div class="col-xs-7 col-sm-7 col-md-7">
 							<p class="bold">Happy Hours</p>
 							<p>De 16h à 18h</p>

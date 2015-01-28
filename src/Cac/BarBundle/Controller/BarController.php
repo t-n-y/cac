@@ -307,6 +307,9 @@ class BarController extends Controller
      */
     public function showAction($id)
     {
+        setlocale(LC_TIME, "fr_FR");
+        $today = strftime("%A");
+
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository('CacBarBundle:Bar')->find($id);
         $user = $this->get('security.context')->getToken()->getUser();
@@ -327,6 +330,7 @@ class BarController extends Controller
 
         return array(
             'bar'      => $entity,
+            'today' => $today,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         );
