@@ -467,3 +467,14 @@ $(".barInList").mouseenter(function(){
         $("#lastPicture").stop(true,true).hide(300);
     });
 
+// render modal login
+$( ".animConnexion" ).on( "click", function() {
+    $.ajax( {
+        type: 'GET',
+        url: Routing.generate('fos_user_security_login'),
+        data: 'json',
+        success: function (data) {
+          $('.forConnexion .container-modal').html(data);
+        }
+    } );
+});
