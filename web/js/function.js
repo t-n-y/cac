@@ -431,9 +431,16 @@ for(var i = 0; i<1000; i++){
 
 $(".barInList").mouseenter(function(){
     $(this).find('.shadowbarInList h3').stop(true,true).animate({marginBottom:"25px"});
+    $(this).find('.shadowbarInList p').stop(true,true).fadeIn(600);
+    $(this).find('.shadowbarInList').css("background", 'rgba(0,0,0,0.5)');
   });
   $(".barInList").mouseleave(function(){
     $(this).find('.shadowbarInList h3').stop(true,true).animate({marginBottom:"10px"});
+    $(this).find('.shadowbarInList p').stop(true,true).fadeOut(200);
+    $(this).find('.shadowbarInList').css("background", '-webkit-linear-gradient(bottom,rgba(000000,0,0,0.6),rgba(000000,0,0,0))');
+    $(this).find('.shadowbarInList').css("background", '-o-linear-gradient(bottom,rgba(000000,0,0,0.6),rgba(000000,0,0,0))');
+    $(this).find('.shadowbarInList').css("background", '-moz-linear-gradient(bottom,rgba(000000,0,0,0.6),rgba(000000,0,0,0))');
+    $(this).find('.shadowbarInList').css("background", 'linear-gradient(bottom,rgba(000000,0,0,0.6),rgba(000000,0,0,0))');
 
   });
 

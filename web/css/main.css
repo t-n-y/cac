@@ -1,5 +1,5 @@
 /*****************GENERAL*****************/
-
+/*	color : #5ac4d4; */
 .noPadding{
 	padding: 0px;
 }
@@ -423,6 +423,32 @@ h2.font30{
 	margin-bottom: 23px;
 }
 
+.barInList p.prix{
+	display: none;
+	color : #5ac4d4;
+	font-size: 16px;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	margin-right: 22%;
+	text-align: left;
+	margin-bottom: 23px;
+	border-right: 1px solid #fff;
+	padding-right: 10px;
+}
+
+.barInList p.reduc{
+	display: none;
+	color : #5ac4d4;
+	font-size: 16px;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	margin-right: 15%;
+	text-align: left;
+	margin-bottom: 23px;
+}
+
 .heart{
 	color : #fff;
 	font-size: 25px;
@@ -445,7 +471,7 @@ h2.font30{
 
 }
 
-.shadowHover span{
+.shadowHover span, .barInList span.percentage{
 
 	color : #aaa;
 
@@ -473,6 +499,7 @@ h2.font30{
 
 .topBar img{
 	width: 100%;
+	min-width: 1200px;
 	min-height: 400px;
 		display: none;
 }
