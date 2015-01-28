@@ -55,7 +55,7 @@
 					</div>
 				</div>
 			</div>
-			<ul><li>Happy Hour</li>
+			{#<ul><li>Happy Hour</li>
 				<ul>
 					<li>Begins : {{ bar.promotion.promotionArray[today]['happy-hour'].beginning }}</li>
 					<li>Ends : {{ bar.promotion.promotionArray[today]['happy-hour'].ending }}</li>
@@ -68,21 +68,31 @@
 					<li>Value : {{ bar.promotion.promotionArray[today].promotion.value }}%</li>
 					<li>Condition : {{ bar.promotion.promotionArray[today].promotion.condition }}</li>
 				</ul>
-			</ul>
+			</ul>#}
 			<div class="noteBar col-xs-6 col-sm-3 col-md-3">
 				<div class="ticket">
 					<div class="ticketBarTop">
-						<h2 class="font30">-50%</h2>
-						<h3>SUR UNE CONSOMATION</h3>
+						{% if bar.promotion.promotionArray[today].promotion.value == 0 %}
+
+							<h2 class="font30">Ce bar ne</h2>
+							<h3>propose pas de promotion</h3>
+
+						{% else %}
+							<h2 class="font30">-{{ bar.promotion.promotionArray[today].promotion.value }}%</h2>
+							<h3>SUR UNE CONSOMATION</h3>
+						{% endif %}
 					</div>
 					<div class="ticketPromotion col-xs-12 col-sm-12 col-md-12">
 						<div class="col-xs-7 col-sm-7 col-md-7">
 							<p class="bold">Happy Hours</p>
-							<p>De 16h à 18h</p>
+							<p>De {{ bar.promotion.promotionArray[today]['happy-hour'].beginning }}h à {{ bar.promotion.promotionArray[today]['happy-hour'].ending }}h</p>
 						</div>
+
+						{% if bar.promotion.promotionArray[today]['happy-hour'].value != 0 %}
 						<div class="col-xs-5 col-sm-5 col-md-5">
-							<p class="reductionHappyHour">-70%</p> 
+							<p class="reductionHappyHour">-{{ bar.promotion.promotionArray[today]['happy-hour'].value }}%</p> 
 						</div>
+						{% endif %}
 						
 						{# le {{days[2]}} -{{ bar.promotion.promotionArray[days[2]]['happy-hour'].value }}%</p> #}
 					</div>
