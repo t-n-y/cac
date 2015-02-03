@@ -96,6 +96,11 @@ class RegistrationController extends Controller
                 'form' => $form->createView(),
             ));
         }
+        elseif (strpos($request->getPathInfo(), "/user/") !== false) {
+            return $this->render('CacUserBundle:BasicUser:register.html.twig', array(
+                'form' => $form->createView(),
+            ));
+        }
         else
         {
             return $this->render('CacUserBundle:Registration:register.html.twig', array(

@@ -50,7 +50,7 @@
             <li class="pull-right"><a href="{{ path('bar_new') }}">Créer un bar</a></li>
           {% endif %}
         {% else %}
-          <li class="pull-right"><a href="{{ path('fos_user_registration_register') }}">Créer un compte</a></li>
+          <li class="pull-right"><a href="{{ path('user_register') }}">Créer un compte</a></li>
           <li class="pull-right"><a class="animConnexion" href="#">Connexion</a></li>
         {% endif %}
       </ul>
@@ -100,7 +100,7 @@
           <li class="pull-right"><a href="{{ path('fos_user_security_login') }}">{{ app.user.username }}</a></li>
           <li class="pull-right"><a href="{{ path('bar_new') }}">Créer un bar</a></li>
         {% else %}
-          <li class="pull-right"><a href="{{ path('fos_user_registration_register') }}">Créer un compte</a></li>
+          <li class="pull-right"><a href="{{ path('user_register') }}">Créer un compte</a></li>
           <li class="pull-right"><a href="{{ path('fos_user_security_login') }}">Connexion</a></li>
         {% endif %}
       </ul>

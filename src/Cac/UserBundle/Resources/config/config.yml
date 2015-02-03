@@ -27,3 +27,13 @@ pugx_multi_user:
         profile:
           form: 
             type: Cac\UserBundle\Form\Type\BarmanFormType
+    user:
+        entity: 
+          class: Cac\UserBundle\Entity\BasicUser
+        registration:
+          form: 
+            type: Cac\UserBundle\Form\Type\BasicUserFormType
+          template: CacUserBundle:BasicUser:register.html.twig
+        profile:
+          form: 
+            type: Cac\UserBundle\Form\Type\BasicUserFormType
