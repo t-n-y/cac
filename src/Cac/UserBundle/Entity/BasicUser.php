@@ -3,6 +3,7 @@
 namespace Cac\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 use PUGX\MultiUserBundle\Validator\Constraints\UniqueEntity;
 
 /**
@@ -47,12 +48,28 @@ class BasicUser extends User
 
     /**
      * @var integer
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = "10",
+     *      max = "10",
+     *      minMessage = "Votre numéro doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Votre numéro ne peut pas être plus long que {{ limit }} caractères",
+     *      exactMessage = "Le numéro doit contenir 10 chiffres"
+     * )
      * @ORM\Column(name="mobile_phone", type="integer")
      */
     private $mobile_phone;
 
     /**
      * @var integer
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = "10",
+     *      max = "10",
+     *      minMessage = "Votre numéro doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Votre numéro ne peut pas être plus long que {{ limit }} caractères",
+     *      exactMessage = "Le numéro doit contenir 10 chiffres"
+     * )
      * @ORM\Column(name="fix_phone", type="integer")
      */
     private $fix_phone;
