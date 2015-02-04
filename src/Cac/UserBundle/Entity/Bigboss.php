@@ -67,12 +67,32 @@ class Bigboss extends User
 
     /**
      * @var integer
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = "10",
+     *      max = "10",
+     *      minMessage = "Votre numéro doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Votre numéro ne peut pas être plus long que {{ limit }} caractères",
+     *      exactMessage = "Le numéro doit contenir 10 chiffres"
+     * )
+     * @Assert\Regex(
+     *     pattern="#^(06|07)#",
+     *     message="Le numéro doit être un uméro de portable valide"
+     * )
      * @ORM\Column(name="mobile_phone", type="integer")
      */
     private $mobile_phone;
 
     /**
      * @var integer
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = "10",
+     *      max = "10",
+     *      minMessage = "Votre numéro doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Votre numéro ne peut pas être plus long que {{ limit }} caractères",
+     *      exactMessage = "Le numéro doit contenir 10 chiffres"
+     * )
      * @ORM\Column(name="fix_phone", type="integer")
      */
     private $fix_phone;

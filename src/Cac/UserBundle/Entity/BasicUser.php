@@ -56,6 +56,10 @@ class BasicUser extends User
      *      maxMessage = "Votre numéro ne peut pas être plus long que {{ limit }} caractères",
      *      exactMessage = "Le numéro doit contenir 10 chiffres"
      * )
+     * @Assert\Regex(
+     *     pattern="#^(06|07)#",
+     *     message="Le numéro doit être un uméro de portable valide"
+     * )
      * @ORM\Column(name="mobile_phone", type="integer")
      */
     private $mobile_phone;
