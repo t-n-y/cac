@@ -35,7 +35,7 @@
 			                position: latlng,
 			                map: map
 			            });
-			    		var contenuInfoBulle = '<p>'+addresses.info[x]+'</p>';
+			    		var contenuInfoBulle = '<a target="_blank" href="'+ Routing.generate('bar_show', { id: addresses.id[x] })+'">'+addresses.info[x]+'</a>';
 						var infoBulle = new google.maps.InfoWindow({
 							content: contenuInfoBulle
 						})
