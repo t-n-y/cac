@@ -23,6 +23,7 @@ class AppKernel extends Kernel
             new Cac\AdminBundle\CacAdminBundle(),
             new PUGX\MultiUserBundle\PUGXMultiUserBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
+                    new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
