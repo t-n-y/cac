@@ -3,44 +3,6 @@
 {% block title %}Map{% endblock %}
 
 {% block body %}
-<style type="text/css">
-			{
-				margin:0px;
-				padding:0px;
-			}
-			html{
-				height:100%;
-			}
-			body{
-				height:100%;
-			}
-			h1{
-				font-family: Arial, Helvetica, sans-serif;
-				font-size: 2em;
-				font-style: italic;
-				font-weight: bold;
-				color:#267AA8;
-				text-align:center;
-			}
-			h2{
-				margin-bottom:1em;
-				font-family: Arial, Helvetica, sans-serif;
-				font-size: 1.3em;
-				font-style: normal;
-				font-weight: bold;
-				color:#FF9900;
-				text-align:center;
-			}
-			#lettrineImage{
-				float: left;
-				width: 220px;
-				height: 163px;
-				margin: 0 1em 1em 0;
-			}
-			#EmplacementDeMaCarte{
-				height:100%;
-			}
-		</style> 
 
 <div id="map_canvas" style="width: 500px;height: 500px;"></div>
 
@@ -59,161 +21,30 @@
 		        mapTypeId: 'terrain'
 		    };
 		    map = new google.maps.Map($('#map_canvas')[0], myOptions);
-
 		    var addresses = ($.parseJSON(adress));
-
-		    for (var x = 0; x < addresses.length; x++) {
-		        $.getJSON('http://maps.googleapis.com/maps/api/geocode/json?address='+addresses[x]+'&sensor=false', null, function (data) {
-		        	console.log(data.results[0]);
-		            var p = data.results[0].geometry.location
-		            var latlng = new google.maps.LatLng(p.lat, p.lng);
-		            new google.maps.Marker({
-		                position: latlng,
-		                map: map
-		            });
-
-
-var marqueur = new google.maps.Marker({
-		                position: latlng,
-		                map: map
-		            });
-		    var contenuInfoBulle = '<h1>Cité Royale de Loches</h1>' +	
-							'<h2>Royale et imprenable</h2>' +
-							'<img id="lettrineImage" src="http://static.touraineverte.com/googlemapsapiversion3/photo_monument-loches.jpg" title="La cité royale de Loches" />' +
-							'<p>Remontez le temps pour découvrir l\'une des plus belles cités fortifiées de France.</p>' +
-							'<p>Le <b>DONJON</b>, haut de 36 mètres, a été construit par un comte d\'Anjou, Foulques Nerra, au début du XIe siècle. S\'il figure parmi les plus imposants de son époque en Europe, il est aussi l\'un des mieux conservés. Modèle d\'architecture militaire, il est transformé en prison royale par Louis XI.</p>' +
-							'<p>Le <b>LOGIS ROYAL</b> se trouve à proximité. Ce joyau de la Renaissance française, haut lieu de l\'Histoire de France, a été une résidence de prédilection de la dynastie des Valois. Sa façade ouverte en terrasse domine la ville et la vallée de l\'Indre. Le logis a accueilli notamment Jeanne d\'Arc, Agnès Sorel et Anne de Bretagne. Pour en savoir plus : <a href="http://www.cg37.fr/index.php?media=106" title="La cité royale de Loches" target="_parent">La cité royale de Loches</a></p>';
-				var infoBulle = new google.maps.InfoWindow({
-					content: contenuInfoBulle
-				})
-				google.maps.event.addListener(marqueur, 'click', function() {
-					infoBulle.open(map, marqueur);
-				});
-
-
-
-		        });
+		    for (var x = 0; x < addresses.adress.length; x++) {
+		    	(function(x) {
+			        $.getJSON('http://maps.googleapis.com/maps/api/geocode/json?address='+addresses.adress[x]+'&sensor=false', null, function (data) {
+			            var p = data.results[0].geometry.location
+			            var latlng = new google.maps.LatLng(p.lat, p.lng);
+			            var marqueur = new google.maps.Marker({
+			                position: latlng,
+			                map: map
+			            });
+						var marqueur = new google.maps.Marker({
+			                position: latlng,
+			                map: map
+			            });
+			    		var contenuInfoBulle = '<p>'+addresses.info[x]+'</p>';
+						var infoBulle = new google.maps.InfoWindow({
+							content: contenuInfoBulle
+						})
+						google.maps.event.addListener(marqueur, 'click', function() {
+							infoBulle.open(map, marqueur);
+						});
+			        });
+				})(x);
 		    }
-
-		    
 		});
 	</script>
 {% endblock %}
-{#
-<!DOCTYPE html>
-<html lang="fr">
-	<head>
-		<meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
-		<meta charset="UTF-8" />
-		<title>Titre de votre page</title>
-		<style type="text/css">
-			*{
-				margin:0px;
-				padding:0px;
-			}
-			html{
-				height:100%;
-			}
-			body{
-				height:100%;
-			}
-			h1{
-				font-family: Arial, Helvetica, sans-serif;
-				font-size: 2em;
-				font-style: italic;
-				font-weight: bold;
-				color:#267AA8;
-				text-align:center;
-			}
-			h2{
-				margin-bottom:1em;
-				font-family: Arial, Helvetica, sans-serif;
-				font-size: 1.3em;
-				font-style: normal;
-				font-weight: bold;
-				color:#FF9900;
-				text-align:center;
-			}
-			#lettrineImage{
-				float: left;
-				width: 220px;
-				height: 163px;
-				margin: 0 1em 1em 0;
-			}
-			#EmplacementDeMaCarte{
-				height:100%;
-			}
-			-->
-		</style> 
-		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
-		<script type="text/javascript">
-		$(document).ready(function () {
-			var adress = {{ adress|json_encode() |raw }};
-		    var map;
-		    var elevator;
-		    var myOptions = {
-		        zoom: 1,
-		        center: new google.maps.LatLng(0, 0),
-		        mapTypeId: 'terrain'
-		    };
-		    map = new google.maps.Map($('#map_canvas')[0], myOptions);
-
-		    var addresses = ($.parseJSON(adress));
-
-		    for (var x = 0; x < addresses.length; x++) {
-		        $.getJSON('http://maps.googleapis.com/maps/api/geocode/json?address='+addresses[x]+'&sensor=false', null, function (data) {
-		            var p = data.results[0].geometry.location
-		            var latlng = new google.maps.LatLng(p.lat, p.lng);
-		            new google.maps.Marker({
-		                position: latlng,
-		                map: map
-		            });
-
-		        });
-		    }
-		    
-		});
-
-
-			function initialisation(){
-				var centreCarte = new google.maps.LatLng(47.127608,0.998898);
-				var optionsCarte = {
-					zoom: 8,
-					center: centreCarte,
-					mapTypeId: google.maps.MapTypeId.ROADMAP
-				}
-				var maCarte = new google.maps.Map(document.getElementById("EmplacementDeMaCarte"), optionsCarte);
-				var optionsMarqueur = {
-					position: centreCarte,
-					map: maCarte,
-					title: "Titre de mon premier marqueur"
-				}
-				var marqueur = new google.maps.Marker(optionsMarqueur);
-				var contenuInfoBulle = '<h1>Cité Royale de Loches</h1>' +	
-							'<h2>Royale et imprenable</h2>' +
-							'<img id="lettrineImage" src="http://static.touraineverte.com/googlemapsapiversion3/photo_monument-loches.jpg" title="La cité royale de Loches" />' +
-							'<p>Remontez le temps pour découvrir l\'une des plus belles cités fortifiées de France.</p>' +
-							'<p>Le <b>DONJON</b>, haut de 36 mètres, a été construit par un comte d\'Anjou, Foulques Nerra, au début du XIe siècle. S\'il figure parmi les plus imposants de son époque en Europe, il est aussi l\'un des mieux conservés. Modèle d\'architecture militaire, il est transformé en prison royale par Louis XI.</p>' +
-							'<p>Le <b>LOGIS ROYAL</b> se trouve à proximité. Ce joyau de la Renaissance française, haut lieu de l\'Histoire de France, a été une résidence de prédilection de la dynastie des Valois. Sa façade ouverte en terrasse domine la ville et la vallée de l\'Indre. Le logis a accueilli notamment Jeanne d\'Arc, Agnès Sorel et Anne de Bretagne. Pour en savoir plus : <a href="http://www.cg37.fr/index.php?media=106" title="La cité royale de Loches" target="_parent">La cité royale de Loches</a></p>';
-				var infoBulle = new google.maps.InfoWindow({
-					content: contenuInfoBulle
-				})
-				google.maps.event.addListener(marqueur, 'click', function() {
-					infoBulle.open(maCarte, marqueur);
-				});
-			}
-			google.maps.event.addDomListener(window, 'load', initialisation);
-		</script>
-	</head>
-	
-	<body>
-		<div id="EmplacementDeMaCarte"></div>
-		<noscript>
-			<p>Attention : </p>
-			<p>Afin de pouvoir utiliser Google Maps, JavaScript doit être activé.</p>
-			<p>Or, il semble que JavaScript est désactivé ou qu'il ne soit pas supporté par votre navigateur.</p>
-			<p>Pour afficher Google Maps, activez JavaScript en modifiant les options de votre navigateur, puis essayez à nouveau.</p>
-		</noscript>
-	</body>
-</html>
-#}

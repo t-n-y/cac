@@ -30,9 +30,13 @@ class DefaultController extends Controller
         $adress = array();
         $i = 0;
         foreach ($entities as $entity) {
-            $adress[$i] = $entity->getAdress().' , '.$entity->getTown().' , '.$entity->getCountry();
+            $adress['adress'][$i] = $entity->getAdress().' , '.$entity->getTown().' , '.$entity->getCountry();
+             $adress['info'][$i] = $entity->getName();
+
             $i++;
         }
+
+       // ldd(json_encode($adress));
         return array('adress' => json_encode($adress));
     }
 
