@@ -427,6 +427,7 @@ for(var i = 0; i<1000; i++){
 }
 
 
+function annimationShowBar(){
 
 
 $(".barInList").mouseenter(function(){
@@ -443,6 +444,40 @@ $(".barInList").mouseenter(function(){
     $(this).find('.shadowbarInList').css("background", 'linear-gradient(bottom,rgba(000000,0,0,0.6),rgba(000000,0,0,0))');
 
   });
+}
+
+
+annimationShowBar();
+
+$( ".menuHeaderList .hottest" ).on( "click", function() {
+
+  setTimeout(function() {  
+
+     annimationShowBar();
+                  
+
+  },500);
+                  
+
+});
+$( ".menuHeaderList .small-price" ).on( "click", function() {
+  setTimeout(function() {  
+
+     annimationShowBar();
+                  
+
+  },500);
+});
+$( ".menuHeaderList .best" ).on( "click", function() {
+  setTimeout(function() {  
+
+     annimationShowBar();
+                  
+
+  },500);
+});
+
+
 
 
 /********************************************************************************/
