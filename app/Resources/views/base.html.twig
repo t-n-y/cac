@@ -8,6 +8,16 @@
             <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css')}}">
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <style type="text/css">
+            @-moz-document url-prefix() {
+                select{
+                    -moz-appearance: none;
+                    background: url("../../img/arrow.jpg") no-repeat scroll right top transparent;
+                 background-size: 13px;
+                 padding-right:10px;
+                }
+            }
+</style>
     </head>
     <body onmousemove="souris(event);">
         {% block navbar %}
