@@ -7,6 +7,28 @@
 
 //$('.jaloux').css('margin-top', middlejaloux + 'px');
 
+annimationShowBar();
+firstWord();
+
+$( ".menuHeaderList .hottest" ).on( "click", function() {
+  setTimeout(function() {  
+    annimationShowBar();
+    firstWord();            
+  },300);
+});
+$( ".menuHeaderList .small-price" ).on( "click", function() {
+  setTimeout(function() {  
+      annimationShowBar();
+      firstWord();            
+    },300);
+});
+$( ".menuHeaderList .best" ).on( "click", function() {
+  setTimeout(function() {  
+      annimationShowBar();
+      firstWord();            
+    },300);
+});
+
 setInterval(function(){
 var widthImg = $('.vignetteBar img').width();
 var heightImg = $('.vignetteBar img').height();
@@ -416,16 +438,17 @@ $(".topBar").animate({
 
 
 /**********************************Page Show Bar*********************************/
-$.fn.firstWord = function() {
-  var text = this.text().trim().split(" ");
-  var first = text.shift();
-  this.html((text.length > -1 ? "<span class='firstWords'>"+ first + "</span> " : first) + text.join(" "));
-};
+function firstWord(){
+    $.fn.firstWord = function() {
+    var text = this.text().trim().split(" ");
+    var first = text.shift();
+    this.html((text.length > -1 ? "<span class='firstWords'>"+ first + "</span> " : first) + text.join(" "));
+  };
 
-for(var i = 0; i<1000; i++){
-  $("#firstWord"+[i]).firstWord();
+  for(var i = 0; i<1000; i++){
+    $("#firstWord"+[i]).firstWord();
+  }
 }
-
 
 function annimationShowBar(){
 
@@ -447,35 +470,9 @@ $(".barInList").mouseenter(function(){
 }
 
 
-annimationShowBar();
 
-$( ".menuHeaderList .hottest" ).on( "click", function() {
 
-  setTimeout(function() {  
 
-     annimationShowBar();
-                  
-
-  },500);
-                  
-
-});
-$( ".menuHeaderList .small-price" ).on( "click", function() {
-  setTimeout(function() {  
-
-     annimationShowBar();
-                  
-
-  },500);
-});
-$( ".menuHeaderList .best" ).on( "click", function() {
-  setTimeout(function() {  
-
-     annimationShowBar();
-                  
-
-  },500);
-});
 
 
 
