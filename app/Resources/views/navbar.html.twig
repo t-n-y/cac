@@ -94,7 +94,7 @@
         </div>
       </div>
       <ul class="nav navbar-nav col-xs-12 col-sm-5 col-md-5">
-        <li><a href="#">MAP</a></li>
+        <li><a href="{{ path('map') }}">MAP</a></li>
         {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
           <li class="pull-right"><a href="{{ path('fos_user_security_logout') }}">X</a></li>
           <li class="pull-right"><a href="{{ path('fos_user_security_login') }}">{{ app.user.username }}</a></li>
