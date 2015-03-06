@@ -1,0 +1,123 @@
+<div class="isConnexion">
+</div>
+  <div class="forConnexion">
+    <h2>CONNEXION</h2>
+    <div class="container-modal">
+    </div>
+    <div class="inscrivezVous">
+      <h2>INSCRIVEZ VOUS</h2>
+    </div>
+  </div>
+  <div class="forConfirmation">
+    <p>Un mail viens de vous être envoyé, cliquer sur le lien pour confirmer définitivement votre inscription.<br><br>A tout de suite ! </p>
+  </div>
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <div class="center hidden-sm hidden-md hidden-lg">
+        <a class="logo-afterscroll" href="{{ path('home') }}"><img src="{{asset('img/logopro.png')}}" alt="Click and Cheers"></a>
+      </div>
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav col-xs-12 col-sm-5 col-md-5">
+        <li><a href="{{ path('home') }}">GESTION DES OFFRES</a></li>
+        <li><a href="{{ path('bars') }}">RETOUR DES OFFRES</a></li>
+      </ul>
+      <div class="nav navbar-nav hidden-xs col-sm-2 col-md-2">
+      	<div class="containeurLogo">
+	      	<div class="logoradius">
+	      		<a href="{{ path('home') }}"><img src="{{asset('img/logopro.png')}}" alt="Click and Cheers"></a>
+	      	</div>
+       	</div>
+      </div>
+      <ul class="nav navbar-nav hidden-xs col-sm-5 col-md-5">
+        <li><a href="{{ path('map') }}">OPTIONS</a></li>
+        <li><a href="{{ path('map') }}">STATISTIQUES</a></li>
+
+        {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+          <li class="pull-right"><a href="{{ path('fos_user_security_logout') }}">X</a></li>
+          <li class="pull-right"><a href="{{ path('fos_user_profile_show') }}">{{ app.user.username }}</a></li>
+          {% if is_granted('ROLE_BIGBOSS') %}
+            <li class="pull-right"><a href="{{ path('bar_new') }}">Créer un bar</a></li>
+          {% endif %}
+        {% else %}
+          <li class="pull-right"><a href="{{ path('user_register') }}">Créer un compte</a></li>
+          <li class="pull-right"><a class="animConnexion" href="#">Connexion</a></li>
+        {% endif %}
+      </ul>
+      <ul class="nav navbar-nav col-xs-12 hidden-sm hidden-md hidden-lg">
+        <li><a href="{{ path('map') }}">OPTIONS</a></li>
+        <li><a href="{{ path('map') }}">STATISTIQUES</a></li>
+        {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+          <li class="pull-right"><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
+        {% else %}
+          <li class="pull-right"><a href="{{ path('fos_user_security_login') }}">Connexion</a></li>
+        {% endif %}
+         
+      </ul>
+    </div><!-- /.navbar-collapse -->
+
+  </div><!-- /.container-fluid -->
+</nav>
+
+<!-- After scroll nav -->
+<div class="navbar navbar-afterscroll stuck">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      
+      <ul class="nav navbar-nav col-xs-12 col-sm-5 col-md-5">
+        <li><a href="{{ path('home') }}">GESTION DES OFFRES</a></li>
+        <li><a href="{{ path('bars') }}">RETOUR DES OFFRES</a></li>
+      </ul>
+      <div class="nav navbar-nav hidden-xs col-sm-2 col-md-2">
+        <div class="containeurLogo">
+            <a class="logo-afterscroll" href="{{ path('home') }}"><img src="{{asset('img/logopro.png')}}" alt="Click and Cheers"></a>
+        </div>
+      </div>
+      <ul class="nav navbar-nav col-xs-12 col-sm-5 col-md-5">
+        <li><a href="{{ path('map') }}">OPTIONS</a></li>
+        <li><a href="{{ path('map') }}">STATISTIQUES</a></li>
+        {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+          <li class="pull-right"><a href="{{ path('fos_user_security_logout') }}">X</a></li>
+          <li class="pull-right"><a href="{{ path('fos_user_security_login') }}">{{ app.user.username }}</a></li>
+          <li class="pull-right"><a href="{{ path('bar_new') }}">Créer un bar</a></li>
+        {% else %}
+          <li class="pull-right"><a href="{{ path('user_register') }}">Créer un compte</a></li>
+          <li class="pull-right"><a href="{{ path('fos_user_security_login') }}">Connexion</a></li>
+        {% endif %}
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div>  
+</div>
+
+<script type="text/javascript">
+function souris(event)
+{
+
+  var x = event.clientX;
+  var y = event.clientY;
+
+  //alert('Vous avez cliqué au point de coordonnés: ' + x + ', ' + y );
+}</script>
