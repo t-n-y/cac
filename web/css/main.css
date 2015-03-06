@@ -562,6 +562,14 @@ h2.font30{
 	display: none;
 }
 
+.gestionVerreOffert{
+	text-align: center;
+}
+
+.gestionVerreOffert h2{
+	text-align: left;
+}
+
 .infoBar{
 	background-color: #fff;
 	padding-top: 20px;
