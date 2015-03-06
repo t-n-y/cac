@@ -1109,7 +1109,7 @@ p.pCreez{
 	margin-top: 15px;
 }
 
-.heure select, .access select, .etapePromotion select{
+.heure select, .access select, .etapePromotion select, .contentSuperInfoBar select{
 	background-color: #fff;
 	-webkit-border-radius: 1px;
 	-moz-border-radius: 1px;
