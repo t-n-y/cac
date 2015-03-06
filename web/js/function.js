@@ -14,19 +14,19 @@ $( ".menuHeaderList .hottest" ).on( "click", function() {
   setTimeout(function() {  
     annimationShowBar();
     firstWord();            
-  },300);
+  },350);
 });
 $( ".menuHeaderList .small-price" ).on( "click", function() {
   setTimeout(function() {  
       annimationShowBar();
       firstWord();            
-    },300);
+    },350);
 });
 $( ".menuHeaderList .best" ).on( "click", function() {
   setTimeout(function() {  
       annimationShowBar();
       firstWord();            
-    },300);
+    },350);
 });
 
 setInterval(function(){
@@ -259,6 +259,16 @@ $('body').on("click", ".avis",function(){
   $('.information').css("width" , "150px");
   $('.information').css("margin-left" , "-150px");
 });
+
+
+$('.informationJour').first().addClass('selectedDay');
+
+$('body').on("click", ".informationJour",function(){
+  $('.selectedDay').removeClass('selectedDay');
+  $(this).addClass('selectedDay');
+});
+
+
 
 /*$('.ticket').hover(function(){
     $('.ticketPromotion').stop(true,true).show(300);
@@ -515,5 +525,19 @@ $( ".animConnexion" ).on( "click", function() {
         success: function (data) {
           $('.forConnexion .container-modal').html(data);
         }
-    } );
+    });
 });
+
+
+
+
+
+
+
+
+
+$('.promotion-unlimited').change(function () {
+    $('.promotion-qt-picker').addClass('prout');
+ });
+
+

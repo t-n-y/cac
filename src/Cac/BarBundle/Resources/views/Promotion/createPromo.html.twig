@@ -35,14 +35,23 @@
 								{{ days[j] }}
 							</div>
 
-							<div class="left col-xs-5 col-sm-5 col-md-5 noPadding">
+							<div class="left nbpromo col-xs-5 col-sm-5 col-md-5 noPadding">
 								<select class="promotion-qt-picker" data-day="{{ days[j] }}">
-									<option>Nombre de verre offert</option>
-									{% for k in 1..100 %}
-										<option value="{{k}}">{{k}}</option>
+									<option value="Illimité">illimité</option>
+									{% set nbVerrePromo = {
+										'1': '10', 
+										'2': '20', 
+										'3': '30', 
+										'4': '40', 
+										'5': '50',
+										'6': '100'
+									} %}
+									{% for k in 1..6 %}
+									<option value="{{nbVerrePromo[k]}}">{{nbVerrePromo[k]}}</option>
 									{% endfor %}
 								</select>
-								<br>illimité <input type="checkbox" class="promotion-unlimited" data-day="{{ days[j] }}">
+								<br><br>
+								<!--<br>illimité <input type="checkbox" class="promotion-unlimited" data-day="{{ days[j] }}" checked>-->
 							</div>
 
 							<div class="left col-xs-3 col-sm-3 col-md-3 noPadding">

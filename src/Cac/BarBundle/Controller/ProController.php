@@ -36,6 +36,41 @@ class ProController extends Controller
     }
 
     /**
+     * @Route("/offer/{id}", name="bars_offer")
+     * @Template()
+     */
+    public function offerAction($id)
+    {
+        setlocale(LC_TIME, "fr_FR");
+        $today = strftime("%A");
+
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('CacBarBundle:Bar')->find($id);
+        $user = $this->get('security.context')->getToken()->getUser();
+
+        $entity->setScore($entity->getScore() +1);
+        $visit = new Visited();
+        $visit->setBar($entity);
+        if (is_object($user)) {
+            $visit->setUser($user);
+        }
+        $visit->setCreatedAt(new \DateTime('now'));
+        $em->persist($visit);
+        $em->persist($entity);
+        $em->flush();
+
+        $editForm = $this->createEditForm($entity);
+        $deleteForm = $this->createDeleteForm($id);
+
+        return array(
+            'bar'      => $entity,
+            'today' => $today,
+            'edit_form'   => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        );  
+    }
+
+    /**
     * Creates a form to create a Bar entity.
     *
     * @param Bar $entity The entity

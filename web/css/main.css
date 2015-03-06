@@ -724,16 +724,20 @@ p.topPosition{
 	color: #d2232d;
 }
 
-.ongletBar{
+.ongletBar, .ongletBarJour{
 	position: absolute;
 	top: 0;
 	left: 0;
 }
 
-.ongletBar h3{
+.ongletBar h3, .ongletBarJour h3{
 	font-size: 15px;
 	padding-top: 42px;
 	margin: 0;
+}
+
+.ongletBarJour h3{
+	padding-top: 30px;
 }
 
 .avisBar{
@@ -775,6 +779,37 @@ p.topPosition{
 	text-align: center;
 	height: 100px;
 	cursor:pointer;
+}
+
+.informationJour{
+	width: 150px;
+	background-color: rgba(255,255,255,0.4);
+	margin-left: -150px;
+	text-align: center;
+	height: 74px;
+	margin-top: 5px;
+	cursor:pointer;
+}
+
+.infoPromoPro{
+	width: 70%;
+	margin: auto;
+	text-align: center;
+	background-color: #f4f4f4;
+}
+
+.imprimerCodePromo{
+	
+	background-color: #f4f4f4;
+}
+
+.selectedDay{
+	width: 160px;
+	margin-left: -160px;
+}
+
+.informationJour:nth-child(1){
+	margin-top: 0px;
 }
 
 .avis{
