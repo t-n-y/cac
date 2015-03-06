@@ -269,6 +269,26 @@ $('body').on("click", ".informationJour",function(){
 });
 
 
+$('.onglet').first().addClass('ongletselect');
+
+$('body').on("click", ".onglet",function(){
+  $('.onglet').removeClass('ongletselect');
+  $(this).addClass('ongletselect');
+});
+
+$('.gestion').first().css('display','block');
+
+$('body').on('click','.ongletVerresOffert',function(){
+  $('.gestion').hide();
+  $('.gestionVerreOffert').show();
+});
+
+$('body').on('click','.ongletVerresPromotion',function(){
+  $('.gestion').hide();
+  $('.gestionPromotion').show();
+});
+
+
 
 /*$('.ticket').hover(function(){
     $('.ticketPromotion').stop(true,true).show(300);
@@ -531,13 +551,5 @@ $( ".animConnexion" ).on( "click", function() {
 
 
 
-
-
-
-
-
-$('.promotion-unlimited').change(function () {
-    $('.promotion-qt-picker').addClass('prout');
- });
 
 

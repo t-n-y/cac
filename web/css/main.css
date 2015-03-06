@@ -540,6 +540,28 @@ h2.font30{
 	color:#aaa;
 }
 
+.onglets{
+	text-align: center;
+	height: 40px;
+}
+
+.onglets p{
+	margin-top: 10px;
+}
+
+.onglet{
+	cursor: pointer;
+}
+
+.ongletselect{
+	background-color: #858585;
+	color : #5ac4d4;
+}
+
+.gestion{
+	display: none;
+}
+
 .infoBar{
 	background-color: #fff;
 	padding-top: 20px;
