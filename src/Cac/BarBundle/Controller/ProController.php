@@ -59,14 +59,9 @@ class ProController extends Controller
         $em->persist($entity);
         $em->flush();
 
-        $editForm = $this->createEditForm($entity);
-        $deleteForm = $this->createDeleteForm($id);
-
         return array(
             'bar'      => $entity,
             'today' => $today,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
         );  
     }
 

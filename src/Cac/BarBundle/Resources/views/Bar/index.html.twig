@@ -31,9 +31,7 @@
 </div>
 <div class="barList col-xs-12 col-sm-12 col-md-12 noPadding">
 {% for bar in bars %}
-	{% if loop.index %8 == 0 %}
-		insert pub here
-	{% endif %}
+	
 
 	<div class="barInList col-xs-12 col-sm-6 col-md-3 noPadding">
 	<img src="{{ asset('uploads/bar/'~bar.path) }}">
@@ -55,6 +53,15 @@
 			<p class="reduc">%</p>
 		</div></a>
 	</div>
+
+	{% if loop.index %8 == 0 %}
+	<div class="col-xs-12 col-sm-6 col-md-6 noPadding">
+		insert pub here
+	</div>
+	<div class="col-xs-12 col-sm-6 col-md-6 noPadding">
+		insert pub here
+	</div>
+	{% endif %}
 
 {% endfor %}
 

@@ -1,0 +1,373 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}CacBarBundle:Bar:edit{% endblock %}
+{% block stylesheets %}
+   {{ parent() }}
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places"></script>
+{% endblock %}
+{% block body %}
+
+<div class="edit">
+  {{ form_start(edit_form) }}
+      {{ form_errors(edit_form) }}
+
+  <div class="inscription center col-xs-12 col-sm-6 col-md-6">
+    <div class="border">
+      {{ form_label(edit_form.name) }}
+      <br>
+      {{ form_errors(edit_form.name) }}
+      {{ form_widget(edit_form.name) }}
+      <br>
+      {{ form_label(edit_form.adress) }}
+      <br>
+      {{ form_errors(edit_form.adress) }}
+      {{ form_widget(edit_form.adress) }}
+      <br>
+      {{ form_label(edit_form.zipcode) }}
+      <br>
+      {{ form_errors(edit_form.zipcode) }}
+      {{ form_widget(edit_form.zipcode, { 'id': 'postal_code' }) }}
+      <br>
+      {{ form_label(edit_form.town) }}
+      <br>
+      {{ form_errors(edit_form.town) }}
+      {{ form_widget(edit_form.town, { 'id': 'locality' } ) }}
+      <br>
+      {{ form_label(edit_form.region) }}
+      <br>
+      {{ form_errors(edit_form.region) }}
+      {{ form_widget(edit_form.region, { 'id': 'administrative_area_level_1' }) }}
+      <br>
+      {{ form_label(edit_form.country) }}
+      <br>
+      {{ form_errors(edit_form.country) }}
+      {{ form_widget(edit_form.country, { 'id': 'country' }) }}
+
+    </div>
+    <br>
+    <br>
+    <div class="border dressCodeBar">
+
+      {{ form_label(edit_form.dressCode) }}
+      <br>
+      {% if edit_form.vars.value.dressCode == 1 %}
+      <div class="btn-group width100" data-toggle="buttons">
+       <label class="btn btn-primary choice active">
+         <input type="radio" name="cac_barbundle_bar[dressCode]" id="cac_barbundle_bar_dressCode" value="1"> Chic
+       </label>
+       <label class="btn btn-primary choice">
+         <input type="radio" name="cac_barbundle_bar[dressCode]" id="cac_barbundle_bar_dressCode" value="2"> Décontracté
+       </label>
+      </div>
+      {% elseif edit_form.vars.value.dressCode == 2 %}
+      <div class="btn-group width100" data-toggle="buttons">
+       <label class="btn btn-primary choice">
+         <input type="radio" name="cac_barbundle_bar[dressCode]" id="cac_barbundle_bar_dressCode" value="1"> Chic
+       </label>
+       <label class="btn btn-primary choice active">
+         <input type="radio" name="cac_barbundle_bar[dressCode]" id="cac_barbundle_bar_dressCode" value="2"> Décontracté
+       </label>
+      </div>
+      {% else %}
+      <div class="btn-group width100" data-toggle="buttons">
+       <label class="btn btn-primary choice">
+         <input type="radio" name="cac_barbundle_bar[dressCode]" id="cac_barbundle_bar_dressCode" value="1"> Chic
+       </label>
+       <label class="btn btn-primary choice">
+         <input type="radio" name="cac_barbundle_bar[dressCode]" id="cac_barbundle_bar_dressCode" value="2"> Décontracté
+       </label>
+      </div>
+      {% endif %}
+
+
+
+      <div class="clear"></div>
+    </div>
+    <br>
+    <br>
+    <div class="border">
+      {{ form_label(edit_form.priceRange) }}
+      <br>
+      <div class="btn-group width100" data-toggle="buttons">
+      {% if edit_form.vars.value.priceRange == 1 %}
+       <label class="btn btn-primary active choice">
+         <input type="radio" name="cac_barbundle_bar[priceRange]" id="cac_barbundle_bar_priceRange_0" value="1" checked> 5€
+       </label>
+      {% else %} 
+       <label class="btn btn-primary choice">
+         <input type="radio" name="cac_barbundle_bar[priceRange]" id="cac_barbundle_bar_priceRange_0" value="1"> 5€
+       </label>
+      {% endif %}
+
+      {% if edit_form.vars.value.priceRange == 2 %}
+       <label class="btn btn-primary active choice">
+         <input type="radio" name="cac_barbundle_bar[priceRange]" id="cac_barbundle_bar_priceRange_1" value="2"> 10€
+       </label>
+      {% else %} 
+       <label class="btn btn-primary choice">
+         <input type="radio" name="cac_barbundle_bar[priceRange]" id="cac_barbundle_bar_priceRange_1" value="2"> 10€
+       </label>
+      {% endif %}
+
+      {% if edit_form.vars.value.priceRange == 3 %}
+       <label class="btn btn-primary active choice">
+         <input type="radio" name="cac_barbundle_bar[priceRange]" id="cac_barbundle_bar_priceRange_2" value="3"> 15€
+       </label>
+      {% else %} 
+       <label class="btn btn-primary choice">
+         <input type="radio" name="cac_barbundle_bar[priceRange]" id="cac_barbundle_bar_priceRange_2" value="3"> 15€
+       </label>
+      {% endif %}
+
+      {% if edit_form.vars.value.priceRange == 4 %}
+       <label class="btn btn-primary active choice">
+         <input type="radio" name="cac_barbundle_bar[priceRange]" id="cac_barbundle_bar_priceRange_3" value="4"> 20€
+       </label>
+      {% else %} 
+       <label class="btn btn-primary choice">
+         <input type="radio" name="cac_barbundle_bar[priceRange]" id="cac_barbundle_bar_priceRange_3" value="4"> 20€
+       </label>
+      {% endif %}
+
+      {% if edit_form.vars.value.priceRange == 5 %}
+       <label class="btn btn-primary-center active choice">
+         <input type="radio" name="cac_barbundle_bar[priceRange]" id="cac_barbundle_bar_priceRange_4" value="5"> +20€
+       </label>
+      {% else %} 
+       <label class="btn btn-primary-center choice">
+         <input type="radio" name="cac_barbundle_bar[priceRange]" id="cac_barbundle_bar_priceRange_4" value="5"> +20€
+       </label>
+      {% endif %}
+       
+       
+      </div>
+    </div>
+  </div>
+  <div class="inscription center col-xs-12 col-sm-6 col-md-6">
+
+    <div class="border access">
+      {{ form_label(edit_form.access) }}
+      {{ form_errors(edit_form.access) }}
+      {{ form_widget(edit_form.access) }}
+    </div>
+    <br>
+    <br>
+    <div class="border">
+      {{ form_label(edit_form.schedule) }}
+      {{ form_errors(edit_form.schedule) }}
+      {{ form_widget(edit_form.schedule) }}
+      {% set days = {'1': 'Lundi', '2': 'Mardi', '3': 'Mercredi', '4': 'Jeudi', '5': 'Vendredi', '6': 'Samedi', '7': 'Dimanche'} %}
+      {% set params = {'1': {'when':'open', 'word': 'de'}, '2': {'when':'close', 'word': 'à'}} %}
+      {% for j in 1..7 %}
+        <div class="heure center col-xs-12 col-sm-12 col-md-12 noPadding">
+          <div class="left col-xs-3 col-sm-3 col-md-3 noPadding">
+            {{ days[j] }}
+          </div>
+
+
+          <div class="col-xs-1 col-sm-1 col-md-1 noPadding">
+            {{ params[1]['word'] }}
+          </div>
+          <div class="col-xs-2 col-sm-2 col-md-2 noPadding">
+            <select class="schedule-picker" data-day="{{ days[j] }}" data-when="{{ params[1]['when'] }}">
+              <option>{{ bar.scheduleArray[days[j]].open }}h</option>
+              {% for i in 0..23 %}
+                 <option value="{{i}}">{{i}}h</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="col-xs-1 col-sm-1 col-md-1 noPadding">
+            {{ params[2]['word'] }}
+          </div>
+          <div class="col-xs-2 col-sm-2 col-md-2 noPadding">
+            <select class="schedule-picker" data-day="{{ days[j] }}" data-when="{{ params[2]['when'] }}">
+              <option>{{ bar.scheduleArray[days[j]].close }}h</option>
+              {% for i in 0..23 %}
+                 <option value="{{i}}">{{i}}h</option>
+              {% endfor %}
+            </select>
+          </div>
+
+          {% if bar.scheduleArray[days[j]].status == "Ouvert" %}
+            <div class="col-xs-3 col-sm-3 col-md-3 noPadding">
+              Fermé <input class="close-day" type="checkbox" data-day="{{ days[j] }}" name="close-day">
+            </div>
+          {% else %}
+            <div class="col-xs-3 col-sm-3 col-md-3 noPadding">
+              Fermé <input class="close-day" type="checkbox" data-day="{{ days[j] }}" name="close-day" checked>
+            </div>
+          {% endif %}
+
+        </div>
+      {% endfor %}
+      <div class="clear"></div>
+    </div>
+  </div>
+
+  <div class="inscription center col-xs-12 col-sm-12 col-md-12">
+  <h2>Vos petits plus à vous</h2> 
+
+  <div class="contentPetitPlus">
+  <div class="btn-group width100" data-toggle="buttons">
+  {% if edit_form.vars.value.smokingArea == 1 %}
+   <label class="btn btn-primary-checkbox active petitplus">
+     <input type="checkbox" name="cac_barbundle_bar[smokingArea]" id="cac_barbundle_bar_smokingArea" value="1"> Espace fumeur
+   </label>
+  {% else %}
+   <label class="btn btn-primary-checkbox petitplus">
+     <input type="checkbox" name="cac_barbundle_bar[smokingArea]" id="cac_barbundle_bar_smokingArea" value="1"> Espace fumeur
+   </label>
+  {% endif %}
+
+  {% if edit_form.vars.value.handicappedAccess == 1 %}
+   <label class="btn btn-primary-checkbox active petitplus">
+     <input type="checkbox" name="cac_barbundle_bar[handicappedAccess]" id="cac_barbundle_bar_handicappedAccess" value="1"> Accès handicapés
+   </label>
+  {% else %}
+   <label class="btn btn-primary-checkbox petitplus">
+     <input type="checkbox" name="cac_barbundle_bar[handicappedAccess]" id="cac_barbundle_bar_handicappedAccess" value="1"> Accès handicapés
+   </label>
+  {% endif %}
+
+  {% if edit_form.vars.value.patio == 1 %}
+   <label class="btn btn-primary-checkbox active petitplus">
+     <input type="checkbox" name="cac_barbundle_bar[patio]" id="cac_barbundle_bar_patio" value="1"> Terrasse
+   </label>
+  {% else %}
+   <label class="btn btn-primary-checkbox petitplus">
+     <input type="checkbox" name="cac_barbundle_bar[patio]" id="cac_barbundle_bar_patio" value="1"> Terrasse
+   </label>
+  {% endif %}
+
+  {% if edit_form.vars.value.breathalyser == 1 %}
+   <label class="btn btn-primary-checkbox active petitplus">
+     <input type="checkbox" name="cac_barbundle_bar[breathalyser]" id="cac_barbundle_bar_breathalyser" value="1"> Alcotests gratuits
+   </label>
+  {% else %}
+   <label class="btn btn-primary-checkbox petitplus">
+     <input type="checkbox" name="cac_barbundle_bar[breathalyser]" id="cac_barbundle_bar_breathalyser" value="1"> Alcotests gratuits
+   </label>
+  {% endif %}
+
+  {% if edit_form.vars.value.valet == 1 %}
+   <label class="btn btn-primary-checkbox active petitplus">
+     <input type="checkbox" name="cac_barbundle_bar[valet]" id="cac_barbundle_bar_valet" value="1"> Voiturier
+   </label>
+  {% else %}
+   <label class="btn btn-primary-checkbox petitplus">
+     <input type="checkbox" name="cac_barbundle_bar[valet]" id="cac_barbundle_bar_valet" value="1"> Voiturier
+   </label>
+  {% endif %}
+
+  {% if edit_form.vars.value.babyfoot == 1 %}
+   <label class="btn btn-primary-checkbox active petitplus">
+     <input type="checkbox" name="cac_barbundle_bar[babyfoot]" id="cac_barbundle_bar_babyfoot" value="1"> Baby Foot
+   </label>
+  {% else %}
+   <label class="btn btn-primary-checkbox petitplus">
+     <input type="checkbox" name="cac_barbundle_bar[babyfoot]" id="cac_barbundle_bar_babyfoot" value="1"> Baby Foot
+   </label>
+  {% endif %}
+
+  {% if edit_form.vars.value.billard == 1 %}
+   <label class="btn btn-primary-checkbox active petitplus">
+     <input type="checkbox" name="cac_barbundle_bar[billard]" id="cac_barbundle_bar_billard" value="1"> Billard
+   </label>
+  {% else %}
+   <label class="btn btn-primary-checkbox petitplus">
+     <input type="checkbox" name="cac_barbundle_bar[billard]" id="cac_barbundle_bar_billard" value="1"> Billard
+   </label>
+  {% endif %}
+
+  {% if edit_form.vars.value.flipper == 1 %}
+   <label class="btn btn-primary-checkbox petitplus active">
+     <input type="checkbox" name="cac_barbundle_bar[flipper]" id="cac_barbundle_bar_flipper" value="1"> Flipper
+   </label>
+  {% else %}
+   <label class="btn btn-primary-checkbox petitplus">
+     <input type="checkbox" name="cac_barbundle_bar[flipper]" id="cac_barbundle_bar_flipper" value="1"> Flipper
+   </label>
+  {% endif %}
+
+  {% if edit_form.vars.value.canape == 1 %}
+   <label class="btn btn-primary-checkbox petitplus active">
+     <input type="checkbox" name="cac_barbundle_bar[canape]" id="cac_barbundle_bar_canape" value="1"> Canapé
+   </label>
+  {% else %}
+   <label class="btn btn-primary-checkbox petitplus">
+     <input type="checkbox" name="cac_barbundle_bar[canape]" id="cac_barbundle_bar_canape" value="1"> Canapé
+   </label>
+  {% endif %}
+
+  {% if edit_form.vars.value.valet == 1 %}
+  <p class="prixPosition">Prix : </p>
+  <div class="contentPrixValet">
+    <input class="prixValet" name="cac_barbundle_bar[valetCost]" id="cac_barbundle_bar_valetCost" value="{{ edit_form.vars.value.valetCost }}">
+    <p>€</p>
+  </div>
+  {% else %} 
+  <p class="prixPosition">Prix : </p>
+  <div class="contentPrixValet">
+    <input class="prixValet" name="cac_barbundle_bar[valetCost]" id="cac_barbundle_bar_valetCost" value=" ">
+    <p>€</p>
+  </div>
+  {% endif %}
+   
+  </div>
+  </div>
+
+  <br><br><br>
+  {{ form_label(edit_form.description) }}
+  <p class="italic">Utiliser un ton cool, chaleureux, qui donne envie de venir chez vous</p>
+  {{ form_errors(edit_form.description) }}
+  {{ form_widget(edit_form.description) }}
+
+  {{ form_widget(edit_form._token) }}
+
+
+  </div>
+
+  <div class="subtitlePageRegisterBig">
+  <p>Vos photos</p>
+  </div>
+
+
+  <div class="file_button_container">
+
+    
+
+            {{ form_row(edit_form.file) }}
+            
+
+            <div class="showImg">
+              <img id="blah" src="{{ asset('uploads/bar/'~bar.path) }}" alt="Votre image">
+            </div>
+   </div>
+
+   <img id="lastPicture" src="{{ asset('uploads/bar/'~bar.path) }}">
+      
+      <!--{{ form_row(edit_form.schedule) }}
+      {{ form_row(edit_form.access) }}
+      {{ form_row(edit_form.categories) }}
+      {{ form_row(edit_form.priceRange) }}
+      {{ form_row(edit_form.dressCode) }}
+      {{ form_row(edit_form.valet) }}
+      {{ form_row(edit_form.valetCost) }}
+      {{ form_row(edit_form.handicappedAccess) }}
+      {{ form_row(edit_form.patio) }}
+      {{ form_row(edit_form.smokingArea) }}
+      {{ form_row(edit_form.breathalyser) }}
+      {{ form_row(edit_form.babyfoot) }}
+      {{ form_row(edit_form.billard) }}
+      {{ form_row(edit_form.flipper) }}
+      {{ form_row(edit_form.canape) }}
+      {{ form_row(edit_form.description) }}
+      {{ form_row(edit_form.file) }}-->
+
+  {{ form_end(edit_form) }}
+</div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/autocomplete-adress.js') }}" type="text/javascript" /></script>
+{% endblock %}

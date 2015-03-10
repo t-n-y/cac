@@ -10,6 +10,14 @@
 	padding-top: 10px;
 }
 
+.padding40{
+	padding-top: 40px;
+}
+
+.height40{
+	height: 40px;
+}
+
 .clear{
 	clear:both;
 }
@@ -560,6 +568,27 @@ h2.font30{
 
 .gestion{
 	display: none;
+}
+
+.gestion p{
+	color : #5ac4d4;
+}
+
+.gestion h2{
+	margin-bottom: 40px;
+}
+
+.gestion select{
+	background-color: #f4f4f4 !important;
+	border: 0px solid #fff !important;
+	border-radius: 0px !important;
+	-webkit-border-radius: 0px !important;
+	margin-top: 10px !important;
+	text-align: center !important;
+}
+
+select:focus {
+	outline-width: 0;
 }
 
 .gestionVerreOffert{
