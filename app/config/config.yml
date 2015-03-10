@@ -81,3 +81,7 @@ fos_user:
 #            type: cac_bigboss_registration
     service:
         user_manager: pugx_user_manager
+
+services:
+    pugx_multi_user.registration_controller:
+      class: Cac\UserBundle\Controller\RegistrationController
