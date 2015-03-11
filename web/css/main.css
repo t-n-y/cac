@@ -14,6 +14,10 @@
 	padding-top: 40px;
 }
 
+.height25{
+	height: 25px;
+}
+
 .height40{
 	height: 40px;
 }
@@ -608,6 +612,8 @@ h2.font30{
 
 .gestion{
 	display: none;
+	height: 550px;
+	position: relative;
 }
 
 .gestion p{
@@ -898,13 +904,36 @@ p.topPosition{
 .infoPromoPro{
 	width: 70%;
 	margin: auto;
+	margin-top: 5px;
 	text-align: center;
 	background-color: #f4f4f4;
 }
 
+.infoPromoPro input{
+	margin-top: 30px;
+}
+
 .imprimerCodePromo{
-	
+	position: absolute;
+	bottom: 0;
+	left: 0;
 	background-color: #f4f4f4;
+	padding-bottom: 20px;
+}
+
+.imprimerCodePromo input{
+	width: auto;
+}
+
+.imprimerCodePromo select{
+	margin-top: 0px !important;
+	background-color: #fff !important;
+}
+
+.imprimerCodePromo h2{
+	color: #000;
+	text-align: center;
+	border: 0px;
 }
 
 .selectedDay{
@@ -1593,6 +1622,10 @@ float: left;
 	}*/
 
 	.superInfoBar{
+		width: 65%;
+	}
+
+	.infoPromoPro{
 		width: 65%;
 	}
 

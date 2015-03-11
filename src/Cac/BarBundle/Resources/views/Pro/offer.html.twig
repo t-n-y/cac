@@ -88,6 +88,27 @@
 							<option value="{{tmpVerreOffert[k]}}">{{tmpVerreOffert[k]}}</option>
 							{% endfor %}
 						</select>
+
+						<div class="imprimerCodePromo col-xs-12 col-sm-12 col-md-12 noPadding">
+							<h2>MES CODES</h2>
+							<div class="col-xs-6 col-sm-6 col-md-6 noPadding">
+								 <input type="submit" id="_submit" name="_submit" value="IMPRIMER" />
+							</div>
+							<div class="col-xs-6 col-sm-6 col-md-6 noPadding">
+								<select class="promotion-qt-picker height25">
+									{% set nbPrint = {
+										'1': 'X5',
+										'2': 'X10', 
+										'3': 'X20', 
+										'4': 'X30'
+									} %}
+									{% for k in 1..4 %}
+									<option value="{{nbPrint[k]}}">{{nbPrint[k]}}</option>
+									{% endfor %}
+								</select>
+							</div>
+
+						</div>
 					</div>
 
 					<div class="gestion gestionPromotion col-xs-12 col-sm-12 col-md-12">
@@ -188,7 +209,7 @@
 							</div>
 
 							<div class="col-xs-6 col-sm-6 col-md-6">
-								<button>VALIDER</button>
+								<input type="submit" id="_submit" name="_submit" value="VALIDER" />
 							</div>
 							<div class="clear"></div>
 			</div>
