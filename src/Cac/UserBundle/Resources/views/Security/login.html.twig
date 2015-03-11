@@ -8,16 +8,19 @@
 	<form action="{{ path("fos_user_security_check") }}" method="post">
 	    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 
-	    <label for="username">{{ 'security.login.email'|trans }}</label>
+	    <label for="username">LOGIN</label><br>
 	    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
-
-	    <label for="password">{{ 'security.login.password'|trans }}</label>
+	    <br>
+	    <br>
+	    <label for="password">MOT DE PASSE</label><br>
 	    <input type="password" id="password" name="_password" required="required" />
-
-	    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-	    <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
-
-	    <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+	    <br>
+	    <div class="loginRemember">
+		    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+		    <label for="remember_me">SE SOUVENIR DE MOI</label>
+		</div>
+	    <br>
+	    <input type="submit" id="_submit" name="_submit" value="SE CONNECTER" />
 	</form>
 	{% endblock fos_user_content %}
 	<div class="clear"></div>

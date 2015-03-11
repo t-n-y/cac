@@ -148,6 +148,29 @@ h2.font30{
     text-align: center;
 }
 
+.forConnexion label{
+	font-weight: normal;
+	margin-bottom: 0px;
+	float: left;
+	margin-left: 25px;
+}
+
+.forConnexion input[type=checkbox]{
+	float: left;
+	margin-left: 15px;
+}
+
+.forConnexion input[type=text], .forConnexion input[type=password]{
+	width: 250px;
+	border-radius: 10px;
+	padding-left: 10px;
+	border: 1px solid #000;
+}
+
+.forConnexion input[type=text]:focus, .forConnexion input[type=password]:focus{
+	outline-width: 0;
+}
+
 .forConfirmation{
 	width: 300px;
 	height: 220px;
@@ -169,6 +192,19 @@ h2.font30{
 
 .forConnexion h2{
 	font-size: 18px;
+}
+
+.loginRemember{
+	margin-top: 10px;
+}
+
+.forConnexion input[type=submit] {
+	margin: 15px auto;
+	color: #fff;
+	background-color: #5ac4d4;
+	border: none;
+	width: 150px;
+	padding: 5px;
 }
 
 .inscrivezVous{
