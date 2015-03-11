@@ -149,4 +149,31 @@ class BarController extends Controller
 
         return new Response('comment');
     }
+
+    /**
+     * @Route("/promo/get-my-promotion", name="get_promo", options={"expose"=true})
+     */
+    public function getMyPromotionAction()
+    {
+        $message = \Swift_Message::newInstance()
+        ->setSubject('Hello Email')
+        ->setFrom('send@example.com')
+        ->setTo('g.leclercq12@gmail.com')
+        ->setBody('coucou')
+    ;
+    $this->get('mailer')->send($message);
+        // $em = $this->getDoctrine()->getManager();
+        // $entity = $em->getRepository('CacBarBundle:Bar')->find($id);
+
+        // $comment = new Comment();
+        // $comment->setBar($entity);
+        // $comment->setComment($text);
+        // $comment->setNote($note);
+        // $comment->setCreatedAt(new \DateTime('now'));
+        // $em->persist($comment);
+        // $em->flush();
+
+         return new Response('get promo');
+    }
+
 }

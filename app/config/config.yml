@@ -81,3 +81,9 @@ fos_user:
 #            type: cac_bigboss_registration
     service:
         user_manager: pugx_user_manager
+fos_js_routing:
+    routes_to_expose: [ fos_user_security_login ]
+
+services:
+    pugx_multi_user.registration_controller:
+      class: Cac\UserBundle\Controller\RegistrationController
