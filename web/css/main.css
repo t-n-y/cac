@@ -18,6 +18,10 @@
 	height: 40px;
 }
 
+.bold{
+	font-weight: bold;
+}
+
 .clear{
 	clear:both;
 }
@@ -586,6 +590,11 @@ h2.font30{
 	margin-top: 10px !important;
 	text-align: center !important;
 }
+
+.gestion input{
+	width: 50px;
+}
+
 
 select:focus {
 	outline-width: 0;
