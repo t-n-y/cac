@@ -245,6 +245,11 @@ class Bar
     private $score;
 
     /**
+     * @ORM\OneToMany(targetEntity="Cac\BarBundle\Entity\VerresOfferts", mappedBy="bar")
+     */
+    private $verresOfferts;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -1072,5 +1077,51 @@ class Bar
     public function getScore()
     {
         return $this->score;
+    }
+
+    /**
+     * Set verresOfferts
+     *
+     * @param \Cac\BarBundle\Entity\VerresOfferts $verresOfferts
+     * @return Bar
+     */
+    public function setVerresOfferts(\Cac\BarBundle\Entity\VerresOfferts $verresOfferts = null)
+    {
+        $this->verresOfferts = $verresOfferts;
+
+        return $this;
+    }
+
+    /**
+     * Get verresOfferts
+     *
+     * @return \Cac\BarBundle\Entity\VerresOfferts 
+     */
+    public function getVerresOfferts()
+    {
+        return $this->verresOfferts;
+    }
+
+    /**
+     * Add verresOfferts
+     *
+     * @param \Cac\BarBundle\Entity\VerresOfferts $verresOfferts
+     * @return Bar
+     */
+    public function addVerresOffert(\Cac\BarBundle\Entity\VerresOfferts $verresOfferts)
+    {
+        $this->verresOfferts[] = $verresOfferts;
+
+        return $this;
+    }
+
+    /**
+     * Remove verresOfferts
+     *
+     * @param \Cac\BarBundle\Entity\VerresOfferts $verresOfferts
+     */
+    public function removeVerresOffert(\Cac\BarBundle\Entity\VerresOfferts $verresOfferts)
+    {
+        $this->verresOfferts->removeElement($verresOfferts);
     }
 }

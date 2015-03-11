@@ -17,6 +17,7 @@ use Cac\BarBundle\Form\Type\BarType;
 use Cac\BarBundle\Form\Type\PromotionType;
 use Cac\BarBundle\Form\Type\BarEditType;
 use Cac\AdminBundle\Entity\Visited;
+use Cac\BarBundle\Entity\VerresOfferts;
 /**
  * Bar controller.
  *
@@ -151,29 +152,37 @@ class BarController extends Controller
     }
 
     /**
-     * @Route("/promo/get-my-promotion", name="get_promo", options={"expose"=true})
+     * @Route("/get-my-promotion/{id}", name="get_promo", options={"expose"=true})
      */
-    public function getMyPromotionAction()
+    public function getMyPromotionAction($id)
     {
-        $message = \Swift_Message::newInstance()
-        ->setSubject('Hello Email')
-        ->setFrom('send@example.com')
-        ->setTo('g.leclercq12@gmail.com')
-        ->setBody('coucou')
-    ;
-    $this->get('mailer')->send($message);
-        // $em = $this->getDoctrine()->getManager();
-        // $entity = $em->getRepository('CacBarBundle:Bar')->find($id);
+        $em = $this->getDoctrine()->getManager();
+        $bar = $em->getRepository('CacBarBundle:Bar')->find($id);
+        $user = $this->get('security.context')->getToken()->getUser();
+        if ($user !== "anon.") {
+            $message = \Swift_Message::newInstance()
+                ->setSubject('Hello Email')
+                ->setFrom('send@example.com')
+                ->setTo('g.leclercq12@gmail.com')
+                ->setBody('coucou')
+            ;
+            $this->get('mailer')->send($message);
 
-        // $comment = new Comment();
-        // $comment->setBar($entity);
-        // $comment->setComment($text);
-        // $comment->setNote($note);
-        // $comment->setCreatedAt(new \DateTime('now'));
-        // $em->persist($comment);
-        // $em->flush();
+            $reference = mt_rand(100000,999999);
+            $verre = new VerresOfferts();
+            $verre->setReference($reference);
+            $verre->setEtat('confirmé');
+            $verre->setBar($bar);
+            $verre->setUser($user);
+            $verre->setCreatedAt(new \DateTime('now'));
+            $em->persist($verre);
+            $em->flush();
 
-         return new Response('get promo');
+            return new Response('get glass');
+        }
+        else{
+            return new Response('user not connected');
+        }
     }
 
 }

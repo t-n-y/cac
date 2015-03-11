@@ -21,4 +21,59 @@ abstract class User extends BaseUser
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Cac\BarBundle\Entity\VerresOfferts", mappedBy="user")
+     */
+    private $verresOfferts;
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Add verresOfferts
+     *
+     * @param \Cac\BarBundle\Entity\VerresOfferts $verresOfferts
+     * @return BasicUser
+     */
+    public function addVerresOffert(\Cac\BarBundle\Entity\VerresOfferts $verresOfferts)
+    {
+        $this->verresOfferts[] = $verresOfferts;
+
+        return $this;
+    }
+
+    /**
+     * Remove verresOfferts
+     *
+     * @param \Cac\BarBundle\Entity\VerresOfferts $verresOfferts
+     */
+    public function removeVerresOffert(\Cac\BarBundle\Entity\VerresOfferts $verresOfferts)
+    {
+        $this->verresOfferts->removeElement($verresOfferts);
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->verresOfferts = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Get verresOfferts
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getVerresOfferts()
+    {
+        return $this->verresOfferts;
+    }
 }
