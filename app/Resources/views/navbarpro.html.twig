@@ -31,8 +31,8 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav col-xs-12 col-sm-5 col-md-5">
-        <li><a href="{{ path('home') }}">GESTION DES OFFRES</a></li>
-        <li><a href="{{ path('bars') }}">RETOUR DES OFFRES</a></li>
+        <li><a href="{{ path('bars_offer', { id : bar.id }) }}">GESTION DES OFFRES</a></li>
+        <li><a href="{{ path('bars_offerFeedback', { id : bar.id }) }}">RETOUR DES OFFRES</a></li>
       </ul>
       <div class="nav navbar-nav hidden-xs col-sm-2 col-md-2">
       	<div class="containeurLogo">
@@ -88,8 +88,8 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       
       <ul class="nav navbar-nav col-xs-12 col-sm-5 col-md-5">
-        <li><a href="{{ path('home') }}">GESTION DES OFFRES</a></li>
-        <li><a href="{{ path('bars') }}">RETOUR DES OFFRES</a></li>
+        <li><a href="{{ path('bars_offer', { id : bar.id }) }}">GESTION DES OFFRES</a></li>
+        <li><a href="{{ path('bars_offerFeedback', { id : bar.id }) }}">RETOUR DES OFFRES</a></li>
       </ul>
       <div class="nav navbar-nav hidden-xs col-sm-2 col-md-2">
         <div class="containeurLogo">
