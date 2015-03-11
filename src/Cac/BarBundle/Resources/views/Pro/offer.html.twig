@@ -94,7 +94,9 @@
 						<h2>Vos promotions</h2>
 						<div class="col-xs-6 col-sm-6 col-md-6">
 							<select class="promotion-qt-picker height40" data-day="{{ today }}">
+								{% if bar.promotion.promotionArray[today] is defined %}
 								<option value="{{ bar.promotion.promotionArray[today].promotion.value }}">{{ bar.promotion.promotionArray[today].promotion.value }}%</option>
+								{% endif %}
 									{% for i in 2..6 %}
 									    <option value="{{i}}0">{{i}}0%</option>
 									{% endfor %}
@@ -103,7 +105,7 @@
 						
 						<div class="center col-xs-6 col-sm-6 col-md-6">
 							<p>En distribuer au maximum</p>
-							<input value="{{ bar.promotion.promotionArray[today].promotion.quantity }}"/> pour ce jour
+							<input value="{% if bar.promotion.promotionArray[today] is defined %}{{ bar.promotion.promotionArray[today].promotion.quantity }}{% endif %}"/> pour ce jour
 							<br>
 							<br>
 							<p>Condition*</p>
@@ -124,7 +126,9 @@
 
 						<div class="col-xs-6 col-sm-6 col-md-6">
 							<select class="promotion-qt-picker height40" data-day="{{ today }}">
+								{% if bar.promotion.promotionArray[today] is defined %}
 								<option value="{{ bar.promotion.promotionArray[today]['happy-hour'].value }}">{{ bar.promotion.promotionArray[today]['happy-hour'].value }}%</option>
+								{% endif %}
 										{% for i in 2..6 %}
 										    <option value="{{i}}0">{{i}}0%</option>
 										{% endfor %}
@@ -134,14 +138,18 @@
 							<p>Horaires des happy hours</p>
 							De
 							<select class="promotion-qt-picker" data-day="{{ today }}">
+								{% if bar.promotion.promotionArray[today] is defined %}
 								<option value="{{ bar.promotion.promotionArray[today]['happy-hour'].beginning }}">{{ bar.promotion.promotionArray[today]['happy-hour'].beginning }}h</option>
+								{% endif %}
 										{% for i in 0..23 %}
 										    <option value="{{i}}">{{i}}h</option>
 										{% endfor %}
 							</select>
 							à
 							<select class="promotion-qt-picker" data-day="{{ today }}">
+								{% if bar.promotion.promotionArray[today] is defined %}
 								<option value="{{ bar.promotion.promotionArray[today]['happy-hour'].ending }}">{{ bar.promotion.promotionArray[today]['happy-hour'].ending }}h</option>
+								{% endif %}
 										{% for i in 0..23 %}
 										    <option value="{{i}}">{{i}}h</option>
 										{% endfor %}
