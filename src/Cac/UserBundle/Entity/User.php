@@ -23,9 +23,9 @@ abstract class User extends BaseUser
     protected $id;
 
     /**
-     * @ORM\OneToMany(targetEntity="Cac\BarBundle\Entity\VerresOfferts", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="Cac\BarBundle\Entity\PromoOffertes", mappedBy="user")
      */
-    private $verresOfferts;
+    private $PromoOffertes;
 
     /**
      * Get id
@@ -38,42 +38,42 @@ abstract class User extends BaseUser
     }
 
     /**
-     * Add verresOfferts
+     * Add PromoOffertes
      *
-     * @param \Cac\BarBundle\Entity\VerresOfferts $verresOfferts
+     * @param \Cac\BarBundle\Entity\PromoOffertes $PromoOffertes
      * @return BasicUser
      */
-    public function addVerresOffert(\Cac\BarBundle\Entity\VerresOfferts $verresOfferts)
+    public function addVerresOffert(\Cac\BarBundle\Entity\PromoOffertes $PromoOffertes)
     {
-        $this->verresOfferts[] = $verresOfferts;
+        $this->PromoOffertes[] = $PromoOffertes;
 
         return $this;
     }
 
     /**
-     * Remove verresOfferts
+     * Remove PromoOffertes
      *
-     * @param \Cac\BarBundle\Entity\VerresOfferts $verresOfferts
+     * @param \Cac\BarBundle\Entity\PromoOffertes $PromoOffertes
      */
-    public function removeVerresOffert(\Cac\BarBundle\Entity\VerresOfferts $verresOfferts)
+    public function removeVerresOffert(\Cac\BarBundle\Entity\PromoOffertes $PromoOffertes)
     {
-        $this->verresOfferts->removeElement($verresOfferts);
+        $this->PromoOffertes->removeElement($PromoOffertes);
     }
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->verresOfferts = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->PromoOffertes = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
-     * Get verresOfferts
+     * Get PromoOffertes
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getVerresOfferts()
+    public function getPromoOffertes()
     {
-        return $this->verresOfferts;
+        return $this->PromoOffertes;
     }
 }

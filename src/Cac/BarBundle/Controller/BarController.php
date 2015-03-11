@@ -17,7 +17,7 @@ use Cac\BarBundle\Form\Type\BarType;
 use Cac\BarBundle\Form\Type\PromotionType;
 use Cac\BarBundle\Form\Type\BarEditType;
 use Cac\AdminBundle\Entity\Visited;
-use Cac\BarBundle\Entity\VerresOfferts;
+use Cac\BarBundle\Entity\PromoOffertes;
 /**
  * Bar controller.
  *
@@ -169,7 +169,7 @@ class BarController extends Controller
             $this->get('mailer')->send($message);
 
             $reference = mt_rand(100000,999999);
-            $verre = new VerresOfferts();
+            $verre = new PromoOffertes();
             $verre->setReference($reference);
             $verre->setEtat('confirmé');
             $verre->setBar($bar);

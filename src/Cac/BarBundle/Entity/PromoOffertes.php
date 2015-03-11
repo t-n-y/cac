@@ -5,12 +5,12 @@ namespace Cac\BarBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * VerresOfferts
+ * PromoOffertes
  *
  * @ORM\Table()
  * @ORM\Entity
  */
-class VerresOfferts
+class PromoOffertes
 {
     /**
      * @var integer
@@ -36,12 +36,12 @@ class VerresOfferts
     private $etat;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Cac\BarBundle\Entity\Bar", inversedBy="verresOfferts")
+     * @ORM\ManyToOne(targetEntity="Cac\BarBundle\Entity\Bar", inversedBy="PromoOffertes")
      */
     private $bar;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Cac\UserBundle\Entity\User", inversedBy="verresOfferts")
+     * @ORM\ManyToOne(targetEntity="Cac\UserBundle\Entity\User", inversedBy="PromoOffertes")
      */
     private $user;
 
@@ -67,7 +67,7 @@ class VerresOfferts
      * Set reference
      *
      * @param string $reference
-     * @return VerresOfferts
+     * @return PromoOffertes
      */
     public function setReference($reference)
     {
@@ -90,7 +90,7 @@ class VerresOfferts
      * Set etat
      *
      * @param string $etat
-     * @return VerresOfferts
+     * @return PromoOffertes
      */
     public function setEtat($etat)
     {
@@ -113,7 +113,7 @@ class VerresOfferts
      * Set createdAt
      *
      * @param \DateTime $createdAt
-     * @return VerresOfferts
+     * @return PromoOffertes
      */
     public function setCreatedAt($createdAt)
     {
@@ -136,7 +136,7 @@ class VerresOfferts
      * Set bar
      *
      * @param \Cac\BarBundle\Entity\Bar $bar
-     * @return VerresOfferts
+     * @return PromoOffertes
      */
     public function setBar(\Cac\BarBundle\Entity\Bar $bar = null)
     {
@@ -159,7 +159,7 @@ class VerresOfferts
      * Set user
      *
      * @param \Cac\UserBundle\Entity\User $user
-     * @return VerresOfferts
+     * @return PromoOffertes
      */
     public function setUser(\Cac\UserBundle\Entity\User $user = null)
     {

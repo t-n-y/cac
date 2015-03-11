@@ -245,9 +245,9 @@ class Bar
     private $score;
 
     /**
-     * @ORM\OneToMany(targetEntity="Cac\BarBundle\Entity\VerresOfferts", mappedBy="bar")
+     * @ORM\OneToMany(targetEntity="Cac\BarBundle\Entity\PromoOffertes", mappedBy="bar")
      */
-    private $verresOfferts;
+    private $PromoOffertes;
 
     /**
      * Constructor
@@ -1080,48 +1080,48 @@ class Bar
     }
 
     /**
-     * Set verresOfferts
+     * Set PromoOffertes
      *
-     * @param \Cac\BarBundle\Entity\VerresOfferts $verresOfferts
+     * @param \Cac\BarBundle\Entity\PromoOffertes $PromoOffertes
      * @return Bar
      */
-    public function setVerresOfferts(\Cac\BarBundle\Entity\VerresOfferts $verresOfferts = null)
+    public function setPromoOffertes(\Cac\BarBundle\Entity\PromoOffertes $PromoOffertes = null)
     {
-        $this->verresOfferts = $verresOfferts;
+        $this->PromoOffertes = $PromoOffertes;
 
         return $this;
     }
 
     /**
-     * Get verresOfferts
+     * Get PromoOffertes
      *
-     * @return \Cac\BarBundle\Entity\VerresOfferts 
+     * @return \Cac\BarBundle\Entity\PromoOffertes 
      */
-    public function getVerresOfferts()
+    public function getPromoOffertes()
     {
-        return $this->verresOfferts;
+        return $this->PromoOffertes;
     }
 
     /**
-     * Add verresOfferts
+     * Add PromoOffertes
      *
-     * @param \Cac\BarBundle\Entity\VerresOfferts $verresOfferts
+     * @param \Cac\BarBundle\Entity\PromoOffertes $PromoOffertes
      * @return Bar
      */
-    public function addVerresOffert(\Cac\BarBundle\Entity\VerresOfferts $verresOfferts)
+    public function addVerresOffert(\Cac\BarBundle\Entity\PromoOffertes $PromoOffertes)
     {
-        $this->verresOfferts[] = $verresOfferts;
+        $this->PromoOffertes[] = $PromoOffertes;
 
         return $this;
     }
 
     /**
-     * Remove verresOfferts
+     * Remove PromoOffertes
      *
-     * @param \Cac\BarBundle\Entity\VerresOfferts $verresOfferts
+     * @param \Cac\BarBundle\Entity\PromoOffertes $PromoOffertes
      */
-    public function removeVerresOffert(\Cac\BarBundle\Entity\VerresOfferts $verresOfferts)
+    public function removeVerresOffert(\Cac\BarBundle\Entity\PromoOffertes $PromoOffertes)
     {
-        $this->verresOfferts->removeElement($verresOfferts);
+        $this->PromoOffertes->removeElement($PromoOffertes);
     }
 }
