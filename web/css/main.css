@@ -802,6 +802,7 @@ p.topPosition{
 }
 
 .superInfoBar{
+	overflow-x: hidden;
 	width: 70%;
 	margin: auto;
 	margin-top: 50px;
@@ -1143,8 +1144,57 @@ p.vignettePetitPlusPrix{
 	margin-top: 187px;
 }
 
-/****************************/
+/***************************************/
 
+/************OffreFeedback**************/
+
+.navRetourOffre, .retourOffre{
+	text-align: center;
+}
+.navRetourOffre p, .retourOffre p{
+	margin: 0;
+}
+
+
+.navValidationOffre p{
+	font-size : 10px;
+}
+
+.validationOffre{
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin-top: 2px;
+}
+
+.retourVerrePromotion{
+	background-color: #f9eeff;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin-top: 2px;
+}
+
+.validerOffre p{
+	margin: auto;
+	border-radius: 100px;
+	background-color: #00a453;
+	color: #fff;
+	width: 20px;
+	height: 20px;
+	cursor: pointer;
+}
+
+.noValiderOffre p{
+	margin: auto;
+	border-radius: 100px;
+	background-color: #c4232d;
+	color: #fff;
+	width: 20px;
+	height: 20px;
+	cursor: pointer;
+}
+
+
+/***************************************/
 
 /************FORM INSCRIPTION***********/
 .edit{
