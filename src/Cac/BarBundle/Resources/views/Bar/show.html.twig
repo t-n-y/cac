@@ -74,8 +74,8 @@
 					<div class="ticketBarTop">
 						{% if bar.promotion.promotionArray[today] is defined and bar.promotion.promotionArray[today].promotion.value == 0 %}
 
-							<h2 class="font30">Tenez moi</h2>
-							<h3>au courant de la prochaine promo</h3>
+							<h2 class="font30 fontWeight200">PAS DE PROMO</h2>
+							<h3>Mais <span>5 cheers</span> de fidélité</h3>
 
 						{% elseif bar.promotion.promotionArray[today] is defined %}
 							<h2 class="font30">-{{ bar.promotion.promotionArray[today].promotion.value }}%</h2>
@@ -94,14 +94,18 @@
 								<p class="reductionHappyHour">-{{ bar.promotion.promotionArray[today]['happy-hour'].value }}%</p> 
 							</div>
 						{% else %}
-							<p>Aujourd'hui, pas de Happy Hour<br>pour ce bar</p>
+							<p>Tenez moi au courant<br>Dès qu'une promo est proposé dans ce bar</p>
 						{% endif %}
 						
 						{# le {{days[2]}} -{{ bar.promotion.promotionArray[days[2]]['happy-hour'].value }}%</p> #}
 					</div>
 					<div class="clear"></div>
 					<div class="ticketBarBottom">
-						<p>OBTENIR LA PROMO</p>
+						{% if bar.promotion.promotionArray[today] is defined and bar.promotion.promotionArray[today].promotion.value == 0 %}
+							<p>RESERVEZ POUR AUJOURD'HUI</p>
+						{% elseif bar.promotion.promotionArray[today] is defined %}
+							<p>OBTENIR LA PROMO</p>
+						{% endif %}
 					</div>
 				</div>
 			</div>
