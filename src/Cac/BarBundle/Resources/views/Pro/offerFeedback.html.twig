@@ -46,28 +46,28 @@
 				</div>
 
 				<div class="allOffre">
-					{% for i in 1..100 %}
+					{% for promo in promos %}
 						<div class="retourOffre col-xs-12 col-sm-12 col-md-12 noPadding">
 							<div class="retourVerrePromotion col-xs-10 col-sm-10 col-md-10 noPadding">
 								<div class="col-xs-3 col-sm-3 col-md-3 noPadding">
-									<p>00000001</p>
+									<p>{{promo.reference}}</p>
 								</div>
 								<div class="col-xs-3 col-sm-3 col-md-3 noPadding">
-									<p>DUPONT</p>
+									<p>{{promo.user.name}}</p>
 								</div>
 								<div class="col-xs-3 col-sm-3 col-md-3 noPadding">
-									<p>Jean</p>
+									<p>{{promo.user.firstname}}</p>
 								</div>
 								<div class="col-xs-3 col-sm-3 col-md-3 noPadding">
-									<p>Confirmé</p>
+									<p class="zone-etat-{{promo.id}}">{{promo.etat}}</p>
 								</div>
 							</div>
 							<div class="validationOffre col-xs-2 col-sm-2 col-md-2 noPadding">
 								<div class="validerOffre col-xs-6 col-sm-6 col-md-6 noPadding">
-									<p>V</p>
+									<p class="validate-promo" data-promo-id="{{promo.id}}">V</p>
 								</div>
 								<div class="noValiderOffre col-xs-6 col-sm-6 col-md-6 noPadding">
-									<p>X</p>
+									<p class="invalidate-promo" data-promo-id="{{promo.id}}">X</p>
 								</div>
 							</div>
 							

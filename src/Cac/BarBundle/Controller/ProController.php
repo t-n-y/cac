@@ -71,27 +71,13 @@ class ProController extends Controller
      */
     public function offerFeedbackAction($id)
     {
-        setlocale(LC_TIME, "fr_FR");
-        $today = strftime("%A");
-
         $em = $this->getDoctrine()->getManager();
-        $entity = $em->getRepository('CacBarBundle:Bar')->find($id);
-        $user = $this->get('security.context')->getToken()->getUser();
-
-        $entity->setScore($entity->getScore() +1);
-        $visit = new Visited();
-        $visit->setBar($entity);
-        if (is_object($user)) {
-            $visit->setUser($user);
-        }
-        $visit->setCreatedAt(new \DateTime('now'));
-        $em->persist($visit);
-        $em->persist($entity);
-        $em->flush();
+        $bar = $em->getRepository('CacBarBundle:Bar')->find($id);
+        $promoOffertes = $em->getRepository('CacBarBundle:PromoOffertes')->findAll();     
 
         return array(
-            'bar'      => $entity,
-            'today' => $today,
+            'bar'      => $bar,
+            'promos' => $promoOffertes,
         );  
     }
 
@@ -340,5 +326,30 @@ class ProController extends Controller
             )
             ->getForm()
         ;
+    }
+
+    /**
+     * @Route("/validate-promotion/{id}", name="validate_promo", options={"expose"=true})
+     */
+    public function validatePromotionAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $promo = $em->getRepository('CacBarBundle:PromoOffertes')->find($id);
+        $promo->setEtat('validé');
+        $em->persist($promo);
+        $em->flush();
+        return new Response($promo->getEtat());
+    }
+    /**
+     * @Route("/invalidate-promotion/{id}", name="invalidate_promo", options={"expose"=true})
+     */
+    public function invalidatePromotionAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $promo = $em->getRepository('CacBarBundle:PromoOffertes')->find($id);
+        $promo->setEtat('non validé');
+        $em->persist($promo);
+        $em->flush();
+        return new Response($promo->getEtat());
     }
 }
