@@ -512,38 +512,4 @@ $( ".animConnexion" ).on( "click", function() {
 });
 
 
-/*******PAGE RETOUR OFFRE********/
 
-var click = 0;
-
-$('body').on("click", ".validerOffre",function(){
-  $(this).parentsUntil('.allOffre').addClass('selectedOffre');
-  selectedOffre('valider');
-});
-
-$('body').on("click", ".noValiderOffre",function(){
-  if (click == 0){
-    alert('En annulant ce verre on est au courant');
-    click = 1;
-  }
-  $(this).parentsUntil('.allOffre').addClass('selectedOffre');
-  selectedOffre('noValider');
-});
-
-function selectedOffre(option){
-  if(option == 'valider'){
-    if($('.retourOffre').hasClass('selectedOffre')){
-      $('.selectedOffre .retourVerrePromotion').addClass('offreValide');
-      $('.selectedOffre .retourVerrePromotion').removeClass('offreNonValide');
-    }
-  }
-
-  if(option == 'noValider'){
-    if($('.retourOffre').hasClass('selectedOffre')){
-      $('.selectedOffre .retourVerrePromotion').addClass('offreNonValide');
-      $('.selectedOffre .retourVerrePromotion').removeClass('offreValide');
-    }
-  }
-
-  $('.selectedOffre').removeClass('selectedOffre');
-}
