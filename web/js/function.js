@@ -1,12 +1,3 @@
-// var middlejaloux = $('.jaloux').height();
-// var heightbar = $('.bar').height();
-
-// var middlejaloux = heightbar - middlejaloux;
-
-// middlejaloux = middlejaloux / 2;
-
-//$('.jaloux').css('margin-top', middlejaloux + 'px');
-
 annimationShowBar();
 firstWord();
 
@@ -288,14 +279,6 @@ $('body').on('click','.ongletVerresPromotion',function(){
   $('.gestionPromotion').show();
 });
 
-
-
-/*$('.ticket').hover(function(){
-    $('.ticketPromotion').stop(true,true).show(300);
-  },function(){
-    $('.ticketPromotion').stop(true,true).hide(300);
-});*/
-
 $(document).ready(function(){
   $(".ticket").mouseenter(function(){
     //$(".ticket .ticketBarTop").css("margin-top","-10px");
@@ -323,7 +306,6 @@ $(document).ready(function(){
 
 $(document).ready(function(){
   $(".ticketVerre").mouseenter(function(){
-    //$(".ticket .ticketBarTop").css("margin-top","-10px");
     $(".ticketVerre .ticketBarTop").stop(true,false).animate({
               marginTop: "-10px"
           }, 300);
@@ -344,17 +326,6 @@ $(document).ready(function(){
     },300);
   });
 });
-
-
-/***************************/
-
-/*$(document).ready(function(){
-  $("button").click(function(){
-    var x=$(".navbar-nav li:nth-child(2)").offset();
-    alert("Top: " + x.top + " Left: " + x.left);
-  });
-});*/
-
 
 /**********SLIDER HOME*************************/
 
@@ -499,14 +470,6 @@ $(".barInList").mouseenter(function(){
   });
 }
 
-
-
-
-
-
-
-
-
 /********************************************************************************/
 
 
@@ -584,16 +547,3 @@ function selectedOffre(option){
 
   $('.selectedOffre').removeClass('selectedOffre');
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
