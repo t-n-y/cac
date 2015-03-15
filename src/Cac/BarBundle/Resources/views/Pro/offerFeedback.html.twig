@@ -45,33 +45,36 @@
 					
 				</div>
 
-				{% for i in 1..100 %}
-				<div class="retourOffre col-xs-12 col-sm-12 col-md-12 noPadding">
-					<div class="retourVerrePromotion col-xs-10 col-sm-10 col-md-10 noPadding">
-						<div class="col-xs-3 col-sm-3 col-md-3 noPadding">
-							<p>00000001</p>
+				<div class="allOffre">
+					{% for i in 1..100 %}
+						<div class="retourOffre col-xs-12 col-sm-12 col-md-12 noPadding">
+							<div class="retourVerrePromotion col-xs-10 col-sm-10 col-md-10 noPadding">
+								<div class="col-xs-3 col-sm-3 col-md-3 noPadding">
+									<p>00000001</p>
+								</div>
+								<div class="col-xs-3 col-sm-3 col-md-3 noPadding">
+									<p>DUPONT</p>
+								</div>
+								<div class="col-xs-3 col-sm-3 col-md-3 noPadding">
+									<p>Jean</p>
+								</div>
+								<div class="col-xs-3 col-sm-3 col-md-3 noPadding">
+									<p>Confirmé</p>
+								</div>
+							</div>
+							<div class="validationOffre col-xs-2 col-sm-2 col-md-2 noPadding">
+								<div class="validerOffre col-xs-6 col-sm-6 col-md-6 noPadding">
+									<p>V</p>
+								</div>
+								<div class="noValiderOffre col-xs-6 col-sm-6 col-md-6 noPadding">
+									<p>X</p>
+								</div>
+							</div>
+							
 						</div>
-						<div class="col-xs-3 col-sm-3 col-md-3 noPadding">
-							<p>DUPONT</p>
-						</div>
-						<div class="col-xs-3 col-sm-3 col-md-3 noPadding">
-							<p>Jean</p>
-						</div>
-						<div class="col-xs-3 col-sm-3 col-md-3 noPadding">
-							<p>Confirmé</p>
-						</div>
-					</div>
-					<div class="validationOffre col-xs-2 col-sm-2 col-md-2 noPadding">
-						<div class="validerOffre col-xs-6 col-sm-6 col-md-6 noPadding">
-							<p>V</p>
-						</div>
-						<div class="noValiderOffre col-xs-6 col-sm-6 col-md-6 noPadding">
-							<p>X</p>
-						</div>
-					</div>
-					
+					{% endfor %}
 				</div>
-				{% endfor %}
+				
 
 			</div>
 		</div>

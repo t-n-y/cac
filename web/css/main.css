@@ -1193,6 +1193,14 @@ p.vignettePetitPlusPrix{
 	cursor: pointer;
 }
 
+.offreValide{
+	background-color: #00a453;
+}
+
+.offreNonValide{
+	background-color: #c4232d;
+}
+
 
 /***************************************/
 
