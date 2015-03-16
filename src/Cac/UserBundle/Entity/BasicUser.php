@@ -83,6 +83,13 @@ class BasicUser extends User
      */
     protected $roles;
 
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="score", type="integer")
+     */
+    protected $score;
+
      /**
      * Constructor
      */
@@ -216,5 +223,28 @@ class BasicUser extends User
     public function getGender()
     {
         return $this->gender;
+    }
+
+    /**
+     * Set score
+     *
+     * @param integer $score
+     * @return BasicUser
+     */
+    public function setScore($score)
+    {
+        $this->score = $score;
+
+        return $this;
+    }
+
+    /**
+     * Get score
+     *
+     * @return integer 
+     */
+    public function getScore()
+    {
+        return $this->score;
     }
 }

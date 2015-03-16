@@ -259,7 +259,6 @@ class Bar
         $this->creationDate = new \Datetime();
         $this->barman = new \Doctrine\Common\Collections\ArrayCollection();
         $this->comments = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->images = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -816,19 +815,6 @@ class Bar
     public function getBarman()
     {
         return $this->barman;
-    }
-
-    /**
-     * Add images
-     *
-     * @param \Cac\BarBundle\Entity\Image $images
-     * @return Bar
-     */
-    public function addImage(\Cac\BarBundle\Entity\Image $images)
-    {
-        $this->images[] = $images;
-
-        return $this;
     }
 
     /**

@@ -325,6 +325,9 @@ class ProController extends Controller
         $promo = $em->getRepository('CacBarBundle:PromoOffertes')->find($id);
         $promo->setEtat('validé');
         $em->persist($promo);
+        $user = $promo->getUser();
+        $user->setScore($user->getScore()+10);
+        $em->persist($user);
         $em->flush();
         return new Response($promo->getEtat());
     }
@@ -336,6 +339,9 @@ class ProController extends Controller
         $em = $this->getDoctrine()->getManager();
         $promo = $em->getRepository('CacBarBundle:PromoOffertes')->find($id);
         $promo->setEtat('non validé');
+        $user = $promo->getUser();
+        $user->setScore($user->getScore()-15);
+        $em->persist($user);
         $em->persist($promo);
         $em->flush();
         return new Response($promo->getEtat());
