@@ -1047,8 +1047,12 @@ p.topPosition{
 
 .dresscode{
 	position: absolute;
-	right: 0;
+	right: 40px;
 	bottom: 0;
+}
+
+.dresscode img{
+	width: 80%
 }
 
 
