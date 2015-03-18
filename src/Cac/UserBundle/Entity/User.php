@@ -64,6 +64,7 @@ abstract class User extends BaseUser
      */
     public function __construct()
     {
+    	parent::__construct();
         $this->PromoOffertes = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
