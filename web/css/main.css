@@ -206,6 +206,10 @@ h2.font30{
 	font-size: 18px;
 }
 
+.popLogin input[type=submit]:hover{
+	background-color:#858585;
+}
+
 .loginRemember{
 	margin-top: 10px;
 }
