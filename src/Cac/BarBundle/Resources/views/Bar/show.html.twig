@@ -24,7 +24,11 @@
 				<p></p>
 				{% endif %}
 
-				<a href="{{ path('bar_edit', { 'id': bar.id }) }}">Editer ce bar</a> 
+				{% if (is_granted('ROLE_BIGBOSS')) and (bar.author.id == user.id) %}
+
+					<a href="{{ path('bar_edit', { 'id': bar.id }) }}">Editer ce bar</a>
+
+				{% endif %}
 			</div>
 		</div>
 		<div class="infoBar col-xs-12 col-sm-12 col-md-12 noPadding">

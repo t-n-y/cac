@@ -76,6 +76,7 @@ class BarController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
+            'user' => $user,
             'bar'      => $entity,
             'today' => $today,
             'edit_form'   => $editForm->createView(),
