@@ -519,6 +519,11 @@ $( '.obtenirPromo' ).on( 'click', function() {
           data: 'json',
           success: function (data) {
             $('.testSuccess').html(data);
+            alert("Vous avez votre promotion !!!");
+          },
+          error: function(data){
+            $('.testSuccess').html(data);
+            alert("Vous n'avez pas votre promotion !!!");
           }
       } );
     });
