@@ -1728,12 +1728,19 @@ float: left;
 	line-height: 70px;
 }
 
+.contentUser img{
+	line-height: 70px;
+}
+
 p.nextPointFidelite{
 	float: left;
 	color : #5ac4d4;
 	margin-left: 10px;
 	font-size: 20px;
+	margin-right: 10px;
 }
+
+
 
 
 
