@@ -108,7 +108,8 @@
 						{% if bar.promotion.promotionArray[today] is defined and bar.promotion.promotionArray[today].promotion.value == 0 %}
 							<p>RESERVEZ POUR AUJOURD'HUI</p>
 						{% elseif bar.promotion.promotionArray[today] is defined %}
-							<p>OBTENIR LA PROMO</p>
+							<p class="obtenirPromo" data-bar-id="{{bar.id}}">OBTENIR LA PROMO</p>
+							<p class="testSuccess"></p>
 						{% endif %}
 					</div>
 				</div>

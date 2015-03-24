@@ -511,5 +511,17 @@ $( ".animConnexion" ).on( "click", function() {
     });
 });
 
+// Obtenir une promotion
+$( '.obtenirPromo' ).on( 'click', function() {
+      var promoId = $(this).data('bar-id');
+      $.ajax( {
+          url: Routing.generate('get_promo', {id: promoId}),
+          data: 'json',
+          success: function (data) {
+            $('.testSuccess').html(data);
+          }
+      } );
+    });
+
 
 
