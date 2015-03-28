@@ -129,6 +129,12 @@ class Bar
     protected $categories;
 
     /**
+     * @ORM\ManyToMany(targetEntity="Cac\BarBundle\Entity\CarteBar", inversedBy="bar")
+     * @ORM\JoinColumn(name="carte_id", referencedColumnName="id")
+     */
+    protected $carte;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="priceRange", type="integer", nullable=true)
