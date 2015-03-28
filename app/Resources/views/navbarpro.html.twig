@@ -42,22 +42,29 @@
        	</div>
       </div>
       <ul class="nav navbar-nav hidden-xs col-sm-5 col-md-5">
-        <li><a href="{{ path('map') }}">OPTIONS</a></li>
+        <li><a href="{{ path('bars_option', { id : bar.id }) }}">OPTIONS</a></li>
         <li><a href="{{ path('map') }}">STATISTIQUES</a></li>
 
         {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-          <li class="pull-right"><a href="{{ path('fos_user_security_logout') }}">X</a></li>
-          <li class="pull-right"><a href="{{ path('fos_user_profile_show') }}">{{ app.user.username }}</a></li>
-          {% if is_granted('ROLE_BIGBOSS') %}
-            <li class="pull-right"><a href="{{ path('bar_new') }}">Créer un bar</a></li>
-          {% endif %}
+          <li>
+            <a href="#" class="dropdown-toggle pull-right" data-toggle="dropdown" role="button" aria-expanded="false">Mon compte <span class="caret"></span></a>
+            <ul class="dropdown-menu pull-right" role="menu">
+              <li><a href="{{ path('fos_user_security_login') }}">{{ app.user.username }}</a></li>
+              {% if is_granted('ROLE_BIGBOSS') %}
+                <li><a href="{{ path('bar_new') }}">Créer un bar</a></li>
+              {% endif %}
+              <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
+            </ul>
+          </li>
+
+          
         {% else %}
           <li class="pull-right"><a href="{{ path('user_register') }}">Créer un compte</a></li>
           <li class="pull-right"><a class="animConnexion" href="#">Connexion</a></li>
         {% endif %}
       </ul>
       <ul class="nav navbar-nav col-xs-12 hidden-sm hidden-md hidden-lg">
-        <li><a href="{{ path('map') }}">OPTIONS</a></li>
+        <li><a href="{{ path('bars_offerFeedback', { id : bar.id }) }}">OPTIONS</a></li>
         <li><a href="{{ path('map') }}">STATISTIQUES</a></li>
         {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
           <li class="pull-right"><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
@@ -97,12 +104,20 @@
         </div>
       </div>
       <ul class="nav navbar-nav col-xs-12 col-sm-5 col-md-5">
-        <li><a href="{{ path('map') }}">OPTIONS</a></li>
+        <li><a href="{{ path('bars_offerFeedback', { id : bar.id }) }}">OPTIONS</a></li>
         <li><a href="{{ path('map') }}">STATISTIQUES</a></li>
         {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-          <li class="pull-right"><a href="{{ path('fos_user_security_logout') }}">X</a></li>
-          <li class="pull-right"><a href="{{ path('fos_user_security_login') }}">{{ app.user.username }}</a></li>
-          <li class="pull-right"><a href="{{ path('bar_new') }}">Créer un bar</a></li>
+          <li>
+            <a href="#" class="dropdown-toggle pull-right" data-toggle="dropdown" role="button" aria-expanded="false">Mon compte <span class="caret"></span></a>
+            <ul class="dropdown-menu pull-right" role="menu">
+              <li><a href="{{ path('fos_user_security_login') }}">{{ app.user.username }}</a></li>
+              {% if is_granted('ROLE_BIGBOSS') %}
+                <li><a href="{{ path('bar_new') }}">Créer un bar</a></li>
+              {% endif %}
+              <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
+            </ul>
+          </li>
+          
         {% else %}
           <li class="pull-right"><a href="{{ path('user_register') }}">Créer un compte</a></li>
           <li class="pull-right"><a href="{{ path('fos_user_security_login') }}">Connexion</a></li>
