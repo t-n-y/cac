@@ -1,0 +1,25 @@
+{% extends '::base.html.twig' %} 
+{% block body %}
+{% trans_default_domain 'FOSUserBundle' %}
+	
+	<div class="formBar col-xs-12 col-sm-12 col-md-12 noPadding">
+		<h1>Bienvenue 
+		<!-- @KEVIN, j'ai retiré le test sur le genre et j'ai remplacé le name par le username, ils bloquent pour le moment le message de confirmation quand on enregistre un barman, je cherche une solution -->
+			{{ user.username }}<br/>page register user</h1>
+		<div class="separation1"></div>
+		<div class="separation2"></div>
+	</div>
+	<div class="inscription center col-xs-12 col-sm-12 col-md-12">
+		{% block fos_user_content %}
+		    {% if app.session is not empty %}
+		        {% set targetUrl = app.session.get('_security.' ~ app.security.token.providerKey ~ '.target_path') %}
+		        {% if targetUrl is not empty %}<p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>{% endif %}
+		    {% endif %}
+		    <div class="center">
+			  
+		    </div>
+		{% endblock fos_user_content %}
+			
+		</div>
+		<div class="clear"></div>
+{% endblock %}

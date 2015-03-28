@@ -171,9 +171,15 @@ class RegistrationController extends Controller
         if (!is_object($user) || !$user instanceof UserInterface) {
             throw new AccessDeniedException('This user does not have access to this section.');
         }
-
-        return $this->render('CacUserBundle:Registration:confirmed.html.twig', array(
-            'user' => $user,
-        ));
+        if ($user->getRoles()[0] === 'ROLE_USER') {
+            return $this->render('CacUserBundle:Registration:userConfirmed.html.twig', array(
+                'user' => $user,
+            ));
+        }
+        else{
+            return $this->render('CacUserBundle:Registration:confirmed.html.twig', array(
+                'user' => $user,
+            ));
+        }
     }
 }
