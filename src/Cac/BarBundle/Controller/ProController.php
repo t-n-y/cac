@@ -61,7 +61,7 @@ class ProController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $bar = $em->getRepository('CacBarBundle:Bar')->find($id);
-        $promoOffertes = $em->getRepository('CacBarBundle:PromoOffertes')->findAll();     
+        $promoOffertes = $em->getRepository('CacBarBundle:PromoOffertes')->findBy(array('bar'=> $bar), array('id' => 'ASC'));
 
         return array(
             'bar'      => $bar,
