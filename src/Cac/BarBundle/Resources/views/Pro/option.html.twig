@@ -1,0 +1,42 @@
+{% extends "::basepro.html.twig" %}
+
+{% block title %}CacBarBundle:Bar:show{% endblock %}
+
+{% block body %}
+		<div class="topBar col-xs-12 col-sm-12 col-md-12 noPadding">
+			<img src="{{ asset('uploads/bar/'~bar.path) }}">
+			<!--<img src="{{asset('img/accueil.png')}}" alt="">
+			<img src="{{asset('img/pershing.png')}}" alt="">
+			<img src="{{asset('img/fondFicheBar.png')}}" alt="">-->
+			<div class="infoNameBar">
+				<h1>{{ bar.name }}</h1>
+			</div>
+		</div>
+
+		<div class="onglets col-xs-12 col-sm-12 col-md-12 noPadding">
+			<h3>OPTIONS</h3>
+		</div>
+
+
+		<div class="contentSuperInfoBar col-xs-12 col-sm-12 col-md-12 noPadding">
+			<div class="superInfoBar noPadding">
+				<div class="ongletBarJour">
+					<div class="informationJour">
+						<h3>PACK SMS</h3>
+					</div>
+
+					<div class="informationJour">
+						<h3>PACK E-MAIL</h3>
+					</div>
+
+					<div class="informationJour">
+						<h3>CARTE PDF</h3>
+					</div>
+
+					<div class="informationJour">
+						<h3>MISE EN AVANT</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+{% endblock %}
