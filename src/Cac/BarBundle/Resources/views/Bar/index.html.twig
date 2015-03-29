@@ -31,8 +31,6 @@
 </div>
 <div class="barList col-xs-12 col-sm-12 col-md-12 noPadding">
 {% for bar in bars %}
-	
-
 	<div class="barInList col-xs-12 col-sm-6 col-md-3 noPadding">
 	<img src="{{ asset('uploads/bar/'~bar.path) }}">
 		<a href="{{ path('bar_show', { id : bar.id }) }}"><div class="shadowbarInList col-xs-12 col-sm-12 col-md-12">
@@ -55,11 +53,12 @@
 	</div>
 
 	{% if loop.index %8 == 0 %}
+	
 	<div class="col-xs-12 col-sm-6 col-md-6 noPadding">
-		insert pub here
+		{{highlight[0].bar.id}}
 	</div>
 	<div class="col-xs-12 col-sm-6 col-md-6 noPadding">
-		insert pub here
+		{{highlight[1].bar.id}}
 	</div>
 	{% endif %}
 

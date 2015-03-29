@@ -129,10 +129,16 @@ class Bar
     protected $categories;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Cac\BarBundle\Entity\CarteBar", inversedBy="bar")
+     * @ORM\OneToMany(targetEntity="Cac\BarBundle\Entity\CarteBar", mappedBy="bar")
      * @ORM\JoinColumn(name="carte_id", referencedColumnName="id")
      */
     protected $carte;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Cac\BarBundle\Entity\Highlight", mappedBy="bar")
+     * @ORM\JoinColumn(name="highlight_id", referencedColumnName="id")
+     */
+    protected $highlight;
 
     /**
      * @var integer

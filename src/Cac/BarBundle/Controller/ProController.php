@@ -16,7 +16,6 @@ use Cac\BarBundle\Entity\Image;
 use Cac\BarBundle\Form\Type\BarType;
 use Cac\BarBundle\Form\Type\PromotionType;
 use Cac\BarBundle\Form\Type\BarEditType;
-use Cac\AdminBundle\Entity\Visited;
 /**
  * Bar controller.
  *

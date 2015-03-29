@@ -16,7 +16,6 @@ use Cac\BarBundle\Entity\Image;
 use Cac\BarBundle\Form\Type\BarType;
 use Cac\BarBundle\Form\Type\PromotionType;
 use Cac\BarBundle\Form\Type\BarEditType;
-use Cac\AdminBundle\Entity\Visited;
 use Cac\BarBundle\Entity\PromoOffertes;
 /**
  * Bar controller.
@@ -34,6 +33,8 @@ class BarController extends Controller
         $em = $this->getDoctrine()->getManager();
     
         $entities = $em->getRepository('CacBarBundle:Bar')->findAll();
+        $highlight = $em->getRepository('CacBarBundle:highlight')->findAll();
+        shuffle($highlight);
         $paginator  = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
             $entities,
@@ -41,7 +42,8 @@ class BarController extends Controller
             16/*limit per page*/
         );
         return array(
-            'bars' => $pagination
+            'bars' => $pagination,
+            'highlight' => $highlight
         );    
     }
 
@@ -62,13 +64,6 @@ class BarController extends Controller
         $user = $this->get('security.context')->getToken()->getUser();
 
         $entity->setScore($entity->getScore() +1);
-        $visit = new Visited();
-        $visit->setBar($entity);
-        if (is_object($user)) {
-            $visit->setUser($user);
-        }
-        $visit->setCreatedAt(new \DateTime('now'));
-        $em->persist($visit);
         $em->persist($entity);
         $em->flush();
 
