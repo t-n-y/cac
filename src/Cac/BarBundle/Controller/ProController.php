@@ -13,6 +13,7 @@ use Cac\BarBundle\Entity\Bar;
 use Cac\BarBundle\Entity\Comment;
 use Cac\BarBundle\Entity\Promotion;
 use Cac\BarBundle\Entity\Image;
+use Cac\BarBundle\Entity\Highlight;
 use Cac\BarBundle\Form\Type\BarType;
 use Cac\BarBundle\Form\Type\PromotionType;
 use Cac\BarBundle\Form\Type\BarEditType;
@@ -347,6 +348,7 @@ class ProController extends Controller
         $em->flush();
         return new Response($promo->getEtat());
     }
+    
     /**
      * @Route("/invalidate-promotion/{id}", name="invalidate_promo", options={"expose"=true})
      */
@@ -361,5 +363,19 @@ class ProController extends Controller
         $em->persist($promo);
         $em->flush();
         return new Response($promo->getEtat());
+    }
+
+    /**
+     * @Route("/highlight/{id}", name="highlight_bar", options={"expose"=true})
+     */
+    public function highlightAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $highlight = new Highlight();
+        $highlight->setBar($em->getReference('Cac\BarBundle\Entity\Bar', $id));
+        $highlight->setDate(new \DateTime('now'));
+        $em->persist($highlight);
+        $em->flush();
+        return new Response($highlight->getId());
     }
 }
