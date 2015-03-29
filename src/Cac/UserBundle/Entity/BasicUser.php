@@ -88,7 +88,7 @@ class BasicUser extends User
      *
      * @ORM\Column(name="score", type="integer", nullable=true)
      */
-    protected $score;
+    protected $score = 0;
 
      /**
      * Constructor
