@@ -279,6 +279,37 @@ $('body').on('click','.ongletVerresPromotion',function(){
   $('.gestionPromotion').show();
 });
 
+
+
+$('body').on('click','.sms',function(){
+  $('.contentEmail').hide();
+  $('.contentCarte').hide();
+  $('.contentMiseAvant').hide();
+  $('.contentSms').show();
+});
+
+$('body').on('click','.email',function(){
+  $('.contentSms').hide();
+  $('.contentCarte').hide();
+  $('.contentMiseAvant').hide();
+  $('.contentEmail').show();
+});
+
+$('body').on('click','.carte',function(){
+  $('.contentSms').hide();
+  $('.contentEmail').hide();
+  $('.contentMiseAvant').hide();
+  $('.contentCarte').show();
+});
+
+$('body').on('click','.miseAvant',function(){
+  $('.contentEmail').hide();
+  $('.contentCarte').hide();
+  $('.contentSms').hide();
+  $('.contentMiseAvant').show();
+});
+
+
 $(document).ready(function(){
   $(".ticket").mouseenter(function(){
     //$(".ticket .ticketBarTop").css("margin-top","-10px");
@@ -513,20 +544,21 @@ $( ".animConnexion" ).on( "click", function() {
 
 // Obtenir une promotion
 $( '.obtenirPromo' ).on( 'click', function() {
-      var promoId = $(this).data('bar-id');
-      $.ajax( {
-          url: Routing.generate('get_promo', {id: promoId}),
-          data: 'json',
-          success: function (data) {
-            $('.testSuccess').html(data);
-            alert("Vous avez votre promotion !!!");
-          },
-          error: function(data){
-            $('.testSuccess').html(data);
-            alert("Vous n'avez pas votre promotion !!!");
-          }
-      } );
-    });
+  var promoId = $(this).data('bar-id');
+  $.ajax( {
+      url: Routing.generate('get_promo', {id: promoId}),
+      data: 'json',
+      success: function (data) {
+        $('.testSuccess').html(data);
+        alert("Vous avez votre promotion !!!");
+      },
+      error: function(data){
+        $('.testSuccess').html(data);
+        alert("Vous n'avez pas votre promotion !!!");
+      }
+  } );
+});
+
 
 
 
