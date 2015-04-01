@@ -38,6 +38,11 @@
 	float: right;
 }
 
+.textLeft{
+	text-align: left !important;
+	padding-left: 30px;
+}
+
 .center{
 	text-align: center;
 }
@@ -1115,6 +1120,55 @@ p.vignettePetitPlusPrix{
 
 .contentSms{
 	display: block;
+}
+
+.contentMesOptions{
+	background-color: #212121;
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 550px;
+	color: #fff;
+}
+
+p.closeMesOptions{
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	font-size: 50px;
+	font-weight: 100;
+	cursor: pointer;
+}
+
+.contentMesOptions h2.titleMesOptions{
+	text-align: center;
+	color: #fff;
+	border: none;
+	margin-bottom: 40px;
+}
+
+.contentMesOptions h2{
+	color: #fff;
+	border-color: #fff;
+	margin-left: 0px;
+}
+
+.mesOptionsEnCoursHeader p{
+	font-size: 12px;
+	margin: 0px;
+	text-align: center;
+}
+
+.mesOptionsEnCours{
+	background-color: #fff;
+	margin-bottom: 2px;
+	color : #5ac4d4;
+}
+
+.mesOptionsEnCours p{
+	font-size: 12px;
+	margin: 0px;
+	text-align: center;
 }
 
 

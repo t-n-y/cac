@@ -309,6 +309,14 @@ $('body').on('click','.miseAvant',function(){
   $('.contentMiseAvant').show();
 });
 
+$('body').on('click','.mesOptions',function(){
+  $('.contentMesOptions').show();
+});
+
+$('body').on('click','p.closeMesOptions',function(){
+  $('.contentMesOptions').hide();
+});
+
 
 $(document).ready(function(){
   $(".ticket").mouseenter(function(){
