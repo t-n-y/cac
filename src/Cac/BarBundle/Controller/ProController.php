@@ -371,6 +371,16 @@ class ProController extends Controller
     public function highlightAction($id)
     {
         $em = $this->getDoctrine()->getManager();
+        $nbHightlight = $em->getRepository('CacAdminBundle:NbHighlight')->findAll();
+        $hightlights = $em->getRepository('CacBarBundle:Highlight')->findAll();
+if (count($hightlights) < $nbHightlight[0]->getNbHighlight()) {
+    ldd('yea');
+}
+else
+ldd(count($hightlights));
+      
+
+
         $highlight = new Highlight();
         $highlight->setBar($em->getReference('Cac\BarBundle\Entity\Bar', $id));
         $highlight->setDate(new \DateTime('now'));
