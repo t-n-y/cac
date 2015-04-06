@@ -46,10 +46,12 @@ class ProController extends Controller
 
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository('CacBarBundle:Bar')->find($id);
+        $restrictions = $em->getRepository('CacBarBundle:Restriction')->findAll();
 
         return array(
             'bar'      => $entity,
             'today' => $today,
+            'restrictions' => $restrictions
         );  
     }
 
