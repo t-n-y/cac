@@ -318,8 +318,90 @@ $('body').on('click','p.closeMesOptions',function(){
 });
 
 $('body').on('click','.closeMesOptionEnCours',function(){
+  var dataGenre = $(this).parent().find('.dataMiseEnAvant').data("genre");
+  var dataDate = $(this).parent().find('.dataDate').data("date");
+  var dataPrix = $(this).parent().find(".dataPrix").data("prix");
+  var dataQuantity = $(this).parent().find(".dataQuantity").data("quantity");
+  var dataStatus = $(this).parent().find(".dataStatus").data("status");
+  var dataTotal = $(this).parent().find(".dataTotal").data("total");
+  var date = new Date();
+
+  var jour = date.getDate();
+  var mois = date.getMonth();
+  var annee = date.getFullYear();
+
+  mois = mois + 1;
+
+  if(jour <= 9){
+    jour = '0'+jour;
+  }
+
+  if(mois <= 9){
+    mois = '0'+mois;
+  }
+
+  var dataStop = jour + '/' + mois + '/' + annee; 
+
+
   $(this).parent().hide(300);
+
+  var new_element = jQuery(
+    '<div class="mesOptionsEnCours col-xs-12 col-sm-12 col-md-12 noPadding">'+ 
+      '<div class="col-xs-3 col-sm-3 col-md-3 noPadding">'+
+        '<p class="textLeft">'+ dataGenre +'</p>'+
+      '</div>'+
+      '<div class="col-xs-2 col-sm-2 col-md-2 noPadding">'+
+        '<p>' + dataStop + '</p>'+
+      '</div>'+
+      '<div class="col-xs-5 col-sm-5 col-md-5 noPadding">'+
+        '<div class="col-xs-3 col-sm-3 col-md-3 noPadding">'+
+          '<p>'+ dataDate +'</p>'+
+        '</div>'+
+        '<div class="col-xs-3 col-sm-3 col-md-3 noPadding">'+
+          '<p>'+ dataPrix +'</p>'+
+        '</div>'+
+        '<div class="col-xs-3 col-sm-3 col-md-3 noPadding">'+
+          '<p>'+ dataQuantity +'</p>'+
+        '</div>'+
+        '<div class="col-xs-3 col-sm-3 col-md-3 noPadding">'+
+          '<p>'+ dataStatus +'</p>'+
+       '</div>'+
+     '</div>'+
+     '<div class="col-xs-2 col-sm-2 col-md-2 noPadding">'+
+       '<p>'+ dataTotal +'</p>'+
+     '</div>'+
+    '</div>'
+    );
+
+  $('.optionFinies').append(new_element);
 });
+
+// '<div class="mesOptionsEnCours col-xs-12 col-sm-12 col-md-12 noPadding">'+ 
+//   '<div class="col-xs-3 col-sm-3 col-md-3 noPadding">'+
+//     '<p class="textLeft">'+ dataGenre +'</p>'+
+//   '</div>'+
+//   '<div class="col-xs-2 col-sm-2 col-md-2 noPadding">'+
+//     '<p>date arret</p>'+
+//   '</div>'+
+//   '<div class="col-xs-5 col-sm-5 col-md-5 noPadding">'+
+//     '<div class="col-xs-3 col-sm-3 col-md-3 noPadding">'+
+//       dataDate +
+//     '</div>'+
+
+//     '<div class="col-xs-3 col-sm-3 col-md-3 noPadding">'+
+//       '<p>'+ dataPrix +'</p>'+
+//     '</div>'
+//     '<div class="col-xs-3 col-sm-3 col-md-3 noPadding">'+
+//       '<p>'+ dataQuantity +'</p>'+
+//     '</div>'+
+//     '<div class="col-xs-3 col-sm-3 col-md-3 noPadding">'+
+//       '<p>'+ dataStatus +'</p>'+
+//     '</div>'+
+//   '</div>'+
+//   '<div class="col-xs-2 col-sm-2 col-md-2 noPadding">'+
+//     '<p>'+ dataTotal +'</p>'+
+//   '</div>'+
+// '</div>'
 
 $(document).ready(function(){
   $(".ticket").mouseenter(function(){
@@ -569,6 +651,9 @@ $( '.obtenirPromo' ).on( 'click', function() {
       }
   } );
 });
+
+
+
 
 
 
