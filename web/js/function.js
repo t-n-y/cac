@@ -317,6 +317,9 @@ $('body').on('click','p.closeMesOptions',function(){
   $('.contentMesOptions').hide();
 });
 
+$('body').on('click','.closeMesOptionEnCours',function(){
+  $(this).parent().hide(300);
+});
 
 $(document).ready(function(){
   $(".ticket").mouseenter(function(){

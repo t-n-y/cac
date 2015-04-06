@@ -1123,12 +1123,14 @@ p.vignettePetitPlusPrix{
 }
 
 .contentMesOptions{
-	background-color: #212121;
+	background-color: rgba(0,0,0,0.87);
 	position: absolute;
 	top: 0;
 	left: 0;
 	height: 550px;
 	color: #fff;
+	padding-right: 40px;
+
 }
 
 p.closeMesOptions{
@@ -1163,7 +1165,25 @@ p.closeMesOptions{
 	background-color: #fff;
 	margin-bottom: 2px;
 	color : #5ac4d4;
+	position: relative;
 }
+
+.closeMesOptionEnCours{
+	position: absolute;
+	top: 0;
+	right: -25px;
+	background-color: #d85359;
+	color: #fff;
+	height: 17px;
+	width: 17px;
+	text-align: center;
+	cursor: pointer;
+}
+
+.closeMesOptionEnCours img{
+	vertical-align: inherit;
+}
+
 
 .mesOptionsEnCours p{
 	font-size: 12px;
