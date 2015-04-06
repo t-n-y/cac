@@ -46,19 +46,21 @@ class ProController extends Controller
 
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository('CacBarBundle:Bar')->find($id);
-        $restrictions = $em->getRepository('CacBarBundle:Restriction')->findAll();
+        $restriction = $em->getRepository('CacBarBundle:PromotionOptionCategory')->findOneBy(array('shortcode' => 'restriction'));
+        $restrictions = $em->getRepository('CacBarBundle:PromotionOption')->findBy(array('category' => $restriction->getId()));
 
         $lists = array(
             'drinkNumber' => array('Illimité','5','10','20','30','40','50','100'),
             'drinkDuration' => array('Illimité','1 semaine', '2 semaines', '3 semaines', '1 mois', '2 mois'),
-            'printNumber' => array('X5','X10', 'X20', 'X30')
+            'printNumber' => array('X5','X10', 'X20', 'X30'),
+            'days' => array('Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche')
         );
 
         return array(
             'bar'      => $entity,
             'today' => $today,
             'restrictions' => $restrictions,
-            'promotion' => $entity->getPromotion()->getPromotionArray(),
+            'promotions' => $entity->getPromotions(),
             'lists' => $lists,
         );  
     }

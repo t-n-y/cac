@@ -3,7 +3,6 @@
 {% block title %}CacBarBundle:Bar:show{% endblock %}
 
 {% block body %}
-	{{ dump(promotion) }}
 		<div class="topBar col-xs-12 col-sm-12 col-md-12 noPadding">
 			<img src="{{ asset('uploads/bar/'~bar.path) }}">
 			<!--<img src="{{asset('img/accueil.png')}}" alt="">
@@ -26,7 +25,7 @@
 		<div class="contentSuperInfoBar col-xs-12 col-sm-12 col-md-12 noPadding">
 			<div class="superInfoBar noPadding">
 				<div class="ongletBarJour">
-					{% for day, infos in promotion %}
+					{% for day in lists.days %}
 						<div class="informationJour {{ day }}">
 							<h3>{{ day }}</h3>
 						</div>
@@ -43,7 +42,7 @@
 						<p class="padding40">Condition*</p>
 						<select>
 							{% for restriction in restrictions %}
-							<option value="{{ restriction.id }}">{{ restriction.restriction }}</option>
+							<option value="{{ restriction.value }}">{{ restriction.name }}</option>
 							{% endfor %}
 						</select>
 
@@ -93,7 +92,7 @@
 							<p>Condition*</p>
 							<select>
 							{% for restriction in restrictions %}
-							<option value="{{ restriction.id }}">{{ restriction.restriction }}</option>
+							<option value="{{ restriction.value }}">{{ restriction.name }}</option>
 							{% endfor %}
 							</select>
 						</div>
@@ -138,7 +137,7 @@
 
 							<select>
 							{% for restriction in restrictions %}
-							<option value="{{ restriction.id }}">{{ restriction.restriction }}</option>
+							<option value="{{ restriction.value }}">{{ restriction.name }}</option>
 							{% endfor %}
 							</select>
 						</div>
