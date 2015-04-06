@@ -1,0 +1,16 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Promotion{% endblock %}
+
+{% block body %}
+<h1>Promotion</h1>
+<div>
+	<ol class="breadcrumb">
+	  <li class="active">Promotion</li>
+	</ol>
+</div>
+<div>
+	<a href="{{path('promotion_options_index')}}">Options</a> | 
+	<a href="{{path('promotion_option_category_index')}}">Catégories</a>
+</div>
+{% endblock %}

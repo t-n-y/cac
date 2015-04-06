@@ -19,6 +19,15 @@ use Cac\BarBundle\Form\Type\PromotionOptionType;
 class PromotionOptionController extends Controller
 {
     /**
+     * @Route("/", name="promotion_index")
+     * @Template()
+     */
+    public function indexAction()
+    {
+        return array(); 
+    }
+
+    /**
      * @Route("/options/categories", name="promotion_option_category_index")
      * @Template()
      */
@@ -161,7 +170,7 @@ class PromotionOptionController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('promotion_option_index'));
+            return $this->redirect($this->generateUrl('promotion_options_index'));
         }
 
         return array(

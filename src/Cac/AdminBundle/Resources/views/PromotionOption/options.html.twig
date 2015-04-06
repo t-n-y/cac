@@ -6,11 +6,15 @@
 <h1>Options</h1>
 <div>
 	<ol class="breadcrumb">
-	  <li><a href="#">Promotion</a></li>
+	  <li><a href="{{ path('promotion_index') }}">Promotion</a></li>
 	  <li class="active">Options</li>
 	</ol>
 </div>
 <div>
+	<a href="{{path('promotion_option_category_index')}}">Catégories</a>
+</div>
+<div>
+	<h3>Liste</h3>
 	<ul>
 		{% for option in entities %}
 		<li>{{ option.name }} - {{ option.category.shortcode }} <button data-id="{{ option.id }}" class="glyphicon glyphicon-remove"></li>
