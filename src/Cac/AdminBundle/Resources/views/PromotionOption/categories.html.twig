@@ -1,14 +1,14 @@
 {% extends "::base.html.twig" %}
 
-{% block title %}Categorie | Option | Promotion{% endblock %}
+{% block title %}Categories | Option | Promotion{% endblock %}
 
 {% block body %}
 <h1>Categories</h1>
 <div>
 	<ol class="breadcrumb">
 	  <li><a href="#">Promotion</a></li>
-	  <li><a href="#">Option</a></li>
-	  <li class="active">Categorie</li>
+	  <li><a href="{{ path('promotion_options_index') }}">Options</a></li>
+	  <li class="active">Categories</li>
 	</ol>
 </div>
 <div>

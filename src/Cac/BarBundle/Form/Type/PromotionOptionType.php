@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class PromotionOptionCategoryType extends AbstractType
+class PromotionOptionType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,8 +15,9 @@ class PromotionOptionCategoryType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', null, array('label' => 'Nom de la categorie'))
-            ->add('shortcode', null, array('label' => 'Code de la categorie (ex : Condition promotion > condition)'))
+            ->add('name', null, array('label' => 'Nom de l\'option'))
+            ->add('value', null, array('label' => 'Valeur de l\'option'))
+            ->add('category', null, array('label' => 'Categorie'))
         ;
     }
     
@@ -26,7 +27,7 @@ class PromotionOptionCategoryType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Cac\BarBundle\Entity\PromotionOptionCategory'
+            'data_class' => 'Cac\BarBundle\Entity\PromotionOption'
         ));
     }
 
@@ -35,6 +36,6 @@ class PromotionOptionCategoryType extends AbstractType
      */
     public function getName()
     {
-        return 'cac_barbundle_promotion_option_category';
+        return 'cac_barbundle_promotion_option';
     }
 }

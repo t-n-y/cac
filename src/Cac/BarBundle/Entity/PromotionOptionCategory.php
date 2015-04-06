@@ -35,6 +35,10 @@ class PromotionOptionCategory
      */
     private $name;
 
+    public function __toString()
+    {
+        return $this->getShortcode();
+    }
 
     /**
      * Get id

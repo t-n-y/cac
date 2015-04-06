@@ -22,16 +22,15 @@ class PromotionOption
     private $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="category", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="Cac\BarBundle\Entity\PromotionOptionCategory")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $category;
 
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="value", type="integer")
+     * @ORM\Column(name="value", type="string", length=255)
      */
     private $value;
 
