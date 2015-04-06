@@ -3,7 +3,7 @@
 {% block title %}CacBarBundle:Bar:show{% endblock %}
 
 {% block body %}
-	{{ dump(restrictions) }}
+	{{ dump(promotion) }}
 		<div class="topBar col-xs-12 col-sm-12 col-md-12 noPadding">
 			<img src="{{ asset('uploads/bar/'~bar.path) }}">
 			<!--<img src="{{asset('img/accueil.png')}}" alt="">
@@ -26,18 +26,9 @@
 		<div class="contentSuperInfoBar col-xs-12 col-sm-12 col-md-12 noPadding">
 			<div class="superInfoBar noPadding">
 				<div class="ongletBarJour">
-					{% set days = {
-							'1': 'Lundi', 
-							'2': 'Mardi', 
-							'3': 'Mercredi', 
-							'4': 'Jeudi', 
-							'5': 'Vendredi', 
-							'6': 'Samedi', 
-							'7': 'Dimanche'
-					} %}
-					{% for i in 1..7 %}
-						<div class="informationJour {{ days[i] }}">
-							<h3>{{ days[i] }}</h3>
+					{% for day, infos in promotion %}
+						<div class="informationJour {{ day }}">
+							<h3>{{ day }}</h3>
 						</div>
 					{% endfor %}
 				</div>
@@ -45,19 +36,8 @@
 					<div class="gestion gestionVerreOffert col-xs-12 col-sm-12 col-md-12">
 						<h2>Nombres de verres disponibles à l'offre</h2>
 						<select class="promotion-qt-picker height40" data-day="{{ today }}">
-							{% set nbVerreOffert = {
-								'1': 'Illimité',
-								'2': '5', 
-								'3': '10', 
-								'4': '20', 
-								'5': '30', 
-								'6': '40',
-								'7': '50',
-								'8': '100'
-								
-							} %}
-							{% for k in 1..8 %}
-							<option value="{{nbVerreOffert[k]}}">{{nbVerreOffert[k]}}</option>
+							{% for number in lists.drinkNumber %}
+								<option value="{{ number }}">{{ number }}</option>
 							{% endfor %}
 						</select>
 						<p class="padding40">Condition*</p>
@@ -71,16 +51,8 @@
 						<h2>Validité des verres offerts</h2>
 						
 						<select class="promotion-qt-picker height40">
-							{% set tmpVerreOffert = {
-								'1': 'Illimité',
-								'2': '1 semaine', 
-								'3': '2 semaines', 
-								'4': '3 semaines', 
-								'5': '1 mois', 
-								'6': '2 mois',
-							} %}
-							{% for k in 1..6 %}
-							<option value="{{tmpVerreOffert[k]}}">{{tmpVerreOffert[k]}}</option>
+							{% for duration in lists.drinkDuration %}
+							<option value="{{ duration }}">{{ duration }}</option>
 							{% endfor %}
 						</select>
 
@@ -91,14 +63,8 @@
 							</div>
 							<div class="col-xs-6 col-sm-6 col-md-6 noPadding">
 								<select class="promotion-qt-picker height25">
-									{% set nbPrint = {
-										'1': 'X5',
-										'2': 'X10', 
-										'3': 'X20', 
-										'4': 'X30'
-									} %}
-									{% for k in 1..4 %}
-									<option value="{{nbPrint[k]}}">{{nbPrint[k]}}</option>
+									{% for number in lists.printNumber %}
+									<option value="{{ number }}">{{ number }}</option>
 									{% endfor %}
 								</select>
 							</div>

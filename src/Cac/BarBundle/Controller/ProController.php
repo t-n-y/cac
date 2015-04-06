@@ -48,10 +48,18 @@ class ProController extends Controller
         $entity = $em->getRepository('CacBarBundle:Bar')->find($id);
         $restrictions = $em->getRepository('CacBarBundle:Restriction')->findAll();
 
+        $lists = array(
+            'drinkNumber' => array('Illimité','5','10','20','30','40','50','100'),
+            'drinkDuration' => array('Illimité','1 semaine', '2 semaines', '3 semaines', '1 mois', '2 mois'),
+            'printNumber' => array('X5','X10', 'X20', 'X30')
+        );
+
         return array(
             'bar'      => $entity,
             'today' => $today,
-            'restrictions' => $restrictions
+            'restrictions' => $restrictions,
+            'promotion' => $entity->getPromotion()->getPromotionArray(),
+            'lists' => $lists,
         );  
     }
 
