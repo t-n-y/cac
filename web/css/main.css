@@ -595,6 +595,24 @@ h2.font30{
 	display: block;
 }
 
+.topBarPro{
+	position: relative;
+	height: 100px;
+	overflow: hidden;
+}
+
+.topBarPro img{
+	width: 100%;
+	min-width: 1200px;
+	min-height: 400px;
+	display: none;
+}
+
+.topBarPro img:nth-child(1){
+	
+	display: block;
+}
+
 .infoNameBar{
 	position: absolute;
 	width: 100%;
