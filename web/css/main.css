@@ -149,7 +149,7 @@ h2.font30{
 	display: none;
 }
 
-.forConnexion{
+.forConnexion, .forRegister{
 	width: 300px;
 	height: 320px;
 	background-color: #1a1a19;
@@ -210,16 +210,8 @@ h2.font30{
     text-align: center;
 }
 
-.forConnexion h2{
+.forConnexion h2, .forRegister h2{
 	font-size: 18px;
-}
-
-.popLogin input[type=submit]:hover{
-	background-color:#858585;
-}
-
-.loginRemember{
-	margin-top: 10px;
 }
 
 .forConnexion input[type=submit] {
@@ -231,11 +223,17 @@ h2.font30{
 	padding: 5px;
 }
 
-.facebookLogin{
+.forConnexion .facebookLogin{
 	width: 80%;
 	margin: auto;
 	border-top: 1px dashed #b4b4b4;
 }
+
+.forRegister .facebookLogin{
+	width: 80%;
+	margin: auto;
+}
+
 
 .facebookLogin h2 {
 	margin: 15px auto;
@@ -257,10 +255,19 @@ h2.font30{
   	color: #fff;
   	border: 3px solid #fff;
   	margin-left: -3px;
+  	cursor: pointer;
 }
 
 .inscrivezVous h2{
 	margin-top: 14px;
+}
+
+.popLogin input[type=submit]:hover{
+	background-color:#858585;
+}
+
+.loginRemember{
+	margin-top: 10px;
 }
 
 /*****************HEADER*****************/

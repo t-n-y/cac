@@ -63,11 +63,25 @@ $(document).ready(function(){
   $(".animConnexion").on('click',function(){
     $(".isConnexion").css("display","block");
     $(".forConnexion").css("display","block");
+    $(".forRegister").css("display","none");
+  });
+
+  $(".animRegister").on('click',function(){
+    $(".forRegister").css("display","block");
+    $(".isConnexion").css("display","block");
+    $(".forConnexion").css("display","none");
+  });
+
+   $(".inscrivezVous").on('click',function(){
+    $(".forRegister").css("display","block");
+    $(".isConnexion").css("display","block");
+    $(".forConnexion").css("display","none");
   });
 
   $(".isConnexion").on('click',function(){
     $(".isConnexion").css("display","none");
     $(".forConnexion").css("display","none");
+    $(".forRegister").css("display","none");
   });
 });
 /***********************/
