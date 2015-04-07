@@ -54,11 +54,51 @@
 
 	{% if loop.index %8 == 0 %}
 	
-	<div class="col-xs-12 col-sm-6 col-md-6 noPadding">
-		{{highlight[0].bar.id}}
+	<div class="HightlightLeft col-xs-12 col-sm-6 col-md-6 noPadding">
+		{#{{highlight[0].bar.id}}#}
+		<div class="barInListHighlight barInList col-xs-12 col-sm-12 col-md-12 noPadding">
+			<img src="{{ asset('uploads/bar/'~bar.path) }}">
+			<a href="{{ path('bar_show', { id : bar.id }) }}"><div class="shadowbarInList col-xs-12 col-sm-12 col-md-12">
+				<h3 id="firstWord{{ bar.id }}">{{ bar.name }}</h3>
+				{% if bar.priceRange ==  1 %}
+				<p class="prix">€{#<span class="percentage">€€€€</span>#}</p>
+				{% elseif bar.priceRange ==  2 %}
+					<p class="prix">€€</p>
+				{% elseif bar.priceRange ==  3 %}
+					<p class="prix">€€€</p>
+				{% elseif bar.priceRange ==  4 %}
+					<p class="prix">€€€€</p>
+				{% elseif bar.priceRange ==  5 %}
+					<p class="prix">€€€€€</p>
+				{% else %}
+				<p></p>
+				{% endif %}
+				<p class="reduc">%</p>
+			</div></a>
+		</div>
 	</div>
-	<div class="col-xs-12 col-sm-6 col-md-6 noPadding">
-		{{highlight[1].bar.id}}
+	<div class="HightlightRight col-xs-12 col-sm-6 col-md-6 noPadding">
+		{#{{highlight[1].bar.id}}#}
+		<div class="barInListHighlight barInList col-xs-12 col-sm-12 col-md-12 noPadding">
+			<img src="{{ asset('uploads/bar/'~bar.path) }}">
+			<a href="{{ path('bar_show', { id : bar.id }) }}"><div class="shadowbarInList col-xs-12 col-sm-12 col-md-12">
+				<h3 id="firstWord{{ bar.id }}">{{ bar.name }}</h3>
+				{% if bar.priceRange ==  1 %}
+				<p class="prix">€{#<span class="percentage">€€€€</span>#}</p>
+				{% elseif bar.priceRange ==  2 %}
+					<p class="prix">€€</p>
+				{% elseif bar.priceRange ==  3 %}
+					<p class="prix">€€€</p>
+				{% elseif bar.priceRange ==  4 %}
+					<p class="prix">€€€€</p>
+				{% elseif bar.priceRange ==  5 %}
+					<p class="prix">€€€€€</p>
+				{% else %}
+				<p></p>
+				{% endif %}
+				<p class="reduc">%</p>
+			</div></a>
+		</div>
 	</div>
 	{% endif %}
 

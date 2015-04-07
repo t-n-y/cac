@@ -1631,6 +1631,13 @@ float: left;
 	border: 5px solid rgba(0,0,0,0);
 }
 
+.barInListHighlight{
+	position: relative;
+	height: 300px;
+	overflow: hidden;
+	border: 5px solid rgba(0,0,0,0);
+}
+
 #recherche{
 	background-color : #1aacd5;
 	position: relative;
@@ -1670,6 +1677,18 @@ float: left;
 .barInList:nth-child(4n+4){
 
 	border-right: 0px solid rgba(0,0,0,0);
+}
+
+
+.HightlightLeft .barInListHighlight{
+
+	border-left: 0px solid rgba(0,0,0,0);
+}
+
+.HightlightRight .barInListHighlight{
+
+	border-right: 0px solid rgba(0,0,0,0);
+	border-left: 5px solid rgba(0,0,0,0);
 }
 
 .barInList img{
