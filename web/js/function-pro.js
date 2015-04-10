@@ -26,7 +26,13 @@ $(document).ready(function(){
           url: Routing.generate('highlight_bar', {id: barId}),
           data: 'json',
           success: function (data) {
-            alert('Bar mis en avant');
+            console.log(data);
+            if (data === "Bar non ajouté") {
+              alert('Bar non mis en avant');
+            }
+            else{
+              alert('Bar mis en avant');
+            }
           }
       } );
     });
