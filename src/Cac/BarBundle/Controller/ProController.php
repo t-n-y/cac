@@ -384,19 +384,16 @@ class ProController extends Controller
         $em = $this->getDoctrine()->getManager();
         $nbHightlight = $em->getRepository('CacAdminBundle:NbHighlight')->findAll();
         $hightlights = $em->getRepository('CacBarBundle:Highlight')->findAll();
-        if (count($hightlights) < $nbHightlight[0]->getNbHighlight()) {
-            ldd('yea');
+        $hightlightedBar = $em->getRepository('CacBarBundle:Highlight')->findOneByBar($id);
+        if (count($hightlights) <= $nbHightlight[0]->getNbHighlight() && $hightlightedBar === null) {
+            $highlight = new Highlight();
+            $highlight->setBar($em->getReference('Cac\BarBundle\Entity\Bar', $id));
+            $highlight->setDate(new \DateTime('now'));
+            $em->persist($highlight);
+            $em->flush();
+            return new Response($highlight->getId());
         }
         else
-        ldd(count($hightlights));
-      
-
-
-        $highlight = new Highlight();
-        $highlight->setBar($em->getReference('Cac\BarBundle\Entity\Bar', $id));
-        $highlight->setDate(new \DateTime('now'));
-        $em->persist($highlight);
-        $em->flush();
-        return new Response($highlight->getId());
+            return new Response("Bar non ajouté");
     }
 }
