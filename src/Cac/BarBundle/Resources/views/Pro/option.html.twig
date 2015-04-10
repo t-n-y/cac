@@ -80,7 +80,98 @@
 					<p>5€/MOIS</p>
 				</div>
 				<div class="contentOption contentMiseAvant col-xs-12 col-sm-12 col-md-12">
-					Mise en Avant
+					<h2>Description</h2>
+					<p>La mise en avant vous permet d’être plus visible par les internautes. Vous aurez donc plus de réservations. La mise en avant vous place dans les blocs 4 fois plus grands que la fiche standard. Cette option ne remplace pas votre fiche standard, vous apparaissez donc 2 fois sur une même page. </p>
+
+					<h2>Exemple :</h2>
+					<div class="contentExemple">
+						<div class="col-xs-12 col-sm-12 col-md-12 noPadding">
+							{% set i = 0 %}
+							{% set myBar = bar.id %}
+							{% for bar in bars %}
+								{% if i < 3 %}
+									{% if bar.id != myBar %}
+										<div class="barInList col-xs-12 col-sm-6 col-md-3 noPadding">
+											<img src="{{ asset('uploads/bar/'~bar.path) }}">
+											<a href="{{ path('bar_show', { id : bar.id }) }}"><div class="shadowbarInList col-xs-12 col-sm-12 col-md-12">
+												<h3 id="firstWord{{ bar.id }}">{{ bar.name }}</h3>
+												{% if bar.priceRange ==  1 %}
+												<p class="prix">€{#<span class="percentage">€€€€</span>#}</p>
+												{% elseif bar.priceRange ==  2 %}
+													<p class="prix">€€</p>
+												{% elseif bar.priceRange ==  3 %}
+													<p class="prix">€€€</p>
+												{% elseif bar.priceRange ==  4 %}
+													<p class="prix">€€€€</p>
+												{% elseif bar.priceRange ==  5 %}
+													<p class="prix">€€€€€</p>
+												{% else %}
+												<p></p>
+												{% endif %}
+												<p class="reduc">%</p>
+											</div></a>
+										</div>
+										{% set i = i+1 %}
+									{% endif %}
+								{% endif %}
+							{% endfor %}
+							<div class="barInList col-xs-12 col-sm-6 col-md-3 noPadding">
+								<img src="{{ asset('uploads/bar/'~bar.path) }}">
+								<a href="{{ path('bar_show', { id : bar.id }) }}"><div class="shadowbarInList col-xs-12 col-sm-12 col-md-12">
+									<h3 id="firstWord{{ bar.id }}">{{ bar.name }}</h3>
+									{% if bar.priceRange ==  1 %}
+									<p class="prix">€{#<span class="percentage">€€€€</span>#}</p>
+									{% elseif bar.priceRange ==  2 %}
+										<p class="prix">€€</p>
+									{% elseif bar.priceRange ==  3 %}
+										<p class="prix">€€€</p>
+									{% elseif bar.priceRange ==  4 %}
+										<p class="prix">€€€€</p>
+									{% elseif bar.priceRange ==  5 %}
+										<p class="prix">€€€€€</p>
+									{% else %}
+									<p></p>
+									{% endif %}
+									<p class="reduc">%</p>
+								</div></a>
+							</div>
+							<div class="HightlightLeft col-xs-12 col-sm-6 col-md-6 noPadding">
+								{#{{highlight[0].bar.id}}#}
+								<div class="barInListHighlight barInList col-xs-12 col-sm-12 col-md-12 noPadding">
+									<img src="{{ asset('uploads/bar/'~bar.path) }}">
+									<a href="{{ path('bar_show', { id : bar.id }) }}"><div class="shadowbarInList col-xs-12 col-sm-12 col-md-12">
+										<h3 id="firstWord{{ bar.id }}">{{ bar.name }}</h3>
+										{% if bar.priceRange ==  1 %}
+										<p class="prix">€{#<span class="percentage">€€€€</span>#}</p>
+										{% elseif bar.priceRange ==  2 %}
+											<p class="prix">€€</p>
+										{% elseif bar.priceRange ==  3 %}
+											<p class="prix">€€€</p>
+										{% elseif bar.priceRange ==  4 %}
+											<p class="prix">€€€€</p>
+										{% elseif bar.priceRange ==  5 %}
+											<p class="prix">€€€€€</p>
+										{% else %}
+										<p></p>
+										{% endif %}
+										<p class="reduc">%</p>
+									</div></a>
+								</div>
+							</div>
+						
+
+						</div>
+
+					</div>
+					<div class="clear"></div>
+
+
+					<h2>Tarifs HT</h2>
+					<p>0,79€/jours</p>
+
+					<div class="mettreBarEnAvant">
+						<p>Mettre mon bar en avant</p>
+					</div>
 				</div>
 
 				<div class="contentOption contentMesOptions col-xs-12 col-sm-12 col-md-12">
@@ -212,6 +303,7 @@
 					</div>
 					
 				</div>
+				<div class="clear"></div>
 			</div>
 
 		</div>

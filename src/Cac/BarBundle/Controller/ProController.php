@@ -82,8 +82,17 @@ class ProController extends Controller
 
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository('CacBarBundle:Bar')->find($id);
+        $entities = $em->getRepository('CacBarBundle:Bar')->findAll();
+
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $entities,
+            $this->get('request')->query->get('page', 1)/*page number*/,
+            16/*limit per page*/
+        );
 
         return array(
+            'bars' => $pagination,
             'bar'      => $entity
         );  
     }
@@ -375,11 +384,11 @@ class ProController extends Controller
         $em = $this->getDoctrine()->getManager();
         $nbHightlight = $em->getRepository('CacAdminBundle:NbHighlight')->findAll();
         $hightlights = $em->getRepository('CacBarBundle:Highlight')->findAll();
-if (count($hightlights) < $nbHightlight[0]->getNbHighlight()) {
-    ldd('yea');
-}
-else
-ldd(count($hightlights));
+        if (count($hightlights) < $nbHightlight[0]->getNbHighlight()) {
+            ldd('yea');
+        }
+        else
+        ldd(count($hightlights));
       
 
 
