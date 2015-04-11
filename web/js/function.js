@@ -391,7 +391,11 @@ $('body').on('click','.closeMesOptionEnCours',function(){
     '</div>'
     );
 
-  $('.optionFinies').append(new_element);
+  $('.optionFinies').append(new_element.css("display","none"));
+
+  setTimeout(function() {  
+      $('.mesOptionsEnCours').last().show(300);
+    },300);
 });
 
 

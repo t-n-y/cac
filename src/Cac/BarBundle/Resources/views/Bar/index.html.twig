@@ -54,55 +54,55 @@
 
 	{% if loop.index %8 == 0 %}
 	
-	{% if highlight[0] is defined %}
-	<div class="HightlightLeft col-xs-12 col-sm-6 col-md-6 noPadding">
-		<div class="barInListHighlight barInList col-xs-12 col-sm-12 col-md-12 noPadding">
-			<img src="{{ asset('uploads/bar/'~highlight[0].bar.path) }}">
-			<a href="{{ path('bar_show', { id : highlight[0].bar.id }) }}"><div class="shadowbarInList col-xs-12 col-sm-12 col-md-12">
-				<h3 id="firstWord{{ highlight[0].bar.id }}">{{ highlight[0].bar.name }}</h3>
-				{% if highlight[0].bar.priceRange ==  1 %}
-				<p class="prix">€{#<span class="percentage">€€€€</span>#}</p>
-				{% elseif highlight[0].bar.priceRange ==  2 %}
-					<p class="prix">€€</p>
-				{% elseif highlight[0].bar.priceRange ==  3 %}
-					<p class="prix">€€€</p>
-				{% elseif highlight[0].bar.priceRange ==  4 %}
-					<p class="prix">€€€€</p>
-				{% elseif highlight[0].bar.priceRange ==  5 %}
-					<p class="prix">€€€€€</p>
-				{% else %}
-				<p></p>
-				{% endif %}
-				<p class="reduc">%</p>
-			</div></a>
-		</div>
-	</div>
-	{% endif %}
-	{% if highlight[1] is defined %}
-	<div class="HightlightRight col-xs-12 col-sm-6 col-md-6 noPadding">
-		{#{{highlight[1].bar.id}}#}
-		<div class="barInListHighlight barInList col-xs-12 col-sm-12 col-md-12 noPadding">
-			<img src="{{ asset('uploads/bar/'~highlight[1].bar.path) }}">
-			<a href="{{ path('bar_show', { id : highlight[1].bar.id }) }}"><div class="shadowbarInList col-xs-12 col-sm-12 col-md-12">
-				<h3 id="firstWord{{ highlight[1].bar.id }}">{{ highlight[1].bar.name }}</h3>
-				{% if highlight[1].bar.priceRange ==  1 %}
-				<p class="prix">€{#<span class="percentage">€€€€</span>#}</p>
-				{% elseif highlight[1].bar.priceRange ==  2 %}
-					<p class="prix">€€</p>
-				{% elseif highlight[1].bar.priceRange ==  3 %}
-					<p class="prix">€€€</p>
-				{% elseif highlight[1].highlight[1].bar.priceRange ==  4 %}
-					<p class="prix">€€€€</p>
-				{% elseif highlight[1].bar.priceRange ==  5 %}
-					<p class="prix">€€€€€</p>
-				{% else %}
-				<p></p>
-				{% endif %}
-				<p class="reduc">%</p>
-			</div></a>
-		</div>
-	</div>
-	{% endif %}
+		{% if highlight[0] is defined %}
+			<div class="HightlightLeft col-xs-12 col-sm-6 col-md-6 noPadding">
+				<div class="barInListHighlight barInList col-xs-12 col-sm-12 col-md-12 noPadding">
+					<img src="{{ asset('uploads/bar/'~highlight[0].bar.path) }}">
+					<a href="{{ path('bar_show', { id : highlight[0].bar.id }) }}"><div class="shadowbarInList col-xs-12 col-sm-12 col-md-12">
+						<h3 id="firstWord{{ highlight[0].bar.id }}">{{ highlight[0].bar.name }}</h3>
+						{% if highlight[0].bar.priceRange ==  1 %}
+						<p class="prix">€{#<span class="percentage">€€€€</span>#}</p>
+						{% elseif highlight[0].bar.priceRange ==  2 %}
+							<p class="prix">€€</p>
+						{% elseif highlight[0].bar.priceRange ==  3 %}
+							<p class="prix">€€€</p>
+						{% elseif highlight[0].bar.priceRange ==  4 %}
+							<p class="prix">€€€€</p>
+						{% elseif highlight[0].bar.priceRange ==  5 %}
+							<p class="prix">€€€€€</p>
+						{% else %}
+						<p></p>
+						{% endif %}
+						<p class="reduc">%</p>
+					</div></a>
+				</div>
+			</div>
+		{% endif %}
+		{% if highlight[1] is defined %}
+			<div class="HightlightRight col-xs-12 col-sm-6 col-md-6 noPadding">
+				{#{{highlight[1].bar.id}}#}
+				<div class="barInListHighlight barInList col-xs-12 col-sm-12 col-md-12 noPadding">
+					<img src="{{ asset('uploads/bar/'~highlight[1].bar.path) }}">
+					<a href="{{ path('bar_show', { id : highlight[1].bar.id }) }}"><div class="shadowbarInList col-xs-12 col-sm-12 col-md-12">
+						<h3 id="firstWord{{ highlight[1].bar.id }}">{{ highlight[1].bar.name }}</h3>
+						{% if highlight[1].bar.priceRange ==  1 %}
+						<p class="prix">€{#<span class="percentage">€€€€</span>#}</p>
+						{% elseif highlight[1].bar.priceRange ==  2 %}
+							<p class="prix">€€</p>
+						{% elseif highlight[1].bar.priceRange ==  3 %}
+							<p class="prix">€€€</p>
+						{% elseif highlight[1].highlight[1].bar.priceRange ==  4 %}
+							<p class="prix">€€€€</p>
+						{% elseif highlight[1].bar.priceRange ==  5 %}
+							<p class="prix">€€€€€</p>
+						{% else %}
+						<p></p>
+						{% endif %}
+						<p class="reduc">%</p>
+					</div></a>
+				</div>
+			</div>
+		{% endif %}
 	{% endif %}
 
 {% endfor %}
