@@ -26,9 +26,11 @@ $(document).ready(function(){
           url: Routing.generate('highlight_bar', {id: barId}),
           data: 'json',
           success: function (data) {
-            console.log(data);
             if (data === "Bar non ajouté") {
-              alert('Bar non mis en avant');
+              alert('La limite des bar mis en avant est atteinte');
+            }
+            else if(data === "Bar deja mis en avant"){
+              alert('Ce bar est déja mis en avant');
             }
             else{
               alert('Bar mis en avant');

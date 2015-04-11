@@ -385,7 +385,10 @@ class ProController extends Controller
         $nbHightlight = $em->getRepository('CacAdminBundle:NbHighlight')->findAll();
         $hightlights = $em->getRepository('CacBarBundle:Highlight')->findAll();
         $hightlightedBar = $em->getRepository('CacBarBundle:Highlight')->findOneByBar($id);
-        if (count($hightlights) <= $nbHightlight[0]->getNbHighlight() && $hightlightedBar === null) {
+        if ($hightlightedBar !== null) {
+            return new Response("Bar deja mis en avant");
+        }
+        if (count($hightlights) <= $nbHightlight[0]->getNbHighlight()) {
             $highlight = new Highlight();
             $highlight->setBar($em->getReference('Cac\BarBundle\Entity\Bar', $id));
             $highlight->setDate(new \DateTime('now'));
