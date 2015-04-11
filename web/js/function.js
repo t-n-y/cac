@@ -405,9 +405,6 @@ function heightSuperInfoBar(){
 }
 
 
-
-
-
 $(document).ready(function(){
   $(".ticket").mouseenter(function(){
     //$(".ticket .ticketBarTop").css("margin-top","-10px");
