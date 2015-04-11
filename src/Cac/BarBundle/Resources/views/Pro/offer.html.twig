@@ -3,7 +3,6 @@
 {% block title %}CacBarBundle:Bar:show{% endblock %}
 
 {% block body %}
-	{{ dump(restrictions) }}
 		<div class="topBarPro col-xs-12 col-sm-12 col-md-12 noPadding">
 			{% if bar.path %}
 				<img src="{{ asset('uploads/bar/'~bar.path) }}">

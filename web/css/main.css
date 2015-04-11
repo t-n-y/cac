@@ -637,6 +637,11 @@ h2.font30{
 	min-width: 1200px;
 	min-height: 400px;
 	display: none;
+	-webkit-filter: grayscale(100%);
+	-moz-filter: grayscale(100%);
+	-ms-filter: grayscale(100%);
+	-o-filter: grayscale(100%);
+	filter: grayscale(100%);
 }
 
 .topBarPro img:nth-child(1){
