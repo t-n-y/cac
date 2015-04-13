@@ -92,53 +92,32 @@
 								{% if i < 3 %}
 									{% if bar.id != myBar %}
 										<div class="barInList col-xs-12 col-sm-6 col-md-3 noPadding">
-											<img src="{{ asset('uploads/bar/'~bar.path) }}">
-											<a href="{{ path('bar_show', { id : bar.id }) }}"><div class="shadowbarInList col-xs-12 col-sm-12 col-md-12">
-												<h3 id="firstWord{{ bar.id }}">{{ bar.name }}</h3>
-												{% if bar.priceRange ==  1 %}
-												<p class="prix">€{#<span class="percentage">€€€€</span>#}</p>
-												{% elseif bar.priceRange ==  2 %}
-													<p class="prix">€€</p>
-												{% elseif bar.priceRange ==  3 %}
-													<p class="prix">€€€</p>
-												{% elseif bar.priceRange ==  4 %}
-													<p class="prix">€€€€</p>
-												{% elseif bar.priceRange ==  5 %}
-													<p class="prix">€€€€€</p>
-												{% else %}
-												<p></p>
-												{% endif %}
-												<p class="reduc">%</p>
-											</div></a>
+											<div class="contentImageBar" style="background-image:url({{ asset('uploads/bar/'~bar.path) }})">
+												<a href="{{ path('bar_show', { id : bar.id }) }}"><div class="shadowbarInList col-xs-12 col-sm-12 col-md-12">
+													<h3 id="firstWord{{ bar.id }}">{{ bar.name }}</h3>
+													{% if bar.priceRange ==  1 %}
+													<p class="prix">€{#<span class="percentage">€€€€</span>#}</p>
+													{% elseif bar.priceRange ==  2 %}
+														<p class="prix">€€</p>
+													{% elseif bar.priceRange ==  3 %}
+														<p class="prix">€€€</p>
+													{% elseif bar.priceRange ==  4 %}
+														<p class="prix">€€€€</p>
+													{% elseif bar.priceRange ==  5 %}
+														<p class="prix">€€€€€</p>
+													{% else %}
+													<p></p>
+													{% endif %}
+													<p class="reduc">%</p>
+												</div></a>
+											</div>
 										</div>
 										{% set i = i+1 %}
 									{% endif %}
 								{% endif %}
 							{% endfor %}
 							<div class="barInList col-xs-12 col-sm-6 col-md-3 noPadding">
-								<img src="{{ asset('uploads/bar/'~bar.path) }}">
-								<a href="{{ path('bar_show', { id : bar.id }) }}"><div class="shadowbarInList col-xs-12 col-sm-12 col-md-12">
-									<h3 id="firstWord{{ bar.id }}">{{ bar.name }}</h3>
-									{% if bar.priceRange ==  1 %}
-									<p class="prix">€{#<span class="percentage">€€€€</span>#}</p>
-									{% elseif bar.priceRange ==  2 %}
-										<p class="prix">€€</p>
-									{% elseif bar.priceRange ==  3 %}
-										<p class="prix">€€€</p>
-									{% elseif bar.priceRange ==  4 %}
-										<p class="prix">€€€€</p>
-									{% elseif bar.priceRange ==  5 %}
-										<p class="prix">€€€€€</p>
-									{% else %}
-									<p></p>
-									{% endif %}
-									<p class="reduc">%</p>
-								</div></a>
-							</div>
-							<div class="HightlightLeft col-xs-12 col-sm-6 col-md-6 noPadding">
-								{#{{highlight[0].bar.id}}#}
-								<div class="barInListHighlight barInList col-xs-12 col-sm-12 col-md-12 noPadding">
-									<img src="{{ asset('uploads/bar/'~bar.path) }}">
+								<div class="contentImageBar" style="background-image:url({{ asset('uploads/bar/'~bar.path) }})">
 									<a href="{{ path('bar_show', { id : bar.id }) }}"><div class="shadowbarInList col-xs-12 col-sm-12 col-md-12">
 										<h3 id="firstWord{{ bar.id }}">{{ bar.name }}</h3>
 										{% if bar.priceRange ==  1 %}
@@ -158,6 +137,57 @@
 									</div></a>
 								</div>
 							</div>
+							<div class="HightlightLeft col-xs-12 col-sm-6 col-md-6 noPadding">
+								<div class="barInListHighlight barInList col-xs-12 col-sm-12 col-md-12 noPadding">
+									<div class="contentImageBar" style="background-image:url({{ asset('uploads/bar/'~bar.path) }})">
+										<a href="{{ path('bar_show', { id : bar.id }) }}"><div class="shadowbarInList col-xs-12 col-sm-12 col-md-12">
+											<h3 id="firstWord{{ bar.id }}">{{ bar.name }}</h3>
+											{% if bar.priceRange ==  1 %}
+											<p class="prix">€{#<span class="percentage">€€€€</span>#}</p>
+											{% elseif bar.priceRange ==  2 %}
+												<p class="prix">€€</p>
+											{% elseif bar.priceRange ==  3 %}
+												<p class="prix">€€€</p>
+											{% elseif bar.priceRange ==  4 %}
+												<p class="prix">€€€€</p>
+											{% elseif bar.priceRange ==  5 %}
+												<p class="prix">€€€€€</p>
+											{% else %}
+											<p></p>
+											{% endif %}
+											<p class="reduc">%</p>
+										</div></a>
+									</div>
+								</div>
+							</div>
+							{% set k = 0 %}
+							{% if  highlight[k].bar.id == bar.id %}
+								{% set k = 1 %}
+							{% endif %}
+								<div class="HightlightRight col-xs-12 col-sm-6 col-md-6 noPadding">
+									<div class="barInListHighlight barInList col-xs-12 col-sm-12 col-md-12 noPadding">
+										<div class="contentImageBar" style="background-image:url({{ asset('uploads/bar/'~highlight[k].bar.path) }})">
+											<a href="{{ path('bar_show', { id : highlight[k].bar.id }) }}"><div class="shadowbarInList col-xs-12 col-sm-12 col-md-12">
+												<h3 id="firstWord{{ highlight[k].bar.id }}">{{ highlight[k].bar.name }}</h3>
+												{% if highlight[k].bar.priceRange ==  1 %}
+												<p class="prix">€{#<span class="percentage">€€€€</span>#}</p>
+												{% elseif highlight[k].bar.priceRange ==  2 %}
+													<p class="prix">€€</p>
+												{% elseif highlight[k].bar.priceRange ==  3 %}
+													<p class="prix">€€€</p>
+												{% elseif highlight[k].bar.priceRange ==  4 %}
+													<p class="prix">€€€€</p>
+												{% elseif highlight[k].bar.priceRange ==  5 %}
+													<p class="prix">€€€€€</p>
+												{% else %}
+												<p></p>
+												{% endif %}
+												<p class="reduc">%</p>
+											</div></a>
+										</div>
+									</div>
+								</div>
+							
 						
 
 						</div>

@@ -90,10 +90,13 @@ class ProController extends Controller
             $this->get('request')->query->get('page', 1)/*page number*/,
             16/*limit per page*/
         );
+        $highlight = $em->getRepository('CacBarBundle:highlight')->findAll();
+        shuffle($highlight);
 
         return array(
             'bars' => $pagination,
-            'bar'      => $entity
+            'bar'      => $entity,
+            'highlight' => $highlight
         );  
     }
 
