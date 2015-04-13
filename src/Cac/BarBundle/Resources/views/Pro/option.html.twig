@@ -200,7 +200,20 @@
 					<p class="center">0,79€/jours</p>
 
 					<div class="mettreBarEnAvant">
-						<p data-bar-id="{{bar.id}}">Mettre mon bar en avant</p>
+						{% set nbHighlight = highlight | length %}
+						{% set miseEnAvant = false %}
+
+						{% for j in 0..nbHighlight-1%}
+							{% if highlight[j].bar.id == myBar %}
+								{% set miseEnAvant = true %}
+							{% endif %}
+						{% endfor %}
+
+						{% if miseEnAvant %}
+							<p class="mesOptions">Arrêter la mise en avant de mon bar</p>
+						{% else %}
+							<p data-bar-id="{{bar.id}}">Mettre mon bar en avant</p>
+						{% endif %}
 					</div>
 				</div>
 
