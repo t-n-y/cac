@@ -393,6 +393,7 @@ h2.font30{
 
 
 
+
 /*****************BODY*****************/
 
 .mainContainer{
@@ -1246,14 +1247,38 @@ p.closeMesOptions{
 }
 
 .contentExemple{
-	width: 85%;
+	width: 60%;
 	margin: auto;
 }
 
+.contentExemple .barInList{
+	height: 80px;
+}
+
+.contentExemple .barInListHighlight{
+	height: 160px;
+}
+
+
+.contentExemple span{
+	color: #fff;
+	font-size: 12px;
+}
+
+.contentExemple h3{
+	font-size: 12px;
+}
+
+.contentExemple .barInList p.prix, .contentExemple .barInList p.reduc {
+	font-size: 10px;
+	margin-bottom: 25px;
+}
+
+
+
 .mettreBarEnAvant{
 	max-width: 300px;
-	margin : auto;
-	margin-bottom: 30px;
+	margin : 30px auto;
 }
 
 .mettreBarEnAvant p{
@@ -1264,6 +1289,7 @@ p.closeMesOptions{
 	-moz-border-radius: 5px;
 	border-radius: 5px;
 	border: 2px solid #000;
+	margin-left: 0px;
 }
 
 
@@ -1681,7 +1707,7 @@ float: left;
 
 .barInListHighlight{
 	position: relative;
-	height: 300px;
+	height: 340px;
 	overflow: hidden;
 	border: 5px solid rgba(0,0,0,0);
 }
@@ -1719,24 +1745,24 @@ float: left;
 
 .barInList:nth-child(4n+1){
 
-	border-left: 0px solid rgba(0,0,0,0);
+	/*border-left: 0px solid rgba(0,0,0,0);*/
 }
 
 .barInList:nth-child(4n+4){
 
-	border-right: 0px solid rgba(0,0,0,0);
+	/*border-right: 0px solid rgba(0,0,0,0);*/
 }
 
 
 .HightlightLeft .barInListHighlight{
 
-	border-left: 0px solid rgba(0,0,0,0);
+	/*border-left: 0px solid rgba(0,0,0,0);*/
 }
 
 .HightlightRight .barInListHighlight{
 
-	border-right: 0px solid rgba(0,0,0,0);
-	border-left: 5px solid rgba(0,0,0,0);
+	/*border-right: 0px solid rgba(0,0,0,0);
+	border-left: 5px solid rgba(0,0,0,0);*/
 }
 
 .barInList img{
