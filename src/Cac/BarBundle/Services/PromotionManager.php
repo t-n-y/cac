@@ -2,6 +2,7 @@
 
 namespace Cac\BarBundle\Services;
 
+use Doctrine\ORM\EntityManager;
 use Cac\BarBundle\Entity\Promotion;
 use Cac\BarBundle\Entity\PromotionOption;
 use Cac\BarBundle\Entity\PromotionOptionCategory;
@@ -18,9 +19,9 @@ class PromotionManager
     public function __construct(EntityManager $entityManager) {
         $this->days = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
         $this->em = $entityManager;
-        $this->restriction = $em->getRepository('CacBarBundle:PromotionOptionCategory')->findOneByShortcode('restriction');
-        $this->value = $em->getRepository('CacBarBundle:PromotionOptionCategory')->findOneByShortcode('value');
-        $this->quantity = $em->getRepository('CacBarBundle:PromotionOptionCategory')->findOneByShortcode('quantity');
+        $this->restriction = $this->em->getRepository('CacBarBundle:PromotionOptionCategory')->findOneByShortcode('restriction');
+        $this->value = $this->em->getRepository('CacBarBundle:PromotionOptionCategory')->findOneByShortcode('value');
+        $this->quantity = $this->em->getRepository('CacBarBundle:PromotionOptionCategory')->findOneByShortcode('quantity');
         $this->emptyPromotions = new \Doctrine\Common\Collections\ArrayCollection();
 
         $this->generateEmptyPromotions();

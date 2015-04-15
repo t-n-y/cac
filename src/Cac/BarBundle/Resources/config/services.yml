@@ -1,3 +1,5 @@
+parameters:
+
 services:
     cac_bar.promotion_manager:
         class: Cac\BarBundle\Services\PromotionManager

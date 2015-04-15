@@ -151,21 +151,26 @@ class ProController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $entity = new Bar();
-        $promotion = new Promotion();
+        $pm = $this->get('cac_bar.promotion_manager');
+        $emptyPromotions = $pm->getEmptyPromotions();
 
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
         $user = $this->get('security.context')->getToken()->getUser();
 
         if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
             $entity->setAdress(explode(",",$entity->getAdress())[0]);
             $entity->setAuthor($user);
-            $entity->addPromotion($promotion);
-            $promotion->setPromotion('');
-            $promotion->setBar($entity);
-            $em = $this->getDoctrine()->getManager();
+
+            foreach($emptyPromotions as $promotion) {
+                $entity->addPromotion($promotion);
+                $promotion->setPromotion('');
+                $promotion->setBar($entity);
+                $em->persist($promotion);
+            }
+            
             $em->persist($entity);
-            $em->persist($promotion);
             $em->flush();
 
             return $this->redirect($this->generateUrl('bar_new_part2', array('id' => $entity->getId())));
