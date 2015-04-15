@@ -389,6 +389,79 @@ h2.font30{
 
 
 
+/****************FOOTER****************/
+
+footer{
+	background-color: #303030;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	text-align: center;
+	font-weight: 200;
+}
+
+.colFooter h2{
+	color: #303030;
+	background-color: #5ac4d4; 
+	font-size: 12px;
+	display: inline-table;
+	padding: 5px 20px;
+	margin-bottom: 20px;
+}
+
+footer p{
+	color: #fff;
+	cursor: pointer;
+	display: inline-table;
+	padding: 5px 20px;
+	margin: 0px;
+}
+
+.colFooter p:hover{
+	background-color: #393939; 
+}
+
+.footerInfo{
+	position: relative;
+	margin-top: 20px;
+}
+
+.footerRS{
+	text-align: center;
+	display: inline;
+}
+
+.footerRS img{
+	height: 20px;
+	padding: 0px 5px;
+	cursor: pointer;
+}
+
+.footerRS:before, .footerRS:after { 
+	content:''; 
+	display:inline-block; 
+	vertical-align: middle; 
+	width: 40%; 
+	height: 1px; 
+	background: #fff;
+}
+
+.footerRS:before{ 
+	position: absolute;
+	left:0;
+	top: 50%;
+}
+
+.footerRS:after{ 
+	margin-left: 20px;
+	position: absolute;
+	right:0;
+	top: 50%;
+}
+
+p.droitReserve{
+	margin: 10px auto;
+	font-size: 10px;
+}
 
 
 
