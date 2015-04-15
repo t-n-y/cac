@@ -1,0 +1,4 @@
+services:
+    cac_bar.promotion_manager:
+        class: Cac\BarBundle\Services\PromotionManager
+        arguments: [@doctrine.orm.entity_manager]

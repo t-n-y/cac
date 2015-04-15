@@ -271,6 +271,7 @@ class Bar
         $this->creationDate = new \Datetime();
         $this->barman = new \Doctrine\Common\Collections\ArrayCollection();
         $this->comments = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->promotions = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**

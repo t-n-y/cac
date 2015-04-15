@@ -160,7 +160,7 @@ class ProController extends Controller
         if ($form->isValid()) {
             $entity->setAdress(explode(",",$entity->getAdress())[0]);
             $entity->setAuthor($user);
-            $entity->setPromotion($promotion);
+            $entity->addPromotion($promotion);
             $promotion->setPromotion('');
             $promotion->setBar($entity);
             $em = $this->getDoctrine()->getManager();
