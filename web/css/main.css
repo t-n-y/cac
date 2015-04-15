@@ -358,6 +358,44 @@ h2.font30{
 
 .navbar-default .navbar-nav > li > a {
 	color: #323232;
+	  display: inline-block;
+}
+
+.navbar-default .navbar-nav > li > a:before {
+ 	position: absolute;
+ 	top: 0;
+ 	left: 50%;
+ 	margin-left: -15px;
+  	margin-top: 10px;
+  	background-size: 100%;
+ 	content: "";
+ 	width: 30px;
+    height: 30px;
+}
+
+.navbar-default .navbar-nav > li > a.gestionOffre:before {
+ 	background:url("../img/gestionOffre.png") no-repeat 0 0;
+ 	background-size: 100%;
+}
+
+.navbar-default .navbar-nav > li > a.retourOffre:before {
+ 	background:url("../img/retourOffre.png") no-repeat 0 0;
+ 	background-size: 100%;
+}
+
+.navbar-default .navbar-nav > li > a.option:before {
+ 	background:url("../img/option.png") no-repeat 0 0;
+ 	background-size: 100%;
+}
+
+.navbar-default .navbar-nav > li > a.statistiques:before {
+ 	background:url("../img/statistiques.png") no-repeat 0 0;
+ 	background-size: 100%;
+}
+
+.navbar-default .navbar-nav > li > a.monCompte:before {
+ 	background:url("../img/monCompte.png") no-repeat 0 0;
+ 	background-size: 100%;
 }
 
 .navbar-nav > li {
@@ -365,8 +403,8 @@ h2.font30{
 }
 
 .navbar-nav > li > a{
-	padding-top: 30px;
-	padding-bottom: 26px;
+	padding-top: 45px;
+	padding-bottom: 15px;
 	border-bottom: 4px solid rgba(255,255,255,0);
 }
 

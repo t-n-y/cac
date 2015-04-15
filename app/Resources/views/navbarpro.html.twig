@@ -31,8 +31,8 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navPro hidden-xs col-sm-5 col-md-5 noPadding">
-        <li class="col-sm-6 col-md-6 noPadding"><a href="{{ path('bars_offer', { id : bar.id }) }}">GESTION DES OFFRES</a></li>
-        <li class="col-sm-6 col-md-6 noPadding"><a href="{{ path('bars_offerFeedback', { id : bar.id }) }}">RETOUR DES OFFRES</a></li>
+        <li class="col-sm-6 col-md-6 noPadding"><a class="gestionOffre" href="{{ path('bars_offer', { id : bar.id }) }}">GESTION DES OFFRES</a></li>
+        <li class="col-sm-6 col-md-6 noPadding"><a class="retourOffre" href="{{ path('bars_offerFeedback', { id : bar.id }) }}">RETOUR DES OFFRES</a></li>
       </ul>
 
       <ul class="nav navbar-nav col-xs-12 hidden-sm hidden-md hidden-lg">
@@ -48,10 +48,10 @@
         </div>
       </div>
       <ul class="nav navbar-nav navPro hidden-xs col-sm-5 col-md-5 noPadding">
-        <li class="col-sm-4 col-md-4 noPadding"><a href="{{ path('bars_option', { id : bar.id }) }}">OPTIONS</a></li>
-        <li class="col-sm-4 col-md-4 noPadding"><a href="{{ path('map') }}">STATISTIQUES</a></li>
+        <li class="col-sm-4 col-md-4 noPadding"><a class="option" href="{{ path('bars_option', { id : bar.id }) }}">OPTIONS</a></li>
+        <li class="col-sm-4 col-md-4 noPadding"><a class="statistiques" href="{{ path('map') }}">STATISTIQUES</a></li>
         <li class="col-sm-4 col-md-4 noPadding">
-          <a href="#" class="dropdown-toggle pull-right" data-toggle="dropdown" role="button" aria-expanded="false">Mon compte <span class="caret"></span></a>
+          <a href="#" class="monCompte dropdown-toggle pull-right" data-toggle="dropdown" role="button" aria-expanded="false">Mon compte <span class="caret"></span></a>
           <ul class="dropdown-menu pull-right" role="menu">
             <li><a href="{{ path('fos_user_security_login') }}">{{ app.user.username }}</a></li>
             {% if is_granted('ROLE_BIGBOSS') %}
