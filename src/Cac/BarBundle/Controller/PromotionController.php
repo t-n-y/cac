@@ -87,15 +87,20 @@ class PromotionController extends Controller
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
+        $pm = $this->get('cac_bar.promotion_manager');
 
-        $promotion = $em->getRepository('CacBarBundle:Promotion')->find($id);
-        $entity = $promotion->getBar();
+        $entity = $em->getRepository('CacBarBundle:Bar')->find($id);
+        $promotions = $entity->getPromotions();
+
+        $promotionDummy = new PromotionDummy();
+        $dummyJSON = $pm->toDummyJSON($promotions);
+        $promotionDummy->setPromotion($dummyJSON);
 
         if (!$entity) {
             throw $this->createNotFoundException('Le bar demandé n\'existe pas.');
         }
 
-        $editForm = $this->createEditForm($promotion);
+        $editForm = $this->createEditForm($promotionDummy, $entity);
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
@@ -105,8 +110,8 @@ class PromotionController extends Controller
         }
 
         return array(
-            'bar'      => $entity,
-            'form'   => $editForm->createView()
+            'bar'  => $entity,
+            'form' => $editForm->createView()
         );
     }
 

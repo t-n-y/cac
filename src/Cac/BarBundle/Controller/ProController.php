@@ -165,7 +165,6 @@ class ProController extends Controller
 
             foreach($emptyPromotions as $promotion) {
                 $entity->addPromotion($promotion);
-                $promotion->setPromotion('');
                 $promotion->setBar($entity);
                 $em->persist($promotion);
             }

@@ -71,8 +71,24 @@ class PromotionManager
 
     public function addEmptyPromotion(\Cac\BarBundle\Entity\Promotion $promotion)
     {
-        $this->promotions[] = $promotion;
+        $this->emptyPromotions[] = $promotion;
 
         return $this;
+    }
+
+    public function toDummyJSON($promotions)
+    {
+        $oldDummyJSON = file_get_contents(__DIR__.'/../../../../web/json/promotion.template.json');
+        $dummyArray = json_decode($oldDummyJSON, true);
+
+        foreach($promotions as $promotion) {
+            $dummyArray[$promotion->getDay()][$promotion->getCategory()]['value'] = $promotion->getOption('value')->getValue();
+            $dummyArray[$promotion->getDay()][$promotion->getCategory()]['quantity'] = $promotion->getOption('quantity')->getValue();
+            $dummyArray[$promotion->getDay()][$promotion->getCategory()]['condition'] = $promotion->getOption('restriction')->getValue();
+        }
+
+        $newDummyJSON = json_encode($dummyArray);
+
+        return $newDummyJSON;
     }
 }
