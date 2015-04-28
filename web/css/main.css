@@ -508,7 +508,6 @@ p.droitReserve{
 /*****************BODY*****************/
 
 .mainContainer{
-	background-image: url('../img/texture.png');
 	padding-top: 80px; 
 	width: 100%;
 }
@@ -1757,6 +1756,105 @@ float: left;
 
 /***************************************/
 
+/*************REGISTER PRO *************/
+
+/*.headerProRegister{
+	background-image: url('../img/headerProRegister.jpg');
+	background-size: cover;
+	padding: 80px 10px;
+}
+
+.headerProRegister p{
+	font-size: 30px;
+	color: #fff;
+	text-align: center;
+}
+
+.headerProRegister p span{
+	font-weight: bold;
+	color: #ef662f;
+}
+
+.contentOngletPro{
+	margin: 30px 0px;
+}
+
+.ongletProRegister{
+	height: 110px;
+	background-color: #f6f6f6;
+	text-align: center;
+	border-bottom: 3px solid #f6f6f6;
+	font-size: 15px;
+	padding: 15px;
+	margin: 10px 0px;
+}
+
+.ongletProRegister img{
+	width: 30px;
+}
+
+#zeroFrai{
+	border-color: #5ac4d4; 
+}
+
+#sansEngagement{
+	border-color:#f8ad85;
+}
+
+#assistanceTel{
+	border-color:#66cc33;
+}
+
+#visibiliteWeb{
+	border-color:#ef662f;
+}
+
+.contentFormRegisterPro{
+	background-image: url('../img/contentRegisterPro.jpg');
+	background-size: cover;
+	padding: 80px 10px;
+}
+
+.inscrireEtablissement{
+	width: 70%;
+	margin: auto;
+	background-color: #303030;
+	text-align: center;
+	color: #fff; 
+}
+
+.inscrireEtablissement h1{
+	font-size: 30px;
+	font-weight: normal;
+	padding: 10px 0px;
+	margin: 0px;
+}
+
+.formRegisterPro{
+	width: 70%;
+	margin: auto;
+	background-color: #f9f9f9;
+	padding: 30px 60px;
+	color: #303030; 
+}
+
+.formRegisterPro input{
+	width: 95%;
+}
+
+.contentSubmit{
+	width: 35%;
+	margin: auto;
+}
+
+.formRegisterPro input[type=submit]{
+	
+}*/
+
+
+
+/***************************************/
+
 /**************LISTES BAR***************/
 
 .topListBar{
@@ -1883,33 +1981,132 @@ float: left;
 
 .shadowbarInList{
 	position: absolute;
-	top: 0;
+	bottom: 0;
 	left: 0;
 	width: 100%;
-	height: 100%;
 	color: #fff;
-
-	background: -webkit-linear-gradient(bottom,rgba(000000,0,0,0.6),rgba(000000,0,0,0));
-	background: -o-linear-gradient(bottom,rgba(000000,0,0,0.6),rgba(000000,0,0,0));
-	background: -moz-linear-gradient(bottom,rgba(000000,0,0,0.6),rgba(000000,0,0,0));
-	background: linear-gradient(bottom,rgba(000000,0,0,0.6),rgba(000000,0,0,0));
-	
+	background-color: rgba(0,0,0,0.8);
+	border-top: 1px solid #fff; 
+	padding: 0px;
 }
 
 .shadowbarInList h3{
-	position: absolute;
-	bottom: 0;
-	border-top: 1px solid #fff;
-	width: 80%;
 	font-family: "HelveticaNeue-Light", Arial;
   	font-weight: normal;
-  	padding-top: 5px;
+  	margin: 0px;
+  	padding: 10px 0px 10px 10px;
+  	font-size: 16px;
 }
 
 .firstWords{
   font-family: "HelveticaNeue", Arial;
   font-weight: bold;
 }
+
+.shadowbarInList p.shadowPromotion{
+	color: #e99026;
+	margin: 10px 0px;
+	border-right: 1px solid #fff; 
+	text-align: center;
+}
+
+.shadowbarInList .imageHappyHours{
+	width: 100%;
+	text-align: center;
+}
+
+.shadowbarInList img{
+	width: 20px;
+	min-height: 20px;
+	margin: 10px auto;
+}
+
+.shadowbarInList p.shadowNote, .shadowbarInList p.shadowNbAvis{
+	margin: 0px;
+	text-align: center;
+	font-size: 11px;
+}
+
+.shadowbarInList p.shadowNote{
+	margin-top: 10px;
+	font-weight: bold;
+}
+
+.shadowbarInList p.shadowNbAvis{
+	text-decoration: underline;
+}
+
+.shadowAdresse{
+	border-top: 1px solid #4f4f4f; 
+}
+
+.shadowAdresse p{
+	font-size: 12px;
+	text-align: center;
+	padding: 5px 0px;
+	margin: 0px;
+}
+
+.hoverShadow{
+	display: none;
+
+}
+
+
+
+/*HIGHLIGHT*/
+
+.barInListHighlight h3{
+	font-size: 25px;
+}
+
+.barInListHighlight .shadowbarInList p.shadowNote{
+	font-size: 20px;
+}
+
+.barInListHighlight .shadowbarInList p.shadowPromotion{
+	font-size: 17px;
+}
+
+.barInListHighlight .shadowbarInList img{
+	width: 20px;
+	min-height: 20px;
+	margin: 17px auto;
+}
+
+.barInListHighlight .shadowbarInList p.priceBar{
+	color: #5ac4d4;
+	margin: 10px 0px;
+	border-left: 1px solid #fff; 
+	border-right: 1px solid #fff; 
+	text-align: center;
+	font-size: 17px;
+}
+
+.barInListHighlight .shadowbarInList p.priceBar span{
+	color: #b3b3b3;
+}
+
+.barInListHighlight .shadowbarInList p.allureBar{
+	margin: 10px 0px;
+	border-right: 1px solid #fff; 
+	text-align: center;
+	font-size: 17px;
+}
+
+.barInListHighlight .shadowbarInList p.tagBar{
+	color: #b3b3b3;
+	margin: 10px 0px;
+	text-align: center;
+	font-size: 17px;
+}
+
+.barInListHighlight .shadowbarInList p.adresseBar{
+	font-size: 15px;
+}
+
+
+
 
 
 /***************************************/

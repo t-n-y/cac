@@ -51,7 +51,7 @@
         <li class="col-sm-4 col-md-4 noPadding"><a class="option" href="{{ path('bars_option', { id : bar.id }) }}">OPTIONS</a></li>
         <li class="col-sm-4 col-md-4 noPadding"><a class="statistiques" href="{{ path('map') }}">STATISTIQUES</a></li>
         <li class="col-sm-4 col-md-4 noPadding">
-          <a href="#" class="monCompte dropdown-toggle pull-right" data-toggle="dropdown" role="button" aria-expanded="false">Mon compte <span class="caret"></span></a>
+          <a href="#" class="monCompte dropdown-toggle pull-right" data-toggle="dropdown" role="button" aria-expanded="false">Mon compte</a>
           <ul class="dropdown-menu pull-right" role="menu">
             <li><a href="{{ path('fos_user_security_login') }}">{{ app.user.username }}</a></li>
             {% if is_granted('ROLE_BIGBOSS') %}

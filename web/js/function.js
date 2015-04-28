@@ -578,23 +578,24 @@ function firstWord(){
 }
 
 function annimationShowBar(){
-
-
-$(".barInList").mouseenter(function(){
-    $(this).find('.shadowbarInList h3').stop(true,true).animate({marginBottom:"25px"});
-    $(this).find('.shadowbarInList p').stop(true,true).fadeIn(600);
-    $(this).find('.shadowbarInList').css("background", 'rgba(0,0,0,0.5)');
-  });
+  $(".barInList").mouseenter(function(){
+     $(this).find('.hoverShadow').stop(true,true).fadeIn(400);
+     $(this).find('.shadowbarInList p.shadowNote').css('margin-top', '6px');
+     $(this).find('.barInListHighlight .shadowbarInList p.shadowNote').css('margin-top', '2px');
+   });
   $(".barInList").mouseleave(function(){
-    $(this).find('.shadowbarInList h3').stop(true,true).animate({marginBottom:"10px"});
-    $(this).find('.shadowbarInList p').stop(true,true).fadeOut(200);
-    $(this).find('.shadowbarInList').css("background", '-webkit-linear-gradient(bottom,rgba(000000,0,0,0.6),rgba(000000,0,0,0))');
-    $(this).find('.shadowbarInList').css("background", '-o-linear-gradient(bottom,rgba(000000,0,0,0.6),rgba(000000,0,0,0))');
-    $(this).find('.shadowbarInList').css("background", '-moz-linear-gradient(bottom,rgba(000000,0,0,0.6),rgba(000000,0,0,0))');
-    $(this).find('.shadowbarInList').css("background", 'linear-gradient(bottom,rgba(000000,0,0,0.6),rgba(000000,0,0,0))');
-
-  });
+     $(this).find('.hoverShadow').stop(true,true).fadeOut(10);
+     $(this).find('.shadowbarInList p.shadowNote').css('margin-top', '10px');
+   });
+  $(".barInListHighlight").mouseenter(function(){
+     $(this).find('.shadowbarInList p.shadowNote').css('margin-top', '2px');
+   });
+  
 }
+
+
+
+
 
 /********************************************************************************/
 
