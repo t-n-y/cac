@@ -63,6 +63,10 @@ h2.font30{
 	overflow-x: hidden; 
 }
 
+.noBorder{
+	border: none !important;
+}
+
 .border{
 	border: 1px solid #a8a8a8;
 	width: 100%; 
@@ -1862,6 +1866,10 @@ float: left;
 	border-bottom: 2px solid #fff; 
 }
 
+.inscriptionBigBoss span{
+	color: #5ac4d4;
+}
+
 .inscriptionBigBoss label{
 	text-align: left;
 	font-weight: normal;
@@ -1869,13 +1877,15 @@ float: left;
 
 .formRegisterPro input[type=submit]{
 	margin: 40px auto;
+	padding: 7px 0px;
 	color: #fff;
 	background-color: #5ac4d4;
-	border: none;
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
-	width: 150px;
+	border: 1px solid #000;
+	-webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	border-radius: 7px;
+	width: 200px;
+	font-size: 18px;
 }
 
 /***************************************/

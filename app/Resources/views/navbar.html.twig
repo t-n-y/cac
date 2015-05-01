@@ -8,19 +8,19 @@
   <div class="facebookLogin">
     <h2>Se connecter avec facebook</h2>
   </div>
-  <div class="inscrivezVous">
+  <a href="{{ path('user_register') }}"><div class="inscrivezVous">
     <h2>INSCRIVEZ VOUS</h2>
-  </div>
+  </div></a>
 </div>
 
-<div class="forRegister">
+<!-- <div class="forRegister">
   <h2>INSCRIPTION</h2>
   <div class="container-modal">
   </div>
   <div class="facebookLogin">
     <h2>Se connecter avec facebook</h2>
   </div>
-</div>
+</div> -->
 
 <div class="forConfirmation">
   <p>Un mail viens de vous être envoyé, cliquer sur le lien pour confirmer définitivement votre inscription.<br><br>A tout de suite ! </p>
@@ -71,7 +71,7 @@
             <li class="pull-right"><a href="{{ path('bar_new') }}">Créer un bar</a></li>
           {% endif %}
         {% else %}
-          <li class="pull-right"><a class="animRegister" href="#">Créer un compte</a></li>
+          <li class="pull-right"><a class="animRegister" href="{{ path('user_register') }}">Créer un compte</a></li>
           <li class="pull-right"><a class="animConnexion" href="#">Connexion</a></li>
         {% endif %}
       </ul>

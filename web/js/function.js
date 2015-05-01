@@ -66,11 +66,11 @@ $(document).ready(function(){
     $(".forRegister").css("display","none");
   });
 
-  $(".animRegister").on('click',function(){
-    $(".forRegister").css("display","block");
-    $(".isConnexion").css("display","block");
-    $(".forConnexion").css("display","none");
-  });
+  // $(".animRegister").on('click',function(){
+  //   $(".forRegister").css("display","block");
+  //   $(".isConnexion").css("display","block");
+  //   $(".forConnexion").css("display","none");
+  // });
 
    $(".inscrivezVous").on('click',function(){
     $(".forRegister").css("display","block");
