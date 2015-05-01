@@ -30,6 +30,9 @@ class BarController extends Controller
      */
     public function indexAction()
     {
+        setlocale(LC_TIME, "fr_FR");
+        $today = strftime("%A");
+        
         $em = $this->getDoctrine()->getManager();
     
         $entities = $em->getRepository('CacBarBundle:Bar')->findAll();
@@ -43,7 +46,8 @@ class BarController extends Controller
         );
         return array(
             'bars' => $pagination,
-            'highlight' => $highlight
+            'highlight' => $highlight,
+            'today' => $today,
         );    
     }
 
