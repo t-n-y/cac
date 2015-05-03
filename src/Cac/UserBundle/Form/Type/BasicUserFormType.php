@@ -21,7 +21,6 @@ class BasicUserFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('username', null, array('label' => 'Nom d\'utilisateur'))
             ->add('plainPassword', 'repeated', array(
                 'label' => 'Mot de passe',
                 'type' => 'password',
