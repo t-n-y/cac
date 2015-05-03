@@ -11,6 +11,24 @@ use FOS\UserBundle\Model\User as BaseUser;
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="type", type="string")
  * @ORM\DiscriminatorMap({"bigboss" = "Bigboss", "barman" = "Barman", "basic_user" = "BasicUser"})
+ * @ORM\AttributeOverrides({
+ *      @ORM\AttributeOverride(name="username",
+ *          column=@ORM\Column(
+ *              name     = "username",
+ *              type     = "string",
+ *              length   = 255,
+ *              nullable = true
+ *          )
+ *      ),
+ *      @ORM\AttributeOverride(name="usernameCanonical",
+ *          column=@ORM\Column(
+ *              name     = "usernameCanonical",
+ *              type     = "string",
+ *              length   = 255,
+ *              nullable = true
+ *          )
+ *      ),
+ * })
  *
  */
 abstract class User extends BaseUser
