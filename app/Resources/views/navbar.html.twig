@@ -62,9 +62,9 @@
           <li class="pull-right">
             {% if is_granted('ROLE_BIGBOSS') %}
               <!-- ICI METTRE LIEN VERS BACK OFFICE BAR -->
-              <a href="{{ path('fos_user_profile_show') }}">{{ app.user.username }}</a>
+              <a href="{{ path('fos_user_profile_show') }}">{{ app.user.firstname }}</a>
             {% else %}
-              <a href="{{ path('fos_user_profile_show') }}">{{ app.user.username }}</a>
+              <a href="{{ path('fos_user_profile_show') }}">{{ app.user.firstname }}</a>
             {% endif %}
           </li>
           {% if is_granted('ROLE_BIGBOSS') %}

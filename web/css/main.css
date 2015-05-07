@@ -41,6 +41,10 @@ body{
 	float: right;
 }
 
+.textRight{
+	text-align: right;
+}
+
 .textLeft{
 	text-align: left !important;
 	padding-left: 30px;
@@ -1483,6 +1487,145 @@ p.closeMesOptions{
 }
 
 /***************************************/
+
+/************New Bar****************/
+
+.ongletCreation{
+	background-color: #303030;
+	text-align: center;
+	color: #606060;
+	padding: 5px 0px;
+}
+
+.selectedOngletCreation{
+	background-color: #f6f6f6;
+	color: #000;
+}
+
+.progressionCreation .progresseBarContent{
+	width: 100%;
+	height: 20px;
+	background-color: rgba(90,196,212,0.7);
+	margin: 30px 0px;
+	position: relative;
+}
+
+.progressionCreation .progresseBarContent .progresseBar{
+	width: 33%;
+	height: 30px;
+	background-color: #5ac4d4;
+	position: absolute;
+	top: -5px;
+	left: 0px;
+}
+.progressionCreation .progresseBarContent .progresseBar p{
+	color: #5ac4d4;
+	top: -20px;
+	position: relative;
+	text-align: right;
+}
+
+#etablissement{
+	border-bottom:3px solid #f8ad85; 
+}
+#photo{
+	border-bottom:3px solid #5ac4d4; 
+}
+#formule{
+	border-bottom:3px solid #ef662f; 
+}
+
+.ongletCreation p{
+	margin: 0px;
+}
+
+
+.contentNewBar{
+	background-color: #f6f6f6;
+	height: 100%;
+}
+
+.nameNewBar{
+	background-color: #303030;
+	height: 50px;
+	text-align: center;
+}
+
+.CreationBar input, .CreationBar select{
+	width: 100%;
+}
+
+.CreationBar label{
+	font-weight: normal;
+}
+
+.CreationBar span{
+	color : #5ac4d4; 
+}
+
+.tarifMoyenNewBar, .servicesNewBar{
+	background-color: #eeeeee;
+	margin-top: 20px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	text-align: center;
+}
+
+.tarifMoyenNewBar p, .servicesNewBar p{
+	background-color: #f6f6f6;
+	display: inline-block;
+	text-align: center;
+	padding: 5px 10px;
+}
+
+.choiceService{
+	text-align: left;
+}
+
+.choiceService input{
+	width: auto;
+	background-color: #fff;
+  	border: 1px solid #000;
+}
+
+.choiceService input[type="text"]{
+	width: 25%;
+	margin-left: 20px;
+}
+
+.heure input, select{
+	width: auto;
+}
+
+.descriptionNewBar{
+	margin-top: 20px;
+}
+
+.descriptionNewBar textarea{
+	width:100%;
+	height: 100px;
+}
+
+.btn-submitNewBar{
+	margin: 20px auto;
+	width:200px;
+}
+
+.descriptionNewBar input{
+	margin: auto;
+	width:100%;
+	color: #fff;
+	background-color: #5ac4d4; 
+	border: 1px solid #000;
+	padding: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+
+/***********************************/
+
 
 /************OffreFeedback**************/
 

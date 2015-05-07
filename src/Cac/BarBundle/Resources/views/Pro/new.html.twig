@@ -1,4 +1,4 @@
-{% extends "::base.html.twig" %}
+{% extends "::baseNewBar.html.twig" %}
 
 {% block title %}CacBarBundle:Bar:new{% endblock %}
 {% block stylesheets %}
@@ -9,200 +9,171 @@
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places"></script>
 {% endblock %}
 {% block body %}
-	<div class="formBar col-xs-12 col-sm-12 col-md-12 noPadding">
-		<h1>Votre établissement</h1>
-		<div class="separation1"></div>
-		<div class="separation2"></div>
-	</div>
-	<div class="subtitlePageRegisterBig">
-		<p>Votre établissement</p>
-	</div>
-	<form action="{{ path('bar_create') }}" {{ form_enctype(form) }} method="POST">
-		<div class="inscription center col-xs-12 col-sm-6 col-md-6">
-			<div class="border">
-				{{ form_label(form.name) }}
-				<br>
+<form action="{{ path('bar_create') }}" {{ form_enctype(form) }} method="POST">
+	<div class="col-xs-12 col-sm-12 col-md-12">
+		<div class="ongletNewBar col-xs-2 col-sm-2 col-md-2 noPadding">
+			<div class="progressionCreation">
+				
+				<div class="progresseBarContent">
+					<div class="progresseBar">
+						<p>33%</p>
+					</div>
+				</div>
+			</div>
+			<div class="ongletCreation selectedOngletCreation" id="etablissement">
+				<p>Votre établissement</p>
+			</div>
+			<div class="ongletCreation" id="photo">
+				<p>Vos photos et vos offres</p>
+			</div>
+			<div class="ongletCreation" id="formule">
+				<p>Votre formule</p>
+			</div>
+		</div>
+		<div class="contentNewBar col-xs-10 col-sm-10 col-md-10 noPadding">
+			<div class="nameNewBar">
 				{{ form_errors(form.name) }}
 				{{ form_widget(form.name) }}
-				<br>
-				{{ form_label(form.adress) }}
-				<br>
-				{{ form_errors(form.adress) }}
-				{{ form_widget(form.adress) }}
-				<br>
-				{{ form_label(form.zipcode) }}
-				<br>
-				{{ form_errors(form.zipcode) }}
-				{{ form_widget(form.zipcode, { 'id': 'postal_code' }) }}
-				<br>
-				{{ form_label(form.town) }}
-				<br>
-				{{ form_errors(form.town) }}
-				{{ form_widget(form.town, { 'id': 'locality' } ) }}
-				<br>
-				{{ form_label(form.region) }}
-				<br>
-				{{ form_errors(form.region) }}
-				{{ form_widget(form.region, { 'id': 'administrative_area_level_1' } ) }}
-				<br>
-				{{ form_label(form.country) }}
-				<br>
-				{{ form_errors(form.country) }}
-				{{ form_widget(form.country, { 'id': 'country' }) }}
 			</div>
-			<br>
-			<br>
-			<div class="border dressCodeBar">
-				
-				<!--{{ form_label(form.dressCode) }}-->
-
-				<div class="btn-group width100" data-toggle="buttons">
-					{{ form_label(form.dressCode) }}
+			<div class="CreationBar col-xs-12 col-sm-12 col-md-12 noPadding">
+				<div class="col-xs-6 col-sm-6 col-md-4 col-md-offset-2">		
+					{{ form_label(form.adress) }}<span>*</span>
 					<br>
-					<label class="btn btn-primary active choice">
-						<input type="radio" name="cac_barbundle_bar[dressCode]" id="cac_barbundle_bar_dressCode" value="1" checked> Chic
-				  	</label>
-				  	<label class="btn btn-primary choice">
-				    	<input type="radio" name="cac_barbundle_bar[dressCode]" id="cac_barbundle_bar_dressCode" value="2"> Décontracté
-				  	</label>
+					{{ form_errors(form.adress) }}
+					{{ form_widget(form.adress) }}
 				</div>
-
-				<!--<div class="choice" value="1">
-					Décontracté
-				</div>
-				<div class="choice" value="2">
-					Chic
-				</div>-->
-
-				<!--{{ form_errors(form.dressCode) }}
-				{{ form_widget(form.dressCode) }}-->
-				<div class="clear"></div>
-			</div>
-			<br>
-			<br>
-			<div class="border">
-				<div class="btn-group width100" data-toggle="buttons">
-					{{ form_label(form.priceRange) }}
+				<div class="col-xs-6 col-sm-6 col-md-4">
+					{{ form_label(form.dressCode) }}<span>*</span>
 					<br>
-				  <label class="btn btn-primary active choice">
-				    <input type="radio" name="cac_barbundle_bar[priceRange]" id="cac_barbundle_bar_priceRange_0" value="1" checked> 5€
-				  </label>
-				  <label class="btn btn-primary choice">
-				    <input type="radio" name="cac_barbundle_bar[priceRange]" id="cac_barbundle_bar_priceRange_1" value="2"> 10€
-				  </label>
-				  <label class="btn btn-primary choice">
-				    <input type="radio" name="cac_barbundle_bar[priceRange]" id="cac_barbundle_bar_priceRange_2" value="3"> 15€
-				  </label>
-				  <label class="btn btn-primary choice">
-				    <input type="radio" name="cac_barbundle_bar[priceRange]" id="cac_barbundle_bar_priceRange_3" value="4"> 20€
-				  </label>
-				  <label class="btn btn-primary-center choice">
-				    <input type="radio" name="cac_barbundle_bar[priceRange]" id="cac_barbundle_bar_priceRange_4" value="5"> +20€
-				  </label>
+					{{ form_errors(form.dressCode) }}
+					{{ form_widget(form.dressCode) }}
 				</div>
-			</div>
-		</div>
+				<div class="col-xs-0 col-sm-0 col-md-2"></div>
 
-		<div class="inscription center col-xs-12 col-sm-6 col-md-6">
+				<div class="tarifMoyenNewBar col-xs-6 col-sm-6 col-md-8 col-md-offset-2">
+					<p>Les tarifs moyens (hors promotion)</p>
+				</div>
 
-			<div class="border access">
-				{{ form_label(form.access) }}
-				{{ form_errors(form.access) }}
-				{{ form_widget(form.access) }}
-			</div>
-			<br>
-			<br>
-			<div class="border">
-				{{ form_label(form.schedule) }}	
-				{{ form_errors(form.schedule) }}
-				{{ form_widget(form.schedule) }}
-				
-				{% set days = {'1': 'Lundi', '2': 'Mardi', '3': 'Mercredi', '4': 'Jeudi', '5': 'Vendredi', '6': 'Samedi', '7': 'Dimanche'} %}
-				{% set params = {'1': {'when':'open', 'word': 'de'}, '2': {'when':'close', 'word': 'à'}} %}
-				{% for j in 1..7 %}
-				<div class="heure center col-xs-12 col-sm-12 col-md-12 noPadding">
-					<div class="left col-xs-3 col-sm-3 col-md-3 noPadding">
-						{{ days[j] }}
+				<div class="servicesNewBar col-xs-6 col-sm-6 col-md-8 col-md-offset-2">
+					<p>Vos services</p>
+					<br>
+					<div class="choiceService col-xs-6 col-sm-6 col-md-4 col-md-offset-2 noPadding">
+						
+						{{ form_errors(form.valet) }}
+						{{ form_widget(form.valet) }}
+						{{ form_label(form.valet) }}
+						{{ form_errors(form.valet) }}
+						{{ form_widget(form.valetCost) }}
+
+						<br>
+						{{ form_errors(form.handicappedAccess) }}
+						{{ form_widget(form.handicappedAccess) }}
+						{{ form_label(form.handicappedAccess) }}
+						<br>
+						{{ form_errors(form.patio) }}
+						{{ form_widget(form.patio) }}
+						{{ form_label(form.patio) }}
+						<br>
+						{{ form_errors(form.babyfoot) }}
+						{{ form_widget(form.babyfoot) }}
+						{{ form_label(form.babyfoot) }}
+						<br>
+						{#{{ form_errors(form.climatisation) }}
+						{{ form_widget(form.climatisation) }}
+						{{ form_label(form.climatisation) }}#}
 					</div>
+					<div class="choiceService right col-xs-6 col-sm-6 col-md-4 noPadding">
+						{{ form_errors(form.canape) }}
+						{{ form_widget(form.canape) }}
+						{{ form_label(form.canape) }}
+						<br>
+						{{ form_errors(form.billard) }}
+						{{ form_widget(form.billard) }}
+						{{ form_label(form.billard) }}
+						<br>
+						{{ form_errors(form.flipper) }}
+						{{ form_widget(form.flipper) }}
+						{{ form_label(form.flipper) }}
+						<br>
+						{{ form_errors(form.breathalyser) }}
+						{{ form_widget(form.breathalyser) }}
+						{{ form_label(form.breathalyser) }}
+						<br>
+						{{ form_errors(form.smokingArea) }}
+						{{ form_widget(form.smokingArea) }}
+						{{ form_label(form.smokingArea) }}
+					</div>
+					
 
-					{% for k in 1..2 %}
-						<div class="col-xs-1 col-sm-1 col-md-1 noPadding">
-							{{ params[k]['word'] }}
+				</div>
+				<div class="servicesNewBar col-xs-6 col-sm-6 col-md-8 col-md-offset-2">
+					<p>Vos horaires<span>*</span></p>
+
+					{{ form_errors(form.schedule) }}
+					{{ form_widget(form.schedule) }}
+					
+					{% set days = {'1': 'Lundi', '2': 'Mardi', '3': 'Mercredi', '4': 'Jeudi', '5': 'Vendredi', '6': 'Samedi', '7': 'Dimanche'} %}
+					{% set params = {'1': {'when':'open', 'word': 'de'}, '2': {'when':'close', 'word': 'à'}} %}
+					{% for j in 1..7 %}
+					<div class="heure center col-xs-12 col-sm-12 col-md-12 noPadding">
+						<div class="textRight col-xs-3 col-sm-3 col-md-2 noPadding">
+							{{ days[j] }}
 						</div>
-						<div class="col-xs-2 col-sm-2 col-md-2 noPadding">
-							<select class="schedule-picker" data-day="{{ days[j] }}" data-when="{{ params[k]['when'] }}">
-								<option></option>
-								{% for i in 0..23 %}
-								    <option value="{{i}}">{{i}}h</option>
-								{% endfor %}
-							</select>
+
+						{% for k in 1..2 %}
+							<div class="col-xs-1 col-sm-1 col-md-1">
+								{{ params[k]['word'] }}
+							</div>
+							<div class="col-xs-2 col-sm-2 col-md-2 noPadding">
+								<select class="schedule-picker" data-day="{{ days[j] }}" data-when="{{ params[k]['when'] }}">
+									<option></option>
+									{% for i in 0..23 %}
+									    <option value="{{i}}">{{i}}h</option>
+									{% endfor %}
+								</select>
+							</div>
+						{% endfor %}
+
+						<div class="col-xs-3 col-sm-3 col-md-3 noPadding">
+							Fermé <input class="close-day" type="checkbox" data-day="{{ days[j] }}" name="close-day">
 						</div>
+					</div>
 					{% endfor %}
 
-					<div class="col-xs-3 col-sm-3 col-md-3 noPadding">
-						Fermé <input class="close-day" type="checkbox" data-day="{{ days[j] }}" name="close-day">
-					</div>
 				</div>
-				{% endfor %}
+
 				<div class="clear"></div>
-			</div>
-		</div>
-		<div class="inscription center col-xs-12 col-sm-12 col-md-12">
-			<h2>Vos petits plus à vous</h2> 
 
-			<div class="contentPetitPlus">
-				<div class="btn-group width100" data-toggle="buttons">
-				  <label class="btn btn-primary-checkbox petitplus">
-				    <input type="checkbox" name="cac_barbundle_bar[smokingArea]" id="cac_barbundle_bar_smokingArea" value="1"> Espace fumeur
-				  </label>
-				  <label class="btn btn-primary-checkbox petitplus">
-				    <input type="checkbox" name="cac_barbundle_bar[handicappedAccess]" id="cac_barbundle_bar_handicappedAccess" value="1"> Accès handicapés
-				  </label>
-				  <label class="btn btn-primary-checkbox petitplus">
-				    <input type="checkbox" name="cac_barbundle_bar[patio]" id="cac_barbundle_bar_patio" value="1"> Terrasse
-				  </label>
-				  <label class="btn btn-primary-checkbox petitplus">
-				    <input type="checkbox" name="cac_barbundle_bar[breathalyser]" id="cac_barbundle_bar_breathalyser" value="1"> Alcotests gratuits
-				  </label>
-				  <label class="btn btn-primary-checkbox petitplus">
-				    <input type="checkbox" name="cac_barbundle_bar[valet]" id="cac_barbundle_bar_valet" value="1"> Voiturier
-				  </label>
-				  <label class="btn btn-primary-checkbox petitplus">
-				    <input type="checkbox" name="cac_barbundle_bar[babyfoot]" id="cac_barbundle_bar_babyfoot" value="1"> Baby Foot
-				  </label>
-				  <label class="btn btn-primary-checkbox petitplus">
-				    <input type="checkbox" name="cac_barbundle_bar[billard]" id="cac_barbundle_bar_billard" value="1"> Billard
-				  </label>
-				  <label class="btn btn-primary-checkbox petitplus">
-				    <input type="checkbox" name="cac_barbundle_bar[flipper]" id="cac_barbundle_bar_flipper" value="1"> Flipper
-				  </label>
-				  <label class="btn btn-primary-checkbox petitplus">
-				    <input type="checkbox" name="cac_barbundle_bar[canape]" id="cac_barbundle_bar_canape" value="1"> Canapé
-				  </label>
+				<div class="descriptionNewBar col-xs-6 col-sm-6 col-md-8 col-md-offset-2">
 
-				  <p class="prixPosition">Prix : </p>
-				  <div class="contentPrixValet">
-				    <input class="prixValet" name="cac_barbundle_bar[valetCost]" id="cac_barbundle_bar_valetCost" value=" "> 
-				    <p>€</p>
-				  </div>
+					{{ form_label(form.description) }}
+					<br>
+					{{ form_errors(form.description) }}
+					{{ form_widget(form.description) }}
+
+					{{ form_widget(form._token) }}
+					<div class="btn-submitNewBar">
+				        <input type="submit" value="Poursuivre">
+				    </div>
 				</div>
-
+				
 			</div>
-			
-			<br><br><br>
-			{{ form_label(form.description) }}
-			<p class="italic">Utiliser un ton cool, chaleureux, qui donne envie de venir chez vous</p>
-			{{ form_errors(form.description) }}
-			{{ form_widget(form.description) }}
 
-			{{ form_widget(form._token) }}
-
-		    <div>
-		        <input type="submit" value="VALIDER">
-		    </div>
 		</div>
-	</form>
+	</div>
 	<div class="clear"></div>
+</form>
+	
+
+
+
+
+
+
+
+
+
+	
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}
