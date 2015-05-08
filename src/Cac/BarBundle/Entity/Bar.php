@@ -225,6 +225,13 @@ class Bar
     private $canape;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="clim", type="boolean", nullable=true)
+     */
+    private $clim;
+
+    /**
      * @ORM\OneToMany(targetEntity="Cac\BarBundle\Entity\Comment", mappedBy="bar")
      */
     private $comments;
