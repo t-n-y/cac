@@ -9,7 +9,8 @@
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places"></script>
 {% endblock %}
 {% block body %}
-<form action="{{ path('bar_create') }}" {{ form_enctype(form) }} method="POST">
+
+<form action="{{ path('bar_create') }}" name="cac_barbundle_bar" {{ form_enctype(form) }} method="POST">
 	<div class="col-xs-12 col-sm-12 col-md-12">
 		<div class="ongletNewBar col-xs-2 col-sm-2 col-md-2 noPadding">
 			<div class="progressionCreation">
@@ -41,6 +42,26 @@
 					<br>
 					{{ form_errors(form.adress) }}
 					{{ form_widget(form.adress) }}
+
+					{{ form_label(form.zipcode) }}<span>*</span>
+					<br>
+					{{ form_errors(form.zipcode) }}
+					{{ form_widget(form.zipcode) }}
+
+					{{ form_label(form.town) }}<span>*</span>
+					<br>
+					{{ form_errors(form.town) }}
+					{{ form_widget(form.town) }}
+
+					{{ form_label(form.region) }}<span>*</span>
+					<br>
+					{{ form_errors(form.region) }}
+					{{ form_widget(form.region) }}
+
+					{{ form_label(form.country) }}<span>*</span>
+					<br>
+					{{ form_errors(form.country) }}
+					{{ form_widget(form.country) }}
 				</div>
 				<div class="col-xs-6 col-sm-6 col-md-4">
 					{{ form_label(form.dressCode) }}<span>*</span>
@@ -52,6 +73,10 @@
 
 				<div class="tarifMoyenNewBar col-xs-6 col-sm-6 col-md-8 col-md-offset-2">
 					<p>Les tarifs moyens (hors promotion)</p>
+					{{ form_label(form.priceRange) }}<span>*</span>
+					<br>
+					{{ form_errors(form.priceRange) }}
+					{{ form_widget(form.priceRange) }}
 				</div>
 
 				<div class="servicesNewBar col-xs-6 col-sm-6 col-md-8 col-md-offset-2">
