@@ -43,26 +43,26 @@
 					{{ form_errors(form.adress) }}
 					{{ form_widget(form.adress) }}
 
-					<div class="prout">
-						{{ form_label(form.zipcode) }}<span>*</span>
+					<div class="completionAdresse">
+						{{ form_label(form.zipcode) }}
 						<br>
 						{{ form_errors(form.zipcode) }}
-						{{ form_widget(form.zipcode) }}
-
-						{{ form_label(form.town) }}<span>*</span>
+						{{ form_widget(form.zipcode, { 'id': 'postal_code' }) }}
+						<br>
+						{{ form_label(form.town) }}
 						<br>
 						{{ form_errors(form.town) }}
-						{{ form_widget(form.town) }}
-
-						{{ form_label(form.region) }}<span>*</span>
+						{{ form_widget(form.town, { 'id': 'locality' } ) }}
+						<br>
+						{{ form_label(form.region) }}
 						<br>
 						{{ form_errors(form.region) }}
-						{{ form_widget(form.region) }}
-
-						{{ form_label(form.country) }}<span>*</span>
+						{{ form_widget(form.region, { 'id': 'administrative_area_level_1' } ) }}
+						<br>
+						{{ form_label(form.country) }}
 						<br>
 						{{ form_errors(form.country) }}
-						{{ form_widget(form.country) }}
+						{{ form_widget(form.country, { 'id': 'country' }) }}
 					</div>
 				</div>
 				<div class="col-xs-6 col-sm-6 col-md-4">
