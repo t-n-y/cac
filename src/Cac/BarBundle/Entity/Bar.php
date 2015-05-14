@@ -1016,6 +1016,29 @@ class Bar
     }
 
     /**
+     * Set clim
+     *
+     * @param boolean $clim
+     * @return Bar
+     */
+    public function setClim($clim)
+    {
+        $this->clim = $clim;
+
+        return $this;
+    }
+
+    /**
+     * Get clim
+     *
+     * @return boolean 
+     */
+    public function getClim()
+    {
+        return $this->clim;
+    }
+
+    /**
      * Set region
      *
      * @param string $region

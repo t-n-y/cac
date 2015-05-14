@@ -58,7 +58,7 @@ class BarType extends AbstractType
             ->add('billard', null, array('label' => 'Billard', 'required'  => false))
             ->add('flipper', null, array('label' => 'Flipper', 'required'  => false))
             ->add('canape', null, array('label' => 'Canapé', 'required'  => false))
-            //->add('climatisation', null, array('label' => 'Climatisation', 'required'  => false))
+            ->add('clim', null, array('label' => 'Climatisation', 'required'  => false))
             ->add('description', null, array('label' => 'Description', 'required'  => false))
         ;
     }
