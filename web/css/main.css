@@ -442,6 +442,33 @@ h2.font30{
 }
 
 
+/**************NAV New bar*************/
+
+.navNewBar{
+	background-color: #f9f9f9;
+	padding: 10px 0 10px 20px;
+	border-bottom: 1px solid #000;
+}
+
+.navNewBar img{
+	margin: 0 10px 0 30px;
+	vertical-align: middle;
+	width: 35px;
+}
+
+.navNewBar p{
+	margin: 0;
+	color: #5ac4d4;
+	font-size: 17px;
+	font-weight: 600;
+	line-height: 35px;
+	padding-left: 10px;
+}
+
+.navNewBar span{
+	color: #303030;
+}
+
 
 
 /****************FOOTER****************/
