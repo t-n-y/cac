@@ -523,7 +523,7 @@ footer p{
 	display:inline-block; 
 	vertical-align: middle; 
 	width: 40%; 
-	height: 2px; 
+	height: 1px; 
 	background: #fff;
 }
 
@@ -899,8 +899,8 @@ select:focus {
 
 .infoBar{
 	background-color: #fff;
-	padding-top: 20px;
-	padding-bottom: 20px
+	padding: 40px 0 25px 0;
+  	
 }
 
 .noteBar{
@@ -980,6 +980,13 @@ p.topPosition{
 	text-align: center;
 }
 
+.ticketBarTop img{
+  position: absolute;
+  width: 40px;
+  right: -20px;
+  top: -20px;
+}
+
 .ticketBarTop h2{
 	font-size: 17px;
 	margin: 0 0 0 0;
@@ -1005,7 +1012,7 @@ p.topPosition{
 }
 
 .ticketPromotion{
-	background-color: #d85359;
+	background-color: #ea9026;
 	width: 250px;
 	text-align: center;
 	position: relative;
@@ -1044,7 +1051,6 @@ p.topPosition{
 	background-image: url('../img/fondFicheBar.png');
 	background-size: cover;
 	background-repeat: no-repeat;
-	padding-bottom: 30px;
 }
 
 .superInfoBar{
@@ -1077,15 +1083,11 @@ p.topPosition{
 	margin-left: 5px;
 }
 
-.superInfoBar span.ouverture{
-	color: #99d1c1;
-}
-
 .superInfoBar span.fermeture{
 	color: #d2232d;
 }
 
-.ongletBar, .ongletBarJour{
+.ongletBarJour{
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -1093,8 +1095,9 @@ p.topPosition{
 
 .ongletBar h3, .ongletBarJour h3{
 	font-size: 15px;
-	padding-top: 42px;
 	margin: 0;
+	font-weight: normal;
+	display: inline;
 }
 
 .ongletBarJour h3{
@@ -1132,14 +1135,21 @@ p.topPosition{
 	margin-top: 20px;
 }
 
-
-.information{
-	width: 160px;
-	background-color: rgba(255,255,255,0.4);
-	margin-left: -160px;
+.information, .avis{
+	background-color: #323232;
 	text-align: center;
-	height: 100px;
 	cursor:pointer;
+	padding: 10px 0;
+	color: #fff;
+}
+
+.selectedOngletBar{
+	background-color: #fff;
+	color: #5ac4d4;
+}
+
+.selectedOngletBar h3{
+	border-bottom: 1px solid #5ac4d4;
 }
 
 .informationJour{
@@ -1194,16 +1204,6 @@ p.topPosition{
 
 .informationJour:nth-child(1){
 	margin-top: 0px;
-}
-
-.avis{
-	width: 150px;
-	background-color: rgba(255,255,255,0.4);
-	margin-left: -150px;
-	text-align: center;
-	height: 100px;
-	margin-top: 10px;
-	cursor:pointer;
 }
 
 .mapView{
@@ -1283,13 +1283,13 @@ p.topPosition{
 }
 
 .dresscode{
-	position: absolute;
-	right: 40px;
-	bottom: 0;
+	width: 100%;
+  	text-align: center;
+  	margin-top: 30px;
 }
 
 .dresscode img{
-	width: 80%
+	width: 50px;
 }
 
 

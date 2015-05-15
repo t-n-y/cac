@@ -250,19 +250,15 @@ setInterval(function(){
 $('body').on("click", ".information",function(){
   $('.informationBar').css("display" , "block");
   $('.avisBar').css("display" , "none");
-  $('.information').css("width" , "160px");
-  $('.information').css("margin-left" , "-160px");
-  $('.avis').css("width" , "150px");
-  $('.avis').css("margin-left" , "-150px");
+  $('.avis').removeClass('selectedOngletBar');
+  $(this).addClass('selectedOngletBar');
 });
 
 $('body').on("click", ".avis",function(){
   $('.informationBar').css("display" , "none");
   $('.avisBar').css("display" , "block");
-  $('.avis').css("width" , "160px");
-  $('.avis').css("margin-left" , "-160px");
-  $('.information').css("width" , "150px");
-  $('.information').css("margin-left" , "-150px");
+  $('.information').removeClass('selectedOngletBar');
+  $(this).addClass('selectedOngletBar');
 });
 
 
