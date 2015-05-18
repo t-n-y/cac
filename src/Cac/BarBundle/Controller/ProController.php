@@ -30,8 +30,11 @@ class ProController extends Controller
      */
     public function abonnementAction($id)
     {
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('CacBarBundle:Bar')->find($id);
+
         return array(
-                
+                'bar'      => $entity
             );    
     }
 
