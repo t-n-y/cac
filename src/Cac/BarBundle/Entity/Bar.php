@@ -270,7 +270,7 @@ class Bar
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    public $path;
+    public $path = "defaultImageBar.jpg";
 
     /**
      * @Assert\File(maxSize="6000000")

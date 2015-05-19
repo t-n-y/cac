@@ -4,14 +4,7 @@
 
 {% block body %}
 		<div class="topBarPro col-xs-12 col-sm-12 col-md-12 noPadding">
-			{% if bar.path %}
-				<img src="{{ asset('uploads/bar/'~bar.path) }}">
-			{% else %}
-				<img src="{{asset('img/defaultImageBar.jpg')}}" alt="">
-			{% endif %}
-			<!--<img src="{{asset('img/accueil.png')}}" alt="">
-			<img src="{{asset('img/pershing.png')}}" alt="">
-			<img src="{{asset('img/fondFicheBar.png')}}" alt="">-->
+			<img src="{{ asset('uploads/bar/'~bar.path) }}">
 			<div class="infoNameBar">
 				<h1>{{ bar.name }}</h1>
 			</div>
