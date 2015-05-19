@@ -19,4 +19,19 @@ class BarRepository extends EntityRepository
 	            ->setParameters(array('Value' => $value))
 	            ->getResult();
 	}
+
+	public function findOneRandom(){
+	   $max=$this->getMaxId();
+	   return $this->getEntityManager()
+	     ->createQuery('SELECT b.id FROM CacBarBundle:Bar b WHERE b.id >= :rand')
+	     ->setParameter('rand',rand(0,$max))
+	     ->setMaxResults(1)
+	     ->getSingleResult();
+	}
+ 
+	private function getMaxId(){
+	   return $this->getEntityManager()
+	      ->createQuery('SELECT MAX(b.id) FROM CacBarBundle:Bar b')
+	      ->getSingleScalarResult();
+	}
 }

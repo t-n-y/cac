@@ -82,4 +82,19 @@ class DefaultController extends Controller
         $search = $em->getRepository('CacBarBundle:Bar')->getSearchResult($value);
         return array('searchResults' => $search, 'searchParams' => $value);
     }
+
+    private function randomBar()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $randomIdBar = $em->getRepository('CacBarBundle:Bar')->findOneRandom();
+        return $randomIdBar;
+    }
+
+    /**
+     * @Route("/bars/show/random", name="randomBar") 
+     */
+    public function randomBarAction()
+    {   
+        return $this->redirect($this->generateUrl('bar_show', array('id' => $this->randomBar()['id'])));
+    }
 }

@@ -58,7 +58,7 @@
         </div>
         <div class="row">
           <ul class="nav navbar-nav hidden-xs col-sm-5 col-md-5">
-            <li class="col-sm-4 col-md-4 noPadding"><a class="hasard" href="{{ path('bar_show', { id : 1 }) }}">AU HASARD</a></li>
+            <li class="col-sm-4 col-md-4 noPadding"><a class="hasard" href="{{ path('randomBar') }}">AU HASARD</a></li>
             <li class="col-sm-4 col-md-4 noPadding"><a class="parrainage" href="#">PARRAINAGE</a></li>
             {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
               <li class="dropdown col-sm-4 col-md-4 noPadding">
@@ -87,7 +87,7 @@
           </ul>
         </div>
         <ul class="nav navbar-nav col-xs-12 hidden-sm hidden-md hidden-lg">
-          <li><a href="{{ path('bar_show', { id : 1 }) }}">AU HASARD</a></li>
+          <li><a href="{{ path('randomBar') }}">AU HASARD</a></li>
           <li><a href="#">PARRAINAGE</a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">MON COMPTE <span class="caret"></span></a>
@@ -145,7 +145,7 @@
         </div>
       </div>
       <ul class="nav navbar-nav col-xs-12 col-sm-5 col-md-5">
-        <li><a href="{{ path('bar_show', { id : 1 }) }}">AU HASARD</a></li>
+        <li><a href="{{ path('randomBar') }}">AU HASARD</a></li>
         <li><a href="#">PARRAINAGE</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">MON COMPTE <span class="caret"></span></a>
