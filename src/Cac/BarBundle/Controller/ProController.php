@@ -394,7 +394,8 @@ class ProController extends Controller
         if ($hightlightedBar !== null) {
             return new Response("Bar deja mis en avant");
         }
-        if (count($hightlights) <= $nbHightlight[0]->getNbHighlight()) {
+
+        if (isset($nbHightlight[0]) && count($hightlights) <= $nbHightlight[0]->getNbHighlight()) {
             $highlight = new Highlight();
             $highlight->setBar($em->getReference('Cac\BarBundle\Entity\Bar', $id));
             $highlight->setDate(new \DateTime('now'));
