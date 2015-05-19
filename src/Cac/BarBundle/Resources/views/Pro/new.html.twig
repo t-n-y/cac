@@ -78,6 +78,35 @@
 
 				<div class="tarifMoyenNewBar col-xs-6 col-sm-6 col-md-8 col-md-offset-2">
 					<p>Les tarifs moyens (hors promotion)</p>
+					<div class="row">
+						<div class="col-xs-6 col-sm-3 col-md-3">
+							{{ form_label(form.beerPrice) }}<span>*</span>
+							<br>
+							{{ form_errors(form.beerPrice) }}
+							{{ form_widget(form.beerPrice) }}
+						</div>
+						<div class="col-xs-6 col-sm-3 col-md-3">
+							{{ form_label(form.cocktailPrice) }}<span>*</span>
+							<br>
+							{{ form_errors(form.cocktailPrice) }}
+							{{ form_widget(form.cocktailPrice) }}
+						</div>
+						<div class="col-xs-6 col-sm-3 col-md-3">
+							{{ form_label(form.softPrice) }}<span>*</span>
+							<br>
+							{{ form_errors(form.softPrice) }}
+							{{ form_widget(form.softPrice) }}
+						</div>
+						<div class="col-xs-6 col-sm-3 col-md-3">
+							{{ form_label(form.coffeePrice) }}<span>*</span>
+							<br>
+							{{ form_errors(form.coffeePrice) }}
+							{{ form_widget(form.coffeePrice) }}
+						</div>
+					</div>
+					
+
+					
 					
 				</div>
 

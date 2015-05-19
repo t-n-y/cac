@@ -29,23 +29,20 @@ class BarType extends AbstractType
                 )
             )
             ->add('beerPrice', null, array(
-                'label' => 'Prix de la biére',
+                'label' => 'La pinte de bière',
                 'required'  => false,
                 )
             )
             ->add('softPrice', null, array(
-                'label' => 'Prix de la biére',
-                'required'  => false,
+                'label' => 'Le soft'
                 )
             )
             ->add('coffeePrice', null, array(
-                'label' => 'Prix de la biére',
-                'required'  => false,
+                'label' => 'Le café'
                 )
             )
             ->add('cocktailPrice', null, array(
-                'label' => 'Prix de la biére',
-                'required'  => false,
+                'label' => 'Le cocktail'
                 )
             )
             ->add('dressCode', 'choice', array(
