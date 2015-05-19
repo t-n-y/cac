@@ -78,7 +78,7 @@ class RegistrationController extends Controller
 
             if (null === $response = $event->getResponse()) {
                 if (strpos($request->getPathInfo(), "/barman/") === false) {
-                    $url = $this->generateUrl('fos_user_registration_confirmed');
+                    $url = $this->generateUrl('bars');
                     $response = new RedirectResponse($url);
                     $dispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
                 }
