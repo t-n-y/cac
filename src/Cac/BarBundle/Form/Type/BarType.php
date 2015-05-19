@@ -21,12 +21,6 @@ class BarType extends AbstractType
             ->add('town', null, array('label' => 'Ville'))
             ->add('region', null, array('label' => 'Région'))
             ->add('country', null, array('label' => 'Pays'))
-            // ->add('country', 'choice', array(
-            //     'label' => 'Pays',
-            //     'choices'   => array('france' => 'France'),
-            //     'required'  => true,
-            //     )
-            // )
             ->add('schedule', 'hidden', array('label' => 'Horaires'))
             ->add('access', 'choice', array(
                 'label' => 'Accès',
@@ -34,12 +28,24 @@ class BarType extends AbstractType
                 'required'  => false,
                 )
             )
-            //->add('categories', null, array('label' => 'Catégories'))  ==> utilisé ?
-            ->add('priceRange', 'choice', array(
-                'label' => 'Ordre de prix',
-                'choices'   => array('1' => 'Pas cher', '2' => 'Pas trop cher', '3' => 'Un peu cher', '4' => 'Cher', '5' => 'Tres cher' ),
+            ->add('beerPrice', null, array(
+                'label' => 'Prix de la biére',
                 'required'  => false,
-                'expanded' => true
+                )
+            )
+            ->add('softPrice', null, array(
+                'label' => 'Prix de la biére',
+                'required'  => false,
+                )
+            )
+            ->add('coffeePrice', null, array(
+                'label' => 'Prix de la biére',
+                'required'  => false,
+                )
+            )
+            ->add('cocktailPrice', null, array(
+                'label' => 'Prix de la biére',
+                'required'  => false,
                 )
             )
             ->add('dressCode', 'choice', array(

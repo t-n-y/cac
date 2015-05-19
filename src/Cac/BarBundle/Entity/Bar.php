@@ -143,9 +143,30 @@ class Bar
     /**
      * @var integer
      *
-     * @ORM\Column(name="priceRange", type="integer", nullable=true)
+     * @ORM\Column(name="BeerPrice", type="integer", nullable=true)
      */
-    private $priceRange;
+    private $beerPrice;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="softPrice", type="integer", nullable=true)
+     */
+    private $softPrice;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="coffeePrice", type="integer", nullable=true)
+     */
+    private $coffeePrice;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="cocktailPrice", type="integer", nullable=true)
+     */
+    private $cocktailPrice;
 
     /**
      * @var integer
@@ -1151,5 +1172,217 @@ class Bar
     public function removeVerresOffert(\Cac\BarBundle\Entity\PromoOffertes $PromoOffertes)
     {
         $this->PromoOffertes->removeElement($PromoOffertes);
+    }
+
+    /**
+     * Set beerPrice
+     *
+     * @param integer $beerPrice
+     *
+     * @return Bar
+     */
+    public function setBeerPrice($beerPrice)
+    {
+        $this->beerPrice = $beerPrice;
+
+        return $this;
+    }
+
+    /**
+     * Get beerPrice
+     *
+     * @return integer
+     */
+    public function getBeerPrice()
+    {
+        return $this->beerPrice;
+    }
+
+    /**
+     * Set softPrice
+     *
+     * @param integer $softPrice
+     *
+     * @return Bar
+     */
+    public function setSoftPrice($softPrice)
+    {
+        $this->softPrice = $softPrice;
+
+        return $this;
+    }
+
+    /**
+     * Get softPrice
+     *
+     * @return integer
+     */
+    public function getSoftPrice()
+    {
+        return $this->softPrice;
+    }
+
+    /**
+     * Set coffeePrice
+     *
+     * @param integer $coffeePrice
+     *
+     * @return Bar
+     */
+    public function setCoffeePrice($coffeePrice)
+    {
+        $this->coffeePrice = $coffeePrice;
+
+        return $this;
+    }
+
+    /**
+     * Get coffeePrice
+     *
+     * @return integer
+     */
+    public function getCoffeePrice()
+    {
+        return $this->coffeePrice;
+    }
+
+    /**
+     * Set cocktailPrice
+     *
+     * @param integer $cocktailPrice
+     *
+     * @return Bar
+     */
+    public function setCocktailPrice($cocktailPrice)
+    {
+        $this->cocktailPrice = $cocktailPrice;
+
+        return $this;
+    }
+
+    /**
+     * Get cocktailPrice
+     *
+     * @return integer
+     */
+    public function getCocktailPrice()
+    {
+        return $this->cocktailPrice;
+    }
+
+    /**
+     * Set clim
+     *
+     * @param boolean $clim
+     *
+     * @return Bar
+     */
+    public function setClim($clim)
+    {
+        $this->clim = $clim;
+
+        return $this;
+    }
+
+    /**
+     * Get clim
+     *
+     * @return boolean
+     */
+    public function getClim()
+    {
+        return $this->clim;
+    }
+
+    /**
+     * Add carte
+     *
+     * @param \Cac\BarBundle\Entity\CarteBar $carte
+     *
+     * @return Bar
+     */
+    public function addCarte(\Cac\BarBundle\Entity\CarteBar $carte)
+    {
+        $this->carte[] = $carte;
+
+        return $this;
+    }
+
+    /**
+     * Remove carte
+     *
+     * @param \Cac\BarBundle\Entity\CarteBar $carte
+     */
+    public function removeCarte(\Cac\BarBundle\Entity\CarteBar $carte)
+    {
+        $this->carte->removeElement($carte);
+    }
+
+    /**
+     * Get carte
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCarte()
+    {
+        return $this->carte;
+    }
+
+    /**
+     * Add highlight
+     *
+     * @param \Cac\BarBundle\Entity\Highlight $highlight
+     *
+     * @return Bar
+     */
+    public function addHighlight(\Cac\BarBundle\Entity\Highlight $highlight)
+    {
+        $this->highlight[] = $highlight;
+
+        return $this;
+    }
+
+    /**
+     * Remove highlight
+     *
+     * @param \Cac\BarBundle\Entity\Highlight $highlight
+     */
+    public function removeHighlight(\Cac\BarBundle\Entity\Highlight $highlight)
+    {
+        $this->highlight->removeElement($highlight);
+    }
+
+    /**
+     * Get highlight
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getHighlight()
+    {
+        return $this->highlight;
+    }
+
+    /**
+     * Add promoOfferte
+     *
+     * @param \Cac\BarBundle\Entity\PromoOffertes $promoOfferte
+     *
+     * @return Bar
+     */
+    public function addPromoOfferte(\Cac\BarBundle\Entity\PromoOffertes $promoOfferte)
+    {
+        $this->PromoOffertes[] = $promoOfferte;
+
+        return $this;
+    }
+
+    /**
+     * Remove promoOfferte
+     *
+     * @param \Cac\BarBundle\Entity\PromoOffertes $promoOfferte
+     */
+    public function removePromoOfferte(\Cac\BarBundle\Entity\PromoOffertes $promoOfferte)
+    {
+        $this->PromoOffertes->removeElement($promoOfferte);
     }
 }
