@@ -585,29 +585,6 @@ class Bar
     }
 
     /**
-     * Set priceRange
-     *
-     * @param integer $priceRange
-     * @return Bar
-     */
-    public function setPriceRange($priceRange)
-    {
-        $this->priceRange = $priceRange;
-
-        return $this;
-    }
-
-    /**
-     * Get priceRange
-     *
-     * @return integer 
-     */
-    public function getPriceRange()
-    {
-        return $this->priceRange;
-    }
-
-    /**
      * Set dressCode
      *
      * @param integer $dressCode
@@ -1268,30 +1245,6 @@ class Bar
     public function getCocktailPrice()
     {
         return $this->cocktailPrice;
-    }
-
-    /**
-     * Set clim
-     *
-     * @param boolean $clim
-     *
-     * @return Bar
-     */
-    public function setClim($clim)
-    {
-        $this->clim = $clim;
-
-        return $this;
-    }
-
-    /**
-     * Get clim
-     *
-     * @return boolean
-     */
-    public function getClim()
-    {
-        return $this->clim;
     }
 
     /**

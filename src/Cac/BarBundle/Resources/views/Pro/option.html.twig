@@ -95,20 +95,7 @@
 											<div class="contentImageBar" style="background-image:url({{ asset('uploads/bar/'~bar.path) }})">
 												<a href="{{ path('bar_show', { id : bar.id }) }}"><div class="shadowbarInList col-xs-12 col-sm-12 col-md-12">
 													<h3 id="firstWord{{ bar.id }}">{{ bar.name }}</h3>
-													<!-- {% if bar.priceRange ==  1 %}
-													<p class="prix">€{#<span class="percentage">€€€€</span>#}</p>
-													{% elseif bar.priceRange ==  2 %}
-														<p class="prix">€€</p>
-													{% elseif bar.priceRange ==  3 %}
-														<p class="prix">€€€</p>
-													{% elseif bar.priceRange ==  4 %}
-														<p class="prix">€€€€</p>
-													{% elseif bar.priceRange ==  5 %}
-														<p class="prix">€€€€€</p>
-													{% else %}
-													<p></p>
-													{% endif %}
-													<p class="reduc">%</p> -->
+												
 												</div></a>
 											</div>
 										</div>
@@ -120,20 +107,7 @@
 								<div class="contentImageBar" style="background-image:url({{ asset('uploads/bar/'~bar.path) }})">
 									<a href="{{ path('bar_show', { id : bar.id }) }}"><div class="shadowbarInList col-xs-12 col-sm-12 col-md-12">
 										<h3 id="firstWord{{ bar.id }}">{{ bar.name }}</h3>
-										<!-- {% if bar.priceRange ==  1 %}
-										<p class="prix">€{#<span class="percentage">€€€€</span>#}</p>
-										{% elseif bar.priceRange ==  2 %}
-											<p class="prix">€€</p>
-										{% elseif bar.priceRange ==  3 %}
-											<p class="prix">€€€</p>
-										{% elseif bar.priceRange ==  4 %}
-											<p class="prix">€€€€</p>
-										{% elseif bar.priceRange ==  5 %}
-											<p class="prix">€€€€€</p>
-										{% else %}
-										<p></p>
-										{% endif %}
-										<p class="reduc">%</p> -->
+										
 									</div></a>
 								</div>
 							</div>
@@ -142,19 +116,7 @@
 									<div class="contentImageBar" style="background-image:url({{ asset('uploads/bar/'~bar.path) }})">
 										<a href="{{ path('bar_show', { id : bar.id }) }}"><div class="shadowbarInList col-xs-12 col-sm-12 col-md-12">
 											<h3 id="firstWord{{ bar.id }}">{{ bar.name }}</h3>
-											{% if bar.priceRange ==  1 %}
-											<p class="prix">€{#<span class="percentage">€€€€</span>#}</p>
-											{% elseif bar.priceRange ==  2 %}
-												<p class="prix">€€</p>
-											{% elseif bar.priceRange ==  3 %}
-												<p class="prix">€€€</p>
-											{% elseif bar.priceRange ==  4 %}
-												<p class="prix">€€€€</p>
-											{% elseif bar.priceRange ==  5 %}
-												<p class="prix">€€€€€</p>
-											{% else %}
-											<p></p>
-											{% endif %}
+											
 											<p class="reduc">%</p>
 										</div></a>
 									</div>
@@ -162,33 +124,23 @@
 							</div>
 							{% set nbHighlight = highlight | length %}
 							
-							{% set k = 0 %}
+							{# {% set k = 0 %}
 							{% if  highlight[k].bar.id == bar.id %}
 								{% set k = 1 %}
-							{% endif %}
+							{% endif %} 
 							<div class="HightlightRight col-xs-12 col-sm-6 col-md-6 noPadding">
 								<div class="barInListHighlight barInList col-xs-12 col-sm-12 col-md-12 noPadding">
 									<div class="contentImageBar" style="background-image:url({{ asset('uploads/bar/'~highlight[k].bar.path) }})">
 										<a href="{{ path('bar_show', { id : highlight[k].bar.id }) }}"><div class="shadowbarInList col-xs-12 col-sm-12 col-md-12">
-											<h3 id="firstWord{{ highlight[k].bar.id }}">{{ highlight[k].bar.name }}</h3>
-											{% if highlight[k].bar.priceRange ==  1 %}
-											<p class="prix">€{#<span class="percentage">€€€€</span>#}</p>
-											{% elseif highlight[k].bar.priceRange ==  2 %}
-												<p class="prix">€€</p>
-											{% elseif highlight[k].bar.priceRange ==  3 %}
-												<p class="prix">€€€</p>
-											{% elseif highlight[k].bar.priceRange ==  4 %}
-												<p class="prix">€€€€</p>
-											{% elseif highlight[k].bar.priceRange ==  5 %}
+											<h3 id="firstWord{{ highlight[k].bar.id }}"> {{ highlight[k].bar.name }} </h3>
+											
 												<p class="prix">€€€€€</p>
-											{% else %}
-											<p></p>
-											{% endif %}
+											
 											<p class="reduc">%</p>
 										</div></a>
 									</div>
 								</div>
-							</div>
+							</div>#}
 						</div>
 					</div>
 					<div class="clear"></div>
@@ -200,11 +152,11 @@
 					<div class="mettreBarEnAvant">
 						{% set miseEnAvant = false %}
 
-						{% for j in 0..nbHighlight-1%}
+						{#{% for j in 0..nbHighlight-1%}
 							{% if highlight[j].bar.id == myBar %}
 								{% set miseEnAvant = true %}
 							{% endif %}
-						{% endfor %}
+						{% endfor %}#}
 
 						{% if miseEnAvant %}
 							<p class="mesOptions">Suspendre la mise en avant de mon bar</p>

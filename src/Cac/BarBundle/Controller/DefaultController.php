@@ -46,7 +46,7 @@ class DefaultController extends Controller
     public function sortByPriceAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $entities = $em->getRepository('CacBarBundle:Bar')->findBy(array(), array('priceRange'=>'ASC'));
+        $entities = $em->getRepository('CacBarBundle:Bar')->findBy(array(), array('cocktailPrice'=>'ASC'));
         return array('bars' => $entities);
     }
 

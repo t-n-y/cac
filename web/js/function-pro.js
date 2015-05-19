@@ -21,6 +21,7 @@ $(document).ready(function(){
     });
 
   $( ".mettreBarEnAvant p" ).on( "click", function() {
+      
       var barId = $(this).data('bar-id');
       $.ajax( {
           url: Routing.generate('highlight_bar', {id: barId}),

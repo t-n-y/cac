@@ -14,19 +14,9 @@
 			<img src="{{asset('img/fondFicheBar.png')}}" alt="">-->
 			<div class="infoNameBar">
 				<h1>{{ bar.name }}</h1>
-				{% if bar.priceRange ==  1 %}
-				<p>€<span>€€€€</span></p>
-				{% elseif bar.priceRange ==  2 %}
-				<p>€€<span>€€€</span></p>
-				{% elseif bar.priceRange ==  3 %}
-				<p>€€€<span>€€</span></p>
-				{% elseif bar.priceRange ==  4 %}
+		
 				<p>€€€€<span>€</span></p>
-				{% elseif bar.priceRange ==  5 %}
-				<p>€€€€€</p>
-				{% else %}
-				<p></p>
-				{% endif %}
+
 
 				{% if (is_granted('ROLE_BIGBOSS')) and (bar.author.id == user.id) %}
 
@@ -356,7 +346,7 @@
 						{% endif %}
 					{% endfor %}
 				</li>
-				<li>Ordre des prix : {{ bar.priceRange }}</li>
+				
 				<li>Dresscode : {{ bar.dressCode }}</li>
 				<li>Voiturier : {{ bar.valet }}</li>
 				<li>Prix voiturier : {{ bar.valetCost }}</li>

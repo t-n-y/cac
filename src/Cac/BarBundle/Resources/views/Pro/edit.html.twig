@@ -86,7 +86,7 @@
     <br>
     <br>
     <div class="border">
-      {{ form_label(edit_form.priceRange) }}
+      {#{{ form_label(edit_form.priceRange) }}
       <br>
       <div class="btn-group width100" data-toggle="buttons">
       {% if edit_form.vars.value.priceRange == 1 %}
@@ -138,7 +138,7 @@
          <input type="radio" name="cac_barbundle_bar[priceRange]" id="cac_barbundle_bar_priceRange_4" value="5"> +20€
        </label>
       {% endif %}
-       
+       #}
        
       </div>
     </div>

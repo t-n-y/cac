@@ -29,11 +29,24 @@ class BarEditType extends AbstractType
                 )
             )
             ->add('categories', null, array('label' => 'Catégories'))
-            ->add('priceRange', 'choice', array(
-                'label' => 'Ordre de prix',
-                'choices'   => array('1' => 'Pas cher', '2' => 'Pas trop cher', '3' => 'Un peu cher', '4' => 'Cher', '5' => 'Tres cher'),
+            ->add('beerPrice', null, array(
+                'label' => 'Prix de la biére',
                 'required'  => false,
-                'expanded' => true
+                )
+            )
+            ->add('softPrice', null, array(
+                'label' => 'Prix de la biére',
+                'required'  => false,
+                )
+            )
+            ->add('coffeePrice', null, array(
+                'label' => 'Prix de la biére',
+                'required'  => false,
+                )
+            )
+            ->add('cocktailPrice', null, array(
+                'label' => 'Prix de la biére',
+                'required'  => false,
                 )
             )
             ->add('dressCode', 'choice', array(
