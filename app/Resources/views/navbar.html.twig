@@ -81,8 +81,9 @@
                   </ul>
               </li>
               {% else %}
-                <li class="pull-right"><a class="animRegister" href="{{ path('user_register') }}">Créer un compte</a></li>
-                <li class="pull-right"><a class="animConnexion" href="#">Connexion</a></li>
+                <li class="connexionAndCreate col-sm-4 col-md-4 noPadding">
+                  <a class="animConnexion col-sm-6 col-md-6 noPadding" href="#">Connexion</a>
+                  <a class="InscriptionHeader animRegister col-sm-6 col-md-6 noPadding" href="{{ path('user_register') }}">Inscrivez<br>vous</a></li>
               {% endif %}
           </ul>
         </div>

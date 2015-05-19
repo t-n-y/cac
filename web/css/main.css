@@ -329,6 +329,27 @@ h2.font30{
 	text-align: center;
 }
 
+.connexionAndCreate{
+	font-size: 12px;
+}
+
+.InscriptionHeader{
+	position: absolute !important;
+  	left: 50% !important;
+  	top: -10px !important;
+}
+
+.navbar-nav > li.connexionAndCreate > a:hover{
+	border:4px;
+	color: #5ac4d4;
+}
+
+
+.connexionAndCreate a{
+	padding-left: 0px !important;
+	padding-right: 0px !important;
+}
+
 .nav .open a{
 	border-color : #5ac4d4 !important;
 }
@@ -2190,6 +2211,7 @@ float: left;
 }
 
 .inscriptionBigBoss{
+	position: relative;
 	padding-bottom: 30px;
 	padding-top: 30px;
 	border-bottom: 2px solid #fff; 
@@ -2202,6 +2224,13 @@ float: left;
 .inscriptionBigBoss label{
 	text-align: left;
 	font-weight: normal;
+}
+
+.gender{
+	position: absolute;
+	top: 30px;
+	left : 0;
+	height: 36px;
 }
 
 .formRegisterPro input[type=submit]{
@@ -2752,18 +2781,8 @@ p.nextPointFidelite{
 		font-size: 14px;
 	}
 }
-@media (max-width: 1013px) {
-  .navbar-nav > li {
-		margin-left: 40px;
-	}
-}
 
 @media (max-width: 991px) {
-
-	.navbar-nav > li {
-		margin-left: 30px;
-	}
-
 	.barInList:nth-child(2n+1){
 
 		border-left: 0px solid rgba(0,0,0,0);
@@ -2776,19 +2795,14 @@ p.nextPointFidelite{
 }
 
 @media (max-width: 945px) {
-  .navbar-nav > li {
-		margin-left: 10px;
-	}
-
-	.navbar-nav > li.pull-right a{
-		padding-left: 10px;
-		padding-right: 10px;
-	}
 
 	.subtitlePageRegisterBig{
 		width: 19%;
 	}
 
+	.navbar-nav > li > a {
+		font-size: 12px;
+	}
 /*	.contentPetitPlus{
 		padding: 0 5%;
 	}*/
@@ -2802,13 +2816,12 @@ p.nextPointFidelite{
 
 @media (max-width: 825px) {
 
-	.navbar-nav > li.pull-right a{
-		padding-left: 6px;
-		padding-right: 6px;
-	}
-
 	.ticket, .ticketPromotion, .ticketVerre, .ticketBarTop, .ticketCode, .ticketBarBottom{
 		width: 200px;
+	}
+
+	.navbar-nav > li > a {
+		font-size: 10px;
 	}
 
 /*	.contentPetitPlus{
@@ -2826,10 +2839,6 @@ p.nextPointFidelite{
 
 		border-left: 0px solid rgba(0,0,0,0);
 		border-right: 0px solid rgba(0,0,0,0);
-	}
-
-	.navbar-nav > li {
-		margin-left: 0px;
 	}
 
 	.navbar-afterscroll{

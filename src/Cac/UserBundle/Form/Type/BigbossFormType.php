@@ -41,7 +41,6 @@ class BigbossFormType extends AbstractType
             ->add('gender', 'choice', array(
                 'label' => 'Genre',
                 'choices'   => array('1' => 'Mr', '2' => 'Mme'),
-                'expanded' => true,
                 'multiple' => false
                 )
             )
