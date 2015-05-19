@@ -103,6 +103,13 @@ class Bigboss extends User
      */
     protected $roles;
 
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="score", type="integer", nullable=true)
+     */
+    protected $score = 0;
+
      /**
      * Constructor
      */
@@ -315,5 +322,28 @@ class Bigboss extends User
     public function getGender()
     {
         return $this->gender;
+    }
+
+    /**
+     * Set score
+     *
+     * @param integer $score
+     * @return BasicUser
+     */
+    public function setScore($score)
+    {
+        $this->score = $score;
+
+        return $this;
+    }
+
+    /**
+     * Get score
+     *
+     * @return integer 
+     */
+    public function getScore()
+    {
+        return $this->score;
     }
 }
