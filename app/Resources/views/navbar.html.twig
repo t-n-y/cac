@@ -60,29 +60,30 @@
           <ul class="nav navbar-nav hidden-xs col-sm-5 col-md-5">
             <li class="col-sm-4 col-md-4 noPadding"><a class="hasard" href="{{ path('bar_show', { id : 1 }) }}">AU HASARD</a></li>
             <li class="col-sm-4 col-md-4 noPadding"><a class="parrainage" href="#">PARRAINAGE</a></li>
-            <li class="dropdown col-sm-4 col-md-4 noPadding">
-              <a href="#" class="monCompteUser dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">MON COMPTE</a>
-              <ul class="dropdown-menu" role="menu">
-                {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-                  <li class="pull-right"><a href="{{ path('fos_user_security_logout') }}">X</a></li>
-                  <li class="pull-right">
-                    {% if is_granted('ROLE_BIGBOSS') %}
-                      <!-- ICI METTRE LIEN VERS BACK OFFICE BAR -->
-                      <a href="{{ path('fos_user_profile_show') }}">{{ app.user.firstname }}</a>
-                    {% else %}
-                      <a href="{{ path('fos_user_profile_show') }}">{{ app.user.firstname }}</a>
-                    {% endif %}
-                  </li>
-                  {% if is_granted('ROLE_BIGBOSS') %}
-                    <li class="pull-right"><a href="{{ path('bar_new') }}">Créer un bar</a></li>
-                  {% endif %}
-                {% else %}
-                  <li class="pull-right"><a class="animRegister" href="{{ path('user_register') }}">Créer un compte</a></li>
-                  <li class="pull-right"><a class="animConnexion" href="#">Connexion</a></li>
-                {% endif %}
-              </ul>
-            </li>
-            
+            {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+              <li class="dropdown col-sm-4 col-md-4 noPadding">
+                <a href="#" class="monCompteUser dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ app.user.firstname }}</a>
+                  <ul class="dropdown-menu" role="menu"> 
+                    <li>
+                      {% if is_granted('ROLE_BIGBOSS') %}
+                        <!-- ICI METTRE LIEN VERS BACK OFFICE BAR -->
+                        <!-- <a href="{{ path('fos_user_profile_show') }}">{{ app.user.firstname }}</a> -->
+                        <li><a href="{{ path('bar_new') }}">Créer un bar</a></li>
+                      {% else %}
+                        <!-- <a href="{{ path('fos_user_profile_show') }}">{{ app.user.firstname }}</a> -->
+                      {% endif %}
+                    </li>
+                    <li><a class="mesReservation" href="#">Mes réservations</a></li>
+                    <li><a class="mesParrainage" href="#">Mes parrainage</a></li>
+                    <li><a class="monCompte" href="{{ path('fos_user_profile_show') }}">Mon compte</a></li>
+                    <li><a href="#">Mes points</a></li>
+                    <li class="logout"><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
+                  </ul>
+              </li>
+              {% else %}
+                <li class="pull-right"><a class="animRegister" href="{{ path('user_register') }}">Créer un compte</a></li>
+                <li class="pull-right"><a class="animConnexion" href="#">Connexion</a></li>
+              {% endif %}
           </ul>
         </div>
         <ul class="nav navbar-nav col-xs-12 hidden-sm hidden-md hidden-lg">
