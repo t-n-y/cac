@@ -45,6 +45,7 @@ class BasicUserFormType extends AbstractType
                 'multiple' => false
                 )
             )
+            ->add('birthday', 'birthday', array('label' => 'Date de naissance', 'format' => 'dd-MM-yyyy',))
             ->add('fix_phone', 'text', array('label' => 'Téléphone fixe'))
             ->add('mobile_phone', 'text', array('label' => 'Téléphone mobile'))
         ;

@@ -4,6 +4,7 @@ namespace Cac\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
@@ -25,6 +26,14 @@ abstract class User extends BaseUser
      * @ORM\OneToMany(targetEntity="Cac\BarBundle\Entity\PromoOffertes", mappedBy="user")
      */
     private $PromoOffertes;
+
+    /**
+     * @var date $birthday
+     *
+     * @ORM\Column(name="birthday", type="datetime")
+     * @Assert\DateTime()
+     */
+    private $birthday;
 
     /**
      * Get id
@@ -80,5 +89,53 @@ abstract class User extends BaseUser
     public function setEmail($email){
         parent::setEmail($email);
         $this->setUsername($email);
+    }
+
+    /**
+     * Set birthday
+     *
+     * @param \DateTime $birthday
+     *
+     * @return User
+     */
+    public function setBirthday($birthday)
+    {
+        $this->birthday = $birthday;
+
+        return $this;
+    }
+
+    /**
+     * Get birthday
+     *
+     * @return \DateTime
+     */
+    public function getBirthday()
+    {
+        return $this->birthday;
+    }
+
+    /**
+     * Add promoOfferte
+     *
+     * @param \Cac\BarBundle\Entity\PromoOffertes $promoOfferte
+     *
+     * @return User
+     */
+    public function addPromoOfferte(\Cac\BarBundle\Entity\PromoOffertes $promoOfferte)
+    {
+        $this->PromoOffertes[] = $promoOfferte;
+
+        return $this;
+    }
+
+    /**
+     * Remove promoOfferte
+     *
+     * @param \Cac\BarBundle\Entity\PromoOffertes $promoOfferte
+     */
+    public function removePromoOfferte(\Cac\BarBundle\Entity\PromoOffertes $promoOfferte)
+    {
+        $this->PromoOffertes->removeElement($promoOfferte);
     }
 }
