@@ -105,8 +105,8 @@ class PromotionController extends Controller
 
         if ($editForm->isValid()) {
             $em->flush();
-            return $this->redirect($this->generateUrl('bar_show', array('id' => $entity->getId())));
-            // return $this->redirect($this->generateUrl('promotion_show', array('id' => $entity->getId())));
+            // return $this->redirect($this->generateUrl('bar_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('promotion_show', array('id' => $entity->getId())));
         }
 
         return array(
@@ -125,13 +125,20 @@ class PromotionController extends Controller
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
+        $pm = $this->get('cac_bar.promotion_manager');
         $entity = $em->getRepository('CacBarBundle:Bar')->find($id);
         $restrictions = $em->getRepository('CacBarBundle:Restriction')->findAll();
 
-        $editForm = $this->createEditForm($entity->getPromotion());
+        $promotions = $entity->getPromotions();
+        $promotionDummy = new PromotionDummy();
+        $dummyJSON = $pm->toDummyJSON($promotions);
+        $promotionDummy->setPromotion($dummyJSON);
+
+        $editForm = $this->createEditForm($promotionDummy, $entity);
 
         return array(
             'bar'      => $entity,
+            'promotions' => json_decode($dummyJSON, true),
             'form'   => $editForm->createView(),
             'restrictions' => $restrictions
         );
