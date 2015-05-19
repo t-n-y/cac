@@ -2800,8 +2800,16 @@ p.nextPointFidelite{
 		width: 19%;
 	}
 
+	.containeurLogo {
+  		width: 120px;
+  	}
+
+  	.logoradius {
+	  height: 120px;
+	}
+
 	.navbar-nav > li > a {
-		font-size: 12px;
+		font-size: 11px;
 	}
 /*	.contentPetitPlus{
 		padding: 0 5%;
@@ -2821,7 +2829,7 @@ p.nextPointFidelite{
 	}
 
 	.navbar-nav > li > a {
-		font-size: 10px;
+		font-size: 9px;
 	}
 
 /*	.contentPetitPlus{
