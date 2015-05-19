@@ -26,67 +26,96 @@
   <p>Un mail viens de vous être envoyé, cliquer sur le lien pour confirmer définitivement votre inscription.<br><br>A tout de suite ! </p>
 </div>
 <nav class="navbar navbar-default" role="navigation">
-  <div class="container-fluid">
+  <div class="row">
+    <div class="container-fluid">
 
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <div class="center hidden-sm hidden-md hidden-lg">
-        <a class="logo-afterscroll" href="{{ path('home') }}"><img src="{{asset('img/logo.png')}}" alt="Click and Cheers"></a>
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <div class="center hidden-sm hidden-md hidden-lg">
+          <a class="logo-afterscroll" href="{{ path('home') }}"><img src="{{asset('img/logo.png')}}" alt="Click and Cheers"></a>
+        </div>
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
       </div>
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-    </div>
-    
+      
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav col-xs-12 col-sm-5 col-md-5 noPadding">
-        <li><a href="{{ path('home') }}">ACCUEIL</a></li>
-        <li><a href="{{ path('bars') }}">TROUVER UN BAR</a></li>
-      </ul>
-      <div class="nav navbar-nav hidden-xs col-sm-2 col-md-2">
-        <div class="containeurLogo">
-          <div class="logoradius">
-            <a href="{{ path('home') }}"><img src="{{asset('img/logo.png')}}" alt="Click and Cheers"></a>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav col-xs-12 col-sm-5 col-md-5 noPadding">
+          <li class="col-sm-6 col-md-6"><a class="trouverBar" href="{{ path('bars') }}">TROUVER UN BAR</a></li>
+          <li class="col-sm-6 col-md-6"><a class="map" href="{{ path('map') }}">MAP</a></li>
+        </ul>
+        <div class="nav navbar-nav hidden-xs col-sm-2 col-md-2">
+          <div class="containeurLogo">
+            <div class="logoradius">
+              <a href="{{ path('home') }}"><img src="{{asset('img/logo.png')}}" alt="Click and Cheers"></a>
+            </div>
           </div>
         </div>
-      </div>
-      <ul class="nav navbar-nav hidden-xs col-sm-5 col-md-5">
-        <li><a href="{{ path('map') }}">MAP</a></li>
-        {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-          <li class="pull-right"><a href="{{ path('fos_user_security_logout') }}">X</a></li>
-          <li class="pull-right">
-            {% if is_granted('ROLE_BIGBOSS') %}
-              <!-- ICI METTRE LIEN VERS BACK OFFICE BAR -->
-              <a href="{{ path('fos_user_profile_show') }}">{{ app.user.firstname }}</a>
-            {% else %}
-              <a href="{{ path('fos_user_profile_show') }}">{{ app.user.firstname }}</a>
-            {% endif %}
+        <div class="row">
+          <ul class="nav navbar-nav hidden-xs col-sm-5 col-md-5">
+            <li class="col-sm-4 col-md-4 noPadding"><a class="hasard" href="{{ path('bar_show', { id : 1 }) }}">AU HASARD</a></li>
+            <li class="col-sm-4 col-md-4 noPadding"><a class="parrainage" href="#">PARRAINAGE</a></li>
+            <li class="dropdown col-sm-4 col-md-4 noPadding">
+              <a href="#" class="monCompteUser dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">MON COMPTE</a>
+              <ul class="dropdown-menu" role="menu">
+                {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                  <li class="pull-right"><a href="{{ path('fos_user_security_logout') }}">X</a></li>
+                  <li class="pull-right">
+                    {% if is_granted('ROLE_BIGBOSS') %}
+                      <!-- ICI METTRE LIEN VERS BACK OFFICE BAR -->
+                      <a href="{{ path('fos_user_profile_show') }}">{{ app.user.firstname }}</a>
+                    {% else %}
+                      <a href="{{ path('fos_user_profile_show') }}">{{ app.user.firstname }}</a>
+                    {% endif %}
+                  </li>
+                  {% if is_granted('ROLE_BIGBOSS') %}
+                    <li class="pull-right"><a href="{{ path('bar_new') }}">Créer un bar</a></li>
+                  {% endif %}
+                {% else %}
+                  <li class="pull-right"><a class="animRegister" href="{{ path('user_register') }}">Créer un compte</a></li>
+                  <li class="pull-right"><a class="animConnexion" href="#">Connexion</a></li>
+                {% endif %}
+              </ul>
+            </li>
+            
+          </ul>
+        </div>
+        <ul class="nav navbar-nav col-xs-12 hidden-sm hidden-md hidden-lg">
+          <li><a href="{{ path('bar_show', { id : 1 }) }}">AU HASARD</a></li>
+          <li><a href="#">PARRAINAGE</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">MON COMPTE <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                <li class="pull-right"><a href="{{ path('fos_user_security_logout') }}">X</a></li>
+                <li class="pull-right">
+                  {% if is_granted('ROLE_BIGBOSS') %}
+                    <!-- ICI METTRE LIEN VERS BACK OFFICE BAR -->
+                    <a href="{{ path('fos_user_profile_show') }}">{{ app.user.firstname }}</a>
+                  {% else %}
+                    <a href="{{ path('fos_user_profile_show') }}">{{ app.user.firstname }}</a>
+                  {% endif %}
+                </li>
+                {% if is_granted('ROLE_BIGBOSS') %}
+                  <li class="pull-right"><a href="{{ path('bar_new') }}">Créer un bar</a></li>
+                {% endif %}
+              {% else %}
+                <li class="pull-right"><a class="animRegister" href="{{ path('user_register') }}">Créer un compte</a></li>
+                <li class="pull-right"><a class="animConnexion" href="#">Connexion</a></li>
+              {% endif %}
+            </ul>
           </li>
-          {% if is_granted('ROLE_BIGBOSS') %}
-            <li class="pull-right"><a href="{{ path('bar_new') }}">Créer un bar</a></li>
-          {% endif %}
-        {% else %}
-          <li class="pull-right"><a class="animRegister" href="{{ path('user_register') }}">Créer un compte</a></li>
-          <li class="pull-right"><a class="animConnexion" href="#">Connexion</a></li>
-        {% endif %}
-      </ul>
-      <ul class="nav navbar-nav col-xs-12 hidden-sm hidden-md hidden-lg">
-        <li><a href="{{ path('map') }}">MAP</a></li>
-        {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-          <li class="pull-right"><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
-        {% else %}
-          <li class="pull-right"><a href="{{ path('fos_user_security_login') }}">Connexion</a></li>
-        {% endif %}
-         
-      </ul>
-    </div><!-- /.navbar-collapse -->
+           
+        </ul>
+      </div><!-- /.navbar-collapse -->
 
-  </div><!-- /.container-fluid -->
+    </div><!-- /.container-fluid -->
+  </div>
 </nav>
 
 <!-- After scroll nav -->
@@ -106,8 +135,8 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       
       <ul class="nav navbar-nav col-xs-12 col-sm-5 col-md-5">
-        <li><a href="{{ path('home') }}">ACCUEIL</a></li>
         <li><a href="{{ path('bars') }}">TROUVER UN BAR</a></li>
+        <li><a href="{{ path('map') }}">MAP</a></li>
       </ul>
       <div class="nav navbar-nav hidden-xs col-sm-2 col-md-2">
         <div class="containeurLogo">
@@ -115,15 +144,30 @@
         </div>
       </div>
       <ul class="nav navbar-nav col-xs-12 col-sm-5 col-md-5">
-        <li><a href="{{ path('map') }}">MAP</a></li>
-        {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-          <li class="pull-right"><a href="{{ path('fos_user_security_logout') }}">X</a></li>
-          <li class="pull-right"><a href="{{ path('fos_user_security_login') }}">{{ app.user.username }}</a></li>
-          <li class="pull-right"><a href="{{ path('bar_new') }}">Créer un bar</a></li>
-        {% else %}
-          <li class="pull-right"><a href="{{ path('user_register') }}">Créer un compte</a></li>
-          <li class="pull-right"><a href="{{ path('fos_user_security_login') }}">Connexion</a></li>
-        {% endif %}
+        <li><a href="{{ path('bar_show', { id : 1 }) }}">AU HASARD</a></li>
+        <li><a href="#">PARRAINAGE</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">MON COMPTE <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+              <li class="pull-right"><a href="{{ path('fos_user_security_logout') }}">X</a></li>
+              <li class="pull-right">
+                {% if is_granted('ROLE_BIGBOSS') %}
+                  <!-- ICI METTRE LIEN VERS BACK OFFICE BAR -->
+                  <a href="{{ path('fos_user_profile_show') }}">{{ app.user.firstname }}</a>
+                {% else %}
+                  <a href="{{ path('fos_user_profile_show') }}">{{ app.user.firstname }}</a>
+                {% endif %}
+              </li>
+              {% if is_granted('ROLE_BIGBOSS') %}
+                <li class="pull-right"><a href="{{ path('bar_new') }}">Créer un bar</a></li>
+              {% endif %}
+            {% else %}
+              <li class="pull-right"><a class="animRegister" href="{{ path('user_register') }}">Créer un compte</a></li>
+              <li class="pull-right"><a class="animConnexion" href="#">Connexion</a></li>
+            {% endif %}
+          </ul>
+        </li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div>  

@@ -289,6 +289,10 @@ h2.font30{
 
 /*****************HEADER*****************/
 
+.nav{
+	text-align: center;
+}
+
 .nav li.pull-right{
 	margin-left: 0px;
 	font-size: 12px;
@@ -390,6 +394,41 @@ h2.font30{
     height: 30px;
 }
 
+.navbar-default .navbar-nav > li > a.parrainage:before {
+ 	width: 40px;
+  	height: 40px;
+  	margin-left: -20px;
+}
+
+.navbar-default .navbar-nav > li > a.trouverBar:before {
+ 	background:url("../img/pictoHeader/trouverBar.png") no-repeat 0 0;
+ 	background-size: 100%;
+}
+
+.navbar-default .navbar-nav > li > a.map:before {
+ 	background:url("../img/pictoHeader/map.png") no-repeat 0 0;
+ 	background-size: 100%;
+}
+
+.navbar-default .navbar-nav > li > a.hasard:before {
+ 	background:url("../img/pictoHeader/hasard.png") no-repeat 0 0;
+ 	background-size: 100%;
+}
+
+.navbar-default .navbar-nav > li > a.parrainage:before {
+ 	background:url("../img/pictoHeader/parrainage.png") no-repeat 0 0;
+ 	background-size: 100%;
+}
+
+.navbar-default .navbar-nav > li > a.monCompteUser:before {
+ 	background:url("../img/imgProfilBasic.png") no-repeat 0 0;
+ 	background-size: 100%;
+ 	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+	border : 1px solid #303030;
+}
+
 .navbar-default .navbar-nav > li > a.gestionOffre:before {
  	background:url("../img/gestionOffre.png") no-repeat 0 0;
  	background-size: 100%;
@@ -413,10 +452,6 @@ h2.font30{
 .navbar-default .navbar-nav > li > a.monCompte:before {
  	background:url("../img/monCompte.png") no-repeat 0 0;
  	background-size: 100%;
-}
-
-.navbar-nav > li {
-	margin-left: 60px;
 }
 
 .navbar-nav > li > a{
@@ -1069,6 +1104,12 @@ p.topPosition{
 	border-bottom: 1px solid #5ac4d4;
 	font-size: 17px;
 	margin-left: 20px;
+	margin-top: 65px;
+  	margin-bottom: 15px;
+}
+
+.superInfoBar h2.firstElmtFicheBar{
+	margin-top: 20px;
 }
 
 .superInfoBar p{
@@ -1147,6 +1188,13 @@ p.topPosition{
 .selectedOngletBar{
 	background-color: #fff;
 	color: #5ac4d4;
+	  background: #ffffff;
+	  background: -moz-linear-gradient(top, #ffffff 90%, rgba(0,0,0,0.05) 99%);
+	  background: -webkit-gradient(linear, left top, left bottom, color-stop(90%,#ffffff), color-stop(99%,rgba(0,0,0,0.05)));
+	  background: -webkit-linear-gradient(top, #ffffff 90%,rgba(0,0,0,0.05) 99%);
+	  background: -o-linear-gradient(top, #ffffff 90%,rgba(0,0,0,0.05) 99%);
+	  background: -ms-linear-gradient(top, #ffffff 90%,rgba(0,0,0,0.05) 99%);
+	  background: linear-gradient(to bottom, #fff 90%,rgba(0,0,0,0.05) 99%);
 }
 
 .selectedOngletBar h3{
@@ -1880,6 +1928,10 @@ p.pCreez{
 	padding: 0px;
 }
 
+.interligneFicheBar{
+	margin-bottom: 5px !important;
+}
+
 .active{
 	background-color: #5ac4d4 !important;
 	color: #fff !important;
@@ -2103,7 +2155,7 @@ float: left;
 }
 
 .headerList{
-	background-color: #5ac4d4;
+	background-color: #303030;
 	color: #fff;
 	text-align: center;
 	font-family: "HelveticaNeue-Regular", Arial;
@@ -2150,7 +2202,6 @@ float: left;
 }
 
 #recherche{
-	background-color : #1aacd5;
 	position: relative;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
@@ -2162,16 +2213,18 @@ float: left;
 }
 
 .headerList input{
-	background-color : #1aacd5;
+	background-color : #f6f6f6;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
-	font-size: 20px;
+	font-size: 15px;
 	border: 0px solid #000;
 	border:none;
 	padding-left: 10px;
 	border: none;
 	outline: none;
+	color: #303030;
+	line-height: 28px;
 }
 
 .headerList button{
@@ -2524,6 +2577,10 @@ float: left;
 	font-size: 16px;
 }
 
+.myAbonnement button:hover{
+	background-color: #73D9E8;
+}
+
 h3.serviceCosmo{
 	margin: 20px 0 0 0;
 	font-size: 16px;
@@ -2713,6 +2770,11 @@ p.nextPointFidelite{
 
 	.ongletCreation {
 	  text-align: center;
+	}
+
+	.superInfoBar {
+	  width: 100%;
+	  background-color: #f6f6f6;
 	}
 }
 
