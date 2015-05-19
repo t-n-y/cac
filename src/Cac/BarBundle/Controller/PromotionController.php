@@ -104,6 +104,20 @@ class PromotionController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+            $newPromotions = json_decode($request->request->get('cac_barbundle_promotion_dummy')['promotion'], true);
+            var_dump($newPromotions);
+            foreach($promotions as $promotion) {
+                var_dump($newPromotions[$promotion->getDay()][$promotion->getCategory()]);
+                /*$option = $promotion->getOption('value');
+                var_dump($option);
+                $option->setValue($newPromotions[$promotion->getDay()][$promotion->getCategory()]['value']);*/
+                $options = $promotion->getOptions();
+                foreach($options as $option) {
+                    var_dump($option->getCategoryShortcode());
+                }
+            }
+            die;
+
             $em->flush();
             // return $this->redirect($this->generateUrl('bar_show', array('id' => $entity->getId())));
             return $this->redirect($this->generateUrl('promotion_show', array('id' => $entity->getId())));

@@ -123,77 +123,77 @@ setInterval(function(){
     var day = $(this).attr('data-day');
     var when = $(this).attr('data-when');
     var time = $(this).val();
-    var hidden = $('#cac_barbundle_promotion_promotion').val();
+    var hidden = $('#cac_barbundle_promotion_dummy_promotion').val();
     hidden = JSON.parse(hidden);
     hidden[day]['happy-hour'][when] = time;
-    $('#cac_barbundle_promotion_promotion').val(JSON.stringify(hidden));
+    $('#cac_barbundle_promotion_dummy_promotion').val(JSON.stringify(hidden));
   });
 
   $('.hh-value-picker').change(function(){
     var day = $(this).attr('data-day');
     var reduction = $(this).val();
-    var hidden = $('#cac_barbundle_promotion_promotion').val();
+    var hidden = $('#cac_barbundle_promotion_dummy_promotion').val();
     hidden = JSON.parse(hidden);
     hidden[day]['happy-hour']['value'] = reduction;
-    $('#cac_barbundle_promotion_promotion').val(JSON.stringify(hidden));
+    $('#cac_barbundle_promotion_dummy_promotion').val(JSON.stringify(hidden));
   });
 
   $('.hh-condition-picker').change(function(){
     var day = $(this).attr('data-day');
     var condition = $(this).val();
-    var hidden = $('#cac_barbundle_promotion_promotion').val();
+    var hidden = $('#cac_barbundle_promotion_dummy_promotion').val();
     hidden = JSON.parse(hidden);
     hidden[day]['happy-hour']['condition'] = condition;
-    $('#cac_barbundle_promotion_promotion').val(JSON.stringify(hidden));
+    $('#cac_barbundle_promotion_dummy_promotion').val(JSON.stringify(hidden));
   });
 
   $('.promotion-qt-picker').keyup(function(){
     var day = $(this).attr('data-day');
     var qt = $(this).val();
-    var hidden = $('#cac_barbundle_promotion_promotion').val();
+    var hidden = $('#cac_barbundle_promotion_dummy_promotion').val();
     hidden = JSON.parse(hidden);
     hidden[day].promotion.quantity = qt;
-    $('#cac_barbundle_promotion_promotion').val(JSON.stringify(hidden));
+    $('#cac_barbundle_promotion_dummy_promotion').val(JSON.stringify(hidden));
     $('.promotion-unlimited[data-day="' + day + '"]').attr('checked', false);
   });
 
   $('.promotion-qt-picker').mouseup(function(){
     var day = $(this).attr('data-day');
     var qt = $(this).val();
-    var hidden = $('#cac_barbundle_promotion_promotion').val();
+    var hidden = $('#cac_barbundle_promotion_dummy_promotion').val();
     hidden = JSON.parse(hidden);
     hidden[day].promotion.quantity = qt;
-    $('#cac_barbundle_promotion_promotion').val(JSON.stringify(hidden));
+    $('#cac_barbundle_promotion_dummy_promotion').val(JSON.stringify(hidden));
   });
 
   $('.promotion-unlimited').change(function() {
     var day = $(this).attr('data-day');
-    var hidden = $('#cac_barbundle_promotion_promotion').val();
+    var hidden = $('#cac_barbundle_promotion_dummy_promotion').val();
     hidden = JSON.parse(hidden);
     if(hidden[day].promotion.quantity !== 'Illimité') {
       hidden[day].promotion.quantity = 'Illimité';
     } else {
       hidden[day].promotion.quantity = $('.promotion-qt-picker[data-day="' + day + '"]').val();
     }
-    $('#cac_barbundle_promotion_promotion').val(JSON.stringify(hidden));
+    $('#cac_barbundle_promotion_dummy_promotion').val(JSON.stringify(hidden));
   });
 
   $('.promotion-value-picker').change(function(){
     var day = $(this).attr('data-day');
     var reduction = $(this).val();
-    var hidden = $('#cac_barbundle_promotion_promotion').val();
+    var hidden = $('#cac_barbundle_promotion_dummy_promotion').val();
     hidden = JSON.parse(hidden);
     hidden[day].promotion.value = reduction;
-    $('#cac_barbundle_promotion_promotion').val(JSON.stringify(hidden));
+    $('#cac_barbundle_promotion_dummy_promotion').val(JSON.stringify(hidden));
   });
 
   $('.promotion-condition-picker').change(function(){
     var day = $(this).attr('data-day');
     var condition = $(this).val();
-    var hidden = $('#cac_barbundle_promotion_promotion').val();
+    var hidden = $('#cac_barbundle_promotion_dummy_promotion').val();
     hidden = JSON.parse(hidden);
     hidden[day].promotion.condition = condition;
-    $('#cac_barbundle_promotion_promotion').val(JSON.stringify(hidden));
+    $('#cac_barbundle_promotion_dummy_promotion').val(JSON.stringify(hidden));
   });
 
   function loadTemplate(template) {
@@ -202,8 +202,8 @@ setInterval(function(){
         "schedule": "bar",
         "promotion": "promotion"
       };
-      if($('#cac_barbundle_' + bundle[template] + '_' + template).val() == '') {
-        $('#cac_barbundle_' + bundle[template] + '_' + template).val(JSON.stringify(data));
+      if($('#cac_barbundle_' + bundle[template] + '_dummy_' + template).val() == '') {
+        $('#cac_barbundle_' + bundle[template] + '_dummy_' + template).val(JSON.stringify(data));
       }
     });
   }
