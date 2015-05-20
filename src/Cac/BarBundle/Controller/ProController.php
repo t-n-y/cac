@@ -153,6 +153,7 @@ class ProController extends Controller
         $entity = new Bar();
         $pm = $this->get('cac_bar.promotion_manager');
         $emptyPromotions = $pm->getEmptyPromotions();
+        $emptyHappyHours = $pm->getEmptyHappyHours();
 
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
@@ -164,6 +165,12 @@ class ProController extends Controller
             $entity->setAuthor($user);
 
             foreach($emptyPromotions as $promotion) {
+                $entity->addPromotion($promotion);
+                $promotion->setBar($entity);
+                $em->persist($promotion);
+            }
+
+            foreach($emptyHappyHours as $promotion) {
                 $entity->addPromotion($promotion);
                 $promotion->setBar($entity);
                 $em->persist($promotion);
