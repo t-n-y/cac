@@ -321,18 +321,30 @@ h2.font30{
 }
 
 .dropdown-menu li{
-	background-color: #e6e6e6;
 	border-bottom: 1px solid #fff;
 }
 
-.dropdown-menu li a:hover{
+.dropdown-menu li a{
+	background-color: #e6e6e6;
+	-webkit-transition: background-color 0.15s ease-in-out;
+    -moz-transition: background-color 0.15s ease-in-out;
+    -o-transition: background-color 0.15s ease-in-out;
+    -ms-transition: background-color 0.15s ease-in-out;
+    transition: background-color 0.15s ease-in-out;
+}
+
+.dropdown-menu li a:hover, .dropdown-menu li.logout a:hover{
 	background-color: #5ac4d4;	
 	color: #fff;
 }
 
 .dropdown-menu li.logout{
-	background-color: #fff;
 	border-bottom: 0px solid #fff;
+}
+
+.dropdown-menu li.logout a{
+	background-color: #303030;
+	color: #fff;
 	text-align: center;
 }
 
@@ -1047,7 +1059,6 @@ select:focus {
 .infoBar{
 	background-color: #fff;
 	padding: 40px 0 25px 0;
-  	
 }
 
 .noteBar{
@@ -1193,6 +1204,74 @@ p.topPosition{
 	margin: 0 0 0 0;
 	padding-top: 2px;
 }
+
+/*****CONFIRMATION RESERVATION*******/
+
+.confirmationReservation{
+	display: none;
+	width: 60%;
+	position: absolute;
+	top: 10%;
+	left: 20%;
+	background-color: #ea9026;
+	height: 80%;
+	z-index: 10;
+	text-align: center;	
+}
+
+.confirmationReservation h2{
+	background-color:#303030;
+	color: #fff;
+	margin : 0 0 10px 0;
+	padding: 5px 0;
+	font-size: 23px;
+
+}
+
+.closeRappel{
+	position: absolute;
+	top: 7px;
+	right: 10px;
+	cursor: pointer;
+}
+
+.closeRappel img{
+	width: 15px;
+}
+
+p.rappelPromo{
+	color: #fff;
+	margin: 0;
+	font-size: 16px;
+	margin : 0 0 10px 0;
+}
+
+p.rappelCondition{
+	color: #fff;
+	font-size: 14px;
+	color: #303030;
+}
+
+.contentButtonRappel{
+	position: absolute;
+	bottom: 5px;
+	left: 0;
+	width: 100%;
+}
+
+.contentButtonRappel p{
+	background-color: #e6e6e6;
+	color: #303030;
+	font-size: 13px;
+	margin: 0;
+	padding: 2px 0;
+}
+
+.obtenirPromo p.voirMaConfirmation{
+	margin-top: 19px;
+  	font-size: 16px;
+}
+
 
 .contentSuperInfoBar{
 	background-image: url('../img/fondFicheBar.png');
@@ -1380,8 +1459,36 @@ p.topPosition{
 	height: 100%;
 }
 
-.petitplusInfoBar{
+.containerPriceAndServices{
 	width: 70%;
+	margin: auto;
+	text-align: center;
+	background-color: rgba(255,255,255,0.7);
+}
+
+.containerPriceAndServices img{
+	width: 60px;
+	margin-top: 20px;
+}
+
+.contentPrice{
+	width: 80%;
+	background-color: #fff;
+	padding: 5px 0;
+	margin: auto;
+}
+
+.contentPrice span{
+	color: #5ac4d4;
+	font-size: 23px;
+}
+
+.contentPrice p{
+	margin: 0;
+}
+
+.petitplusInfoBar{
+	width: 100%;
 	margin: auto;
 	margin-top: 50px;
 }
@@ -1424,9 +1531,9 @@ p.topPosition{
 
 .petitplusInfoBar img{
 	float: left;
-	padding-left: 10px;	
-	max-width: 48px;
-	margin-top: 2px;
+	padding-left: 2px;
+	max-width: 38px;
+	margin-top: 3px;
 }
 
 .petitplusInfoBar p{
@@ -1470,7 +1577,6 @@ p.vignettePetitPlusPrix{
 .descriptionBar{
 	width: 70%;
 	margin: auto;
-	margin-top: 50px;
 	background-color: #fff;
 }
 
@@ -2770,10 +2876,6 @@ p.nextPointFidelite{
 	font-size: 12px;
 	}*/
 
-	.superInfoBar{
-		width: 65%;
-	}
-
 	.infoPromoPro{
 		width: 65%;
 	}
@@ -2799,6 +2901,11 @@ p.nextPointFidelite{
 
 		border-right: 0px solid rgba(0,0,0,0);
 	}
+
+	.confirmationReservation{
+		width: 75%;
+		left: 13.5%;
+	}
 }
 
 @media (max-width: 945px) {
@@ -2816,6 +2923,10 @@ p.nextPointFidelite{
 	}
 
 	.navbar-nav > li > a {
+		font-size: 11px;
+	}
+
+	.contentPrice p{
 		font-size: 11px;
 	}
 /*	.contentPetitPlus{
@@ -2884,6 +2995,23 @@ p.nextPointFidelite{
 	  width: 100%;
 	  background-color: #f6f6f6;
 	}
+
+	.confirmationReservation{
+		width: 100%;
+		left: 0;
+	}	
+
+	.containerPriceAndServices {
+	  width: 100%;
+	}
+
+	.contentPrice p{
+		font-size: 12px;
+	}
+
+	.descriptionBar {
+  		width: 100%;
+  	}
 }
 
 

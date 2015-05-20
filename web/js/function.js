@@ -449,6 +449,10 @@ $(document).ready(function(){
   });
 });
 
+$('body').on('click','.closeRappel',function(){
+  $('.confirmationReservation').css('display', 'none');
+});
+
 /**********SLIDER HOME*************************/
 
 var nbImage = $( ".topPage img" ).length;
@@ -642,7 +646,13 @@ $( '.obtenirPromo' ).on( 'click', function() {
       data: 'json',
       success: function (data) {
         $('.testSuccess').html(data);
-        alert("Vous avez votre promotion !!!");
+        $('.confirmationReservation').css('display', 'block');
+        $('.ticket .ticketBarTop').css('background-color', '#ea9026');
+        $('.obtenirPromo h2').html('');
+        $('.obtenirPromo h3').html('');
+        $('.obtenirPromo p').append('VOIR MA RESERVATION');
+        $('.ticket p.obtenirPromo').html('');
+        $('.ticket p.obtenirPromo').append('POUR AUJOUR\'HUI');
       },
       error: function(data){
         $('.testSuccess').html(data);
