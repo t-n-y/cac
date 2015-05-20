@@ -3,8 +3,8 @@
 {% block title %}CacBarBundle:Bar:show{% endblock %}
 
 {% block body %}
-		<div class="topBar col-xs-12 col-sm-12 col-md-12 noPadding">
-			<img src="{{ asset('uploads/bar/'~bar.path) }}">
+		<div class="topBar col-xs-12 col-sm-12 col-md-12 noPadding" style="background-image : url('{{ asset('uploads/bar/'~bar.path) }}');">
+			
 			<div class="infoNameBar">
 				<h1>{{ bar.name }}</h1>
 		
@@ -63,7 +63,10 @@
 			<div class="noteBar col-xs-6 col-sm-3 col-md-3">
 				<div class="ticket">
 					<div class="ticketBarTop">
-						<img src="{{asset('img/pictoPromo.png')}}" alt="">
+						{% if bar.promotion.promotionArray[today] is defined and bar.promotion.promotionArray[today]['happy-hour'].value != 0 %}
+							<img src="{{asset('img/pictoPromo.png')}}" alt="">
+						{% endif %}
+						
 						{% if bar.promotion.promotionArray[today] is defined and bar.promotion.promotionArray[today].promotion.value == 0 %}
 
 							<h2 class="font30 fontWeight200">PAS DE PROMO</h2>

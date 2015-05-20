@@ -926,6 +926,7 @@ p.droitReserve{
 	position: relative;
 	height: 360px;
 	overflow: hidden;
+	background-size: cover;
 }
 
 .topBar img{
@@ -2937,6 +2938,11 @@ p.nextPointFidelite{
 @media (max-width: 880px) {
     .ticket, .ticketPromotion, .ticketVerre, .ticketBarTop, .ticketCode, .ticketBarBottom{
 		width: 220px;
+	}
+
+	.ticket h2{
+		font-size: 25px !important;
+ 		padding-top: 20px !important;
 	}
 }
 
