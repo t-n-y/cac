@@ -30,7 +30,7 @@ abstract class User extends BaseUser
     /**
      * @var date $birthday
      *
-     * @ORM\Column(name="birthday", type="datetime")
+     * @ORM\Column(name="birthday", type="datetime", nullable=true)
      * @Assert\DateTime()
      */
     private $birthday;
