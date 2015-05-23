@@ -1896,6 +1896,64 @@ p.closeMesOptions{
 	padding-bottom: 20px;
 }
 
+.myService{
+	position: relative;
+	margin-top: 10px;
+	color: #7b7b7b;
+}
+
+.myService label{
+	padding-left: 60px;
+}
+
+.ac-custom .servicesNewBar label::before{
+	content: '';
+  border: 1px solid #303030;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+
+.ac-custom .servicesNewBar input[type="checkbox"]{
+  opacity: 0;
+  -webkit-appearance: none;
+  display: inline-block;
+  vertical-align: middle;
+  z-index: 100;
+
+}
+
+.ac-custom .servicesNewBar input[type="checkbox"], .ac-custom .servicesNewBar label::before {
+  width: 20px;
+  height: 20px;
+  top: 50%;
+  left: 0;
+  margin-top: -15px;
+  position: absolute;
+  cursor: pointer;
+}
+
+.ac-custom svg {
+	position: absolute;
+	width: 14px;
+	height: 14px;
+	top: 50%;
+	margin-top: -12px;
+	left: 3px;
+	pointer-events: none;
+}
+
+.ac-custom svg path {
+	stroke: #5ac4d4;
+	stroke-width: 13px;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	fill: none;
+}
+
+.ac-custom .servicesNewBar input[type="checkbox"]:checked + label{
+  color: #303030;
+}
+
 .nameNewBar{
 	background-color: #303030;
 	height: 50px;
@@ -1912,11 +1970,6 @@ p.closeMesOptions{
 	height: 30px;
 	margin-top: 10px;
 }
-
-.nameNewBar ::-webkit-input-placeholder { 
-	
-}
-
 
 .nameNewBar h1{
 	margin: 0;
@@ -1941,6 +1994,19 @@ p.closeMesOptions{
 	color : #5ac4d4; 
 }
 
+.AdresseAndDresscode{
+	margin-top: 20px;
+}
+
+.AdresseAndDresscode select{ 
+	background-color: #fff;
+ 	-webkit-border-radius: 1px;
+ 	-moz-border-radius: 1px;
+	border-radius: 1px;
+	border: 1px solid #a8a8a8;
+	height: 26px;
+}
+
 .tarifMoyenNewBar, .servicesNewBar{
 	background-color: #eeeeee;
 	margin-top: 20px;
@@ -1958,7 +2024,6 @@ p.closeMesOptions{
 
 .choiceService{
 	text-align: left;
-	margin-top: 10px;
 }
 
 .choiceService input{
