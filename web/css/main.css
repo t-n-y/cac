@@ -174,26 +174,40 @@ h2.font30{
 }
 
 .forConnexion, .forRegister{
-	width: 300px;
+	width: 400px;
 	height: 320px;
-	background-color: #1a1a19;
+	background-color: #f6f6f6;
 	position: fixed;
 	top: 50%;
 	margin-top: -170px;
 	left:50%;
-	margin-left: -150px;
+	margin-left: -200px;
 	z-index: 10001;
 	display: none;
 	border: 3px solid #5ac4d4;
-	color: #fff;
+	color: #303030;
     text-align: center;
+}
+
+.forNewProNav{
+	height: 260px;
+	margin-left: -130px;
+}
+
+.forConnexion h2, .forRegister h2{
+	font-size: 18px;
+	background-color: #303030;
+	margin: 0;
+	padding: 15px 0;
+	color: #fff;
+	margin-bottom: 15px;
 }
 
 .forConnexion label{
 	font-weight: normal;
 	margin-bottom: 0px;
 	float: left;
-	margin-left: 38px;
+	margin-left: 86px;
 }
 
 .forConnexion input[type=checkbox]{
@@ -234,20 +248,17 @@ h2.font30{
     text-align: center;
 }
 
-.forConnexion h2, .forRegister h2{
-	font-size: 18px;
-}
-
 .forConnexion input[type=submit] {
 	margin: 15px auto;
 	color: #fff;
-	background-color: #5ac4d4;
+	background-color: #303030;
 	border: none;
 	width: 150px;
 	padding: 5px;
 }
 
 .forConnexion .facebookLogin{
+	position: relative;
 	width: 80%;
 	margin: auto;
 	border-top: 1px dashed #b4b4b4;
@@ -258,6 +269,16 @@ h2.font30{
 	margin: auto;
 }
 
+.closeForConnexion{
+	position: absolute;
+	top : 14px;
+	right: 14px;
+	cursor: pointer;
+}
+
+.closeForConnexion img{
+	width: 15px;
+}
 
 .facebookLogin h2 {
 	margin: 15px auto;
@@ -272,22 +293,23 @@ h2.font30{
 
 .inscrivezVous{
 	position: absolute;
-	width: 300px;
-  	height: 50px;
-  	background-color: #1a1a19;
-  	bottom: -64px;
+	width: 400px;
+  	background-color: #5ac4d4;
+  	bottom: -65px;
   	color: #fff;
-  	border: 3px solid #fff;
+  	border: 3px solid #5ac4d4;
   	margin-left: -3px;
   	cursor: pointer;
 }
 
 .inscrivezVous h2{
 	margin-top: 14px;
+	background-color: #5ac4d4;
+	margin: 0;
 }
 
 .popLogin input[type=submit]:hover{
-	background-color:#858585;
+	background-color:#555;
 }
 
 .loginRemember{
@@ -626,6 +648,30 @@ ul.dropdown-menu li > a.monCompte:hover:before {
 
 .navNewBar span{
 	color: #303030;
+}
+
+.newProNav{
+	padding-right: 70px;
+}
+
+.newProNav span, .newProNav a{
+	background-color: #fff;
+	color: #303030;
+	font-size : 15px;
+	font-weight: normal;
+	padding: 7px 25px;
+	cursor: pointer;
+}
+
+.newProNav span:hover, .newProNav a:hover{
+	color: #5ac4d4;
+	text-decoration: none;
+	background-color: #fdfdfd;
+}
+
+
+.newProNav a.espacePartenaire{
+	margin-right: 30px;
 }
 
 
@@ -1933,11 +1979,15 @@ p.closeMesOptions{
 	width:100%;
 	color: #fff;
 	background-color: #5ac4d4; 
-	border: 1px solid #000;
+	border: 1px solid #838383;
 	padding: 5px;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
+}
+
+.descriptionNewBar input:hover{
+	background-color: #61cddd;
 }
 
 
@@ -2793,10 +2843,10 @@ float: left;
 }
 
 .myAbonnement button{
-	border: 1px solid #a1a1a1;
-	border-radius: 7px;
-    -webkit-border-radius: 7px;
-	-moz-border-radius: 7px;
+	border: 1px solid #838383;
+	border-radius: 5px;
+    -webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
 	background-color: #5ac4d4;
 	color: #fff;
 	padding: 5px 100px;
@@ -2805,7 +2855,7 @@ float: left;
 }
 
 .myAbonnement button:hover{
-	background-color: #73D9E8;
+	background-color: #61cddd;
 }
 
 h3.serviceCosmo{
