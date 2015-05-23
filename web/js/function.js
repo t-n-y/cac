@@ -65,10 +65,12 @@ $(document).ready(function(){
     }
   });
 
-  var $forConnexion = $(".forConnexion");
-  var $forRegister = $(".forRegister");
-  var $animConnexion = $(".animConnexion");
-  var $inscrivezVous = $(".inscrivezVous");
+  var $forConnexion = $('.forConnexion');
+  var $forRegister = $('.forRegister');
+  var $animConnexion = $('.animConnexion');
+  var $inscrivezVous = $('.inscrivezVous');
+  var $closeForConnexion = $('.closeForConnexion');
+  var $JSinscriptionProNav = $('.JSinscriptionProNav');
   
   $animConnexion.on('click',function(){
     $isConnexion.css("display","block");
@@ -76,22 +78,39 @@ $(document).ready(function(){
     $forRegister.css("display","none");
   });
 
-  $inscrivezVous.on('click',function(){
-    $forRegister.css("display","block");
-    $isConnexion.css("display","block");
-    $forConnexion.css("display","none");
-  });
+  // $inscrivezVous.on('click',function(){
+  //   $forRegister.css("display","block");
+  //   $isConnexion.css("display","block");
+  //   $forConnexion.css("display","none");
+  // });
 
   $isConnexion.on('click',function(){
     $isConnexion.css("display","none");
     $forConnexion.css("display","none");
     $forRegister.css("display","none");
   });
+
+  $closeForConnexion.on('click',function(){
+    $isConnexion.css("display","none");
+    $forConnexion.css("display","none");
+    $forRegister.css("display","none");
+  });
+
+  $JSinscriptionProNav.on('click',function(){
+    $isConnexion.css("display","none");
+    $forConnexion.css("display","none");
+    $forRegister.css("display","none");
+
+    $('html, body').animate({
+        scrollTop: $('.contentFormRegisterPro').offset().top
+    }, 700);
+
+  });
 });
 
 /***********************/
 
-var $vignetteBar = $(".vignetteBar");
+var $vignetteBar = $('.vignetteBar');
 var shadowHover = '.shadowHover';
 var shadowHoverP = '.shadowHover p';
 var shadowHoverH3 = '.shadowHover h3';
@@ -255,6 +274,13 @@ setInterval(function(){
 
 });
 
+
+$(document).on('click','.inscriptionNewProNav', function() {
+    $('html, body').animate({
+        scrollTop: $('.contentFormRegisterPro').offset().top
+    }, 700);
+});
+
 /********PAGE SHOW BAR*****/
 
 var $body = $('body');
@@ -312,7 +338,7 @@ $('body').on('click','.sms',function(){
   heightSuperInfoBar();
 });
 
-$('body').on('click','.email',function(){
+$body.on('click','.email',function(){
   $('.contentSms').hide();
   $('.contentCarte').hide();
   $('.contentMiseAvant').hide();
@@ -320,7 +346,7 @@ $('body').on('click','.email',function(){
   heightSuperInfoBar();
 });
 
-$('body').on('click','.carte',function(){
+$body.on('click','.carte',function(){
   $('.contentSms').hide();
   $('.contentEmail').hide();
   $('.contentMiseAvant').hide();
@@ -328,7 +354,7 @@ $('body').on('click','.carte',function(){
   heightSuperInfoBar();
 });
 
-$('body').on('click','.miseAvant',function(){
+$body.on('click','.miseAvant',function(){
   $('.contentEmail').hide();
   $('.contentCarte').hide();
   $('.contentSms').hide();
@@ -336,15 +362,15 @@ $('body').on('click','.miseAvant',function(){
   heightSuperInfoBar();
 });
 
-$('body').on('click','.mesOptions',function(){
+$body.on('click','.mesOptions',function(){
   $('.contentMesOptions').show();
 });
 
-$('body').on('click','p.closeMesOptions',function(){
+$body.on('click','p.closeMesOptions',function(){
   $('.contentMesOptions').hide();
 });
 
-$('body').on('click','.closeMesOptionEnCours',function(){
+$body.on('click','.closeMesOptionEnCours',function(){
   var dataGenre = $(this).parent().find('.dataMiseEnAvant').data("genre");
   var dataDate = $(this).parent().find('.dataDate').data("date");
   var dataPrix = $(this).parent().find(".dataPrix").data("prix");

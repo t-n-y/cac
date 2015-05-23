@@ -8,11 +8,11 @@
 	<form class="popLogin" action="{{ path("fos_user_security_check") }}" method="post">
 	    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 
-	    <label for="username">E-MAIL</label><br>
+	    <label for="username">E-mail</label><br>
 	    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
 	    <br>
 	    <br>
-	    <label for="password">MOT DE PASSE</label><br>
+	    <label for="password">Mot de passe</label><br>
 	    <input type="password" id="password" name="_password" required="required" />
 	    <br>
 	    {#<div class="loginRemember">
