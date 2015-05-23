@@ -273,8 +273,10 @@
 		$(document).ready(function() {
 			$('#cac_barbundle_bar_name').on('blur', function() {
 				var name = $('#cac_barbundle_bar_name').val();
-				$('#finalName').html(name).removeClass('hidden');
-				$(this).addClass('hidden');
+				if(name != ""){
+					$('#finalName').html(name).removeClass('hidden');
+					$(this).addClass('hidden');
+				}
 			});
 			$('#finalName').on('click', function() {
 				$(this).addClass('hidden');
