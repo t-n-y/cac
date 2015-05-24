@@ -194,7 +194,7 @@
 						{% endif %}
 						{% endfor %}
 					</div>
-					<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+					<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
 					<script>
 					  var geocoder;
 					  var map;
@@ -228,6 +228,7 @@
 						</div>
 						
 					</div>
+					<div id="geocode" class="hidden">{{ bar.geocode }}</div>
 				</div>
 				<div class="avisBar">
 					<h2 class="firstElmtFicheBar col-xs-5 col-sm-5 col-md-5 noPadding">Avis</h2>
@@ -443,4 +444,47 @@
 			<h2>Ajouter un manager</h2>
 			<a href="{{ path('barman_register', { id : bar.id }) }}">Ajouter un manager</a>
 		</div>-->
+{% endblock %}
+
+{% block javascripts %}
+ <script>
+	var map;
+	var service;
+	var infowindow;
+
+	function initialize() {
+	  var geocode = document.getElementById('geocode');
+	  geocode = geocode.innerHTML;
+	  console.log(geocode);
+	  geocode = geocode.split(',');
+	  var geolat = geocode[0];
+	  var geolong = geocode[1];
+	  var pyrmont = new google.maps.LatLng(geolat,geolong);
+
+	  map = new google.maps.Map(document.getElementById('map-canvas'), {
+	    center: pyrmont,
+	    zoom: 15
+	  });
+
+	  var request = {
+	    location: pyrmont,
+	    types: ['subway_station', 'train_station'],
+	    rankBy: google.maps.places.RankBy.DISTANCE
+	  };
+	  infowindow = new google.maps.InfoWindow();
+      var service = new google.maps.places.PlacesService(map);
+	  service.nearbySearch(request, callback);
+	}
+
+	function callback(results, status) {
+	  if (status == google.maps.places.PlacesServiceStatus.OK) {
+	    for (var i = 0; i < results.length; i++) {
+	      var place = results[i];
+	      console.log(results[i]);
+	    }
+	  }
+	}
+
+	google.maps.event.addDomListener(window, 'load', initialize);
+</script>
 {% endblock %}

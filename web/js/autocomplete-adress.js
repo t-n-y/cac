@@ -35,6 +35,9 @@ $(document).ready(function(){
   function fillInAddress() {
     // Get the place details from the autocomplete object.
     var place = autocomplete.getPlace();
+    var coords = place.geometry.location.A + ',' + place.geometry.location.F;
+    var geodiv = document.getElementById('cac_barbundle_bar_geocode');
+    geodiv.value = coords;
 
     for (var component in componentForm) {
       document.getElementById(component).value = '';

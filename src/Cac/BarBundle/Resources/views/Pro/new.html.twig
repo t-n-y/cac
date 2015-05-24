@@ -7,38 +7,6 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/clockpicker.css')}}">
     <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
-    <script>
-    	var map;
-		var service;
-		var infowindow;
-
-		function initialize() {
-		  var pyrmont = new google.maps.LatLng(-33.8665433,151.1956316);
-
-		  map = new google.maps.Map(document.getElementById('map'), {
-		      center: pyrmont,
-		      zoom: 15
-		    });
-
-		  var request = {
-		    location: pyrmont,
-		    radius: '500',
-		    types: ['store']
-		  };
-
-		  service = new google.maps.places.PlacesService(map);
-		  service.nearbySearch(request, callback);
-		}
-
-		function callback(results, status) {
-		  if (status == google.maps.places.PlacesServiceStatus.OK) {
-		    for (var i = 0; i < results.length; i++) {
-		      var place = results[i];
-		      createMarker(results[i]);
-		    }
-		  }
-		}
-    </script>
 {% endblock %}
 {% block body %}
 
@@ -70,8 +38,9 @@
 			<div class="nameNewBar">
 				{{ form_errors(form.name) }}
 				{{ form_widget(form.name) }}
-				<div id="finalName" class="hidden">Super bar</div>
+				<div id="finalName" class="hidden"></div>
 			</div>
+			<div id="map-canvas"></div>
 			<div class="CreationBar col-xs-12 col-sm-12 col-md-12 noPadding">
 				<div class="AdresseAndDresscode">
 					<div class="col-xs-6 col-sm-6 col-md-4 col-md-offset-2">		
@@ -79,6 +48,8 @@
 						<br>
 						{{ form_errors(form.adress) }}
 						{{ form_widget(form.adress) }}
+
+						{{ form_widget(form.geocode) }}
 
 						<div class="completionAdresse">
 							{{ form_label(form.zipcode) }}
@@ -270,16 +241,6 @@
 	<div class="clear"></div>
 </div>
 </form>
-	
-
-
-
-
-
-
-
-
-
 	
 {% endblock %}
 {% block javascripts %}
