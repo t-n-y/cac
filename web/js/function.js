@@ -200,10 +200,10 @@ setInterval(function(){
     $.getJSON( "http://localhost/cac/web/json/" + template + ".template.json", function( data ) {
       var bundle = {
         "schedule": "bar",
-        "promotion": "promotion"
+        "promotion": "promotion_dummy"
       };
-      if($('#cac_barbundle_' + bundle[template] + '_dummy_' + template).val() == '') {
-        $('#cac_barbundle_' + bundle[template] + '_dummy_' + template).val(JSON.stringify(data));
+      if($('#cac_barbundle_' + bundle[template] + '_' + template).val() == '') {
+        $('#cac_barbundle_' + bundle[template] + '_' + template).val(JSON.stringify(data));
       }
     });
   }

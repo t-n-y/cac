@@ -1,0 +1,133 @@
+<?php
+
+namespace Cac\BarBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * DaySchedule
+ *
+ * @ORM\Table()
+ * @ORM\Entity
+ */
+class DaySchedule
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="dayName", type="string", length=255)
+     */
+    private $dayName;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="beginning", type="integer")
+     */
+    private $beginning;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ending", type="integer")
+     */
+    private $ending;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Cac\BarBundle\Entity\Bar", inversedBy="daySchedule")
+     */
+    protected $bar;
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set dayName
+     *
+     * @param string $dayName
+     *
+     * @return DaySchedule
+     */
+    public function setDayName($dayName)
+    {
+        $this->dayName = $dayName;
+
+        return $this;
+    }
+
+    /**
+     * Get dayName
+     *
+     * @return string
+     */
+    public function getDayName()
+    {
+        return $this->dayName;
+    }
+
+    /**
+     * Set beginning
+     *
+     * @param integer $beginning
+     *
+     * @return DaySchedule
+     */
+    public function setBeginning($beginning)
+    {
+        $this->beginning = $beginning;
+
+        return $this;
+    }
+
+    /**
+     * Get beginning
+     *
+     * @return integer
+     */
+    public function getBeginning()
+    {
+        return $this->beginning;
+    }
+
+    /**
+     * Set ending
+     *
+     * @param integer $ending
+     *
+     * @return DaySchedule
+     */
+    public function setEnding($ending)
+    {
+        $this->ending = $ending;
+
+        return $this;
+    }
+
+    /**
+     * Get ending
+     *
+     * @return integer
+     */
+    public function getEnding()
+    {
+        return $this->ending;
+    }
+}
+

@@ -277,7 +277,6 @@ class Bar
         $this->barman = new \Doctrine\Common\Collections\ArrayCollection();
         $this->comments = new \Doctrine\Common\Collections\ArrayCollection();
         $this->promotions = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->daySchdules = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -1231,68 +1230,5 @@ class Bar
     public function removePromoOfferte(\Cac\BarBundle\Entity\PromoOffertes $promoOfferte)
     {
         $this->PromoOffertes->removeElement($promoOfferte);
-    }
-
-    /**
-     * Add daySchedule
-     *
-     * @param \Cac\BarBundle\Entity\DaySchedule $daySchedule
-     *
-     * @return Bar
-     */
-    public function addDaySchedule(\Cac\BarBundle\Entity\DaySchedule $daySchedule)
-    {
-        $this->daySchedules[] = $daySchedule;
-
-        return $this;
-    }
-
-    /**
-     * Remove daySchedule
-     *
-     * @param \Cac\BarBundle\Entity\DaySchedule $daySchedule
-     */
-    public function removeDaySchedule(\Cac\BarBundle\Entity\DaySchedule $daySchedule)
-    {
-        $this->daySchedules->removeElement($daySchedule);
-    }
-
-    /**
-     * Get daySchedules
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getDaySchedules()
-    {
-        return $this->daySchedules;
-    }
-
-    /**
-     * Update daySchedules
-     *
-     * @param string
-     *
-     * @return Bar
-     */
-    public function updateDaySchedules(\Cac\BarBundle\Entity\DaySchedule $newDaySchedule)
-    {
-        foreach($this->getDaySchedules() as $daySchedule) {
-            if($daySchedule->getDayName() == $newDaySchedule->getDayName()) {
-                $daySchedule = $newDaySchedule;
-            }
-        }
-        return $this;
-    }
-
-    /**
-     *
-     * @return \Cac\BarBundle\Entity\DaySchedule or false if not found
-     */
-    public function getDaySchedule($day)
-    {
-        foreach($this->getDaySchedules() as $daySchedule) {
-            if($daySchedule->getDayName() == $day) return $daySchedule;
-        }
-        return false;
     }
 }

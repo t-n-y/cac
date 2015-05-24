@@ -161,6 +161,10 @@ class ProController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+
+            var_dump('Hey');
+            die;
+            
             $entity->setAdress(explode(",",$entity->getAdress())[0]);
             $entity->setAuthor($user);
 
