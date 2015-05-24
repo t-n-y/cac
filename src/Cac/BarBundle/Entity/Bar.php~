@@ -1346,28 +1346,4 @@ class Bar
     {
         $this->PromoOffertes->removeElement($promoOfferte);
     }
-
-    /**
-     * Set geocode
-     *
-     * @param string $geocode
-     *
-     * @return Bar
-     */
-    public function setGeocode($geocode)
-    {
-        $this->geocode = $geocode;
-
-        return $this;
-    }
-
-    /**
-     * Get geocode
-     *
-     * @return string
-     */
-    public function getGeocode()
-    {
-        return $this->geocode;
-    }
 }

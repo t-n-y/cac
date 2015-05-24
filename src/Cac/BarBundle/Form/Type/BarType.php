@@ -17,6 +17,7 @@ class BarType extends AbstractType
         $builder
             ->add('name', null, array('label' => 'Nom de l\'établissement'))
             ->add('adress', null, array('label' => 'Adresse'))
+            ->add('geocode', 'hidden', array())
             ->add('zipcode', null, array('label' => 'Code Postal'))
             ->add('town', null, array('label' => 'Ville'))
             ->add('region', null, array('label' => 'Région'))
