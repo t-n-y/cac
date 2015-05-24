@@ -281,6 +281,15 @@ $(document).on('click','.inscriptionNewProNav', function() {
     }, 700);
 });
 
+
+$('.interrogation p').mouseenter(function() {
+    $(this).parent().find($('.informationInterrogation')).css('display','block');
+});
+
+$('.interrogation p').mouseleave(function() {
+    $(this).parent().find($('.informationInterrogation')).css('display','none');
+});
+
 /********PAGE SHOW BAR*****/
 
 var $body = $('body');

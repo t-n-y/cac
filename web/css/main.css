@@ -1831,6 +1831,38 @@ p.closeMesOptions{
 	margin-top: 187px;
 }
 
+
+.contentInscription{
+	background-color: #f6f6f6;
+	color: #303030;
+}
+
+.texteInscriptionAccueil{
+	text-align: center;
+	margin-top: 80px;
+}
+
+.texteInscriptionAccueil h1{
+	text-align: center;
+	margin-top: 80px;
+}
+
+.contentFormUser{
+	background-color: #fff;
+	padding: 40px 0;
+	margin-bottom: 20px;
+	border : 1px solid #e6e6e6;
+}
+
+.contentFormUser p{
+	text-align: center;
+	font-weight: bold;
+	margin-bottom: 40px;
+	font-size: 16px;
+}
+
+.
+
 /***************************************/
 
 /************New Bar****************/
@@ -1907,7 +1939,7 @@ p.closeMesOptions{
 
 
 .ac-custom .servicesNewBar label::before{
-	content: '';
+  content: '';
   border: 1px solid #303030;
   -webkit-transition: opacity 0.3s;
   transition: opacity 0.3s;
@@ -2154,13 +2186,19 @@ p.closeMesOptions{
 	text-align: center;
 }
 
-.inscription{
-	margin-top: 60px;
-}
-
 .inscription label{
 	margin-top: 10px;
 	margin-bottom: 0px;
+}
+
+.inscription span{
+	color: #5ac4d4;
+}
+
+.inscription p.inscriptionCGU{
+	font-weight: normal;
+	font-size: 14px;
+	margin-top: 20px;
 }
 
 .inscription label:nth-child(1){
@@ -2176,8 +2214,8 @@ p.closeMesOptions{
 }
 
 .inscription input[type=text], .inscription input[type=email], .inscription input[type=password]{
-	max-width: 350px;
-	width: 97%;
+	width: 100%;
+	margin-bottom: 20px;
 }
 
 .inscription input[type=submit], .mainContainer button[type=submit] {
@@ -2195,6 +2233,95 @@ p.closeMesOptions{
 	max-width: 430px;
 	width: 97%;
 	height: 200px;
+}
+
+.inscription select{
+  background-color: #fff;
+  -webkit-border-radius: 1px;
+  -moz-border-radius: 1px;
+  border-radius: 1px;
+  border: 1px solid #a8a8a8;
+  height: 26px;
+}
+
+.inscription .gender select{
+  width: 90%;
+}
+
+.inscription input[type=submit]{
+	padding: 7px 0px;
+	width: 200px;
+	font-size: 18px;
+	margin : 0;
+	color: #fff;
+	background-color: #5ac4d4;
+	border: 1px solid #838383;
+	padding: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+.inscription input[type=submit]:hover{
+	background-color: #61cddd;
+}
+
+.ongletInscriptionUser{
+	height: 110px;
+	background-color: #fff;
+	text-align: center;
+	border-bottom: 3px solid #f6f6f6;
+	font-size: 15px;
+	padding: 0px 15px 15px 15px;
+	margin: 10px 0px;
+}
+
+p.champsRequis{
+	margin: 30px 0;
+}
+
+.interrogation{
+	position: relative;
+	margin-top: 10px;
+}
+
+.interrogation p{
+	position: absolute;
+	top: 30%;
+  	left: -35px;
+  	-webkit-border-radius: 50%;
+ 	-moz-border-radius: 50%;
+  	border-radius: 50%;
+  	border: 1px solid #303030;
+  	font-weight: normal;
+  	width: 25px;
+  	height: 25px;
+  	margin:0;
+  	cursor: pointer;
+}
+
+.interrogation p:hover{
+	background-color: #f6f6f6
+}
+
+.informationInterrogation{
+	position: absolute;
+	top: -10%;
+	left: -220px;
+	width: 200px;
+	display: none;
+}
+
+.informationInterrogation p{
+	border: 2px solid #5ac4d4;
+	-webkit-border-radius: 10px;
+ 	-moz-border-radius: 10px;
+  	border-radius: 10px;
+	width: 100%;
+	height: auto;
+	font-size: 12px;
+	padding: 10px;
+	background-color: #fff;
 }
 
  .boutton{
@@ -2461,9 +2588,6 @@ float: left;
 	margin: auto;
 }
 
-.formRegisterPro input[type=submit]{
-	
-}
 
 .inscriptionBigBoss{
 	position: relative;
@@ -2476,29 +2600,41 @@ float: left;
 	color: #5ac4d4;
 }
 
-.inscriptionBigBoss label{
+.inscriptionBigBoss select{
+  background-color: #fff;
+  -webkit-border-radius: 1px;
+  -moz-border-radius: 1px;
+  border-radius: 1px;
+  border: 1px solid #a8a8a8;
+  height: 26px;
+  margin-top: 5px;
+}
+
+.inscription label, .inscriptionBigBoss label{
 	text-align: left;
 	font-weight: normal;
 }
 
 .gender{
-	position: absolute;
-	top: 30px;
-	left : 0;
-	height: 36px;
+	margin-top: 20px;
 }
 
 .formRegisterPro input[type=submit]{
-	margin: 40px auto;
 	padding: 7px 0px;
-	color: #fff;
-	background-color: #5ac4d4;
-	border: 1px solid #000;
-	-webkit-border-radius: 7px;
-	-moz-border-radius: 7px;
-	border-radius: 7px;
 	width: 200px;
 	font-size: 18px;
+	 margin: 0 auto;
+	  color: #fff;
+	  background-color: #5ac4d4;
+	  border: 1px solid #838383;
+	  padding: 5px;
+	  -webkit-border-radius: 5px;
+	  -moz-border-radius: 5px;
+	  border-radius: 5px;
+}
+
+.formRegisterPro input[type=submit]:hover{
+	background-color: #61cddd;
 }
 
 /***************************************/

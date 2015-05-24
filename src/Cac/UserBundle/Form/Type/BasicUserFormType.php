@@ -41,11 +41,10 @@ class BasicUserFormType extends AbstractType
             ->add('gender', 'choice', array(
                 'label' => 'Genre',
                 'choices'   => array('1' => 'Mr', '2' => 'Mme'),
-                'expanded' => true,
                 'multiple' => false
                 )
             )
-            ->add('birthday', 'birthday', array('label' => 'Date de naissance', 'format' => 'dd-MM-yyyy',))
+            ->add('birthday', 'birthday', array('label' => 'Date de naissance', 'format' => 'dd MM yyyy',))
             ->add('fix_phone', 'text', array('label' => 'Téléphone fixe'))
             ->add('mobile_phone', 'text', array('label' => 'Téléphone mobile'))
         ;
