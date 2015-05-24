@@ -208,7 +208,7 @@
 					
 
 				</div>
-				<div class="servicesNewBar col-xs-6 col-sm-6 col-md-8 col-md-offset-2">
+				<div class="servicesNewBar heureNewBar col-xs-6 col-sm-6 col-md-8 col-md-offset-2">
 					<p>Vos horaires<span>*</span></p>
 
 					{{ form_errors(form.schedule) }}
@@ -238,7 +238,10 @@
 						{% endfor %}
 
 						<div class="col-xs-3 col-sm-3 col-md-3 noPadding">
-							Fermé <input class="close-day" type="checkbox" data-day="{{ days[j] }}" name="close-day">
+							<div class="myService">
+								<input class="close-day" type="checkbox" data-day="{{ days[j] }}" name="close-day">
+								<label>Fermé</label>
+							</div>
 						</div>
 					</div>
 					{% endfor %}

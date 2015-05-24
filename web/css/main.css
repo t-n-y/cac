@@ -1898,13 +1898,13 @@ p.closeMesOptions{
 
 .myService{
 	position: relative;
-	margin-top: 10px;
 	color: #7b7b7b;
 }
 
 .myService label{
 	padding-left: 60px;
 }
+
 
 .ac-custom .servicesNewBar label::before{
 	content: '';
@@ -1932,6 +1932,11 @@ p.closeMesOptions{
   cursor: pointer;
 }
 
+.ac-custom .heureNewBar input[type="checkbox"], .ac-custom .heureNewBar label::before {
+  left: 75px;
+}
+
+
 .ac-custom svg {
 	position: absolute;
 	width: 14px;
@@ -1940,6 +1945,10 @@ p.closeMesOptions{
 	margin-top: -12px;
 	left: 3px;
 	pointer-events: none;
+}
+
+.ac-custom .heureNewBar svg {
+	left: 78px;
 }
 
 .ac-custom svg path {
@@ -1979,6 +1988,7 @@ p.closeMesOptions{
 
 #finalName{
 	line-height: 50px;
+	cursor: pointer;
 }
 
 .CreationBar input, .CreationBar select{
@@ -2007,7 +2017,7 @@ p.closeMesOptions{
 	height: 26px;
 }
 
-.tarifMoyenNewBar, .servicesNewBar{
+.tarifMoyenNewBar, .servicesNewBar, .heureNewBar{
 	background-color: #eeeeee;
 	margin-top: 20px;
 	padding-top: 10px;
@@ -2015,7 +2025,7 @@ p.closeMesOptions{
 	text-align: center;
 }
 
-.tarifMoyenNewBar p, .servicesNewBar p{
+.tarifMoyenNewBar p, .servicesNewBar p, .heureNewBar p{
 	background-color: #f6f6f6;
 	display: inline-block;
 	text-align: center;
