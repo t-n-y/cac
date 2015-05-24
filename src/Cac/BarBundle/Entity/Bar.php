@@ -235,7 +235,7 @@ class Bar
     private $promotions;
 
     /**
-     * @ORM\OneToMany(targetEntity="Cac\BarBundle\Entity\DaySchedule", mappedBy="bar")
+     * @ORM\OneToMany(targetEntity="Cac\BarBundle\Entity\DaySchedule", mappedBy="bar", cascade={"persist"})
      */
     private $daySchedules;
 

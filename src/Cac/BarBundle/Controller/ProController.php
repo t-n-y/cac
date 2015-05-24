@@ -14,6 +14,7 @@ use Cac\BarBundle\Entity\Comment;
 use Cac\BarBundle\Entity\Promotion;
 use Cac\BarBundle\Entity\Image;
 use Cac\BarBundle\Entity\Highlight;
+use Cac\BarBundle\Entity\DaySchedule;
 use Cac\BarBundle\Form\Type\BarType;
 use Cac\BarBundle\Form\Type\PromotionType;
 use Cac\BarBundle\Form\Type\BarEditType;
@@ -162,9 +163,18 @@ class ProController extends Controller
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
 
-            var_dump('Hey');
-            die;
-            
+            $schedules = json_decode($request->request->get('cac_barbundle_bar')['schedule'], true);
+            foreach($schedules as $day => $options) {
+                $schedule = new DaySchedule();
+                $schedule->setDayName($day);
+                foreach($options as $option => $value) {
+                    $uc = 'set'.ucfirst($option);
+                    $schedule->$uc($value);
+                    $entity->addDaySchedule($schedule);
+                    $schedule->setBar($entity);
+                }
+            }
+
             $entity->setAdress(explode(",",$entity->getAdress())[0]);
             $entity->setAuthor($user);
 

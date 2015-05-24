@@ -29,18 +29,25 @@ class DaySchedule
     private $dayName;
 
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="beginning", type="integer")
+     * @ORM\Column(name="status", type="string", length=255)
      */
-    private $beginning;
+    private $status;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="ending", type="integer")
+     * @ORM\Column(name="open", type="integer")
      */
-    private $ending;
+    private $open;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="close", type="integer")
+     */
+    private $close;
 
     /**
      * @ORM\ManyToOne(targetEntity="Cac\BarBundle\Entity\Bar", inversedBy="daySchedule")
@@ -83,51 +90,74 @@ class DaySchedule
     }
 
     /**
-     * Set beginning
+     * Set open
      *
-     * @param integer $beginning
+     * @param integer $open
      *
      * @return DaySchedule
      */
-    public function setBeginning($beginning)
+    public function setOpen($open)
     {
-        $this->beginning = $beginning;
+        $this->open = $open;
 
         return $this;
     }
 
     /**
-     * Get beginning
+     * Get open
      *
      * @return integer
      */
-    public function getBeginning()
+    public function getOpen()
     {
-        return $this->beginning;
+        return $this->open;
     }
 
     /**
-     * Set ending
+     * Set close
      *
-     * @param integer $ending
+     * @param integer $close
      *
      * @return DaySchedule
      */
-    public function setEnding($ending)
+    public function setClose($close)
     {
-        $this->ending = $ending;
+        $this->close = $close;
 
         return $this;
     }
 
     /**
-     * Get ending
+     * Get close
      *
      * @return integer
      */
-    public function getEnding()
+    public function getClose()
     {
-        return $this->ending;
+        return $this->close;
+    }
+
+    /**
+     * Set bar
+     *
+     * @param \Cac\BarBundle\Entity\Bar $bar
+     *
+     * @return DaySchedule
+     */
+    public function setBar(\Cac\BarBundle\Entity\Bar $bar = null)
+    {
+        $this->bar = $bar;
+
+        return $this;
+    }
+
+    /**
+     * Get bar
+     *
+     * @return \Cac\BarBundle\Entity\Bar
+     */
+    public function getBar()
+    {
+        return $this->bar;
     }
 }
-
