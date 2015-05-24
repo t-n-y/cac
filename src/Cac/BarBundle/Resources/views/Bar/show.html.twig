@@ -163,6 +163,9 @@
 				<div class="informationBar">
 					<div class="col-xs-12 col-sm-6 col-md-5">
 						<h2 class="firstElmtFicheBar">Accès</h2>
+						<div class="transportSliderWrapper">
+							
+						</div>
 						<h2>Adresse</h2>
 						<p class="interligneFicheBar">{{ bar.adress }}</p>
 						<p>{{ bar.zipcode }}<span>{{ bar.town }}</span></p>
@@ -447,6 +450,7 @@
 {% endblock %}
 
 {% block javascripts %}
+  <script src="{{ asset('js/jquery-2.1.0.js') }}" type="text/javascript" /></script>
  <script>
 	var map;
 	var service;
@@ -478,13 +482,35 @@
 
 	function callback(results, status) {
 	  if (status == google.maps.places.PlacesServiceStatus.OK) {
+	    var buttonHtml = '<div class="transportSliderController">';
 	    for (var i = 0; i < results.length; i++) {
 	      var place = results[i];
-	      console.log(results[i]);
+	      if(i < 4) {
+	      	var slideHtml = '';
+	      	if(i == 0) { 
+	      		slideHtml = '<div class="transportSliderSlide activ" data-id="slide-' + i + '"><img class="transportPic" src="{{ asset('img/L_M.png') }}" alt="metro">' + place.name + '</div>';
+	      		buttonHtml += '<div class="sliderController activ" data-id="slide-' + i + '"></div>';
+	      	} else {
+	      		slideHtml = '<div class="transportSliderSlide" data-id="slide-' + i + '"><img class="transportPic" src="{{ asset('img/L_M.png') }}" alt="metro">' + place.name + '</div>';
+	      		buttonHtml += '<div class="sliderController" data-id="slide-' + i + '"></div>';
+	      	}
+	      	$('.transportSliderWrapper').append(slideHtml);
+	      }
 	    }
+	    buttonHtml += '</div>';
+	    $('.transportSliderWrapper').append(buttonHtml);
 	  }
 	}
 
 	google.maps.event.addDomListener(window, 'load', initialize);
+
+	$(document).ready(function() {
+		$('.transportSliderWrapper').on('click', '.sliderController', function() {
+			$('.transportSliderSlide.activ').removeClass('activ');
+			$('.sliderController.activ').removeClass('activ');
+			$('.sliderController[data-id="' + $(this).attr('data-id') + '"]').addClass('activ');
+			$('.transportSliderSlide[data-id="' + $(this).attr('data-id') + '"]').addClass('activ');
+		});
+	});
 </script>
 {% endblock %}
