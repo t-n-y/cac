@@ -13,9 +13,7 @@ input::-webkit-inner-spin-button {
 }
 
 .completionAdresse{
-	position: absolute;
-	top:-5000px;
-	left: -5000px;
+	display: none;
 }
 
 .noPadding{
@@ -1898,18 +1896,99 @@ p.closeMesOptions{
 	padding-bottom: 20px;
 }
 
+.myService{
+	position: relative;
+	color: #7b7b7b;
+}
+
+.myService label{
+	padding-left: 60px;
+}
+
+
+.ac-custom .servicesNewBar label::before{
+	content: '';
+  border: 1px solid #303030;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+
+.ac-custom .servicesNewBar input[type="checkbox"]{
+  opacity: 0;
+  -webkit-appearance: none;
+  display: inline-block;
+  vertical-align: middle;
+  z-index: 100;
+
+}
+
+.ac-custom .servicesNewBar input[type="checkbox"], .ac-custom .servicesNewBar label::before {
+  width: 20px;
+  height: 20px;
+  top: 50%;
+  left: 0;
+  margin-top: -15px;
+  position: absolute;
+  cursor: pointer;
+}
+
+.ac-custom .heureNewBar input[type="checkbox"], .ac-custom .heureNewBar label::before {
+  left: 75px;
+}
+
+
+.ac-custom svg {
+	position: absolute;
+	width: 14px;
+	height: 14px;
+	top: 50%;
+	margin-top: -12px;
+	left: 3px;
+	pointer-events: none;
+}
+
+.ac-custom .heureNewBar svg {
+	left: 78px;
+}
+
+.ac-custom svg path {
+	stroke: #5ac4d4;
+	stroke-width: 13px;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	fill: none;
+}
+
+.ac-custom .servicesNewBar input[type="checkbox"]:checked + label{
+  color: #303030;
+}
+
 .nameNewBar{
 	background-color: #303030;
 	height: 50px;
 	text-align: center;
-	
 	color: #fff;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.nameNewBar input{
+	color: #303030;
+	font-size: 14px;
+	width: 250px;
+	height: 30px;
+	margin-top: 10px;
 }
 
 .nameNewBar h1{
 	margin: 0;
 	line-height: 50px;
 	font-weight: normal; 
+}
+
+#finalName{
+	line-height: 50px;
+	cursor: pointer;
 }
 
 .CreationBar input, .CreationBar select{
@@ -1925,7 +2004,20 @@ p.closeMesOptions{
 	color : #5ac4d4; 
 }
 
-.tarifMoyenNewBar, .servicesNewBar{
+.AdresseAndDresscode{
+	margin-top: 20px;
+}
+
+.AdresseAndDresscode select{ 
+	background-color: #fff;
+ 	-webkit-border-radius: 1px;
+ 	-moz-border-radius: 1px;
+	border-radius: 1px;
+	border: 1px solid #a8a8a8;
+	height: 26px;
+}
+
+.tarifMoyenNewBar, .servicesNewBar, .heureNewBar{
 	background-color: #eeeeee;
 	margin-top: 20px;
 	padding-top: 10px;
@@ -1933,7 +2025,7 @@ p.closeMesOptions{
 	text-align: center;
 }
 
-.tarifMoyenNewBar p, .servicesNewBar p{
+.tarifMoyenNewBar p, .servicesNewBar p, .heureNewBar p{
 	background-color: #f6f6f6;
 	display: inline-block;
 	text-align: center;
@@ -1942,7 +2034,6 @@ p.closeMesOptions{
 
 .choiceService{
 	text-align: left;
-	margin-top: 10px;
 }
 
 .choiceService input{

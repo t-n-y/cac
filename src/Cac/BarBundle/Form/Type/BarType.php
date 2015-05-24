@@ -15,7 +15,7 @@ class BarType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', null, array('label' => 'Nom de l\'établissement'))
+            ->add('name', null, array('label' => 'Nom de l\'établissement', 'attr' => array('placeholder' => 'Nom de votre établissement')))
             ->add('adress', null, array('label' => 'Adresse'))
             ->add('geocode', 'hidden', array())
             ->add('zipcode', null, array('label' => 'Code Postal'))
