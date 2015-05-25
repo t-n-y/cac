@@ -32,10 +32,29 @@ class BarController extends Controller
     {
         setlocale(LC_TIME, "fr_FR");
         $today = strftime("%A");
-        
         $em = $this->getDoctrine()->getManager();
     
         $entities = $em->getRepository('CacBarBundle:Bar')->findAll();
+//         foreach ($entities as $entity) {
+//             $promotions = $entity->getPromotions();
+//             foreach ($promotions as $promo) {
+//                 ld($promo);
+//             }
+// exit();
+
+
+//             $nbAvis = count($entity->getComments()->getValues());
+//             $coms = $entity->getComments()->getValues();
+//             $note = 0;
+//             foreach ($coms as $com) {
+//                 $note += $com->getNote();
+//             }
+//            ld('id '.$entity->getId());
+//            ld($nbAvis);
+//            ld($note);
+//         }
+//         exit();
+        
         $highlight = $em->getRepository('CacBarBundle:highlight')->findAll();
         shuffle($highlight);
         $paginator  = $this->get('knp_paginator');
