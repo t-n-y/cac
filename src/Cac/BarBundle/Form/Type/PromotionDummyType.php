@@ -6,16 +6,16 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class RestrictionType extends AbstractType
+class PromotionDummyType extends AbstractType
 {
-    /**
+        /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('restriction', null, array('label' => 'Ajouter une condition'))
+            ->add('promotion', 'hidden', array('label' => 'Promotion'))
         ;
     }
     
@@ -25,7 +25,7 @@ class RestrictionType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Cac\BarBundle\Entity\Restriction'
+            'data_class' => 'Cac\BarBundle\Entity\PromotionDummy'
         ));
     }
 
@@ -34,6 +34,6 @@ class RestrictionType extends AbstractType
      */
     public function getName()
     {
-        return 'cac_barbundle_restriction';
+        return 'cac_barbundle_promotion_dummy';
     }
 }
