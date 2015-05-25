@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Promotion
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Cac\BarBundle\Entity\PromotionRepository")
+ * @ORM\Entity
  */
 class Promotion
 {
@@ -24,12 +24,24 @@ class Promotion
     /**
      * @var string
      *
-     * @ORM\Column(name="promotion", type="text")
+     * @ORM\Column(name="day", type="string", length=255)
      */
-    private $promotion;
+    private $day;
 
     /**
-     * @ORM\OneToOne(targetEntity="Cac\BarBundle\Entity\Bar", inversedBy="promotion")
+     * @var string
+     *
+     * @ORM\Column(name="category", type="string", length=255)
+     */
+    private $category;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Cac\BarBundle\Entity\PromotionOption", cascade={"persist"})
+     */
+    protected $options;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Cac\BarBundle\Entity\Bar", inversedBy="promotion")
      */
     protected $bar;
 
@@ -37,7 +49,7 @@ class Promotion
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -45,42 +57,130 @@ class Promotion
     }
 
     /**
-     * Set promotion
+     * Set day
      *
-     * @param string $promotion
+     * @param string $day
+     *
      * @return Promotion
      */
-    public function setPromotion($promotion)
+    public function setDay($day)
     {
-        $this->promotion = $promotion;
+        $this->day = $day;
 
         return $this;
     }
 
     /**
-     * Get promotion
+     * Get day
      *
-     * @return string 
+     * @return string
      */
-    public function getPromotion()
+    public function getDay()
     {
-        return $this->promotion;
+        return $this->day;
     }
 
     /**
-     * Get promotion
+     * Set category
      *
-     * @return array 
+     * @param string $category
+     *
+     * @return Promotion
      */
-    public function getPromotionArray() 
+    public function setCategory($category)
     {
-        return json_decode($this->promotion, true);
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return string
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->options = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add option
+     *
+     * @param \Cac\BarBundle\Entity\PromotionOption $option
+     *
+     * @return Promotion
+     */
+    public function addOption(\Cac\BarBundle\Entity\PromotionOption $option)
+    {
+        $this->options[] = $option;
+
+        return $this;
+    }
+
+    /**
+     * Remove option
+     *
+     * @param \Cac\BarBundle\Entity\PromotionOption $option
+     */
+    public function removeOption(\Cac\BarBundle\Entity\PromotionOption $option)
+    {
+        $this->options->removeElement($option);
+    }
+
+    /**
+     * Get options
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getOptions()
+    {
+        return $this->options;
+    }
+
+    /**
+     * Get only one option depending on the category
+     * Used to prevent numerous attributes and allows differenciation between cac promotions and happy hours
+     * without having to use 2 entities or nullable true
+     *
+     * @return \Cac\BarBundle\Entity\PromotionOption or false if not found
+     */
+    public function getOption($category)
+    {
+        foreach($this->getOptions() as $option) {
+            if($option->getCategoryShortcode() == $category) return $option;
+        }
+        return false;
+    }
+
+    /**
+     * Update an option depending on its category
+     * Prevent duplicate options with same category
+     *
+     * @return \Cac\BarBundle\Entity\PromotionOption or false if not found
+     */
+    public function updateOption(\Cac\BarBundle\Entity\PromotionOption $newOption)
+    {
+        foreach($this->getOptions() as $option) {
+            if($option->getCategoryShortcode() == $newOption->getCategoryShortcode()) {
+                $option = $newOption;
+            }
+        }
+        return $this;
     }
 
     /**
      * Set bar
      *
      * @param \Cac\BarBundle\Entity\Bar $bar
+     *
      * @return Promotion
      */
     public function setBar(\Cac\BarBundle\Entity\Bar $bar = null)
@@ -93,7 +193,7 @@ class Promotion
     /**
      * Get bar
      *
-     * @return \Cac\BarBundle\Entity\Bar 
+     * @return \Cac\BarBundle\Entity\Bar
      */
     public function getBar()
     {

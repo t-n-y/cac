@@ -9,8 +9,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Cac\BarBundle\Entity\Bar;
 use Cac\BarBundle\Entity\Promotion;
+use Cac\BarBundle\Entity\PromotionDummy;
 use Cac\BarBundle\Form\Type\BarType;
 use Cac\BarBundle\Form\Type\PromotionType;
+use Cac\BarBundle\Form\Type\PromotionDummyType;
 /**
  * Bar controller.
  *
@@ -30,21 +32,24 @@ class PromotionController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('CacBarBundle:Bar')->find($id);
-        $promotion = $entity->getPromotion();
+        $promotions = $entity->getPromotions();
+        $promotionDummy = new PromotionDummy();
 
-        $restrictions = $em->getRepository('CacBarBundle:Restriction')->findAll();
+        $restriction = $em->getRepository('CacBarBundle:PromotionOptionCategory')->findOneByShortcode('restriction');
+        $restrictions = $em->getRepository('CacBarBundle:PromotionOption')->findByCategory($restriction);
 
         if (!$entity) {
             throw $this->createNotFoundException('Le bar demandé n\'existe pas.');
         }
 
-        $editForm = $this->createEditForm($promotion);
+        $editForm = $this->createEditForm($promotionDummy, $entity);
 
         return array(
-            'promotion'      => $promotion,
-            'form'   => $editForm->createView(),
-            'restrictions' => $restrictions,
-            'id' => $entity->getId()
+            'promotions'        => $promotions,
+            'promotionDummy'    => $promotionDummy,
+            'form'              => $editForm->createView(),
+            'restrictions'      => $restrictions,
+            'id'                => $entity->getId()
         );
     }
 
@@ -55,10 +60,10 @@ class PromotionController extends Controller
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createEditForm(Promotion $promotion)
+    private function createEditForm(PromotionDummy $promotionDummy, Bar $entity)
     {
-        $form = $this->createForm(new PromotionType(), $promotion, array(
-            'action' => $this->generateUrl('promotion_update', array('id' => $promotion->getId())),
+        $form = $this->createForm(new PromotionDummyType(), $promotionDummy, array(
+            'action' => $this->generateUrl('promotion_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
@@ -82,26 +87,42 @@ class PromotionController extends Controller
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
+        $pm = $this->get('cac_bar.promotion_manager');
 
-        $promotion = $em->getRepository('CacBarBundle:Promotion')->find($id);
-        $entity = $promotion->getBar();
+        $entity = $em->getRepository('CacBarBundle:Bar')->find($id);
+        $promotions = $entity->getPromotions();
+
+        $promotionDummy = new PromotionDummy();
+        $dummyJSON = $pm->toDummyJSON($promotions);
+        $promotionDummy->setPromotion($dummyJSON);
 
         if (!$entity) {
             throw $this->createNotFoundException('Le bar demandé n\'existe pas.');
         }
 
-        $editForm = $this->createEditForm($promotion);
+        $editForm = $this->createEditForm($promotionDummy, $entity);
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+            $newPromotions = json_decode($request->request->get('cac_barbundle_promotion_dummy')['promotion'], true);
+            foreach($promotions as $promotion) {
+                $options = $promotion->getOptions();
+                foreach($options as $option) {
+                    $category = $option->getCategoryShortcode();
+                    if($category == 'restriction') $category = 'condition';
+                    $option->setValue($newPromotions[$promotion->getDay()][$promotion->getCategory()][$category]);
+                    $em->persist($option);
+                }
+            }
+
             $em->flush();
-            return $this->redirect($this->generateUrl('bar_show', array('id' => $entity->getId())));
-            // return $this->redirect($this->generateUrl('promotion_show', array('id' => $entity->getId())));
+            // return $this->redirect($this->generateUrl('bar_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('promotion_show', array('id' => $entity->getId())));
         }
 
         return array(
-            'bar'      => $entity,
-            'form'   => $editForm->createView()
+            'bar'  => $entity,
+            'form' => $editForm->createView()
         );
     }
 
@@ -115,13 +136,20 @@ class PromotionController extends Controller
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
+        $pm = $this->get('cac_bar.promotion_manager');
         $entity = $em->getRepository('CacBarBundle:Bar')->find($id);
         $restrictions = $em->getRepository('CacBarBundle:Restriction')->findAll();
 
-        $editForm = $this->createEditForm($entity->getPromotion());
+        $promotions = $entity->getPromotions();
+        $promotionDummy = new PromotionDummy();
+        $dummyJSON = $pm->toDummyJSON($promotions);
+        $promotionDummy->setPromotion($dummyJSON);
+
+        $editForm = $this->createEditForm($promotionDummy, $entity);
 
         return array(
             'bar'      => $entity,
+            'promotions' => json_decode($dummyJSON, true),
             'form'   => $editForm->createView(),
             'restrictions' => $restrictions
         );

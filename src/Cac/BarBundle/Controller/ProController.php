@@ -14,6 +14,7 @@ use Cac\BarBundle\Entity\Comment;
 use Cac\BarBundle\Entity\Promotion;
 use Cac\BarBundle\Entity\Image;
 use Cac\BarBundle\Entity\Highlight;
+use Cac\BarBundle\Entity\DaySchedule;
 use Cac\BarBundle\Form\Type\BarType;
 use Cac\BarBundle\Form\Type\PromotionType;
 use Cac\BarBundle\Form\Type\BarEditType;
@@ -49,12 +50,22 @@ class ProController extends Controller
 
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository('CacBarBundle:Bar')->find($id);
-        $restrictions = $em->getRepository('CacBarBundle:Restriction')->findAll();
+        $restriction = $em->getRepository('CacBarBundle:PromotionOptionCategory')->findOneBy(array('shortcode' => 'restriction'));
+        $restrictions = $em->getRepository('CacBarBundle:PromotionOption')->findBy(array('category' => $restriction->getId()));
+
+        $lists = array(
+            'drinkNumber' => array('Illimité','5','10','20','30','40','50','100'),
+            'drinkDuration' => array('Illimité','1 semaine', '2 semaines', '3 semaines', '1 mois', '2 mois'),
+            'printNumber' => array('X5','X10', 'X20', 'X30'),
+            'days' => array('Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche')
+        );
 
         return array(
             'bar'      => $entity,
             'today' => $today,
-            'restrictions' => $restrictions
+            'restrictions' => $restrictions,
+            'promotions' => $entity->getPromotions(),
+            'lists' => $lists,
         );  
     }
 
@@ -156,21 +167,45 @@ class ProController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $entity = new Bar();
-        $promotion = new Promotion();
+        $pm = $this->get('cac_bar.promotion_manager');
+        $emptyPromotions = $pm->getEmptyPromotions();
+        $emptyHappyHours = $pm->getEmptyHappyHours();
 
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
         $user = $this->get('security.context')->getToken()->getUser();
 
         if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+
+            $schedules = json_decode($request->request->get('cac_barbundle_bar')['schedule'], true);
+            foreach($schedules as $day => $options) {
+                $schedule = new DaySchedule();
+                $schedule->setDayName($day);
+                foreach($options as $option => $value) {
+                    $uc = 'set'.ucfirst($option);
+                    $schedule->$uc($value);
+                    $entity->addDaySchedule($schedule);
+                    $schedule->setBar($entity);
+                }
+            }
+
             $entity->setAdress(explode(",",$entity->getAdress())[0]);
             $entity->setAuthor($user);
-            $entity->setPromotion($promotion);
-            $promotion->setPromotion('');
-            $promotion->setBar($entity);
-            $em = $this->getDoctrine()->getManager();
+
+            foreach($emptyPromotions as $promotion) {
+                $entity->addPromotion($promotion);
+                $promotion->setBar($entity);
+                $em->persist($promotion);
+            }
+
+            foreach($emptyHappyHours as $promotion) {
+                $entity->addPromotion($promotion);
+                $promotion->setBar($entity);
+                $em->persist($promotion);
+            }
+            
             $em->persist($entity);
-            $em->persist($promotion);
             $em->flush();
 
             return $this->redirect($this->generateUrl('bar_new_part2', array('id' => $entity->getId())));
