@@ -43,6 +43,8 @@
     <script src="{{ asset('js/jquery.Jcrop.min.js') }}" type="text/javascript" /></script>
     <script>
     $(document).ready(function(){
+        var jcrop_api = '';
+
         function readURL(input) {
 
             if (input.files && input.files[0]) {
@@ -50,6 +52,7 @@
                 var img = new Image();
                 
                 reader.onload = function (e) {
+                    if(jcrop_api != '') jcrop_api.destroy();
                     $('#blah').attr('src', e.target.result);
 
                     var image = $('#blah');
@@ -58,7 +61,7 @@
                     var ratio = mW/oW;
 
                     if(ratio > 1) ratio = 1;
-                    var cX = 960*ratio, cY = 350*ratio;
+                    var cX = 1280*ratio, cY = 350*ratio;
                     var minSize = [cX, cY], setSelect = [(oW*ratio-cX)/2, (oH*ratio-cY)/2, cX, cY];
 
                     $('#blah').Jcrop({
@@ -66,7 +69,7 @@
                         minSize: minSize,
                         onChange: changeCoords,
                         setSelect: setSelect
-                    });
+                    }, function () { jcrop_api = this });
                     if(ratio < 1) {
                         $('#coords').attr('data-ratio', ratio);
                         var nH = oH*ratio;
