@@ -158,7 +158,7 @@ h2.font30{
 	margin-top: 10px;
 }
 
-.jcrop-holder, .jcrop-holder img {
+.jcrop-holder, .jcrop-keymgr + img {
 	max-width: 100% !important;
 	max-height: auto !important;
 }
