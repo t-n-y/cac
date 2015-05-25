@@ -67,7 +67,6 @@ class BasicUser extends User
     /**
      * @var string
      *
-     * @Assert\NotBlank()
      * @ORM\Column(name="adress", type="string", length=255, nullable=true)
      */
     private $adress;
