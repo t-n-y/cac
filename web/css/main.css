@@ -768,24 +768,72 @@ nav{
 }
 
 
-.admisnistration{
+.administration{
 	position: absolute;
 	top: 20px;
 	right: 40px;
 }
 
-.admisnistration p{
+.administration p{
 	background-color: #fff;
 	padding: 5px 20px;
 	cursor: pointer;
 	text-align: center;
+	margin: 0;
 }
 
-.admisnistration ul{
+.administration ul{
 	position: relative;
 	z-index: 1000;
 	background-color: #fff;
 	list-style: none;
+	padding: 0;
+	max-height: 0px;
+	overflow: hidden;
+	-webkit-transition: max-height 0.5s ease-in-out;
+    -moz-transition: max-height 0.5s ease-in-out;
+    -o-transition: max-height 0.5s ease-in-out;
+    -ms-transition: max-height 0.5s ease-in-out;
+    transition: max-height 0.5s ease-in-out;
+}
+
+.administration ul.openSousNav{
+	max-height: 300px;
+	overflow: hidden;
+}
+
+.administration li{
+	padding: 5px 15px 5px 15px;
+	cursor: pointer;
+	font-size: 12px;
+}
+
+.administration li:hover, .administration li.logout:hover{
+	background-color: #5ac4d4;
+	color: #fff;
+}
+
+.administration li a{
+	color: #303030;
+}
+
+.administration li:hover a{
+	text-decoration: none;
+	color: #fff;
+}
+
+.administration li.logout{
+	background-color: #303030;
+	text-align: center;
+}
+
+.administration li.logout a{
+	color: #fff;
+}
+
+.connexionInscription p{
+	float: left;
+	margin-right: 10px;
 }
 
 /********************************************/

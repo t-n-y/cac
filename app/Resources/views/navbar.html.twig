@@ -187,20 +187,31 @@
             </div>
         </div>
     </div>
-    <div class="admisnistration">
-        <p>Bonjour </p>
-        <ul>
-            <li>
-              {% if is_granted('ROLE_BIGBOSS') %}
-                <a href="{{ path('bar_new') }}">Créer un bar</a>
-              {% endif %}
-            </li>
-            <li><a class="mesReservation" href="#">Mes réservations</a></li>
-            <li><a class="mesParrainage" href="#">Mes parrainage</a></li>
-            <li><a class="monCompte" href="{{ path('fos_user_profile_show') }}">Mon compte</a></li>
-            <li><a href="#">Mes points</a></li>
-            <li class="logout"><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
-        </ul>
+    <div class="administration">
+        {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+            <p>Bonjour {{ app.user.firstname}} </p>
+            <div class="clear"></div>
+            <ul>
+                <li>
+                  {% if is_granted('ROLE_BIGBOSS') %}
+                    <a href="{{ path('bar_new') }}">Créer un bar</a>
+                  {% endif %}
+                </li>
+                <li><a class="mesReservation" href="#">Mes réservations</a></li>
+                <li><a class="mesParrainage" href="#">Mes parrainage</a></li>
+                <li><a class="monCompte" href="{{ path('fos_user_profile_show') }}">Mon compte</a></li>
+                <li><a href="#">Mes points</a></li>
+                <li class="logout"><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
+            </ul>
+        {% else %}
+            <div class="connexionInscription">
+                <p class="animConnexion">Connexion</p>
+                <p><a href="{{ path('user_register') }}">Inscription</a></p>
+            </div>
+            <!-- <li class="connexionAndCreate col-sm-4 col-md-4 noPadding">
+                  <a class="animConnexion col-sm-6 col-md-6 noPadding" href="#">Connexion</a>
+                  <a class="InscriptionHeader animRegister col-sm-6 col-md-6 noPadding" href="{{ path('user_register') }}">Inscrivez<br>vous</a></li> -->
+        {% endif %}
     </div>
 </nav>
 
