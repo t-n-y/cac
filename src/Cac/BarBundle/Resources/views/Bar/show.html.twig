@@ -3,6 +3,8 @@
 {% block title %}CacBarBundle:Bar:show{% endblock %}
 
 {% block body %}
+	{{ dump(bar.getPromotionByDay('Lundi').getOption('value').value)}}
+	{{ dump(bar.getHappyHourByDay('Lundi').getOption('value').value)}}
 		<div class="topBar col-xs-12 col-sm-12 col-md-12 noPadding" style="background-image : url('{{ asset('uploads/bar/'~bar.path) }}');">
 			
 			<div class="infoNameBar">
