@@ -710,7 +710,7 @@ nav{
 .contentNav p a{
 	color: #303030;
 	text-decoration: none;
-	 -webkit-transition: color 0.25s ease-in-out;
+	-webkit-transition: color 0.25s ease-in-out;
     -moz-transition: color 0.25s ease-in-out;
     -o-transition: color 0.25s ease-in-out;
     -ms-transition: color 0.25s ease-in-out;
@@ -796,7 +796,7 @@ nav{
 }
 
 .administration ul.openSousNav{
-	max-height: 300px;
+	max-height: 250px;
 	overflow: hidden;
 }
 
@@ -830,6 +830,7 @@ nav{
 .administration li.logout a p{
 	background-color: #303030;
 	text-align: center;
+	padding: 5px 35px 5px 35px;
 }
 
 .administration li.logout a p{
@@ -876,7 +877,7 @@ nav{
 }
 
 .administration a.mesParrainage:before {
- 	background:url("../img/pictoHeader/parrainage.svg") no-repeat 0 0;
+ 	background:url("../img/pictoHeader/mesParrainage.svg") no-repeat 0 0;
  	background-size: 100%;
 }
 
