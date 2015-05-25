@@ -237,10 +237,10 @@ class ProController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            var_dump($request->request->get('coords'));
-            die;
+            $coords = json_decode($request->request->get('coords'), true);
             $entity->preUpload();
             $em->persist($entity);
+            $entity->resizeImg($coords);
             $em->flush();
             return $this->redirect($this->generateUrl('promotion_create', array('id' => $id)));
         }
