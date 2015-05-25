@@ -1460,4 +1460,18 @@ class Bar
     {
         $this->PromoOffertes->removeElement($promoOfferte);
     }
+
+    public function getPromotionByDay($day) {
+        $promotions = $this->getPromotions();
+        foreach($promotions as $promotion) {
+            if($promotion->getDay() == $day && $promotion->getCategory() == 'promotion') return $promotion;
+        }
+    }
+
+    public function getHappyHourByDay($day) {
+        $promotions = $this->getPromotions();
+        foreach($promotions as $promotion) {
+            if($promotion->getDay() == $day && $promotion->getCategory() == 'happy-hour') return $promotion;
+        }
+    }
 }
