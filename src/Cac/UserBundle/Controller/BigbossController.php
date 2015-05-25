@@ -25,8 +25,16 @@ class BigbossController extends Controller
      */
     public function registerAction()
     {
-        return $this->container
+        $user = $this->get('security.context')->getToken()->getUser();
+        if ($user !== "anon." && $user->getRoles()[0] === "ROLE_BIGBOSS") {
+            $em = $this->getDoctrine()->getManager();
+            $barId = $em->getRepository('CacBarBundle:Bar')->findBy(array('author'=> $user->getId()));
+            return $this->redirect($this->generateUrl('bars_offerFeedback', array('id' => $barId[0]->getId())));
+        }
+        else{
+            return $this->container
                     ->get('pugx_multi_user.registration_manager')
                     ->register('Cac\UserBundle\Entity\Bigboss');
+        }
     }
 }
