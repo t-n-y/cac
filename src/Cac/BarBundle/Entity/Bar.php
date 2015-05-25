@@ -266,9 +266,14 @@ class Bar
     private $comments;
 
     /**
-     * @ORM\OneToOne(targetEntity="Cac\BarBundle\Entity\Promotion", mappedBy="bar")
+     * @ORM\OneToMany(targetEntity="Cac\BarBundle\Entity\Promotion", mappedBy="bar")
      */
-    private $promotion;
+    private $promotions;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Cac\BarBundle\Entity\DaySchedule", mappedBy="bar", cascade={"persist"})
+     */
+    private $daySchedules;
 
     /**
      * @ORM\OneToMany(targetEntity="Cac\UserBundle\Entity\Barman", mappedBy="bar")
@@ -307,6 +312,8 @@ class Bar
         $this->creationDate = new \Datetime();
         $this->barman = new \Doctrine\Common\Collections\ArrayCollection();
         $this->comments = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->promotions = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->daySchdules = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -787,29 +794,6 @@ class Bar
     }
 
     /**
-     * Set promotion
-     *
-     * @param \Cac\BarBundle\Entity\Promotion $promotion
-     * @return Bar
-     */
-    public function setPromotion(\Cac\BarBundle\Entity\Promotion $promotion = null)
-    {
-        $this->promotion = $promotion;
-
-        return $this;
-    }
-
-    /**
-     * Get promotion
-     *
-     * @return \Cac\BarBundle\Entity\Promotion 
-     */
-    public function getPromotion()
-    {
-        return $this->promotion;
-    }
-
-    /**
      * Add barman
      *
      * @param \Cac\UserBundle\Entity\Barman $barman
@@ -1160,6 +1144,59 @@ class Bar
     }
 
     /**
+     * Update daySchedules
+     *
+     * @param string
+     *
+     * @return Bar
+     */
+    public function updateDaySchedules(\Cac\BarBundle\Entity\DaySchedule $newDaySchedule)
+    {
+        foreach($this->getDaySchedules() as $daySchedule) {
+            if($daySchedule->getDayName() == $newDaySchedule->getDayName()) {
+                $daySchedule = $newDaySchedule;
+            }
+        }
+        return $this;
+    }
+
+    /**  
+     *
+     * @return \Cac\BarBundle\Entity\DaySchedule or false if not found
+     */
+    public function getDaySchedule($day)
+    {
+        foreach($this->getDaySchedules() as $daySchedule) {
+            if($daySchedule->getDayName() == $day) return $daySchedule;
+        }
+        return false;
+    }
+
+    /**
+     * Set geocode
+     *
+     * @param string $geocode
+     *
+     * @return Bar
+     */
+    public function setGeocode($geocode)
+    {
+        $this->geocode = $geocode;
+
+        return $this;
+    }
+
+    /**
+     * Get geocode
+     *
+     * @return string
+     */
+    public function getGeocode()
+    {
+        return $this->geocode;
+    }
+
+    /**
      * Set beerPrice
      *
      * @param integer $beerPrice
@@ -1324,6 +1361,74 @@ class Bar
     }
 
     /**
+     * Add promotion
+     *
+     * @param \Cac\BarBundle\Entity\Promotion $promotion
+     *
+     * @return Bar
+     */
+    public function addPromotion(\Cac\BarBundle\Entity\Promotion $promotion)
+    {
+        $this->promotions[] = $promotion;
+
+        return $this;
+    }
+
+    /**
+     * Remove promotion
+     *
+     * @param \Cac\BarBundle\Entity\Promotion $promotion
+     */
+    public function removePromotion(\Cac\BarBundle\Entity\Promotion $promotion)
+    {
+        $this->promotions->removeElement($promotion);
+    }
+
+    /**
+     * Get promotions
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPromotions()
+    {
+        return $this->promotions;
+    }
+
+    /**
+     * Add daySchedule
+     *
+     * @param \Cac\BarBundle\Entity\DaySchedule $daySchedule
+     *
+     * @return Bar
+     */
+    public function addDaySchedule(\Cac\BarBundle\Entity\DaySchedule $daySchedule)
+    {
+        $this->daySchedules[] = $daySchedule;
+
+        return $this;
+    }
+
+    /**
+     * Remove daySchedule
+     *
+     * @param \Cac\BarBundle\Entity\DaySchedule $daySchedule
+     */
+    public function removeDaySchedule(\Cac\BarBundle\Entity\DaySchedule $daySchedule)
+    {
+        $this->daySchedules->removeElement($daySchedule);
+    }
+
+    /**
+     * Get daySchedules
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDaySchedules()
+    {
+        return $this->daySchedules;
+    }
+
+    /**
      * Add promoOfferte
      *
      * @param \Cac\BarBundle\Entity\PromoOffertes $promoOfferte
@@ -1345,29 +1450,5 @@ class Bar
     public function removePromoOfferte(\Cac\BarBundle\Entity\PromoOffertes $promoOfferte)
     {
         $this->PromoOffertes->removeElement($promoOfferte);
-    }
-
-    /**
-     * Set geocode
-     *
-     * @param string $geocode
-     *
-     * @return Bar
-     */
-    public function setGeocode($geocode)
-    {
-        $this->geocode = $geocode;
-
-        return $this;
-    }
-
-    /**
-     * Get geocode
-     *
-     * @return string
-     */
-    public function getGeocode()
-    {
-        return $this->geocode;
     }
 }

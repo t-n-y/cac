@@ -65,18 +65,59 @@ class BasicUser extends User
     private $mobile_phone;
 
     /**
-     * @var integer
-     * @Assert\NotBlank()
-     * @Assert\Length(
-     *      min = "10",
-     *      max = "10",
-     *      minMessage = "Votre numéro doit faire au moins {{ limit }} caractères",
-     *      maxMessage = "Votre numéro ne peut pas être plus long que {{ limit }} caractères",
-     *      exactMessage = "Le numéro doit contenir 10 chiffres"
-     * )
-     * @ORM\Column(name="fix_phone", type="integer")
+     * @var string
+     *
+     * @ORM\Column(name="adress", type="string", length=255, nullable=true)
      */
-    private $fix_phone;
+    private $adress;
+
+    /**
+     * @var string
+     *
+     * @Assert\NotBlank()
+     * @ORM\Column(name="region", type="string", length=255, nullable=true)
+     */
+    private $region;
+
+    /**
+     * @var string
+     *
+     * @Assert\NotBlank()
+     * @ORM\Column(name="town", type="string", length=255, nullable=true)
+     */
+    private $town;
+
+    /**
+     * @var string
+     *
+     * @Assert\NotBlank()
+     * @ORM\Column(name="country", type="string", length=255, nullable=true)
+     */
+    private $country;
+
+    /**
+     * @var integer
+     *
+     * @Assert\NotBlank()
+     * @Assert\Type(type="integer", message="Le code postal doit être un chiffre.")
+     * @Assert\Length(
+     *      min = "5",
+     *      max = "5",
+     *      minMessage = "Votre nom doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Votre nom ne peut pas être plus long que {{ limit }} caractères",
+     *      exactMessage = "Le code postal doit contenir 5 chiffres"
+     * )
+     * @ORM\Column(name="zipcode", type="integer", length=255, nullable=true)
+     */
+    private $zipcode;
+
+    /**
+     * @var string
+     *
+     * @Assert\NotBlank()
+     * @ORM\Column(name="geocode", type="string", length=255, nullable=true)
+     */
+    private $geocode;
 
     /**
      * @var array
@@ -180,29 +221,6 @@ class BasicUser extends User
     }
 
     /**
-     * Set fix_phone
-     *
-     * @param integer $fixPhone
-     * @return Bigboss
-     */
-    public function setFixPhone($fixPhone)
-    {
-        $this->fix_phone = $fixPhone;
-
-        return $this;
-    }
-
-    /**
-     * Get fix_phone
-     *
-     * @return integer 
-     */
-    public function getFixPhone()
-    {
-        return $this->fix_phone;
-    }
-
-    /**
      * Set gender
      *
      * @param string $gender
@@ -246,5 +264,149 @@ class BasicUser extends User
     public function getScore()
     {
         return $this->score;
+    }
+
+    /**
+     * Set adress
+     *
+     * @param string $adress
+     *
+     * @return BasicUser
+     */
+    public function setAdress($adress)
+    {
+        $this->adress = $adress;
+
+        return $this;
+    }
+
+    /**
+     * Get adress
+     *
+     * @return string
+     */
+    public function getAdress()
+    {
+        return $this->adress;
+    }
+
+    /**
+     * Set region
+     *
+     * @param string $region
+     *
+     * @return BasicUser
+     */
+    public function setRegion($region)
+    {
+        $this->region = $region;
+
+        return $this;
+    }
+
+    /**
+     * Get region
+     *
+     * @return string
+     */
+    public function getRegion()
+    {
+        return $this->region;
+    }
+
+    /**
+     * Set town
+     *
+     * @param string $town
+     *
+     * @return BasicUser
+     */
+    public function setTown($town)
+    {
+        $this->town = $town;
+
+        return $this;
+    }
+
+    /**
+     * Get town
+     *
+     * @return string
+     */
+    public function getTown()
+    {
+        return $this->town;
+    }
+
+    /**
+     * Set country
+     *
+     * @param string $country
+     *
+     * @return BasicUser
+     */
+    public function setCountry($country)
+    {
+        $this->country = $country;
+
+        return $this;
+    }
+
+    /**
+     * Get country
+     *
+     * @return string
+     */
+    public function getCountry()
+    {
+        return $this->country;
+    }
+
+    /**
+     * Set zipcode
+     *
+     * @param integer $zipcode
+     *
+     * @return BasicUser
+     */
+    public function setZipcode($zipcode)
+    {
+        $this->zipcode = $zipcode;
+
+        return $this;
+    }
+
+    /**
+     * Get zipcode
+     *
+     * @return integer
+     */
+    public function getZipcode()
+    {
+        return $this->zipcode;
+    }
+
+    /**
+     * Set geocode
+     *
+     * @param string $geocode
+     *
+     * @return BasicUser
+     */
+    public function setGeocode($geocode)
+    {
+        $this->geocode = $geocode;
+
+        return $this;
+    }
+
+    /**
+     * Get geocode
+     *
+     * @return string
+     */
+    public function getGeocode()
+    {
+        return $this->geocode;
     }
 }

@@ -1,0 +1,48 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Options | Promotion{% endblock %}
+
+{% block body %}
+<h1>Options</h1>
+<div>
+	<ol class="breadcrumb">
+	  <li><a href="{{ path('promotion_index') }}">Promotion</a></li>
+	  <li class="active">Options</li>
+	</ol>
+</div>
+<div>
+	<a href="{{path('promotion_option_category_index')}}">Catégories</a>
+</div>
+<div>
+	<h3>Liste</h3>
+	<ul>
+		{% for option in entities %}
+		<li>{{ option.name }} - {{ option.category.shortcode }} <button data-id="{{ option.id }}" class="glyphicon glyphicon-remove"></li>
+		{% endfor %}
+	</ul>
+</div>
+<div>
+	<h3>Ajout d'option</h3>
+	<h4>Exemple 1</h4>
+	<div>
+		Ajout d'une valeur en % pour les promotions
+		<ul>
+			<li>Nom : 10%</li>
+			<li>Valeur : 10</li>
+			<li>Catégorie : value</li>
+		</ul>
+	</div>
+	<h4>Exemple 2</h4>
+	<div>
+		Ajout d'une condition pour les promotions
+		<ul>
+			<li>Nom : Venir accompagné</li>
+			<li>Valeur : venir-accompagne</li>
+			<li>Catégorie : restriction</li>
+		</ul>
+	</div>
+</div>
+<div>
+	{{ form(form) }}
+</div>
+{% endblock %}

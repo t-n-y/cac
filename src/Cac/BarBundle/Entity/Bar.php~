@@ -266,9 +266,14 @@ class Bar
     private $comments;
 
     /**
-     * @ORM\OneToOne(targetEntity="Cac\BarBundle\Entity\Promotion", mappedBy="bar")
+     * @ORM\OneToMany(targetEntity="Cac\BarBundle\Entity\Promotion", mappedBy="bar")
      */
-    private $promotion;
+    private $promotions;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Cac\BarBundle\Entity\DaySchedule", mappedBy="bar", cascade={"persist"})
+     */
+    private $daySchedules;
 
     /**
      * @ORM\OneToMany(targetEntity="Cac\UserBundle\Entity\Barman", mappedBy="bar")
@@ -307,6 +312,8 @@ class Bar
         $this->creationDate = new \Datetime();
         $this->barman = new \Doctrine\Common\Collections\ArrayCollection();
         $this->comments = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->promotions = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->daySchdules = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -787,29 +794,6 @@ class Bar
     }
 
     /**
-     * Set promotion
-     *
-     * @param \Cac\BarBundle\Entity\Promotion $promotion
-     * @return Bar
-     */
-    public function setPromotion(\Cac\BarBundle\Entity\Promotion $promotion = null)
-    {
-        $this->promotion = $promotion;
-
-        return $this;
-    }
-
-    /**
-     * Get promotion
-     *
-     * @return \Cac\BarBundle\Entity\Promotion 
-     */
-    public function getPromotion()
-    {
-        return $this->promotion;
-    }
-
-    /**
      * Add barman
      *
      * @param \Cac\UserBundle\Entity\Barman $barman
@@ -1160,190 +1144,31 @@ class Bar
     }
 
     /**
-     * Set beerPrice
+     * Update daySchedules
      *
-     * @param integer $beerPrice
-     *
-     * @return Bar
-     */
-    public function setBeerPrice($beerPrice)
-    {
-        $this->beerPrice = $beerPrice;
-
-        return $this;
-    }
-
-    /**
-     * Get beerPrice
-     *
-     * @return integer
-     */
-    public function getBeerPrice()
-    {
-        return $this->beerPrice;
-    }
-
-    /**
-     * Set softPrice
-     *
-     * @param integer $softPrice
+     * @param string
      *
      * @return Bar
      */
-    public function setSoftPrice($softPrice)
+    public function updateDaySchedules(\Cac\BarBundle\Entity\DaySchedule $newDaySchedule)
     {
-        $this->softPrice = $softPrice;
-
+        foreach($this->getDaySchedules() as $daySchedule) {
+            if($daySchedule->getDayName() == $newDaySchedule->getDayName()) {
+                $daySchedule = $newDaySchedule;
+            }
+        }
         return $this;
     }
 
-    /**
-     * Get softPrice
+    /**  
      *
-     * @return integer
+     * @return \Cac\BarBundle\Entity\DaySchedule or false if not found
      */
-    public function getSoftPrice()
+    public function getDaySchedule($day)
     {
-        return $this->softPrice;
-    }
-
-    /**
-     * Set coffeePrice
-     *
-     * @param integer $coffeePrice
-     *
-     * @return Bar
-     */
-    public function setCoffeePrice($coffeePrice)
-    {
-        $this->coffeePrice = $coffeePrice;
-
-        return $this;
-    }
-
-    /**
-     * Get coffeePrice
-     *
-     * @return integer
-     */
-    public function getCoffeePrice()
-    {
-        return $this->coffeePrice;
-    }
-
-    /**
-     * Set cocktailPrice
-     *
-     * @param integer $cocktailPrice
-     *
-     * @return Bar
-     */
-    public function setCocktailPrice($cocktailPrice)
-    {
-        $this->cocktailPrice = $cocktailPrice;
-
-        return $this;
-    }
-
-    /**
-     * Get cocktailPrice
-     *
-     * @return integer
-     */
-    public function getCocktailPrice()
-    {
-        return $this->cocktailPrice;
-    }
-
-    /**
-     * Add carte
-     *
-     * @param \Cac\BarBundle\Entity\CarteBar $carte
-     *
-     * @return Bar
-     */
-    public function addCarte(\Cac\BarBundle\Entity\CarteBar $carte)
-    {
-        $this->carte[] = $carte;
-
-        return $this;
-    }
-
-    /**
-     * Remove carte
-     *
-     * @param \Cac\BarBundle\Entity\CarteBar $carte
-     */
-    public function removeCarte(\Cac\BarBundle\Entity\CarteBar $carte)
-    {
-        $this->carte->removeElement($carte);
-    }
-
-    /**
-     * Get carte
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getCarte()
-    {
-        return $this->carte;
-    }
-
-    /**
-     * Add highlight
-     *
-     * @param \Cac\BarBundle\Entity\Highlight $highlight
-     *
-     * @return Bar
-     */
-    public function addHighlight(\Cac\BarBundle\Entity\Highlight $highlight)
-    {
-        $this->highlight[] = $highlight;
-
-        return $this;
-    }
-
-    /**
-     * Remove highlight
-     *
-     * @param \Cac\BarBundle\Entity\Highlight $highlight
-     */
-    public function removeHighlight(\Cac\BarBundle\Entity\Highlight $highlight)
-    {
-        $this->highlight->removeElement($highlight);
-    }
-
-    /**
-     * Get highlight
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getHighlight()
-    {
-        return $this->highlight;
-    }
-
-    /**
-     * Add promoOfferte
-     *
-     * @param \Cac\BarBundle\Entity\PromoOffertes $promoOfferte
-     *
-     * @return Bar
-     */
-    public function addPromoOfferte(\Cac\BarBundle\Entity\PromoOffertes $promoOfferte)
-    {
-        $this->PromoOffertes[] = $promoOfferte;
-
-        return $this;
-    }
-
-    /**
-     * Remove promoOfferte
-     *
-     * @param \Cac\BarBundle\Entity\PromoOffertes $promoOfferte
-     */
-    public function removePromoOfferte(\Cac\BarBundle\Entity\PromoOffertes $promoOfferte)
-    {
-        $this->PromoOffertes->removeElement($promoOfferte);
+        foreach($this->getDaySchedules() as $daySchedule) {
+            if($daySchedule->getDayName() == $day) return $daySchedule;
+        }
+        return false;
     }
 }

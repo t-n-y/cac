@@ -4,30 +4,21 @@
 
 {% block body %}
 <div class="mainContaineur">
-	{% set days = {
-		'1': 'Lundi', 
-		'2': 'Mardi', 
-		'3': 'Mercredi', 
-		'4': 'Jeudi', 
-		'5': 'Vendredi', 
-		'6': 'Samedi', 
-		'7': 'Dimanche'
-	} %}
-	{% for i in 1..7 %}
+	{% for day, value in promotions %}
 		<ul>
-			<li>{{ days[i] }}</li>
+			<li>{{ day }}</li>
 			<ul><li>Happy Hour</li>
 				<ul>
-					<li>Begins : {{ bar.promotion.promotionArray[days[i]]['happy-hour'].beginning }}</li>
-					<li>Ends : {{ bar.promotion.promotionArray[days[i]]['happy-hour'].ending }}</li>
-					<li>Value : {{ bar.promotion.promotionArray[days[i]]['happy-hour'].value }}%</li>
-					<li>Condition : {{ bar.promotion.promotionArray[days[i]]['happy-hour'].condition }}</li>
+					<li>Begins : {{ value['happy-hour']['beginning'] }}</li>
+					<li>Ends : {{ value['happy-hour']['ending'] }}</li>
+					<li>Value : {{ value['happy-hour']['value'] }}%</li>
+					<li>Condition : {{ value['happy-hour']['condition'] }}</li>
 				</ul>
 				<li>Promotion C&C</li>
 				<ul>
-					<li>Quantité : {{ bar.promotion.promotionArray[days[i]].promotion.quantity }}</li>
-					<li>Value : {{ bar.promotion.promotionArray[days[i]].promotion.value }}%</li>
-					<li>Condition : {{ bar.promotion.promotionArray[days[i]].promotion.condition }}</li>
+					<li>Quantité : {{ value['promotion']['quantity'] }}</li>
+					<li>Value : {{ value['promotion']['value'] }}%</li>
+					<li>Condition : {{ value['promotion']['condition'] }}</li>
 				</ul>
 			</ul>
 		</ul>
