@@ -840,6 +840,20 @@ nav{
 .connexionInscription p{
 	float: left;
 	margin-right: 10px;
+	color: #303030;
+}
+
+.connexionInscription p a{
+	text-decoration: none;
+	color: #303030;
+}
+
+.connexionInscription p:hover, .connexionInscription p a:hover{
+	color: #5ac4d4;
+}
+
+.connexionInscription p a:before {
+ 	content: none;
 }
 
 
