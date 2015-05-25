@@ -116,8 +116,7 @@ class PromotionController extends Controller
             }
 
             $em->flush();
-            // return $this->redirect($this->generateUrl('bar_show', array('id' => $entity->getId())));
-            return $this->redirect($this->generateUrl('promotion_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('bar_show', array('id' => $entity->getId())));
         }
 
         return array(
