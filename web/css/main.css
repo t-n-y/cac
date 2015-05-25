@@ -746,10 +746,8 @@ nav{
 }
 
 .contentNav a:hover:before {
- 	
  	margin-top: 0px;
- 	opacity: 1;
- 	
+ 	opacity: 1;	
 }
 
 .contentNav a.trouverBar:before {
@@ -803,37 +801,83 @@ nav{
 }
 
 .administration li{
-	padding: 5px 15px 5px 15px;
 	cursor: pointer;
 	font-size: 12px;
+	position: relative;
 }
 
-.administration li:hover, .administration li.logout:hover{
+.administration li p:hover, .administration li.logout p:hover{
 	background-color: #5ac4d4;
 	color: #fff;
 }
 
-.administration li a{
+
+
+.administration li a p{
 	color: #303030;
+	cursor: pointer;
+	padding: 5px 25px 5px 45px;
+	margin: 0;
+	text-align: left;
 }
 
 .administration li:hover a{
 	text-decoration: none;
 	color: #fff;
+	cursor: pointer;
 }
 
-.administration li.logout{
+.administration li.logout a p{
 	background-color: #303030;
 	text-align: center;
 }
 
-.administration li.logout a{
+.administration li.logout a p{
 	color: #fff;
 }
 
 .connexionInscription p{
 	float: left;
 	margin-right: 10px;
+}
+
+
+.administration a:before {
+ 	position: absolute;
+ 	top: 4px;
+ 	margin-left: 0px;
+ 	left: 35px;
+  	background-size: 100%;
+ 	content: "";
+ 	width: 20px;
+    height: 20px;
+    z-index: 1001;
+    opacity: 0;
+    -webkit-transition: margin-left 0.15s ease-in-out, opacity 0.15s ease-in-out;
+    -moz-transition: margin-left 0.15s ease-in-out, opacity 0.15s ease-in-out;
+    -o-transition: margin-left 0.15s ease-in-out, opacity 0.15s ease-in-out;
+    -ms-transition: margin-left 0.15s ease-in-out, opacity 0.15s ease-in-out;
+    transition: margin-left 0.15s ease-in-out, opacity 0.15s ease-in-out;
+}
+
+.administration a:hover:before {
+ 	margin-left: -20px;
+ 	opacity: 1;	
+}
+
+.administration a.monCompte:before {
+ 	background:url("../img/pictoHeader/monCompte.svg") no-repeat 0 0;
+ 	background-size: 100%;
+}
+
+.administration a.mesReservation:before {
+ 	background:url("../img/pictoHeader/reservation.svg") no-repeat 0 0;
+ 	background-size: 100%;
+}
+
+.administration a.mesParrainage:before {
+ 	background:url("../img/pictoHeader/parrainage.svg") no-repeat 0 0;
+ 	background-size: 100%;
 }
 
 /********************************************/
