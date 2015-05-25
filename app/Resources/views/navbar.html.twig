@@ -187,6 +187,21 @@
             </div>
         </div>
     </div>
+    <div class="admisnistration">
+        <p>Bonjour </p>
+        <ul>
+            <li>
+              {% if is_granted('ROLE_BIGBOSS') %}
+                <a href="{{ path('bar_new') }}">Créer un bar</a>
+              {% endif %}
+            </li>
+            <li><a class="mesReservation" href="#">Mes réservations</a></li>
+            <li><a class="mesParrainage" href="#">Mes parrainage</a></li>
+            <li><a class="monCompte" href="{{ path('fos_user_profile_show') }}">Mon compte</a></li>
+            <li><a href="#">Mes points</a></li>
+            <li class="logout"><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
+        </ul>
+    </div>
 </nav>
 
 <script type="text/javascript">

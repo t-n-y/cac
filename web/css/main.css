@@ -192,7 +192,7 @@ h2.font30{
 
 .forNewProNav{
 	height: 260px;
-	margin-left: -130px;
+	margin-left: -200px;
 }
 
 .forConnexion h2, .forRegister h2{
@@ -681,8 +681,12 @@ ul.dropdown-menu li > a.monCompte:hover:before {
 
 /****************NAV NEW USER****************/
 
+nav{
+	position: relative;
+}
+
 .contentLogo{
-	background:  url('../img/patterngristest.svg');
+	background:  url('../img/patternGris.png');
 	height: 80px;
 	text-align: center;
 	line-height: 75px;
@@ -706,10 +710,16 @@ ul.dropdown-menu li > a.monCompte:hover:before {
 .contentNav p a{
 	color: #303030;
 	text-decoration: none;
+	 -webkit-transition: color 0.25s ease-in-out;
+    -moz-transition: color 0.25s ease-in-out;
+    -o-transition: color 0.25s ease-in-out;
+    -ms-transition: color 0.25s ease-in-out;
+    transition: color 0.25s ease-in-out;
 }
 
 .contentNav p a:hover{
 	text-decoration: none;
+	color: #5ac4d4;
 }
 
 
@@ -728,11 +738,11 @@ ul.dropdown-menu li > a.monCompte:hover:before {
     height: 20px;
     z-index: 1001;
     opacity: 0;
-    -webkit-transition: margin-top 0.5s ease-in-out, opacity 0.5s ease-in-out;
-    -moz-transition: margin-top 0.5s ease-in-out, opacity 0.5s ease-in-out;
-    -o-transition: margin-top 0.5s ease-in-out, opacity 0.5s ease-in-out;
-    -ms-transition: margin-top 0.5s ease-in-out, opacity 0.5s ease-in-out;
-    transition: margin-top 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    -webkit-transition: margin-top 0.25s ease-in-out, opacity 0.25s ease-in-out;
+    -moz-transition: margin-top 0.25s ease-in-out, opacity 0.25s ease-in-out;
+    -o-transition: margin-top 0.25s ease-in-out, opacity 0.25s ease-in-out;
+    -ms-transition: margin-top 0.25s ease-in-out, opacity 0.25s ease-in-out;
+    transition: margin-top 0.25s ease-in-out, opacity 0.25s ease-in-out;
 }
 
 .contentNav a:hover:before {
@@ -743,21 +753,40 @@ ul.dropdown-menu li > a.monCompte:hover:before {
 }
 
 .contentNav a.trouverBar:before {
- 	background:url("../img/pictoHeader/trouverBar.png") no-repeat 0 0;
+ 	background:url("../img/pictoHeader/trouverBar.svg") no-repeat 0 0;
  	background-size: 100%;
 }
 
 .contentNav a.hasard:before {
- 	background:url("../img/pictoHeader/hasard.png") no-repeat 0 0;
+ 	background:url("../img/pictoHeader/hasard.svg") no-repeat 0 0;
  	background-size: 100%;
 }
 
 .contentNav a.parrainage:before {
- 	background:url("../img/pictoHeader/parrainage.png") no-repeat 0 0;
+ 	background:url("../img/pictoHeader/parrainage.svg") no-repeat 0 0;
  	background-size: 100%;
 }
 
 
+.admisnistration{
+	position: absolute;
+	top: 20px;
+	right: 40px;
+}
+
+.admisnistration p{
+	background-color: #fff;
+	padding: 5px 20px;
+	cursor: pointer;
+	text-align: center;
+}
+
+.admisnistration ul{
+	position: relative;
+	z-index: 1000;
+	background-color: #fff;
+	list-style: none;
+}
 
 /********************************************/
 
@@ -1988,11 +2017,21 @@ p.closeMesOptions{
 	font-size: 16px;
 }
 
-.
+
 
 /***************************************/
 
 /************New Bar****************/
+
+#etablissement{
+	border-bottom:3px solid #f8ad85; 
+}
+#photo{
+	border-bottom:3px solid #5ac4d4; 
+}
+#formule{
+	border-bottom:3px solid #ef662f; 
+}
 
 .ongletCreation{
 	background-color: #303030;
@@ -2004,6 +2043,10 @@ p.closeMesOptions{
 .selectedOngletCreation{
 	background-color: #f6f6f6;
 	color: #000;
+}
+
+.ongletCreation p{
+	margin: 0px;
 }
 
 .progressionCreation .progresseBarContent{
@@ -2032,20 +2075,6 @@ p.closeMesOptions{
 	top: -20px;
 	position: relative;
 	text-align: right;
-}
-
-#etablissement{
-	border-bottom:3px solid #f8ad85; 
-}
-#photo{
-	border-bottom:3px solid #5ac4d4; 
-}
-#formule{
-	border-bottom:3px solid #ef662f; 
-}
-
-.ongletCreation p{
-	margin: 0px;
 }
 
 
@@ -2095,6 +2124,10 @@ p.closeMesOptions{
   left: 75px;
 }
 
+
+.heureNewBar .myService label{
+	padding-left: 75%;
+}
 
 .ac-custom svg {
 	position: absolute;
