@@ -68,7 +68,7 @@ class BasicUser extends User
      * @var string
      *
      * @Assert\NotBlank()
-     * @ORM\Column(name="adress", type="string", length=255)
+     * @ORM\Column(name="adress", type="string", length=255, nullable=true)
      */
     private $adress;
 
@@ -76,7 +76,7 @@ class BasicUser extends User
      * @var string
      *
      * @Assert\NotBlank()
-     * @ORM\Column(name="region", type="string", length=255)
+     * @ORM\Column(name="region", type="string", length=255, nullable=true)
      */
     private $region;
 
@@ -84,7 +84,7 @@ class BasicUser extends User
      * @var string
      *
      * @Assert\NotBlank()
-     * @ORM\Column(name="town", type="string", length=255)
+     * @ORM\Column(name="town", type="string", length=255, nullable=true)
      */
     private $town;
 
@@ -92,7 +92,7 @@ class BasicUser extends User
      * @var string
      *
      * @Assert\NotBlank()
-     * @ORM\Column(name="country", type="string", length=255)
+     * @ORM\Column(name="country", type="string", length=255, nullable=true)
      */
     private $country;
 
@@ -108,7 +108,7 @@ class BasicUser extends User
      *      maxMessage = "Votre nom ne peut pas être plus long que {{ limit }} caractères",
      *      exactMessage = "Le code postal doit contenir 5 chiffres"
      * )
-     * @ORM\Column(name="zipcode", type="integer", length=255)
+     * @ORM\Column(name="zipcode", type="integer", length=255, nullable=true)
      */
     private $zipcode;
 
@@ -116,7 +116,7 @@ class BasicUser extends User
      * @var string
      *
      * @Assert\NotBlank()
-     * @ORM\Column(name="geocode", type="string", length=255)
+     * @ORM\Column(name="geocode", type="string", length=255, nullable=true)
      */
     private $geocode;
 
