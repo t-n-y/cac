@@ -674,6 +674,92 @@ ul.dropdown-menu li > a.monCompte:hover:before {
 
 
 
+
+
+/****************NAV NEW USER****************/
+
+.contentLogo{
+	background:  url('../img/patterngristest.svg');
+	height: 80px;
+	text-align: center;
+	line-height: 75px;
+}
+
+.contentLogo img{
+	width: 150px;
+}
+
+.contentNav{
+	text-align: center;
+	color: #303030 !important;
+	margin-top: 0;
+	padding: 10px 0;
+}
+
+.contentNav p{
+	margin-bottom: 0 ;
+}
+
+.contentNav p a{
+	color: #303030;
+	text-decoration: none;
+}
+
+.contentNav p a:hover{
+	text-decoration: none;
+}
+
+
+.contentNav a {
+ 	position: relative;
+}
+
+.contentNav a:before {
+ 	position: absolute;
+ 	top: -2px;
+ 	margin-top: -10px;
+ 	left: -30px;
+  	background-size: 100%;
+ 	content: "";
+ 	width: 20px;
+    height: 20px;
+    z-index: 1001;
+    opacity: 0;
+    -webkit-transition: margin-top 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    -moz-transition: margin-top 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    -o-transition: margin-top 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    -ms-transition: margin-top 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    transition: margin-top 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.contentNav a:hover:before {
+ 	
+ 	margin-top: 0px;
+ 	opacity: 1;
+ 	
+}
+
+.contentNav a.trouverBar:before {
+ 	background:url("../img/pictoHeader/trouverBar.png") no-repeat 0 0;
+ 	background-size: 100%;
+}
+
+.contentNav a.hasard:before {
+ 	background:url("../img/pictoHeader/hasard.png") no-repeat 0 0;
+ 	background-size: 100%;
+}
+
+.contentNav a.parrainage:before {
+ 	background:url("../img/pictoHeader/parrainage.png") no-repeat 0 0;
+ 	background-size: 100%;
+}
+
+
+
+/********************************************/
+
+
+
 /****************FOOTER****************/
 
 footer{
@@ -755,7 +841,7 @@ p.droitReserve{
 /*****************BODY*****************/
 
 .mainContainer{
-	padding-top: 80px; 
+	/*padding-top: 80px; */
 	width: 100%;
 }
 
