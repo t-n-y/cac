@@ -28,6 +28,7 @@
     		    <div class="showImg">
     		    	<img id="blah" src="#" alt="Votre image" />
     		    </div>
+                <input type="hidden" name="coords" id="coords" value="" data-ratio="">
 
     	{{ form_end(form) }}
 
@@ -49,16 +50,30 @@
                 var img = new Image();
                 
                 reader.onload = function (e) {
-                    $('#blah').attr('src', e.target.result).Jcrop();
-                    var image = $('#jcrop_target');
-                    console.log(image);
-                    var realWidth = image.get(0).naturalWidth;
-                    var realHeight = image.get(0).naturalHeight;
-                    console.log(realHeight + ' ' + realWidth);
+                    var mW = $('.showImg').width();
+                    $('#blah').attr('src', e.target.result).Jcrop({
+                        onSelect: changeCoords
+                    });
+                    var image = $('#blah');
+                    var oH = image.height(), oW = image.width();
+                    var nW = $('.jcrop-holder').width();
+                    if(oW > nW) {
+                        var ratio = nW/oW;
+                        $('#coords').attr('data-ratio', ratio);
+                        var nH = oH*ratio;
+                        $('.jcrop-holder, .jcrop-keymgr + img').height(nH);
+                        $('.jcrop-holder div div img').width(nW).height(nH);
+                    }
                 };
                 
                 reader.readAsDataURL(input.files[0]);
             }
+        }
+
+        function changeCoords(c) {
+            var ratio = $('#coords').attr('data-ratio');
+            c.ratio = ratio;
+            $('#coords').val(JSON.stringify(c));
         }
 
         $("#form_file").change(function(){

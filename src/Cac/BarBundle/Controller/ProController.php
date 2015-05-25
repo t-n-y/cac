@@ -237,6 +237,8 @@ class ProController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
+            var_dump($request->request->get('coords'));
+            die;
             $entity->preUpload();
             $em->persist($entity);
             $em->flush();
