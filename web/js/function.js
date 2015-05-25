@@ -275,6 +275,13 @@ $(document).on('click','.inscriptionNewProNav', function() {
     }, 700);
 });
 
+$('.administration').mouseenter(function() {
+    $(this).find('ul').addClass('openSousNav');
+});
+$('.administration').mouseleave(function() {
+    $(this).find('ul').removeClass('openSousNav');
+});
+
 
 $('.interrogation p').mouseenter(function() {
     $(this).parent().find($('.informationInterrogation')).css('display','block');
