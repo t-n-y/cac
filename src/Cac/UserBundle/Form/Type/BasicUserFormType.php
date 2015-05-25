@@ -45,7 +45,12 @@ class BasicUserFormType extends AbstractType
                 )
             )
             ->add('birthday', 'birthday', array('label' => 'Date de naissance', 'format' => 'dd MM yyyy',))
-            ->add('fix_phone', 'text', array('label' => 'Téléphone fixe'))
+            ->add('adress', null, array('label' => 'Adresse'))
+            ->add('zipcode', null, array('label' => 'Code Postal'))
+            ->add('town', null, array('label' => 'Ville'))
+            ->add('region', null, array('label' => 'Région'))
+            ->add('country', null, array('label' => 'Pays'))
+            ->add('geocode', 'hidden', array())
             ->add('mobile_phone', 'text', array('label' => 'Téléphone mobile'))
         ;
     }

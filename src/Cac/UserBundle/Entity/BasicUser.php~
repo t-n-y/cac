@@ -386,28 +386,4 @@ class BasicUser extends User
     {
         return $this->zipcode;
     }
-
-    /**
-     * Set geocode
-     *
-     * @param string $geocode
-     *
-     * @return BasicUser
-     */
-    public function setGeocode($geocode)
-    {
-        $this->geocode = $geocode;
-
-        return $this;
-    }
-
-    /**
-     * Get geocode
-     *
-     * @return string
-     */
-    public function getGeocode()
-    {
-        return $this->geocode;
-    }
 }

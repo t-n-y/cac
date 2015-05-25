@@ -78,12 +78,6 @@ $(document).ready(function(){
     $forRegister.css("display","none");
   });
 
-  // $inscrivezVous.on('click',function(){
-  //   $forRegister.css("display","block");
-  //   $isConnexion.css("display","block");
-  //   $forConnexion.css("display","none");
-  // });
-
   $isConnexion.on('click',function(){
     $isConnexion.css("display","none");
     $forConnexion.css("display","none");
@@ -708,10 +702,3 @@ $( '.obtenirPromo' ).on( 'click', function() {
       }
   } );
 });
-
-
-
-
-
-
-
