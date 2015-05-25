@@ -37,10 +37,7 @@
 							<h3 id="firstWord{{ bar.id }}">{{ bar.name }}</h3>
 						</div>
 						<div class="col-xs-2 col-sm-2 col-md-2 noPadding">
-							{#{% if bar.promotion.promotionArray[today]['happy-hour'].value %}
-							<p>{{ bar.promotion.promotionArray[today]['happy-hour'].value }}</p>
-							{% endif %} #}
-							<p class="shadowPromotion hoverShadow">-30%</p>
+							<p class="shadowPromotion hoverShadow">-{{ bar.promo }}%</p>
 						</div>
 						<div class="col-xs-2 col-sm-2 col-md-2 noPadding">
 							<div class="imageHappyHours hoverShadow">
@@ -48,8 +45,8 @@
 							</div>
 						</div>
 						<div class="col-xs-2 col-sm-2 col-md-3 noPadding">
-							<p class="shadowNote">8,2/10</p>
-							<p class="shadowNbAvis hoverShadow">233 avis</p>
+							<p class="shadowNote">{{ bar.note }}/10</p>
+							<p class="shadowNbAvis hoverShadow">{{ bar.nbAvis }} avis</p>
 						</div>
 						<div class="shadowAdresse col-xs-12 col-sm-12 col-md-12 noPadding hoverShadow">
 							<p>{{ bar.adress }}, {{ bar.zipcode }} {{ bar.town }}</p>
@@ -72,15 +69,15 @@
 								</div>
 								
 								<div class="col-xs-2 col-sm-2 col-md-2 noPadding">
-									<p class="shadowNote">8,2/10</p>
-									<p class="shadowNbAvis hoverShadow">233 avis</p>
+									<p class="shadowNote">{{ bar.note }}/10</p>
+									<p class="shadowNbAvis hoverShadow">{{ bar.nbAvis }} avis</p>
 								</div>
 								<div class="shadowAdresse col-xs-12 col-sm-12 col-md-12 noPadding">
 									<div class="col-xs-2 col-sm-2 col-md-2 noPadding">
 										{#{% if bar.promotion.promotionArray[today]['happy-hour'].value %}
 										<p>{{ bar.promotion.promotionArray[today]['happy-hour'].value }}</p>
 										{% endif %} #}
-										<p class="shadowPromotion">-30%</p>
+										<p class="shadowPromotion">-{{ bar.promo }}%</p>
 									</div>
 									<div class="col-xs-1 col-sm-1 col-md-1 noPadding">
 										<div class="imageHappyHours">
@@ -120,15 +117,15 @@
 								</div>
 								
 								<div class="col-xs-2 col-sm-2 col-md-2 noPadding">
-									<p class="shadowNote">8,2/10</p>
-									<p class="shadowNbAvis hoverShadow">233 avis</p>
+									<p class="shadowNote">{{ bar.note }}/10</p>
+									<p class="shadowNbAvis hoverShadow">{{ bar.nbAvis }} avis</p>
 								</div>
 								<div class="shadowAdresse col-xs-12 col-sm-12 col-md-12 noPadding">
 									<div class="col-xs-2 col-sm-2 col-md-2 noPadding">
 										{#{% if bar.promotion.promotionArray[today]['happy-hour'].value %}
 										<p>{{ bar.promotion.promotionArray[today]['happy-hour'].value }}</p>
 										{% endif %} #}
-										<p class="shadowPromotion">-30%</p>
+										<p class="shadowPromotion">-{{ bar.promo }}%</p>
 									</div>
 									<div class="col-xs-1 col-sm-1 col-md-1 noPadding">
 										<div class="imageHappyHours">

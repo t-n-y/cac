@@ -33,33 +33,37 @@ class BarController extends Controller
         setlocale(LC_TIME, "fr_FR");
         $today = strftime("%A");
         $em = $this->getDoctrine()->getManager();
-    
         $entities = $em->getRepository('CacBarBundle:Bar')->findAll();
-//         foreach ($entities as $entity) {
-//             $promotions = $entity->getPromotions();
-//             foreach ($promotions as $promo) {
-//                 ld($promo);
-//             }
-// exit();
-
-
-//             $nbAvis = count($entity->getComments()->getValues());
-//             $coms = $entity->getComments()->getValues();
-//             $note = 0;
-//             foreach ($coms as $com) {
-//                 $note += $com->getNote();
-//             }
-//            ld('id '.$entity->getId());
-//            ld($nbAvis);
-//            ld($note);
-//         }
-//         exit();
-        
+        $bars = array();
+        $i = 0;
+        foreach ($entities as $entity) {
+            $promoOfTheDay = $entity->getPromotionByDay($today)->getOption('value')->getValue();
+            $happyHourOfTheDay = $entity->getHappyHourByDay($today)->getOption('value')->getValue();
+            $nbAvis = count($entity->getComments()->getValues());
+            $coms = $entity->getComments()->getValues();
+            $note = 0;
+            foreach ($coms as $com) {
+                $note += $com->getNote();
+            }
+           $bars[$i]['id'] = $entity->getId();
+           $bars[$i]['path'] = $entity->getPath();
+           $bars[$i]['name'] = $entity->getName();
+           $bars[$i]['dresscode'] = $entity->getDressCode();
+           $bars[$i]['averagePrice'] = $entity->getCocktailPrice();
+           $bars[$i]['adress'] = $entity->getAdress();
+           $bars[$i]['zipcode'] = $entity->getZipCode();
+           $bars[$i]['town'] = $entity->getTown();
+           $bars[$i]['nbAvis'] = $nbAvis;
+           $bars[$i]['note'] = $note;
+           $bars[$i]['promo'] = $promoOfTheDay;
+           $bars[$i]['happy'] = $happyHourOfTheDay;
+           $i ++;
+        }
         $highlight = $em->getRepository('CacBarBundle:highlight')->findAll();
         shuffle($highlight);
         $paginator  = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
-            $entities,
+            $bars,
             $this->get('request')->query->get('page', 1)/*page number*/,
             16/*limit per page*/
         );
