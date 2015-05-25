@@ -1,5 +1,10 @@
 {% extends '::base.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/jquery.Jcrop.min.css')}}">
+{% endblock %}
+
 {% block body %}
 
 
@@ -30,4 +35,37 @@
 
 	<a href="{{ path("promotion_create", {'id': id }) }}">Passer cette étape</a>
 
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/jquery.color.js') }}" type="text/javascript" /></script>
+    <script src="{{ asset('js/jquery.Jcrop.min.js') }}" type="text/javascript" /></script>
+    <script>
+    $(document).ready(function(){
+        function readURL(input) {
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                var img = new Image();
+                
+                reader.onload = function (e) {
+                    $('#blah').attr('src', e.target.result).Jcrop();
+                    var image = $('#jcrop_target');
+                    console.log(image);
+                    var realWidth = image.get(0).naturalWidth;
+                    var realHeight = image.get(0).naturalHeight;
+                    console.log(realHeight + ' ' + realWidth);
+                };
+                
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#form_file").change(function(){
+            readURL(this);
+            $(".showImg").stop(true,true).show(300);
+            $(".file_button_container img").stop(true,true).show(300);
+        });
+    });
+    </script>
 {% endblock %}

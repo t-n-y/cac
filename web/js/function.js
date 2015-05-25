@@ -648,31 +648,31 @@ function annimationShowBar(){
 /********************************************************************************/
 
 
-  function readURL(input) {
+function readURL(input) {
 
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            
-            reader.onload = function (e) {
-                $('#blah').attr('src', e.target.result);
-            }
-            
-            reader.readAsDataURL(input.files[0]);
-        }
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        
+        reader.onload = function (e) {
+            $('#blah').attr('src', e.target.result);
+        };
+        
+        reader.readAsDataURL(input.files[0]);
     }
-    
-    $("#form_file").change(function(){
-        readURL(this);
-        $(".showImg").stop(true,true).show(300);
-        $(".file_button_container img").stop(true,true).show(300);
-    });
+}
 
-    $("#cac_barbundle_bar_file").change(function(){
-        readURL(this);
-        $(".showImg").stop(true,true).show(300);
-        $(".file_button_container img").stop(true,true).show(300);
-        $("#lastPicture").stop(true,true).hide(300);
-    });
+$("#form_file").change(function(){
+    readURL(this);
+    $(".showImg").stop(true,true).show(300);
+    $(".file_button_container img").stop(true,true).show(300);
+});
+
+$("#cac_barbundle_bar_file").change(function(){
+    readURL(this);
+    $(".showImg").stop(true,true).show(300);
+    $(".file_button_container img").stop(true,true).show(300);
+    $("#lastPicture").stop(true,true).hide(300);
+});
 
 // render modal login
 $( ".animConnexion" ).on( "click", function() {
