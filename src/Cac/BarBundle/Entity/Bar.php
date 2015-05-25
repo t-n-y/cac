@@ -908,8 +908,8 @@ class Bar
         $thumb = imagecreatetruecolor($c['w']/$c['ratio'], $c['h']/$c['ratio']);
         $source = imagecreatefromjpeg($this->getAbsolutePath());
         list($width, $height) = getimagesize($this->getAbsolutePath());
-        $image = imagecopyresampled($thumb, $source, 0, 0, $c['x']/$c['ratio'], $c['y']/$c['ratio'], ($c['x2']-$c['x'])/$c['ratio'], ($c['y2']-$c['y'])/$c['ratio'], $c['w']/$c['ratio'], $c['h']/$c['ratio']);  
-        imagejpeg($thumb, $this->getAbsolutePath(), 90); 
+        $image = imagecopyresized($thumb, $source, 0, 0, $c['x']/$c['ratio'], $c['y']/$c['ratio'], ($c['x2']-$c['x'])/$c['ratio'], ($c['y2']-$c['y'])/$c['ratio'], $c['w']/$c['ratio'], $c['h']/$c['ratio']);  
+        imagejpeg($thumb, $this->getAbsolutePath(), 100); 
     }
 
     /**

@@ -240,8 +240,8 @@ class ProController extends Controller
             $coords = json_decode($request->request->get('coords'), true);
             $entity->preUpload();
             $em->persist($entity);
-            $entity->resizeImg($coords);
             $em->flush();
+            $entity->resizeImg($coords);
             return $this->redirect($this->generateUrl('promotion_create', array('id' => $id)));
         }
         return $this->render('CacBarBundle:Pro:newPart2.html.twig', array(

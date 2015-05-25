@@ -50,19 +50,28 @@
                 var img = new Image();
                 
                 reader.onload = function (e) {
-                    var mW = $('.showImg').width();
-                    $('#blah').attr('src', e.target.result).Jcrop({
-                        onSelect: changeCoords
-                    });
+                    $('#blah').attr('src', e.target.result);
+
                     var image = $('#blah');
                     var oH = image.height(), oW = image.width();
-                    var nW = $('.jcrop-holder').width();
-                    if(oW > nW) {
-                        var ratio = nW/oW;
+                    var mW = $('.showImg').width();
+                    var ratio = mW/oW;
+
+                    if(ratio > 1) ratio = 1;
+                    var cX = 960*ratio, cY = 350*ratio;
+                    var minSize = [cX, cY], setSelect = [(oW*ratio-cX)/2, (oH*ratio-cY)/2, cX, cY];
+
+                    $('#blah').Jcrop({
+                        onSelect: changeCoords,
+                        minSize: minSize,
+                        onChange: changeCoords,
+                        setSelect: setSelect
+                    });
+                    if(ratio < 1) {
                         $('#coords').attr('data-ratio', ratio);
                         var nH = oH*ratio;
                         $('.jcrop-holder, .jcrop-keymgr + img').height(nH);
-                        $('.jcrop-holder div div img').width(nW).height(nH);
+                        $('.jcrop-holder div div img').width(mW).height(nH);
                     }
                 };
                 
