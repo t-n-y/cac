@@ -45,6 +45,11 @@
     $(document).ready(function(){
         var jcrop_api = '';
 
+        function tooSmall() {
+            alert('Image trop petite, largeur min 1280px; hauteur min 350px');
+            $('#blah').attr('src', '#');
+        }
+
         function readURL(input) {
 
             if (input.files && input.files[0]) {
@@ -52,11 +57,18 @@
                 var img = new Image();
                 
                 reader.onload = function (e) {
-                    if(jcrop_api != '') jcrop_api.destroy();
+                    if(jcrop_api != '') {
+                        jcrop_api.destroy();
+                        $('#blah').attr('style', '');
+                    }
                     $('#blah').attr('src', e.target.result);
 
                     var image = $('#blah');
                     var oH = image.height(), oW = image.width();
+                    if(oW < 1280 || oH < 350) {
+                        tooSmall();
+                        return false;
+                    }
                     var mW = $('.showImg').width();
                     var ratio = mW/oW;
 
