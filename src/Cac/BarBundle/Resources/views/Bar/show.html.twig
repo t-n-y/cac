@@ -3,7 +3,7 @@
 {% block title %}CacBarBundle:Bar:show{% endblock %}
 
 {% block body %}
-	{{ dump(bar.getPromotionByDay('Lundi').getOption('value').value)}}
+	{{ dump(bar.getPromotionByDay('Samedi').getOption('value').value)}}
 	{{ dump(bar.getHappyHourByDay('Lundi').getOption('value').value)}}
 		<div class="topBar col-xs-12 col-sm-12 col-md-12 noPadding" style="background-image : url('{{ asset('uploads/bar/'~bar.path) }}');">
 			
@@ -48,20 +48,6 @@
 					</div>
 				</div>
 			</div>
-			{#<ul><li>Happy Hour</li>
-				<ul>
-					<li>Begins : {{ bar.promotion.promotionArray[today]['happy-hour'].beginning }}</li>
-					<li>Ends : {{ bar.promotion.promotionArray[today]['happy-hour'].ending }}</li>
-					<li>Value : {{ bar.promotion.promotionArray[today]['happy-hour'].value }}%</li>
-					<li>Condition : {{ bar.promotion.promotionArray[today]['happy-hour'].condition }}</li>
-				</ul>
-				<li>Promotion C&C</li>
-				<ul>
-					<li>Quantité : {{ bar.promotion.promotionArray[today].promotion.quantity }}</li>
-					<li>Value : {{ bar.promotion.promotionArray[today].promotion.value }}%</li>
-					<li>Condition : {{ bar.promotion.promotionArray[today].promotion.condition }}</li>
-				</ul>
-			</ul>#}
 			<div class="noteBar col-xs-6 col-sm-3 col-md-3">
 				<div class="ticket">
 					<div class="ticketBarTop">
@@ -69,6 +55,8 @@
 							<img src="{{asset('img/pictoPromo.png')}}" alt="">
 						{% endif %}
 						
+
+
 						{% if bar.promotion.promotionArray[today] is defined and bar.promotion.promotionArray[today].promotion.value == 0 %}
 
 							<h2 class="font30 fontWeight200">PAS DE PROMO</h2>
@@ -284,7 +272,7 @@
 					{% if bar.handicappedAccess == 1 %}
 						<div class="vignettePetitPlus col-xs-6 col-sm-4 col-md-3 noPadding">
 							<div class="vignettePetitPlusContent">
-								<img class="col-xs-2 col-sm-2 col-md-2 noPadding" src="{{asset('img/pictoBar/handicape.png')}}" alt="Click and Cheers" />
+								<img class="col-xs-2 col-sm-2 col-md-2 noPadding" src="{{asset('img/pictoBar/handicape.svg')}}" alt="Click and Cheers" />
 								<p class="col-xs-9 col-sm-9 col-md-9 noPadding">Accessible<br>aux PMR</p>
 							</div>
 						</div>
@@ -292,14 +280,14 @@
 					{% if bar.patio == 1%}
 						<div class="vignettePetitPlus col-xs-6 col-sm-4 col-md-3 noPadding">
 							<div class="vignettePetitPlusContent">
-								<img src="{{asset('img/pictoBar/terrasse.png')}}" alt="Click and Cheers"><p>Terrasse<br>sympa</p>
+								<img src="{{asset('img/pictoBar/terrasse.svg')}}" alt="Click and Cheers"><p>Terrasse<br>sympa</p>
 							</div>
 						</div>
 					{% endif %}
 					{% if bar.smokingArea == 1%}
 						<div class="vignettePetitPlus col-xs-6 col-sm-4 col-md-3 noPadding">
 							<div class="vignettePetitPlusContent">
-								<img class="col-xs-3 col-sm-3 col-md-3 noPadding" src="{{asset('img/pictoBar/fumoir.png')}}" alt="Click and Cheers" />
+								<img class="col-xs-3 col-sm-3 col-md-3 noPadding" src="{{asset('img/pictoBar/fumoir.svg')}}" alt="Click and Cheers" />
 								<p class="col-xs-9 col-sm-9 col-md-9 noPadding">Espace<br>Fumeur</p>
 							</div>
 						</div> 
@@ -307,7 +295,7 @@
 					{% if bar.breathalyser == 1%}
 						<div class="vignettePetitPlus col-xs-6 col-sm-4 col-md-3 noPadding">
 							<div class="vignettePetitPlusContent">
-								<img src="{{asset('img/pictoBar/ethylotest.png')}}" alt="Click and Cheers"><p>Ethylotest<br>gratuit</p>
+								<img src="{{asset('img/pictoBar/ethylotest.svg')}}" alt="Click and Cheers"><p>Ethylotest<br>gratuit</p>
 							</div>
 						</div>
 					{% endif %}
@@ -315,7 +303,7 @@
 					{% if bar.babyfoot == 1%}
 						<div class="vignettePetitPlus col-xs-6 col-sm-4 col-md-3 noPadding">
 							<div class="vignettePetitPlusContent">
-								<img src="{{asset('img/pictoBar/babyfoot.png')}}" alt="Click and Cheers"><p class="padding10">BabyFoot</p>
+								<img src="{{asset('img/pictoBar/babyfoot.svg')}}" alt="Click and Cheers"><p class="padding10">BabyFoot</p>
 							</div>
 						</div>
 					{% endif %}
@@ -323,7 +311,7 @@
 					{% if bar.billard == 1%}
 						<div class="vignettePetitPlus col-xs-6 col-sm-4 col-md-3 noPadding">
 							<div class="vignettePetitPlusContent">
-								<img class="col-xs-3 col-sm-3 col-md-3 noPadding" src="{{asset('img/pictoBar/billard.png')}}" alt="Click and Cheers">
+								<img class="col-xs-3 col-sm-3 col-md-3 noPadding" src="{{asset('img/pictoBar/billard.svg')}}" alt="Click and Cheers">
 								<p class="col-xs-9 col-sm-9 col-md-9 noPadding padding10">Billard</p>
 							</div>
 						</div>
@@ -332,7 +320,7 @@
 					{% if bar.flipper == 1 %}
 						<div class="vignettePetitPlus col-xs-6 col-sm-4 col-md-3 noPadding">
 							<div class="vignettePetitPlusContent">
-								<img src="{{asset('img/pictoBar/flipper.png')}}" alt="Click and Cheers"><p class="padding10">Flipper</p>
+								<img src="{{asset('img/pictoBar/flipper.svg')}}" alt="Click and Cheers"><p class="padding10">Flipper</p>
 							</div>
 						</div>
 					{% endif %}
@@ -340,14 +328,14 @@
 					{% if bar.canape == 1%}
 						<div class="vignettePetitPlus col-xs-6 col-sm-4 col-md-3 noPadding">
 							<div class="vignettePetitPlusContent">
-								<img src="{{asset('img/pictoBar/canape.png')}}" alt="Click and Cheers"><p class="padding10">Canapé</p>
+								<img src="{{asset('img/pictoBar/canape.svg')}}" alt="Click and Cheers"><p class="padding10">Canapé</p>
 							</div>
 						</div>
 					{% endif %}
 					{% if bar.clim == 1 %}
 						<div class="vignettePetitPlus col-xs-6 col-sm-4 col-md-3 noPadding">
 							<div class="vignettePetitPlusContent">
-								<img src="{{asset('img/pictoBar/climatisation.png')}}" alt="Click and Cheers"><p class="padding10">Climatisation</p>
+								<img src="{{asset('img/pictoBar/climatisation.svg')}}" alt="Click and Cheers"><p class="padding10">Climatisation</p>
 							</div>
 						</div>
 					{% endif %}
