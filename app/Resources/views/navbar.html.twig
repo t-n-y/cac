@@ -167,51 +167,59 @@
 </div> -->
 
 <nav>
+    <button class="hidden-sm hidden-md hidden-lg menu__handle">
+        <span>Menu</span>
+    </button>
     <div class="contentLogo">
         <a href="{{ path('home') }}">
             <img src="{{asset('img/LogoClickandcheers.svg')}}" alt="Click and Cheers">
         </a>
     </div>
-    <div class="contentNav">
-        <div class="row">
-            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2">
-                <div class="col-xs-12 col-sm-4 col-md-4">
-                    <p><a class="trouverBar" href="{{ path('bars') }}">TROUVER UN BAR</a></p>
+    <div class="menuMob">
+        
+    
+        <div class="administration">
+            {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                <p>Bonjour {{ app.user.firstname}} </p>
+                <div class="clear"></div>
+                <ul>
+                    <li>
+                      {% if is_granted('ROLE_BIGBOSS') %}
+                        <a href="{{ path('bar_new') }}"><p>Créer un bar</p></a>
+                      {% endif %}
+                    </li>
+                    <li><a class="mesReservation" href="#"><p>Mes réservations</p></a></li>
+                    <li><a class="mesParrainage" href="#"><p>Mes parrainage</p></a></li>
+                    <li><a class="monCompte" href="{{ path('fos_user_profile_show') }}"><p>Mon compte</p></a></li>
+                    <li><a href="#"><p>Mes points</p></a></li>
+                    <li class="logout"><a href="{{ path('fos_user_security_logout') }}"><p>Déconnexion</p></a></li>
+                </ul>
+            {% else %}
+                <div class="connexionInscription">
+                    <p class="animConnexion">Connexion</p>
+                    <p><a href="{{ path('user_register') }}">Inscription</a></p>
                 </div>
-                <div class="col-xs-12 col-sm-4 col-md-4">
-                    <p><a class="hasard" href="{{ path('randomBar') }}">AU HASARD</a></p>
-                </div>
-                <div class="col-xs-12 col-sm-4 col-md-4">
-                    <p><a class="parrainage" href="#">PARRAINAGE</a></p>
+                <!-- <li class="connexionAndCreate col-sm-4 col-md-4 noPadding">
+                      <a class="animConnexion col-sm-6 col-md-6 noPadding" href="#">Connexion</a>
+                      <a class="InscriptionHeader animRegister col-sm-6 col-md-6 noPadding" href="{{ path('user_register') }}">Inscrivez<br>vous</a></li> -->
+            {% endif %}
+        </div>
+        <div class="contentNav">
+            <div class="row">
+                <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2">
+                    <div class="col-xs-12 col-sm-4 col-md-4 noPadding">
+                        <p><a class="trouverBar" href="{{ path('bars') }}">TROUVER UN BAR</a></p>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-4 noPadding">
+                        <p><a class="hasard" href="{{ path('randomBar') }}">AU HASARD</a></p>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-4 noPadding">
+                        <p><a class="parrainage" href="#">PARRAINAGE</a></p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="administration">
-        {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-            <p>Bonjour {{ app.user.firstname}} </p>
-            <div class="clear"></div>
-            <ul>
-                <li>
-                  {% if is_granted('ROLE_BIGBOSS') %}
-                    <a href="{{ path('bar_new') }}"><p>Créer un bar</p></a>
-                  {% endif %}
-                </li>
-                <li><a class="mesReservation" href="#"><p>Mes réservations</p></a></li>
-                <li><a class="mesParrainage" href="#"><p>Mes parrainage</p></a></li>
-                <li><a class="monCompte" href="{{ path('fos_user_profile_show') }}"><p>Mon compte</p></a></li>
-                <li><a href="#"><p>Mes points</p></a></li>
-                <li class="logout"><a href="{{ path('fos_user_security_logout') }}"><p>Déconnexion</p></a></li>
-            </ul>
-        {% else %}
-            <div class="connexionInscription">
-                <p class="animConnexion"><a href="#"> Connexion</a></p>
-                <p><a href="{{ path('user_register') }}">Inscription</a></p>
-            </div>
-            <!-- <li class="connexionAndCreate col-sm-4 col-md-4 noPadding">
-                  <a class="animConnexion col-sm-6 col-md-6 noPadding" href="#">Connexion</a>
-                  <a class="InscriptionHeader animRegister col-sm-6 col-md-6 noPadding" href="{{ path('user_register') }}">Inscrivez<br>vous</a></li> -->
-        {% endif %}
+        <div class="clear"></div>
     </div>
 </nav>
 
