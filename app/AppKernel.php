@@ -25,6 +25,7 @@ class AppKernel extends Kernel
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new Cac\PaymentBundle\CacPaymentBundle(),
+            new Hip\MandrillBundle\HipMandrillBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

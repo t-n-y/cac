@@ -87,3 +87,10 @@ fos_js_routing:
 services:
     pugx_multi_user.registration_controller:
       class: Cac\UserBundle\Controller\RegistrationController
+
+hip_mandrill:
+    api_key: kdeO-J7BhI4qZR--UAR6Qg
+    disable_delivery: false # useful for dev/test environment. Default value is 'false'
+    default:
+        sender: noreply@click-and-cheers.com
+        sender_name: Click and Cheers

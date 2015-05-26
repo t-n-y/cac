@@ -22,7 +22,8 @@
         "pugx/multi-user-bundle": "3.0.*@dev",
         "friendsofsymfony/jsrouting-bundle": "@stable",
         "knplabs/knp-paginator-bundle": "~2.4",
-        "stripe/stripe-php": "2.*"
+        "stripe/stripe-php": "2.*",
+        "hipaway-travel/mandrill-bundle": "dev-master"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"
