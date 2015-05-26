@@ -26,6 +26,7 @@ class AppKernel extends Kernel
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new Cac\PaymentBundle\CacPaymentBundle(),
             new Hip\MandrillBundle\HipMandrillBundle(),
+            new Cac\MailingBundle\CacMailingBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

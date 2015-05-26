@@ -89,7 +89,7 @@ services:
       class: Cac\UserBundle\Controller\RegistrationController
 
 hip_mandrill:
-    api_key: kdeO-J7BhI4qZR--UAR6Qg
+    api_key: vyNnt_UPhKTqjfJJTKwe_Q
     disable_delivery: false # useful for dev/test environment. Default value is 'false'
     default:
         sender: noreply@click-and-cheers.com
