@@ -3,8 +3,6 @@
 {% block title %}CacBarBundle:Bar:show{% endblock %}
 
 {% block body %}
-	{{ dump(bar.getPromotionByDay('Samedi').getOption('value').value)}}
-	{{ dump(bar.getHappyHourByDay('Lundi').getOption('value').value)}}
 		<div class="topBar col-xs-12 col-sm-12 col-md-12 noPadding" style="background-image : url('{{ asset('uploads/bar/'~bar.path) }}');">
 			
 			<div class="infoNameBar">
@@ -51,36 +49,36 @@
 			<div class="noteBar col-xs-6 col-sm-3 col-md-3">
 				<div class="ticket">
 					<div class="ticketBarTop">
-						{% if bar.promotion.promotionArray[today] is defined and bar.promotion.promotionArray[today]['happy-hour'].value != 0 %}
+						{% if bar.getHappyHourByDay(today).getOption('value').value != 0 %}
 							<img src="{{asset('img/pictoPromo.png')}}" alt="">
 						{% endif %}
 						
 
 
-						{% if bar.promotion.promotionArray[today] is defined and bar.promotion.promotionArray[today].promotion.value == 0 %}
+						{% if bar.getPromotionByDay(today).getOption('value').value == 0 %}
 
 							<h2 class="font30 fontWeight200">PAS DE PROMO</h2>
 							<h3>Mais <span>5 cheers</span> de fidélité</h3>
 
-						{% elseif bar.promotion.promotionArray[today] is defined %}
+						{% else %}
 							<div class="obtenirPromo" data-bar-id="{{bar.id}}">
-								<h2 class="font30">-{{ bar.promotion.promotionArray[today].promotion.value }}%</h2>
+								<h2 class="font30">-{{ bar.getPromotionByDay(today).getOption('value').value }}%</h2>
 								<h3>SUR UNE CONSOMMATION</h3>
 								<p class="voirMaConfirmation"></p>
 							</div>
 						{% endif %}
 					</div>
 					<div class="ticketPromotion col-xs-12 col-sm-12 col-md-12">
-						{% if bar.promotion.promotionArray[today] is defined and bar.promotion.promotionArray[today]['happy-hour'].value != 0 %}
+						{% if bar.getHappyHourByDay(today).getOption('value').value != 0 %}
 							<div class="obtenirPromo" data-bar-id="{{bar.id}}">
 								<div class="col-xs-7 col-sm-7 col-md-7">
 									<p class="bold">Happy Hours</p>
-									<p>De {{ bar.promotion.promotionArray[today]['happy-hour'].beginning }}h à {{ bar.promotion.promotionArray[today]['happy-hour'].ending }}h</p>
+									<p>De {{ bar.getHappyHourByDay('Lundi').getOption('beginning').value }}h à {{ bar.getHappyHourByDay('Lundi').getOption('ending').value }}h</p>
 								</div>
 
 								
 								<div class="col-xs-5 col-sm-5 col-md-5">
-									<p class="reductionHappyHour">-{{ bar.promotion.promotionArray[today]['happy-hour'].value }}%</p> 
+									<p class="reductionHappyHour">-{{ bar.getHappyHourByDay(today).getOption('value').value }}%</p> 
 								</div>
 							</div>
 						{% else %}
@@ -91,9 +89,9 @@
 					</div>
 					<div class="clear"></div>
 					<div class="ticketBarBottom">
-						{% if bar.promotion.promotionArray[today] is defined and bar.promotion.promotionArray[today].promotion.value == 0 %}
+						{% if bar.getPromotionByDay(today).getOption('value').value == 0 %}
 							<p>RESERVEZ POUR AUJOURD'HUI</p>
-						{% elseif bar.promotion.promotionArray[today] is defined %}
+						{% else %}
 							<p class="obtenirPromo" data-bar-id="{{bar.id}}">OBTENIR LA PROMO</p>
 							<p class="testSuccess"></p>
 						{% endif %}
@@ -112,10 +110,10 @@
 					<img src="{{asset('img/crossClose.png')}}" alt="">
 				</div>
 				<h2>Confirmation</h2>
-				{% if bar.promotion.promotionArray[today] is defined and bar.promotion.promotionArray[today].promotion.value == 0 %}
+				{% if bar.getPromotionByDay(today).getOption('value').value == 0 %}
 					<p class="rappelPromo">Votre réservation pour {{ bar.name }} est valable jusqu'à ce soir</p>
-				{% elseif bar.promotion.promotionArray[today] is defined %}
-					<p class="rappelPromo">Valable jusquà ce soir : -{{ bar.promotion.promotionArray[today].promotion.value }}% pour {{ bar.name }}</p>
+				{% else %}
+					<p class="rappelPromo">Valable jusquà ce soir : -{{ bar.getPromotionByDay(today).getOption('value').value }}% pour {{ bar.name }}</p>
 				{% endif %}
 				<p class="rappelCondition">Cette réservation n'est valable que pour UNE personne</p>
 				<div class="contentButtonRappel">
