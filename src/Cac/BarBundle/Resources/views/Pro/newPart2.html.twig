@@ -8,35 +8,80 @@
 {% block body %}
 
 
+<div class="file_button_container">
 
-	<div class="formBar col-xs-12 col-sm-12 col-md-12 noPadding">
-		<h1>Vendez du rêve</h1>
-		<div class="separation1"></div>
-		<div class="separation2"></div>
-	</div>
-	<div class="subtitlePageRegisterBig">
-		<p>Vos photos</p>
+	
 
-	</div>
-	<div class="file_button_container">
+        <div class="row">
+             <div class="col-xs-12 col-sm-12 col-md-12">
 
-		{{ form_start(form) }}
-    		{{ form_errors(form) }}
+                <div class="ongletNewBar col-xs-2 col-sm-2 col-md-2 noPadding">
+                    <div class="progressionCreation">
+                        
+                        <div class="progresseBarContent">
+                            <div class="progresseBar">
+                                <p>50%</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="javascript:history.back()">
+                        <div class="ongletCreation" id="etablissement">
+                            <p>Votre établissement</p>
+                        </div>
+                    </a>
+                    <div class="ongletCreation selectedOngletCreation" id="photo">
+                        <p>Vos photos et vos offres</p>
+                    </div>
+                    <div class="ongletCreation" id="formule">
+                        <p>Votre formule</p>
+                    </div>
+                </div>
+                <div class="contentNewBar col-xs-10 col-sm-10 col-md-10 noPadding">
+                    <div class="nameNewBar">
+                        LALA
+                    </div>
+                    <div class="CreationBar col-xs-12 col-sm-12 col-md-12 noPadding">
+                    {{ form_start(form) }}
+                        {{ form_errors(form) }}
+                        <div class="row">
+                        <div class="servicesNewBar col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
+                            
+                            <p>Photo principale</p>
+                            <br>
 
-    		    {{ form_row(form.file) }}
+                            <div class="showImg">
+                                <img id="blah" src="#" alt="Votre image" />
+                            </div>
+                            <div class="addPicture">
+                                {{ form_row(form.file) }}
+                                <div class="addPictureHack">
+                                    <p>+</p>
+                                    <br>
+                                     <span>Ajouter la photo principale</span>
+                                </div>
+                                
+                            </div>
+                            
+                            
+                            <input type="hidden" name="coords" id="coords" value="" data-ratio="">
+                        <div class="clear"></div>
+                        </div> 
+                        </div>
+                        {{ form_end(form) }}                  
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    		    <div class="showImg">
-    		    	<img id="blah" src="#" alt="Votre image" />
-    		    </div>
-                <input type="hidden" name="coords" id="coords" value="" data-ratio="">
+    
 
-    	{{ form_end(form) }}
-
-	 </div>
+</div>
 
 	<a href="{{ path("promotion_create", {'id': id }) }}">Passer cette étape</a>
 
 {% endblock %}
+
+
 {% block javascripts %}
     {{ parent() }}
     <script src="{{ asset('js/jquery.color.js') }}" type="text/javascript" /></script>

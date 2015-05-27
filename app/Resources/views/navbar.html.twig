@@ -180,7 +180,17 @@
     
         <div class="administration">
             {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-                <p>Bonjour {{ app.user.firstname}} </p>
+                <div class="profileUserNav">
+                  <img class="hidden-sm hidden-md hidden-lg" src="{{asset('img/imgProfilBasic.png')}}">
+                  <p>Bonjour {{ app.user.firstname}} </p>
+                </div>
+                <div class="row">
+                  <div class="col-xs-12 hidden-sm hidden-md hidden-lg">
+                    <div class="col-xs-4 hidden-sm hidden-md hidden-lg">
+                      <img src="{{asset('img/pictoHeader/reservation.svg')}}">
+                    </div>
+                  </div>
+                </div>
                 <div class="clear"></div>
                 <ul>
                     <li>

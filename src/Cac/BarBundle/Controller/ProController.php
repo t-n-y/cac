@@ -230,8 +230,8 @@ class ProController extends Controller
         $entity = $em->getRepository('CacBarBundle:Bar')->find($id);
 
         $form = $this->createFormBuilder($entity)
-            ->add('file', null, array('label' => '+ Ajouter une photo'))
-            ->add("Let's go !", 'submit')
+            ->add('file', null, array('label' => '+'))
+            ->add("Poursuivre", 'submit')
             ->getForm();
 
         $form->handleRequest($request);
@@ -247,6 +247,7 @@ class ProController extends Controller
         return $this->render('CacBarBundle:Pro:newPart2.html.twig', array(
             'form' => $form->createView(),
             'id' => $id,
+            'bar' => $entity
         ));
     }
 
