@@ -152,7 +152,7 @@ class BasicUser extends User
         $this->createdBars = new \Doctrine\Common\Collections\ArrayCollection();
         $this->roles = array('ROLE_USER');
         $this->isActive = false;
-        $this->customValidationToken = $this->generateRandomString(20);
+        $this->customValidationToken = substr(str_shuffle(MD5(microtime())), 0, 20);
     }
 
     /**
@@ -446,16 +446,6 @@ class BasicUser extends User
     public function getIsActive()
     {
         return $this->isActive;
-    }
-
-    private function generateRandomString($length = 10) {
-        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        $charactersLength = strlen($characters);
-        $randomString = '';
-        for ($i = 0; $i < $length; $i++) {
-            $randomString .= $characters[rand(0, $charactersLength - 1)];
-        }
-        return $randomString;
     }
 
     /**
