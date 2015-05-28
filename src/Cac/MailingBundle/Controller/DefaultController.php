@@ -24,13 +24,16 @@ class DefaultController extends Controller
         $dispatcher = $this->get('hip_mandrill.dispatcher');
 
         $message = new Message();
+        $templateName = 'test-template';
 
         $message
-            ->addTo('jonathan.brayette+test@gmail.com')
-            ->setSubject('Coucou')
-            ->setHtml('<html><body><h1>C\'est nous, c\'est Derrick !</h1></body></html>');
+            ->addTo('jonathan.brayette@gmail.com', 'Jonathan')
+            ->setSubject('Validation')
+            ->setText('Merci de valider votre inscription')
+            ->setTrackOpens(true)
+            ->setTrackClicks(true);
 
-        $result = $dispatcher->send($message);
+        $result = $dispatcher->send($message, $templateName);
 
         return new Response('<pre>' . print_r($result, true) . '</pre>');
 
