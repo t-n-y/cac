@@ -38,14 +38,15 @@ class BasicUserController extends Controller
      */
     public function sconfirmAction($email, $token)
     {
-        var_dump(urldecode($email));
-        var_dump($token);
-        var_dump(
-            'http://'.$_SERVER['HTTP_HOST'].$this->generateUrl('user_sconfirm', array(
-                'email' => urlencode('cuicui@gmail.schtroumpf'),
-                'token' => 'cuicui'
-                ))
-            );
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository('Cac\UserBundle\Entity\BasicUser')->findOneByCustomValidationToken($token);
+        $user->setIsActive(true);
+        $em->persist($user);
+        $em->flush();
+
+        var_dump($user->getIsActive());
         die;
+
+        return array();
     }
 }
