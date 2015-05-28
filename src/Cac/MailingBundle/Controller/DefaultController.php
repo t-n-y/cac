@@ -24,16 +24,22 @@ class DefaultController extends Controller
         $dispatcher = $this->get('hip_mandrill.dispatcher');
 
         $message = new Message();
-        $templateName = 'test-template';
+        $templateName = 'user-validation';
+        $link = 'http://www.click-and-cheers.com/';
+        $templateContent = array(
+            array(
+                'name' => 'link',
+                'content' => '<a href="'.$link.'">'.$link.'</a>'
+            )
+        );
 
         $message
-            ->addTo('jonathan.brayette@gmail.com', 'Jonathan')
-            ->setSubject('Validation')
-            ->setText('Merci de valider votre inscription')
+            ->addTo('jonathan.brayette@gmail.com', 'Jonathan Brayette')
+            ->setSubject('Test template')
             ->setTrackOpens(true)
             ->setTrackClicks(true);
 
-        $result = $dispatcher->send($message, $templateName);
+        $result = $dispatcher->send($message, $templateName, $templateContent);
 
         return new Response('<pre>' . print_r($result, true) . '</pre>');
 
