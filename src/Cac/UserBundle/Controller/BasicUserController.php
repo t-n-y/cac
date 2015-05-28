@@ -29,4 +29,23 @@ class BasicUserController extends Controller
                     ->get('pugx_multi_user.registration_manager')
                     ->register('Cac\UserBundle\Entity\BasicUser');
     }
+
+    /**
+     * Register new user entities.
+     *
+     * @Route("/sconfirm/{email}&{token}", name="user_sconfirm")
+     * @Template()
+     */
+    public function sconfirmAction($email, $token)
+    {
+        var_dump(urldecode($email));
+        var_dump($token);
+        var_dump(
+            'http://'.$_SERVER['HTTP_HOST'].$this->generateUrl('user_sconfirm', array(
+                'email' => urlencode('cuicui@gmail.schtroumpf'),
+                'token' => 'cuicui'
+                ))
+            );
+        die;
+    }
 }

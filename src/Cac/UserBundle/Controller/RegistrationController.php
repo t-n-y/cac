@@ -22,6 +22,8 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use FOS\UserBundle\Model\UserInterface;
+use Hip\MandrillBundle\Message;
+use Hip\MandrillBundle\Dispatcher;
 
 /**
  * Controller managing the registration
@@ -78,13 +80,36 @@ class RegistrationController extends Controller
 
             if (null === $response = $event->getResponse()) {
                 if (strpos($request->getPathInfo(), "/barman/") === false) {
-                    $url = $this->generateUrl('bars');
+                    $md = $this->get('hip_mandrill.dispatcher');
+
+                    $message = new Message();
+                    $templateName = 'user-validation';
+                    $link = 'http://'.$_SERVER['HTTP_HOST'].$this->generateUrl('user_sconfirm', array(
+                        'email' => urlencode($user->getEmail()),
+                        'token' => $user->getCustomValidationToken()
+                        ));
+                    $templateContent = array(
+                        array(
+                            'name' => 'link',
+                            'content' => '<a href="'.$link.'">'.$link.'</a>'
+                        )
+                    );
+
+                    $message
+                        ->addTo($user->getEmail(), $user->getFirstname().' '.$user->getName())
+                        ->setSubject('Finalisez votre inscription en 1 clic')
+                        ->setTrackOpens(true)
+                        ->setTrackClicks(true);
+
+                    $result = $md->send($message, $templateName, $templateContent);
+
+                    $url = $this->generateUrl('confirm_email');
                     $response = new RedirectResponse($url);
                     $dispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
                 }
                 else
                 {
-                    $this->get('session')->getFlashBag()->add('notice','Le barman a était créé !');
+                    $this->get('session')->getFlashBag()->add('notice','Le barman a été créé !');
                     $response = new Response('barman');
                 }
             }

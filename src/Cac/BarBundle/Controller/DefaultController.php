@@ -19,6 +19,15 @@ class DefaultController extends Controller
     }
 
     /**
+     * @Route("/confirm-email", name="confirm_email")
+     * @Template()
+     */
+    public function confirmEmailAction()
+    {
+        return array();
+    }
+
+    /**
      * @Route("/map", name="map") 
      * @Template()
      */

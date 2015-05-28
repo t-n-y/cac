@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Response;
 use Hip\MandrillBundle\Message;
 use Hip\MandrillBundle\Dispatcher;
+use Symfony\Component\HttpFoundation\Request;
 /**
  * Mailing controller.
  *
@@ -19,9 +20,9 @@ class DefaultController extends Controller
      * @Route("/test")
      * @Template()
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-        $dispatcher = $this->get('hip_mandrill.dispatcher');
+        /*$dispatcher = $this->get('hip_mandrill.dispatcher');
 
         $message = new Message();
         $templateName = 'user-validation';
@@ -41,7 +42,9 @@ class DefaultController extends Controller
 
         $result = $dispatcher->send($message, $templateName, $templateContent);
 
-        return new Response('<pre>' . print_r($result, true) . '</pre>');
+        return new Response('<pre>' . print_r($result, true) . '</pre>');*/
+        var_dump();
+        die;
 
     }
 

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" href="">
+</head>
+<body>
+    Un email vous a été envoyé pour valider votre inscription.<br>
+    Vous allez être redirigé dans 3 secondes.
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script>
+        setTimeout(function(){ 
+            window.location.href = '{{ path('fos_user_security_logout') }}';
+        }, 3000);
+    </script>
+</body>
+</html>
