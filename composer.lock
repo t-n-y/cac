@@ -1,7 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
     "hash": "86fcf8692b318409e5f554502287c9c5",
@@ -356,16 +356,16 @@
         },
         {
             "name": "doctrine/doctrine-bundle",
-            "version": "v1.4.0",
+            "version": "v1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/DoctrineBundle.git",
-                "reference": "1986ff3a945b584c6505d07eae92d77e41131078"
+                "reference": "0b9e27037c4fdbad515ee5ec89842e9091a6480f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/DoctrineBundle/zipball/1986ff3a945b584c6505d07eae92d77e41131078",
-                "reference": "1986ff3a945b584c6505d07eae92d77e41131078",
+                "url": "https://api.github.com/repos/doctrine/DoctrineBundle/zipball/0b9e27037c4fdbad515ee5ec89842e9091a6480f",
+                "reference": "0b9e27037c4fdbad515ee5ec89842e9091a6480f",
                 "shasum": ""
             },
             "require": {
@@ -373,6 +373,7 @@
                 "doctrine/doctrine-cache-bundle": "~1.0",
                 "jdorn/sql-formatter": "~1.1",
                 "php": ">=5.3.2",
+                "symfony/console": "~2.3",
                 "symfony/doctrine-bridge": "~2.2",
                 "symfony/framework-bundle": "~2.3"
             },
@@ -391,7 +392,7 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.4.x-dev"
+                    "dev-master": "1.5.x-dev"
                 }
             },
             "autoload": {
@@ -429,7 +430,7 @@
                 "orm",
                 "persistence"
             ],
-            "time": "2015-02-28 11:04:45"
+            "time": "2015-05-28 12:27:15"
         },
         {
             "name": "doctrine/doctrine-cache-bundle",
@@ -1397,12 +1398,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/PUGX/PUGXMultiUserBundle.git",
-                "reference": "908644fc785b058f0d3ed9d7cb96886e9f0d5adf"
+                "reference": "7ceffa7b45295a691d49c28cbe6759d5cf4c91e3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PUGX/PUGXMultiUserBundle/zipball/908644fc785b058f0d3ed9d7cb96886e9f0d5adf",
-                "reference": "908644fc785b058f0d3ed9d7cb96886e9f0d5adf",
+                "url": "https://api.github.com/repos/PUGX/PUGXMultiUserBundle/zipball/7ceffa7b45295a691d49c28cbe6759d5cf4c91e3",
+                "reference": "7ceffa7b45295a691d49c28cbe6759d5cf4c91e3",
                 "shasum": ""
             },
             "require": {
@@ -1440,7 +1441,7 @@
             "keywords": [
                 "user management multi user management"
             ],
-            "time": "2015-03-26 22:42:54"
+            "time": "2015-05-19 13:42:38"
         },
         {
             "name": "raulfraile/ladybug",
@@ -1741,17 +1742,17 @@
         },
         {
             "name": "sensio/distribution-bundle",
-            "version": "v3.0.21",
+            "version": "v3.0.24",
             "target-dir": "Sensio/Bundle/DistributionBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioDistributionBundle.git",
-                "reference": "da23c78093676a823a1ff43a214987ea3fbf83c8"
+                "reference": "79b820aee1f1daeb2717fa9471ee19275cc1d638"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/da23c78093676a823a1ff43a214987ea3fbf83c8",
-                "reference": "da23c78093676a823a1ff43a214987ea3fbf83c8",
+                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/79b820aee1f1daeb2717fa9471ee19275cc1d638",
+                "reference": "79b820aee1f1daeb2717fa9471ee19275cc1d638",
                 "shasum": ""
             },
             "require": {
@@ -1797,7 +1798,7 @@
                 "configuration",
                 "distribution"
             ],
-            "time": "2015-04-10 06:20:46"
+            "time": "2015-05-16 12:57:08"
         },
         {
             "name": "sensio/framework-extra-bundle",
@@ -1856,16 +1857,16 @@
         },
         {
             "name": "sensiolabs/security-checker",
-            "version": "v2.0.2",
+            "version": "v2.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/security-checker.git",
-                "reference": "cecb1397087dc9c733796eda6e9d121336039cdc"
+                "reference": "2c2a71f1c77d9765c12638c4724d9ca23658a810"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/security-checker/zipball/cecb1397087dc9c733796eda6e9d121336039cdc",
-                "reference": "cecb1397087dc9c733796eda6e9d121336039cdc",
+                "url": "https://api.github.com/repos/sensiolabs/security-checker/zipball/2c2a71f1c77d9765c12638c4724d9ca23658a810",
+                "reference": "2c2a71f1c77d9765c12638c4724d9ca23658a810",
                 "shasum": ""
             },
             "require": {
@@ -1897,20 +1898,20 @@
                 }
             ],
             "description": "A security checker for your composer.lock",
-            "time": "2015-04-21 07:52:05"
+            "time": "2015-05-28 14:22:40"
         },
         {
             "name": "stripe/stripe-php",
-            "version": "v2.1.2",
+            "version": "v2.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/stripe/stripe-php.git",
-                "reference": "7591ea379b4cc0af794bdf7eca3ec17a36e62603"
+                "reference": "522ff8b9a93e293188c1b4c0ef7ff40048b326f8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/7591ea379b4cc0af794bdf7eca3ec17a36e62603",
-                "reference": "7591ea379b4cc0af794bdf7eca3ec17a36e62603",
+                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/522ff8b9a93e293188c1b4c0ef7ff40048b326f8",
+                "reference": "522ff8b9a93e293188c1b4c0ef7ff40048b326f8",
                 "shasum": ""
             },
             "require": {
@@ -1952,7 +1953,7 @@
                 "payment processing",
                 "stripe"
             ],
-            "time": "2015-04-11 03:27:05"
+            "time": "2015-05-13 21:04:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -2189,16 +2190,16 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "v2.5.11",
+            "version": "v2.5.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "bb96c155fb677c0139e36dccb84e765066879c28"
+                "reference": "5c83d12f2fbe93622e6ae2aad72f4033adbebe36"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/bb96c155fb677c0139e36dccb84e765066879c28",
-                "reference": "bb96c155fb677c0139e36dccb84e765066879c28",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/5c83d12f2fbe93622e6ae2aad72f4033adbebe36",
+                "reference": "5c83d12f2fbe93622e6ae2aad72f4033adbebe36",
                 "shasum": ""
             },
             "require": {
@@ -2298,7 +2299,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2015-04-01 16:00:43"
+            "time": "2015-05-26 23:43:20"
         },
         {
             "name": "twig/extensions",
