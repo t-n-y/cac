@@ -457,28 +457,4 @@ class BasicUser extends User
         }
         return $randomString;
     }
-
-    /**
-     * Set customValidationToken
-     *
-     * @param string $customValidationToken
-     *
-     * @return BasicUser
-     */
-    public function setCustomValidationToken($customValidationToken)
-    {
-        $this->customValidationToken = $customValidationToken;
-
-        return $this;
-    }
-
-    /**
-     * Get customValidationToken
-     *
-     * @return string
-     */
-    public function getCustomValidationToken()
-    {
-        return $this->customValidationToken;
-    }
 }
