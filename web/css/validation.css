@@ -53,3 +53,6 @@
 .validationErrorEmail {
     color: #5ac4d4;
 }
+#canvas {
+    margin-top: 20px;
+}
