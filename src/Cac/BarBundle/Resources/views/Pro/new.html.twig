@@ -10,6 +10,12 @@
 {% endblock %}
 {% block body %}
 
+{% for message in app.session.flashbag.get('notice') %}
+    <p>
+    {{ message }}
+    </p>
+{% endfor %}
+
 <form action="{{ path('bar_create') }}" name="cac_barbundle_bar" {{ form_enctype(form) }} method="POST" class="ac-custom ac-checkbox ac-cross">
 <div class="row">
 	

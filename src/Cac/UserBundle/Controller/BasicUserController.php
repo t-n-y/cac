@@ -51,6 +51,7 @@ class BasicUserController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $user = $em->getRepository('Cac\UserBundle\Entity\BasicUser')->findOneByCustomValidationToken($token);
+        if($user === null) $user = $em->getRepository('Cac\UserBundle\Entity\Bigboss')->findOneByCustomValidationToken($token);
         if($user === null) return $this->redirect($this->generateUrl('user_resend_validation'));
         $user->setIsActive(true);
         $em->persist($user);

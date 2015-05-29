@@ -104,6 +104,10 @@ class RegistrationController extends Controller
                     $result = $md->send($message, $templateName, $templateContent);
 
                     $url = $this->generateUrl('confirm_email');
+                    if(strpos($request->getPathInfo(), "/bigboss/") !== false) {
+                        $this->get('session')->getFlashBag()->add('notice','Un email vous a été envoyé pour confirmer la création de votre compte. Celui-ci ne sera pas actif tant que cette étape ne sera pas terminée.');
+                        $url = $this->generateUrl('bar_new');
+                    }
                     $response = new RedirectResponse($url);
                     $dispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
                 }

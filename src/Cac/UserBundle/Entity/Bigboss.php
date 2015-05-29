@@ -110,6 +110,18 @@ class Bigboss extends User
      */
     protected $score = 0;
 
+    /**
+     * @ORM\Column(name="is_active", type="boolean")
+     */
+    private $isActive;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="custom_validation_token", type="string", length=255, nullable=true)
+     */
+    private $customValidationToken;
+
      /**
      * Constructor
      */
@@ -118,6 +130,8 @@ class Bigboss extends User
         parent::__construct();
         $this->createdBars = new \Doctrine\Common\Collections\ArrayCollection();
         $this->roles = array('ROLE_BIGBOSS');
+        $this->isActive = false;
+        $this->customValidationToken = substr(str_shuffle(MD5(microtime())), 0, 20);
     }
 
     /**
@@ -345,5 +359,53 @@ class Bigboss extends User
     public function getScore()
     {
         return $this->score;
+    }
+
+    /**
+     * Set isActive
+     *
+     * @param boolean $isActive
+     *
+     * @return Bigboss
+     */
+    public function setIsActive($isActive)
+    {
+        $this->isActive = $isActive;
+
+        return $this;
+    }
+
+    /**
+     * Get isActive
+     *
+     * @return boolean
+     */
+    public function getIsActive()
+    {
+        return $this->isActive;
+    }
+
+    /**
+     * Set customValidationToken
+     *
+     * @param string $customValidationToken
+     *
+     * @return Bigboss
+     */
+    public function setCustomValidationToken($customValidationToken)
+    {
+        $this->customValidationToken = $customValidationToken;
+
+        return $this;
+    }
+
+    /**
+     * Get customValidationToken
+     *
+     * @return string
+     */
+    public function getCustomValidationToken()
+    {
+        return $this->customValidationToken;
     }
 }
