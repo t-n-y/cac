@@ -1,0 +1,23 @@
+{% extends '::baseValidation.html.twig' %}
+
+{% block title %}
+Oops | {{ parent() }}
+{% endblock %}
+
+{% block header %}
+Oops,
+{% endblock %}
+
+{% block content %}
+{% if email is defined %}
+L'adresse email indiquée <span class="validationErrorEmail">{{ email }}</span> n'est pas dans notre base de donnée... <br>On réessaye ?
+{% else %}
+Il semblerait que le lien ne soit plus valide, remédions à celà en deux petits clicks.
+{% endif %}
+<div class="validationActions">
+    <form name="resend-email" action="{{ path('user_resend_email') }}" method="POST">
+        <input type="email" name="email" class="validationTextInput" placeholder="entrez votre email ici"><br>
+        <button class="validationLink" type="submit">Valider</button>
+    </form>
+</div>
+{% endblock %}

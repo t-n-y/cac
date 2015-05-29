@@ -1,0 +1,16 @@
+{% extends '::baseValidation.html.twig' %}
+
+{% block title %}
+Compte validé | {{ parent() }}
+{% endblock %}
+
+{% block header %}
+Il suffisait d'un click !
+{% endblock %}
+
+{% block content %}
+Votre compte est maintenant activé.
+<div class="validationActions">
+    <a class="validationLink" href="{{ path('home') }}">Let's go !</a>
+</div>
+{% endblock %}

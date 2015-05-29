@@ -1,0 +1,55 @@
+.cacLogo { 
+    width: 25%; 
+}
+.validationLogo { 
+    margin-top: 100px; 
+}
+.validationHeader { 
+    margin-top: 10px; 
+    background-color: #303030; 
+    text-align: center; 
+    padding: 10px; 
+    font-size: 26px; 
+    color: #ffffff;
+}
+.validationContent { 
+    background: #f2f2f2; 
+    text-align: center; 
+    padding: 20px; 
+    font-size: 20px; 
+}
+.noPadding { 
+    padding: 0; 
+}
+.validationActions {
+    margin-top: 25px;
+}
+.validationLink {
+    display: inline-block;
+    background-color: #5ac4d4;
+    color: #ffffff;
+    width: 200px;
+    text-align: center;
+    padding: 5px;
+    border-radius: 6px;
+    border: none;
+    transition: background-color 0.2s;
+}
+.validationLink:hover {
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #303030;
+    transition: background-color 0.2s;
+}
+.validationTextInput {
+    border: none;
+    background: #ffffff;
+    border-radius: 6px;
+    padding: 5px;
+    text-align: center;
+    width: 85%;
+    margin-bottom: 10px;
+}
+.validationErrorEmail {
+    color: #5ac4d4;
+}
