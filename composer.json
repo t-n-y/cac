@@ -23,7 +23,8 @@
         "friendsofsymfony/jsrouting-bundle": "@stable",
         "knplabs/knp-paginator-bundle": "~2.4",
         "stripe/stripe-php": "2.*",
-        "hipaway-travel/mandrill-bundle": "dev-master"
+        "hipaway-travel/mandrill-bundle": "dev-master",
+        "hwi/oauth-bundle": "0.4.*@dev"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"
