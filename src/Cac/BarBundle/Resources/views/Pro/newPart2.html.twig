@@ -19,7 +19,7 @@
                     <div class="progressionCreation">
                         
                         <div class="progresseBarContent">
-                            <div class="progresseBar">
+                            <div class="progresseBar Etape2Creation">
                                 <p>50%</p>
                             </div>
                         </div>
@@ -32,40 +32,43 @@
                     <div class="ongletCreation selectedOngletCreation" id="photo">
                         <p>Vos photos et vos offres</p>
                     </div>
+                    <div class="ongletCreation" id="promo">
+                        <p>Vos offres</p>
+                    </div>
                     <div class="ongletCreation" id="formule">
                         <p>Votre formule</p>
                     </div>
                 </div>
                 <div class="contentNewBar col-xs-10 col-sm-10 col-md-10 noPadding">
                     <div class="nameNewBar">
-                        LALA
+                        <h1>{{ bar.name}}</h1>
                     </div>
                     <div class="CreationBar col-xs-12 col-sm-12 col-md-12 noPadding">
                     {{ form_start(form) }}
                         {{ form_errors(form) }}
                         <div class="row">
-                        <div class="servicesNewBar col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
-                            
-                            <p>Photo principale</p>
-                            <br>
+                            <div class="servicesNewBar col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
+                                
+                                <p>Photo principale</p>
+                                <br>
 
-                            <div class="showImg">
-                                <img id="blah" src="#" alt="Votre image" />
-                            </div>
-                            <div class="addPicture">
-                                {{ form_row(form.file) }}
-                                <div class="addPictureHack">
-                                    <p>+</p>
-                                    <br>
-                                     <span>Ajouter la photo principale</span>
+                                <div class="showImg">
+                                    <img id="blah" src="#" alt="Votre image" />
+                                </div>
+                                <div class="addPicture">
+                                    {{ form_row(form.file) }}
+                                    <div class="addPictureHack">
+                                        <p>+</p>
+                                        <br>
+                                         <span>Ajouter la photo principale</span>
+                                    </div>
+                                    
                                 </div>
                                 
-                            </div>
-                            
-                            
-                            <input type="hidden" name="coords" id="coords" value="" data-ratio="">
-                        <div class="clear"></div>
-                        </div> 
+                                
+                                <input type="hidden" name="coords" id="coords" value="" data-ratio="">
+                            <div class="clear"></div>
+                            </div> 
                         </div>
                         {{ form_end(form) }}                  
                     </div>

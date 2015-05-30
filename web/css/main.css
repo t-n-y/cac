@@ -2180,18 +2180,122 @@ p.closeMesOptions{
 	border-bottom: 2px solid #5ac4d4;
 }
 
-.widthFormPromo{
-	width: 80%;
-	margin: auto;
-	margin-top: 60px;
-	padding: 20px;
-	border: 1px solid #a8a8a8;
+.daysOngletNewBar{
+	width: 100%;
 }
 
+.dayOngletNewBar{
+	width: 14.28%;
+	background-color: #303030;
+	color: #fff;
+	float: left;
+	cursor: pointer;
+	padding: 5px 0;
+	border-left: 1px solid #fff; 
+}
+
+.dayOngletNewBar:nth-child(1){
+	border-left: 0px solid #fff; 
+}
+
+.selectedOngletDay{
+	background-color: #5ac4d4;
+}
+
+
+.dayOngletNewBar:hover{
+	background-color: #5ac4d4;
+}
+
+.formPromo{
+
+}
+
+.promotions{
+	margin-top: 20px;
+}
+
+.etapePromotion{
+	border-right: 1px solid #fff;
+}
+
+.promoHappyHour{
+	display: none;
+}
+
+.promoHappyHour p{
+	background-color: transparent !important;
+	color: #ef662f;
+}
+
+.selectedPromoHappyHour{
+	display: block;
+}
+
+.valuePromo{
+	width: 90px;
+	margin: auto;
+}
+
+.valuePromo select{
+	border: 1px solid #ef662f !important;
+	height: 35px;
+}
 
 
 .widthFormPromo select{
 	background-color: #fff;
+}
+
+.nbpromo{
+	margin-top: 10px;
+}
+
+.nbpromo p{
+	color: #303030;
+	font-size: 12px;
+}
+
+.nbpromo select{
+	width: 80px !important;
+}
+
+.happyhoursTime select{
+	width: 60px !important;
+}
+
+.programmeFidelite{
+	margin-bottom: 20px;
+}
+
+.programmeFidelite p{
+	background-color:transparent !important; 
+}
+
+.programmeFidelite span{
+	color: #5ac4d4;
+	font-size: 10px;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.programmeFidelitePlus{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	font-size: 12px;
+	background-color: #303030;
+	cursor: pointer;
+	clear: both;
+}
+
+.programmeFidelitePlus p{
+	color: #fff;
+}
+
+.closeProgrammeFidelitePlus{
+	display: none;
 }
 
 .bulle{
@@ -2249,6 +2353,9 @@ p.closeMesOptions{
 #photo{
 	border-bottom:3px solid #5ac4d4; 
 }
+#promo{
+	border-bottom:3px solid #66cc33; 
+}
 #formule{
 	border-bottom:3px solid #ef662f; 
 }
@@ -2294,7 +2401,13 @@ a .ongletCreation:hover p{
 	left: 0px;
 }
 
+.Etape2Creation{
+	width: 50% !important;
+}
 .Etape3Creation{
+	width: 75% !important;
+}
+.Etape4Creation{
 	width: 99% !important;
 }
 
@@ -2321,6 +2434,9 @@ a .ongletCreation:hover p{
 	padding-left: 60px;
 }
 
+.serviceNewBar{
+	position: relative;
+}
 
 .ac-custom .servicesNewBar label::before{
   content: '';
@@ -2751,7 +2867,7 @@ p.pCreez{
 	margin-top: 15px;
 }
 
-.heure select, .access select, .etapePromotion select, .contentSuperInfoBar select{
+.heure select, .access select, .etapePromotion select, .contentSuperInfoBar select, .nbpromo select{
 	background-color: #fff;
 	-webkit-border-radius: 1px;
 	-moz-border-radius: 1px;

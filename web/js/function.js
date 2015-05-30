@@ -718,3 +718,47 @@ $( '.obtenirPromo' ).on( 'click', function() {
       }
   } );
 });
+
+
+
+var $dayOngletNewBar = $('.dayOngletNewBar');
+var numberOfDayOnglet;
+var $promoHappyHour = $('.promoHappyHour');
+
+numberOfDayOnglet = $dayOngletNewBar.length;
+
+$($dayOngletNewBar[0]).addClass('selectedOngletDay');
+$($promoHappyHour[0]).addClass('selectedPromoHappyHour');
+
+
+$dayOngletNewBar.on('click', function(){
+    $dayOngletNewBar.removeClass('selectedOngletDay');
+    $(this).addClass('selectedOngletDay');
+    var daySelected = $(this).data("dayselected");
+
+    $promoHappyHour.removeClass('selectedPromoHappyHour');
+    $($promoHappyHour[(daySelected-1)]).addClass('selectedPromoHappyHour');
+});
+
+
+$('.programmeFidelite span').on('click', function(){
+    $('.programmeFidelitePlus').removeClass('closeProgrammeFidelitePlus');
+});
+
+$('.programmeFidelitePlus').on('click', function(){
+    $(this).addClass('closeProgrammeFidelitePlus');
+});
+
+
+
+
+  // $dayOngletNewBar.on('click', function(){
+  //   $dayOngletNewBar.removeClass('selectedOngletDay');
+  //   $(this).addClass('selectedOngletDay');
+  // });
+
+
+
+
+
+
