@@ -11,11 +11,19 @@
 		</div>
 
 		<div class="onglets col-xs-12 col-sm-12 col-md-12 noPadding">
-			<h3>RETOURS DU JOUR</h3>
+			<h2>Retour du jour<span></span></h2>
 		</div>
 
-		<div class="contentSuperInfoBar col-xs-12 col-sm-12 col-md-12 noPadding">
-			<div class="superInfoBar overflowX noPadding">
+		<script type="text/javascript">
+			var d = new Date();
+			var day = d.getDay();
+
+			console.log(day);
+
+		</script>
+
+		<div class="col-xs-12 col-sm-12 col-md-12 noPadding">
+			<div class="overflowX noPadding">
 				<div class="navRetourOffre col-xs-12 col-sm-12 col-md-12 noPadding">
 					<div class="col-xs-10 col-sm-10 col-md-10 noPadding">
 						<div class="col-xs-3 col-sm-3 col-md-3 noPadding">
@@ -64,16 +72,36 @@
 								<div class="col-xs-3 col-sm-3 col-md-3 noPadding">
 									<p>{{promo.user.firstname}}</p>
 								</div>
-								<div class="col-xs-3 col-sm-3 col-md-3 noPadding">
-									<p class="zone-etat-{{promo.id}}">{{promo.etat}}</p>
+								<div class="statutOffre col-xs-3 col-sm-3 col-md-3 noPadding">
+									{% if promo.etat == "validé" %}
+										<p class="zone-etat-{{promo.id}}">
+									{% elseif promo.etat == "non validé" %}
+										<p class="zone-etat-{{promo.id}}">
+									{% else %}
+										<p class="zone-etat-{{promo.id}}">
+									{% endif %}
+										{{promo.etat}}</p>
 								</div>
 							</div>
-							<div class="validationOffre col-xs-2 col-sm-2 col-md-2 noPadding">
-								<div class="validerOffre col-xs-6 col-sm-6 col-md-6 noPadding">
-									<p class="validate-promo" data-promo-id="{{promo.id}}">V</p>
+							<div class="validationsOffre col-xs-2 col-sm-2 col-md-2 noPadding">
+								<div class="validationOffre col-xs-6 col-sm-6 col-md-6 noPadding">
+									<div class="validerOffre">
+										{% if promo.etat == "validé" %}
+											<p class="validate-promo offreValider" data-promo-id="{{promo.id}}">Utilisé</p>
+										{% else %}
+											<p class="validate-promo" data-promo-id="{{promo.id}}">Utilisé</p>
+										{% endif %}
+									</div>
 								</div>
-								<div class="noValiderOffre col-xs-6 col-sm-6 col-md-6 noPadding">
-									<p class="invalidate-promo" data-promo-id="{{promo.id}}">X</p>
+								<div class="noValidationOffre col-xs-6 col-sm-6 col-md-6 noPadding">
+
+									<div class="noValiderOffre">
+										{% if promo.etat == "non validé" %}
+											<p class="invalidate-promo offrePasValider" data-promo-id="{{promo.id}}">Pas Vu</p>
+										{% else %}
+											<p class="invalidate-promo" data-promo-id="{{promo.id}}">Pas Vu</p>
+										{% endif %}
+									</div>
 								</div>
 							</div>
 							

@@ -11,10 +11,10 @@
   <div class="forConfirmation">
     <p>Un mail viens de vous être envoyé, cliquer sur le lien pour confirmer définitivement votre inscription.<br><br>A tout de suite ! </p>
   </div>
-<nav class="navbar navbar-default" role="navigation">
+<!-- <nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
 
-    <!-- Brand and toggle get grouped for better mobile display -->
+
     <div class="navbar-header">
       <div class="center hidden-sm hidden-md hidden-lg">
         <a class="logo-afterscroll" href="{{ path('home') }}"><img src="{{asset('img/logopro.png')}}" alt="Click and Cheers"></a>
@@ -26,9 +26,7 @@
         <span class="icon-bar"></span>
       </button>
     </div>
-    
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navPro hidden-xs col-sm-5 col-md-5 noPadding">
         <li class="col-sm-6 col-md-6 noPadding"><a class="gestionOffre" href="{{ path('bars_offer', { id : bar.id }) }}">GESTION DES OFFRES</a></li>
@@ -71,15 +69,15 @@
         {% endif %}
          
       </ul>
-    </div><!-- /.navbar-collapse -->
+    </div>
 
-  </div><!-- /.container-fluid -->
+  </div>
 </nav>
 
-<!-- After scroll nav -->
+
 <div class="navbar navbar-afterscroll stuck">
   <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
+
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
         <span class="sr-only">Toggle navigation</span>
@@ -89,7 +87,7 @@
       </button>
     </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
+
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       
       <ul class="nav navbar-nav navPro col-xs-12 col-sm-5 col-md-5 noPadding">
@@ -115,9 +113,76 @@
           </ul>
         </li>
       </ul>
-    </div><!-- /.navbar-collapse -->
+    </div>
   </div>  
-</div>
+</div> -->
+
+<nav>
+    <button class="hidden-sm hidden-md hidden-lg menu__handle">
+        <span>Menu</span>
+    </button>
+    <div class="contentLogo">
+        <a href="{{ path('home') }}">
+            <img src="{{asset('img/LogoClickandcheers.svg')}}" alt="Click and Cheers">
+        </a>
+    </div>
+    <div class="menuMob">
+        
+    
+        <div class="administration">
+            {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                <div class="profileUserNav">
+                  <img class="hidden-sm hidden-md hidden-lg" src="{{asset('img/imgProfilBasic.png')}}">
+                  <p>Bonjour {{ app.user.firstname}} </p>
+                </div>
+                <div class="row">
+                  <div class="col-xs-12 hidden-sm hidden-md hidden-lg">
+                    <div class="col-xs-4 hidden-sm hidden-md hidden-lg">
+                      <img src="{{asset('img/pictoHeader/reservation.svg')}}">
+                    </div>
+                  </div>
+                </div>
+                <div class="clear"></div>
+                <ul>
+                    <li>
+                      {% if is_granted('ROLE_BIGBOSS') %}
+                        <a href="{{ path('bar_new') }}"><p>Créer un bar</p></a>
+                      {% endif %}
+                    </li>
+                    <li><a class="mesReservation" href="#"><p>Mes réservations</p></a></li>
+                    <li><a class="mesParrainage" href="#"><p>Mes parrainage</p></a></li>
+                    <li><a class="monCompte" href="{{ path('fos_user_profile_show') }}"><p>Mon compte</p></a></li>
+                    <li><a href="#"><p>Mes points</p></a></li>
+                    <li class="logout"><a href="{{ path('fos_user_security_logout') }}"><p>Déconnexion</p></a></li>
+                </ul>
+            {% else %}
+                <div class="connexionInscription">
+                    <p class="animConnexion">Connexion</p>
+                    <p><a href="{{ path('user_register') }}">Inscription</a></p>
+                </div>
+                <!-- <li class="connexionAndCreate col-sm-4 col-md-4 noPadding">
+                      <a class="animConnexion col-sm-6 col-md-6 noPadding" href="#">Connexion</a>
+                      <a class="InscriptionHeader animRegister col-sm-6 col-md-6 noPadding" href="{{ path('user_register') }}">Inscrivez<br>vous</a></li> -->
+            {% endif %}
+        </div>
+        <div class="contentNav">
+            <div class="row">
+                <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2">
+                    <div class="col-xs-12 col-sm-4 col-md-4 noPadding">
+                        <p><a href="{{ path('bars_offer', { id : bar.id }) }}">GESTION DES OFFRES</a></p>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-4 noPadding">
+                        <p><a href="{{ path('bars_offerFeedback', { id : bar.id }) }}">RETOUR DES OFFRES</a></p>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-4 noPadding">
+                        <p><a href="{{ path('bars_offerFeedback', { id : bar.id }) }}">OPTIONS</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</nav>
 
 <script type="text/javascript">
 function souris(event)
