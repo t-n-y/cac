@@ -89,7 +89,7 @@ class ProController extends Controller
      * @Route("/retourMail", name="bars_mailFeedback")
      * @Template()
      */
-    public function offerFeedbackAction()
+    public function offerMailAction()
     {
         $user = $this->get('security.context')->getToken()->getUser();
         if ($user !== "anon." && $user->getRoles()[0] === "ROLE_BIGBOSS") {
@@ -98,7 +98,7 @@ class ProController extends Controller
             return $this->redirect($this->generateUrl('bars_offerFeedback', array('id' => $barId[0]->getId())));
         }
 
-        return return $this->redirect($this->generateUrl('home'));
+        return $this->redirect($this->generateUrl('home'));
     }
 
     /**
