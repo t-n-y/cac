@@ -2353,6 +2353,9 @@ p.closeMesOptions{
 #photo{
 	border-bottom:3px solid #5ac4d4; 
 }
+#promo{
+	border-bottom:3px solid #66cc33; 
+}
 #formule{
 	border-bottom:3px solid #ef662f; 
 }
@@ -2398,7 +2401,13 @@ a .ongletCreation:hover p{
 	left: 0px;
 }
 
+.Etape2Creation{
+	width: 50% !important;
+}
 .Etape3Creation{
+	width: 75% !important;
+}
+.Etape4Creation{
 	width: 99% !important;
 }
 
