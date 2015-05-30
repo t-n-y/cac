@@ -29,9 +29,16 @@ class Payment
     /**
      * @var string
      *
-     * @ORM\Column(name="token", type="string", length=520)
+     * @ORM\Column(name="customer_id", type="string", length=520)
      */
-    private $token;
+    private $customerId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="plan", type="string", length=520)
+     */
+    private $plan;
 
     /**
      * Get id
@@ -44,27 +51,50 @@ class Payment
     }
 
     /**
-     * Set token
+     * Set user
      *
-     * @param string $token
+     * @param \Cac\UserBundle\Entity\User $user
      *
      * @return Payment
      */
-    public function setToken($token)
+    public function setUser(\Cac\UserBundle\Entity\User $user = null)
     {
-        $this->token = $token;
+        $this->user = $user;
 
         return $this;
     }
 
     /**
-     * Get token
+     * Get user
+     *
+     * @return \Cac\UserBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set customerId
+     *
+     * @param string $customerId
+     *
+     * @return Payment
+     */
+    public function setCustomerId($customerId)
+    {
+        $this->customerId = $customerId;
+
+        return $this;
+    }
+
+    /**
+     * Get customerId
      *
      * @return string
      */
-    public function getToken()
+    public function getCustomerId()
     {
-        return $this->token;
+        return $this->customerId;
     }
 }
-

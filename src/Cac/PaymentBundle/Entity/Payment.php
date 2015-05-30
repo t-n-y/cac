@@ -29,9 +29,16 @@ class Payment
     /**
      * @var string
      *
-     * @ORM\Column(name="token", type="string", length=520)
+     * @ORM\Column(name="customer_id", type="string", length=520)
      */
-    private $token;
+    private $customerId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="plan", type="string", length=520)
+     */
+    private $plan;
 
     /**
      * Get id
@@ -41,30 +48,6 @@ class Payment
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set token
-     *
-     * @param string $token
-     *
-     * @return Payment
-     */
-    public function setToken($token)
-    {
-        $this->token = $token;
-
-        return $this;
-    }
-
-    /**
-     * Get token
-     *
-     * @return string
-     */
-    public function getToken()
-    {
-        return $this->token;
     }
 
     /**
@@ -89,5 +72,53 @@ class Payment
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set customerId
+     *
+     * @param string $customerId
+     *
+     * @return Payment
+     */
+    public function setCustomerId($customerId)
+    {
+        $this->customerId = $customerId;
+
+        return $this;
+    }
+
+    /**
+     * Get customerId
+     *
+     * @return string
+     */
+    public function getCustomerId()
+    {
+        return $this->customerId;
+    }
+
+    /**
+     * Set plan
+     *
+     * @param string $plan
+     *
+     * @return Payment
+     */
+    public function setPlan($plan)
+    {
+        $this->plan = $plan;
+
+        return $this;
+    }
+
+    /**
+     * Get plan
+     *
+     * @return string
+     */
+    public function getPlan()
+    {
+        return $this->plan;
     }
 }
