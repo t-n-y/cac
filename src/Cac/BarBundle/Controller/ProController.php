@@ -86,6 +86,22 @@ class ProController extends Controller
     }
 
     /**
+     * @Route("/retourMail", name="bars_mailFeedback")
+     * @Template()
+     */
+    public function offerFeedbackAction()
+    {
+        $user = $this->get('security.context')->getToken()->getUser();
+        if ($user !== "anon." && $user->getRoles()[0] === "ROLE_BIGBOSS") {
+            $em = $this->getDoctrine()->getManager();
+            $barId = $em->getRepository('CacBarBundle:Bar')->findBy(array('author'=> $user->getId()));
+            return $this->redirect($this->generateUrl('bars_offerFeedback', array('id' => $barId[0]->getId())));
+        }
+
+        return return $this->redirect($this->generateUrl('home'));
+    }
+
+    /**
      * @Route("/optionOffre/{id}", name="bars_option")
      * @Template()
      */

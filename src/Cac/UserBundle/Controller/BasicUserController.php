@@ -57,6 +57,29 @@ class BasicUserController extends Controller
         $em->persist($user);
         $em->flush();
 
+        $logToken = new \Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken($user, null, "main", array("ROLE_USER"));
+        $this->get('security.context')->setToken($logToken);
+
+        $event = new \Symfony\Component\Security\Http\Event\InteractiveLoginEvent($this->getRequest(), $logToken);
+        $this->get('event_dispatcher')->dispatch('security.interactive_login', $event);
+
+        $user = $this->get('security.context')->getToken()->getUser();
+
+        $md = $this->get('hip_mandrill.dispatcher');
+
+        $message = new Message();
+        $templateName = 'subscription-ok';
+        if($user->getRoles()[0] === "ROLE_BIGBOSS") $templateName = 'subscription-bigboss-ok';
+        $templateContent = array(array());
+
+        $message
+            ->addTo($user->getEmail(), $user->getFirstname().' '.$user->getName())
+            ->setSubject('Bienvenue chez Click and Cheers '.$user->getFirstname())
+            ->setTrackOpens(true)
+            ->setTrackClicks(true);
+
+        $result = $md->send($message, $templateName, $templateContent);
+
         return array(
             'user' => $user
         );
