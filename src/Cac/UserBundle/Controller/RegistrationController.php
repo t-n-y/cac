@@ -83,7 +83,8 @@ class RegistrationController extends Controller
                     $md = $this->get('hip_mandrill.dispatcher');
 
                     $message = new Message();
-                    $templateName = 'user-validation';
+                    $templateName = 'user-validation2';
+                    if(strpos($request->getPathInfo(), "/bigboss/") !== false) $templateName = 'bigboss-validation';
                     $link = 'http://'.$_SERVER['HTTP_HOST'].$this->generateUrl('user_sconfirm', array(
                         'email' => urlencode($user->getEmail()),
                         'token' => $user->getCustomValidationToken()
