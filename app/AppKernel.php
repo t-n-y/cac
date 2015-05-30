@@ -27,6 +27,7 @@ class AppKernel extends Kernel
             new Cac\PaymentBundle\CacPaymentBundle(),
             new Hip\MandrillBundle\HipMandrillBundle(),
             new Cac\MailingBundle\CacMailingBundle(),
+            new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

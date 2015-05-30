@@ -1,24 +1,17 @@
-<?xml version="1.0" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 
 <container xmlns="http://symfony.com/schema/dic/services"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services
+                               http://symfony.com/schema/dic/services/services-1.0.xsd">
 
-    <!--
     <services>
-        <service id="cac_bar.example" class="Cac\BarBundle\Example">
-            <argument type="service" id="service_id" />
-            <argument>plain_value</argument>
-            <argument>%parameter_name%</argument>
+        <service id="cac.oauth.user_provider" class="Cac\UserBundle\OAuth\UserProvider">
+            <argument type="service" id="fos_user.user_manager" />
+            <argument type="collection">
+                <argument key="facebook">facebookId</argument>
+            </argument>
         </service>
     </services>
-    -->
-    <!-- <services>
 
-        <service id="cac_user.registration.form.type" class="Cac\UserBundle\Form\Type\RegistrationFormType">
-            <tag name="form.type" alias="cac_user_registration" />
-            <argument>%fos_user.model.user.class%</argument>
-        </service>
-
-    </services> -->
 </container>

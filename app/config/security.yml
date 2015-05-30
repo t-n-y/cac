@@ -14,7 +14,15 @@ security:
 
     firewalls:
         main:
+            context: user
             pattern: ^/
+            oauth:
+                resource_owners:
+                    facebook: "/login/check-facebook"
+                login_path: /connect
+                failure_path: /connect
+                oauth_user_provider:
+                    service: cac.oauth.user_provider
             form_login:
                 provider: fos_userbundle
                 csrf_provider: form.csrf_provider
