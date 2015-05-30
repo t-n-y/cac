@@ -49,7 +49,8 @@ class PromotionController extends Controller
             'promotionDummy'    => $promotionDummy,
             'form'              => $editForm->createView(),
             'restrictions'      => $restrictions,
-            'id'                => $entity->getId()
+            'id'                => $entity->getId(),
+            'bar'               => $entity
         );
     }
 
