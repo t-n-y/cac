@@ -44,28 +44,28 @@
                     {{ form_start(form) }}
                         {{ form_errors(form) }}
                         <div class="row">
-                        <div class="servicesNewBar col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
-                            
-                            <p>Photo principale</p>
-                            <br>
+                            <div class="servicesNewBar col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
+                                
+                                <p>Photo principale</p>
+                                <br>
 
-                            <div class="showImg">
-                                <img id="blah" src="#" alt="Votre image" />
-                            </div>
-                            <div class="addPicture">
-                                {{ form_row(form.file) }}
-                                <div class="addPictureHack">
-                                    <p>+</p>
-                                    <br>
-                                     <span>Ajouter la photo principale</span>
+                                <div class="showImg">
+                                    <img id="blah" src="#" alt="Votre image" />
+                                </div>
+                                <div class="addPicture">
+                                    {{ form_row(form.file) }}
+                                    <div class="addPictureHack">
+                                        <p>+</p>
+                                        <br>
+                                         <span>Ajouter la photo principale</span>
+                                    </div>
+                                    
                                 </div>
                                 
-                            </div>
-                            
-                            
-                            <input type="hidden" name="coords" id="coords" value="" data-ratio="">
-                        <div class="clear"></div>
-                        </div> 
+                                
+                                <input type="hidden" name="coords" id="coords" value="" data-ratio="">
+                            <div class="clear"></div>
+                            </div> 
                         </div>
                         {{ form_end(form) }}                  
                     </div>

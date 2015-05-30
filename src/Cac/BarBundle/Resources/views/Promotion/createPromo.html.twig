@@ -3,127 +3,185 @@
 {% block title %}CacBarBundle:Bar:edit_promotion{% endblock %}
 
 {% block body %}
-	<div class="formBar col-xs-12 col-sm-12 col-md-12 noPadding">
-		<h1>Vendez du rêve</h1>
-		<div class="separation1"></div>
-		<div class="separation2"></div>
-	</div>
-	<div class="subtitlePageRegisterBig">
-		<p>Vos promos</p>
 
-	</div>
-	<div class="widthFormPromo">
-		{{ form_start(form) }}
-			{{ form_errors(form.promotion) }}
-			{{ form_widget(form.promotion) }}
-			<div class="promotions center col-xs-6 col-sm-6 col-md-6">
 
-					<p>Promo du jour</p>
-					{% set days = {
-						'1': 'Lundi', 
-						'2': 'Mardi', 
-						'3': 'Mercredi', 
-						'4': 'Jeudi', 
-						'5': 'Vendredi', 
-						'6': 'Samedi', 
-						'7': 'Dimanche'
-					} %}
-					{% for j in 1..7 %}
-					<div class="etapePromotion col-xs-12 col-sm-12 col-md-12">
-						<div class="row">
-							<div class="left col-xs-3 col-sm-3 col-md-3 noPadding">
-								{{ days[j] }}
-							</div>
+<div class="file_button_container">
 
-							<div class="left nbpromo col-xs-5 col-sm-5 col-md-5 noPadding">
-								<select class="promotion-qt-picker" data-day="{{ days[j] }}">
-									<option value="Illimité">illimité</option>
-									{% set nbVerrePromo = {
-										'1': '10', 
-										'2': '20', 
-										'3': '30', 
-										'4': '40', 
-										'5': '50',
-										'6': '100'
-									} %}
-									{% for k in 1..6 %}
-									<option value="{{nbVerrePromo[k]}}">{{nbVerrePromo[k]}}</option>
-									{% endfor %}
-								</select>
-								<br><br>
-								<!--<br>illimité <input type="checkbox" class="promotion-unlimited" data-day="{{ days[j] }}" checked>-->
-							</div>
+	
 
-							<div class="left col-xs-3 col-sm-3 col-md-3 noPadding">
-								<select class="promotion-value-picker" data-day="{{ days[j] }}">
-									<option>Valeur</option>
-									{% for i in 2..6 %}
-									    <option value="{{i}}0">{{i}}0%</option>
-									{% endfor %}
-								</select>
-							</div>
-						</div>
-					</div>
-					{% endfor %}
-					<div class="clear"></div>
+        <div class="row">
+             <div class="col-xs-12 col-sm-12 col-md-12">
 
-			</div>
-			<div class="happy-hours center col-xs-6 col-sm-6 col-md-6">
-				
-					<p>Happy Hour</p>
-					{% set days = {
-						'1': 'Lundi', 
-						'2': 'Mardi', 
-						'3': 'Mercredi', 
-						'4': 'Jeudi', 
-						'5': 'Vendredi', 
-						'6': 'Samedi', 
-						'7': 'Dimanche'
-					} %}
-					{% set params = {
-						'1': {
-							'when':'beginning', 
-							'word': 'de'
-						}, 
-						'2': {
-							'when':'ending', 
-							'word': 'à'
-						}
-					} %}
-					{% for j in 1..7 %}
-					<div class="happyHours center col-xs-12 col-sm-12 col-md-12 noPadding">
-						<div class="row">
-							{% for k in 1..2 %}
-								<div class="col-xs-1 col-sm-1 col-md-1 noPadding">
-									{{ params[k]['word'] }}
-								</div>
-								<div class="col-xs-2 col-sm-2 col-md-2 noPadding">
-									<select class="hh-picker" data-day="{{ days[j] }}" data-when="{{ params[k]['when'] }}">
-										<option></option>
-										{% for i in 0..23 %}
-										    <option value="{{i}}">{{i}}h</option>
+                <div class="ongletNewBar col-xs-2 col-sm-2 col-md-2 noPadding">
+                    <div class="progressionCreation">
+                        
+                        <div class="progresseBarContent">
+                            <div class="progresseBar">
+                                <p>75%</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="javascript:history.back()">
+                        <div class="ongletCreation" id="etablissement">
+                            <p>Votre établissement</p>
+                        </div>
+                    </a>
+                    <div class="ongletCreation selectedOngletCreation" id="photo">
+                        <p>Vos photos et vos offres</p>
+                    </div>
+                    <div class="ongletCreation" id="formule">
+                        <p>Votre formule</p>
+                    </div>
+                </div>
+                <div class="contentNewBar col-xs-10 col-sm-10 col-md-10 noPadding">
+                    <div class="nameNewBar">
+                        LALA
+                    </div>
+
+                    <div class="formPromo">
+						{{ form_start(form) }}
+							{{ form_errors(form.promotion) }}
+							{{ form_widget(form.promotion) }}
+		                    <div class="CreationBar col-xs-12 col-sm-12 col-md-12 noPadding">
+		                    	<div class="servicesNewBar col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
+		                    		
+		                    		<p>Vos offres</p>
+		                    		<div class="daysOngletNewBar">
+		                    			{% set day = {
+											'1': 'Lundi', 
+											'2': 'Mardi', 
+											'3': 'Mercredi', 
+											'4': 'Jeudi', 
+											'5': 'Vendredi', 
+											'6': 'Samedi', 
+											'7': 'Dimanche'
+										} %}
+										{% for i in 1..7 %}
+											<div class="dayOngletNewBar" data-dayselected='{{i}}'>
+												{{ day[i] }}
+											</div>
 										{% endfor %}
-									</select>
-								</div>
-							{% endfor %}
+		                    		</div>
+		                    	
+				                    
+											<div class="promotions center col-xs-12 col-sm-12 col-md-12">
 
-							<div class="col-xs-3 col-sm-3 col-md-3 noPadding">
-								<select class="hh-value-picker" data-day="{{ days[j] }}">
-									<option>Valeur</option>
-									{% for i in 3..7 %}
-									    <option value="{{i}}0">{{i}}0%</option>
-									{% endfor %}
-								</select>
-							</div>
-						</div>
-						<br>
-					</div>
-					{% endfor %}
-					<div class="clear"></div>
-				
-			</div>
-		{{ form_end(form) }}
-	</div>
+													{% set days = {
+														'1': 'Lundi', 
+														'2': 'Mardi', 
+														'3': 'Mercredi', 
+														'4': 'Jeudi', 
+														'5': 'Vendredi', 
+														'6': 'Samedi', 
+														'7': 'Dimanche'
+													} %}
+
+													{% set params = {
+														'1': {
+															'when':'beginning', 
+															'word': 'de'
+														}, 
+														'2': {
+															'when':'ending', 
+															'word': 'à'
+														}
+													} %}
+													{% for j in 1..7 %}
+
+														<div class="promoHappyHour">
+
+															<div class="etapePromotion col-xs-12 col-sm-6 col-md-6">
+																<p>Promo du {{ days[j] }}</p>
+																<div class="row">
+
+																	<div class="center valuePromo">
+																		<select class="promotion-value-picker" data-day="{{ days[j] }}">
+																			<option>Valeur</option>
+																			{% for i in 2..6 %}
+																			    <option value="{{i}}0">{{i}}0%</option>
+																			{% endfor %}
+																		</select>
+																	</div>
+																</div>
+																<div class="row">
+
+																	<div class="center nbpromo col-xs-12 col-sm-12 col-md-12 noPadding">
+																		<p>Nombre d'offres disponibles</p>
+																		<select class="promotion-qt-picker" data-day="{{ days[j] }}">
+																			<option value="Illimité">illimité</option>
+																			{% set nbVerrePromo = {
+																				'1': '10', 
+																				'2': '20', 
+																				'3': '30', 
+																				'4': '40', 
+																				'5': '50',
+																				'6': '100'
+																			} %}
+																			{% for k in 1..6 %}
+																			<option value="{{nbVerrePromo[k]}}">
+																				{{nbVerrePromo[k]}}
+																			</option>
+																			{% endfor %}
+																		</select>
+																	</div>
+																</div>
+															</div>
+															<div class="happyHours center col-xs-12 col-sm-6 col-md-6">
+																<p>HAPPY HOURS</p>
+																<div class="row">
+																	<div class="center valuePromo">
+																		<select class="hh-value-picker" data-day="{{ days[j] }}">
+																			<option>Valeur</option>
+																			{% for i in 3..7 %}
+																			    <option value="{{i}}0">{{i}}0%</option>
+																			{% endfor %}
+																		</select>
+																	</div>
+																</div>
+																<div class="row">
+																	<div class="center nbpromo happyhoursTime col-xs-12 col-sm-12 col-md-12 noPadding">
+																		{% for k in 1..2 %}
+																				<p>{{ params[k]['word'] }}</p>
+
+																				<select class="hh-picker" data-day="{{ days[j] }}" data-when="{{ params[k]['when'] }}">
+																					<option></option>
+																					{% for i in 0..23 %}
+																					    <option value="{{i}}">{{i}}h</option>
+																					{% endfor %}
+																				</select>
+
+																		{% endfor %}
+																	</div>
+																</div>
+															</div>
+														</div>
+													{% endfor %}
+													<div class="clear"></div>
+
+											</div>
+										
+									  
+								</div>                
+								<div class="servicesNewBar col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
+		                    		
+		                    		<p>Programme de fidélité</p>
+		                    		<div class="programmeFidelite">
+		                    			<p>Adhérer au programme de fidélité de click and cheers :</p>
+		                    		</div>
+		                    		
+		                    	</div>
+		                    </div>
+	                    {{ form_end(form) }}
+	                </div>
+                </div>
+            </div>
+        </div>
+
+    
+
+</div>
+
 	<div class="clear"></div>
 	<a href="{{ path("bar_show", {'id': id }) }}">Passer cette étape</a>
+
 {% endblock %}

@@ -2180,18 +2180,87 @@ p.closeMesOptions{
 	border-bottom: 2px solid #5ac4d4;
 }
 
-.widthFormPromo{
-	width: 80%;
-	margin: auto;
-	margin-top: 60px;
-	padding: 20px;
-	border: 1px solid #a8a8a8;
+.daysOngletNewBar{
+	width: 100%;
 }
 
+.dayOngletNewBar{
+	width: 14.28%;
+	background-color: #303030;
+	color: #fff;
+	float: left;
+	cursor: pointer;
+	padding: 5px 0;
+}
+
+.selectedOngletDay{
+	background-color: #5ac4d4;
+}
+
+
+.dayOngletNewBar:hover{
+	background-color: #5ac4d4;
+}
+
+.formPromo{
+
+}
+
+.promotions{
+	margin-top: 20px;
+}
+
+.etapePromotion{
+	border-right: 1px solid #fff;
+}
+
+.promoHappyHour{
+	display: none;
+}
+
+.promoHappyHour p{
+	background-color: transparent !important;
+	color: #ef662f;
+}
+
+.selectedPromoHappyHour{
+	display: block;
+}
+
+.valuePromo{
+	width: 90px;
+	margin: auto;
+}
+
+.valuePromo select{
+	border: 1px solid #ef662f !important;
+	height: 35px;
+}
 
 
 .widthFormPromo select{
 	background-color: #fff;
+}
+
+.nbpromo{
+	margin-top: 10px;
+}
+
+.nbpromo p{
+	color: #303030;
+	font-size: 12px;
+}
+
+.nbpromo select{
+	width: 80px !important;
+}
+
+.happyhoursTime select{
+	width: 60px !important;
+}
+
+.programmeFidelite p{
+	background-color:transparent !important; 
 }
 
 .bulle{
@@ -2751,7 +2820,7 @@ p.pCreez{
 	margin-top: 15px;
 }
 
-.heure select, .access select, .etapePromotion select, .contentSuperInfoBar select{
+.heure select, .access select, .etapePromotion select, .contentSuperInfoBar select, .nbpromo select{
 	background-color: #fff;
 	-webkit-border-radius: 1px;
 	-moz-border-radius: 1px;
