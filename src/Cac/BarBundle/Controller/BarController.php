@@ -201,6 +201,16 @@ class BarController extends Controller
             $em->persist($verre);
             $em->flush();
 
+            \Stripe\Stripe::setApiKey("sk_test_zLHsgtijLe1xYM1XPhf12zGY");
+            $payment = $em->getRepository('CacPaymentBundle:Payment')->findOneByUser($user);
+            $customerId = $payment->getCustomerId();
+            \Stripe\InvoiceItem::create(array(
+                "customer" => $customerId,
+                "amount" => 100,
+                "currency" => "eur",
+                "description" => "Promotion")
+            );
+
             return new Response('get glass');
         }
         else{
