@@ -13,19 +13,39 @@ use Symfony\Component\HttpFoundation\Response;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/pay")
+     * @Route("/free-pay", name="free-pay", options={"expose"=true})
      * @Template()
      */
     public function indexAction(Request $request)
     {
+    	
     	$em = $this->getDoctrine()->getManager();
     	$user = $this->get('security.context')->getToken()->getUser();
 
     	if ($this->getRequest()->isMethod('POST')) {
     		\Stripe\Stripe::setApiKey("sk_test_zLHsgtijLe1xYM1XPhf12zGY");
+			$token = $_POST['stripeToken'];
+
+			$this->createFreeStripeUser($user, $em, $token);
+			return $this->redirect($this->generateUrl('confirm_payment'));
+    	}
+        return array();
+    }
+
+    /**
+     * @Route("/premium-pay", name="premium-pay", options={"expose"=true})
+     * @Template()
+     */
+    public function premiumAction(Request $request)
+    {
+    	$em = $this->getDoctrine()->getManager();
+    	$user = $this->get('security.context')->getToken()->getUser();
+    	if ($this->getRequest()->isMethod('POST')) {
+    		\Stripe\Stripe::setApiKey("sk_test_zLHsgtijLe1xYM1XPhf12zGY");
     		
 			$token = $_POST['stripeToken'];
-			$this->createFreeStripeUser($user, $em, $token);
+			$this->createPremiumStripeUser($user, $em, $token);
+			return $this->redirect($this->generateUrl('confirm_payment'));
     	}
         return array();
     }
@@ -100,5 +120,17 @@ class DefaultController extends Controller
 		// );
 
         return new Response('plan update');
+    }
+
+    /**
+     * @Route("/payment-sucess", name="confirm_payment")
+     * @Template()
+     */
+    public function confirmPaymentAction()
+    {
+    	$em = $this->getDoctrine()->getManager();
+    	$user = $this->get('security.context')->getToken()->getUser();
+    	$barId = $em->getRepository('CacBarBundle:Bar')->findByAuthor($user)[0]->getId();
+    	return array('barId' => $barId);
     }
 }

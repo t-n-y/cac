@@ -30,7 +30,8 @@ class PromotionController extends Controller
     public function createPromoAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-
+        $user = $this->get('security.context')->getToken()->getUser();
+        $plan = $em->getRepository('CacPaymentBundle:Payment')->findOneByUser($user)->getPlan();
         $entity = $em->getRepository('CacBarBundle:Bar')->find($id);
         $promotions = $entity->getPromotions();
         $promotionDummy = new PromotionDummy();
@@ -50,7 +51,8 @@ class PromotionController extends Controller
             'form'              => $editForm->createView(),
             'restrictions'      => $restrictions,
             'id'                => $entity->getId(),
-            'bar'               => $entity
+            'bar'               => $entity,
+            'plan'              => $plan
         );
     }
 
@@ -117,7 +119,16 @@ class PromotionController extends Controller
             }
 
             $em->flush();
-            return $this->redirect($this->generateUrl('bar_show', array('id' => $entity->getId())));
+
+            $user = $this->get('security.context')->getToken()->getUser();
+            $plan = $em->getRepository('CacPaymentBundle:Payment')->findOneByUser($user)->getPlan();
+            if ($plan === "free") {
+                return $this->redirect($this->generateUrl('bars_abonnement', array('id' => $entity->getId())));
+            }
+            else
+            {
+                return $this->redirect($this->generateUrl('bars_offer', array('id' => $entity->getId())));
+            }
         }
 
         return array(

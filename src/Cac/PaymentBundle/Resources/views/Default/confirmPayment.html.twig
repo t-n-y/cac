@@ -1,0 +1,21 @@
+{% extends '::baseValidation.html.twig' %}
+
+{% block title %}
+Dernière étape | {{ parent() }}
+{% endblock %}
+
+{% block header %}
+C'est presque terminé
+{% endblock %}
+
+{% block content %}
+Vous allez être redirigé dans quelques secondes.<br>
+<img src="{{ asset('img/ellipsis.gif') }}" alt="Chargement...">
+{% endblock %}
+{% block javascripts %}
+<script>
+    setTimeout(function(){ 
+        window.location.href = '{{ path('bars_offer', { 'id': barId }) }}';
+    }, 3000);
+</script>
+{% endblock %}
