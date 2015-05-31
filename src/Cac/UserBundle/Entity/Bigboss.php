@@ -129,7 +129,7 @@ class Bigboss extends User
     {
         parent::__construct();
         $this->createdBars = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->roles = array('ROLE_BIGBOSS');
+        $this->roles = array('ROLE_BIGBOSS','ROLE_FREEMIUM');
         $this->isActive = false;
         $this->customValidationToken = substr(str_shuffle(MD5(microtime())), 0, 20);
     }

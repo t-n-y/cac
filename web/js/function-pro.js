@@ -49,6 +49,12 @@ var click = 0;
 $('body').on("click", ".validerOffre",function(){
   $(this).parentsUntil('.allOffre').addClass('selectedOffre');
   selectedOffre('valider');
+  $('p',this).addClass('offreValider');
+  //$(this).parents($('.validationOffre')).children().find('.noValiderOffre').removeClass('offrePasValider');
+  //$(this).parents($('.validationOffre')).children($('.noValiderOffre')).find('noValiderOffre p').addClass('prout');
+  $(this).parents('.validationsOffre').children('.noValidationOffre').children().children().removeClass('offrePasValider');
+  //$(this).parents('.retourVerrePromotion').children().addClass('offrePasValider');
+
 });
 
 $('body').on("click", ".noValiderOffre",function(){
@@ -58,6 +64,8 @@ $('body').on("click", ".noValiderOffre",function(){
   }
   $(this).parentsUntil('.allOffre').addClass('selectedOffre');
   selectedOffre('noValider');
+  $('p',this).addClass('offrePasValider');
+  $(this).parents('.validationsOffre').children('.validationOffre').children().children().removeClass('offreValider');
 });
 
 function selectedOffre(option){

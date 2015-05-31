@@ -5,6 +5,7 @@ security:
     role_hierarchy:
         ROLE_BARMAN:       ROLE_USER
         ROLE_BIGBOSS:       ROLE_BARMAN
+        ROLE_PREMIUM:       ROLE_FREEMIUM
         ROLE_ADMIN:       [ROLE_BIGBOSS, ROLE_USER]
         ROLE_SUPER_ADMIN: ROLE_ADMIN
 

@@ -1325,7 +1325,7 @@ p.droitReserve{
 
 .topBarPro{
 	position: relative;
-	height: 100px;
+	height: 300px;
 	overflow: hidden;
 }
 
@@ -1377,8 +1377,13 @@ p.droitReserve{
 
 .onglets{
 	text-align: center;
-	height: 40px;
 	background-color: #fff;
+}
+
+.onglets h2{
+	margin: 0;
+	padding: 10px 0;
+	font-size: 18px;
 }
 
 .onglets h3{
@@ -1392,11 +1397,13 @@ p.droitReserve{
 
 .onglet{
 	cursor: pointer;
+	border-top: 1px solid #303030;
 }
 
 .ongletselect{
-	background-color: #858585;
-	color : #5ac4d4;
+	background-color: #5ac4d4;
+	color : #fff;
+	border-top: 1px solid #5ac4d4;
 }
 
 .gestion{
@@ -1700,7 +1707,31 @@ p.rappelCondition{
 	background-repeat: no-repeat;
 }
 
+.coteneurBackOfficeBar{
+	background-color: #fff;
+}
+
+.contentBackOfficeBar{
+	background-color: #f6f6f6;
+	padding: 20px;
+	text-align : center;
+}
+
+.contentBackOfficeBar p{
+	margin-bottom: 10px;
+}
+
 .superInfoBar{
+	width: 70%;
+	margin: auto;
+	margin-top: 50px;
+	background-color: #fff;
+	min-height: 550px;
+	position: relative;
+	padding-bottom: 20px;
+}
+
+.superContentBackOffice{
 	width: 70%;
 	margin: auto;
 	margin-top: 50px;
@@ -2191,7 +2222,12 @@ p.closeMesOptions{
 	float: left;
 	cursor: pointer;
 	padding: 5px 0;
-	border-left: 1px solid #fff; 
+	border-left: 1px solid #fff;
+	text-align: center; 
+}
+
+.borderDayOngletNewBar{
+	border-top : 2px solid #303030;
 }
 
 .dayOngletNewBar:nth-child(1){
@@ -2217,6 +2253,10 @@ p.closeMesOptions{
 
 .etapePromotion{
 	border-right: 1px solid #fff;
+}
+
+.contentBackOfficeBar .etapePromotion{
+	border-right: none;
 }
 
 .promoHappyHour{
@@ -2254,6 +2294,7 @@ p.closeMesOptions{
 .nbpromo p{
 	color: #303030;
 	font-size: 12px;
+	display: inline-block;
 }
 
 .nbpromo select{
@@ -2636,6 +2677,10 @@ a .ongletCreation:hover p{
 .navRetourOffre, .retourOffre{
 	text-align: center;
 }
+
+.retourOffre:nth-child(odd){
+	background-color: #f6f6f6;
+}
 .navRetourOffre p, .retourOffre p{
 	margin: 0;
 }
@@ -2645,51 +2690,70 @@ a .ongletCreation:hover p{
 	font-size : 10px;
 }
 
-.validationOffre{
+.validationsOffre{
 	padding-top: 5px;
 	padding-bottom: 5px;
 	margin-top: 2px;
 }
 
 .retourVerrePromotion{
-	background-color: #f9eeff;
 	padding-top: 5px;
 	padding-bottom: 5px;
 	margin-top: 2px;
 }
 
+.validerOffre{
+	padding: 0 5px;
+}
+
 .validerOffre p{
 	margin: auto;
-	border-radius: 100px;
-    -webkit-border-radius: 100px;
-	-moz-border-radius: 100px;
-	background-color: #00a453;
-	color: #fff;
-	width: 20px;
-	height: 20px;
+	border-radius: 5px;
+    -webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	background-color: #fff;
+	color: #00a453;
 	cursor: pointer;
+	border: 1px solid #303030;
+}
+
+.validerOffre p:hover, .offreValider{
+	background-color: #00a453 !important;
+	color: #fff !important;
+}
+
+.etatOffreValider{
+	color: #00a453 !important;
 }
 
 .noValiderOffre p{
 	margin: auto;
-	border-radius: 100px;
-    -webkit-border-radius: 100px;
-	-moz-border-radius: 100px;
-	background-color: #c4232d;
-	color: #fff;
-	width: 20px;
-	height: 20px;
+	border-radius: 5px;
+    -webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	background-color: #fff;
+	color: #c4232d;
 	cursor: pointer;
+	border: 1px solid #303030;
 }
 
-.offreValide{
-	background-color: #74cba0;
-	color : #fff;
+.noValiderOffre p:hover, .offrePasValider{
+	background-color: #c4232d !important;
+	color: #fff !important;
 }
 
-.offreNonValide{
-	background-color: #f79696;
-	color : #fff;
+.etatOffrePasValider{
+	color: #c4232d !important;
+}
+
+
+.offreValide .statutOffre{
+	
+	color : #00a453;
+}
+
+.offreNonValide .statutOffre{
+	color : #c4232d;
 }
 
 
