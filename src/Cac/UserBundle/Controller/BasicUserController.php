@@ -137,4 +137,15 @@ class BasicUserController extends Controller
                 'email' => $email,
             ));
     }
+
+    /**
+     * Oauth test.
+     *
+     * @Route("/oauth-test", name="oauth_test")
+     * @Template()
+     */
+    public function oAuthTestAction()
+    {
+        return array();
+    }
 }

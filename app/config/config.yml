@@ -96,10 +96,13 @@ hip_mandrill:
         sender_name: Click and Cheers
 
 hwi_oauth:
-    # name of the firewall in which this bundle is active, this setting MUST be set
+    http_client:
+        verify_peer: false
     firewall_name: main
     resource_owners:
         facebook:
             type: facebook
             client_id: 375491089283331
             client_secret: aa8eec49f60c5b10b86be94b41ae4926
+            options:
+                display: popup

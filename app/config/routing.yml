@@ -5,6 +5,10 @@ hwi_oauth_redirect:
 facebook_login:
     pattern: /login/check-facebook
 
+hwi_oauth_login:
+  resource: "@HWIOAuthBundle/Resources/config/routing/login.xml"
+  prefix: /oauth-login
+
 cac_mailing:
     resource: "@CacMailingBundle/Controller/"
     type:     annotation

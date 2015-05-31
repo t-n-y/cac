@@ -19,6 +19,17 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class UserProvider extends FOSUBUserProvider
 {
+    protected $userManager;
+    protected $properties;
+    protected $discriminator;
+
+    public function __construct(\FOS\UserBundle\Model\UserManagerInterface $userManager, array $properties, \PUGX\MultiUserBundle\Model\UserDiscriminator $discriminator)
+    {
+        $this->userManager = $userManager;
+        $this->properties = $properties;
+        $this->discriminator = $discriminator;
+    }
+
     /**
      * {@inheritDoc}
      */
@@ -56,13 +67,23 @@ class UserProvider extends FOSUBUserProvider
      */
     protected function createUserByOAuthUserResponse(UserResponseInterface $response)
     {
+        $this->discriminator->setClass('Cac\UserBundle\Entity\BasicUser');
         $user = $this->userManager->createUser();
         $this->updateUserByOAuthUserResponse($user, $response);
 
         // set default values taken from OAuth sign-in provider account
+        $this->discriminator->setClass('Cac\UserBundle\Entity\User');
         if (null !== $email = $response->getEmail()) {
-            $user->setEmail($email);
+            var_dump($this->userManager->findUserBy(array('email' => $response->getEmail())));
+            if(null === $this->userManager->findUserByEmail($response->getEmail())) {
+                $user->setEmail($email);
+            } else {
+
+            }
         }
+
+        var_dump($response);
+        die;
 
         if (null === $this->userManager->findUserByUsername($response->getNickname())) {
             $user->setUsername($response->getNickname());

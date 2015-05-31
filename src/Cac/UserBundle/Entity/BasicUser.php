@@ -143,6 +143,13 @@ class BasicUser extends User
      */
     private $customValidationToken;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="facebook_id", type="string", length=255, nullable=true)
+     */
+    protected $facebookId;
+
      /**
      * Constructor
      */
@@ -470,5 +477,29 @@ class BasicUser extends User
     public function getCustomValidationToken()
     {
         return $this->customValidationToken;
+    }
+
+    /**
+     * Set facebookId
+     *
+     * @param string $facebookId
+     *
+     * @return BasicUser
+     */
+    public function setFacebookId($facebookId)
+    {
+        $this->facebookId = $facebookId;
+
+        return $this;
+    }
+
+    /**
+     * Get facebookId
+     *
+     * @return string
+     */
+    public function getFacebookId()
+    {
+        return $this->facebookId;
     }
 }

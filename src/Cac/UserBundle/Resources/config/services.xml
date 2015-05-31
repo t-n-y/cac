@@ -7,10 +7,11 @@
 
     <services>
         <service id="cac.oauth.user_provider" class="Cac\UserBundle\OAuth\UserProvider">
-            <argument type="service" id="fos_user.user_manager" />
+            <argument type="service" id="pugx_user_manager" />
             <argument type="collection">
                 <argument key="facebook">facebookId</argument>
             </argument>
+            <argument type="service" id="pugx_user.manager.user_discriminator" />
         </service>
     </services>
 
