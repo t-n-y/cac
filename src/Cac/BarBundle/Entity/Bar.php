@@ -151,28 +151,32 @@ class Bar
     /**
      * @var integer
      *
-     * @ORM\Column(name="BeerPrice", type="integer", nullable=true)
+     * @Assert\NotBlank()
+     * @ORM\Column(name="BeerPrice", type="integer")
      */
     private $beerPrice;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="softPrice", type="integer", nullable=true)
+     * @Assert\NotBlank()
+     * @ORM\Column(name="softPrice", type="integer")
      */
     private $softPrice;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="coffeePrice", type="integer", nullable=true)
+     * @Assert\NotBlank()
+     * @ORM\Column(name="coffeePrice", type="integer")
      */
     private $coffeePrice;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="cocktailPrice", type="integer", nullable=true)
+     * @Assert\NotBlank()
+     * @ORM\Column(name="cocktailPrice", type="integer")
      */
     private $cocktailPrice;
 

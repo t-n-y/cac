@@ -195,7 +195,6 @@
 </div>
 
 	<div class="clear"></div>
-	{# if not premium, else redirect on backo #}
 	{% if plan == "free" %}
 		<a href="{{ path("bars_abonnement", {'id': id }) }}">Passer cette étape</a>
 	{% else %}

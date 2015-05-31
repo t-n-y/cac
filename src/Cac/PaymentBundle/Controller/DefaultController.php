@@ -18,7 +18,6 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-    	
     	$em = $this->getDoctrine()->getManager();
     	$user = $this->get('security.context')->getToken()->getUser();
 
@@ -63,6 +62,8 @@ class DefaultController extends Controller
 			$payment->setUser($user);
 			$payment->setCustomerId($customer->id);
 			$payment->setPlan('free');
+			$user->addRole('ROLE_FREEMIUM');
+			$user->removeRole('ROLE_PREMIUM');
 			$em->persist($payment);
 			$em->flush();
 		} catch (Exception $e) {
@@ -83,6 +84,9 @@ class DefaultController extends Controller
 			$payment->setUser($user);
 			$payment->setCustomerId($customer->id);
 			$payment->setPlan('premium');
+			$user->addRole('ROLE_PREMIUM');
+			$user->removeRole('ROLE_FREEMIUM');
+			$em->persist($user);
 			$em->persist($payment);
 			$em->flush();
 		} catch (Exception $e) {
@@ -111,13 +115,6 @@ class DefaultController extends Controller
 		$subscription = $cu->subscriptions->retrieve($planId);
 		$subscription->plan = $newPlan;
 		$subscription->save();
-
-		// $plouf = \Stripe\InvoiceItem::create(array(
-		//     "customer" => $customerId,
-		//     "amount" => -500,
-		//     "currency" => "eur",
-		//     "description" => "One-time setup fee number two")
-		// );
 
         return new Response('plan update');
     }

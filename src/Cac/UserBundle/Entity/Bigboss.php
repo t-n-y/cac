@@ -57,7 +57,7 @@ class Bigboss extends User
     /**
      * @var string
      *
-     * @ORM\Column(name="siret", type="string", length=255)
+     * @ORM\Column(name="siret", type="string", length=255, nullable=true)
      */
     private $siret;
 
@@ -86,7 +86,6 @@ class Bigboss extends User
 
     /**
      * @var integer
-     * @Assert\NotBlank()
      * @Assert\Length(
      *      min = "10",
      *      max = "10",
@@ -94,7 +93,7 @@ class Bigboss extends User
      *      maxMessage = "Votre numéro ne peut pas être plus long que {{ limit }} caractères",
      *      exactMessage = "Le numéro doit contenir 10 chiffres"
      * )
-     * @ORM\Column(name="fix_phone", type="integer")
+     * @ORM\Column(name="fix_phone", type="integer", nullable=true)
      */
     private $fix_phone;
 
@@ -129,7 +128,7 @@ class Bigboss extends User
     {
         parent::__construct();
         $this->createdBars = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->roles = array('ROLE_BIGBOSS','ROLE_FREEMIUM');
+        $this->roles = array('ROLE_BIGBOSS');
         $this->isActive = false;
         $this->customValidationToken = substr(str_shuffle(MD5(microtime())), 0, 20);
     }

@@ -45,8 +45,8 @@ class BigbossFormType extends AbstractType
                 )
             )
             ->add('company', null, array('label' => 'Société'))
-            ->add('siret', null, array('label' => 'Numéro SIRET'))
-            ->add('fix_phone', 'text', array('label' => 'Téléphone fixe'))
+            ->add('siret', null, array('label' => 'Numéro SIRET','required' => false))
+            ->add('fix_phone', 'text', array('label' => 'Téléphone fixe','required' => false))
             ->add('mobile_phone', 'text', array('label' => 'Téléphone mobile'))
         ;
     }

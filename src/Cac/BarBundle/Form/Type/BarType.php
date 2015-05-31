@@ -31,7 +31,6 @@ class BarType extends AbstractType
             )
             ->add('beerPrice', null, array(
                 'label' => 'La pinte de bière',
-                'required'  => false,
                 )
             )
             ->add('softPrice', null, array(

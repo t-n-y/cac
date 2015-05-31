@@ -76,6 +76,12 @@ class ProController extends Controller
     public function offerFeedbackAction($id)
     {
         $em = $this->getDoctrine()->getManager();
+        $user = $this->get('security.context')->getToken()->getUser();
+        $barId = $em->getRepository('CacBarBundle:Bar')->findBy(array('author'=> $user->getId()));
+        if ($barId === 0) {
+            return $this->redirect($this->generateUrl('bar_new'));
+        }
+
         $bar = $em->getRepository('CacBarBundle:Bar')->find($id);
         $promoOffertes = $em->getRepository('CacBarBundle:PromoOffertes')->findBy(array('bar'=> $bar), array('id' => 'DESC'));
 
@@ -164,6 +170,15 @@ class ProController extends Controller
      */
     public function newAction()
     {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->get('security.context')->getToken()->getUser();
+        $role = $this->get('security.context')->isGranted('ROLE_PREMIUM');
+        $bars = $em->getRepository('CacBarBundle:Bar')->findByAuthor($user);
+
+        if (count($bars) > 0 && $role === false ) {
+            ldd('nope !');
+        }
+
         $entity = new Bar();
         $form   = $this->createCreateForm($entity);
         return array(
@@ -177,7 +192,7 @@ class ProController extends Controller
      *
      * @Route("/", name="bar_create")
      * @Method("POST")
-     * @Template("CacBarBundle:Bar:new.html.twig")
+     * @Template("CacBarBundle:Pro:new.html.twig")
      */
     public function createAction(Request $request)
     {
@@ -195,6 +210,7 @@ class ProController extends Controller
             $em = $this->getDoctrine()->getManager();
 
             $schedules = json_decode($request->request->get('cac_barbundle_bar')['schedule'], true);
+
             foreach($schedules as $day => $options) {
                 $schedule = new DaySchedule();
                 $schedule->setDayName($day);
@@ -433,6 +449,15 @@ class ProController extends Controller
         $em->persist($user);
         $em->persist($promo);
         $em->flush();
+        \Stripe\Stripe::setApiKey("sk_test_zLHsgtijLe1xYM1XPhf12zGY");
+        $payment = $em->getRepository('CacPaymentBundle:Payment')->findOneByUser($user);
+        $customerId = $payment->getCustomerId();
+        \Stripe\InvoiceItem::create(array(
+            "customer" => $customerId,
+            "amount" => -100,
+            "currency" => "eur",
+            "description" => "Promotion")
+        );
         return new Response($promo->getEtat());
     }
 

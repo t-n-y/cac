@@ -31,7 +31,14 @@ class PromotionController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $user = $this->get('security.context')->getToken()->getUser();
-        $plan = $em->getRepository('CacPaymentBundle:Payment')->findOneByUser($user)->getPlan();
+
+        $plan = $em->getRepository('CacPaymentBundle:Payment')->findOneByUser($user);
+        if ($plan != null) {
+            $planName = $em->getRepository('CacPaymentBundle:Payment')->findOneByUser($user)->getPlan();
+        }
+        else
+            $planName = "free";
+
         $entity = $em->getRepository('CacBarBundle:Bar')->find($id);
         $promotions = $entity->getPromotions();
         $promotionDummy = new PromotionDummy();
@@ -121,8 +128,14 @@ class PromotionController extends Controller
             $em->flush();
 
             $user = $this->get('security.context')->getToken()->getUser();
-            $plan = $em->getRepository('CacPaymentBundle:Payment')->findOneByUser($user)->getPlan();
-            if ($plan === "free") {
+            $plan = $em->getRepository('CacPaymentBundle:Payment')->findOneByUser($user);
+            if ($plan != null) {
+                $planName = $em->getRepository('CacPaymentBundle:Payment')->findOneByUser($user)->getPlan();
+            }
+            else
+                $planName = "free";
+
+            if ($planName === "free") {
                 return $this->redirect($this->generateUrl('bars_abonnement', array('id' => $entity->getId())));
             }
             else
