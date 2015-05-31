@@ -12,6 +12,7 @@
                 <argument key="facebook">facebookId</argument>
             </argument>
             <argument type="service" id="pugx_user.manager.user_discriminator" />
+            <argument type="service" id="service_container" />
         </service>
     </services>
 

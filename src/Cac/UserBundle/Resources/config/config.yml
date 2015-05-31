@@ -37,6 +37,3 @@ pugx_multi_user:
         profile:
           form: 
             type: Cac\UserBundle\Form\Type\BasicUserFormType
-    oriuser:
-        entity: 
-          class: Cac\UserBundle\Entity\User
