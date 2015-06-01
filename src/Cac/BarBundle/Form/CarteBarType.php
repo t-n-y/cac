@@ -15,11 +15,7 @@ class CarteBarType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('file')
-            ->add('bar', 'entity', array(
-                'class' => 'CacBarBundle:Bar',
-                'property' => 'name',
-            ));
+            ->add('file');
     }
     
     /**

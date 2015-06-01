@@ -44,16 +44,29 @@ class CarteBarController extends Controller
      */
     public function createAction(Request $request)
     {
+        
+        $em = $this->getDoctrine()->getManager();
+
         $entity = new CarteBar();
-        $form = $this->createCreateForm($entity);
+        if ($this->getRequest()->isMethod('POST')) {
+            $barId = $_POST['cac_barbundle_cartebar']['bar'];
+            $form = $this->createCreateForm($entity, $barId);
+        }
+        else
+        {
+            $form = $this->createCreateForm($entity);
+        }
+        
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
+            $barToAddId = $_POST['cac_barbundle_cartebar']['bar'];
+            $barToAdd = $em->getRepository('CacBarBundle:Bar')->find($barToAddId);
+            $entity->addBar($barToAdd);
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('cartebar_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('bars_option', array('id' => $barId)));
         }
 
         return array(
@@ -69,14 +82,29 @@ class CarteBarController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(CarteBar $entity)
+    private function createCreateForm(CarteBar $entity, $barId)
     {
+        
+        // ldd($barId);
         $form = $this->createForm(new CarteBarType(), $entity, array(
             'action' => $this->generateUrl('cartebar_create'),
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+        if ($this->getRequest()->isMethod('POST')) {
+            $form->add('bar', 'entity', array('class' => 'CacBarBundle:Bar', 'property' => 'name', 'attr' => array('placeholder' => 'Bar'),
+                'query_builder' => function (\Cac\BarBundle\Entity\BarRepository $repository) use ($barId)
+                             {
+                                 return $repository->createQueryBuilder('b')
+                                        ->where('b.id = :id')
+                                        ->setParameter(':id', $barId);
+                             }
+            ));
+        }else{
+            $form->add('bar', 'hidden', array('data' => $barId));
+        }
+        
+        $form->add('submit', 'submit', array('label' => 'Ajouter'));
 
         return $form;
     }
@@ -88,10 +116,11 @@ class CarteBarController extends Controller
      * @Method("GET")
      * @Template()
      */
-    public function newAction()
+    public function newAction($barId)
     {
+        // $bar = $em->getRepository('CacBarBundle:Bar')->find($barId);
         $entity = new CarteBar();
-        $form   = $this->createCreateForm($entity);
+        $form   = $this->createCreateForm($entity, $barId);
 
         return array(
             'entity' => $entity,
@@ -165,7 +194,7 @@ class CarteBarController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        $form->add('submit', 'submit', array('label' => 'Modifier'));
 
         return $form;
     }
@@ -192,8 +221,15 @@ class CarteBarController extends Controller
 
         if ($editForm->isValid()) {
             $em->flush();
+            if ($entity->file)
+            {
+                $entity->upload();
+                $em->persist($entity);
+                $em->flush();
+            }
 
-            return $this->redirect($this->generateUrl('cartebar_edit', array('id' => $id)));
+            $referer = $request->headers->get('referer');
+            return $this->redirect($referer);
         }
 
         return array(
