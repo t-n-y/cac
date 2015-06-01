@@ -683,7 +683,7 @@ ul.dropdown-menu li > a.monCompte:hover:before {
 .navNewBar img{
 	margin: 0 10px 0 30px;
 	vertical-align: middle;
-	width: 35px;
+	width: 25px;
 }
 
 .navNewBar p{
@@ -701,6 +701,7 @@ ul.dropdown-menu li > a.monCompte:hover:before {
 
 .newProNav{
 	padding-right: 70px;
+	text-align: right;
 }
 
 .newProNav span, .newProNav a{
@@ -1380,6 +1381,11 @@ p.droitReserve{
 	background-color: #fff;
 }
 
+.ongletsOptionPro{
+	border-top : 1px solid #303030;
+	border-bottom : 1px solid #303030;
+}
+
 .onglets h2{
 	margin: 0;
 	padding: 10px 0;
@@ -1398,6 +1404,20 @@ p.droitReserve{
 .onglet{
 	cursor: pointer;
 	border-top: 1px solid #303030;
+}
+
+.ongletOptionPro{
+	cursor: pointer;
+	border-left: 1px solid #303030;
+}
+
+.ongletOptionPro:hover{
+	background-color: #5ac4d4;
+	color: #fff;
+}
+
+.ongletOptionPro:nth-child(1){
+	border-left: none;
 }
 
 .ongletselect{
@@ -2885,6 +2905,11 @@ a .ongletCreation:hover p{
 	margin: 10px 0px;
 }
 
+.ongletInscriptionUser img{
+	width: 40px;
+	margin-top: 10px;
+}
+
 p.champsRequis{
 	margin: 30px 0;
 }
@@ -3139,8 +3164,17 @@ float: left;
 	margin: 10px 0px;
 }
 
+.ongletProRegister p{
+	vertical-align: middle;
+}
+
+.oneLineOngletPro{
+	margin-top: 10px;
+}
+
 .ongletProRegister img{
-	width: 30px;
+	width: 40px;
+	height: 40px;
 }
 
 #zeroFrai{
@@ -3159,10 +3193,15 @@ float: left;
 	border-color:#ef662f;
 }
 
-.contentFormRegisterPro{
+.containerFormRegisterPro{
 	background-image: url('../img/contentRegisterPro.jpg');
 	background-size: cover;
 	padding: 80px 10px;
+}
+
+.contentFormRegisterPro{
+	width : 70%;
+	margin: auto;
 }
 
 .inscrireEtablissement{
@@ -3205,6 +3244,13 @@ float: left;
 	border-bottom: 2px solid #fff; 
 }
 
+.inscriptionBigBoss ul{
+	list-style: none;
+	color: #ef662f;
+	padding: 0;
+}
+
+
 .inscriptionBigBoss span{
 	color: #5ac4d4;
 }
@@ -3217,6 +3263,7 @@ float: left;
   border: 1px solid #a8a8a8;
   height: 26px;
   margin-top: 5px;
+  width: 80%;
 }
 
 .inscription label, .inscriptionBigBoss label{
@@ -3770,6 +3817,24 @@ p.nextPointFidelite{
 	.subtitlePageRegisterBig{
 		width: 17%;
 	}
+
+	.contentFormRegisterPro{
+		width : 80%;
+		margin: auto;
+	}
+	.newProNav a.espacePartenaire {
+	  margin-right: 15px;
+	  margin-left: -15px;
+	}
+}
+
+@media (max-width: 1025px) {
+	.ongletProRegister img{
+		width: 30px;
+		height: 30px;
+	}
+
+	
 }
 
 @media (max-width: 1040px) {
@@ -3792,6 +3857,11 @@ p.nextPointFidelite{
 	.confirmationReservation{
 		width: 75%;
 		left: 13.5%;
+	}
+
+	.contentFormRegisterPro{
+		width : 90%;
+		margin: auto;
 	}
 }
 
@@ -4008,6 +4078,39 @@ p.nextPointFidelite{
 	.descriptionBar {
   		width: 100%;
   	}
+
+  	.newProNav{
+		padding: 0px;
+		text-align: center;
+	}
+
+	.newProNav p{
+		padding: 0px;
+		margin: 0px;
+	}
+
+	.imagenavNewBar{
+		text-align: center;
+	}
+
+	.imagenavNewBar p{
+		padding: 0px;
+		margin: 0px;
+	}
+
+	.navNewBar img {
+ 		 margin-left: 0;
+	}
+
+	.formRegisterPro{
+		padding: 30px 5px;
+	}
+
+}
+
+@media (max-width: 750px) {
+
+
 }
 
 

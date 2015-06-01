@@ -27,14 +27,14 @@ class BigbossFormType extends AbstractType
                 'options' => array('translation_domain' => 'FOSUserBundle'),
                 'first_options' => array('label' => 'Mot de passe'),
                 'second_options' => array('label' => 'Confirmez votre mot de passe'),
-                'invalid_message' => 'fos_user.password.mismatch',
+                'invalid_message' => 'Les mots de passe ne conrrespondent pas',
             ))
             ->add('email', 'repeated', array(
                     'type' => 'email',
                     'options' => array('translation_domain' => 'FOSUserBundle'),
                     'first_options' => array('label' => 'E-mail'),
                     'second_options' => array('label' => 'Confirmez votre e-mail'),
-                    'invalid_message' => 'fos_user.email.mismatch',
+                    'invalid_message' => 'Les e-mails ne correspondent pas',
             ))
             ->add('name', null, array('label' => 'Nom'))
             ->add('firstname', null, array('label' => 'Prénom'))

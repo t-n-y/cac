@@ -750,6 +750,19 @@ $('.programmeFidelitePlus').on('click', function(){
 });
 
 
+if($('.valetSecurity').checked){
+  alert('prout');
+}
+
+
+$('.valetSecurity').on('click', function(){
+  if(document.getElementById('cac_barbundle_bar_valet').checked == true){
+    if($('.valetSecurity').is(":empty")){
+      alert('lkjlkj');
+    }
+  }
+});
+
 
 
   // $dayOngletNewBar.on('click', function(){

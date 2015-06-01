@@ -14,122 +14,122 @@
     <div class="contentOngletPro col-xs-12 col-sm-12 col-md-12">
     	<div class="col-xs-6 col-sm-2 col-sm-offset-1 col-md-2 col-md-offset-1">
     		<div class="ongletProRegister" id="zeroFrai">
-    			<img src="{{asset('img/zeroFrai.png')}}" alt="">
-    			<p>Zéro frais fixes</p>
+    			<img src="{{asset('img/pictoInscription/free.svg')}}" alt="">
+    			<p class="oneLineOngletPro">Zéro frais fixes</p>
     		</div>
     	</div>
     	<div class="col-xs-6 col-sm-2 col-md-2">
     		<div class="ongletProRegister" id="sansEngagement">
-    			<img src="{{asset('img/sansEngagement.png')}}" alt="">
-    			<p>Sans engagement</p>
+    			<img src="{{asset('img/pictoInscription/sansEngagement.svg')}}" alt="">
+    			<p class="oneLineOngletPro">Sans engagement</p>
     		</div>
     	</div>
     	<div class="hidden-xs col-sm-2 col-md-2">
     		<div class="ongletProRegister" id="assistanceTel">
-    			<img src="{{asset('img/assistanceTel.png')}}" alt="">
-    			<p>Assistance téléphonique gratuite</p>
+    			<img src="{{asset('img/pictoInscription/assistanceTelephonique.svg')}}" alt="">
+    			<p>Assistance<br>téléphonique gratuite</p>
     		</div>
     	</div>
     	<div class="col-xs-6 col-sm-2 col-md-2">
     		<div class="ongletProRegister" id="visibiliteWeb">
-    			<img src="{{asset('img/visibiliteWeb.png')}}" alt="">
-    			<p>Visibilité accrue sur le web</p>
+    			<img src="{{asset('img/pictoInscription/UnclindOeil.svg')}}" alt="">
+    			<p>Visibilité accrue<br>sur le web</p>
     		</div>
     	</div>
     	<div class="col-xs-6 col-sm-2 col-md-2">
     		<div class="ongletProRegister" id="zeroFrai">
-    			<img src="{{asset('img/systemeParrainage.png')}}" alt="">
-    			<p>Système de parrainage unique</p>
+    			<img src="{{asset('img/pictoInscription/SystemeUnique.svg')}}" alt="">
+    			<p>Système de<br>parrainage unique</p>
     		</div>
     	</div>
 
     </div>
     <div class="clear"></div>
-    <div class="contentFormRegisterPro">
+    <div class="containerFormRegisterPro">
     	<div class="inscrireEtablissement">
     		<h1>Inscrivez vous</h1>
     	</div>
     	<div class="formRegisterPro">
     		<form action="{{ path('bigboss_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
-    			
-    			<div class="inscriptionBigBoss col-xs-6 col-sm-6 col-md-4 col-md-offset-2">
-    				<div class="col-xs-4 col-sm-4 col-md-4 noPadding">
-                        <div class="gender">
-                            {{ form_errors(form.gender) }}
-                            {{ form_widget(form.gender) }}
+        		<div class="contentFormRegisterPro">
+        			<div class="inscriptionBigBoss col-xs-12 col-sm-6 col-md-6">
+        				<div class="col-xs-4 col-sm-4 col-md-4 noPadding">
+                            <div class="gender">
+                                {{ form_errors(form.gender) }}
+                                {{ form_widget(form.gender) }}
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-xs-8 col-sm-8 col-md-8 noPadding">
-                        {{ form_label(form.name) }}<span>*</span>
-                        <br>
-                        {{ form_errors(form.name) }}
-                        {{ form_widget(form.name) }}
-                    </div>
-    			</div>
-    			<div class="inscriptionBigBoss col-xs-6 col-sm-6 col-md-4">
-    				{{ form_label(form.firstname) }}<span>*</span>
-					<br>
-					{{ form_errors(form.firstname) }}
-					{{ form_widget(form.firstname) }}
-    			</div>
+                        <div class="col-xs-8 col-sm-8 col-md-8 noPadding">
+                            {{ form_label(form.name) }}<span>*</span>
+                            <br>
+                            {{ form_errors(form.name) }}
+                            {{ form_widget(form.name) }}
+                        </div>
+        			</div>
+        			<div class="inscriptionBigBoss col-xs-12 col-sm-6 col-md-6">
+        				{{ form_label(form.firstname) }}<span>*</span>
+    					<br>
+    					{{ form_errors(form.firstname) }}
+    					{{ form_widget(form.firstname) }}
+        			</div>
 
-    			<div class="inscriptionBigBoss col-xs-6 col-sm-6 col-md-4 col-md-offset-2">
-    				{{ form_label(form.email.first) }}<span>*</span>
-					<br>
-					{{ form_errors(form.email.first) }}
-					{{ form_widget(form.email.first) }}
-					<br>
-					<br>
-					{{ form_label(form.email.second) }}<span>*</span>
-					<br>
-					{{ form_errors(form.email.second) }}
-					{{ form_widget(form.email.second) }}
-    			</div>
-    			<div class="inscriptionBigBoss col-xs-6 col-sm-6 col-md-4">
-    				{{ form_label(form.plainPassword.first) }}<span>*</span>
-					<br>
-					{{ form_errors(form.plainPassword.first) }}
-					{{ form_widget(form.plainPassword.first) }}
-					<br>
-					<br>
-					{{ form_label(form.plainPassword.second) }}<span>*</span>
-					<br>
-					{{ form_errors(form.plainPassword.second) }}
-					{{ form_widget(form.plainPassword.second) }}
-    			</div>
+        			<div class="inscriptionBigBoss col-xs-12 col-sm-6 col-md-6">
+        				{{ form_label(form.email.first) }}<span>*</span>
+    					<br>
+    					{{ form_errors(form.email.first) }}
+    					{{ form_widget(form.email.first) }}
+    					<br>
+    					<br>
+    					{{ form_label(form.email.second) }}<span>*</span>
+    					<br>
+    					{{ form_errors(form.email.second) }}
+    					{{ form_widget(form.email.second) }}
+        			</div>
+        			<div class="inscriptionBigBoss col-xs-12 col-sm-6 col-md-6">
+        				{{ form_label(form.plainPassword.first) }}<span>*</span>
+    					<br>
+    					{{ form_errors(form.plainPassword.first) }}
+    					{{ form_widget(form.plainPassword.first) }}
+    					<br>
+    					<br>
+    					{{ form_label(form.plainPassword.second) }}<span>*</span>
+    					<br>
+    					{{ form_errors(form.plainPassword.second) }}
+    					{{ form_widget(form.plainPassword.second) }}
+        			</div>
 
-    			<div class="inscriptionBigBoss noBorder col-xs-6 col-sm-6 col-md-4 col-md-offset-2">
-    				{{ form_label(form.fix_phone) }}
-					<br>
-					{{ form_errors(form.fix_phone) }}
-					{{ form_widget(form.fix_phone) }}
-					<br>
-					<br>
-					{{ form_label(form.company) }}
-					<br>
-					{{ form_errors(form.company) }}
-					{{ form_widget(form.company) }}
-    			</div>
-    			<div class="inscriptionBigBoss noBorder col-xs-6 col-sm-6 col-md-4">
-    				{{ form_label(form.mobile_phone) }}<span>*</span>
-					<br>
-					{{ form_errors(form.mobile_phone) }}
-					{{ form_widget(form.mobile_phone) }}
-					<br>
-					<br>
-					{{ form_label(form.siret) }}
-					<br>
-					{{ form_errors(form.siret) }}
-					{{ form_widget(form.siret) }}
-    			</div>
+        			<div class="inscriptionBigBoss noBorder col-xs-12 col-sm-6 col-md-6">
+        				{{ form_label(form.fix_phone) }}
+    					<br>
+    					{{ form_errors(form.fix_phone) }}
+    					{{ form_widget(form.fix_phone) }}
+    					<br>
+    					<br>
+    					{{ form_label(form.company) }}<span>*</span>
+    					<br>
+    					{{ form_errors(form.company) }}
+    					{{ form_widget(form.company) }}
+        			</div>
+        			<div class="inscriptionBigBoss noBorder col-xs- col-sm-6 col-md-6">
+        				{{ form_label(form.mobile_phone) }}<span>*</span>
+    					<br>
+    					{{ form_errors(form.mobile_phone) }}
+    					{{ form_widget(form.mobile_phone) }}
+    					<br>
+    					<br>
+    					{{ form_label(form.siret) }}
+    					<br>
+    					{{ form_errors(form.siret) }}
+    					{{ form_widget(form.siret) }}
+        			</div>
 
-				{{ form_widget(form._token) }}
-				<br>
-				<div class="clear"></div>
-				<div class="center">
-		        	<input type="submit" value="Continuer">
-		        </div>
-			    
+    				{{ form_widget(form._token) }}
+    				<br>
+    				<div class="clear"></div>
+    				<div class="center">
+    		        	<input type="submit" value="Continuer">
+    		        </div>
+    			</div>    
 			</form>
 			
     	</div>
