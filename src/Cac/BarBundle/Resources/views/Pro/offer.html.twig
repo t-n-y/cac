@@ -74,7 +74,11 @@
 
 										<div class="center valuePromo">
 											<select class="promotion-value-picker" data-day="{{ days[j] }}">
-												<option>Valeur</option>
+												{% if bar.getPromotionByDay(days[j]).getOption('value').value == 0 %}
+													<option value="0">Pas de promo</option>
+												{% else %}
+													<option value="{{ bar.getPromotionByDay(days[j]).getOption('value').value }}">{{ bar.getPromotionByDay(days[j]).getOption('value').value }}%</option>
+												{% endif %}
 												{% for i in 2..6 %}
 												    <option value="{{i}}0">{{i}}0%</option>
 												{% endfor %}
@@ -85,7 +89,8 @@
 										<div class="center nbpromo col-xs-12 col-sm-12 col-md-12 noPadding">
 											<p>Nombre d'offres disponibles</p>
 											<select class="promotion-qt-picker" data-day="{{ days[j] }}">
-												<option value="Illimité">illimité</option>
+												<option value="Illimité">{{ bar.getPromotionByDay(days[j]).getOption('quantity').value }}</option>
+
 												{% set nbVerrePromo = {
 													'1': '10', 
 													'2': '20', 
@@ -113,7 +118,11 @@
 									<div class="row">
 										<div class="center valuePromo">
 											<select class="hh-value-picker" data-day="{{ days[j] }}">
-												<option>Valeur</option>
+											{% if bar.getHappyHourByDay(days[j]).getOption('value').value == 0 %}
+												<option value="0">Pas de Happy Hour</option>
+											{% else %}
+												<option value="{{ bar.getHappyHourByDay(days[j]).getOption('value').value }}">{{ bar.getHappyHourByDay(days[j]).getOption('value').value }}%</option>
+											{% endif %}
 												{% for i in 3..7 %}
 												    <option value="{{i}}0">{{i}}0%</option>
 												{% endfor %}
@@ -126,7 +135,7 @@
 													<p>{{ params[k]['word'] }}</p>
 
 													<select class="hh-picker" data-day="{{ days[j] }}" data-when="{{ params[k]['when'] }}">
-														<option></option>
+														<option value="{{ bar.getHappyHourByDay(days[j]).getOption(params[k]['when']).value }}">{{ bar.getHappyHourByDay(days[j]).getOption(params[k]['when']).value }}h</option>
 														{% for i in 0..23 %}
 														    <option value="{{i}}">{{i}}h</option>
 														{% endfor %}

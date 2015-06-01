@@ -2264,9 +2264,6 @@ p.closeMesOptions{
 	background-color: #5ac4d4;
 }
 
-.formPromo{
-
-}
 
 .promotions{
 	margin-top: 20px;
@@ -2294,7 +2291,7 @@ p.closeMesOptions{
 }
 
 .valuePromo{
-	width: 90px;
+	/*width: 90px;*/
 	margin: auto;
 }
 
@@ -2491,6 +2488,10 @@ a .ongletCreation:hover p{
 	padding-bottom: 20px;
 }
 
+.noInputValet input{
+	display: none;
+}
+
 .myService{
 	position: relative;
 	color: #7b7b7b;
@@ -2655,7 +2656,7 @@ a .ongletCreation:hover p{
 }
 
 .choiceService input[type="text"]{
-	width: 25%;
+	width: 40px;
 	margin-left: 20px;
 }
 

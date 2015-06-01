@@ -93,7 +93,7 @@
 				<div class="col-xs-0 col-sm-0 col-md-2"></div>
 
 				<div class="tarifMoyenNewBar col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
-					<p>Les tarifs moyens (hors promotion)</p>
+					<p>Les tarifs moyens (hors promotion)<span>*</span></p>
 					<div class="row">
 						<div class="col-xs-6 col-sm-3 col-md-3">
 							{{ form_label(form.beerPrice) }}<span>*</span>
@@ -126,7 +126,7 @@
 					<p>Vos services</p>
 					<br>
 					<div class="choiceService col-xs-5 col-xs-offset-1 col-sm-4 col-sm-offset-2 col-md-4 col-md-offset-2 noPadding">
-						<div class="myService valetSecurity">
+						<div class="myService valetSecurity noInputValet">
 							{{ form_errors(form.valet) }}
 							{{ form_widget(form.valet) }}
 							{{ form_label(form.valet) }}
