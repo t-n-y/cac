@@ -1,159 +1,74 @@
 {% extends '::base.html.twig' %}
 
 {% block body %}
-		<div class="topPage col-xs-12 col-sm-12 col-md-12 noPadding">
-			<img src="{{asset('img/accueil.png')}}" alt="">
-			<img src="{{asset('img/pershing.png')}}" alt="">
-			<img src="{{asset('img/fondFicheBar.png')}}" alt="">
-		</div>
-		<div class="borderTopImage"></div>
 
-		<div class="contentPage col-xs-12 col-sm-6 col-md-6 bar">
-			<h2>Vos bars préférés</h2>
-			<div class="vignetteBar col-xs-4 col-sm-4 col-md-4 noPadding">
-				<img src="{{asset('img/boumboum.png')}}" alt="labibli">
-				<div class="shadowHover">
-					<div class="contentShadow">
-						<h3>BOUM BOUM</h3>
-						<p class="prix">€<span>€</span><span>€</span></p>
-						<p class="reduc">%</p>
-					</div>
-
-				</div>
-			</div>
-			<div class="vignetteBar col-xs-4 col-sm-4 col-md-4 noPadding">
-				<img src="{{asset('img/bebert.png')}}" alt="labibli">
-				<div class="shadowHover">
-					<h3>CHEZ BEBERT</h3>
-					<p class="prix">€€<span>€</span></p>
-					<p class="reduc"><span>%</span></p>
-				</div>
-			</div>
-			<div class="vignetteBar col-xs-4 col-sm-4 col-md-4 noPadding">
-				<img src="{{asset('img/labibli.png')}}" alt="labibli">
-				<div class="shadowHover">
-					<h3>LA BIBLIOTHEQUE</h3>
-					<p class="prix">€€€</p>
-					<p class="reduc">%</p>
-				</div>
-			</div>
-
-
-
-			<h2>Les meilleures promotions</h2>
-			<div class="vignetteBar col-xs-4 col-sm-4 col-md-4 noPadding">
-				<img src="{{asset('img/boumboum.png')}}" alt="labibli">
-				<div class="shadowHover">
-					<h3>BOUM BOUM</h3>
-					<p class="pourcentage">-40%</p>
-					<p class="prix">€<span>€</span><span>€</span></p>
-					<p class="reduc">%</p>
-
-				</div>
-			</div>
-			<div class="vignetteBar col-xs-4 col-sm-4 col-md-4 noPadding">
-				<img src="{{asset('img/bebert.png')}}" alt="labibli">
-				<div class="shadowHover">
-					<h3>CHEZ BEBERT</h3>
-					<p class="pourcentage">-30%</p>
-					<p class="prix">€€<span>€</span></p>
-					<p class="reduc"><span>%</span></p>
-				</div>
-			</div>
-			<div class="vignetteBar col-xs-4 col-sm-4 col-md-4 noPadding">
-				<img src="{{asset('img/labibli.png')}}" alt="labibli">
-				<div class="shadowHover">
-					<h3>LA BIBLIOTHEQUE</h3>
-					<p class="pourcentage">-50%</p>
-					<p class="prix">€€€</p>
-					<p class="reduc">%</p>
-				</div>
+		<div class="welcome">
+			<div class="centerWelcome">
+			 	<h1>Rechercher un bar</h1>
+				<p>ICI METTRE BARRE DE RECHERCHE</p>
 			</div>
 		</div>
-
-		<div class="contentPage col-xs-12 col-sm-6 col-md-6">
-
-			<div class="jaloux">
-				<img src="{{asset('img/jaloux.png')}}" alt="labibli">
-				<p>A chaque fois que vous allez boire un verre dans un bar partenaire click-and cheers vous obtenez un mot de avec votre addition</p>
-				<p>Ce mot de passe vous permet d'offrir un verre gratuitement à un ami de votre choix. Attention de ne pas faire de jaloux...</p>
-			</div>
-			
-		</div>
-
-		<div class="clear"></div>
-
-		<div class="contentPage col-xs-12 col-sm-6 col-md-6">
-
-			<div class="jaloux">
-				<img src="{{asset('img/chut.png')}}" alt="labibli">
-				<p>C'est pas parce que l'on vous offre des verres et qu'on vous fait profiter de promos de folies</p>
-				<p>que l'on vous met au courant de tout les bons plans qu'on vous gâte toute l'année qu'il faut se vanter</p>
-			</div>
-			
-		</div>
-
-		<div class="contentPage col-xs-12 col-sm-6 col-md-6 bar">
-			<h2>Les concepts</h2>
-			<div class="vignetteBar col-xs-4 col-sm-4 col-md-4 noPadding">
-				<img src="{{asset('img/boumboum.png')}}" alt="labibli">
-				<div class="shadowHover">
-					<h3>BOUM BOUM</h3>
-					<p class="prix">€<span>€</span><span>€</span></p>
-					<p class="reduc">%</p>
-				</div>
-			</div>
-			<div class="vignetteBar col-xs-4 col-sm-4 col-md-4 noPadding">
-				<img src="{{asset('img/bebert.png')}}" alt="labibli">
-				<div class="shadowHover">
-					<h3>CHEZ BEBERT</h3>
-					<p class="prix">€€<span>€</span></p>
-					<p class="reduc"><span>%</span></p>
-				</div>
-			</div>
-			<div class="vignetteBar col-xs-4 col-sm-4 col-md-4 noPadding">
-				<img src="{{asset('img/labibli.png')}}" alt="labibli">
-				<div class="shadowHover">
-					<h3>LA BIBLIOTHEQUE</h3>
-					<p class="prix">€€€</p>
-					<p class="reduc">%</p>
-				</div>
-			</div>
-
-
-
-			<h2>Nos coup de coeur</h2>
-			<div class="vignetteBar col-xs-4 col-sm-4 col-md-4 noPadding">
-				<img src="{{asset('img/boumboum.png')}}" alt="labibli">
-				<div class="shadowHover">
-					<h3>BOUM BOUM</h3>
-					<span class="heart glyphicon glyphicon-heart"></span>
-					<p class="prix">€<span>€</span><span>€</span></p>
-					<p class="reduc">%</p>
-				</div>
-			</div>
-			<div class="vignetteBar col-xs-4 col-sm-4 col-md-4 noPadding">
-				<img src="{{asset('img/bebert.png')}}" alt="labibli">
-				<div class="shadowHover">
-					<h3>CHEZ BEBERT</h3>
-					<span class="heart glyphicon glyphicon-heart"></span>
-					<p class="prix">€€<span>€</span></p>
-					<p class="reduc"><span>%</span></p>
-				</div>
-			</div>
-			<div class="vignetteBar col-xs-4 col-sm-4 col-md-4 noPadding">
-				<img src="{{asset('img/labibli.png')}}" alt="labibli">
-				<div class="shadowHover">
-					<h3>LA BIBLIOTHEQUE</h3>
-					<span class="heart glyphicon glyphicon-heart"></span>
-					<p class="prix">€€€</p>
-					<p class="reduc">%</p>
-				</div>
-			</div>
-		</div>
-
 		
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12">
+				<div class="blocksWelcome">
+					<div class="row">
+						<div class="col-xs-12 col-sm-4 col-md-4">
+							<div class="blockWelcome petitsPrix">
+								<p>Les petits prix</p>
+							</div>
+						</div>
 
+						<div class="col-xs-12 col-sm-4 col-md-4">
+							<div class="blockWelcome carte">
+								<p>Sur la carte</p>
+							</div>
+						</div>
 
-		<div class="clear"></div>
+						<div class="col-xs-12 col-sm-4 col-md-4">
+							<div class="blockWelcome plusReserve">
+								<p>Les plus réservés</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="explicationWelcome">
+			<p>Click & cheers</p>
+			<span>En bref</span>
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-12">
+					<div class="blocksWelcome explicationsBlock">
+						<div class="row">
+							<div class="col-xs-12 col-sm-4 col-md-4">
+								<div class="blockExplication">
+									<h2>Découvrir</h2>
+									<img src="{{asset('img/decouvreHome.png')}}" alt="">
+									<p>Découvrez de nouvelles adresses de nouveaux lieux, de nouveaux bars. </p>
+								</div>
+							</div>
+
+							<div class="col-xs-12 col-sm-4 col-md-4">
+								<div class="blockExplication">
+									<h2>Economiser</h2>
+									<img src="{{asset('img/economiseHome.png')}}" alt="">
+									<p>Nous négocions pour vous les meilleurs tarifs. Des promotions jusqu’à - 50 % dans vos adresses préférées</p>
+								</div>
+							</div>
+
+							<div class="col-xs-12 col-sm-4 col-md-4">
+								<div class="blockExplication">
+									<h2>Parrainer</h2>
+									<img src="{{asset('img/parrainerHome.png')}}" alt="">
+									<p>Parrainez vos amis dans les établissements que vous avez découvert grâce à click and cheers. </p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
 {% endblock %}

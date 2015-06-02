@@ -1,6 +1,27 @@
 annimationShowBar();
 firstWord();
 
+ $('body').removeClass('load');
+
+var baseHeight = $(window).height();
+$('.welcome').css('height', baseHeight+'px');
+
+function changePaddingWelcome(heightWindow){
+  var baseHeightCenterWelcome = $('.centerWelcome').height();
+  var marginCenterWelcome = (heightWindow - baseHeightCenterWelcome) / 2;
+  $('.centerWelcome').css('padding-top', marginCenterWelcome+'px');
+  $('.welcome').css('height', heightWindow+'px');
+
+}
+
+changePaddingWelcome(baseHeight);
+
+
+$(window).on('resize',function() {
+  var heightWindow = $(window).height();
+    changePaddingWelcome(heightWindow);
+});
+
 $( ".menuHeaderList .hottest" ).on( "click", function() {
   setTimeout(function() {  
     annimationShowBar();

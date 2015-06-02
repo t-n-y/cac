@@ -4,7 +4,16 @@
 html{ overflow-x: hidden; }
 
 body{
+	opacity: 1;
+	-webkit-transition: opacity 0.25s ease-out;
+	-moz-transition: opacity 0.25s ease-out;
+	-o-transition: opacity 0.25s ease-out;
+	transition: opacity 0.25s ease-out;
 	overflow-x: hidden;
+}
+
+.load{
+	opacity: 0;
 }
 
 input::-webkit-outer-spin-button,
@@ -1127,7 +1136,70 @@ p.droitReserve{
 	display: block;
 }
 
-.borderTopImage{
+.welcome{
+	width: 100%;
+	background: url(../img/defaultImageBar.jpg) no-repeat center fixed; 
+  	-webkit-background-size: cover; /* pour anciens Chrome et Safari */
+  	background-size: cover; /* version standardisée */
+  	color: $white;
+  	text-align: center;
+  	color: #fff;
+}
+
+.blocksWelcome{
+	width: 95%;
+	margin: auto;
+	background-color: #fff;
+}
+
+.blockWelcome{
+	padding : 80px 0;
+	text-align: center;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	cursor: pointer;
+}
+.blockWelcome p{
+	padding: 5px 20px; 
+	color: #fff;
+	background-color: #5ac4d4;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	display: inline-block;
+	margin : 0;
+
+}
+
+.explicationWelcome{
+	background-color: #f6f6f6;
+	text-align: center;
+	padding-top: 20px;
+}
+
+.explicationsBlock{
+	margin-top: 20px;
+	margin-bottom: 40px;
+}
+
+.blockExplication img{
+	width: 40px;
+}
+
+.petitsPrix{
+	background: url(../img/petitsPrix.png) no-repeat center; 
+  	-webkit-background-size: cover; /* pour anciens Chrome et Safari */
+}
+
+.carte{
+	background: url(../img/carte.png) no-repeat center; 
+  	-webkit-background-size: cover; /* pour anciens Chrome et Safari */
+}
+
+.plusReserve{
+	background: url(../img/plusReserve.png) no-repeat center; 
+  	-webkit-background-size: cover; /* pour anciens Chrome et Safari */
+}
+/*.borderTopImage{
 	width: 0%;
 	height: 6px;
 	background-color: #5ac4d4;
@@ -1303,7 +1375,7 @@ p.droitReserve{
 	max-width: 279px;
 	width: 100%;
 	margin-bottom: 30px;
-}
+}*/
 
 /********FICHE BAR********/
 
@@ -2079,6 +2151,15 @@ p.vignettePetitPlusPrix{
 	background-color: #f6f6f6;
 	padding: 10px 20px;
 	margin-bottom: 20px;
+}
+
+.prochainement{
+	text-align: center;
+	padding: 80px 0;
+}
+
+.prochainement img{
+	width: 30px;
 }
 
 .numberOption{
