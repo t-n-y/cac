@@ -29,10 +29,15 @@ class CarteBar
      */
     protected $bar;
 
-     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
+    /**
+    * @ORM\Column(type="string", length=255, nullable=true)
+    */
     public $path;
+    
+    /**
+    * @ORM\Column(type="boolean")
+    */
+    public $visible = false;
 
     /**
      * @Assert\File(
@@ -201,5 +206,29 @@ class CarteBar
         $this->bar = $bar;
 
         return $this;
+    }
+
+    /**
+     * Set visible
+     *
+     * @param boolean $visible
+     *
+     * @return CarteBar
+     */
+    public function setVisible($visible)
+    {
+        $this->visible = $visible;
+
+        return $this;
+    }
+
+    /**
+     * Get visible
+     *
+     * @return boolean
+     */
+    public function getVisible()
+    {
+        return $this->visible;
     }
 }

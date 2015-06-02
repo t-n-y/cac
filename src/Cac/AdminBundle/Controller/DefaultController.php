@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Admin default controller.
@@ -41,4 +42,29 @@ class DefaultController extends Controller
 		}
 
 	}
+
+    /**
+     * @Route("/carte-to-validate", name="validate_carte")
+     * @Template()
+     */
+    public function validateCarteAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $cartes = $em->getRepository('CacBarBundle:CarteBar')->findByVisible(false);
+
+        return array('cartes' => $cartes);
+    }
+
+    /**
+     * @Route("/validate-carte/{id}", name="validate_the_carte", options={"expose"=true})
+     */
+    public function validateTheCarteAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $carte = $em->getRepository('CacBarBundle:CarteBar')->find($id);
+        $carte->setVisible(true);
+        $em->persist($carte);
+        $em->flush();
+        return new Response("carte validée");
+    }
 }
