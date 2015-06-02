@@ -52,9 +52,6 @@
 						{% if bar.getHappyHourByDay(today).getOption('value').value != 0 %}
 							<img src="{{asset('img/pictoPromo.png')}}" alt="">
 						{% endif %}
-						
-
-
 						{% if bar.getPromotionByDay(today).getOption('value').value == 0 %}
 
 							<h2 class="font30 fontWeight200">PAS DE PROMO</h2>
@@ -75,8 +72,6 @@
 									<p class="bold">Happy Hours</p>
 									<p>De {{ bar.getHappyHourByDay(today).getOption('beginning').value }}h à {{ bar.getHappyHourByDay(today).getOption('ending').value }}h</p>
 								</div>
-
-								
 								<div class="col-xs-5 col-sm-5 col-md-5">
 									<p class="reductionHappyHour">-{{ bar.getHappyHourByDay(today).getOption('value').value }}%</p> 
 								</div>
@@ -104,7 +99,6 @@
 				<div class="turnPosition"><p class="topPosition">6</p><div class="slash"></div><p class="bottomPosition">535</p></div>
 			#}	
 			</div> 
-
 			<div class="confirmationReservation">
 				<div class="closeRappel">
 					<img src="{{asset('img/crossClose.png')}}" alt="">
@@ -364,77 +358,12 @@
 				{% endif %}
 			</div>
 				
-
-			
+				
+{% if bar.carte.getValues()[0] is defined and bar.carte.getValues()[0].visible == true %}
+	<a href="{{ asset(('uploads/carte-bar/' ~ bar.carte.getValues()[0].path)) }}" target="_blank">Voir la carte</a>
+{% endif %}
 		</div>
-		<!--<div class="col-xs-12 col-sm-12 col-md-12">
-			{% if app.user == bar.author %}
-				<a href="">Ajouter un barman à ce bar</a>
-			{% endif %}
-			<h1>Welcome to the Bar:show page</h1>
-			<ul>
-				<li>Nom de l'établissement : {{ bar.name }}</li>
-				<li>Adresse : {{ bar.adress }}</li>
-				<li>Ville : {{ bar.town }}</li>
-				<li>Pays : {{ bar.country }}</li>
-				<li>Code postal : {{ bar.zipcode }}</li>
-				<li>Acces : {{ bar.access }}</li>
-				<li>Auteur : {% if bar.author.username is defined %}{{ bar.author.username }}{% endif %}</li>
-				<li>{{bar.schedule}}</li>
-				
-				<ul>
-					Ca sert a quoi ca ? vu qu'on a deja l auteur au dessus
-					{% for boss in bar.author %}
-						<li>{{ boss }}</li>
-					{% endfor %}
-				</ul>
-				<ul>
-					{% for category in bar.categories %}
-						<li>{{ category }}</li>
-					{% endfor %}
-				</ul>
-				<li>
-					{% for category in bar.categories %}
-						{{ category }}
-						{% if not loop.last %}
-						, 
-						{% endif %}
-					{% endfor %}
-				</li>
-				
-				<li>Dresscode : {{ bar.dressCode }}</li>
-				<li>Voiturier : {{ bar.valet }}</li>
-				<li>Prix voiturier : {{ bar.valetCost }}</li>
-				<li>Acces handicapé : {{ bar.handicappedAccess }}</li>
-				<li>Terrasse : {{ bar.patio }}</li>
-				<li>Espace fumeur : {{ bar.smokingArea }}</li>
-				<li>Alcotests gratuits : {{ bar.breathalyser }}</li>
-			</ul>
-
-			<h2>Editer le bar</h2>
-			<a href="{{ path('bar_edit', { 'id': bar.id }) }}">Editer</a> 
-			<h2>Supprimer le bar</h2>
-			{{ form(delete_form) }}
-
-			<h2>Notes</h2>
-			{% for comment in bar.comments %}
-			{{ comment.note }} - {{ comment.comment }}<br>
-			{% endfor %}
-
-			<h2>Noter le bar</h2>
-
-			<form id="note">
-			    <label>Commentaire <span>(255 caractères maximum)</span></label>
-			    <input type="text" class="commentText" name="comment" required><br>
-			    <label>Note <span>(sur 10)</span></label>
-			    <input type="text" class="noteText" name="note" required><br>
-			    <input type="hidden" class="barId" name="barId" value="{{ bar.id }}">
-			    <button type="submit">Noter</button>
-			</form>
-
-			<h2>Ajouter un manager</h2>
-			<a href="{{ path('barman_register', { id : bar.id }) }}">Ajouter un manager</a>
-		</div>-->
+		
 {% endblock %}
 
 {% block javascripts %}
