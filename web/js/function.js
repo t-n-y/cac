@@ -328,6 +328,13 @@ $body.on("click", ".informationJour",function(){
 });
 
 
+$('.ongletOptionPro').first().addClass('ongletselect');
+
+$body.on("click", ".ongletOptionPro",function(){
+  $('.ongletOptionPro').removeClass('ongletselect');
+  $(this).addClass('ongletselect');
+});
+
 $('.onglet').first().addClass('ongletselect');
 
 $body.on("click", ".onglet",function(){

@@ -1,6 +1,8 @@
 /*****************GENERAL*****************/
 /*	color : #5ac4d4; */
 
+html{ overflow-x: hidden; }
+
 body{
 	overflow-x: hidden;
 }
@@ -1737,6 +1739,16 @@ p.rappelCondition{
 	text-align : center;
 }
 
+.contentOptionBar{
+	margin: 40px;
+}
+
+.contentOptionBar h2{
+	color: #5ac4d4;
+	border-bottom: 1px solid #5ac4d4;
+	font-size: 17px;
+}
+
 .contentBackOfficeBar p{
 	margin-bottom: 10px;
 }
@@ -2064,10 +2076,27 @@ p.vignettePetitPlusPrix{
 
 .contentOption{
 	display: none;
+	background-color: #f6f6f6;
+	padding: 10px 20px;
+	margin-bottom: 20px;
 }
 
-.contentSms{
+.numberOption{
+	text-align: center;
+	padding: 5px 50px;
+	margin-top: 10px;
+	background-color: #fff;
+	display: inline-block;
+	margin-left: 50%;
+	transform: translate(-50%, 0);
+}
+
+.contentCarte{
 	display: block;
+}
+
+.conditionPDF{
+	text-decoration: underline;
 }
 
 .contentMesOptions{
@@ -2159,7 +2188,7 @@ p.closeMesOptions{
 }
 
 .contentExemple h3{
-	font-size: 12px;
+	font-size: 12px !important;
 }
 
 .contentExemple .barInList p.prix, .contentExemple .barInList p.reduc {
@@ -2279,6 +2308,10 @@ p.closeMesOptions{
 
 .promoHappyHour{
 	display: none;
+}
+
+.promoHappyHour select{
+	width: auto !important;
 }
 
 .promoHappyHour p{
@@ -2735,6 +2768,11 @@ a .ongletCreation:hover p{
 .navRetourOffre p, .retourOffre p{
 	margin: 0;
 }
+
+.navRetourOffre p{
+	color: #5ac4d4;
+}
+
 
 .validationsOffre{
 	padding-top: 5px;

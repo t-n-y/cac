@@ -29,29 +29,36 @@
 		</div>
 
 
-		<div class="contentSuperInfoBar col-xs-12 col-sm-12 col-md-12 noPadding">
-			<div class="superInfoBar noPadding">
-				<!-- <div class="ongletBarJour">
-					<div class="informationJour sms">
-						<h3>PACK SMS</h3>
-					</div>
+		<div class="coteneurBackOfficeBar col-xs-12 col-sm-12 col-md-12 noPadding">
+			<div class="contentOptionBar">
 
-					<div class="informationJour email">
-						<h3>PACK E-MAIL</h3>
-					</div>
+				<div class="contentOption contentCarte col-xs-12 col-sm-12 col-md-12">
+					<h2>Description</h2>
+					<p>Affichez votre carte de coktails sur votre page restaurant permet une augmentation des retours. Vous donnez à vos client la possibilité de se faire une meilleure idée de votre établissement. Montrez votre savoir faire, vos coktails les plus innovant et attirez de nouveau clients</p>
 
-					<div class="informationJour carte">
-						<h3>CARTE PDF</h3>
-					</div>
+					<h2>Nombre de visites sur votre fiche</h2>
+					<p class="numberOption">188</p>
 
-					<div class="informationJour miseAvant">
-						<h3>MISE EN AVANT</h3>
+					<div class="row">
+						<div class="col-xs-12 col-sm-6 col-md-6">
+							<h2>Tarifs HT</h2>
+							<p>5€/MOIS</p>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-6">
+							<h2>Conditions</h2>
+							<p class="conditionPDF">Voir les conditions</p>
+						</div>
 					</div>
+				</div>
+				<div class="contentOption center contentCarte col-xs-12 col-sm-12 col-md-12">	
+					{% if bar.carte.getValues()[0] is not defined or bar.carte.getValues()[0]|length == 0 %}
+						{% render(controller("CacBarBundle:CarteBar:new", {'barId' : bar.id})) %}
+					{% else %}
+					<img src="{{ asset(('uploads/carte-bar/' ~ bar.carte.getValues()[0].path)) }}" alt="">
+						{% render(controller("CacBarBundle:CarteBar:update", {'id' : bar.carte.getValues()[0].id})) %}
+					{% endif %}
+				</div>
 
-					<div class="informationJour mesOptions">
-						<h3>AFFICHER MES OPTIONS</h3>
-					</div>
-				</div> -->
 
 				<div class="contentOption contentSms col-xs-12 col-sm-12 col-md-12">
 					<h2>Description</h2>
@@ -65,6 +72,8 @@
 					<p>0,4€/SMS</p>
 
 				</div>
+
+
 				<div class="contentOption contentEmail col-xs-12 col-sm-12 col-md-12">
 					<h2>Description</h2>
 					<p>Envoyez un E-mail à l’ensemble des personnes ayant honoré un ticket ou un verre dans votre établissement.<br>
@@ -76,22 +85,8 @@
 					<h2>Tarifs HT</h2>
 					<p>0,25€/E-MAIL</p>
 				</div>
-				<div class="contentOption contentCarte col-xs-12 col-sm-12 col-md-12">
-					<h2>Description</h2>
-					<p>Affichez votre carte de coktails sur votre page restaurant permet une augmentation des retours. Vous donnez à vos client la possibilité de se faire une meilleure idée de votre établissement. Montrez votre savoir faire, vos coktails les plus innovant et attirez de nouveau clients</p>
 
-					<h2>Nombre de visites sur votre fiche</h2>
-					<p>188</p>
 
-					<h2>Tarifs HT</h2>
-					<p>5€/MOIS</p>
-					{% if bar.carte.getValues()[0] is not defined or bar.carte.getValues()[0]|length == 0 %}
-						{% render(controller("CacBarBundle:CarteBar:new", {'barId' : bar.id})) %}
-					{% else %}
-					<img src="{{ asset(('uploads/carte-bar/' ~ bar.carte.getValues()[0].path)) }}" alt="">
-						{% render(controller("CacBarBundle:CarteBar:update", {'id' : bar.carte.getValues()[0].id})) %}
-					{% endif %}
-				</div>
 				<div class="contentOption contentMiseAvant col-xs-12 col-sm-12 col-md-12">
 					<h2>Description</h2>
 					<p>La mise en avant vous permet d’être plus visible par les internautes. Vous aurez donc plus de réservations. La mise en avant vous place dans les blocs 4 fois plus grands que la fiche standard. Cette option ne remplace pas votre fiche standard, vous apparaissez donc 2 fois sur une même page. </p>
@@ -108,7 +103,7 @@
 											<div class="contentImageBar" style="background-image:url({{ asset('uploads/bar/'~bar.path) }})">
 												<a href="{{ path('bar_show', { id : bar.id }) }}"><div class="shadowbarInList col-xs-12 col-sm-12 col-md-12">
 													<h3 id="firstWord{{ bar.id }}">{{ bar.name }}</h3>
-												
+													
 												</div></a>
 											</div>
 										</div>
@@ -137,7 +132,7 @@
 							</div>
 							{% set nbHighlight = highlight | length %}
 							
-							{# {% set k = 0 %}
+							{% set k = 0 %}
 							{% if  highlight[k].bar.id == bar.id %}
 								{% set k = 1 %}
 							{% endif %} 
@@ -153,7 +148,7 @@
 										</div></a>
 									</div>
 								</div>
-							</div>#}
+							</div>
 						</div>
 					</div>
 					<div class="clear"></div>
@@ -161,15 +156,16 @@
 
 					<h2>Tarifs HT</h2>
 					<p class="center">0,79€/jours</p>
-
+				</div>
+				<div class="contentOption center contentMiseAvant col-xs-12 col-sm-12 col-md-12">	
 					<div class="mettreBarEnAvant">
 						{% set miseEnAvant = false %}
 
-						{#{% for j in 0..nbHighlight-1%}
+						{% for j in 0..nbHighlight-1%}
 							{% if highlight[j].bar.id == myBar %}
 								{% set miseEnAvant = true %}
 							{% endif %}
-						{% endfor %}#}
+						{% endfor %}
 
 						{% if miseEnAvant %}
 							<p class="mesOptions">Suspendre la mise en avant de mon bar</p>
