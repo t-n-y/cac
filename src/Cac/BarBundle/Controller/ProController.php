@@ -172,12 +172,12 @@ class ProController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $user = $this->get('security.context')->getToken()->getUser();
-        $role = $this->get('security.context')->isGranted('ROLE_PREMIUM');
+        $role = $this->get('security.context')->isGranted('ROLE_COSMO');
         $bars = $em->getRepository('CacBarBundle:Bar')->findByAuthor($user);
 
-        // if (count($bars) > 0 && $role === false ) {
-        //     ldd('nope !');
-        // }
+        if (count($bars) > 0 && $role === false ) {
+            ldd('nope !');
+        }
 
         $entity = new Bar();
         $form   = $this->createCreateForm($entity);

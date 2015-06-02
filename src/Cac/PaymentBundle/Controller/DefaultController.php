@@ -54,16 +54,16 @@ class DefaultController extends Controller
 		try {
 			$customer = \Stripe\Customer::create(array(
 			  "source" => $token,
-			  "plan" => "free",
+			  "plan" => "shooter",
 			  "email" => $user->getEmail(),
 			  "description" => $user->getFirstname().' '.$user->getName())
 			);	
 			$payment = new Payment();
 			$payment->setUser($user);
 			$payment->setCustomerId($customer->id);
-			$payment->setPlan('free');
-			$user->addRole('ROLE_FREEMIUM');
-			$user->removeRole('ROLE_PREMIUM');
+			$payment->setPlan('shooter');
+			$user->addRole('ROLE_SHOOTER');
+			$user->removeRole('ROLE_COSMO');
 			$em->persist($payment);
 			$em->flush();
 		} catch (Exception $e) {
@@ -76,16 +76,16 @@ class DefaultController extends Controller
 		try {
 			$customer = \Stripe\Customer::create(array(
 			  "source" => $token,
-			  "plan" => "premium",
+			  "plan" => "cosmo",
 			  "email" => $user->getEmail(),
 			  "description" => $user->getFirstname().' '.$user->getName())
 			);	
 			$payment = new Payment();
 			$payment->setUser($user);
 			$payment->setCustomerId($customer->id);
-			$payment->setPlan('premium');
-			$user->addRole('ROLE_PREMIUM');
-			$user->removeRole('ROLE_FREEMIUM');
+			$payment->setPlan('cosmo');
+			$user->addRole('ROLE_COSMO');
+			$user->removeRole('ROLE_SHOOTER');
 			$em->persist($user);
 			$em->persist($payment);
 			$em->flush();
@@ -115,6 +115,9 @@ class DefaultController extends Controller
 		$subscription = $cu->subscriptions->retrieve($planId);
 		$subscription->plan = $newPlan;
 		$subscription->save();
+        $payment->setPlan($newPlan);
+        $em->persist($payment);
+        $em->flush();
 
         return new Response('plan update');
     }

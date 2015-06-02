@@ -37,7 +37,7 @@ class PromotionController extends Controller
             $planName = $em->getRepository('CacPaymentBundle:Payment')->findOneByUser($user)->getPlan();
         }
         else
-            $planName = "free";
+            $planName = "shooter";
 
         $entity = $em->getRepository('CacBarBundle:Bar')->find($id);
         $promotions = $entity->getPromotions();
@@ -133,9 +133,9 @@ class PromotionController extends Controller
                 $planName = $em->getRepository('CacPaymentBundle:Payment')->findOneByUser($user)->getPlan();
             }
             else
-                $planName = "free";
+                $planName = "shooter";
 
-            if ($planName === "free") {
+            if ($planName === "shooter") {
                 return $this->redirect($this->generateUrl('bars_abonnement', array('id' => $entity->getId())));
             }
             else

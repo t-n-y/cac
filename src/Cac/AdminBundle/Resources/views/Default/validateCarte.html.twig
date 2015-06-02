@@ -9,7 +9,7 @@
 			<p>{{carte.id}}</p>
 			<p>{{carte.bar.name}}</p>
 			<img src="{{ asset(('uploads/carte-bar/' ~ carte.path)) }}" alt="carte">
-			<button data-carte="{{carte.id}}">valider</button>
+			<button data-carte="{{carte.id}}" data-user="{{carte.bar.author.id}}">valider</button>
 		</div>
 		<hr>
 	{% endfor %}
@@ -19,11 +19,13 @@
 	<script type="text/javascript">
 	    $( "button" ).on( "click", function() {
 	    	var id = $(this).data('carte');
+	    	var userId = $(this).data('user');
 	        $.ajax( {
 	            type: 'GET',
-	            url: Routing.generate('validate_the_carte', { 'id': id }),
+	            url: Routing.generate('validate_the_carte', { 'id': id, user : userId }),
 	            success: function (data) {
-	            	alert('Carte validée');
+	            	console.log(data);
+	            	alert(data);
 	            }
 	        } );
 	    });

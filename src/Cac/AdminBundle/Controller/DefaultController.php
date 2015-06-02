@@ -56,15 +56,25 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/validate-carte/{id}", name="validate_the_carte", options={"expose"=true})
+     * @Route("/validate-carte/{id}/{user}", name="validate_the_carte", options={"expose"=true})
      */
-    public function validateTheCarteAction($id)
+    public function validateTheCarteAction($id, $user)
     {
         $em = $this->getDoctrine()->getManager();
         $carte = $em->getRepository('CacBarBundle:CarteBar')->find($id);
         $carte->setVisible(true);
         $em->persist($carte);
         $em->flush();
-        return new Response("carte validée");
+        $plan = $em->getRepository('CacPaymentBundle:Payment')->findOneByUser($user)->getPlan();
+        if ($plan === "shooter") {
+            $this->forward('CacPaymentBundle:Default:changePlan', array('plan'  => 'shootercarte','id' => $user));
+        }
+        elseif ($plan === "cosmo") {
+            $this->forward('CacPaymentBundle:Default:changePlan', array('plan'  => 'cosmocarte','id' => $user));
+        }
+        else{
+            return new Response("Ce bar est deja abonné aux cartes. Carte validée");
+        }
+        return new Response("Carte validée");
     }
 }
