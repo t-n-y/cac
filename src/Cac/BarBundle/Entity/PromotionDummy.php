@@ -28,6 +28,13 @@ class PromotionDummy
      */
     private $promotion;
 
+    public function __construct($json = null)
+    {
+        if(null !== $json) {
+            $this->promotion = $json;
+        }
+    }
+
 
     /**
      * Get id

@@ -83,7 +83,7 @@ class BarController extends Controller
      */
     public function showAction($id)
     {
-        setlocale(LC_TIME, "fr_FR");
+        setlocale(LC_TIME, "french");
         $today = strftime("%A");
 
         $em = $this->getDoctrine()->getManager();
@@ -100,7 +100,7 @@ class BarController extends Controller
         return array(
             'user' => $user,
             'bar'      => $entity,
-            'today' => $today,
+            'today' => ucfirst($today),
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         );
