@@ -97,22 +97,20 @@ class ProController extends Controller
     {
         $pm = $this->get('cac_bar.promotion_manager');
         $promotions = $entity->getPromotions();
-        foreach($promotions as $promotion) {
-            $options = $promotion->getOptions();
-            foreach($options as $option) {
-                var_dump($option->getId().' - '.$option->getCategoryShortcode().' - '.$option->getValue());
-            }
-        }
         $promotionJSON = $pm->toDummyJSON($promotions);
-        var_dump($promotionJSON);
         $promotionDummy = new PromotionDummy($promotionJSON);
-        var_dump($promotionDummy);
-        die;
 
         $form = $this->createForm(new PromotionDummyType(), $promotionDummy, array(
             'action' => $this->generateUrl('bar_update_promo', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
+
+        $form->add('submit', 
+            'submit', 
+            array(
+                'label' => 'Valider'
+            )
+        );
 
         return $form;
     }
@@ -121,11 +119,12 @@ class ProController extends Controller
      * Edits an existing Bar entity promotions.
      *
      * @Route("/promo/{id}", name="bar_update_promo")
-     * @Method("PUT")
+     * @Method("POST")
      */
     public function updatePromoAction(Request $request, $id)
     {
-        /*$em = $this->getDoctrine()->getManager();
+        $em = $this->getDoctrine()->getManager();
+        $pm = $this->get('cac_bar.promotion_manager');
 
         $entity = $em->getRepository('CacBarBundle:Bar')->find($id);
 
@@ -133,16 +132,28 @@ class ProController extends Controller
             throw $this->createNotFoundException('L\'établissement demandé n\'existe pas.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createEditForm($entity);
-        $editForm->handleRequest($request);
+        $promotions = $entity->getPromotions();
 
-        if ($editForm->isValid()) {
-            $entity->setEditedAt(new \DateTime('now'));
-            $em->flush();
-            return $this->redirect($this->generateUrl('bar_show', array('id' => $id)));
-        }*/
-        $res = 'Coucou toi la haut';
+        $promotionDummy = new PromotionDummy();
+        $dummyJSON = $pm->toDummyJSON($promotions);
+        $promotionDummy->setPromotion($dummyJSON);
+
+        $newPromotions = json_decode($request->request->get('data'), true);
+        foreach($promotions as $promotion) {
+            $options = $promotion->getOptions();
+            foreach($options as $option) {
+                $category = $option->getCategoryShortcode();
+                if($category == 'restriction') $category = 'condition';
+                $option->setValue($newPromotions[$promotion->getDay()][$promotion->getCategory()][$category]);
+                $em->persist($option);
+            }
+        }
+
+        $em->flush();
+
+        $res = array(
+            'status' => 1
+        );
 
         return new JsonResponse($res);
     }
