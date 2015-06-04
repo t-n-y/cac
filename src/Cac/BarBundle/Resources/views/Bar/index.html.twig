@@ -4,6 +4,12 @@
 
 {% block body %}
 
+<div class="barsSearch">
+	<input type="text" id="searchInput" data-target="{{ path('bars_search') }}">
+	<div id="searchResults">
+	</div>
+</div>
+
 <div class="topListBar col-xs-12 col-sm-12 col-md-12 noPadding">
 			<img src="{{asset('img/accueil.png')}}" alt="">
 			<img src="{{asset('img/pershing.png')}}" alt="">
@@ -182,4 +188,58 @@
 {% block javascripts %}
 	{{ parent() }}
     <script src="{{ asset('js/sort-affichage.js') }}" type="text/javascript" /></script>
+    <script>
+	var xhr = null,
+        globalTimeout = null,
+        $resultBody = $("#searchResults"),
+		$searchInput = $("#searchInput"),
+		searchPath = $searchInput.attr('data-target');
+
+	$searchInput.keyup( function(event){
+
+        if (globalTimeout != null)
+            clearTimeout(globalTimeout);
+
+        globalTimeout = setTimeout(function() {  
+            var search = $searchInput.val();
+
+            search = search.replace(/<\/?[^>]+>/gi, '');
+            globalTimeout = null;
+
+            if (search.length >= 2) {
+                if (xhr != null) //abort last request if not over
+                    xhr.abort();
+
+                xhr = $.ajax({
+                    url: searchPath,
+                    dataType: "json",
+                    method: "post",
+                    data: {search: search},
+                    success: function( data ) {
+                        var strToAppend = '';
+
+                        $.each(data, function (key, val) {
+                            strToAppend += '<div class="singleResult">'
+                            			+ 'ID : ' + val.id + ', '
+                            			+ 'Name : ' + val.name + ', '
+                            			+ 'Description : ' + val.description + ', '
+                            			+ 'Adresse : ' + val.adress + ', '
+                            			+ 'Geocode : ' + val.geocode + ', '
+                            			+ 'Ville : ' + val.town + ', '
+                            			+ 'Code postal : ' + val.zipcode + ''
+                            			+ 'Promotion du jour : ' + val.promotions[0].options[0].value + ''
+                            			+ 'Happy-hour du jour : ' + val.promotions[1].options[0].value + ''
+                            			+ '</div>';
+                        });
+
+                        $resultBody.empty().append(strToAppend);
+
+                        if (data == '')
+                            $resultBody.append('<div class="singleResult">Aucun résultat pour "' + search + '"</div>');
+                    }
+                });
+            }
+        }, 400);  
+    });
+	</script>
 {% endblock %}
