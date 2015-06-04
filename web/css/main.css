@@ -144,11 +144,15 @@ h2.font30{
    text-align: center;
 }
 
-.showImg{
+.showImg {
 	display: none;
-	width: 100%;
+	max-width: 100%;
 	overflow: hidden;
 	margin-bottom: 20px;
+}
+
+#blah {
+    max-width: 100%;
 }
 
 .file_button_container img{

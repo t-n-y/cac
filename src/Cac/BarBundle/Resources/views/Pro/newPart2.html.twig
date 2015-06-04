@@ -6,12 +6,7 @@
 {% endblock %}
 
 {% block body %}
-
-
 <div class="file_button_container">
-
-	
-
         <div class="row">
              <div class="col-xs-12 col-sm-12 col-md-12">
 
@@ -94,7 +89,7 @@
         var jcrop_api = '';
 
         function tooSmall() {
-            alert('Image trop petite, largeur min 1280px; hauteur min 350px');
+            alert('Image trop petite, largeur min 1280px, hauteur min 350px');
             $('#blah').attr('src', '#');
         }
 
@@ -105,19 +100,20 @@
                 var img = new Image();
                 
                 reader.onload = function (e) {
-                    if(jcrop_api != '') {
+                    if(jcrop_api != '') {h
                         jcrop_api.destroy();
                         $('#blah').attr('style', '');
                     }
                     $('#blah').attr('src', e.target.result);
 
                     var image = $('#blah');
-                    var oH = image.height(), oW = image.width();
+                    var oW = image.get(0).naturalWidth, oH = image.get(0).naturalHeight;
+                    //var oH = image.height(), oW = image.width();
                     if(oW < 1280 || oH < 350) {
                         tooSmall();
                         return false;
                     }
-                    var mW = $('.showImg').width();
+                    var mW = $('.showImg').width(), mH = $('.showImg').height();
                     var ratio = mW/oW;
 
                     if(ratio > 1) ratio = 1;
