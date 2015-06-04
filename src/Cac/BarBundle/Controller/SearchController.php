@@ -12,10 +12,10 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 class SearchController extends Controller
 {
     /**
-     * @Route("/ajax-search", name="ajax_search")
+     * @Route("/bars-search", name="bars_search")
      * @Method("POST")
      */
-    public function ajaxSearchAction(Request $request)
+    public function barsSearchAction(Request $request)
     {
         $search = $request->request->get('search');
 
@@ -24,4 +24,16 @@ class SearchController extends Controller
         return new JsonResponse($res); 
     }
 
+    /**
+     * @Route("/user-search", name="user_search")
+     * @Method("POST")
+     */
+    public function userSearchAction(Request $request)
+    {
+        $search = $request->request->get('search');
+
+        $res = $this->getDoctrine()->getRepository('CacUserBundle:BasicUser')->research($search);
+
+        return new JsonResponse($res); 
+    }
 }

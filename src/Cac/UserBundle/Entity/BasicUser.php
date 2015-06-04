@@ -9,7 +9,7 @@ use PUGX\MultiUserBundle\Validator\Constraints\UniqueEntity;
 /**
  * BasicUser
  *
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Cac\UserBundle\Entity\BasicUserRepository")
  * @ORM\Table()
  * @UniqueEntity(fields = "username", targetClass = "Cac\UserBundle\Entity\User", message="fos_user.username.already_used")
  * @UniqueEntity(fields = "email", targetClass = "Cac\UserBundle\Entity\User", message="fos_user.email.already_used")
