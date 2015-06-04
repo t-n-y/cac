@@ -117,13 +117,15 @@
                             			+ 'Geocode : ' + val.geocode + ', '
                             			+ 'Ville : ' + val.town + ', '
                             			+ 'Code postal : ' + val.zipcode + ''
+                            			+ 'Promotion du jour : ' + val.promotions[0].options[0].value + ''
+                            			+ 'Happy-hour du jour : ' + val.promotions[1].options[0].value + ''
                             			+ '</div>';
                         });
 
                         $resultBody.empty().append(strToAppend);
 
                         if (data == '')
-                            $resulttbody.append('<div class="singleResult">Aucun résultat pour "' + search + '"</div>');
+                            $resultBody.append('<div class="singleResult">Aucun résultat pour "' + search + '"</div>');
                     }
                 });
             }

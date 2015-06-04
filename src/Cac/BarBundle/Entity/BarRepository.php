@@ -37,10 +37,17 @@ class BarRepository extends EntityRepository
 
 	public function research($string)
 	{
+		setlocale(LC_TIME, "french");
+        $today = ucfirst(strftime("%A"));
+
 		$query = $this->createQueryBuilder('b')
-            ->select('b.id, b.name, b.description, b.adress, b.geocode, b.town, b.zipcode')
+            ->select('b, p, o')
+            ->leftJoin('b.promotions', 'p')
+            ->leftJoin('p.options', 'o')
             ->where('b.name LIKE :name')
-            ->setParameters(array('name' => '%'.$string.'%'));
+            ->andWhere('p.day = :today')
+            ->andWhere('o.categoryShortcode = :value')
+            ->setParameters(array('name' => '%'.$string.'%', 'today' => $today, 'value' => 'value'));
         
         $result = $query->getQuery()
                         ->getArrayResult();

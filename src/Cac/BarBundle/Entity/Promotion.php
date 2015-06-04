@@ -41,7 +41,7 @@ class Promotion
     protected $options;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Cac\BarBundle\Entity\Bar", inversedBy="promotion")
+     * @ORM\ManyToOne(targetEntity="Cac\BarBundle\Entity\Bar", inversedBy="promotions")
      */
     protected $bar;
 

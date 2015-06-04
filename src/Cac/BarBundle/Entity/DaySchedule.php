@@ -50,7 +50,7 @@ class DaySchedule
     private $close;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Cac\BarBundle\Entity\Bar", inversedBy="daySchedule")
+     * @ORM\ManyToOne(targetEntity="Cac\BarBundle\Entity\Bar", inversedBy="daySchedules")
      */
     protected $bar;
 
