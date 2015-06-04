@@ -5,7 +5,23 @@
 		<div class="welcome">
 			<div class="centerWelcome">
 			 	<h1>Rechercher un bar</h1>
-				<p>ICI METTRE BARRE DE RECHERCHE</p>
+			 	<div class="homeSearch">
+			 		<input type="text" id="searchInput" data-target="{{ path('ajax_search') }}">
+			 		<div id="searchResults">
+			 			<div class="singleResult">
+			 				Coucou
+			 			</div>
+			 			<div class="singleResult">
+			 				Coucou
+			 			</div>
+			 			<div class="singleResult">
+			 				Coucou
+			 			</div>
+			 			<div class="singleResult">
+			 				Coucou
+			 			</div>
+			 		</div>
+			 	</div>
 			</div>
 		</div>
 		
@@ -71,4 +87,51 @@
 			</div>
 		</div>
 		
+{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+	<script>
+	var xhr = null,
+        globalTimeout = null,
+        $resultBody = $("#searchResults"),
+		$searchInput = $("#searchInput"),
+		searchPath = $searchInput.attr('data-target');
+
+	$searchInput.keyup( function(event){
+
+        if (globalTimeout != null)
+            clearTimeout(globalTimeout);
+
+        globalTimeout = setTimeout(function() {  
+            var search = $searchInput.val();
+
+            search = search.replace(/<\/?[^>]+>/gi, '');
+            globalTimeout = null;
+
+            if (search.length >= 2) {
+                if (xhr != null) //abort last request if not over
+                    xhr.abort();
+
+                xhr = $.ajax({
+                    url: searchPath,
+                    dataType: "json",
+                    method: "post",
+                    data: {search: search},
+                    success: function( data ) {
+                        var strToAppend = '';
+
+                        $.each(data, function (key, val) {
+                            strToAppend += '<div class="singleResult">key ' + key + ' - value ' + val + '</div>';
+                        });
+
+                        $resultBody.empty().append(strToAppend);
+
+                        if (data == '')
+                            $resulttbody.append('<div class="singleResult">Aucun résultat pour "' + search + '"</div>');
+                    }
+                });
+            }
+        }, 400);  
+    });
+	</script>
 {% endblock %}

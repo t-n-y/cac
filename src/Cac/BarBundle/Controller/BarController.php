@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Cac\BarBundle\Entity\Bar;
 use Cac\BarBundle\Entity\Comment;
@@ -221,5 +222,4 @@ class BarController extends Controller
             return new Response('user not connected');
         }
     }
-
 }
