@@ -10,7 +10,6 @@
 		
 				<p>€€€€<span>€</span></p>
 
-
 				{% if (is_granted('ROLE_BIGBOSS')) and (bar.author.id == user.id) %}
 
 					<a href="{{ path('bar_edit', { 'id': bar.id }) }}">Editer ce bar</a>
@@ -49,6 +48,7 @@
 			<div class="noteBar col-xs-6 col-sm-3 col-md-3">
 				<div class="ticket">
 					<div class="ticketBarTop">
+					{% if bar.scheduleArray[today].status == 'Ouvert' %}
 						{% if bar.getHappyHourByDay(today).getOption('value').value != 0 %}
 							<img src="{{asset('img/pictoPromo.png')}}" alt="">
 						{% endif %}
@@ -64,6 +64,9 @@
 								<p class="voirMaConfirmation"></p>
 							</div>
 						{% endif %}
+					{% else %}
+						<p>Bar Fermé<p>
+					{% endif %}
 					</div>
 					<div class="ticketPromotion col-xs-12 col-sm-12 col-md-12">
 						{% if bar.getHappyHourByDay(today).getOption('value').value != 0 %}
@@ -84,12 +87,16 @@
 					</div>
 					<div class="clear"></div>
 					<div class="ticketBarBottom">
+					{% if bar.scheduleArray[today].status == 'Ouvert' %}
 						{% if bar.getPromotionByDay(today).getOption('value').value == 0 %}
 							<p>RESERVEZ POUR AUJOURD'HUI</p>
 						{% else %}
 							<p class="obtenirPromo" data-bar-id="{{bar.id}}">OBTENIR LA PROMO</p>
 							<p class="testSuccess"></p>
 						{% endif %}
+					{% else %}
+						<p> Bar Fermé<p>
+					{% endif %}
 					</div>
 				</div>
 			</div>

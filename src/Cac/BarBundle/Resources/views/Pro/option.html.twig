@@ -37,7 +37,7 @@
 					<p>Affichez votre carte de coktails sur votre page restaurant permet une augmentation des retours. Vous donnez à vos client la possibilité de se faire une meilleure idée de votre établissement. Montrez votre savoir faire, vos coktails les plus innovant et attirez de nouveau clients</p>
 
 					<h2>Nombre de visites sur votre fiche</h2>
-					<p class="numberOption">188</p>
+					<p class="numberOption">{{bar.score}}</p>
 
 					<div class="row">
 						<div class="col-xs-12 col-sm-6 col-md-6">
@@ -133,8 +133,6 @@
 									<div class="contentImageBar" style="background-image:url({{ asset('uploads/bar/'~bar.path) }})">
 										<a href="{{ path('bar_show', { id : bar.id }) }}"><div class="shadowbarInList col-xs-12 col-sm-12 col-md-12">
 											<h3 id="firstWord{{ bar.id }}">{{ bar.name }}</h3>
-											
-											<p class="reduc">%</p>
 										</div></a>
 									</div>
 								</div>
@@ -150,10 +148,6 @@
 									<div class="contentImageBar" style="background-image:url({{ asset('uploads/bar/'~highlight[k].bar.path) }})">
 										<a href="{{ path('bar_show', { id : highlight[k].bar.id }) }}"><div class="shadowbarInList col-xs-12 col-sm-12 col-md-12">
 											<h3 id="firstWord{{ highlight[k].bar.id }}"> {{ highlight[k].bar.name }} </h3>
-											
-												<p class="prix">€€€€€</p>
-											
-											<p class="reduc">%</p>
 										</div></a>
 									</div>
 								</div>

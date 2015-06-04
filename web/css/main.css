@@ -1174,13 +1174,26 @@ p.droitReserve{
 	background-color: #f6f6f6;
 	text-align: center;
 	padding-top: 20px;
+	color: #303030;
+}
+
+.brand{
+	color: #303030;
+	font-size: 20px;
+}
+
+.brandBref{
+	color: #5ac4d4;
+	font-size: 20px;
 }
 
 .explicationsBlock{
 	margin-top: 20px;
 	margin-bottom: 40px;
 }
-
+.blockExplication{
+	padding: 10px;
+}
 .blockExplication img{
 	width: 40px;
 }
@@ -1190,7 +1203,7 @@ p.droitReserve{
   	-webkit-background-size: cover; /* pour anciens Chrome et Safari */
 }
 
-.carte{
+.carteHome{
 	background: url(../img/carte.png) no-repeat center; 
   	-webkit-background-size: cover; /* pour anciens Chrome et Safari */
 }
