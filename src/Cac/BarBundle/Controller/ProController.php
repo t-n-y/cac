@@ -7,16 +7,19 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Cac\BarBundle\Entity\Bar;
 use Cac\BarBundle\Entity\Comment;
 use Cac\BarBundle\Entity\Promotion;
+use Cac\BarBundle\Entity\PromotionDummy;
 use Cac\BarBundle\Entity\Image;
 use Cac\BarBundle\Entity\Highlight;
 use Cac\BarBundle\Entity\DaySchedule;
 use Cac\BarBundle\Form\Type\BarType;
 use Cac\BarBundle\Form\Type\PromotionType;
+use Cac\BarBundle\Form\Type\PromotionDummyType;
 use Cac\BarBundle\Form\Type\BarEditType;
 /**
  * Bar controller.
@@ -49,9 +52,20 @@ class ProController extends Controller
         $today = strftime("%A");
 
         $em = $this->getDoctrine()->getManager();
+
         $entity = $em->getRepository('CacBarBundle:Bar')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Le bar demandé n\'existe pas.');
+        }
+        if ($this->get('security.context')->getToken()->getUser() != $entity->getAuthor()) {
+            throw $this->createNotFoundException('Vous n\'avez pas accés à ce contenu.');
+        }
+
         $restriction = $em->getRepository('CacBarBundle:PromotionOptionCategory')->findOneBy(array('shortcode' => 'restriction'));
         $restrictions = $em->getRepository('CacBarBundle:PromotionOption')->findBy(array('category' => $restriction->getId()));
+
+        $editForm = $this->createEditPromoForm($entity);
 
         $lists = array(
             'drinkNumber' => array('Illimité','5','10','20','30','40','50','100'),
@@ -66,7 +80,82 @@ class ProController extends Controller
             'restrictions' => $restrictions,
             'promotions' => $entity->getPromotions(),
             'lists' => $lists,
+            'edit_form'   => $editForm->createView(),
         );  
+    }
+
+
+
+    /**
+    * Creates a form to edit a Bar entity promotions.
+    *
+    * @param Bar $entity The entity
+    *
+    * @return \Symfony\Component\Form\Form The form
+    */
+    private function createEditPromoForm(Bar $entity)
+    {
+        $pm = $this->get('cac_bar.promotion_manager');
+        $promotions = $entity->getPromotions();
+        $promotionJSON = $pm->toDummyJSON($promotions);
+        $promotionDummy = new PromotionDummy($promotionJSON);
+
+        $form = $this->createForm(new PromotionDummyType(), $promotionDummy, array(
+            'action' => $this->generateUrl('bar_update_promo', array('id' => $entity->getId())),
+            'method' => 'PUT',
+        ));
+
+        $form->add('submit', 
+            'submit', 
+            array(
+                'label' => 'Valider'
+            )
+        );
+
+        return $form;
+    }
+
+    /**
+     * Edits an existing Bar entity promotions.
+     *
+     * @Route("/promo/{id}", name="bar_update_promo")
+     * @Method("POST")
+     */
+    public function updatePromoAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $pm = $this->get('cac_bar.promotion_manager');
+
+        $entity = $em->getRepository('CacBarBundle:Bar')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('L\'établissement demandé n\'existe pas.');
+        }
+
+        $promotions = $entity->getPromotions();
+
+        $promotionDummy = new PromotionDummy();
+        $dummyJSON = $pm->toDummyJSON($promotions);
+        $promotionDummy->setPromotion($dummyJSON);
+
+        $newPromotions = json_decode($request->request->get('data'), true);
+        foreach($promotions as $promotion) {
+            $options = $promotion->getOptions();
+            foreach($options as $option) {
+                $category = $option->getCategoryShortcode();
+                if($category == 'restriction') $category = 'condition';
+                $option->setValue($newPromotions[$promotion->getDay()][$promotion->getCategory()][$category]);
+                $em->persist($option);
+            }
+        }
+
+        $em->flush();
+
+        $res = array(
+            'status' => 1
+        );
+
+        return new JsonResponse($res);
     }
 
     /**

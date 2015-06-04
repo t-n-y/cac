@@ -3,6 +3,9 @@
 {% block title %}CacBarBundle:Bar:show{% endblock %}
 
 {% block body %}
+	{{ form_start(edit_form) }}
+      {{ form_errors(edit_form) }}
+      {{ form_widget(edit_form.promotion) }}
 		<div class="topBarPro col-xs-12 col-sm-12 col-md-12 noPadding">
 			<img src="{{ asset('uploads/bar/'~bar.path) }}">
 			<div class="infoNameBar">
@@ -281,4 +284,28 @@
 				<div class="clear"></div>
 			</div> -->
 		</div>
+    {{ form_end(edit_form) }}
+{% endblock %}
+
+
+{% block javascripts %}
+{{ parent() }}
+ <script>
+ $(document).ready(function() {
+ 	$('#cac_barbundle_promotion_dummy_submit').on('click', function() {
+ 		var form = $('form[name="cac_barbundle_promotion_dummy"]');
+ 		var formAction = form.attr('action');
+ 		var data = $('#cac_barbundle_promotion_dummy_promotion').val();
+ 		$.ajax({
+	        type: 'POST',
+	        url: formAction,
+	        data: { data: data },
+	        success: function (data) {
+ 				console.log(data);
+	        }
+	    });
+ 		return false;
+ 	});
+ });
+</script>
 {% endblock %}

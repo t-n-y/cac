@@ -12,11 +12,12 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Cac\BarBundle\Entity\Bar;
 use Cac\BarBundle\Entity\Comment;
 use Cac\BarBundle\Entity\Promotion;
+use Cac\BarBundle\Entity\PromoOffertes;
+use Cac\BarBundle\Entity\PromoOffertesRepository;
 use Cac\BarBundle\Entity\Image;
 use Cac\BarBundle\Form\Type\BarType;
 use Cac\BarBundle\Form\Type\PromotionType;
 use Cac\BarBundle\Form\Type\BarEditType;
-use Cac\BarBundle\Entity\PromoOffertes;
 /**
  * Bar controller.
  *
@@ -83,12 +84,14 @@ class BarController extends Controller
      */
     public function showAction($id)
     {
-        setlocale(LC_TIME, "fr_FR");
+        setlocale(LC_TIME, "french");
         $today = strftime("%A");
 
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository('CacBarBundle:Bar')->find($id);
         $user = $this->get('security.context')->getToken()->getUser();
+        $date = date('Y-m-d');
+        $promoOfferte = $em->getRepository('CacBarBundle:PromoOffertes')->getDayPromo($entity->getId(), $user->getId(), $date);
 
         $entity->setScore($entity->getScore() +1);
         $em->persist($entity);
@@ -100,9 +103,10 @@ class BarController extends Controller
         return array(
             'user' => $user,
             'bar'      => $entity,
-            'today' => $today,
+            'today' => ucfirst($today),
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
+            'promoOfferte' => $promoOfferte,
         );
     }
 
