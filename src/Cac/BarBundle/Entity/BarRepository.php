@@ -34,4 +34,16 @@ class BarRepository extends EntityRepository
 	      ->createQuery('SELECT MAX(b.id) FROM CacBarBundle:Bar b')
 	      ->getSingleScalarResult();
 	}
+
+	public function research($string)
+	{
+		$query = $this->createQueryBuilder('b')
+            ->select('b.id, b.name, b.description, b.adress, b.geocode, b.town, b.zipcode')
+            ->where('b.name LIKE :name')
+            ->setParameters(array('name' => '%'.$string.'%'));
+        
+        $result = $query->getQuery()
+                        ->getArrayResult();
+        return $result;
+	}
 }

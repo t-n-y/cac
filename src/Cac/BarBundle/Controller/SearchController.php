@@ -18,13 +18,8 @@ class SearchController extends Controller
     public function ajaxSearchAction(Request $request)
     {
         $search = $request->request->get('search');
-        //$files = $this->getDoctrine()->getRepository('BotCoreBundle:File')->research($search);8
 
-        $res = array(
-            'bar' => 'foo',
-            'toto' => 'tata',
-            'search' => $search
-        );
+        $res = $this->getDoctrine()->getRepository('CacBarBundle:Bar')->research($search);
 
         return new JsonResponse($res); 
     }

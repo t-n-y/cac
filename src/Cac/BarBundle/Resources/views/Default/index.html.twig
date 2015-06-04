@@ -8,18 +8,6 @@
 			 	<div class="homeSearch">
 			 		<input type="text" id="searchInput" data-target="{{ path('ajax_search') }}">
 			 		<div id="searchResults">
-			 			<div class="singleResult">
-			 				Coucou
-			 			</div>
-			 			<div class="singleResult">
-			 				Coucou
-			 			</div>
-			 			<div class="singleResult">
-			 				Coucou
-			 			</div>
-			 			<div class="singleResult">
-			 				Coucou
-			 			</div>
 			 		</div>
 			 	</div>
 			</div>
@@ -121,7 +109,15 @@
                         var strToAppend = '';
 
                         $.each(data, function (key, val) {
-                            strToAppend += '<div class="singleResult">key ' + key + ' - value ' + val + '</div>';
+                            strToAppend += '<div class="singleResult">'
+                            			+ 'ID : ' + val.id + ', '
+                            			+ 'Name : ' + val.name + ', '
+                            			+ 'Description : ' + val.description + ', '
+                            			+ 'Adresse : ' + val.adress + ', '
+                            			+ 'Geocode : ' + val.geocode + ', '
+                            			+ 'Ville : ' + val.town + ', '
+                            			+ 'Code postal : ' + val.zipcode + ''
+                            			+ '</div>';
                         });
 
                         $resultBody.empty().append(strToAppend);
