@@ -154,11 +154,11 @@
                         var strToAppend = '';
 
                         $.each(data, function (key, val) {
-                            /*strToAppend += '<div class="singleResult">'
-                            			+ 'ID : ' + val.id + ', '
-                            			+ 'Name : ' + val.name + ', '
-                            			+ '</div>';*/
-                            			console.log(val);
+                            strToAppend += '<div class="singleResult">'
+                            			+ 'ID : ' + val[0].id + ', '
+                            			+ 'Name : ' + val[0].name + ', '
+                            			+ 'Firstname : ' + val[0].firstname + ''
+                            			+ '</div>';
                         });
 
                         $resultBody.empty().append(strToAppend);
