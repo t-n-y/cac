@@ -24,7 +24,8 @@
         "knplabs/knp-paginator-bundle": "~2.4",
         "stripe/stripe-php": "2.*",
         "hipaway-travel/mandrill-bundle": "dev-master",
-        "hwi/oauth-bundle": "0.4.*@dev"
+        "hwi/oauth-bundle": "0.4.*@dev",
+        "coresphere/console-bundle": "dev-master"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"
