@@ -1,0 +1,33 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Bars{% endblock %}
+
+{% block body %}
+<h1>Bars</h1>
+Rappel : 1€ = 100 - 0.5€ = 50
+	{% for bar in bars %}
+		<div class="container-carte">
+			<p>{{bar.name}}</p>
+			<p>{{bar.author}}</p>
+			<input type="number" name="price" class="price {{bar.author.id}}">
+			<button data-author="{{bar.author.id}}">valider</button>
+		</div>
+		<hr>
+	{% endfor %}
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+	<script type="text/javascript">
+	    $( "button" ).on( "click", function() {
+	    	var id = $(this).data('author');
+	    	var price = $('.price.'+id).val();
+	        $.ajax( {
+	            type: 'GET',
+	            url: Routing.generate('define_price', { 'id': id, 'price' : price }),
+	            success: function (data) {
+	            	alert(data);
+	            }
+	        } );
+	    });
+	</script>    
+{% endblock %}
