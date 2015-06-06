@@ -14,7 +14,7 @@ class BasicUserRepository extends EntityRepository
 {
     public function research($string)
     {
-        setlocale(LC_TIME, "french");
+        setlocale(LC_TIME, "fr_FR");
         $today = ucfirst(strftime("%A"));
 
         $query = $this->createQueryBuilder('bu')

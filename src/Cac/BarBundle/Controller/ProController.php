@@ -49,7 +49,7 @@ class ProController extends Controller
     public function offerAction($id)
     {
         setlocale(LC_TIME, "fr_FR");
-        $today = strftime("%A");
+        $today = ucfirst(strftime("%A"));
 
         $em = $this->getDoctrine()->getManager();
 
