@@ -16,7 +16,7 @@
   </div></a>
 </div>
 
-<!-- <nav class="navbar navbar-default" role="navigation">
+{#<!--} <nav class="navbar navbar-default" role="navigation">
   <div class="row">
     <div class="container-fluid">
 
@@ -165,7 +165,7 @@
     </div>
   </div>  
 </div> -->
-
+#}
 <nav>
     <button class="hidden-sm hidden-md hidden-lg menu__handle">
         <span>Menu</span>
@@ -182,7 +182,11 @@
             {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
                 <div class="profileUserNav">
                   <img class="hidden-sm hidden-md hidden-lg" src="{{asset('img/imgProfilBasic.png')}}">
-                  <p>Bonjour {{ app.user.firstname}} </p>
+                  {% if is_granted('ROLE_BARMAN') %}
+                    <p>Bonjour {{ app.user.getUsername()}} </p>
+                  {% else %}
+                    <p>Bonjour {{ app.user.firstname}} </p>
+                  {% endif %}
                 </div>
                 <div class="row">
                   <div class="col-xs-12 hidden-sm hidden-md hidden-lg">

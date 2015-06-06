@@ -21,7 +21,6 @@ class BarmanFormType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $id = 5;
         $builder
             ->add('username', null, array('label' => 'Nom d\'utilisateur'))
             ->add('plainPassword', 'repeated', array(
