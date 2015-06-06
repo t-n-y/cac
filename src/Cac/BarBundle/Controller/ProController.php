@@ -167,11 +167,15 @@ class ProController extends Controller
         $em = $this->getDoctrine()->getManager();
         $user = $this->get('security.context')->getToken()->getUser();
         $barId = $em->getRepository('CacBarBundle:Bar')->findBy(array('author'=> $user->getId()));
+        $bar = $em->getRepository('CacBarBundle:Bar')->find($id);
         if ($barId === 0) {
             return $this->redirect($this->generateUrl('bar_new'));
         }
+        if ($this->get('security.context')->getToken()->getUser() != $bar->getAuthor()) {
+            throw $this->createNotFoundException('Vous n\'avez pas accés à ce contenu.');
+        }
 
-        $bar = $em->getRepository('CacBarBundle:Bar')->find($id);
+        
         $promoOffertes = $em->getRepository('CacBarBundle:PromoOffertes')->findBy(array('bar'=> $bar), array('id' => 'DESC'));
 
         return array(
@@ -207,6 +211,9 @@ class ProController extends Controller
 
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository('CacBarBundle:Bar')->find($id);
+        if ($this->get('security.context')->getToken()->getUser() != $entity->getAuthor()) {
+            throw $this->createNotFoundException('Vous n\'avez pas accés à ce contenu.');
+        }
         $entities = $em->getRepository('CacBarBundle:Bar')->findAll();
 
         $paginator  = $this->get('knp_paginator');
