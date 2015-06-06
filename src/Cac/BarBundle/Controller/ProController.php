@@ -516,6 +516,18 @@ class ProController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $promo = $em->getRepository('CacBarBundle:PromoOffertes')->find($id);
+        if ($promo->getEtat() === "non validé") {
+            $customer = $promo->getBar()->getAuthor();
+            \Stripe\Stripe::setApiKey("sk_test_zLHsgtijLe1xYM1XPhf12zGY");
+            $payment = $em->getRepository('CacPaymentBundle:Payment')->findOneByUser($customer);
+            $customerId = $payment->getCustomerId();
+            \Stripe\InvoiceItem::create(array(
+                "customer" => $customerId,
+                "amount" => 100,
+                "currency" => "eur",
+                "description" => "Promotion")
+            );
+        }
         $promo->setEtat('validé');
         $em->persist($promo);
         $user = $promo->getUser();
@@ -538,8 +550,9 @@ class ProController extends Controller
         $em->persist($user);
         $em->persist($promo);
         $em->flush();
+        $customer = $promo->getBar()->getAuthor();
         \Stripe\Stripe::setApiKey("sk_test_zLHsgtijLe1xYM1XPhf12zGY");
-        $payment = $em->getRepository('CacPaymentBundle:Payment')->findOneByUser($user);
+        $payment = $em->getRepository('CacPaymentBundle:Payment')->findOneByUser($customer);
         $customerId = $payment->getCustomerId();
         \Stripe\InvoiceItem::create(array(
             "customer" => $customerId,
