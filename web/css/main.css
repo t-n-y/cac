@@ -4244,11 +4244,14 @@ p.nextPointFidelite{
 	}
 
 }
-
-@media (max-width: 750px) {
-
-
+@media print {
+  body {
+    visibility: hidden !important;
 }
-
-
-
+    .toprint{
+    	visibility: visible !important;
+    	position: fixed;
+    	top: 0;
+    	left: 0;
+    }
+}
