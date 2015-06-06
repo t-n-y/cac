@@ -1047,12 +1047,13 @@ footer{
 	margin-bottom: 20px;
 }
 
-footer p, footer a{
+footer p, footer a,footer p:focus, footer a:focus{
 	color: #fff;
 	cursor: pointer;
 	display: inline-table;
 	padding: 5px 20px;
 	margin: 0px;
+	text-decoration: none;
 }
 
 .colFooter p:hover, .colFooter a:hover{
