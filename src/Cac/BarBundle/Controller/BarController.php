@@ -33,7 +33,7 @@ class BarController extends Controller
     public function indexAction()
     {
         setlocale(LC_TIME, "fr_FR");
-        $today = strftime("%A");
+        $today = ucfirst(strftime("%A"));
         $em = $this->getDoctrine()->getManager();
         $entities = $em->getRepository('CacBarBundle:Bar')->findAll();
         $bars = array();
