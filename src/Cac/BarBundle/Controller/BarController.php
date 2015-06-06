@@ -197,21 +197,22 @@ class BarController extends Controller
             $this->get('mailer')->send($message);
 
             $reference = mt_rand(100000,999999);
-            $verre = new PromoOffertes();
-            $verre->setReference($reference);
-            $verre->setEtat('confirmé');
-            $verre->setBar($bar);
-            $verre->setUser($user);
-            $verre->setCreatedAt(new \DateTime('now'));
-            $em->persist($verre);
+            $promo = new PromoOffertes();
+            $promo->setReference($reference);
+            $promo->setEtat('confirmé');
+            $promo->setBar($bar);
+            $promo->setUser($user);
+            $promo->setCreatedAt(new \DateTime('now'));
+            $em->persist($promo);
             $em->flush();
 
+            $customer = $promo->getBar()->getAuthor();
             \Stripe\Stripe::setApiKey("sk_test_zLHsgtijLe1xYM1XPhf12zGY");
-            $payment = $em->getRepository('CacPaymentBundle:Payment')->findOneByUser($user);
+            $payment = $em->getRepository('CacPaymentBundle:Payment')->findOneByUser($customer);
             $customerId = $payment->getCustomerId();
             \Stripe\InvoiceItem::create(array(
                 "customer" => $customerId,
-                "amount" => 100,
+                "amount" => $customer->getGlassPrice(),
                 "currency" => "eur",
                 "description" => "Promotion")
             );

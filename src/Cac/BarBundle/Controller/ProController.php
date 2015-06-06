@@ -523,7 +523,7 @@ class ProController extends Controller
             $customerId = $payment->getCustomerId();
             \Stripe\InvoiceItem::create(array(
                 "customer" => $customerId,
-                "amount" => 100,
+                "amount" => $customer->getGlassPrice(),
                 "currency" => "eur",
                 "description" => "Promotion")
             );
@@ -556,7 +556,7 @@ class ProController extends Controller
         $customerId = $payment->getCustomerId();
         \Stripe\InvoiceItem::create(array(
             "customer" => $customerId,
-            "amount" => -100,
+            "amount" => '-'.$customer->getGlassPrice(),
             "currency" => "eur",
             "description" => "Promotion")
         );
