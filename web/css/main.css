@@ -1047,7 +1047,7 @@ footer{
 	margin-bottom: 20px;
 }
 
-footer p{
+footer p, footer a{
 	color: #fff;
 	cursor: pointer;
 	display: inline-table;
@@ -1055,8 +1055,10 @@ footer p{
 	margin: 0px;
 }
 
-.colFooter p:hover{
-	background-color: #393939; 
+.colFooter p:hover, .colFooter a:hover{
+	background-color: #393939;
+	color: #FFF;
+	text-decoration: none;
 }
 
 .footerInfo{
