@@ -182,7 +182,7 @@
             {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
                 <div class="profileUserNav">
                   <img class="hidden-sm hidden-md hidden-lg" src="{{asset('img/imgProfilBasic.png')}}">
-                  {% if is_granted('ROLE_BARMAN') %}
+                  {% if is_granted('ROLE_BARMAN') and not is_granted('ROLE_BIGBOSS') %}
                     <p>Bonjour {{ app.user.getUsername()}} </p>
                   {% else %}
                     <p>Bonjour {{ app.user.firstname}} </p>
