@@ -24,9 +24,7 @@
 			</div>
 			<div class="center col-xs-4 col-sm-4 col-md-4 noPadding">
 				<div class="feedbackSearch">
-			 		<input type="text" id="searchInput" data-target="{{ path('user_search') }}">
-			 		<div id="searchResults">
-			 		</div>
+			 		<input type="text" id="userSearch" placeholder="Rechercher">
 			 	</div>
 			</div>
 		</div>
@@ -120,55 +118,11 @@
 {% endblock %}
 {% block javascripts %}
 	{{ parent() }}
+    <script src="{{ asset('js/quicksearch.js') }}" type="text/javascript" /></script>
 	<script>
 	$('#imprimer').on('click', function(){
 		window.print();
 	});
-	var xhr = null,
-        globalTimeout = null,
-        $resultBody = $("#searchResults"),
-		$searchInput = $("#searchInput"),
-		searchPath = $searchInput.attr('data-target');
-
-	$searchInput.keyup( function(event){
-
-        if (globalTimeout != null)
-            clearTimeout(globalTimeout);
-
-        globalTimeout = setTimeout(function() {  
-            var search = $searchInput.val();
-
-            search = search.replace(/<\/?[^>]+>/gi, '');
-            globalTimeout = null;
-
-            if (search.length >= 2) {
-                if (xhr != null) //abort last request if not over
-                    xhr.abort();
-
-                xhr = $.ajax({
-                    url: searchPath,
-                    dataType: "json",
-                    method: "post",
-                    data: {search: search},
-                    success: function( data ) {
-                        var strToAppend = '';
-
-                        $.each(data, function (key, val) {
-                            strToAppend += '<div class="singleResult">'
-                            			+ 'ID : ' + val[0].id + ', '
-                            			+ 'Name : ' + val[0].name + ', '
-                            			+ 'Firstname : ' + val[0].firstname + ''
-                            			+ '</div>';
-                        });
-
-                        $resultBody.empty().append(strToAppend);
-
-                        if (data == '')
-                            $resultBody.append('<div class="singleResult">Aucun résultat pour "' + search + '"</div>');
-                    }
-                });
-            }
-        }, 400);  
-    });
+    $('input#userSearch').quicksearch('.retourOffre');
 	</script>
 {% endblock %}
