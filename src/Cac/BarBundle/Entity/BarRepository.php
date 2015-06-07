@@ -44,10 +44,10 @@ class BarRepository extends EntityRepository
             ->select('b, p, o')
             ->leftJoin('b.promotions', 'p')
             ->leftJoin('p.options', 'o')
-            ->where('b.name LIKE :name')
+            ->where('b.name LIKE :name OR b.adress LIKE :adress OR b.zipcode LIKE :zipcode OR b.town LIKE :town')
             ->andWhere('p.day = :today')
             ->andWhere('o.categoryShortcode = :value')
-            ->setParameters(array('name' => '%'.$string.'%', 'today' => $today, 'value' => 'value'));
+            ->setParameters(array('name' => '%'.$string.'%', 'adress' => '%'.$string.'%', 'zipcode' => '%'.$string.'%', 'town' => '%'.$string.'%', 'today' => $today, 'value' => 'value'));
         
         $result = $query->getQuery()
                         ->getArrayResult();

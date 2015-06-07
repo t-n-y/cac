@@ -4295,12 +4295,15 @@ p.nextPointFidelite{
 }
 .singleResult:hover .searchInfos {
     color: #303030;
+    transition: color 0.15s ease-in-out;
 }
-.singleResult:hover .searchPromo span {
-    font-weight: bold;
+.singleResult:hover .searchPromo {
+    opacity: 1;
+    transition: opacity 0.15s ease-in-out;
 }
 .singleResult:hover .searchLink {
-    background: #5ac4d4;
+    background-color: #5ac4d4;
+    transition: background-color 0.15s ease-in-out;
 }
 #homeSearch {
     display: inline-block;
@@ -4321,9 +4324,10 @@ p.nextPointFidelite{
 }
 .searchLink {
     color: #ffffff;
-    background: #bcbcbc;
+    background-color: #bcbcbc;
     padding: 2px 12px;
     font-size: 12px;
+    transition: background-color 0.15s ease-in-out;
 }
 .searchLink:hover {
     color: #ffffff;
@@ -4337,6 +4341,7 @@ p.nextPointFidelite{
     width: 240px;
     margin-left: 20px;
     margin-right: 20px;
+    transition: color 0.15s ease-in-out;
 }
 .searchName {
     font-weight: bold;
@@ -4348,9 +4353,12 @@ p.nextPointFidelite{
     position: absolute;
     top: 0px;
     right: 0px;
+    opacity: 0.5;
+    transition: opacity 0.15s ease-in-out;
 }
 .searchPromo span {
     color: #ea9026;
+    font-weight: bold;
 }
 .searchHH {
     height: 15px;
