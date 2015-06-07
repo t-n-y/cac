@@ -4388,3 +4388,7 @@ p.nextPointFidelite{
     background-color: #303030;
     color: #ffffff;
 }
+.navToggleBtn.logout a p {
+    background-color: #f6f6f6 !important;
+    color: #303030 !important;
+}
