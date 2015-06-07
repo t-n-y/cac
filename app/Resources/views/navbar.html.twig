@@ -199,6 +199,7 @@
                 <ul>
                     <li>
                       {% if is_granted('ROLE_BIGBOSS') %}
+                        {% render url('navigation') %}
                         <a href="{{ path('bar_new') }}"><p>Créer un bar</p></a>
                       {% endif %}
                     </li>

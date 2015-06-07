@@ -28,6 +28,7 @@ class AppKernel extends Kernel
             new Hip\MandrillBundle\HipMandrillBundle(),
             new Cac\MailingBundle\CacMailingBundle(),
             new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
+            new Cac\NavigationBundle\CacNavigationBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
