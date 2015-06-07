@@ -1047,16 +1047,19 @@ footer{
 	margin-bottom: 20px;
 }
 
-footer p{
+footer p, footer a,footer p:focus, footer a:focus{
 	color: #fff;
 	cursor: pointer;
 	display: inline-table;
 	padding: 5px 20px;
 	margin: 0px;
+	text-decoration: none;
 }
 
-.colFooter p:hover{
-	background-color: #393939; 
+.colFooter p:hover, .colFooter a:hover{
+	background-color: #393939;
+	color: #FFF;
+	text-decoration: none;
 }
 
 .footerInfo{
@@ -4268,11 +4271,14 @@ p.nextPointFidelite{
 	}
 
 }
-
-@media (max-width: 750px) {
-
-
+@media print {
+  body {
+    visibility: hidden !important;
 }
-
-
-
+    .toprint{
+    	visibility: visible !important;
+    	position: fixed;
+    	top: 0;
+    	left: 0;
+    }
+}

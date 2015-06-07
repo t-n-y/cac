@@ -49,7 +49,7 @@ class ProController extends Controller
     public function offerAction($id)
     {
         setlocale(LC_TIME, "fr_FR");
-        $today = strftime("%A");
+        $today = ucfirst(strftime("%A"));
 
         $em = $this->getDoctrine()->getManager();
 
@@ -167,11 +167,15 @@ class ProController extends Controller
         $em = $this->getDoctrine()->getManager();
         $user = $this->get('security.context')->getToken()->getUser();
         $barId = $em->getRepository('CacBarBundle:Bar')->findBy(array('author'=> $user->getId()));
+        $bar = $em->getRepository('CacBarBundle:Bar')->find($id);
         if ($barId === 0) {
             return $this->redirect($this->generateUrl('bar_new'));
         }
+        if ($this->get('security.context')->getToken()->getUser() != $bar->getAuthor()) {
+            throw $this->createNotFoundException('Vous n\'avez pas accés à ce contenu.');
+        }
 
-        $bar = $em->getRepository('CacBarBundle:Bar')->find($id);
+        
         $promoOffertes = $em->getRepository('CacBarBundle:PromoOffertes')->findBy(array('bar'=> $bar), array('id' => 'DESC'));
 
         return array(
@@ -207,6 +211,9 @@ class ProController extends Controller
 
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository('CacBarBundle:Bar')->find($id);
+        if ($this->get('security.context')->getToken()->getUser() != $entity->getAuthor()) {
+            throw $this->createNotFoundException('Vous n\'avez pas accés à ce contenu.');
+        }
         $entities = $em->getRepository('CacBarBundle:Bar')->findAll();
 
         $paginator  = $this->get('knp_paginator');
@@ -516,6 +523,18 @@ class ProController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $promo = $em->getRepository('CacBarBundle:PromoOffertes')->find($id);
+        if ($promo->getEtat() === "non validé") {
+            $customer = $promo->getBar()->getAuthor();
+            \Stripe\Stripe::setApiKey("sk_test_zLHsgtijLe1xYM1XPhf12zGY");
+            $payment = $em->getRepository('CacPaymentBundle:Payment')->findOneByUser($customer);
+            $customerId = $payment->getCustomerId();
+            \Stripe\InvoiceItem::create(array(
+                "customer" => $customerId,
+                "amount" => $customer->getGlassPrice(),
+                "currency" => "eur",
+                "description" => "Promotion")
+            );
+        }
         $promo->setEtat('validé');
         $em->persist($promo);
         $user = $promo->getUser();
@@ -538,12 +557,13 @@ class ProController extends Controller
         $em->persist($user);
         $em->persist($promo);
         $em->flush();
+        $customer = $promo->getBar()->getAuthor();
         \Stripe\Stripe::setApiKey("sk_test_zLHsgtijLe1xYM1XPhf12zGY");
-        $payment = $em->getRepository('CacPaymentBundle:Payment')->findOneByUser($user);
+        $payment = $em->getRepository('CacPaymentBundle:Payment')->findOneByUser($customer);
         $customerId = $payment->getCustomerId();
         \Stripe\InvoiceItem::create(array(
             "customer" => $customerId,
-            "amount" => -100,
+            "amount" => '-'.$customer->getGlassPrice(),
             "currency" => "eur",
             "description" => "Promotion")
         );

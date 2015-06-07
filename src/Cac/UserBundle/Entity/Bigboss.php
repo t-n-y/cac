@@ -121,6 +121,13 @@ class Bigboss extends User
      */
     private $customValidationToken;
 
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="glass_price", type="integer")
+     */
+    protected $glassPrice = 1;
+
      /**
      * Constructor
      */
@@ -406,5 +413,29 @@ class Bigboss extends User
     public function getCustomValidationToken()
     {
         return $this->customValidationToken;
+    }
+
+    /**
+     * Set glassPrice
+     *
+     * @param integer $glassPrice
+     *
+     * @return Bigboss
+     */
+    public function setGlassPrice($glassPrice)
+    {
+        $this->glassPrice = $glassPrice;
+
+        return $this;
+    }
+
+    /**
+     * Get glassPrice
+     *
+     * @return integer
+     */
+    public function getGlassPrice()
+    {
+        return $this->glassPrice;
     }
 }

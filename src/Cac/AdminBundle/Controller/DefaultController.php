@@ -77,4 +77,28 @@ class DefaultController extends Controller
         }
         return new Response("Carte validée");
     }
+
+    /**
+     * @Route("/list-bars", name="list_bars")
+     * @Template()
+     */
+    public function listBarsAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $bars = $em->getRepository('CacBarBundle:Bar')->findAll();
+        return array('bars' => $bars);
+    }
+
+    /**
+     * @Route("/define-price/{id}/{price}", name="define_price", options={"expose"=true})
+     */
+    public function definePriceAction($id, $price)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $bigboss = $em->getRepository('CacUserBundle:User')->find($id);
+        $bigboss->setGlassPrice(intval($price));
+        $em->persist($bigboss);
+        $em->flush();
+        return new Response("prix modifié");
+    }
 }
