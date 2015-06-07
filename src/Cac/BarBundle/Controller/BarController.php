@@ -92,8 +92,11 @@ class BarController extends Controller
         $entity = $em->getRepository('CacBarBundle:Bar')->find($id);
         $user = $this->get('security.context')->getToken()->getUser();
         $date = date('Y-m-d');
-        $promoOfferte = $em->getRepository('CacBarBundle:PromoOffertes')->getDayPromo($entity->getId(), $user->getId(), $date);
-
+        if($user != 'anon.') {
+            $promoOfferte = $em->getRepository('CacBarBundle:PromoOffertes')->getDayPromo($entity->getId(), $user->getId(), $date);
+        } else {
+            $promoOfferte = false;
+        }
         $entity->setScore($entity->getScore() +1);
         $em->persist($entity);
         $em->flush();
