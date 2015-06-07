@@ -41,9 +41,10 @@ class BarRepository extends EntityRepository
         $today = ucfirst(strftime("%A"));
 
 		$query = $this->createQueryBuilder('b')
-            ->select('b, p, o')
+            ->select('b, p, o, c')
             ->leftJoin('b.promotions', 'p')
             ->leftJoin('p.options', 'o')
+            ->leftJoin('b.comments', 'c')
             ->where('b.name LIKE :name OR b.adress LIKE :adress OR b.zipcode LIKE :zipcode OR b.town LIKE :town')
             ->andWhere('p.day = :today')
             ->andWhere('o.categoryShortcode = :value')
