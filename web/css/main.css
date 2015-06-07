@@ -4288,3 +4288,113 @@ p.nextPointFidelite{
     	left: 0;
     }
 }
+#searchInput {
+    width: 400px;
+    color: #303030;
+    font-size: 25px;
+    padding: 5px 15px;
+    border: 1px solid #303030;
+}
+.singleResult {
+    text-align: left;
+    cursor: pointer;
+}
+.singleResult:hover .searchInfos {
+    color: #303030;
+    transition: color 0.15s ease-in-out;
+}
+.singleResult:hover .searchPromo {
+    opacity: 1;
+    transition: opacity 0.15s ease-in-out;
+}
+.singleResult:hover .searchLink {
+    background-color: #5ac4d4;
+    transition: background-color 0.15s ease-in-out;
+}
+#homeSearch {
+    display: inline-block;
+}
+#searchResults {
+    background: #f6f6f6;
+    color: #bcbcbc;
+    margin-top: 2px;
+    z-index: 10;
+    position: relative;
+    border: 1px solid #303030;
+}
+.results {
+    padding: 5px 10px;
+}
+#searchResults.noSearch {
+    display: none;
+}
+.searchLink {
+    color: #ffffff;
+    background-color: #bcbcbc;
+    padding: 2px 12px;
+    font-size: 12px;
+    transition: background-color 0.15s ease-in-out;
+}
+.searchLink:hover {
+    color: #ffffff;
+    text-decoration: none;
+}
+.searchInfos {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: left;
+    position: relative;
+    width: 240px;
+    margin-left: 20px;
+    margin-right: 20px;
+    transition: color 0.15s ease-in-out;
+}
+.searchName {
+    font-weight: bold;
+}
+.searchAdress {
+    font-size: 12px;
+}
+.searchPromo {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    opacity: 0.5;
+    transition: opacity 0.15s ease-in-out;
+}
+.searchPromo span {
+    color: #ea9026;
+    font-weight: bold;
+}
+.searchHH {
+    height: 15px;
+    width: 15px;
+    vertical-align: middle;
+    display: inline-block;
+    background-size: 100%;
+    background-image: url('../img/pictoHappyHours.png');
+}
+.searchSeparator {
+    width: 70%;
+    border-bottom: 1px solid #ffffff;
+    margin: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.singleResult:last-child .searchSeparator {
+    border: none;
+}
+#moreResults {
+    background-color: #bcbcbc;
+    color: #303030;
+    cursor: pointer;
+    padding: 5px;
+}
+#moreResults:hover {
+    background-color: #303030;
+    color: #ffffff;
+}
+.navToggleBtn.logout a p {
+    background-color: #f6f6f6 !important;
+    color: #303030 !important;
+}

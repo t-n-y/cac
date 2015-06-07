@@ -3,6 +3,12 @@ firstWord();
 
  $('body').removeClass('load');
 
+ $('.navToggle').slideToggle(150);
+ $('.displayMore').on('click', function() {
+  $('.navToggle').slideToggle(150);
+  $('.navToggleBtn').slideToggle(150);
+ });
+
 var baseHeight = $(window).height();
 $('.welcome').css('height', baseHeight+'px');
 

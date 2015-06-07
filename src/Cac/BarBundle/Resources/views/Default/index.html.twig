@@ -5,9 +5,9 @@
 		<div class="welcome">
 			<div class="centerWelcome">
 			 	<h1>Rechercher un bar</h1>
-			 	<div class="homeSearch">
+			 	<div id="homeSearch">
 			 		<input type="text" id="searchInput" data-target="{{ path('bars_search') }}">
-			 		<div id="searchResults">
+			 		<div id="searchResults" class="noSearch">
 			 		</div>
 			 	</div>
 			</div>
@@ -106,30 +106,55 @@
                     method: "post",
                     data: {search: search},
                     success: function( data ) {
-                        var strToAppend = '';
-
+                        var strToAppend = '<div class="results">';
+                        var count = 0;
                         $.each(data, function (key, val) {
-                            strToAppend += '<div class="singleResult">'
-                            			+ 'ID : ' + val.id + ', '
-                            			+ 'Name : ' + val.name + ', '
-                            			+ 'Description : ' + val.description + ', '
-                            			+ 'Adresse : ' + val.adress + ', '
-                            			+ 'Geocode : ' + val.geocode + ', '
-                            			+ 'Ville : ' + val.town + ', '
-                            			+ 'Code postal : ' + val.zipcode + ''
-                            			+ 'Promotion du jour : ' + val.promotions[0].options[0].value + ''
-                            			+ 'Happy-hour du jour : ' + val.promotions[1].options[0].value + ''
-                            			+ '</div>';
-                        });
+                            if(count < 3) {
+                                strToAppend += '<div class="singleResult" data-target="' + Routing.generate('bar_show', { id: val.id }) + '">'
+                                        + '<div class="searchInfos">'
+                                        + '<div class="searchName">' + val.name + '</div>'
+                                        + '<div class="searchAdress">' + val.adress + ' ' + val.zipcode + ' ' + val.town + '</div>';
 
-                        $resultBody.empty().append(strToAppend);
+                                if(val.promotions[0].options[0].value != '') {
+                                    strToAppend += '<div class="searchPromo"><span>- ' + val.promotions[0].options[0].value + ' %</span>';
+                                    if(val.promotions[1].options[0].value != '') strToAppend += ' | <div class="searchHH"></div>';
+                                    strToAppend += '</div>';
+                                }
+
+
+                                strToAppend += '</div>'
+                                            + '<a class="searchLink" href="' + Routing.generate('bar_show', { id: val.id }) + '">En voir plus</a>'
+                                            + '<div class="searchSeparator"></div>'
+                                            + '</div>';
+                            }
+                            count++;
+                        });
+                        strToAppend += '</div>';
+                        if(count > 3) {
+                            strToAppend += '<div id="moreResults" data-search="' + search + '">Voir tous les résultats (' + count +')</div>';
+                        }
+
+                        $resultBody.empty().append(strToAppend).removeClass('noSearch');
 
                         if (data == '')
                             $resultBody.append('<div class="singleResult">Aucun résultat pour "' + search + '"</div>');
                     }
                 });
+            } else if(search.length == 0) {
+                $resultBody.empty().addClass('noSearch');
             }
         }, 400);  
+    });
+    $('#searchResults').on('click', '.singleResult', function() {
+        var link = $(this).attr('data-target');
+        window.location.href = link;
+    });
+    $('#homeSearch').on('click', function(e) {
+        e.stopPropagation();
+        $('#searchResults').removeClass('hidden');
+    });
+    $(document).click(function(){  
+        $('#searchResults').addClass('hidden');
     });
 	</script>
 {% endblock %}

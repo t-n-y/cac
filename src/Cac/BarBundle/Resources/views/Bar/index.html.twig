@@ -4,12 +4,6 @@
 
 {% block body %}
 
-<div class="barsSearch">
-	<input type="text" id="searchInput" data-target="{{ path('bars_search') }}">
-	<div id="searchResults">
-	</div>
-</div>
-
 <div class="topListBar col-xs-12 col-sm-12 col-md-12 noPadding">
 			<img src="{{asset('img/accueil.png')}}" alt="">
 			<img src="{{asset('img/pershing.png')}}" alt="">
@@ -27,12 +21,13 @@
 	</div>
 	<div class="col-xs-6 col-sm-3 col-md-3 noPadding">
 		<div id="recherche" class="col-xs-10 col-sm-10 col-md-10 noPadding">
-			<input type="text" name="recherche" class="col-xs-9 col-sm-9 col-md-10 noPadding" placeholder="Tapez votre recherche"></input>
-			<button><span class="glyphicon glyphicon-search col-xs-2 col-sm-2 col-md-2 noPadding"></span></button>
+			<input type="text" name="recherche" class="col-xs-9 col-sm-9 col-md-10 noPadding" placeholder="Tapez votre recherche" id="barsSearchInput" data-target="{{ path('bars_search') }}"></input>
 		</div>
 	</div>
 </div>
-<div class="barList col-xs-12 col-sm-12 col-md-12 noPadding">
+<div class="barList col-xs-12 col-sm-12 col-md-12 noPadding hidden" id="barsSearchResults">
+</div>
+<div class="barList col-xs-12 col-sm-12 col-md-12 noPadding" id="noSearchList">
 {% for bar in bars %}
 	<a href="{{ path('bar_show', { id : bar.id }) }}">
 		<div class="barInList col-xs-12 col-sm-6 col-md-3 noPadding">
@@ -191,8 +186,9 @@
     <script>
 	var xhr = null,
         globalTimeout = null,
-        $resultBody = $("#searchResults"),
-		$searchInput = $("#searchInput"),
+        $resultBody = $("#barsSearchResults"),
+		$searchInput = $("#barsSearchInput"),
+		$noSearchList = $('#noSearchList'),
 		searchPath = $searchInput.attr('data-target');
 
 	$searchInput.keyup( function(event){
@@ -219,25 +215,58 @@
                         var strToAppend = '';
 
                         $.each(data, function (key, val) {
-                            strToAppend += '<div class="singleResult">'
-                            			+ 'ID : ' + val.id + ', '
-                            			+ 'Name : ' + val.name + ', '
-                            			+ 'Description : ' + val.description + ', '
-                            			+ 'Adresse : ' + val.adress + ', '
-                            			+ 'Geocode : ' + val.geocode + ', '
-                            			+ 'Ville : ' + val.town + ', '
-                            			+ 'Code postal : ' + val.zipcode + ''
-                            			+ 'Promotion du jour : ' + val.promotions[0].options[0].value + ''
-                            			+ 'Happy-hour du jour : ' + val.promotions[1].options[0].value + ''
-                            			+ '</div>';
+                        	strToAppend += '<a href="' + Routing.generate('bar_show', { id: val.id }) + '">'
+											+ '<div class="barInList col-xs-12 col-sm-6 col-md-3 noPadding">'
+											+ '	<div class="contentImageBar" style="background-image:url(\'/web/uploads/bar/' + val.path + '\')">'
+													
+											+ '			<div class="shadowbarInList col-xs-12 col-sm-12 col-md-12">'
+											+ '				<div class="col-xs-6 col-sm-6 col-md-5 noPadding">'
+											+ '					<h3 id="firstWord' + val.id + '">' + val.name + '</h3>'
+											+ '				</div>'
+											+ '				<div class="col-xs-2 col-sm-2 col-md-2 noPadding">';
+							if(val.promotions[0].options[0].value != '') {
+								strToAppend += '<p class="shadowPromotion hoverShadow">-' + val.promotions[0].options[0].value + '%</p>';
+							}
+							strToAppend += '				</div>'
+											+ '				<div class="col-xs-2 col-sm-2 col-md-2 noPadding">'
+							if(val.promotions[1].options[0].value != '') {
+								strToAppend += '<div class="imageHappyHours hoverShadow">'
+											+ '						<img src="/web/img/pictoHappyHours.png" alt="">'
+											+ '					</div>';
+							}
+							strToAppend += '				</div>'
+											+ '				<div class="col-xs-2 col-sm-2 col-md-3 noPadding">';
+							if(val.comments.length > 0) {
+								var tot = 0;
+								$.each(val.comments, function (ke, va) {
+									tot += va.note;
+								});
+								var average = tot/(val.comments.length);
+								strToAppend += '				<p class="shadowNote">' + average + '/10</p>'
+											+ '					<p class="shadowNbAvis hoverShadow">' + val.comments.length + ' avis</p>';
+							}
+							strToAppend += '				</div>'
+											+ '				<div class="shadowAdresse col-xs-12 col-sm-12 col-md-12 noPadding hoverShadow">'
+											+ '					<p>' + val.adress + ', ' + val.zipcode + ' ' + val.town + '</p>'
+											+ '				</div>'
+											+ '			</div>'
+											+ '	</div>'
+											+ '</div>'
+											+ '</a>';
                         });
-
+						
+						$noSearchList.addClass('hidden');
+						$resultBody.removeClass('hidden');
                         $resultBody.empty().append(strToAppend);
 
                         if (data == '')
                             $resultBody.append('<div class="singleResult">Aucun résultat pour "' + search + '"</div>');
                     }
                 });
+            } else if(search.length == 0) {
+            	$noSearchList.removeClass('hidden');
+            	$resultBody.addClass('hidden');
+                $resultBody.empty().addClass('noSearch');
             }
         }, 400);  
     });
