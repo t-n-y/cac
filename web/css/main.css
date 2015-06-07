@@ -1520,6 +1520,14 @@ p.droitReserve{
 	border-top: 1px solid #5ac4d4;
 }
 
+.mesOptions{
+	cursor: pointer;
+	color: #5ac4d4;
+	position: absolute;
+	top: 0;
+	right: 50px;
+}
+
 .gestion{
 	display: none;
 	height: 550px;
@@ -1836,9 +1844,9 @@ p.rappelCondition{
 }
 
 .contentOptionBar h2{
-	color: #5ac4d4;
-	border-bottom: 1px solid #5ac4d4;
-	font-size: 17px;
+	padding: 10px 0;
+  	margin-bottom: 0px;
+  	font-size: 14px;
 }
 
 .contentBackOfficeBar p{
@@ -2201,14 +2209,8 @@ p.vignettePetitPlusPrix{
 }
 
 .contentMesOptions{
-	background-color: rgba(0,0,0,0.87);
-	position: absolute;
-	top: 0;
-	left: 0;
-	height: 550px;
-	color: #fff;
-	padding-right: 40px;
-
+	background-color: #f6f6f6;
+	color: #303030;
 }
 
 p.closeMesOptions{
@@ -2228,34 +2230,56 @@ p.closeMesOptions{
 }
 
 .contentMesOptions h2{
-	color: #fff;
-	border-color: #fff;
-	margin-left: 0px;
-}
-
-.mesOptionsEnCoursHeader p{
-	font-size: 12px;
-	margin: 0px;
 	text-align: center;
+	color: #303030;
+	background-color: #fcfcfc;
 }
 
 .mesOptionsEnCours{
 	background-color: #fff;
-	margin-bottom: 2px;
-	color : #5ac4d4;
+	margin-bottom: 20px;
+	color : #303030;
 	position: relative;
 }
 
-.closeMesOptionEnCours{
-	position: absolute;
-	top: 0;
-	right: -25px;
-	background-color: #d85359;
+.ligneMesOption1{
+	height: 50px;
+	line-height: 50px;
+	border-bottom: 1px solid #f6f6f6;
+}
+
+.ligneMesOption2{
+	height: 25px;
+	line-height: 25px;
+	font-size: 12px;
+	text-align: center;
+}
+
+.dataMiseEnAvant{
+	background-color: #303030;
 	color: #fff;
-	height: 17px;
-	width: 17px;
+}
+
+.dataDate{
+	display: inherit;
+}
+
+.closeMesOptionEnCours{
 	text-align: center;
 	cursor: pointer;
+}
+
+.stopOption{
+	width: 70px;
+	height: 30px;
+	display: inline-block;
+	background-color: #d85359;
+	color: #fff;
+	line-height: 30px;
+	border : 1px solid #303030;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
 }
 
 .closeMesOptionEnCours img{
