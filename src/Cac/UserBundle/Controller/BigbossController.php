@@ -41,4 +41,34 @@ class BigbossController extends Controller
                     ->register('Cac\UserBundle\Entity\Bigboss');
         }
     }
+
+    /**
+     * @Route("/compte/{id}", name="compte")
+     * @Template()
+     */
+    public function compteAction($id)
+    {
+        setlocale(LC_TIME, "fr_FR");
+        $today = ucfirst(strftime("%A"));
+
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('CacBarBundle:Bar')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Le bar demandé n\'existe pas.');
+        }
+        if ($this->get('security.context')->getToken()->getUser() != $entity->getAuthor()) {
+            throw $this->createNotFoundException('Vous n\'avez pas accés à ce contenu.');
+        }
+
+        $restriction = $em->getRepository('CacBarBundle:PromotionOptionCategory')->findOneBy(array('shortcode' => 'restriction'));
+        $restrictions = $em->getRepository('CacBarBundle:PromotionOption')->findBy(array('category' => $restriction->getId()));
+
+        return array(
+            'bar'      => $entity,
+            'today' => $today,
+            'restrictions' => $restrictions,
+        );     
+    }
 }

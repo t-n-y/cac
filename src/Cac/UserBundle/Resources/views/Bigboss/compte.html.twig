@@ -1,0 +1,48 @@
+{% extends "::basepro.html.twig" %}
+
+{% block body %}
+    <div class="topBarPro col-xs-12 col-sm-12 col-md-12 noPadding">
+		<img src="{{ asset('uploads/bar/'~bar.path) }}">
+		<div class="infoNameBar">
+			<h1>{{ bar.name }}</h1>
+		</div>
+	</div>
+	<div class="onglets col-xs-12 col-sm-12 col-md-12 noPadding">
+		<h2>Mon compte</h2>
+	</div>
+	<div class="onglets ongletsOptionPro col-xs-12 col-sm-12 col-md-12 noPadding">
+		<div class="ongletOptionPro generalBO col-xs-4 col-sm-4 col-md-4 noPadding">
+			<p>Général</p>
+		</div>
+		<div class="ongletOptionPro ModifBO col-xs-4 col-sm-4 col-md-4 noPadding">
+			<p>Modifier mes infos</p>
+		</div>
+		<div class="ongletOptionPro factureBO col-xs-4 col-sm-4 col-md-4 noPadding">
+			<p>Mes factures</p>
+		</div>
+	</div>
+
+	<div class="coteneurBackOfficeBar col-xs-12 col-sm-12 col-md-12 noPadding">
+		<div class="contentOptionBar">
+			<div class="contentOption contentGeneralBO center col-xs-12 col-sm-12 col-md-12">
+				<div class="row">
+					<div class="col-xs-12 col-sm-6 col-md-6">
+						<p>Ma formule</p>
+						<p class="affichageBO">Shooter</p>
+						<p>Si vous souhaitez changer de formule</p>
+						<p>Contactez nous</p>
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-6">
+						<p>Mon jour de facturation</p>
+						<p class="affichageBO">Le 15 de chaque mois</p>
+						<p>Voir mes factures</p>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-12">
+						<p class="encours">Mes encours au <span class="dateYesterday"></span></p>
+						<p class="affichageBO">18€</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

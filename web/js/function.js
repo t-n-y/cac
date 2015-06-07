@@ -496,6 +496,8 @@ $body.on('click','.closeMesOptionEnCours',function(){
 });
 
 
+
+
 function heightSuperInfoBar(){
   var heightSuperInfoBar = $('.superInfoBar').height();
   $('.contentMesOptions').css('height', heightSuperInfoBar+'px');
@@ -809,6 +811,61 @@ $('#cac_barbundle_bar_valet').on('click', function(){
     $('.valetSecurity').addClass('noInputValet');
   }
 });
+
+/********BO BAR******/
+
+function dateYesterday(){
+  var date = new Date();
+
+  var jour = date.getDate();
+  var mois = date.getMonth();
+  var annee = date.getFullYear();
+
+  mois = mois + 1;
+
+  if(jour <= 9){
+    jour = '0'+jour;
+  }
+
+  if(mois <= 9){
+    mois = '0'+mois;
+  }
+
+  if(mois === 5 || mois === 7 || mois === 8 || mois === 10 || mois === 12){
+    if( jour === 1){
+      jour = 30;
+      mois = mois - 1; 
+    }
+  }
+  else if(mois === 2 || mois === 4 || mois === 6 || mois === 9 || mois === 11){
+    if( jour === 1){
+      jour = 31;
+      mois = mois - 1; 
+    }
+  }
+  else if(mois === 1){
+    if( jour === 1){
+      jour = 31;
+      mois = 12; 
+      annee = annee - 1
+    }
+  }
+  else if(mois === 3){
+    if( jour === 3){
+      jour = 28;
+    }
+  }else{
+    jour = jour - 1;
+  }
+
+  var dateYesterday = jour + '/' + mois + '/' + annee; 
+
+  $('.dateYesterday').append(dateYesterday);
+}
+
+dateYesterday();
+
+/********************************/
 
 //$('#cac_barbundle_bar_valetCost').val($('#cac_barbundle_bar_valetCost').val() + '€');
 

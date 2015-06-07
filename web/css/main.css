@@ -1517,7 +1517,7 @@ p.droitReserve{
 .ongletselect{
 	background-color: #5ac4d4;
 	color : #fff;
-	border-top: 1px solid #5ac4d4;
+	
 }
 
 .mesOptions{
@@ -2200,8 +2200,14 @@ p.vignettePetitPlusPrix{
 	transform: translate(-50%, 0);
 }
 
-.contentCarte{
+.contentCarte, .contentGeneralBO{
 	display: block;
+}
+
+.affichageBO{
+  padding: 5px 50px;
+  background-color: #fff;
+  display: inline-block;
 }
 
 .conditionPDF{
