@@ -1,1 +1,4 @@
-{% if bar.id is defined %}<a href="{{ path('bar_show', { id : bar.id }) }}"><p>Mon back office</p></a>{% endif %}
+{% if bar.id is defined %}
+    <a href="{{ path('bar_show', { id : bar.id }) }}"><p>Mon back office</p></a>
+    <a href="{{ path('bars_offer', { id : bar.id }) }}"><p>Mes offres</p></a>
+{% endif %}
