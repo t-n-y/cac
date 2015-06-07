@@ -381,6 +381,7 @@ $('body').on('click','.sms',function(){
   $('.contentEmail').hide();
   $('.contentCarte').hide();
   $('.contentMiseAvant').hide();
+  $('.contentMesOptions').hide();
   $('.contentSms').show();
   heightSuperInfoBar();
 });
@@ -389,6 +390,7 @@ $body.on('click','.email',function(){
   $('.contentSms').hide();
   $('.contentCarte').hide();
   $('.contentMiseAvant').hide();
+  $('.contentMesOptions').hide();
   $('.contentEmail').show();
   heightSuperInfoBar();
 });
@@ -397,6 +399,7 @@ $body.on('click','.carte',function(){
   $('.contentSms').hide();
   $('.contentEmail').hide();
   $('.contentMiseAvant').hide();
+  $('.contentMesOptions').hide();
   $('.contentCarte').show();
   heightSuperInfoBar();
 });
@@ -405,25 +408,36 @@ $body.on('click','.miseAvant',function(){
   $('.contentEmail').hide();
   $('.contentCarte').hide();
   $('.contentSms').hide();
+  $('.contentMesOptions').hide();
   $('.contentMiseAvant').show();
   heightSuperInfoBar();
 });
 
 $body.on('click','.mesOptions',function(){
+  $('.contentEmail').hide();
+  $('.contentCarte').hide();
+  $('.contentSms').hide();
+  $('.contentMiseAvant').hide();
   $('.contentMesOptions').show();
+  heightSuperInfoBar();
 });
 
-$body.on('click','p.closeMesOptions',function(){
-  $('.contentMesOptions').hide();
-});
+// $body.on('click','.mesOptions',function(){
+//   $('.contentMesOptions').show();
+// });
+
+// $body.on('click','p.closeMesOptions',function(){
+//   $('.contentMesOptions').hide();
+// });
 
 $body.on('click','.closeMesOptionEnCours',function(){
-  var dataGenre = $(this).parent().find('.dataMiseEnAvant').data("genre");
-  var dataDate = $(this).parent().find('.dataDate').data("date");
-  var dataPrix = $(this).parent().find(".dataPrix").data("prix");
-  var dataQuantity = $(this).parent().find(".dataQuantity").data("quantity");
-  var dataStatus = $(this).parent().find(".dataStatus").data("status");
-  var dataTotal = $(this).parent().find(".dataTotal").data("total");
+  var dataGenre = $(this).parentsUntil($('.JS-contentMesOptions')).find('.dataMiseEnAvant').data("genre")
+  var dataDate = $(this).parentsUntil($('.JS-contentMesOptions')).find('.dataDate').data("date");
+  var dataPrix = $(this).parentsUntil($('.JS-contentMesOptions')).find(".dataPrix").data("prix");
+  var dataTotal = $(this).parentsUntil($('.JS-contentMesOptions')).find(".dataTotal").data("total");
+
+  console.log(dataGenre + ' ' + dataDate);
+
   var date = new Date();
 
   var jour = date.getDate();
@@ -443,35 +457,36 @@ $body.on('click','.closeMesOptionEnCours',function(){
   var dataStop = jour + '/' + mois + '/' + annee; 
 
 
-  $(this).parent().hide(300);
+  $(this).parentsUntil($('.JS-contentMesOptions')).hide(300);
 
   var new_element = jQuery(
-    '<div class="mesOptionsEnCours col-xs-12 col-sm-12 col-md-12 noPadding">'+ 
-      '<div class="col-xs-3 col-sm-3 col-md-3 noPadding">'+
-        '<p class="textLeft">'+ dataGenre +'</p>'+
+    '<div class="mesOptionsEnCours col-xs-12 col-sm-12 col-md-12 noPadding">'+
+      '<div class="ligneMesOption1">'+
+        '<div class="col-xs-4 col-sm-4 col-md-4 noPadding">'+
+          '<p class="dataMiseEnAvant">'+ dataGenre +'</p>'+
+        '</div>'+
+        '<div class="col-xs-4 col-sm-4 col-md-4 noPadding">'+
+          '<p>Historique</p>'+
+        '</div>'+
+        '<div class="col-xs-4 col-sm-4 col-md-4 noPadding">'+
+          '<div class="closeMesOptionEnCours">'+
+            '<span>Arrêté le <p class="dataDate"> '+dataStop+'</p>'+
+          '</div>'+
+        '</div>'+
       '</div>'+
-      '<div class="col-xs-2 col-sm-2 col-md-2 noPadding">'+
-        '<p>' + dataStop + '</p>'+
+      '<div class="ligneMesOption2">'+
+        '<div class="col-xs-4 col-sm-4 col-md-4 noPadding">'+
+          '<span>Souscrit le <p class="dataDate">'+ dataDate +'</p>'+
+        '</div>'+
+        '<div class="col-xs-4 col-sm-4 col-md-4 noPadding">'+
+          '<p>'+ dataPrix +'€/Jour</p>'+
+        '</div>'+
+        '<div class="col-xs-4 col-sm-4 col-md-4 noPadding">'+
+          '<p>' + dataTotal +'€</p>'+
+        '</div>'+
       '</div>'+
-      '<div class="col-xs-5 col-sm-5 col-md-5 noPadding">'+
-        '<div class="col-xs-3 col-sm-3 col-md-3 noPadding">'+
-          '<p>'+ dataDate +'</p>'+
-        '</div>'+
-        '<div class="col-xs-3 col-sm-3 col-md-3 noPadding">'+
-          '<p>'+ dataPrix +'</p>'+
-        '</div>'+
-        '<div class="col-xs-3 col-sm-3 col-md-3 noPadding">'+
-          '<p>'+ dataQuantity +'</p>'+
-        '</div>'+
-        '<div class="col-xs-3 col-sm-3 col-md-3 noPadding">'+
-          '<p>'+ dataStatus +'</p>'+
-       '</div>'+
-     '</div>'+
-     '<div class="col-xs-2 col-sm-2 col-md-2 noPadding">'+
-       '<p>'+ dataTotal +'</p>'+
-     '</div>'+
     '</div>'
-    );
+  );
 
   $('.optionFinies').append(new_element.css("display","none"));
 

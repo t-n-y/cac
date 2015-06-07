@@ -85,7 +85,7 @@ class BarController extends Controller
      */
     public function showAction($id)
     {
-        setlocale(LC_TIME, "french");
+        setlocale(LC_TIME, "fr_FR");
         $today = strftime("%A");
 
         $em = $this->getDoctrine()->getManager();
