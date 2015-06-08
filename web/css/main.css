@@ -1191,7 +1191,30 @@ p.droitReserve{
 	margin-top: 30px;
 	margin-bottom: 30px;
 	cursor: pointer;
+	position: relative;
+	z-index: 1;
 }
+
+.hoverBlockWelcome{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: #303030;
+	opacity: 0;
+	z-index: 2;
+	-webkit-transition: opacity 0.5s ease-in-out;
+    -moz-transition: opacity 0.5s ease-in-out;
+    -o-transition: opacity 0.5s ease-in-out;
+    -ms-transition: opacity 0.5s ease-in-out;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.opacityHover{
+	opacity: 0.4;
+}
+
 .blockWelcome p{
 	padding: 5px 20px; 
 	color: #fff;
@@ -1200,6 +1223,8 @@ p.droitReserve{
 	-webkit-border-radius: 5px;
 	display: inline-block;
 	margin : 0;
+	position: relative;
+	z-index: 3;
 
 }
 
@@ -2703,14 +2728,14 @@ a .ongletCreation:hover p{
 	position: relative;
 }
 
-.ac-custom .servicesNewBar label::before{
+.ac-custom .servicesNewBar label::before, .ac-custom .CGU label::before{
   content: '';
   border: 1px solid #303030;
   -webkit-transition: opacity 0.3s;
   transition: opacity 0.3s;
 }
 
-.ac-custom .servicesNewBar input[type="checkbox"]{
+.ac-custom .servicesNewBar input[type="checkbox"], .ac-custom .CGU input[type="checkbox"]{
   opacity: 0;
   -webkit-appearance: none;
   display: inline-block;
@@ -2719,11 +2744,21 @@ a .ongletCreation:hover p{
 
 }
 
-.ac-custom .servicesNewBar input[type="checkbox"], .ac-custom .servicesNewBar label::before {
+.ac-custom .servicesNewBar input[type="checkbox"], .ac-custom .servicesNewBar label::before{
   width: 20px;
   height: 20px;
   top: 50%;
   left: 0;
+  margin-top: -15px;
+  position: absolute;
+  cursor: pointer;
+}
+
+.ac-custom .CGU input[type="checkbox"], .ac-custom .CGU label::before {
+  width: 20px;
+  height: 20px;
+  top: 50%;
+  margin-left: -30px;
   margin-top: -15px;
   position: absolute;
   cursor: pointer;

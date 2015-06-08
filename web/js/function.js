@@ -37,6 +37,14 @@ $(window).on('resize',function() {
   changePaddingWelcome(heighWelcome, baseHeightCenterWelcome);
 });
 
+$('.blockWelcome').on('mouseenter', function(){
+  $(this).find('.hoverBlockWelcome').addClass('opacityHover');
+});
+
+$('.blockWelcome').on('mouseleave', function(){
+  $(this).find('.hoverBlockWelcome').removeClass('opacityHover');
+});
+
 $( ".menuHeaderList .hottest" ).on( "click", function() {
   setTimeout(function() {  
     annimationShowBar();
@@ -719,16 +727,17 @@ function firstWord(){
 }
 
 function annimationShowBar(){
-  $(".barInList").mouseenter(function(){
+  $("body").on('mouseenter', '.barInList', function(){
      $(this).find('.hoverShadow').stop(true,true).fadeIn(400);
      $(this).find('.shadowbarInList p.shadowNote').css('margin-top', '6px');
      $(this).find('.barInListHighlight .shadowbarInList p.shadowNote').css('margin-top', '2px');
    });
-  $(".barInList").mouseleave(function(){
+ $("body").on('mouseleave', '.barInList', function(){
      $(this).find('.hoverShadow').stop(true,true).fadeOut(10);
      $(this).find('.shadowbarInList p.shadowNote').css('margin-top', '10px');
    });
-  $(".barInListHighlight").mouseenter(function(){
+
+   $("body").on('mouseenter', '.barInListHighlight', function(){
      $(this).find('.shadowbarInList p.shadowNote').css('margin-top', '2px');
    });
   
