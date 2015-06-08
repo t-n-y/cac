@@ -10,22 +10,31 @@ firstWord();
  });
 
 var baseHeight = $(window).height();
-$('.welcome').css('height', baseHeight+'px');
+var navHeight = $('.navigation').height();
+var baseHeightCenterWelcome = $('.centerWelcome').height();
 
-function changePaddingWelcome(heightWindow){
-  var baseHeightCenterWelcome = $('.centerWelcome').height();
-  var marginCenterWelcome = (heightWindow - baseHeightCenterWelcome) / 2;
+var heighWelcome = baseHeight - navHeight;
+
+$('.welcome').css('height', heighWelcome+'px');
+
+function changePaddingWelcome(heighWelcome, baseHeightCenterWelcome){
+
+  var marginCenterWelcome = (heighWelcome - baseHeightCenterWelcome) / 2;
   $('.centerWelcome').css('padding-top', marginCenterWelcome+'px');
-  $('.welcome').css('height', heightWindow+'px');
+  $('.welcome').css('height', heighWelcome+'px');
 
 }
 
-changePaddingWelcome(baseHeight);
+changePaddingWelcome(heighWelcome, (baseHeightCenterWelcome+20) );
 
 
 $(window).on('resize',function() {
-  var heightWindow = $(window).height();
-    changePaddingWelcome(heightWindow);
+  baseHeight = $(window).height();
+  navHeight = $('.navigation').height();
+  baseHeightCenterWelcome = $('.centerWelcome').height();
+  heighWelcome = baseHeight - navHeight;
+
+  changePaddingWelcome(heighWelcome, baseHeightCenterWelcome);
 });
 
 $( ".menuHeaderList .hottest" ).on( "click", function() {
@@ -425,6 +434,29 @@ $body.on('click','.mesOptions',function(){
   $('.contentSms').hide();
   $('.contentMiseAvant').hide();
   $('.contentMesOptions').show();
+  heightSuperInfoBar();
+});
+
+/******** Mon compte BB********/
+
+$('body').on('click','.generalBO',function(){
+  $('.contentFactureBO').hide();
+  $('.contentBarmanBO').hide();
+  $('.contentGeneralBO').show();
+  heightSuperInfoBar();
+});
+
+$('body').on('click','.factureBO',function(){
+  $('.contentGeneralBO').hide();
+  $('.contentBarmanBO').hide();
+  $('.contentFactureBO').show();
+  heightSuperInfoBar();
+});
+
+$('body').on('click','.barmanBO',function(){
+  $('.contentGeneralBO').hide();
+  $('.contentFactureBO').hide();
+  $('.contentBarmanBO').show();
   heightSuperInfoBar();
 });
 

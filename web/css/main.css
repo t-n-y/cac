@@ -87,6 +87,11 @@ input[type="file"] > input[type="button"]::-moz-focus-inner {
 	text-align: center;
 }
 
+.underline{
+	text-decoration: underline;
+	cursor: pointer;
+}
+
 h2.font30{
 	font-size: 30px !important;
 	padding-top: 15px !important;
@@ -1144,6 +1149,7 @@ p.droitReserve{
 }
 
 .welcome{
+	position: relative;
 	width: 100%;
 	background: url(../img/defaultImageBar.jpg) no-repeat center fixed; 
   	-webkit-background-size: cover; /* pour anciens Chrome et Safari */
@@ -1151,6 +1157,26 @@ p.droitReserve{
   	color: $white;
   	text-align: center;
   	color: #fff;
+}
+
+.patern{
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: url(../img/pattern303030cac.png); 
+	  zoom: 0.6;
+}
+
+.centerWelcome{
+	position: relative;
+	z-index: 2;
+}
+
+.centerWelcome h2{
+	margin-top: 0px;
 }
 
 .blocksWelcome{
@@ -1670,6 +1696,14 @@ p.topPosition{
 
 .ticketBarTop span{
 	color: #000;
+}
+
+.reservationDone{
+	background-color: #ea9026;
+}
+
+.voirMaConfirmationDone{
+	line-height: 80px;
 }
 
 .ticketBarBottom{

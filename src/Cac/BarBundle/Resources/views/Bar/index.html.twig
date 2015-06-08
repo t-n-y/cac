@@ -28,6 +28,7 @@
 <div class="barList col-xs-12 col-sm-12 col-md-12 noPadding hidden" id="barsSearchResults">
 </div>
 <div class="barList col-xs-12 col-sm-12 col-md-12 noPadding" id="noSearchList">
+{% set nbLoops = 0 %}
 {% for bar in bars %}
 	<a href="{{ path('bar_show', { id : bar.id }) }}">
 		<div class="barInList col-xs-12 col-sm-6 col-md-3 noPadding">
@@ -63,111 +64,98 @@
 		</div>
 	</a>
 	{% if loop.index %8 == 0 %}
-	
-		{% if highlight[0] is defined %}
-			<a href="{{ path('bar_show', { id : highlight[0].bar.id }) }}">
-				<div class="HightlightLeft col-xs-12 col-sm-6 col-md-6 noPadding">
-					<div class="barInListHighlight barInList col-xs-12 col-sm-12 col-md-12 noPadding">
-						<div class="contentImageBar" style="background-image:url({{ asset('uploads/bar/'~highlight[0].bar.path) }})">
-							<div class="shadowbarInList col-xs-12 col-sm-12 col-md-12">
-								<div class="col-xs-10 col-sm-10 col-md-10 noPadding">
-									<h3 id="firstWord{{ highlight[0].bar.id }}">{{ highlight[0].bar.name }}</h3>
-								</div>
-								
-								<div class="col-xs-2 col-sm-2 col-md-2 noPadding">
-									<p class="shadowNote">{{ bar.note }}/10</p>
-									<p class="shadowNbAvis hoverShadow">{{ bar.nbAvis }} avis</p>
-								</div>
-								<div class="shadowAdresse col-xs-12 col-sm-12 col-md-12 noPadding">
-									<div class="col-xs-2 col-sm-2 col-md-2 noPadding">
-										{#{% if bar.promotion.promotionArray[today]['happy-hour'].value %}
-										<p>{{ bar.promotion.promotionArray[today]['happy-hour'].value }}</p>
-										{% endif %} #}
-										<p class="shadowPromotion">-{{ bar.promo }}%</p>
+		{% if nbLoops == 0 %}
+			{% if highlight[0] is defined %}
+			{% set nbLoops = 1 %}
+				<a href="{{ path('bar_show', { id : highlight[0].bar.id }) }}">
+					<div class="HightlightLeft col-xs-12 col-sm-6 col-md-6 noPadding">
+						<div class="barInListHighlight barInList col-xs-12 col-sm-12 col-md-12 noPadding">
+							<div class="contentImageBar" style="background-image:url({{ asset('uploads/bar/'~highlight[0].bar.path) }})">
+								<div class="shadowbarInList col-xs-12 col-sm-12 col-md-12">
+									<div class="col-xs-10 col-sm-10 col-md-10 noPadding">
+										<h3 id="firstWord{{ highlight[0].bar.id }}">{{ highlight[0].bar.name }}</h3>
 									</div>
-									<div class="col-xs-1 col-sm-1 col-md-1 noPadding">
-										<div class="imageHappyHours">
-											<img src="{{asset('img/pictoHappyHours.png')}}" alt="">
+									
+									<div class="col-xs-2 col-sm-2 col-md-2 noPadding">
+										<p class="shadowNote">{{ bar.note }}/10</p>
+										<p class="shadowNbAvis hoverShadow">{{ bar.nbAvis }} avis</p>
+									</div>
+									<div class="shadowAdresse col-xs-12 col-sm-12 col-md-12 noPadding">
+										<div class="col-xs-2 col-sm-2 col-md-2 noPadding">
+											{#{% if bar.promotion.promotionArray[today]['happy-hour'].value %}
+											<p>{{ bar.promotion.promotionArray[today]['happy-hour'].value }}</p>
+											{% endif %} #}
+											<p class="shadowPromotion">-{{ bar.promo }}%</p>
+										</div>
+										<div class="col-xs-1 col-sm-1 col-md-1 noPadding">
+											<div class="imageHappyHours">
+												<img src="{{asset('img/pictoHappyHours.png')}}" alt="">
+											</div>
+										</div>
+										<div class="col-xs-2 col-sm-2 col-md-2 noPadding">
+											
+												<p class="priceBar">€€€€€</p>
+											
+										</div>
+										<div class="col-xs-3 col-sm-3 col-md-3 noPadding">
+											<p class="allureBar">Chic et élégant</p>
+										</div>
+										<div class="col-xs-4 col-sm-4 col-md-4 noPadding">
+											<p class="tagBar">Les bests, les cosy</p>
 										</div>
 									</div>
-									<div class="col-xs-2 col-sm-2 col-md-2 noPadding">
-										
-											<p class="priceBar">€€€€€</p>
-										
+									<div class="shadowAdresse col-xs-12 col-sm-12 col-md-12 noPadding hoverShadow">
+										<p class="adresseBar">{{ highlight[0].bar.adress }}, {{ highlight[0].bar.zipcode }} {{ highlight[0].bar.town }}</p>
 									</div>
-									<div class="col-xs-3 col-sm-3 col-md-3 noPadding">
-										<p class="allureBar">Chic et élégant</p>
-									</div>
-									<div class="col-xs-4 col-sm-4 col-md-4 noPadding">
-										<p class="tagBar">Les bests, les cosy</p>
-									</div>
-								</div>
-								<div class="shadowAdresse col-xs-12 col-sm-12 col-md-12 noPadding hoverShadow">
-									<p class="adresseBar">{{ highlight[0].bar.adress }}, {{ highlight[0].bar.zipcode }} {{ highlight[0].bar.town }}</p>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-			</a>
-		{% endif %}
-		{% if highlight[1] is defined %}
-			<a href="{{ path('bar_show', { id : highlight[1].bar.id }) }}">
-				<div class="HightlightRight col-xs-12 col-sm-6 col-md-6 noPadding">
-					{#{{highlight[1].bar.id}}#}
-					<div class="barInListHighlight barInList col-xs-12 col-sm-12 col-md-12 noPadding">
-						<div class="contentImageBar" style="background-image:url({{ asset('uploads/bar/'~highlight[1].bar.path) }})">
-							<div class="shadowbarInList col-xs-12 col-sm-12 col-md-12">
-								<div class="col-xs-10 col-sm-10 col-md-10 noPadding">
-									<h3 id="firstWord{{ highlight[1].bar.id }}">{{ highlight[1].bar.name }}</h3>
-								</div>
-								
-								<div class="col-xs-2 col-sm-2 col-md-2 noPadding">
-									<p class="shadowNote">{{ bar.note }}/10</p>
-									<p class="shadowNbAvis hoverShadow">{{ bar.nbAvis }} avis</p>
-								</div>
-								<div class="shadowAdresse col-xs-12 col-sm-12 col-md-12 noPadding">
-									<div class="col-xs-2 col-sm-2 col-md-2 noPadding">
-										{#{% if bar.promotion.promotionArray[today]['happy-hour'].value %}
-										<p>{{ bar.promotion.promotionArray[today]['happy-hour'].value }}</p>
-										{% endif %} #}
-										<p class="shadowPromotion">-{{ bar.promo }}%</p>
+				</a>
+			{% endif %}
+			{% if highlight[1] is defined %}
+				<a href="{{ path('bar_show', { id : highlight[1].bar.id }) }}">
+					<div class="HightlightRight col-xs-12 col-sm-6 col-md-6 noPadding">
+						{#{{highlight[1].bar.id}}#}
+						<div class="barInListHighlight barInList col-xs-12 col-sm-12 col-md-12 noPadding">
+							<div class="contentImageBar" style="background-image:url({{ asset('uploads/bar/'~highlight[1].bar.path) }})">
+								<div class="shadowbarInList col-xs-12 col-sm-12 col-md-12">
+									<div class="col-xs-10 col-sm-10 col-md-10 noPadding">
+										<h3 id="firstWord{{ highlight[1].bar.id }}">{{ highlight[1].bar.name }}</h3>
 									</div>
-									<div class="col-xs-1 col-sm-1 col-md-1 noPadding">
-										<div class="imageHappyHours">
-											<img src="{{asset('img/pictoHappyHours.png')}}" alt="">
+									
+									<div class="col-xs-2 col-sm-2 col-md-2 noPadding">
+										<p class="shadowNote">{{ bar.note }}/10</p>
+										<p class="shadowNbAvis hoverShadow">{{ bar.nbAvis }} avis</p>
+									</div>
+									<div class="shadowAdresse col-xs-12 col-sm-12 col-md-12 noPadding">
+										<div class="col-xs-2 col-sm-2 col-md-2 noPadding">
+											{#{% if bar.promotion.promotionArray[today]['happy-hour'].value %}
+											<p>{{ bar.promotion.promotionArray[today]['happy-hour'].value }}</p>
+											{% endif %} #}
+											<p class="shadowPromotion">-{{ bar.promo }}%</p>
+										</div>
+										<div class="col-xs-1 col-sm-1 col-md-1 noPadding">
+											<div class="imageHappyHours">
+												<img src="{{asset('img/pictoHappyHours.png')}}" alt="">
+											</div>
+										</div>
+										<div class="col-xs-3 col-sm-3 col-md-3 noPadding">
+											<p class="allureBar">Chic et élégant</p>
+										</div>
+										<div class="col-xs-4 col-sm-4 col-md-4 noPadding">
+											<p class="tagBar">Les bests, les cosy</p>
 										</div>
 									</div>
-									<div class="col-xs-2 col-sm-2 col-md-2 noPadding">
-										{% if highlight[1].bar.priceRange ==  1 %}
-											<p class="priceBar">€<span>€€€€</span></p>
-										{% elseif highlight[1].bar.priceRange ==  2 %}
-											<p class="priceBar">€€<span>€€€</span></p>
-										{% elseif highlight[1].bar.priceRange ==  3 %}
-											<p class="priceBar">€€€<span>€€</span></p>
-										{% elseif highlight[1].bar.priceRange ==  4 %}
-											<p class="priceBar">€€€€<span>€</span></p>
-										{% elseif highlight[1].bar.priceRange ==  5 %}
-											<p class="priceBar">€€€€€</p>
-										{% else %}
-											<p class="priceBar">€€€<span>€€</span></p>
-										{% endif %}
+									<div class="shadowAdresse col-xs-12 col-sm-12 col-md-12 noPadding hoverShadow">
+										<p class="adresseBar">{{ highlight[1].bar.adress }}, {{ highlight[1].bar.zipcode }} {{ highlight[1].bar.town }}</p>
 									</div>
-									<div class="col-xs-3 col-sm-3 col-md-3 noPadding">
-										<p class="allureBar">Chic et élégant</p>
-									</div>
-									<div class="col-xs-4 col-sm-4 col-md-4 noPadding">
-										<p class="tagBar">Les bests, les cosy</p>
-									</div>
-								</div>
-								<div class="shadowAdresse col-xs-12 col-sm-12 col-md-12 noPadding hoverShadow">
-									<p class="adresseBar">{{ highlight[1].bar.adress }}, {{ highlight[1].bar.zipcode }} {{ highlight[1].bar.town }}</p>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-			</a>
+				</a>
+			{% endif %}
 		{% endif %}
 	{% endif %}
 
