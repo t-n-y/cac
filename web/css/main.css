@@ -2758,7 +2758,7 @@ a .ongletCreation:hover p{
   width: 20px;
   height: 20px;
   top: 50%;
-  margin-left: -30px;
+  left: 30%;
   margin-top: -15px;
   position: absolute;
   cursor: pointer;
@@ -2781,6 +2781,11 @@ a .ongletCreation:hover p{
 	margin-top: -12px;
 	left: 3px;
 	pointer-events: none;
+}
+
+.ac-custom .CGU svg {
+  	left: 30% !important;
+	margin-left: 3px !important;
 }
 
 .ac-custom .heureNewBar svg {
@@ -3796,132 +3801,6 @@ float: left;
 /***************************************/
 
 /**************ABONNEMENT***************/
-/*.contentAbonnement{
-
-	padding-left: 12%;
-	padding-right: 12%;
-}
-
-.contentInAbonnement{
-	border-bottom: 1px solid #000;
-	margin-top: 10px;
-
-}
-
-.col1Abonnement{
-	text-align: left;
-}
-
-.col2Abonnement{
-	text-align: center;
-}
-
-.greenAbonnement{
-	width: 40%;
-	min-height: 10px;
-	background-color: #86c295;
-	margin-top: 5px;
-	margin-left: auto;
-	margin-right: auto;
-	color: #fff;
-}
-
-.greenAbonnementText{
-	width: 40%;
-	height: 70px;
-	background-color: #86c295;
-	margin-top: 35px;
-	margin-left: auto;
-	margin-right: auto;
-	color: #fff;
-	padding-top: 15px;
-}
-
-.orangeAbonnementText{
-	width: 40%;
-	height: 70px;
-	background-color: #e4a11f;
-	margin-top: 35px;
-	margin-left: auto;
-	margin-right: auto;
-	color: #fff;
-	padding-top: 15px;
-}
-
-.greenAbonnementText2{
-	color: #86c295;
-}
-
-.contentTitleInAbonnement h2{
-	font-family: "GurmukhiMN", Arial;
-  	font-weight: normal;
-}
-
-.contentTitleInAbonnement p{
-	margin: 0px;
-	font-family: "HelveticaNeue-Regular", Arial;
-  	font-weight: normal;
-  	color : #4d4d4d;
-}
-
-.contentTitleInAbonnement p.oldPrice{
-	color: #aeaeae;
-	margin-top: 20px;
-	font-size: 25px;
-	position: relative;
-}
-
-.barreAbonnement{
-	background-color: #e66c6c;
-	width: 80px;
-	height: 2px;
-	position: absolute;
-	top: 50%;
-	left: 30%;
-
-	 -ms-transform: rotate(-25deg); 
-    -webkit-transform: rotate(-25deg); 
-    transform: rotate(-25deg);
-
-}
-
-.contentTitleInAbonnement p.oldPrice span{
-	font-size: 15px;
-}
-
-.contentTitleInAbonnement p.petitAbonnement{
-	font-size: 10px;
-	margin-top: -5px;
-}
-
-.contentTitleInAbonnement p.blueAbonnement{
-	color: #5ac4d4;
-	margin: 10px 0px;
-}
-
-.contentTitleInAbonnement p.newPrice{
-	margin-top: 20px;
-	font-size: 25px;
-
-}
-
-.contentTitleInAbonnement p.newPrice span{
-	font-size: 15px;
-}
-
-.contentTitleInAbonnement p.dureeAbonnement{
-		margin: 10px 0px;
-}
-
-.souscrireAbonnement{
-	border: 2px solid #000;
-	border-radius: 7px;
-    -webkit-border-radius: 7px;
-	-moz-border-radius: 7px;
-	background-color: #fdbc32;
-	color: #000;
-	padding: 10px;
-}*/
 
 .containerAbonnement{
 	margin-top: 40px;
@@ -4068,6 +3947,15 @@ p.nextPointFidelite{
 	.newProNav a.espacePartenaire {
 	  margin-right: 15px;
 	  margin-left: -15px;
+	}
+
+	.ac-custom .CGU input[type="checkbox"], .ac-custom .CGU label::before {
+	  left: 25%;
+	}
+
+	.ac-custom .CGU svg {
+	  	left: 25% !important;
+		margin-left: 3px !important;
 	}
 }
 
@@ -4350,6 +4238,18 @@ p.nextPointFidelite{
 	}
 
 }
+
+@media (max-width: 670px) {
+	.ac-custom .CGU input[type="checkbox"], .ac-custom .CGU label::before {
+	  left: 5%;
+	}
+
+	.ac-custom .CGU svg {
+	  	left: 5% !important;
+		margin-left: 3px !important;
+	}
+}
+
 @media print {
   body {
     visibility: hidden !important;
