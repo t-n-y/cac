@@ -1167,7 +1167,7 @@ p.droitReserve{
 	left: 0;
 	right: 0;
 	background: url(../img/pattern303030cac.png); 
-	  zoom: 0.6;
+	zoom: 0.4;
 }
 
 .centerWelcome{
@@ -1702,7 +1702,7 @@ p.topPosition{
 	background-color: #ea9026;
 }
 
-.voirMaConfirmationDone{
+.voirMaConfirmationDone, .barClose{
 	line-height: 80px;
 }
 
@@ -3547,6 +3547,10 @@ float: left;
 	overflow: hidden;
 	border: 5px solid rgba(0,0,0,0);
 	
+}
+
+.navigation{
+	text-align: center;
 }
 
 .contentImageBar{

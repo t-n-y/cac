@@ -10,7 +10,7 @@ firstWord();
  });
 
 var baseHeight = $(window).height();
-var navHeight = $('.navigation').height();
+var navHeight = $('.menuNav').height();
 var baseHeightCenterWelcome = $('.centerWelcome').height();
 
 var heighWelcome = baseHeight - navHeight;
@@ -30,7 +30,7 @@ changePaddingWelcome(heighWelcome, (baseHeightCenterWelcome+20) );
 
 $(window).on('resize',function() {
   baseHeight = $(window).height();
-  navHeight = $('.navigation').height();
+  navHeight = $('.menuNav').height();
   baseHeightCenterWelcome = $('.centerWelcome').height();
   heighWelcome = baseHeight - navHeight;
 
