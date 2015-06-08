@@ -4371,3 +4371,8 @@ p.nextPointFidelite{
     background-color: #f6f6f6 !important;
     color: #303030 !important;
 }
+.navLine .lisere {
+    width: 70%;
+    border-bottom: 1px solid #bcbcbc;
+    margin: auto;
+}

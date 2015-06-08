@@ -197,18 +197,24 @@
                 </div>
                 <div class="clear"></div>
                 <ul>
+                    {% if is_granted('ROLE_BIGBOSS') or is_granted('ROLE_BARMAN') %}
                     <li>
-                      {% if is_granted('ROLE_BIGBOSS') %}
                         {% render url('navigation') %}
                         <a href="{{ path('barman_register') }}"><p>Ajouter un barman</p></a>
-                        <a href="{{ path('bar_new') }}"><p>Créer un bar</p></a>
-                      {% endif %}
+                        {% if is_granted('ROLE_BIGBOSS') %}<a href="{{ path('bar_new') }}"><p>Créer un bar</p></a>{% endif %}
                     </li>
                     <li class="navToggleBtn logout"><a href="#" class="displayMore"><p>Afficher plus</p></a></li>
+                    <li class="navToggle navLine"><div class="lisere"></div></li>
                     <li class="navToggle"><a class="mesReservation" href="#"><p>Mes réservations</p></a></li>
                     <li class="navToggle"><a class="mesParrainage" href="#"><p>Mes parrainage</p></a></li>
                     <li class="navToggle"><a class="monCompte" href="{{ path('fos_user_profile_show') }}"><p>Mon compte</p></a></li>
-                    <li class="navToggle"><a href="#"><p>Mes points</p></a></li>
+                    <li class="navToggle hidden"><a href="#"><p>Mes points</p></a></li>
+                    {% else %}
+                    <li><a class="mesReservation" href="#"><p>Mes réservations</p></a></li>
+                    <li><a class="mesParrainage" href="#"><p>Mes parrainage</p></a></li>
+                    <li><a class="monCompte" href="{{ path('fos_user_profile_show') }}"><p>Mon compte</p></a></li>
+                    <li class="navToggle hidden"><a href="#"><p>Mes points</p></a></li>
+                    {% endif %}
                     <li class="logout"><a href="{{ path('fos_user_security_logout') }}"><p>Déconnexion</p></a></li>
                 </ul>
             {% else %}
