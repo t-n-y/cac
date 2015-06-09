@@ -140,10 +140,10 @@
 							</div>
 							{% set nbHighlight = highlight | length %}
 
-							{% set j = 0 %}
+							{% set boucle = 0 %}
 							{% if nbHighlight < 2 %}
 								{% for bar in bars %}
-									{% if j < 1 %}
+									{% if boucle < 1 %}
 										{% if bar.id != myBar %}
 											<div class="HightlightRight col-xs-12 col-sm-6 col-md-6 noPadding">
 												<div class="barInListHighlight barInList col-xs-12 col-sm-12 col-md-12 noPadding">
@@ -154,7 +154,7 @@
 													</div>
 												</div>
 											</div>
-											{% set j = j+1 %}
+											{% set boucle = boucle+1 %}
 										{% endif %}
 									{% endif %}
 								{% endfor%}
@@ -186,11 +186,13 @@
 					<div class="mettreBarEnAvant">
 						{% set miseEnAvant = false %}
 
-						{% for j in 0..nbHighlight-1%}
-							{% if highlight[j].bar.id == myBar %}
-								{% set miseEnAvant = true %}
-							{% endif %}
-						{% endfor %}
+						{% if nbHighlight > 0 %}
+							{% for j in 0..nbHighlight-1%}
+								{% if highlight[j].bar.id == myBar %}
+									{% set miseEnAvant = true %}
+								{% endif %}
+							{% endfor %}
+						{% endif %}
 
 						{% if miseEnAvant %}
 							<p data-bar-id="{{bar.id}}">Suspendre la mise en avant de mon bar</p>
