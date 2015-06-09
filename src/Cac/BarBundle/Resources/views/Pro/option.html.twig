@@ -141,7 +141,7 @@
 							{% set nbHighlight = highlight | length %}
 
 							{% set j = 0 %}
-							{% if nbHighlight > 2 %}
+							{% if nbHighlight < 2 %}
 								{% for bar in bars %}
 									{% if j < 1 %}
 										{% if bar.id != myBar %}
