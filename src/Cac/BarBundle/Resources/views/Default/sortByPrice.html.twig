@@ -1,13 +1,14 @@
 {% for bar in bars %}
-	<div class="barInList col-xs-12 col-sm-6 col-md-3 noPadding">
-	<img src="{{ asset('uploads/bar/'~bar.path) }}">
-		<a href="{{ path('bar_show', { id : bar.id }) }}"><div class="shadowbarInList col-xs-12 col-sm-12 col-md-12">
-			<h3 id="firstWord{{ bar.id }}"><span class='firstWords'>{{ bar.name }}</span></h3>
-			
-				<p class="prix">€€€€€</p>
+		<a href="{{ path('bar_show', { id : bar.id }) }}">
+			<div class="barInList col-xs-12 col-sm-6 col-md-3 noPadding">
+				<div class="contentImageBar" style="background-image:url({{ asset('uploads/bar/'~bar.path) }})">
+					<div class="shadowbarInList col-xs-12 col-sm-12 col-md-12">
 
-			<p class="reduc">%</p>
-		</div></a>
-	</div>
-
+						<div class="col-xs-6 col-sm-6 col-md-5 noPadding">
+							<h3 id="firstWord{{ bar.id }}">{{ bar.name }}</h3>
+						</div>
+					</div>
+				</div>
+			</div>
+		</a>
 {% endfor %}

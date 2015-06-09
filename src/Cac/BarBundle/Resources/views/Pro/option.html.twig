@@ -139,20 +139,41 @@
 								</div>
 							</div>
 							{% set nbHighlight = highlight | length %}
+
+							{% set j = 0 %}
+							{% if nbHighlight > 2 %}
+								{% for bar in bars %}
+									{% if j < 1 %}
+										{% if bar.id != myBar %}
+											<div class="HightlightRight col-xs-12 col-sm-6 col-md-6 noPadding">
+												<div class="barInListHighlight barInList col-xs-12 col-sm-12 col-md-12 noPadding">
+													<div class="contentImageBar" style="background-image:url({{ asset('uploads/bar/'~bar.path) }})">
+														<a href="{{ path('bar_show', { id : bar.id }) }}"><div class="shadowbarInList col-xs-12 col-sm-12 col-md-12">
+															<h3 id="firstWord{{ bar.id }}"> {{ bar.name }} </h3>
+														</div></a>
+													</div>
+												</div>
+											</div>
+											{% set j = j+1 %}
+										{% endif %}
+									{% endif %}
+								{% endfor%}
+							{% else %}
 							
-							{% set k = 0 %}
-							{% if  highlight[k].bar.id == bar.id %}
-								{% set k = 1 %}
-							{% endif %} 
-							<div class="HightlightRight col-xs-12 col-sm-6 col-md-6 noPadding">
-								<div class="barInListHighlight barInList col-xs-12 col-sm-12 col-md-12 noPadding">
-									<div class="contentImageBar" style="background-image:url({{ asset('uploads/bar/'~highlight[k].bar.path) }})">
-										<a href="{{ path('bar_show', { id : highlight[k].bar.id }) }}"><div class="shadowbarInList col-xs-12 col-sm-12 col-md-12">
-											<h3 id="firstWord{{ highlight[k].bar.id }}"> {{ highlight[k].bar.name }} </h3>
-										</div></a>
+								{% set k = 0 %}
+								{% if  highlight[k].bar.id == bar.id %}
+									{% set k = 1 %}
+								{% endif %} 
+								<div class="HightlightRight col-xs-12 col-sm-6 col-md-6 noPadding">
+									<div class="barInListHighlight barInList col-xs-12 col-sm-12 col-md-12 noPadding">
+										<div class="contentImageBar" style="background-image:url({{ asset('uploads/bar/'~highlight[k].bar.path) }})">
+											<a href="{{ path('bar_show', { id : highlight[k].bar.id }) }}"><div class="shadowbarInList col-xs-12 col-sm-12 col-md-12">
+												<h3 id="firstWord{{ highlight[k].bar.id }}"> {{ highlight[k].bar.name }} </h3>
+											</div></a>
+										</div>
 									</div>
 								</div>
-							</div>
+							{% endif %}
 						</div>
 					</div>
 					<div class="clear"></div>
@@ -172,7 +193,7 @@
 						{% endfor %}
 
 						{% if miseEnAvant %}
-							<p class="mesOptions">Suspendre la mise en avant de mon bar</p>
+							<p data-bar-id="{{bar.id}}">Suspendre la mise en avant de mon bar</p>
 						{% else %}
 							<p data-bar-id="{{bar.id}}">Mettre mon bar en avant</p>
 						{% endif %}

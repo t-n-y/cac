@@ -1724,7 +1724,13 @@ p.topPosition{
 }
 
 .reservationDone{
+	position: relative;
+	z-index: 2;
+	width: 250px;
+	height: 80px;
 	background-color: #ea9026;
+	color: #fff;
+	text-align: center;
 }
 
 .voirMaConfirmationDone, .barClose{
@@ -2496,6 +2502,10 @@ p.closeMesOptions{
 
 .contentBackOfficeBar .etapePromotion{
 	border-right: none;
+}
+
+.validationUpdatePromo{
+	margin-top: 20px;
 }
 
 .promoHappyHour{

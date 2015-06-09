@@ -101,6 +101,9 @@
 			<div class="contentOption center contentBarmanBO col-xs-12 col-sm-12 col-md-12">
 				<p>Ajouter un barman</p>
 			</div>
+			<div>
+				{% render(controller("CacBarBundle:Pro:edit", {'id' : bar.id})) %}
+			</div>
 		</div>
 	</div>
 {% endblock %}

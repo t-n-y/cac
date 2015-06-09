@@ -894,7 +894,7 @@ function dateYesterday(){
     if( jour === 1){
       jour = 31;
       mois = 12; 
-      annee = annee - 1
+      annee = annee - 1;
     }
   }
   else if(mois === 3){
@@ -911,6 +911,10 @@ function dateYesterday(){
 }
 
 dateYesterday();
+
+var conceptName = $('.promotion').find(":selected").text();
+
+console.log(conceptName);
 
 /********************************/
 
