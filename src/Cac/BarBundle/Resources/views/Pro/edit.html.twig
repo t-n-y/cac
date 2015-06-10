@@ -215,17 +215,7 @@
       </div>
           
 
-        {#
-        {% if edit_form.vars.value.canape == 1 %}
-         <label class="btn btn-primary-checkbox petitplus active">
-           <input type="checkbox" name="cac_barbundle_bar[canape]" id="cac_barbundle_bar_canape" value="1"> Canapé
-         </label>
-        {% else %}
-         <label class="btn btn-primary-checkbox petitplus">
-           <input type="checkbox" name="cac_barbundle_bar[canape]" id="cac_barbundle_bar_canape" value="1"> Canapé
-         </label>
-        {% endif %}
-        #}
+        
         
         {{ form_widget(edit_form._token) }}
 
@@ -256,6 +246,18 @@
         {{ form_errors(edit_form.access) }}
         {{ form_widget(edit_form.access) }}
     </div>-->
+    {#
+        {% if edit_form.vars.value.canape == 1 %}
+         <label class="btn btn-primary-checkbox petitplus active">
+           <input type="checkbox" name="cac_barbundle_bar[canape]" id="cac_barbundle_bar_canape" value="1"> Canapé
+         </label>
+        {% else %}
+         <label class="btn btn-primary-checkbox petitplus">
+           <input type="checkbox" name="cac_barbundle_bar[canape]" id="cac_barbundle_bar_canape" value="1"> Canapé
+         </label>
+        {% endif %}
+    #}
+    
   {{ form_end(edit_form) }}
 </div>
 {% endblock %}

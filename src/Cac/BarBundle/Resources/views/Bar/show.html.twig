@@ -7,12 +7,22 @@
 			
 			<div class="infoNameBar">
 				<h1>{{ bar.name }}</h1>
-		
-				<p>€€€€<span>€</span></p>
+			
+				{% if bar.cocktailPrice <= 5 %}
+					<p>€<span>€€€€</span></p>
+				{% elseif bar.cocktailPrice <= 10 and  bar.cocktailPrice > 5 %}
+					<p>€€<span>€€€</span></p>
+				{% elseif bar.cocktailPrice <= 15 and  bar.cocktailPrice > 10 %}
+					<p>€€€<span>€€</span></p>
+				{% elseif bar.cocktailPrice <= 20 and  bar.cocktailPrice > 15 %}
+					<p>€€€€<span>€</span></p>
+				{% else %}
+					<p>€€€€€</p>
+				{% endif %}
 
 				{% if (is_granted('ROLE_BIGBOSS')) and (bar.author.id == user.id) %}
 
-					<a href="{{ path('bar_edit', { 'id': bar.id }) }}">Editer ce bar</a>
+					<a href="{{ path('compte', { 'id': bar.id }) }}">Editer ce bar</a>
 
 				{% endif %}
 			</div>
