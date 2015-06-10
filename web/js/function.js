@@ -479,22 +479,18 @@ $('body').on('click','.ModifBO',function(){
   heightSuperInfoBar();
 });
 
-// $body.on('click','.mesOptions',function(){
-//   $('.contentMesOptions').show();
-// });
-
-// $body.on('click','p.closeMesOptions',function(){
-//   $('.contentMesOptions').hide();
-// });
-
 $body.on('click','.closeMesOptionEnCours',function(){
   var dataGenre = $(this).parentsUntil($('.JS-contentMesOptions')).find('.dataMiseEnAvant').data("genre")
   var dataDate = $(this).parentsUntil($('.JS-contentMesOptions')).find('.dataDate').data("date");
   var dataPrix = $(this).parentsUntil($('.JS-contentMesOptions')).find(".dataPrix").data("prix");
   var dataTotal = $(this).parentsUntil($('.JS-contentMesOptions')).find(".dataTotal").data("total");
 
-  console.log(dataGenre + ' ' + dataDate);
-
+  if (dataGenre == "carte") {
+    $.ajax( {
+        type: 'GET',
+        url: Routing.generate('remove_carte_abo'),
+    } );
+  };
   var date = new Date();
 
   var jour = date.getDate();
@@ -535,12 +531,12 @@ $body.on('click','.closeMesOptionEnCours',function(){
         '<div class="col-xs-4 col-sm-4 col-md-4 noPadding">'+
           '<span>Souscrit le <p class="dataDate">'+ dataDate +'</p>'+
         '</div>'+
-        '<div class="col-xs-4 col-sm-4 col-md-4 noPadding">'+
-          '<p>'+ dataPrix +'€/Jour</p>'+
-        '</div>'+
-        '<div class="col-xs-4 col-sm-4 col-md-4 noPadding">'+
-          '<p>' + dataTotal +'€</p>'+
-        '</div>'+
+        // '<div class="col-xs-4 col-sm-4 col-md-4 noPadding">'+
+        //   '<p>'+ dataPrix +'€/Jour</p>'+
+        // '</div>'+
+        // '<div class="col-xs-4 col-sm-4 col-md-4 noPadding">'+
+        //   '<p>' + dataTotal +'€</p>'+
+        // '</div>'+
       '</div>'+
     '</div>'
   );

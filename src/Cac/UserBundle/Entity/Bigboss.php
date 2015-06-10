@@ -67,6 +67,11 @@ class Bigboss extends User
     protected $createdBars;
 
     /**
+     * @ORM\OneToMany(targetEntity="Cac\PaymentBundle\Entity\PaymentOptions", mappedBy="user")
+     */
+    protected $paymentOptions;
+
+    /**
      * @var integer
      * @Assert\NotBlank()
      * @Assert\Length(
@@ -437,5 +442,39 @@ class Bigboss extends User
     public function getGlassPrice()
     {
         return $this->glassPrice;
+    }
+
+    /**
+     * Add paymentOption
+     *
+     * @param \Cac\PaymentBundle\Entity\paymentOptions $paymentOption
+     *
+     * @return Bigboss
+     */
+    public function addPaymentOption(\Cac\PaymentBundle\Entity\paymentOptions $paymentOption)
+    {
+        $this->paymentOptions[] = $paymentOption;
+
+        return $this;
+    }
+
+    /**
+     * Remove paymentOption
+     *
+     * @param \Cac\PaymentBundle\Entity\paymentOptions $paymentOption
+     */
+    public function removePaymentOption(\Cac\PaymentBundle\Entity\paymentOptions $paymentOption)
+    {
+        $this->paymentOptions->removeElement($paymentOption);
+    }
+
+    /**
+     * Get paymentOptions
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPaymentOptions()
+    {
+        return $this->paymentOptions;
     }
 }

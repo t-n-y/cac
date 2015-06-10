@@ -133,4 +133,51 @@ class DefaultController extends Controller
     	$barId = $em->getRepository('CacBarBundle:Bar')->findByAuthor($user)[0]->getId();
     	return array('barId' => $barId);
     }
+
+    /**
+     * @Route("/my-options", name="display_options")
+     * @Template()
+     */
+    public function displayOptionsAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->get('security.context')->getToken()->getUser();
+        $options = $em->getRepository('CacPaymentBundle:PaymentOptions')->findBy(array('user' => $user->getId(), 'active' => 1 ));
+        return array('options' => $options);
+    }
+
+    /**
+     * @Route("/my-finished-options", name="display_options")
+     * @Template()
+     */
+    public function displayFinishedOptionsAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->get('security.context')->getToken()->getUser();
+        $options = $em->getRepository('CacPaymentBundle:PaymentOptions')->findBy(array('user' => $user->getId(), 'active' => 0 ));
+        return array('options' => $options);
+    }
+
+    /**
+     * @Route("/remove_carte", name="remove_carte_abo", options={"expose"=true})
+     */
+    public function removeCarteAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->get('security.context')->getToken()->getUser();
+        $option = $em->getRepository('CacPaymentBundle:PaymentOptions')->findOneBy(array('user' => $user->getId(), 'name' => 'carte' ));
+        $option->setActive(0);
+        $option->setDeletedAt(new \DateTime('now'));
+        $em->persist($option);
+        $em->flush();
+        $plan = $em->getRepository('CacPaymentBundle:Payment')->findOneByUser($user)->getPlan();
+        if ($plan === "shootercarte") {
+            $this->forward('CacPaymentBundle:Default:changePlan', array('plan'  => 'shooter','id' => $user));
+        }
+        elseif ($plan === "cosmocarte") {
+            $this->forward('CacPaymentBundle:Default:changePlan', array('plan'  => 'cosmo','id' => $user));
+        }
+
+        return new Response('carte supprimée');
+    }
 }

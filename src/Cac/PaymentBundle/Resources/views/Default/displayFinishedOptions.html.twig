@@ -1,0 +1,22 @@
+{% for option in options %}
+  <div class="mesOptionsEnCours col-xs-12 col-sm-12 col-md-12 noPadding">
+      <div class="ligneMesOption1">
+        <div class="col-xs-4 col-sm-4 col-md-4 noPadding">
+          <p class="dataMiseEnAvant">{{option.name}}</p>
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4 noPadding">
+          <p>Historique</p>
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4 noPadding">
+          <div class="closeMesOptionEnCours">
+            <span>Arrêté le <p class="dataDate">{{option.deletedAt|date("d/m/Y")}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="ligneMesOption2">
+        <div class="col-xs-4 col-sm-4 col-md-4 noPadding">
+          <span>Souscrit le <p class="dataDate">{{option.createdAt|date("d/m/Y")}} </p>
+        </div>
+      </div>
+    </div>
+{% endfor %}

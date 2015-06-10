@@ -206,73 +206,14 @@
 					<div class="row">
 						<div class="col-xs-12 col-sm-6 col-md-6">
 							<h2>En cours</h2>
-
-							<div class="JS-contentMesOptions">
-								
-
-								<div class="mesOptionsEnCours col-xs-12 col-sm-12 col-md-12 noPadding">
-									<div class="ligneMesOption1">
-										<div class="col-xs-4 col-sm-4 col-md-4 noPadding">
-											<p class="dataMiseEnAvant" data-genre="Mise en Avant">Mise en avant</p>
-										</div>
-										<div class="col-xs-4 col-sm-4 col-md-4 noPadding">
-											<p>en cours</p>
-										</div>
-										<div class="col-xs-4 col-sm-4 col-md-4 noPadding">
-											<div class="closeMesOptionEnCours">
-												<p class="stopOption">STOP</p>
-											</div>
-										</div>
-									</div>
-									<div class="ligneMesOption2">
-										<div class="col-xs-4 col-sm-4 col-md-4 noPadding">
-											<span>Souscrit le <p class="dataDate" data-date="12/09/2014">12/09/2014</p>
-										</div>
-										<div class="col-xs-4 col-sm-4 col-md-4 noPadding">
-											<p class="dataPrix" data-prix="1">1€/Jour</p>
-										</div>
-										<div class="col-xs-4 col-sm-4 col-md-4 noPadding">
-											<p class="dataTotal" data-total="18,90">18,90€</p>
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<div class="JS-contentMesOptions">
-								<div class="mesOptionsEnCours col-xs-12 col-sm-12 col-md-12 noPadding">
-									<div class="ligneMesOption1">
-										<div class="col-xs-4 col-sm-4 col-md-4 noPadding">
-											<p class="dataMiseEnAvant" data-genre="Prout">Prout</p>
-										</div>
-										<div class="col-xs-4 col-sm-4 col-md-4 noPadding">
-											<p>en cours</p>
-										</div>
-										<div class="col-xs-4 col-sm-4 col-md-4 noPadding">
-											<div class="closeMesOptionEnCours">
-												<p class="stopOption">STOP</p>
-											</div>
-										</div>
-									</div>
-									<div class="ligneMesOption2">
-										<div class="col-xs-4 col-sm-4 col-md-4 noPadding">
-											<span>Souscrit le <p class="dataDate" data-date="12/09/2014">12/09/2014</p>
-										</div>
-										<div class="col-xs-4 col-sm-4 col-md-4 noPadding">
-											<p class="dataPrix" data-prix="2">2€/Jour</p>
-										</div>
-										<div class="col-xs-4 col-sm-4 col-md-4 noPadding">
-											<p class="dataTotal" data-total="6">6€</p>
-										</div>
-									</div>
-								</div>
-							</div>
+							{% render(controller("CacPaymentBundle:Default:DisplayOptions")) %}
 						</div>
 
 						<div class="col-xs-12 col-sm-6 col-md-6">
 							<h2>Historique</h2>
 
 							<div class="optionFinies">
-								
+								{% render(controller("CacPaymentBundle:Default:DisplayFinishedOptions")) %}
 							</div>
 						</div>
 					</div>	

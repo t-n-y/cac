@@ -7,6 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Response;
+use Cac\PaymentBundle\Entity\PaymentOptions;
 
 /**
  * Admin default controller.
@@ -66,10 +67,25 @@ class DefaultController extends Controller
         $em->persist($carte);
         $em->flush();
         $plan = $em->getRepository('CacPaymentBundle:Payment')->findOneByUser($user)->getPlan();
+        $user = $this->get('security.context')->getToken()->getUser();
         if ($plan === "shooter") {
+            $option = new PaymentOptions();
+            $option->setName('carte');
+            $option->setUser($user);
+            $option->setActive(1);
+            $option->setCreatedAt(new \DateTime('now'));
+            $em->persist($option);
+            $em->flush();
             $this->forward('CacPaymentBundle:Default:changePlan', array('plan'  => 'shootercarte','id' => $user));
         }
         elseif ($plan === "cosmo") {
+            $option = new PaymentOptions();
+            $option->setName('carte');
+            $option->setUser($user);
+            $option->setActive(1);
+            $option->setCreatedAt(new \DateTime('now'));
+            $em->persist($option);
+            $em->flush();
             $this->forward('CacPaymentBundle:Default:changePlan', array('plan'  => 'cosmocarte','id' => $user));
         }
         else{
