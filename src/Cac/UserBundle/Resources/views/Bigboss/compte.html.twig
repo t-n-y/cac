@@ -32,13 +32,62 @@
 					<div class="col-xs-12 col-sm-6 col-md-6">
 						<p>Ma formule</p>
 						<p class="affichageBO">Shooter</p>
-						<p class="underline contactUsBO">Contactez nous</p>
+						<p class="underline contactUsBO">Changer ma formule</p>
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-6">
 						<p>Mon jour de facturation</p>
 						<p class="affichageBO">Le 15 de chaque mois</p>
 						<p class="underline showFactureBO">Voir mes factures</p>
 					</div>
+
+					<div class="col-xs-12 col-sm-12 col-md-12 changeMyAbonnement">
+						<div class="row">
+							<div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1">
+								<div class="containerAbonnement">
+									<div class="typeFormule">
+										<p>Formule 2 : Cosmopolitain</p>
+									</div>
+									<div class="containerService">
+										<div class="row">
+											<div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2">
+												<h3 class="serviceCosmo">Tout les services de la formule Shooter</h3>
+												<h2 class="serviceCosmo">+</h2>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-xs-12 col-sm-4 col-md-4">
+												<div class="service">	
+													<p>Gestion multi-comptes</p>
+													<img src="{{asset('img/pictoAbonnement/backOffice.png')}}" alt="">
+												</div>
+											</div>
+											<div class="col-xs-12 col-sm-4 col-md-4">
+												<div class="service">	
+													<p>Gestion multi-utilisateurs</p>
+													<img src="{{asset('img/pictoAbonnement/multiUser.png')}}" alt="">
+												</div>
+											</div>
+											<div class="col-xs-12 col-sm-4 col-md-4">
+												<div class="service">	
+													<p>Photos de votre établissement</p>
+													<img src="{{asset('img/pictoAbonnement/photo.png')}}" alt="">
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="myAbonnement">
+										<h2>Abonnement mensuel : <span>49€</span></h2>
+										<p>Comission : 1€ par retour client validé</p>
+
+										<button class="premium"> Souscrire </button>
+									</div>
+									<div id="append-payment-premium"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+
 					<div class="col-xs-12 col-sm-12 col-md-12">
 						<p class="encours">Mes encours au <span class="dateYesterday"></span></p>
 						<p class="affichageBO">18€</p>
@@ -46,52 +95,6 @@
 				</div>
 			</div>
 
-			<div class="contentOption contentGeneralBO center col-xs-12 col-sm-12 col-md-12">
-				<div class="row">
-					<div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1">
-						<div class="containerAbonnement">
-							<div class="typeFormule">
-								<p>Formule 2 : Cosmopolitain</p>
-							</div>
-							<div class="containerService">
-								<div class="row">
-									<div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2">
-										<h3 class="serviceCosmo">Tout les services de la formule Shooter</h3>
-										<h2 class="serviceCosmo">+</h2>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-xs-12 col-sm-4 col-md-4">
-										<div class="service">	
-											<p>Gestion multi-comptes</p>
-											<img src="{{asset('img/pictoAbonnement/backOffice.png')}}" alt="">
-										</div>
-									</div>
-									<div class="col-xs-12 col-sm-4 col-md-4">
-										<div class="service">	
-											<p>Gestion multi-utilisateurs</p>
-											<img src="{{asset('img/pictoAbonnement/multiUser.png')}}" alt="">
-										</div>
-									</div>
-									<div class="col-xs-12 col-sm-4 col-md-4">
-										<div class="service">	
-											<p>Photos de votre établissement</p>
-											<img src="{{asset('img/pictoAbonnement/photo.png')}}" alt="">
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="myAbonnement">
-								<h2>Abonnement mensuel : <span>49€</span></h2>
-								<p>Comission : 1€ par retour client validé</p>
-
-								<button class="premium"> Souscrire </button>
-							</div>
-							<div id="append-payment-premium"></div>
-						</div>
-					</div>
-				</div>
-			</div>
 			<div class="contentOption contentFactureBO col-xs-12 col-sm-12 col-md-12">
 				<div class="prochainement">
 					<img src="{{asset('img/factureDispo.png')}}" alt="">

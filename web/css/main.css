@@ -1,6 +1,8 @@
 /*****************GENERAL*****************/
 /*	color : #5ac4d4; */
 
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,100,300italic,300,400italic,700,500,900);
+
 html{ overflow-x: hidden; }
 
 body{
@@ -1237,12 +1239,17 @@ p.droitReserve{
 
 .brand{
 	color: #303030;
-	font-size: 20px;
+	font-size: 28px;
+   	font-family: 'Roboto', sans-serif;
+   	font-weight: 500;
 }
 
 .brandBref{
 	color: #5ac4d4;
-	font-size: 20px;
+	font-size: 24px;
+	font-family: 'Roboto', sans-serif;
+   	font-weight: 400;
+   	font-style: italic;
 }
 
 .explicationsBlock{
@@ -1912,6 +1919,20 @@ p.rappelCondition{
 	padding: 10px 0;
   	margin-bottom: 0px;
   	font-size: 14px;
+}
+
+.changeMyAbonnement{
+	max-height: 0px;
+	overflow: hidden;
+	-webkit-transition: max-height 0.5s ease-in-out;
+    -moz-transition: max-height 0.5s ease-in-out;
+    -o-transition: max-height 0.5s ease-in-out;
+    -ms-transition: max-height 0.5s ease-in-out;
+    transition: max-height 0.5s ease-in-out;
+}
+
+.open-changerMyAbonnement{
+	max-height: 1000px;
 }
 
 .contentBackOfficeBar p{
@@ -3873,6 +3894,10 @@ float: left;
 
 .myAbonnement button:hover{
 	background-color: #61cddd;
+}
+
+.encours{
+margin-top: 20px;
 }
 
 h3.serviceCosmo{

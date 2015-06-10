@@ -872,6 +872,10 @@ $('#cac_barbundle_bar_valet').on('click', function(){
 
 /********BO BAR******/
 
+$('.contactUsBO').on('click', function() {
+  $(this).parentsUntil($('.contentOptionBar')).find('.changeMyAbonnement').addClass('open-changerMyAbonnement');
+});
+
 function dateYesterday(){
   var date = new Date();
 
