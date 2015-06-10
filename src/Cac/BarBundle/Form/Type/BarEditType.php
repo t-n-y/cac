@@ -15,8 +15,9 @@ class BarEditType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', null, array('label' => 'Nom de l\'établissement'))
+            ->add('name', null, array('label' => 'Nom de l\'établissement', 'attr' => array('placeholder' => 'Nom de votre établissement', 'class' => 'hidden')))
             ->add('adress', null, array('label' => 'Adresse'))
+            ->add('geocode', 'hidden', array())
             ->add('zipcode', null, array('label' => 'Code Postal'))
             ->add('town', null, array('label' => 'Ville'))
             ->add('region', null, array('label' => 'Région'))
@@ -28,25 +29,20 @@ class BarEditType extends AbstractType
                 'required'  => false,
                 )
             )
-            ->add('categories', null, array('label' => 'Catégories'))
             ->add('beerPrice', null, array(
-                'label' => 'Prix de la biére',
-                'required'  => false,
+                'label' => 'La pinte de bière',
                 )
             )
             ->add('softPrice', null, array(
-                'label' => 'Prix de la biére',
-                'required'  => false,
+                'label' => 'Le soft'
                 )
             )
             ->add('coffeePrice', null, array(
-                'label' => 'Prix de la biére',
-                'required'  => false,
+                'label' => 'Le café'
                 )
             )
             ->add('cocktailPrice', null, array(
-                'label' => 'Prix de la biére',
-                'required'  => false,
+                'label' => 'Le cocktail'
                 )
             )
             ->add('dressCode', 'choice', array(
@@ -60,13 +56,13 @@ class BarEditType extends AbstractType
             ->add('handicappedAccess', null, array('label' => 'Accès handicapés', 'required'  => false))
             ->add('patio', null, array('label' => 'Terrasse', 'required'  => false))
             ->add('smokingArea', null, array('label' => 'Espace fumeurs', 'required'  => false))
-            ->add('breathalyser', null, array('label' => 'Alcotests gratuits', 'required'  => false))
+            ->add('breathalyser', null, array('label' => 'Ethylotest gratuits', 'required'  => false))
             ->add('babyfoot', null, array('label' => 'Baby Foot', 'required'  => false))
             ->add('billard', null, array('label' => 'Billard', 'required'  => false))
             ->add('flipper', null, array('label' => 'Flipper', 'required'  => false))
             ->add('canape', null, array('label' => 'Canapé', 'required'  => false))
-            ->add('description', null, array('label' => 'Description de votre établissement', 'required'  => false))
-            ->add('file')
+            ->add('clim', null, array('label' => 'Climatisation', 'required'  => false))
+            ->add('description', null, array('label' => 'Description', 'required'  => false))
         ;
     }
     

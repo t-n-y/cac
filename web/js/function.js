@@ -450,6 +450,7 @@ $body.on('click','.mesOptions',function(){
 $('body').on('click','.generalBO',function(){
   $('.contentFactureBO').hide();
   $('.contentBarmanBO').hide();
+  $('.contentModifBO').hide();
   $('.contentGeneralBO').show();
   heightSuperInfoBar();
 });
@@ -457,6 +458,7 @@ $('body').on('click','.generalBO',function(){
 $('body').on('click','.factureBO',function(){
   $('.contentGeneralBO').hide();
   $('.contentBarmanBO').hide();
+  $('.contentModifBO').hide();
   $('.contentFactureBO').show();
   heightSuperInfoBar();
 });
@@ -464,7 +466,16 @@ $('body').on('click','.factureBO',function(){
 $('body').on('click','.barmanBO',function(){
   $('.contentGeneralBO').hide();
   $('.contentFactureBO').hide();
+  $('.contentModifBO').hide();
   $('.contentBarmanBO').show();
+  heightSuperInfoBar();
+});
+
+$('body').on('click','.ModifBO',function(){
+  $('.contentGeneralBO').hide();
+  $('.contentFactureBO').hide();
+  $('.contentBarmanBO').hide();
+  $('.contentModifBO').show();
   heightSuperInfoBar();
 });
 
