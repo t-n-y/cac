@@ -1,10 +1,10 @@
 
 
 {% block stylesheets %}
-   <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css')}}">
+
+
     <link rel="stylesheet" type="text/css" href="{{ asset('css/clockpicker.css')}}">
-    <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/jquery.Jcrop.min.css')}}">
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places"></script>
 {% endblock %}
 {% block body %}
@@ -222,24 +222,37 @@
 
         </div>
 
-        <div class="subtitlePageRegisterBig">
-        <p>Vos photos</p>
+        <div class="row">
+            <div class="file_button_container col-xs-12 col-sm-12 col-md-12">
+                <div class="CreationBar servicesNewBar col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
+                    
+                    <p>Photo principale</p>
+                    <br>
+
+                    <div class="showImg">
+                        <img id="blah" src="#" alt="Votre image" />
+                    </div>
+                    <img id="lastPicture" src="{{ asset('uploads/bar/'~bar.path) }}">
+                    <div class="addPicture">
+
+                        {{ form_row(edit_form.file) }}
+                        <div class="addPictureHack">
+                            <p>+</p>
+                            <br>
+                             <span>Ajouter la photo principale</span>
+                        </div>
+                        
+                    </div>
+                    
+                    
+                    <input type="hidden" name="coords" id="coords" value="" data-ratio="">
+
+                <div class="clear"></div>
+                </div> 
+            </div>
         </div>
 
-
-        <div class="file_button_container">
-
-          
-
-                  {{ form_row(edit_form.file) }}
-                  
-
-                  <div class="showImg">
-                    <img id="blah" src="{{ asset('uploads/bar/'~bar.path) }}" alt="Votre image">
-                  </div>
-         </div>
-
-         <img id="lastPicture" src="{{ asset('uploads/bar/'~bar.path) }}">
+         
     </div>
     <!--<div class="border access">
         {{ form_label(edit_form.access) }}
@@ -266,6 +279,82 @@
     <script src="{{ asset('js/autocomplete-adress.js') }}" type="text/javascript" /></script>
      <script src="{{ asset('js/modernizr.custom.js') }}" type="text/javascript" /></script>
     <script src="{{ asset('js/svgcheckbx.js') }}" type="text/javascript" /></script>
+    <script src="{{ asset('js/jquery.color.js') }}" type="text/javascript" /></script>
+    <script src="{{ asset('js/jquery.Jcrop.min.js') }}" type="text/javascript" /></script>
+
+    <script>
+    $(document).ready(function(){
+        var jcrop_api = '';
+
+        function tooSmall() {
+            alert('Image trop petite, largeur min 1280px, hauteur min 350px');
+            $('#blah').attr('src', '#');
+        }
+
+        function readURL(input) {
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                var img = new Image();
+                console.log('OK');
+                
+                reader.onload = function (e) {
+                    if(jcrop_api != '') {h
+                        jcrop_api.destroy();
+                        $('#blah').attr('style', '');
+                    }
+                    $('#blah').attr('src', e.target.result);
+
+                    var image = $('#blah');
+                    var oW = image.get(0).naturalWidth, oH = image.get(0).naturalHeight;
+                    //var oH = image.height(), oW = image.width();
+                    if(oW < 1280 || oH < 350) {
+                        tooSmall();
+                        return false;
+                    }
+                    var mW = $('.showImg').width(), mH = $('.showImg').height();
+                    var ratio = mW/oW;
+
+                    if(ratio > 1) ratio = 1;
+                    var cX = 1280*ratio, cY = 350*ratio;
+                    var minSize = [cX, cY], setSelect = [(oW*ratio-cX)/2, (oH*ratio-cY)/2, cX, cY];
+
+                    $('#blah').Jcrop({
+                        onSelect: changeCoords,
+                        minSize: minSize,
+                        onChange: changeCoords,
+                        setSelect: setSelect
+                    }, function () { jcrop_api = this });
+                    if(ratio < 1) {
+                        $('#coords').attr('data-ratio', ratio);
+                        var nH = oH*ratio;
+                        $('.jcrop-holder, .jcrop-keymgr + img').height(nH);
+                        $('.jcrop-holder div div img').width(mW).height(nH);
+                    }
+                };
+                
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function changeCoords(c) {
+            var ratio = $('#coords').attr('data-ratio');
+            c.ratio = ratio;
+            $('#coords').val(JSON.stringify(c));
+        }
+
+        $(".addPicture input").change(function(){
+             $(".showImg").stop(true,true).show(300);
+             $(".file_button_container img").stop(true,true).show(300);
+             $("#lastPicture").stop(true,true).hide(300);
+            readURL(this);
+           
+            
+
+             console.log(this);
+        });
+    });
+    </script>
 
     <script>
         $(document).ready(function() {
@@ -282,6 +371,8 @@
             });
         });
     </script>
+
+
 {% endblock %}
 
 

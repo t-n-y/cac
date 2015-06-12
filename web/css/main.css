@@ -162,9 +162,9 @@ h2.font30{
     max-width: 100%;
 }
 
-.file_button_container img{
-	   margin-top: 70px;
-	}
+#lastPicture{
+	width: 90%;
+}
     
 .file_button_container input {
    opacity: 0;
