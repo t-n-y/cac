@@ -102,7 +102,51 @@
 				</div>
 			</div>
 			<div class="contentOption center contentBarmanBO col-xs-12 col-sm-12 col-md-12">
-				<p>Ajouter un barman</p>
+				<p>Les barmans</p>
+
+				<div class="listBarman row">
+					{# {% render(controller("CacUserBundle:Barman:swhow")) %} #}
+
+					<div class="barmanProperties col-xs-offset-1 col-xs-10 col-sm-offset-1 col-sm-10 col-md-offset-1 col-md-10">
+						<div class="col-xs-6 col-sm-3 col-md-3">
+							<p class="nomBarman">Robert</p>
+						</div>
+						<div class="col-xs-6 col-sm-3 col-md-3">
+							<p>Créé le 20/10/2015</p>
+						</div>
+						<div class="col-xs-6 col-sm-3 col-md-3">
+							<p>Robert@email.com</p>
+						</div>
+						<div class="col-xs-6 col-sm-3 col-md-3">
+							<p class="delateBarman">Supprimer</p>
+						</div>
+					</div>
+					<div class="barmanProperties col-xs-offset-1 col-xs-10 col-sm-offset-1 col-sm-10 col-md-offset-1 col-md-10">
+						<div class="col-xs-6 col-sm-3 col-md-3">
+							<p class="nomBarman">Robert</p>
+						</div>
+						<div class="col-xs-6 col-sm-3 col-md-3">
+							<p>Créé le 20/10/2015</p>
+						</div>
+						<div class="col-xs-6 col-sm-3 col-md-3">
+							<p>Robert@email.com</p>
+						</div>
+						<div class="col-xs-6 col-sm-3 col-md-3">
+							<p class="delateBarman">Supprimer</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="addBarman">
+					<p>+</p>
+				</div>
+
+				
+
+				<div class="formBarman">
+					<p>Ajouter un barman</p>
+					{# {% render(controller("CacUserBundle:Barman:register")) %} #}
+				</div>
 			</div>
 			<div class="contentOption contentModifBO col-xs-12 col-sm-12 col-md-12">
 				{#{% render(controller("CacUserBundle:Profile:edit", {'id' : user.id})) %}#}

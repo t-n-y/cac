@@ -927,6 +927,11 @@ var conceptName = $('.promotion').find(":selected").text();
 
 console.log(conceptName);
 
+
+$('.addBarman').on('click', function() {
+  $(this).parent().find('.formBarman').addClass('open-formBarman');
+})
+
 /********************************/
 
 //$('#cac_barbundle_bar_valetCost').val($('#cac_barbundle_bar_valetCost').val() + '€');
