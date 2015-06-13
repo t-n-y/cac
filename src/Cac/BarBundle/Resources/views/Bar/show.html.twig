@@ -37,6 +37,21 @@
 			#}
 			</div>
 			 
+
+
+
+			<div class="popupsponsorship" style="display:none;">
+				<input id="mailToSend" type="email">
+				<button id="senddrink">ok</button>
+				<div id="datepicker"></div>
+				<input type="text" id="datepickerInput" hidden>
+				<input type="text" id="codeInput" hidden>
+			</div>
+
+
+
+
+
 			
 			<div class="noteBar col-xs-6 col-sm-3 col-md-3">
 				<div class="right">
@@ -46,8 +61,8 @@
 							<h3>GRATUITEMENT</h3>
 						</div>
 						<div class="ticketCode">
-							<input placeholder="Entre ton code">
-							<input type="submit" value="Valider">
+							<input id="codeValue" placeholder="Entre ton code">
+							<button class="ticketVerreValidate">Valider</button>
 						</div>
 						<div class="ticketBarBottom">
 							<p>C'EST PARTIT !</p>
@@ -75,8 +90,6 @@
 							{% else %}
 								<p>Tenez moi au courant<br>Dès qu'une promo est proposé dans ce bar</p>
 							{% endif %}
-							
-							{# le {{days[2]}} -{{ bar.promotion.promotionArray[days[2]]['happy-hour'].value }}%</p> #}
 						</div>
 						<div class="clear"></div>
 						<div class="ticketBarBottom">
@@ -429,7 +442,6 @@
 
 {% block javascripts %}
 {{parent()}}
- <script src="{{ asset('js/jquery-2.1.0.js') }}" type="text/javascript" /></script>
  <script>
 	var map;
 	var service;
