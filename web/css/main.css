@@ -754,6 +754,7 @@ ul.dropdown-menu li > a.monCompte:hover:before {
 
 nav{
 	position: relative;
+	z-index: 4;
 }
 
 .menu__handle {
@@ -826,6 +827,7 @@ nav{
 	height: 80px;
 	text-align: center;
 	line-height: 75px;
+	background-color: #fff;
 }
 
 .contentLogo img{
@@ -837,6 +839,7 @@ nav{
 	color: #303030 !important;
 	margin-top: 0;
 	padding: 10px 0;
+	background-color: #fff;
 }
 
 .contentNav p{
@@ -1839,6 +1842,7 @@ p.topPosition{
 	height: 100px;
 	z-index: 10;
 	text-align: center;	
+	z-index: 3;
 }
 
 .checkConfirmation{
