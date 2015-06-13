@@ -78,7 +78,7 @@
 						</div>
 						<div class="ticketPromotion col-xs-12 col-sm-12 col-md-12">
 							{% if bar.getHappyHourByDay(today).getOption('value').value != 0 %}
-								<div class="obtenirPromo" data-bar-id="{{bar.id}}">
+								<div>
 									<div class="col-xs-7 col-sm-7 col-md-7">
 										<p class="bold">Happy Hours</p>
 										<p>De {{ bar.getHappyHourByDay(today).getOption('beginning').value }}h à {{ bar.getHappyHourByDay(today).getOption('ending').value }}h</p>
@@ -108,11 +108,17 @@
 								<h3>Mais <span>5 cheers</span> de fidélité</h3>
 
 							{% else %}
-								<div class="obtenirPromo" data-bar-id="{{bar.id}}">
-									<h2 class="font30">-{{ bar.getPromotionByDay(today).getOption('value').value }}%</h2>
-									<h3>SUR UNE CONSOMMATION</h3>
-									<p class="voirMaConfirmation"></p>
-								</div>
+								{% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+									<div class="obtenirPromo" data-bar-id="{{bar.id}}">
+								{% else %}
+									<div class="animConnexion">
+								{% endif %}
+										<h2 class="font30">-{{ bar.getPromotionByDay(today).getOption('value').value }}%</h2>
+										<h3>SUR UNE CONSOMMATION</h3>
+										<p class="voirMaConfirmation"></p>
+									</div>
+								
+
 							{% endif %}
 						{% else %}
 							<p class="barClose">Bar Fermé<p>
@@ -120,15 +126,20 @@
 						</div>
 						<div class="ticketPromotion col-xs-12 col-sm-12 col-md-12">
 							{% if bar.getHappyHourByDay(today).getOption('value').value != 0 %}
-								<div class="obtenirPromo" data-bar-id="{{bar.id}}">
-									<div class="col-xs-7 col-sm-7 col-md-7">
-										<p class="bold">Happy Hours</p>
-										<p>De {{ bar.getHappyHourByDay(today).getOption('beginning').value }}h à {{ bar.getHappyHourByDay(today).getOption('ending').value }}h</p>
+
+								{% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+									<div class="obtenirPromo" data-bar-id="{{bar.id}}">
+								{% else %}
+									<div class="animConnexion">
+								{% endif %}
+										<div class="col-xs-7 col-sm-7 col-md-7">
+											<p class="bold">Happy Hours</p>
+											<p>De {{ bar.getHappyHourByDay(today).getOption('beginning').value }}h à {{ bar.getHappyHourByDay(today).getOption('ending').value }}h</p>
+										</div>
+										<div class="col-xs-5 col-sm-5 col-md-5">
+											<p class="reductionHappyHour">-{{ bar.getHappyHourByDay(today).getOption('value').value }}%</p> 
+										</div>
 									</div>
-									<div class="col-xs-5 col-sm-5 col-md-5">
-										<p class="reductionHappyHour">-{{ bar.getHappyHourByDay(today).getOption('value').value }}%</p> 
-									</div>
-								</div>
 							{% else %}
 								<p>Tenez moi au courant<br>Dès qu'une promo est proposé dans ce bar</p>
 							{% endif %}
@@ -139,11 +150,21 @@
 						<div class="ticketBarBottom">
 						{% if bar.scheduleArray[today].status == 'Ouvert' %}
 							{% if bar.getPromotionByDay(today).getOption('value').value == 0 %}
-								<p class="obtenirPromo" data-bar-id="{{bar.id}}">RESERVEZ POUR AUJOURD'HUI</p>
-								<p class="testSuccess"></p>
+								{% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+									<p class="obtenirPromo" data-bar-id="{{bar.id}}">
+								{% else %}
+								<p class="animConnexion">	
+								{% endif %}	
+									RESERVEZ POUR AUJOURD'HUI</p>
+									<p class="testSuccess"></p>
 							{% else %}
-								<p class="obtenirPromo" data-bar-id="{{bar.id}}">OBTENIR LA PROMO</p>
-								<p class="testSuccess"></p>
+								{% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+									<p class="obtenirPromo" data-bar-id="{{bar.id}}">
+								{% else %}
+									<p class="animConnexion">	
+								{% endif %}	
+									OBTENIR LA PROMO</p>
+									<p class="testSuccess"></p>
 							{% endif %}
 						{% else %}
 							<p> Bar Fermé<p>
