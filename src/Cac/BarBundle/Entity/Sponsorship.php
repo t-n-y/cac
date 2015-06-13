@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Sponsorship
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Cac\BarBundle\Entity\SponsorshipRepository")
  */
 class Sponsorship
 {

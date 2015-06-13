@@ -930,4 +930,44 @@ $('.addBarman').on('click', function() {
   $(this).parent().find('.formBarman').addClass('open-formBarman');
 })
 
+$('.ticketVerreValidate').on('click', function(){
+  var code = $('#codeValue').val();
+  $.ajax( {
+        type: 'POST',
+        url: Routing.generate('validate_code', { 'code': code }),
+        success: function (data) {
+          if (data.msg == 'code ok') {
 
+          var disableddates = data.weekdays;
+            $( "#codeInput" ).val(code);
+            $( "#datepicker" ).datepicker({ 
+                                    minDate: 0, 
+                                    maxDate: "+6D",
+                                    beforeShowDay: function(date){
+                                        var string = jQuery.datepicker.formatDate('dd-mm-yy', date);
+                                        return [ disableddates.indexOf(string) == -1 ]
+                                    },
+                                    onSelect: function(date) {
+                                        $('#datepickerInput').val(date);
+                                    },
+                                    dateFormat: "dd-mm-yy"
+                                  });
+            $('.popupsponsorship').show();
+          }
+          else
+            alert(data.msg);
+        }
+    });
+})
+
+$('#senddrink').on('click', function(){
+  var mail = $('#mailToSend').val();
+  var code = $('#codeInput').val();
+  var date = $('#datepickerInput').val();
+  $.ajax( {
+        type: 'POST',
+        url: Routing.generate('invite_friend', { 'mail': mail, 'date' : date, 'code': code }),
+        success: function (data) {
+        }
+    });
+})
