@@ -399,8 +399,6 @@ $body.on('click','.ongletVerresPromotion',function(){
   $('.gestionPromotion').show();
 });
 
-
-
 $('body').on('click','.sms',function(){
   $('.contentEmail').hide();
   $('.contentCarte').hide();
@@ -444,6 +442,16 @@ $body.on('click','.mesOptions',function(){
   $('.contentMiseAvant').hide();
   $('.contentMesOptions').show();
   heightSuperInfoBar();
+});
+
+$body.on('click', '.ongletVerresOffert', function(){
+  $('.contentBackOffre').show();
+  $('.contentBackparrainage').hide();
+});
+
+$body.on('click', '.ongletVerresParrainage', function(){
+  $('.contentBackparrainage').show();
+    $('.contentBackOffre').hide();
 });
 
 /******** Mon compte BB********/
@@ -607,8 +615,13 @@ $(document).ready(function(){
 });
 
 $('body').on('click','.closeRappel',function(){
-  $('.confirmationReservation').css('display', 'none');
+  closeConfirmationReservation();
 });
+
+$('body').on('click','.voirMaConfirmationDone',function(){
+  confirmationReservation();
+});
+
 
 /**********SLIDER HOME*************************/
 
@@ -804,13 +817,13 @@ $( '.obtenirPromo' ).on( 'click', function() {
       data: 'json',
       success: function (data) {
         $('.testSuccess').html(data);
-        $('.confirmationReservation').css('display', 'block');
         $('.ticket .ticketBarTop').css('background-color', '#ea9026');
         $('.obtenirPromo h2').html('');
         $('.obtenirPromo h3').html('');
         $('.obtenirPromo p').append('VOIR MA RESERVATION');
         $('.ticket p.obtenirPromo').html('');
         $('.ticket p.obtenirPromo').append('POUR AUJOUR\'HUI');
+        confirmationReservation();
       },
       error: function(data){
         $('.testSuccess').html(data);
@@ -818,6 +831,31 @@ $( '.obtenirPromo' ).on( 'click', function() {
       }
   } );
 });
+
+function confirmationReservation(){
+    $('.checkConfirmation').addClass('open-checkConfirmation');
+    setTimeout(function(){
+        $('.contentConfirmation').addClass('open-contentConfirmation');
+    },300);
+
+    setTimeout(function(){
+        $('.textContentConfirmation').addClass('open-textContentConfirmation');
+    },600);     
+}
+
+function closeConfirmationReservation(){
+    
+  
+    $('.textContentConfirmation').removeClass('open-textContentConfirmation');
+
+    setTimeout(function(){
+        $('.contentConfirmation').removeClass('open-contentConfirmation');
+    },200); 
+
+    setTimeout(function(){
+        $('.checkConfirmation').removeClass('open-checkConfirmation');
+    },600);  
+}
 
 
 

@@ -1121,6 +1121,7 @@ p.droitReserve{
 .mainContainer{
 	/*padding-top: 80px; */
 	width: 100%;
+	position: relative;
 }
 
 .topPage{
@@ -1629,6 +1630,7 @@ select:focus {
 .infoBar{
 	background-color: #fff;
 	padding: 40px 0 25px 0;
+	position: initial;
 }
 
 .noteBar{
@@ -1830,15 +1832,61 @@ p.topPosition{
 /*****CONFIRMATION RESERVATION*******/
 
 .confirmationReservation{
-	display: none;
-	width: 60%;
-	position: absolute;
-	top: 10%;
-	left: 20%;
-	background-color: #ea9026;
-	height: 80%;
+	width: 700px;
+	position: fixed;
+	top: 30px;
+	left: 30px;
+	height: 100px;
 	z-index: 10;
 	text-align: center;	
+}
+
+.checkConfirmation{
+	float: left;
+	width: 100px;
+	height: 100px;
+	background-color: #fff;
+	background-size: cover;
+	opacity: 0;
+	-webkit-transition: opacity 0.5s ease-in-out;
+    -moz-transition: opacity 0.5s ease-in-out;
+    -o-transition: opacity 0.5s ease-in-out;
+    -ms-transition: opacity 0.5s ease-in-out;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.open-checkConfirmation{
+	opacity: 1;
+}
+
+.contentConfirmation{
+	width: 0px;
+	overflow: hidden;
+	text-align: center;
+	height: 100px;
+	background-color: #ea9026;
+	-webkit-transition: width 0.2s ease-in-out;
+    -moz-transition: width 0.2s ease-in-out;
+    -o-transition: width 0.2s ease-in-out;
+    -ms-transition: width 0.2s ease-in-out;
+    transition: width 0.2s ease-in-out;
+}
+
+.open-contentConfirmation{
+	width: 600px;
+}
+
+.textContentConfirmation{
+	opacity: 0;
+	-webkit-transition: opacity 0.2s ease-in-out;
+    -moz-transition: opacity 0.2s ease-in-out;
+    -o-transition: opacity 0.2s ease-in-out;
+    -ms-transition: opacity 0.2s ease-in-out;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.open-textContentConfirmation{
+	opacity: 1;
 }
 
 .confirmationReservation h2{
@@ -1957,6 +2005,11 @@ p.rappelCondition{
 	min-height: 550px;
 	position: relative;
 	padding-bottom: 20px;
+	display: none;
+}
+
+.contentBackOffre{
+	display: block;
 }
 
 

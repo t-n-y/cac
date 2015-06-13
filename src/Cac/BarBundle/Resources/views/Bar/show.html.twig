@@ -146,31 +146,38 @@
 			#}	
 			</div> 
 			<div class="confirmationReservation">
-				<div class="closeRappel">
-					<img src="{{asset('img/crossClose.png')}}" alt="">
-				</div>
-				<h2>Confirmation</h2>
-				{% if bar.getPromotionByDay(today).getOption('value').value == 0 %}
-					<p class="rappelPromo">Votre réservation pour {{ bar.name }} est valable jusqu'à ce soir</p>
-				{% else %}
-					<p class="rappelPromo">Valable jusquà ce soir : -{{ bar.getPromotionByDay(today).getOption('value').value }}% pour {{ bar.name }}</p>
-				{% endif %}
-				<p class="rappelCondition">Cette réservation n'est valable que pour UNE personne</p>
-				<div class="contentButtonRappel">
-					<div class="row">
-						<div class="col-xs-12 col-sm-12 col-md-12">
-							<div class="col-xs-4 col-sm-4 col-md-4">
-								<p>Voir les conditions</p>
-							</div>
-							<div class="col-xs-4 col-sm-4 col-md-4">
-								<p>Inviter des amis à reserver</p>
-							</div>
-							<div class="col-xs-4 col-sm-4 col-md-4">
-								<p>Annuler</p>
-							</div>
-						</div>
-					</div>
+				<div class="checkConfirmation" style="background-image : url('{{ asset('uploads/bar/'~bar.path) }}');">
 					
+				</div>
+				<div class="contentConfirmation">
+					<div class="textContentConfirmation">
+						<div class="closeRappel">
+							<img src="{{asset('img/crossClose.png')}}" alt="">
+						</div>
+						<h2>Confirmation de votre réservation</h2>
+						{% if bar.getPromotionByDay(today).getOption('value').value == 0 %}
+							<p class="rappelPromo">Votre réservation pour {{ bar.name }} est valable jusqu'à ce soir</p>
+						{% else %}
+							<p class="rappelPromo">Valable jusquà ce soir : -{{ bar.getPromotionByDay(today).getOption('value').value }}% pour '<i>{{ bar.name }}</i>'</p>
+						{% endif %}
+						<p class="rappelCondition">Cette réservation n'est valable que pour UNE personne</p>
+						<!-- <div class="contentButtonRappel">
+							<div class="row">
+								<div class="col-xs-12 col-sm-12 col-md-12">
+									<div class="col-xs-4 col-sm-4 col-md-4">
+										<p>Voir les conditions</p>
+									</div>
+									<div class="col-xs-4 col-sm-4 col-md-4">
+										<p>Inviter des amis à reserver</p>
+									</div>
+									<div class="col-xs-4 col-sm-4 col-md-4">
+										<p>Annuler</p>
+									</div>
+								</div>
+							</div>
+							
+						</div> -->
+					</div>
 				</div>
 			</div>
 		</div>
