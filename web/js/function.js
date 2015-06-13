@@ -291,6 +291,7 @@ setInterval(function(){
 
   loadTemplate('schedule');
   loadTemplate('promotion');
+  loadTemplate('sponsorship');
 
   $(window).scroll(function() {
     var scrollTop = $(window).scrollTop();
@@ -925,29 +926,8 @@ dateYesterday();
 
 var conceptName = $('.promotion').find(":selected").text();
 
-console.log(conceptName);
-
-
 $('.addBarman').on('click', function() {
   $(this).parent().find('.formBarman').addClass('open-formBarman');
 })
-
-/********************************/
-
-//$('#cac_barbundle_bar_valetCost').val($('#cac_barbundle_bar_valetCost').val() + '€');
-
-
-
-
-
-
-  // $dayOngletNewBar.on('click', function(){
-  //   $dayOngletNewBar.removeClass('selectedOngletDay');
-  //   $(this).addClass('selectedOngletDay');
-  // });
-
-
-
-
 
 

@@ -1,0 +1,14 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}CacBarBundle:parrainage:show{% endblock %}
+
+{% block body %}
+	{% for code in codes %}
+		<ul>
+			<li>{{ code }}</li>
+		</ul>
+	{% endfor %}
+	<script>
+		window.print();
+	</script>
+{% endblock %}

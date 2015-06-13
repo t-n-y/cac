@@ -280,6 +280,11 @@ class Bar
     private $daySchedules;
 
     /**
+     * @ORM\OneToMany(targetEntity="Cac\BarBundle\Entity\DaySponsorship", mappedBy="bar")
+     */
+    private $daySponsorships;
+
+    /**
      * @ORM\OneToMany(targetEntity="Cac\UserBundle\Entity\Barman", mappedBy="bar")
      */
     protected $barman;
@@ -307,6 +312,11 @@ class Bar
     private $PromoOffertes;
 
     /**
+     * @ORM\OneToMany(targetEntity="Cac\BarBundle\Entity\Sponsorship", mappedBy="bar")
+     */
+    private $sponsorships;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -318,6 +328,8 @@ class Bar
         $this->comments = new \Doctrine\Common\Collections\ArrayCollection();
         $this->promotions = new \Doctrine\Common\Collections\ArrayCollection();
         $this->daySchdules = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->sponsorships = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->daySponsorships = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -1477,5 +1489,73 @@ class Bar
         foreach($promotions as $promotion) {
             if($promotion->getDay() == $day && $promotion->getCategory() == 'happy-hour') return $promotion;
         }
+    }
+
+    /**
+     * Add sponsorship
+     *
+     * @param \Cac\BarBundle\Entity\Sponsorship $sponsorship
+     *
+     * @return Bar
+     */
+    public function addSponsorship(\Cac\BarBundle\Entity\Sponsorship $sponsorship)
+    {
+        $this->sponsorships[] = $sponsorship;
+
+        return $this;
+    }
+
+    /**
+     * Remove sponsorship
+     *
+     * @param \Cac\BarBundle\Entity\Sponsorship $sponsorship
+     */
+    public function removeSponsorship(\Cac\BarBundle\Entity\Sponsorship $sponsorship)
+    {
+        $this->sponsorships->removeElement($sponsorship);
+    }
+
+    /**
+     * Get sponsorships
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSponsorships()
+    {
+        return $this->sponsorships;
+    }
+
+    /**
+     * Add daySponsorship
+     *
+     * @param \Cac\BarBundle\Entity\DaySponsorship $daySponsorship
+     *
+     * @return Bar
+     */
+    public function addDaySponsorship(\Cac\BarBundle\Entity\DaySponsorship $daySponsorship)
+    {
+        $this->daySponsorships[] = $daySponsorship;
+
+        return $this;
+    }
+
+    /**
+     * Remove daySponsorship
+     *
+     * @param \Cac\BarBundle\Entity\DaySponsorship $daySponsorship
+     */
+    public function removeDaySponsorship(\Cac\BarBundle\Entity\DaySponsorship $daySponsorship)
+    {
+        $this->daySponsorships->removeElement($daySponsorship);
+    }
+
+    /**
+     * Get daySponsorships
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDaySponsorships()
+    {
+        return $this->daySponsorships;
     }
 }

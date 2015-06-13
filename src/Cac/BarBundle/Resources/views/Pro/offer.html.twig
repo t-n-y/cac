@@ -3,7 +3,10 @@
 {% block title %}CacBarBundle:Bar:show{% endblock %}
 
 {% block body %}
-
+		{{ form_start(edit_dayss_form, {'attr': {'id': 'form_sponsorship'}}) }}
+				      {{ form_errors(edit_dayss_form) }}
+				      {{ form_widget(edit_dayss_form.promotion, {'id': 'form_sponsorship_json'}) }}
+				 {{ form_end(edit_dayss_form) }}
 		<div class="topBarPro col-xs-12 col-sm-12 col-md-12 noPadding">
 			<img src="{{ asset('uploads/bar/'~bar.path) }}">
 			<div class="infoNameBar">

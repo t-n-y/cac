@@ -66,6 +66,7 @@ class ProController extends Controller
         $restrictions = $em->getRepository('CacBarBundle:PromotionOption')->findBy(array('category' => $restriction->getId()));
 
         $editForm = $this->createEditPromoForm($entity);
+        $editSSForm = $this->createEditSSForm($entity);
 
         $lists = array(
             'drinkNumber' => array('Illimité','5','10','20','30','40','50','100'),
@@ -73,7 +74,6 @@ class ProController extends Controller
             'printNumber' => array('X5','X10', 'X20', 'X30'),
             'days' => array('Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche')
         );
-
         return array(
             'bar'      => $entity,
             'today' => $today,
@@ -81,6 +81,7 @@ class ProController extends Controller
             'promotions' => $entity->getPromotions(),
             'lists' => $lists,
             'edit_form'   => $editForm->createView(),
+            'edit_dayss_form' => $editSSForm->createView(),
         );  
     }
 
@@ -113,6 +114,71 @@ class ProController extends Controller
         );
 
         return $form;
+    }
+
+    /**
+    * Creates a form to edit a Bar entity sponsorships.
+    *
+    * @param Bar $entity The entity
+    *
+    * @return \Symfony\Component\Form\Form The form
+    */
+    private function createEditSSForm(Bar $entity)
+    {
+        $pm = $this->get('cac_bar.promotion_manager');
+        $daySponsorships = $entity->getDaySponsorships();
+        $daySponsorshipsJSON = $pm->daySponsorShipsDummyJSON($daySponsorships);
+        $sponsorshipDummy = new PromotionDummy($daySponsorshipsJSON);
+        $form = $this->createForm(new PromotionDummyType(), $sponsorshipDummy, array(
+            'action' => $this->generateUrl('bar_update_dayss', array('id' => $entity->getId())),
+            'method' => 'PUT',
+        ));
+        $form->add('submit', 
+            'submit', 
+            array(
+                'label' => 'Valider'
+            )
+        );
+
+        return $form;
+    }
+
+    /**
+     * Edits an existing Bar entity promotions.
+     *
+     * @Route("/day-sponsorship/{id}", name="bar_update_dayss")
+     * @Method("POST")
+     */
+    public function updateDaySSAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $pm = $this->get('cac_bar.promotion_manager');
+
+        $entity = $em->getRepository('CacBarBundle:Bar')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('L\'établissement demandé n\'existe pas.');
+        }
+
+        $daySponsorships = $entity->getDaySponsorships();
+
+        $sponsorshipDummy = new PromotionDummy();
+        $dummyJSON = $pm->daySponsorShipsDummyJSON($daySponsorships);
+        $sponsorshipDummy->setPromotion($dummyJSON);
+
+        $newDaySponsorships = json_decode($request->request->get('data'), true);
+        foreach($daySponsorships as $daySponsorship) {
+            $daySponsorship->setNumber($newDaySponsorships[$daySponsorship->getDay()]['number']);
+            $em->persist($daySponsorship);
+        }
+
+        $em->flush();
+
+        $res = array(
+            'status' => 1
+        );
+
+        return new JsonResponse($res);
     }
 
     /**
@@ -271,9 +337,9 @@ class ProController extends Controller
         $role = $this->get('security.context')->isGranted('ROLE_COSMO');
         $bars = $em->getRepository('CacBarBundle:Bar')->findByAuthor($user);
 
-        if (count($bars) > 0 && $role === false ) {
-            ldd('nope !');
-        }
+        // if (count($bars) > 0 && $role === false ) {
+        //     ldd('nope !');
+        // }
 
         $entity = new Bar();
         $form   = $this->createCreateForm($entity);
@@ -297,6 +363,7 @@ class ProController extends Controller
         $pm = $this->get('cac_bar.promotion_manager');
         $emptyPromotions = $pm->getEmptyPromotions();
         $emptyHappyHours = $pm->getEmptyHappyHours();
+        $emptyDaySponsorships = $pm->getEmptyDaySponsorships();
 
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
@@ -331,6 +398,12 @@ class ProController extends Controller
                 $entity->addPromotion($promotion);
                 $promotion->setBar($entity);
                 $em->persist($promotion);
+            }
+
+            foreach($emptyDaySponsorships as $daySS) {
+                $entity->addDaySponsorship($daySS);
+                $daySS->setBar($entity);
+                $em->persist($daySS);
             }
             
             $em->persist($entity);

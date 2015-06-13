@@ -6,6 +6,7 @@ use Doctrine\ORM\EntityManager;
 use Cac\BarBundle\Entity\Promotion;
 use Cac\BarBundle\Entity\PromotionOption;
 use Cac\BarBundle\Entity\PromotionOptionCategory;
+use Cac\BarBundle\Entity\DaySponsorship;
 
 class PromotionManager
 {
@@ -18,6 +19,7 @@ class PromotionManager
     private $ending;
     private $emptyPromotions;
     private $emptyHappyHours;
+    private $emptyDaySponsorships;
 
     public function __construct(EntityManager $entityManager) {
         $this->days = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
@@ -29,9 +31,11 @@ class PromotionManager
         $this->ending = $this->em->getRepository('CacBarBundle:PromotionOptionCategory')->findOneByShortcode('ending');
         $this->emptyPromotions = new \Doctrine\Common\Collections\ArrayCollection();
         $this->emptyHappyHours = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->emptyDaySponsorships = new \Doctrine\Common\Collections\ArrayCollection();
 
         $this->generateEmptyPromotions();
         $this->generateEmptyHappyHours();
+        $this->generateEmptyDaySponsorships();
     }
 
     public function generateEmptyPromotions()
@@ -104,6 +108,19 @@ class PromotionManager
         return $this;
     }
 
+    public function generateEmptyDaySponsorships()
+    {
+        foreach($this->days as $day) {
+            $daySponsorship = new DaySponsorship();
+            $daySponsorship->setDay($day);
+            $daySponsorship->setNumber('');
+
+            $this->addEmptyDaySponsorship($daySponsorship);
+        }
+
+        return $this;
+    }
+
     public function populatePromotion(\Cac\BarBundle\Entity\Promotion $promotion)
     {
         return $this;
@@ -133,6 +150,18 @@ class PromotionManager
         return $this;
     }
 
+    public function getEmptyDaySponsorships()
+    {
+        return $this->emptyDaySponsorships;
+    }
+
+    public function addEmptyDaySponsorship(\Cac\BarBundle\Entity\DaySponsorship $daySS)
+    {
+        $this->emptyDaySponsorships[] = $daySS;
+
+        return $this;
+    }
+
     public function toDummyJSON($promotions)
     {
         $oldDummyJSON = file_get_contents(__DIR__.'/../../../../web/json/promotion.template.json');
@@ -150,6 +179,20 @@ class PromotionManager
                 $dummyArray[$promotion->getDay()][$promotion->getCategory()]['beginning'] = $promotion->getOption('beginning')->getValue();
                 $dummyArray[$promotion->getDay()][$promotion->getCategory()]['ending'] = $promotion->getOption('ending')->getValue();
             }
+        }
+
+        $newDummyJSON = json_encode($dummyArray);
+
+        return $newDummyJSON;
+    }
+
+    public function daySponsorShipsDummyJSON($daySponsorships)
+    {
+        $oldDummyJSON = file_get_contents(__DIR__.'/../../../../web/json/sponsorship.template.json');
+        $dummyArray = json_decode($oldDummyJSON, true);
+
+        foreach($daySponsorships as $daySponsorship) {
+            $dummyArray[$daySponsorship->getDay()]['number'] = $daySponsorship->getNumber();
         }
 
         $newDummyJSON = json_encode($dummyArray);
