@@ -71,43 +71,50 @@
 								<div class="contentBackOfficeBar">
 									<div class="etapePromotion">
 										<p>Promo du {{ days[j] }}</p>
-										<div class="row">
-
-											<div class="center valuePromo">
-												<select class="promotion-value-picker" data-day="{{ days[j] }}">
-													{% if bar.getPromotionByDay(days[j]).getOption('value').value > 0 %}
+											{% if bar.scheduleArray[day[j]].status == 'Ouvert' %}
+												<div class="row">
+													
+													<div class="center valuePromo">
 														
-														<option value="{{ bar.getPromotionByDay(days[j]).getOption('value').value }}">{{ bar.getPromotionByDay(days[j]).getOption('value').value }}%</option>
-													{% endif %}
-													<option value="0">Pas de promo</option>
-													{% for i in 2..6 %}
-													    <option value="{{i}}0">{{i}}0%</option>
-													{% endfor %}
-												</select>
-											</div>
-										</div>
-										<div class="row">
-											<div class="center nbpromo col-xs-12 col-sm-12 col-md-12 noPadding">
-												<p>Nombre d'offres disponibles</p>
-												<select class="promotion-qt-picker" data-day="{{ days[j] }}">
-													<option value="Illimité">{{ bar.getPromotionByDay(days[j]).getOption('quantity').value }}</option>
+															<select class="promotion-value-picker" data-day="{{ days[j] }}">
+																{% if bar.getPromotionByDay(days[j]).getOption('value').value > 0 %}
+																	
+																	<option value="{{ bar.getPromotionByDay(days[j]).getOption('value').value }}">{{ bar.getPromotionByDay(days[j]).getOption('value').value }}%</option>
+																{% endif %}
+																<option value="0">Pas de promo</option>
+																{% for i in 2..6 %}
+																    <option value="{{i}}0">{{i}}0%</option>
+																{% endfor %}
+															</select>
+														
+													</div>
 
-													{% set nbVerrePromo = {
-														'1': '10', 
-														'2': '20', 
-														'3': '30', 
-														'4': '40', 
-														'5': '50',
-														'6': '100'
-													} %}
-													{% for k in 1..6 %}
-													<option value="{{nbVerrePromo[k]}}">
-														{{nbVerrePromo[k]}}
-													</option>
-													{% endfor %}
-												</select>
-											</div>
-										</div>
+												</div>
+												<div class="row">
+													<div class="center nbpromo col-xs-12 col-sm-12 col-md-12 noPadding">
+														<p>Nombre d'offres disponibles</p>
+														<select class="promotion-qt-picker" data-day="{{ days[j] }}">
+															<option value="Illimité">{{ bar.getPromotionByDay(days[j]).getOption('quantity').value }}</option>
+
+															{% set nbVerrePromo = {
+																'1': '10', 
+																'2': '20', 
+																'3': '30', 
+																'4': '40', 
+																'5': '50',
+																'6': '100'
+															} %}
+															{% for k in 1..6 %}
+															<option value="{{nbVerrePromo[k]}}">
+																{{nbVerrePromo[k]}}
+															</option>
+															{% endfor %}
+														</select>
+													</div>
+												</div>
+											{% else %}
+												<p>Bar Fermé aujourd'hui</p>
+											{% endif %}
 									</div>
 								</div>
 							</div>
@@ -116,35 +123,39 @@
 								<div class="contentBackOfficeBar">
 									<div class="happyHours center">
 										<p>HAPPY HOURS</p>
-										<div class="row">
-											<div class="center valuePromo">
-												<select class="hh-value-picker" data-day="{{ days[j] }}">
-												{% if bar.getHappyHourByDay(days[j]).getOption('value').value == 0 %}
-													<option value="0">Pas de Happy Hour</option>
-												{% else %}
-													<option value="{{ bar.getHappyHourByDay(days[j]).getOption('value').value }}">{{ bar.getHappyHourByDay(days[j]).getOption('value').value }}%</option>
-												{% endif %}
-													{% for i in 3..7 %}
-													    <option value="{{i}}0">{{i}}0%</option>
+										{% if bar.scheduleArray[day[j]].status == 'Ouvert' %}
+											<div class="row">
+												<div class="center valuePromo">
+													<select class="hh-value-picker" data-day="{{ days[j] }}">
+													{% if bar.getHappyHourByDay(days[j]).getOption('value').value == 0 %}
+														<option value="0">Pas de Happy Hour</option>
+													{% else %}
+														<option value="{{ bar.getHappyHourByDay(days[j]).getOption('value').value }}">{{ bar.getHappyHourByDay(days[j]).getOption('value').value }}%</option>
+													{% endif %}
+														{% for i in 3..7 %}
+														    <option value="{{i}}0">{{i}}0%</option>
+														{% endfor %}
+													</select>
+												</div>
+											</div>
+											<div class="row">
+												<div class="center nbpromo happyhoursTime col-xs-12 col-sm-12 col-md-12 noPadding">
+													{% for k in 1..2 %}
+															<p>{{ params[k]['word'] }}</p>
+
+															<select class="hh-picker" data-day="{{ days[j] }}" data-when="{{ params[k]['when'] }}">
+																<option value="{{ bar.getHappyHourByDay(days[j]).getOption(params[k]['when']).value }}">{{ bar.getHappyHourByDay(days[j]).getOption(params[k]['when']).value }}h</option>
+																{% for i in 0..23 %}
+																    <option value="{{i}}">{{i}}h</option>
+																{% endfor %}
+															</select>
+
 													{% endfor %}
-												</select>
+												</div>
 											</div>
-										</div>
-										<div class="row">
-											<div class="center nbpromo happyhoursTime col-xs-12 col-sm-12 col-md-12 noPadding">
-												{% for k in 1..2 %}
-														<p>{{ params[k]['word'] }}</p>
-
-														<select class="hh-picker" data-day="{{ days[j] }}" data-when="{{ params[k]['when'] }}">
-															<option value="{{ bar.getHappyHourByDay(days[j]).getOption(params[k]['when']).value }}">{{ bar.getHappyHourByDay(days[j]).getOption(params[k]['when']).value }}h</option>
-															{% for i in 0..23 %}
-															    <option value="{{i}}">{{i}}h</option>
-															{% endfor %}
-														</select>
-
-												{% endfor %}
-											</div>
-										</div>
+										{% else %}
+											<p>Bar Fermé aujourd'hui</p>
+										{% endif %}
 									</div>
 								</div>
 							</div>

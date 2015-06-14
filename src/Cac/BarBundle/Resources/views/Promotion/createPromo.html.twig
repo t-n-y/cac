@@ -91,41 +91,55 @@
 													} %}
 													{% for j in 1..7 %}
 
-														<div class="promoHappyHour">
 
+
+														<div class="promoHappyHour">
+															
 															<div class="etapePromotion col-xs-12 col-sm-6 col-md-6">
+																
+
+																
 																<p>Promo du {{ days[j] }}</p>
 																<div class="row">
 
 																	<div class="center valuePromo">
-																		<select class="promotion-value-picker" data-day="{{ days[j] }}">
-																			<option>Valeur</option>
-																			{% for i in 2..6 %}
-																			    <option value="{{i}}0">{{i}}0%</option>
-																			{% endfor %}
-																		</select>
+																		{% if bar.scheduleArray[day[j]].status == 'Ouvert' %}
+																			<select class="promotion-value-picker" data-day="{{ days[j] }}">
+																				<option>Valeur</option>
+																				{% for i in 2..6 %}
+																				    <option value="{{i}}0">{{i}}0%</option>
+																				{% endfor %}
+
+																			</select>
+																			
+																		{% else %}
+																			<p>Bar Fermé aujourd'hui</p>
+																			
+																		{% endif %}
 																	</div>
 																</div>
 																<div class="row">
 
 																	<div class="center nbpromo col-xs-12 col-sm-12 col-md-12 noPadding">
-																		<p>Nombre d'offres disponibles</p>
-																		<select class="promotion-qt-picker" data-day="{{ days[j] }}">
-																			<option value="Illimité">illimité</option>
-																			{% set nbVerrePromo = {
-																				'1': '10', 
-																				'2': '20', 
-																				'3': '30', 
-																				'4': '40', 
-																				'5': '50',
-																				'6': '100'
-																			} %}
-																			{% for k in 1..6 %}
-																			<option value="{{nbVerrePromo[k]}}">
-																				{{nbVerrePromo[k]}}
-																			</option>
-																			{% endfor %}
-																		</select>
+																		{% if bar.scheduleArray[day[j]].status == 'Ouvert' %}
+																			<p>Nombre d'offres disponibles</p>
+																			<select class="promotion-qt-picker" data-day="{{ days[j] }}">
+																				<option value="Illimité">illimité</option>
+																				{% set nbVerrePromo = {
+																					'1': '10', 
+																					'2': '20', 
+																					'3': '30', 
+																					'4': '40', 
+																					'5': '50',
+																					'6': '100'
+																				} %}
+																				{% for k in 1..6 %}
+																				<option value="{{nbVerrePromo[k]}}">
+																					{{nbVerrePromo[k]}}
+																				</option>
+																				{% endfor %}
+																			</select>
+																		{% endif %}
 																	</div>
 																</div>
 															</div>
@@ -133,31 +147,40 @@
 																<p>HAPPY HOURS</p>
 																<div class="row">
 																	<div class="center valuePromo">
+																	{% if bar.scheduleArray[day[j]].status == 'Ouvert' %}
 																		<select class="hh-value-picker" data-day="{{ days[j] }}">
 																			<option>Valeur</option>
 																			{% for i in 3..7 %}
 																			    <option value="{{i}}0">{{i}}0%</option>
 																			{% endfor %}
 																		</select>
+																	{% else %}
+																		<p>Bar Fermé aujourd'hui</p>
+																	{% endif %}
+																		
 																	</div>
 																</div>
 																<div class="row">
 																	<div class="center nbpromo happyhoursTime col-xs-12 col-sm-12 col-md-12 noPadding">
-																		{% for k in 1..2 %}
-																				<p>{{ params[k]['word'] }}</p>
+																		{% if bar.scheduleArray[day[j]].status == 'Ouvert' %}
+																			{% for k in 1..2 %}
+																					<p>{{ params[k]['word'] }}</p>
 
-																				<select class="hh-picker" data-day="{{ days[j] }}" data-when="{{ params[k]['when'] }}">
-																					<option></option>
-																					{% for i in 0..23 %}
-																					    <option value="{{i}}">{{i}}h</option>
-																					{% endfor %}
-																				</select>
+																					<select class="hh-picker" data-day="{{ days[j] }}" data-when="{{ params[k]['when'] }}">
+																						<option></option>
+																						{% for i in 0..23 %}
+																						    <option value="{{i}}">{{i}}h</option>
+																						{% endfor %}
+																					</select>
 
-																		{% endfor %}
+																			{% endfor %}
+																		{% endif %}
 																	</div>
 																</div>
 															</div>
+															<div class="clear"></div>
 														</div>
+
 													{% endfor %}
 													<div class="clear"></div>
 

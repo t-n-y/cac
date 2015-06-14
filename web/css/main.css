@@ -1749,6 +1749,10 @@ p.topPosition{
 	line-height: 80px;
 }
 
+.barClose{
+	font-size: 16px;
+}
+
 .ticketBarBottom{
 	width: 250px;
 	height: 20px;
@@ -1835,6 +1839,7 @@ p.topPosition{
 /*****CONFIRMATION RESERVATION*******/
 
 .confirmationReservation{
+	display: none;
 	width: 700px;
 	position: fixed;
 	top: 30px;
@@ -1842,7 +1847,7 @@ p.topPosition{
 	height: 100px;
 	z-index: 10;
 	text-align: center;	
-	z-index: 3;
+	z-index: 7;
 }
 
 .checkConfirmation{

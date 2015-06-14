@@ -833,6 +833,7 @@ $( '.obtenirPromo' ).on( 'click', function() {
 });
 
 function confirmationReservation(){
+    $('.confirmationReservation').show();
     $('.checkConfirmation').addClass('open-checkConfirmation');
     setTimeout(function(){
         $('.contentConfirmation').addClass('open-contentConfirmation');
@@ -840,7 +841,12 @@ function confirmationReservation(){
 
     setTimeout(function(){
         $('.textContentConfirmation').addClass('open-textContentConfirmation');
-    },600);     
+    },600);  
+
+    setTimeout(function(){
+        closeConfirmationReservation()
+    },8000); 
+
 }
 
 function closeConfirmationReservation(){
@@ -854,7 +860,11 @@ function closeConfirmationReservation(){
 
     setTimeout(function(){
         $('.checkConfirmation').removeClass('open-checkConfirmation');
-    },600);  
+    },600); 
+
+    setTimeout(function(){
+        $('.confirmationReservation').hide();
+    },1000);  
 }
 
 
