@@ -3118,6 +3118,11 @@ a .ongletCreation:hover p{
 	color: #fff;
 }
 
+.selectedOngletsRetourOffre{
+	background-color: #5ac4d4 !important;
+	color: #fff !important;
+}
+
 .navRetourOffre, .retourOffre{
 	text-align: center;
 }
@@ -4042,7 +4047,7 @@ h2.serviceCosmo{
 
 /**********PAGE PROFILE USER************/
 
-.contentUser{
+/*.contentUser{
 	margin-top: 100px;
 }
 
@@ -4075,6 +4080,173 @@ p.nextPointFidelite{
 	margin-left: 10px;
 	font-size: 20px;
 	margin-right: 10px;
+}*/
+
+.contentCompteUser{
+	background-color: #f6f6f6;
+	padding: 70px 100px;
+}
+
+.ongletsUser{
+	text-align: center;
+}
+
+.ongletUser{
+	background-color: #303030;
+	color: #fff;
+	border-left: 3px solid #f6f6f6; 
+	cursor: pointer;
+}
+
+.ongletUser:nth-child(1){
+	border-left: 0px solid #f6f6f6; 
+}
+
+.selectedOngletUser{
+	background-color: #5ac4d4;
+	margin-top: 3px;
+}
+
+.ongletUser p{
+	margin: 0;
+	padding: 5px 0;
+}
+
+.contentGeneralUser{
+	background-color: #fff;
+}
+
+.contentUser{
+	padding : 20px 0;
+	display : none;
+}
+
+.selectedContentUser{
+	display : block;
+}
+
+.contentUser h2{
+	text-align: center;
+	border-bottom: 1px solid #303030;
+	margin: 0 5%;
+}
+
+.boxsReservation{
+	width: 90%;
+	margin: 20px auto;
+}
+
+.boxReservation{
+	border : 1px solid #5ac4d4;
+	background-color:#f6f6f6;
+	padding : 10px
+}
+
+.imgBarReservation{
+	width : 100%;
+	height : 90px;
+	background-size : cover;
+}
+
+.contentPromoUser:before, .contentPromoUser:after {
+  content: " ";
+  display: table;
+  clear: both;
+}
+
+.promoProfileUser{
+	background-color:#ea9026;
+	color:#fff;
+	display:inline-block;
+	float : left;
+}
+
+.happyhProfileUser{
+	float : left;
+	margin-left: 10px;
+}
+
+.ConditionProfileUser{
+	border: 1px solid #303030;
+}
+
+.ConditionProfileUser h3{
+	margin: 0;
+	padding: 5px 0;
+	color: #fff;
+	background-color: #303030;
+	font-size : 12px;
+	text-align: center;
+}
+
+.ConditionProfileUser p{
+	margin: 0;
+	font-size: 12px;
+	
+}
+
+.contentConditionProfileUser{
+	padding: 5px;
+	background-color: #fff;
+	text-align: center;
+}
+
+.moreReservationUser p{
+	margin: 0;
+	font-size: 12px;
+}
+
+.boxPointFidelite{
+	text-align: center;
+	width: 200px;
+	height: 70px;
+	background-color: #5ac4d4;
+	margin : auto;
+	margin-top : 40px;
+}
+
+.boxPointFidelite p{
+	margin-top : -10px;
+}
+
+.scoreFidelite{
+	color: #fff;
+	font-size: 40px;
+	margin :0;
+}
+
+.explicationBoxPointFidelite{
+	text-align : center;
+	width: 200px;
+	margin : 2px auto;
+}
+
+.explicationBoxPointFidelite p{
+	color : #fff;
+	background-color : #303030;
+	margin : 0;
+}
+
+.restPointToFree, .explicationRestPointToFree{
+	border : 1px solid #303030;
+	text-align : center;
+	margin : 20px 100px;
+}
+
+.restPointToFree p, .explicationRestPointToFree p{
+	margin : 0;
+	padding : 10px;
+}
+
+.explicationRestPointToFree p{
+	text-align : left;
+}
+
+.explicationRestPointToFree h3{
+	margin : 0;
+	padding : 8px 0;
+	background-color : #303030;
+	color : #fff;
 }
 
 

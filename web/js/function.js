@@ -67,6 +67,7 @@ $( ".menuHeaderList .best" ).on( "click", function() {
 var $shadowHover = $('.shadowHover');
 var $mainContainer = $('.mainContainer');
 var $isConnexion = $('.isConnexion');
+var $contentCompteUser = $('.contentCompteUser');
 
 setInterval(function(){
   var widthImg = $('.vignetteBar img').width();
@@ -77,6 +78,7 @@ setInterval(function(){
   $shadowHover.css('width', widthImg + 'px');
   $shadowHover.css('height', heightImg + 'px');
   $mainContainer.css('min-height', heightWindow + 'px');
+  $contentCompteUser.css('min-height', heightWindow + 'px');
   $isConnexion.css('min-height', heightWindow + 'px');
 
 },100);
@@ -348,6 +350,13 @@ $('.interrogation p').mouseleave(function() {
 /********PAGE SHOW BAR*****/
 
 var $body = $('body');
+
+
+$('.ongletUser').on('click', function(){
+    $('.selectedOngletUser').removeClass('selectedOngletUser');
+    $(this).addClass('selectedOngletUser');
+});
+
 
 
 $body.on("click", ".information",function(){
@@ -818,9 +827,10 @@ $( '.obtenirPromo' ).on( 'click', function() {
       success: function (data) {
         $('.testSuccess').html(data);
         $('.ticket .ticketBarTop').css('background-color', '#ea9026');
-        $('.obtenirPromo h2').html('');
-        $('.obtenirPromo h3').html('');
-        $('.obtenirPromo p').append('VOIR MA RESERVATION');
+        $('.ticketBarTop h2').html('');
+        $('.ticketBarTop h3').html('');
+        $('.ticketBarTop p').html('');
+        $('.ticketBarTop p').append('VOIR MA RESERVATION');
         $('.ticket p.obtenirPromo').html('');
         $('.ticket p.obtenirPromo').append('POUR AUJOUR\'HUI');
         confirmationReservation();
@@ -989,17 +999,17 @@ $('.ticketVerreValidate').on('click', function(){
           var disableddates = data.weekdays;
             $( "#codeInput" ).val(code);
             $( "#datepicker" ).datepicker({ 
-                                    minDate: 0, 
-                                    maxDate: "+6D",
-                                    beforeShowDay: function(date){
-                                        var string = jQuery.datepicker.formatDate('dd-mm-yy', date);
-                                        return [ disableddates.indexOf(string) == -1 ]
-                                    },
-                                    onSelect: function(date) {
-                                        $('#datepickerInput').val(date);
-                                    },
-                                    dateFormat: "dd-mm-yy"
-                                  });
+                minDate: 0, 
+                maxDate: "+6D",
+                beforeShowDay: function(date){
+                    var string = jQuery.datepicker.formatDate('dd-mm-yy', date);
+                    return [ disableddates.indexOf(string) == -1 ]
+                },
+                onSelect: function(date) {
+                    $('#datepickerInput').val(date);
+                },
+                dateFormat: "dd-mm-yy"
+              });
             $('.popupsponsorship').show();
           }
           else
@@ -1018,4 +1028,6 @@ $('#senddrink').on('click', function(){
         success: function (data) {
         }
     });
-})
+});
+
+

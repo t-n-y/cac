@@ -1,11 +1,137 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
+<div class="contentCompteUser">
+	<div class="row">
+		<div class="ongletsUser col-xs-12 col-sm-12 col-md-12 noPadding">
+			<div class="ongletUser selectedOngletUser ongletReservation col-xs-3 col-sm-3 col-md-3">
+				<p>Mes reservations</p>
+			</div>
+			<div class="ongletUser ongletParrainage col-xs-3 col-sm-3 col-md-3">
+				<p>Mes parrainages</p>
+			</div>
+			<div class="ongletUser ongletFidelite col-xs-3 col-sm-3 col-md-3">
+				<p>Mes points de fidélité</p>
+			</div>
+			<div class="ongletUser ongletInformation col-xs-3 col-sm-3 col-md-3">
+				<p>Mes information</p>
+			</div>
+		</div>
 
+		<div class="contentGeneralUser col-xs-12 col-sm-12 col-md-12 noPadding">
+			<div class="contentUser contentReservation">
+				<h2>Aujourd'hui</h2>
+
+				<div class="boxsReservation">
+					<div class="boxReservation">
+						<div class="row">
+							<div class="col-xs-6 col-sm-3 col-md-3 center">
+								<p>Lundi 18 mai 2015</p>
+							</div>
+							<div class="col-xs-6 col-sm-3 col-md-3 center">
+								<p><b>Le pershing hall</b></p>
+								
+								<div class="imgBarReservation" style="background-image : url('{{ asset('img/plusReserve.png') }}');">
+								</div>
+							</div>
+							<div class="col-xs-6 col-sm-4 col-md-4">
+								<div class="contentPromoUser">
+									<p class="promoProfileUser">-40%</p>
+									<p class="happyhProfileUser"><span>-50%</span> de 14h à 19h</p>
+								</div>
+
+								<div class="ConditionProfileUser">
+									<h3>Condition</h3>
+									<div class="contentConditionProfileUser">
+										<p>Sur une sélection de boissons</p> 
+										<p>A partir de deux consomations</p> 
+										<p>Reservation valable pour une personne</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-xs-6 col-sm-2 col-md-2 moreReservationUser">
+								<p>Voir la fiche du bar</p>
+								<p>Inviter des amis</p>
+								<p>Annuler</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="contentUser selectedContentUser contentReservation">
+				<h2>C'est cadeau</h2>
+
+				<div class="boxsReservation">
+					<div class="boxReservation">
+						<div class="row">
+							<div class="col-xs-6 col-sm-3 col-md-3 center">
+								<p>Lundi 18 mai 2015</p>
+								<p>Via</p>
+								<p><b>Kevin Marien</b></p>
+							</div>
+							<div class="col-xs-6 col-sm-3 col-md-3 center">
+								<p><b>Le pershing hall</b></p>
+								
+								<div class="imgBarReservation" style="background-image : url('{{ asset('img/plusReserve.png') }}');">
+								</div>
+							</div>
+							<div class="col-xs-6 col-sm-4 col-md-4 center">
+								<p><span>Un verre offert</span> par Kevin Marien</p>
+								<p>Comment ça fonctionne ?</p>
+
+								<div class="ConditionProfileUser">
+									<h3>Condition</h3>
+									<div class="contentConditionProfileUser">
+										<p>Sur une sélection de boissons</p> 
+										<p>A partir de deux consomations</p> 
+										<p>Reservation valable pour une personne</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-xs-6 col-sm-2 col-md-2 moreReservationUser">
+								<p>Voir la fiche du bar</p>
+								<p>Inviter des amis</p>
+								<p>Annuler</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="contentUser contentFidelite">
+				<h2>Cumul des points</h2>
+
+				<div class="boxPointFidelite">
+					<p class="scoreFidelite">{{user.score}}</p>
+					{% if user.score <= 1 and user.score >= -1%}
+						<p>point</p>
+					{%else%}
+						<p>points</p>
+					{%endif%}
+				</div>
+				<div class="explicationBoxPointFidelite">
+					<p>50 points = 1 verre gratuit</p>
+				</div>
+
+				<div class="restPointToFree">
+					<p>Plus que {{ 50 - user.score }} points pour obtenir une conso gratuite</p>
+				</div>
+
+				<div class="explicationRestPointToFree">
+					<h3>Comment ça marche</h3>
+					<p>C’est très simple, à chaque réservation ou à chaque fois que tu parraines un amis, 5 points sont créditer sur ton compte. Au bout de 50 points nous t’offrons une conso dans un bar participant au programme de fidélité.</p> 
+
+					<p>Tu peux utiliser ceette conso dans le cadre des conditions imposés par l’établissement. La seul condition que nous imposons, c’est que cette conso soit utilisé dans un établissement jamais réservé par l’utilisateur.</p>
+
+					<p>A très vite !</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 			
 
 
 
-		<div class="contentSuperInfoBar col-xs-12 col-sm-12 col-md-12 noPadding">
+		<!-- <div class="contentSuperInfoBar col-xs-12 col-sm-12 col-md-12 noPadding">
 			<div class="superInfoBar contentUser overflowX noPadding">
 				
 				<div class="col-xs-12 col-sm-6 col-md-6">
@@ -47,4 +173,4 @@
 		</div>
 
 
-<div class="clear"></div>
+<div class="clear"></div> -->
