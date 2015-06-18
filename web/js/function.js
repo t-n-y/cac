@@ -351,6 +351,18 @@ $('.interrogation p').mouseleave(function() {
 
 var $body = $('body');
 
+$('.ongletRetourOffre').on('click', function(){
+    $('.selectedOngletsRetourOffre').removeClass('selectedOngletsRetourOffre');
+    $('.selectedRetourOffre').removeClass('selectedRetourOffre');
+    $(this).addClass('selectedOngletsRetourOffre');
+
+    if($(this).hasClass('ongletToday')){
+      $('.JS-offreToday').addClass('selectedRetourOffre');
+    }else if($(this).hasClass('ongletYesterday')){
+      $('.JS-offreYesterday').addClass('selectedRetourOffre');
+    }
+});
+
 
 $('.ongletUser').on('click', function(){
     $('.selectedOngletUser').removeClass('selectedOngletUser');

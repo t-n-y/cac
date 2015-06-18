@@ -3123,8 +3123,16 @@ a .ongletCreation:hover p{
 	color: #fff !important;
 }
 
+.selectedRetourOffre{
+	display: block !important;
+}
+
 .navRetourOffre, .retourOffre{
 	text-align: center;
+}
+
+.retourOffre{
+	display: none;
 }
 
 .retourOffre:nth-child(odd){
