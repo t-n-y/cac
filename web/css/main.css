@@ -1246,6 +1246,7 @@ p.droitReserve{
 	font-size: 28px;
    	font-family: 'Roboto', sans-serif;
    	font-weight: 500;
+   	margin: 0;
 }
 
 .brandBref{
@@ -1254,6 +1255,7 @@ p.droitReserve{
 	font-family: 'Roboto', sans-serif;
    	font-weight: 400;
    	font-style: italic;
+   	margin-top: -5px;
 }
 
 .explicationsBlock{
@@ -1864,6 +1866,20 @@ p.topPosition{
     transition: opacity 0.5s ease-in-out;
 }
 
+.jourReservation{
+	color: #fff;
+	font-size: 30px;
+	text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.57);
+	margin-bottom: 0px;
+	margin-top: 10px;
+}
+
+.moisReservation{
+	color: #fff;
+  	font-size: 28px;
+  	text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.57);
+}
+
 .open-checkConfirmation{
 	opacity: 1;
 }
@@ -1873,12 +1889,15 @@ p.topPosition{
 	overflow: hidden;
 	text-align: center;
 	height: 100px;
-	background-color: #ea9026;
+	background-color: #fff;
 	-webkit-transition: width 0.2s ease-in-out;
     -moz-transition: width 0.2s ease-in-out;
     -o-transition: width 0.2s ease-in-out;
     -ms-transition: width 0.2s ease-in-out;
     transition: width 0.2s ease-in-out;
+    -webkit-box-shadow: 10px 10px 39px 0px rgba(0,0,0,0.37);
+	-moz-box-shadow: 10px 10px 39px 0px rgba(0,0,0,0.37);
+	box-shadow: 10px 10px 39px 0px rgba(0,0,0,0.37);
 }
 
 .open-contentConfirmation{
@@ -1899,9 +1918,9 @@ p.topPosition{
 }
 
 .confirmationReservation h2{
-	background-color:#303030;
+	background-color:#63B755;
 	color: #fff;
-	margin : 0 0 10px 0;
+	margin : 0 0 3px 0;
 	padding: 5px 0;
 	font-size: 23px;
 
@@ -1919,10 +1938,14 @@ p.topPosition{
 }
 
 p.rappelPromo{
-	color: #fff;
+	color: #303030;
 	margin: 0;
-	font-size: 16px;
-	margin : 0 0 10px 0;
+	font-size: 23px;
+	margin : 0 0 5px 0;
+}
+
+.rappelPromo span{
+	color: #ea9026;
 }
 
 p.rappelCondition{
@@ -1947,7 +1970,7 @@ p.rappelCondition{
 }
 
 .obtenirPromo p.voirMaConfirmation{
-	margin-top: 19px;
+
   	font-size: 16px;
 }
 
@@ -2314,15 +2337,15 @@ p.vignettePetitPlusPrix{
 	background-color: #fff;
 }
 
-.descriptionBar h2{
+.contentOption h2{
 	color: #5ac4d4;
 	border-bottom: 1px solid #5ac4d4;
-	font-size: 17px;
-	margin-left: 20px;
+	font-size: 14px;
+	font-weight: normal;
+	margin-top: 0;
+	padding-bottom: 0;
+	margin-bottom: 10px;
 }
-
-
-
 
 .contentOption{
 	display: none;
@@ -2414,6 +2437,10 @@ p.vignettePetitPlusPrix{
 	display: block;
 }
 
+.contentCarte img{
+	width: 80%;
+}
+
 .affichageBO{
   padding: 5px 50px;
   background-color: #fff;
@@ -2449,6 +2476,8 @@ p.closeMesOptions{
 	text-align: center;
 	color: #303030;
 	background-color: #fcfcfc;
+	padding: 10px 0;
+	border: none;
 }
 
 .mesOptionsEnCours{

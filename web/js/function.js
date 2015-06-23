@@ -493,6 +493,16 @@ $('body').on('click','.factureBO',function(){
   heightSuperInfoBar();
 });
 
+$('body').on('click','.showFactureBO',function(){
+  $('.contentGeneralBO').hide();
+  $('.contentBarmanBO').hide();
+  $('.contentModifBO').hide();
+  $('.contentFactureBO').show();
+  $('.ongletOptionPro').removeClass('ongletselect');
+  $('.factureBO').addClass('ongletselect');
+  heightSuperInfoBar();
+});
+
 $('body').on('click','.barmanBO',function(){
   $('.contentGeneralBO').hide();
   $('.contentFactureBO').hide();
@@ -586,30 +596,39 @@ function heightSuperInfoBar(){
   $('.contentMesOptions').css('height', heightSuperInfoBar+'px');
 }
 
+$(document).on({
+    mouseenter: function(){
+      openTicketPromotion();
+    },
+    mouseleave: function(){
+      closeTicketPromotion();
+    }
+}, '.JS-ticket');
 
-$(document).ready(function(){
-  $(".ticket").mouseenter(function(){
-    //$(".ticket .ticketBarTop").css("margin-top","-10px");
-    $(".ticket .ticketBarTop").stop(true,false).animate({
-              marginTop: "-10px"
-          }, 300);
-    $(".ticket .ticketPromotion").stop(true,false).animate({
-              marginTop: "0px"
-          }, 300);
-    $('.ticket .ticketPromotion').css("display" , "block");
-  });
-  $(".ticket").mouseleave(function(){
-    $(".ticket .ticketBarTop").stop(true,false).animate({
-              marginTop: "0px"
-          }, 300);
-    $(".ticket .ticketPromotion").stop(true,false).animate({
-              marginTop: "-42px"
-          }, 300);
-    setTimeout(function() {  
-      $('.ticket .ticketPromotion').css("display" , "none");
-    },300);
-  });
-});
+function openTicketPromotion(){
+  $(".ticket .ticketBarTop").stop(true,false).animate({
+        marginTop: "-10px"
+    }, 300);
+  $(".ticket .ticketPromotion").stop(true,false).animate({
+            marginTop: "0px"
+        }, 300);
+  $('.ticket .ticketPromotion').css("display" , "block");
+}
+
+function closeTicketPromotion(){
+  $(".ticket .ticketBarTop").stop(true,false).animate({
+            marginTop: "0px"
+        }, 300);
+  $(".ticket .ticketPromotion").stop(true,false).animate({
+            marginTop: "-42px"
+        }, 300);
+  setTimeout(function() {  
+    $('.ticket .ticketPromotion').css("display" , "none");
+  },300);
+}
+
+
+
 
 
 $(document).ready(function(){
@@ -831,7 +850,7 @@ $( ".animConnexion" ).on( "click", function() {
 });
 
 // Obtenir une promotion
-$( '.obtenirPromo' ).on( 'click', function() {
+$(document).on( 'click', '.JS-obtenirPromo', function() {
   var promoId = $(this).data('bar-id');
   $.ajax( {
       url: Routing.generate('get_promo', {id: promoId}),
@@ -839,13 +858,19 @@ $( '.obtenirPromo' ).on( 'click', function() {
       success: function (data) {
         $('.testSuccess').html(data);
         $('.ticket .ticketBarTop').css('background-color', '#ea9026');
-        $('.ticketBarTop h2').html('');
-        $('.ticketBarTop h3').html('');
-        $('.ticketBarTop p').html('');
-        $('.ticketBarTop p').append('VOIR MA RESERVATION');
+        $('.ticket .ticketBarTop h2').hide();
+        $('.ticket .ticketBarTop h3').hide();
+        $('.ticket .ticketBarTop p').html('');
+        $('.ticket .ticketBarTop p').append('VOIR MA RESERVATION');
         $('.ticket p.obtenirPromo').html('');
         $('.ticket p.obtenirPromo').append('POUR AUJOUR\'HUI');
+        $('.ticket').find('[data-bar-id]').attr( 'data-bar-id', null );
+        $('.JS-ticket').removeClass('JS-ticket');
+        $('.JS-promoBox').addClass('voirMaConfirmationDone');
+        $('.JS-obtenirPromo').removeClass('JS-obtenirPromo');
+        closeTicketPromotion();
         confirmationReservation();
+
       },
       error: function(data){
         $('.testSuccess').html(data);

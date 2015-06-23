@@ -77,8 +77,12 @@
 									</div>
 									
 									<div class="col-xs-2 col-sm-2 col-md-2 noPadding">
-										<p class="shadowNote">{{ bar.note }}/10</p>
-										<p class="shadowNbAvis hoverShadow">{{ bar.nbAvis }} avis</p>
+										{% if bar.note !=0 %}
+											<p class="shadowNote">{{ bar.note }}/10</p>
+										{% endif %}
+										{% if bar.nbAvis !=0 %}
+											<p class="shadowNbAvis hoverShadow">{{ bar.nbAvis }} avis</p>
+										{% endif %}
 									</div>
 									<div class="shadowAdresse col-xs-12 col-sm-12 col-md-12 noPadding">
 										<div class="col-xs-2 col-sm-2 col-md-2 noPadding">
@@ -125,8 +129,12 @@
 									</div>
 									
 									<div class="col-xs-2 col-sm-2 col-md-2 noPadding">
-										<p class="shadowNote">{{ bar.note }}/10</p>
-										<p class="shadowNbAvis hoverShadow">{{ bar.nbAvis }} avis</p>
+										{% if bar.note !=0 %}
+											<p class="shadowNote">{{ bar.note }}/10</p>
+										{% endif %}
+										{% if bar.nbAvis !=0 %}
+											<p class="shadowNbAvis hoverShadow">{{ bar.nbAvis }} avis</p>
+										{% endif %}
 									</div>
 									<div class="shadowAdresse col-xs-12 col-sm-12 col-md-12 noPadding">
 										<div class="col-xs-2 col-sm-2 col-md-2 noPadding">
