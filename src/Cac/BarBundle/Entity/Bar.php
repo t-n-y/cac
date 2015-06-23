@@ -312,6 +312,11 @@ class Bar
     private $PromoOffertes;
 
     /**
+     * @ORM\OneToMany(targetEntity="Cac\BarBundle\Entity\VerresOfferts", mappedBy="bar")
+     */
+    private $VerresOfferts;
+
+    /**
      * @ORM\OneToMany(targetEntity="Cac\BarBundle\Entity\Sponsorship", mappedBy="bar")
      */
     private $sponsorships;
@@ -1557,5 +1562,15 @@ class Bar
     public function getDaySponsorships()
     {
         return $this->daySponsorships;
+    }
+
+    /**
+     * Get verresOfferts
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getVerresOfferts()
+    {
+        return $this->VerresOfferts;
     }
 }

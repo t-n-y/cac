@@ -28,6 +28,12 @@ abstract class User extends BaseUser
     private $PromoOffertes;
 
     /**
+     * @ORM\OneToMany(targetEntity="Cac\BarBundle\Entity\VerresOfferts", mappedBy="user")
+     */
+    private $VerresOfferts;
+
+
+    /**
      * @var date $birthday
      *
      * @ORM\Column(name="birthday", type="datetime", nullable=true)
@@ -137,5 +143,15 @@ abstract class User extends BaseUser
     public function removePromoOfferte(\Cac\BarBundle\Entity\PromoOffertes $promoOfferte)
     {
         $this->PromoOffertes->removeElement($promoOfferte);
+    }
+
+    /**
+     * Get verresOfferts
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getVerresOfferts()
+    {
+        return $this->VerresOfferts;
     }
 }

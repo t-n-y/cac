@@ -9,6 +9,7 @@ use Cac\BarBundle\Entity\Sponsorship;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Hip\MandrillBundle\Message;
 use Hip\MandrillBundle\Dispatcher;
+use Cac\BarBundle\Entity\VerresOfferts;
 
 class SponsorshipController extends Controller
 {
@@ -120,9 +121,19 @@ class SponsorshipController extends Controller
 		$sponsorship = $em->getRepository('CacBarBundle:Sponsorship')->findOneByCode($code);
 		$sponsorship->setUsedAt($newdate);
 		$em->persist($sponsorship);
-		$em->flush();
-
 		$bar = $em->getRepository('CacBarBundle:Bar')->findOneById($sponsorship->getBar());
+
+
+		$reference = mt_rand(100000,999999);
+	    $promo = new VerresOfferts();
+	    $promo->setReference($reference);
+	    $promo->setEtat('confirmé');
+	    $promo->setBar($bar);
+	    $promo->setUser($user);
+	    $promo->setCreatedAt(new \DateTime('now'));
+	    $em->persist($promo);
+	    $em->flush();
+
 
 		$md = $this->get('hip_mandrill.dispatcher');
 
@@ -130,12 +141,30 @@ class SponsorshipController extends Controller
         $templateName = 'invitation';
         $templateContent = array(
             array(
-                'name' => $user->getName(),
-                'firstname' => $user->getFirstname(),
-                'date' => $used,
-                'barname' => $bar->getName(),
-                'adress' => $bar->getAdress().', '.$bar->getZipcode().', '.$bar->getTown()
-            )
+
+                'name' => 'lastname',
+                'content' => $user->getName()
+            ),
+            array(
+                'name' => 'firstname',
+                'content' => $user->getFirstname()
+            ),
+            array(
+                'name' => 'date',
+                'content' => $used
+            ),
+            array(
+                'name' => 'barname',
+                'content' => $bar->getName()
+            ),
+            array(
+                'name' => 'adress',
+                'content' => $bar->getAdress().', '.$bar->getZipcode().', '.$bar->getTown()
+            ),
+            array(
+                'name' => 'ref',
+                'content' => $reference
+            ),
         );
         $message
             ->addTo($mail, 'ami')

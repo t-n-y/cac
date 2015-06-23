@@ -243,10 +243,11 @@ class ProController extends Controller
 
         
         $promoOffertes = $em->getRepository('CacBarBundle:PromoOffertes')->findBy(array('bar'=> $bar), array('id' => 'DESC'));
-
+        $verresOfferts = $em->getRepository('CacBarBundle:verresOfferts')->findBy(array('bar'=> $bar), array('id' => 'DESC'));
         return array(
             'bar'      => $bar,
             'promos' => $promoOffertes,
+            'verres' => $verresOfferts,
         );  
     }
 
