@@ -9,7 +9,8 @@
 			<p>{{carte.id}}</p>
 			<p>{{carte.bar.name}}</p>
 			<img src="{{ asset(('uploads/carte-bar/' ~ carte.path)) }}" alt="carte">
-			<button data-carte="{{carte.id}}" data-user="{{carte.bar.author.id}}">valider</button>
+			<button class="validate" data-carte="{{carte.id}}" data-user="{{carte.bar.author.id}}">valider</button>
+			<button class="unvalidate" data-carte="{{carte.id}}" data-user="{{carte.bar.author.id}}">unvalider</button>
 		</div>
 		<hr>
 	{% endfor %}
@@ -17,14 +18,24 @@
 {% block javascripts %}
     {{ parent() }}
 	<script type="text/javascript">
-	    $( "button" ).on( "click", function() {
+	    $( "button.validate" ).on( "click", function() {
 	    	var id = $(this).data('carte');
 	    	var userId = $(this).data('user');
 	        $.ajax( {
 	            type: 'GET',
 	            url: Routing.generate('validate_the_carte', { 'id': id, user : userId }),
 	            success: function (data) {
-	            	console.log(data);
+	            	alert(data);
+	            }
+	        } );
+	    });
+	    $( "button.unvalidate" ).on( "click", function() {
+	    	var id = $(this).data('carte');
+	    	var userId = $(this).data('user');
+	        $.ajax( {
+	            type: 'GET',
+	            url: Routing.generate('unvalidate_the_carte', { 'id': id, user : userId }),
+	            success: function (data) {
 	            	alert(data);
 	            }
 	        } );

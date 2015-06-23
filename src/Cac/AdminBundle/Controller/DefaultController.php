@@ -41,7 +41,6 @@ class DefaultController extends Controller
 		else{
 			return $this->redirect($this->generateUrl('nbhighlight_edit', array('id' => 1)));
 		}
-
 	}
 
     /**
@@ -92,6 +91,35 @@ class DefaultController extends Controller
             return new Response("Ce bar est deja abonné aux cartes. Carte validée");
         }
         return new Response("Carte validée");
+    }
+
+    /**
+     * @Route("/unvalidate-carte/{id}/{user}", name="unvalidate_the_carte", options={"expose"=true})
+     */
+    public function unvalidateTheCarteAction($id, $user)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $carte = $em->getRepository('CacBarBundle:CarteBar')->find($id);
+        $carte->setVisible(false);
+        $em->persist($carte);
+        $em->flush();
+        $plan = $em->getRepository('CacPaymentBundle:Payment')->findOneByUser($user)->getPlan();
+        $user = $this->get('security.context')->getToken()->getUser();
+
+        $option = $em->getRepository('CacPaymentBundle:PaymentOptions')->findOneBy(array('user' => $user->getId(), 'name' => 'carte' ));
+        if (is_object($option)) {
+            $option->setActive(0);
+            $option->setDeletedAt(new \DateTime('now'));
+            $em->persist($option);
+            $em->flush();
+        }
+        if ($plan === "shootercarte") {
+            $this->forward('CacPaymentBundle:Default:changePlan', array('plan'  => 'shooter','id' => $user));
+        }
+        elseif ($plan === "cosmocarte") {
+            $this->forward('CacPaymentBundle:Default:changePlan', array('plan'  => 'cosmo','id' => $user));
+        }
+        return new Response("Carte unvalidée");
     }
 
     /**

@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Cac\BarBundle\Entity\CarteBar;
 use Cac\BarBundle\Form\CarteBarType;
+use Cac\PaymentBundle\Entity\PaymentOptions;
 
 /**
  * CarteBar controller.
@@ -44,7 +45,6 @@ class CarteBarController extends Controller
      */
     public function createAction(Request $request)
     {
-        
         $em = $this->getDoctrine()->getManager();
 
         $entity = new CarteBar();
@@ -84,8 +84,6 @@ class CarteBarController extends Controller
      */
     private function createCreateForm(CarteBar $entity, $barId)
     {
-        
-        // ldd($barId);
         $form = $this->createForm(new CarteBarType(), $entity, array(
             'action' => $this->generateUrl('cartebar_create'),
             'method' => 'POST',
@@ -118,7 +116,6 @@ class CarteBarController extends Controller
      */
     public function newAction($barId)
     {
-        // $bar = $em->getRepository('CacBarBundle:Bar')->find($barId);
         $entity = new CarteBar();
         $form   = $this->createCreateForm($entity, $barId);
 
@@ -220,14 +217,19 @@ class CarteBarController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+            $entity->removeUpload();
+            $entity->setVisible(false);
+            $em->persist($entity);
             $em->flush();
-            if ($entity->file)
-            {
+            // if ($entity->file)
+            // {
                 $entity->upload();
-                $em->persist($entity);
-                $em->flush();
-            }
+                // $em->persist($entity);
+                // $em->flush();
+            // }
+            
 
+            
             $referer = $request->headers->get('referer');
             return $this->redirect($referer);
         }
