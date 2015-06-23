@@ -32,27 +32,30 @@
 					'7': 'Dimanche'
 				} %}
 				{% for i in 1..7 %}
-					<div class="dayOngletNewBar borderDayOngletNewBar" data-dayselected='{{i}}'>
-						{{ day[i] }}
-					</div>
+					<div class="dayOngletNewBar borderDayOngletNewBar" data-dayselected='{{i}}'>{{ day[i] }}</div>
 				{% endfor %}
 			</div>
+
+			{% set days = {
+				'1': 'Lundi', 
+				'2': 'Mardi', 
+				'3': 'Mercredi', 
+				'4': 'Jeudi', 
+				'5': 'Vendredi', 
+				'6': 'Samedi', 
+				'7': 'Dimanche'
+			} %}
 
 			<div class="coteneurBackOfficeBar col-xs-12 col-sm-12 col-md-12 noPadding">
 				<div class="superContentBackOffice contentBackOffre noPadding">
 				{{ form_start(edit_form) }}
 				      {{ form_errors(edit_form) }}
 				      {{ form_widget(edit_form.promotion) }}
+
+
+
 					<div class="row">
-					{% set days = {
-						'1': 'Lundi', 
-						'2': 'Mardi', 
-						'3': 'Mercredi', 
-						'4': 'Jeudi', 
-						'5': 'Vendredi', 
-						'6': 'Samedi', 
-						'7': 'Dimanche'
-					} %}
+					
 
 					{% set params = {
 						'1': {
@@ -171,8 +174,17 @@
 					</div>
 				</div>
 				<div class="superContentBackOffice contentBackparrainage noPadding">
-					<p>prout</p>
+					
+
 					{{ form_start(edit_dayss_form, {'attr': {'id': 'form_sponsorship'}}) }}
+						{% for day in 1..7 %}
+							<div class="promoParrainnage">
+							<p class="nbParrainnageToday" data-nbParrainnageToday=""></p>
+							<!-- <p>prout {{ days[day] }}</p> -->
+							</div>
+							
+						{% endfor %}
+
 				      {{ form_errors(edit_dayss_form) }}
 				      {{ form_widget(edit_dayss_form.promotion, {'id': 'form_sponsorship_json'}) }}
 				 	{{ form_end(edit_dayss_form) }}

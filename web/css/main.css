@@ -2729,7 +2729,7 @@ p.closeMesOptions{
 	margin-top: 20px;
 }
 
-.promoHappyHour{
+.promoHappyHour, .promoParrainnage{
 	display: none;
 }
 
@@ -2742,7 +2742,7 @@ p.closeMesOptions{
 	color: #ef662f;
 }
 
-.selectedPromoHappyHour{
+.selectedPromoHappyHour, .selectedPromoParrainnage{
 	display: block;
 }
 
