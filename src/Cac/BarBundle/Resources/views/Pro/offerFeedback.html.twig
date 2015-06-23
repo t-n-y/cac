@@ -165,8 +165,10 @@
 				</div>
 			</div>
 		</div>
-
-		<button id="imprimer">imprimer</button>
+		<div class="impressionRetour">
+			<button id="imprimer">imprimer</button>
+		</div>
+		
 {% endblock %}
 {% block javascripts %}
 	{{ parent() }}
@@ -175,7 +177,7 @@
 	$('#imprimer').on('click', function(){
 		window.print();
 	});
-	
+
     $('input#userSearch').quicksearch('.allOffre');
 	</script>
 {% endblock %}

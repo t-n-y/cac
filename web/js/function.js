@@ -112,28 +112,29 @@ $(document).ready(function(){
   });
 
   var $forConnexion = $('.forConnexion');
-  var $forRegister = $('.forRegister');
+  var $forParrainage = $('.forParrainage');
   var $animConnexion = $('.animConnexion');
   var $inscrivezVous = $('.inscrivezVous');
   var $closeForConnexion = $('.closeForConnexion');
   var $JSinscriptionProNav = $('.JSinscriptionProNav');
+  var $mesParrainage = $('.parrainage');
   
   $animConnexion.on('click',function(){
     $isConnexion.css("display","block");
     $forConnexion.css("display","block");
-    $forRegister.css("display","none");
+    $forParrainage.css("display","none");
   });
 
   $isConnexion.on('click',function(){
     $isConnexion.css("display","none");
     $forConnexion.css("display","none");
-    $forRegister.css("display","none");
+    $forParrainage.css("display","none");
   });
 
   $closeForConnexion.on('click',function(){
     $isConnexion.css("display","none");
     $forConnexion.css("display","none");
-    $forRegister.css("display","none");
+    $forParrainage.css("display","none");
   });
 
   $JSinscriptionProNav.on('click',function(){
@@ -145,6 +146,11 @@ $(document).ready(function(){
         scrollTop: $('.contentFormRegisterPro').offset().top
     }, 700);
 
+  });
+
+  $mesParrainage.on('click',function(){
+    $isConnexion.css("display","block");
+    $forParrainage.show();
   });
 });
 
@@ -367,6 +373,26 @@ $('.ongletRetourOffre').on('click', function(){
 $('.ongletUser').on('click', function(){
     $('.selectedOngletUser').removeClass('selectedOngletUser');
     $(this).addClass('selectedOngletUser');
+});
+
+$('.ongletReservation').on('click', function(){
+  $('.contentUser').hide();
+  $('.contentReservation').show();
+});
+
+$('.ongletParrainage').on('click', function(){
+  $('.contentUser').hide();
+  $('.contentParrainage').show();
+});
+
+$('.ongletFidelite').on('click', function(){
+  $('.contentUser').hide();
+  $('.contentFidelite').show();
+});
+
+$('.ongletInformation').on('click', function(){
+  $('.contentUser').hide();
+  $('.contentInformation').show();
 });
 
 

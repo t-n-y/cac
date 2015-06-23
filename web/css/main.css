@@ -244,7 +244,7 @@ h2.font30{
 	display: none;
 }
 
-.forConnexion, .forRegister{
+.forConnexion{
 	width: 400px;
 	height: 320px;
 	background-color: #f6f6f6;
@@ -260,12 +260,27 @@ h2.font30{
     text-align: center;
 }
 
+.forParrainage{
+	width: 400px;
+	height: 320px;
+	background-color: #fff;
+	position: fixed;
+	top: 50%;
+	margin-top: -170px;
+	left:50%;
+	margin-left: -200px;
+	z-index: 10001;
+	display: none;
+	color: #303030;
+    text-align: center;
+}
+
 .forNewProNav{
 	height: 260px;
 	margin-left: -200px;
 }
 
-.forConnexion h2, .forRegister h2{
+.forConnexion h2{
 	font-size: 18px;
 	background-color: #303030;
 	margin: 0;
@@ -273,6 +288,40 @@ h2.font30{
 	color: #fff;
 	margin-bottom: 15px;
 }
+
+.forParrainage h2{
+	font-size: 18px;
+	background-color: #5ac4d4;
+	font-weight: normal;
+	margin: 0;
+	padding: 15px 0;
+	color: #fff;
+	margin-bottom: 15px;
+}
+
+.forParrainage p{
+	margin: 0;
+	padding: 0px 15px;
+}
+
+.champsParrainagePopUPHeader{
+	margin-top: 20px;
+}
+
+.champsParrainagePopUPHeader p{
+	margin:0;
+	font-size: 18px;
+}
+
+.champsParrainagePopUPHeader input{
+	border: 1px solid #303030;
+	background-color: #f6f6f6;
+	padding: 15px;
+	margin-top: 5px;
+	text-align: center;
+}
+
+
 
 .forConnexion label{
 	font-weight: normal;
@@ -296,7 +345,7 @@ h2.font30{
 	color: #000;
 }
 
-.forConnexion input[type=text]:focus, .forConnexion input[type=password]:focus{
+.forConnexion input[type=text]:focus, .forConnexion input[type=password]:focus, .forParrainage input[type=text]{
 	outline-width: 0;
 }
 
@@ -319,7 +368,7 @@ h2.font30{
     text-align: center;
 }
 
-.forConnexion input[type=submit] {
+.forConnexion input[type=submit], .forParrainage input[type=submit] {
 	margin: 15px auto;
 	color: #fff;
 	background-color: #303030;
@@ -379,7 +428,7 @@ h2.font30{
 	margin: 0;
 }
 
-.popLogin input[type=submit]:hover{
+.popLogin input[type=submit]:hover, .forParrainage input[type=submit]:hover{
 	background-color:#555;
 }
 
@@ -3242,6 +3291,27 @@ a .ongletCreation:hover p{
 	color : #c4232d;
 }
 
+.impressionRetour{
+
+	width: 100%;
+	text-align: center;
+}
+
+.impressionRetour button{
+	  margin: auto;
+	  width: 15%;
+	  color: #fff;
+	  background-color: #5ac4d4;
+	  border: 1px solid #838383;
+	  padding: 5px;
+	  -webkit-border-radius: 5px;
+	  -moz-border-radius: 5px;
+	  border-radius: 5px;
+	  margin-top: 20px;
+}
+
+
+
 
 /***************************************/
 
@@ -4165,24 +4235,29 @@ p.nextPointFidelite{
 .contentUser h2{
 	text-align: center;
 	border-bottom: 1px solid #303030;
-	margin: 0 5%;
+	margin: 0 1%;
 }
 
 .boxsReservation{
-	width: 90%;
+	width: 98%;
 	margin: 20px auto;
 }
 
 .boxReservation{
 	border : 1px solid #5ac4d4;
 	background-color:#f6f6f6;
-	padding : 10px
+	padding : 10px;
 }
 
 .imgBarReservation{
 	width : 100%;
 	height : 90px;
 	background-size : cover;
+}
+
+.contentPromoUser{
+	margin: auto;
+  	display: table;
 }
 
 .contentPromoUser:before, .contentPromoUser:after {
@@ -4196,11 +4271,17 @@ p.nextPointFidelite{
 	color:#fff;
 	display:inline-block;
 	float : left;
+	padding: 0px 2px;
 }
 
 .happyhProfileUser{
 	float : left;
 	margin-left: 10px;
+}
+
+.happyhProfileUser span{
+	background-color:#ea9026;
+	padding: 2px;
 }
 
 .ConditionProfileUser{
@@ -4227,6 +4308,20 @@ p.nextPointFidelite{
 	background-color: #fff;
 	text-align: center;
 }
+
+.donnezAvisReservation{
+	background-color: #5ac4d4;
+	padding: 10px 10px;
+	cursor: pointer;
+}
+
+.donnezAvisReservation h3{
+	margin: 0;
+	color: #fff;
+	text-align: center;
+	font-size: 14px;
+}
+
 
 .moreReservationUser p{
 	margin: 0;
