@@ -1052,7 +1052,7 @@ $('.addBarman').on('click', function() {
 })
 
 $('.ticketVerreValidate').on('click', function(){
-  var code = $('#codeValue').val();
+  var code = $(this).parent().find('.codeValue').val();
   $.ajax( {
         type: 'POST',
         url: Routing.generate('validate_code', { 'code': code }),

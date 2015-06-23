@@ -368,7 +368,7 @@ h2.font30{
     text-align: center;
 }
 
-.forConnexion input[type=submit], .forParrainage input[type=submit] {
+.forConnexion input[type=submit], .forParrainage button {
 	margin: 15px auto;
 	color: #fff;
 	background-color: #303030;
@@ -428,7 +428,7 @@ h2.font30{
 	margin: 0;
 }
 
-.popLogin input[type=submit]:hover, .forParrainage input[type=submit]:hover{
+.popLogin input[type=submit]:hover, .forParrainage button:hover{
 	background-color:#555;
 }
 
@@ -4713,15 +4713,26 @@ p.nextPointFidelite{
 	}
 }
 
-@media print {
+@media print{
+
   body {
     visibility: hidden !important;
-}
+	}
     .toprint{
     	visibility: visible !important;
     	position: fixed;
     	top: 0;
     	left: 0;
+    }
+
+    .toprint .navRetourOffre, .toprint .validationsOffre{
+    	display: none;
+    }
+
+    .toprint .promoUserNameRetour{
+    	color: rgba(255, 0, 0, 0);
+    	-webkit-print-color-adjust: exact;
+      	print-color-adjust: exact;
     }
 }
 #searchInput {
