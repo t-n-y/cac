@@ -7,6 +7,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Cac\BarBundle\Entity\Sponsorship;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Hip\MandrillBundle\Message;
+use Hip\MandrillBundle\Dispatcher;
 
 class SponsorshipController extends Controller
 {
@@ -34,46 +36,55 @@ class SponsorshipController extends Controller
      */
 	public function validateCodeAction($code)
 	{
-		$em = $this->getDoctrine()->getManager();
-		$sponsorship = $em->getRepository('CacBarBundle:Sponsorship')->findOneByCode($code);
-		if ($sponsorship == null) {
-			return new JsonResponse(array('msg' => 'Ce code n\'existe pas'));
-		}
-		if ($sponsorship->getUsedAt() != null) {
-			return new JsonResponse(array('msg' => 'code déjà utilisé'));
-		}
-		$bar = $em->getRepository('CacBarBundle:Bar')->findOneById($sponsorship->getBar()->getId());
-		$tmpDaySponsorships = $bar->getDaySponsorships();
+		$user = $this->get('security.context')->getToken()->getUser();
 
-		$daySponsorships = [];
-		foreach($tmpDaySponsorships as $daySponsorship) {
-			$ds = array(
-				'day' => $daySponsorship->getDay(),
-				'number' => $daySponsorship->getNumber()
-			);
-			$daySponsorships[] = $ds;
+		if (!is_object($user) || ($user->getRoles()[0] !== "ROLE_USER")) {
+			return new JsonResponse(array(
+				'msg' => 'Vous devez être connecté en tant qu\'utilisateur pour inviter un ami'
+			));
 		}
-		setlocale(LC_TIME, "fr_FR");
-  		$date = new \Datetime();
-  		$weekDays = [];
+		else{
+			$em = $this->getDoctrine()->getManager();
+			$sponsorship = $em->getRepository('CacBarBundle:Sponsorship')->findOneByCode($code);
+			if ($sponsorship == null) {
+				return new JsonResponse(array('msg' => 'Ce code n\'existe pas'));
+			}
+			if ($sponsorship->getUsedAt() != null) {
+				return new JsonResponse(array('msg' => 'code déjà utilisé'));
+			}
+			$bar = $em->getRepository('CacBarBundle:Bar')->findOneById($sponsorship->getBar()->getId());
+			$tmpDaySponsorships = $bar->getDaySponsorships();
 
-  		$i = 0;
-  		do {
-  			$day = $date->format('d-m-Y');
-  			if($this->checkDaySponsorship($date, $daySponsorships, $bar->getId()) === 0) {
-  				$weekDays[] = $day;
-  			}
-  			$date->modify('+1 day');
-  			$i++;
-  		} while($i < 7);
+			$daySponsorships = [];
+			foreach($tmpDaySponsorships as $daySponsorship) {
+				$ds = array(
+					'day' => $daySponsorship->getDay(),
+					'number' => $daySponsorship->getNumber()
+				);
+				$daySponsorships[] = $ds;
+			}
+			setlocale(LC_TIME, "fr_FR");
+	  		$date = new \Datetime();
+	  		$weekDays = [];
 
-		return new JsonResponse(array(
-			'msg' => 'code ok',
-			'bar' => $bar->getId(),
-			'barName' => $bar->getName(),
-			'ssSchedule' => $daySponsorships,
-			'weekdays' => $weekDays
-		));
+	  		$i = 0;
+	  		do {
+	  			$day = $date->format('d-m-Y');
+	  			if($this->checkDaySponsorship($date, $daySponsorships, $bar->getId()) === 0) {
+	  				$weekDays[] = $day;
+	  			}
+	  			$date->modify('+1 day');
+	  			$i++;
+	  		} while($i < 7);
+
+			return new JsonResponse(array(
+				'msg' => 'code ok',
+				'bar' => $bar->getId(),
+				'barName' => $bar->getName(),
+				'ssSchedule' => $daySponsorships,
+				'weekdays' => $weekDays
+			));
+		}
 	}
 
 	public function checkDaySponsorship($date, $daySponsorships, $id)
@@ -96,20 +107,44 @@ class SponsorshipController extends Controller
      */
 	public function inviteFriendAction($mail, $date, $code)
 	{
+		$em = $this->getDoctrine()->getManager();
+		$user = $this->get('security.context')->getToken()->getUser();
+
 		$newdate = \DateTime::createFromFormat('d-m-Y', $date);
 		$used = $newdate->format('y-m-d');
 
+// ld($newdate);
+// ldd($used);
+		
+
+		$sponsorship = $em->getRepository('CacBarBundle:Sponsorship')->findOneByCode($code);
+		$sponsorship->setUsedAt($newdate);
+		$em->persist($sponsorship);
+		$em->flush();
+
+		$bar = $em->getRepository('CacBarBundle:Bar')->findOneById($sponsorship->getBar());
+
+		$md = $this->get('hip_mandrill.dispatcher');
+
+        $message = new Message();
+        $templateName = 'invitation';
+        $templateContent = array(
+            array(
+                'name' => $user->getName(),
+                'firstname' => $user->getFirstname(),
+                'date' => $used,
+                'barname' => $bar->getName(),
+                'adress' => $bar->getAdress().', '.$bar->getZipcode().', '.$bar->getTown()
+            )
+        );
+        $message
+            ->addTo($mail, 'ami')
+            ->setSubject('Invitation de votre ami')
+            ->setTrackOpens(true)
+            ->setTrackClicks(true);
+
+        $result = $md->send($message, $templateName, $templateContent);
+
 		return new JsonResponse(array('msg' => 'invitation envoyée'));
-		// $em = $this->getDoctrine()->getManager();
-		// $bar = $em->getReference('Cac\BarBundle\Entity\Bar', $id);
-		// $codes = array();
-		// for ($i=0; $i < 20; $i++) { 
-		// 	$codes[] = substr(md5(microtime()),rand(0,26),6);
-		// 	$sponsorship = new Sponsorship();
-		// 	$sponsorship->setBar($bar)->setCode($codes[$i]);
-		// 	$em->persist($sponsorship);
-		// }
-		// $em->flush();
-		// return array('codes' => $codes);
 	}
 }
