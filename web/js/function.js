@@ -1087,8 +1087,10 @@ $('#senddrink').on('click', function(){
   var date = $('#datepickerInput').val();
   $.ajax( {
         type: 'POST',
-        url: Routing.generate('invite_friend', { 'mail': mail, 'date' : date, 'code': code }),
+        url: Routing.generate('invite_friend', { 'mail': mail, 'date' : date, 'code': code}),
         success: function (data) {
+          $('.popupsponsorship').hide();
+          alert(data.msg);
         }
     });
 });
