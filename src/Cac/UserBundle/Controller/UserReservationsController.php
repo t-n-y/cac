@@ -27,7 +27,7 @@ class UserReservationsController extends Controller
     {
         $user = $this->get('security.context')->getToken()->getUser();
         $em = $this->getDoctrine()->getManager();
-        $promoOffertes = $em->getRepository('CacBarBundle:PromoOffertes')->findByUser($user);
+        $promoOffertes = $em->getRepository('CacBarBundle:PromoOffertes')->findBy(array('user'=> $user), array('id' => 'DESC'));
         return array('promoOffertes' => $promoOffertes);
     }
 
@@ -41,7 +41,7 @@ class UserReservationsController extends Controller
     {
         $user = $this->get('security.context')->getToken()->getUser();
         $em = $this->getDoctrine()->getManager();
-        $verresOfferts = $em->getRepository('CacBarBundle:VerresOfferts')->findByUser($user);
+        $verresOfferts = $em->getRepository('CacBarBundle:VerresOfferts')->findBy(array('user'=> $user), array('id' => 'DESC'));
         return array('verresOfferts' => $verresOfferts);
     }
 }
