@@ -92,6 +92,11 @@ $('.mapView iframe').css('height', heightsuperInfoBar + 'px');
 
 /************/
 
+$('.addBarman').on('click', function() {
+  console.log('OK');
+  $(this).parent().find('.formBarman').addClass('open-formBarman');
+});
+
 /*******CONNEXION*******/
 $(document).ready(function(){
 
@@ -965,6 +970,7 @@ $($promoParrainnage[0]).addClass('selectedPromoParrainnage');
 
 //récupération nombre de parrainage du premier jour
 var nbParrainnageToday = parseJson["Lundi"];
+
 $('.nbParrainnageToday').html(nbParrainnageToday.number);
 
 $dayOngletNewBar.on('click', function(){
@@ -1072,10 +1078,6 @@ function dateYesterday(){
 dateYesterday();
 
 var conceptName = $('.promotion').find(":selected").text();
-
-$('.addBarman').on('click', function() {
-  $(this).parent().find('.formBarman').addClass('open-formBarman');
-})
 
 $('.ticketVerreValidate').on('click', function(){
   var code = $(this).parent().find('.codeValue').val();
