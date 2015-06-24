@@ -37,7 +37,7 @@ class UserReservationsController extends Controller
      * @Route("/past-invitations", name="past-invitations")
      * @Template()
      */
-    public function pastInvitationssAction()
+    public function pastInvitationsAction()
     {
         $user = $this->get('security.context')->getToken()->getUser();
         $em = $this->getDoctrine()->getManager();

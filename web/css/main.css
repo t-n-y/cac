@@ -1230,6 +1230,10 @@ p.droitReserve{
 	z-index: 2;
 }
 
+.centerWelcome h1{
+	text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.57);
+}
+
 .centerWelcome h2{
 	margin-top: 0px;
 }
