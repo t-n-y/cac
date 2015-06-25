@@ -31,7 +31,16 @@
                         {{ form_errors(form.name) }}
                         {{ form_widget(form.name) }}
                     </div>
-                    <div class="clear"></div>
+            	</div>
+            	<div class="inscription col-xs-6 col-sm-6 col-md-4">
+					{{ form_label(form.firstname) }}<span>*</span>
+					<br>
+					{{ form_errors(form.firstname) }}
+					{{ form_widget(form.firstname) }}
+				</div>
+
+
+            	<div class="inscription col-xs-6 col-sm-6 col-md-4 col-md-offset-2">
                     <div class="interrogation">
                     	{{ form_label(form.email.first) }}<span>*</span>
 						<br>
@@ -43,13 +52,32 @@
 							<p>C’est sur cette adresse email que vous seront envoyé vos confirmations de réservation.</p>
 						</div>
                     </div>
-                    
+                </div>
 
+                <div class="inscription col-xs-6 col-sm-6 col-md-4">
+					{{ form_label(form.email.second) }}<span>*</span>
+					<br>
+					{{ form_errors(form.email.second) }}
+					{{ form_widget(form.email.second) }}
+				</div>
+                    
+				<div class="inscription col-xs-6 col-sm-6 col-md-4 col-md-offset-2">
 					{{ form_label(form.plainPassword.first) }}<span>*</span>
 					<br>
 					{{ form_errors(form.plainPassword.first) }}
 					{{ form_widget(form.plainPassword.first) }}
+				</div>
 
+				<div class="inscription col-xs-6 col-sm-6 col-md-4">
+
+
+					{{ form_label(form.plainPassword.second) }}<span>*</span>
+					<br>
+					{{ form_errors(form.plainPassword.second) }}
+					{{ form_widget(form.plainPassword.second) }}
+				</div>
+
+				<div class="inscription col-xs-6 col-sm-6 col-md-4 col-md-offset-2">
 					<div class="interrogation">
 						{{ form_label(form.mobile_phone) }}<span>*</span>
 						<br>
@@ -65,20 +93,6 @@
 
 
 				<div class="inscription col-xs-6 col-sm-6 col-md-4">
-					{{ form_label(form.firstname) }}<span>*</span>
-					<br>
-					{{ form_errors(form.firstname) }}
-					{{ form_widget(form.firstname) }}
-
-					{{ form_label(form.email.second) }}<span>*</span>
-					<br>
-					{{ form_errors(form.email.second) }}
-					{{ form_widget(form.email.second) }}
-
-					{{ form_label(form.plainPassword.second) }}<span>*</span>
-					<br>
-					{{ form_errors(form.plainPassword.second) }}
-					{{ form_widget(form.plainPassword.second) }}
 			
 						{{ form_label(form.adress) }}<span>*</span>
 						<br>
