@@ -1026,9 +1026,9 @@ dateYesterday();
 
 var conceptName = $('.promotion').find(":selected").text();
 
-$('.addBarman').on('click', function() {
-  $(this).parent().find('.formBarman').addClass('open-formBarman');
-});
+// $('.addBarman').on('click', function() {
+//   $(this).parent().find('.formBarman').addClass('open-formBarman');
+// });
 
 $('.ticketVerreValidate').on('click', function(){
   var code = $(this).parent().find('.codeValue').val();
@@ -1086,22 +1086,27 @@ $('.welcome').css('background-image', "url(../img/imgHome/" + images[Math.floor(
 var $dayOngletNewBar = $('.dayOngletNewBar');
 var numberOfDayOnglet;
 var $promoHappyHour = $('.promoHappyHour');
-var $promoParrainnage = $('.promoParrainnage');
-
-var jsonBrut = $('#form_sponsorship_json').val();
-var parseJson = JSON.parse(jsonBrut);
-
-// jQuery.each(parseJson, function(i, val) {
-//    console.log(val);
-// });
-
-
-
 
 numberOfDayOnglet = $dayOngletNewBar.length;
 
 $($dayOngletNewBar[0]).addClass('selectedOngletDay');
 $($promoHappyHour[0]).addClass('selectedPromoHappyHour');
+
+$dayOngletNewBar.on('click', function(){
+  $dayOngletNewBar.removeClass('selectedOngletDay');
+  $(this).addClass('selectedOngletDay');
+  var daySelected = $(this).data("dayselected");
+
+  $promoHappyHour.removeClass('selectedPromoHappyHour');
+  $($promoHappyHour[(daySelected-1)]).addClass('selectedPromoHappyHour');
+});
+
+
+var $dayOngletNewBar = $('.dayOngletNewBar');
+var $promoParrainnage = $('.promoParrainnage');
+var jsonBrut = $('#form_sponsorship_json').val();
+var parseJson = JSON.parse(jsonBrut);
+
 $($promoParrainnage[0]).addClass('selectedPromoParrainnage');
 
 //récupération nombre de parrainage du premier jour
@@ -1120,8 +1125,6 @@ $dayOngletNewBar.on('click', function(){
   $(this).addClass('selectedOngletDay');
   var daySelected = $(this).data("dayselected");
 
-  $promoHappyHour.removeClass('selectedPromoHappyHour');
-  $($promoHappyHour[(daySelected-1)]).addClass('selectedPromoHappyHour');
   $promoParrainnage.removeClass('selectedPromoParrainnage');
   $($promoParrainnage[(daySelected-1)]).addClass('selectedPromoParrainnage');
 });

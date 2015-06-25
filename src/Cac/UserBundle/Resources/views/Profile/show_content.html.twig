@@ -58,30 +58,7 @@
 			<div class="contentUser contentInformation">
 				<h2>Mes Informations</h2>
 
-				<div class="boxPointFidelite">
-					<p class="scoreFidelite">{{user.score}}</p>
-					{% if user.score <= 1 and user.score >= -1%}
-						<p>point</p>
-					{%else%}
-						<p>points</p>
-					{%endif%}
-				</div>
-				<div class="explicationBoxPointFidelite">
-					<p>50 points = 1 verre gratuit</p>
-				</div>
-
-				<div class="restPointToFree">
-					<p>Plus que {{ 50 - user.score }} points pour obtenir une conso gratuite</p>
-				</div>
-
-				<div class="explicationRestPointToFree">
-					<h3>Comment ça marche</h3>
-					<p>C’est très simple, à chaque réservation ou à chaque fois que tu parraines un amis, 5 points sont créditer sur ton compte. Au bout de 50 points nous t’offrons une conso dans un bar participant au programme de fidélité.</p> 
-
-					<p>Tu peux utiliser ceette conso dans le cadre des conditions imposés par l’établissement. La seul condition que nous imposons, c’est que cette conso soit utilisé dans un établissement jamais réservé par l’utilisateur.</p>
-
-					<p>A très vite !</p>
-				</div>
+				{% render(controller("CacUserBundle:Profile:edit")) %}
 			</div>
 		</div>
 	</div>
