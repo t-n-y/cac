@@ -4318,6 +4318,7 @@ p.nextPointFidelite{
 	background-color: #5ac4d4;
 	padding: 10px 10px;
 	cursor: pointer;
+	margin-top: 50px;
 }
 
 .donnezAvisReservation h3{
@@ -4327,9 +4328,17 @@ p.nextPointFidelite{
 	font-size: 14px;
 }
 
+.moreReservationUser{
+	margin-top: 35px;
+}
 
 .moreReservationUser p{
 	margin: 0;
+	font-size: 12px;
+}
+
+.afterReservationUser{
+	margin-top: 60px;
 	font-size: 12px;
 }
 
@@ -4461,6 +4470,14 @@ p.nextPointFidelite{
 	.contentFormRegisterPro{
 		width : 90%;
 		margin: auto;
+	}
+
+	.moreReservationUser{
+		text-align: center;
+	}
+
+	.donnezAvisReservation{
+		margin-top: 15px;
 	}
 }
 

@@ -72,7 +72,7 @@
 			
 				<div class="boxReservation">
 					<div class="row">
-						<div class="col-xs-6 col-sm-3 col-md-3 center">
+						<div class="col-xs-12 col-sm-6 col-md-3 center">
 							<p>
 							{{ promo.createdAt | date("%d") }}
 
@@ -90,13 +90,13 @@
 						<p>Via</p>
 						<p><b>Kevin Marien</b></p>
 						</div>
-						<div class="col-xs-6 col-sm-3 col-md-3 center">
+						<div class="col-xs-12 col-sm-6 col-md-3 center">
 							<p><b>{{promo.bar.name}}</b></p>
 							
 							<div class="imgBarReservation" style="background-image : url({{ asset('uploads/bar/'~promo.bar.path) }});">
 							</div>
 						</div>
-						<div class="col-xs-6 col-sm-4 col-md-4">
+						<div class="col-xs-12 col-sm-6 col-md-4">
 							<div class="contentPromoUser">
 								<p class="promoProfileUser">-{{ promo.bar.getPromotionByDay('Mercredi').getOption('value').value }}%</p>
 								<p class="happyhProfileUser"><span>-50%</span> de 14h à 19h</p>
@@ -111,7 +111,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-xs-6 col-sm-2 col-md-2 moreReservationUser">
+						<div class="col-xs-12 col-sm-6 col-md-2 moreReservationUser">
 							<p>Voir la fiche du bar</p>
 							<p>Inviter des amis</p>
 							<p>Annuler</p>
@@ -139,7 +139,7 @@
 				
 			<div class="boxReservation">
 				<div class="row">
-					<div class="col-xs-6 col-sm-3 col-md-3 center">
+					<div class="col-xs-12 col-sm-6 col-md-3 center">
 						<p>
 							{{ promo.createdAt | date("d") }}
 
@@ -157,13 +157,13 @@
 
 						<p>5 pts</p>
 					</div>
-					<div class="col-xs-6 col-sm-3 col-md-3 center">
+					<div class="col-xs-12 col-sm-6 col-md-3 center">
 						<p><b>{{promo.bar.name}}</b></p>
 						
 						<div class="imgBarReservation" style="background-image : url({{ asset('uploads/bar/'~promo.bar.path) }});">
 						</div>
 					</div>
-					<div class="col-xs-6 col-sm-4 col-md-4">
+					<div class="col-xs-12 col-sm-6 col-md-4">
 						<div class="contentPromoUser">
 
 
@@ -175,7 +175,7 @@
 							<h3>Donnez votre avis</h3>
 						</div>
 					</div>
-					<div class="col-xs-6 col-sm-2 col-md-2 moreReservationUser">
+					<div class="col-xs-12 col-sm-6 col-md-2 moreReservationUser">
 						<p>Parrainer un ami</p>
 					</div>
 				</div>

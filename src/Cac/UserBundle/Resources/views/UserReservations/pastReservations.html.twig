@@ -42,7 +42,11 @@
 						<div class="col-xs-12 col-sm-6 col-md-4">
 							<div class="contentPromoUser">
 								<p class="promoProfileUser">-{{ promo.bar.getPromotionByDay(today).getOption('value').value }}%</p>
-								<p class="happyhProfileUser"><span>-50%</span> de 14h à 19h</p>
+
+								{% if promo.bar.getHappyHourByDay(today).getOption('value').value != 0 %}
+									<p class="happyhProfileUser">
+										<span>-{{promo.bar.getHappyHourByDay(today).getOption('value').value}}%</span> de {{ promo.bar.getHappyHourByDay(today).getOption('beginning').value }}h à {{ promo.bar.getHappyHourByDay(today).getOption('ending').value }}h</p>
+								{% endif %}
 							</div>
 
 							<div class="ConditionProfileUser">
@@ -70,8 +74,15 @@
 
 </div> 
 
+{% set breakpast = false %}
+{% for promo in promoOffertes if not breakpast %}
+    
+    {% if promo.createdAt | date("d/m/Y") == 'now' | date("d/m/Y") %}
+    	<h2>Evènements passés</h2>
+        {% set breakpast = true %}
+    {% endif %}
+{% endfor %}
 
-<h2>Evènements passés</h2>
 
 <div class="boxsReservation">
 
@@ -118,7 +129,7 @@
 							<h3>Donnez votre avis</h3>
 						</div>
 					</div>
-					<div class="col-xs-12 col-sm-6 col-md-2 moreReservationUser">
+					<div class="col-xs-12 col-sm-6 col-md-2 afterReservationUser">
 						<p>Parrainer un ami</p>
 					</div>
 				</div>
