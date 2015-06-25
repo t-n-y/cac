@@ -19,90 +19,12 @@
 
 		<div class="contentGeneralUser col-xs-12 col-sm-12 col-md-12 noPadding">
 			<div class="contentUser selectedContentUser contentReservation">
-				<h2>Aujourd'hui</h2>
-
-				 <div class="boxsReservation">
-					<div class="boxReservation">
-						<div class="row">
-							<div class="col-xs-6 col-sm-3 col-md-3 center">
-								<p>Lundi 18 mai 2015</p>
-							</div>
-							<div class="col-xs-6 col-sm-3 col-md-3 center">
-								<p><b>Le pershing hall</b></p>
-								
-								<div class="imgBarReservation" style="background-image : url('{{ asset('img/plusReserve.png') }}');">
-								</div>
-							</div>
-							<div class="col-xs-6 col-sm-4 col-md-4">
-								<div class="contentPromoUser">
-									<p class="promoProfileUser">-40%</p>
-									<p class="happyhProfileUser"><span>-50%</span> de 14h à 19h</p>
-								</div>
-
-								<div class="ConditionProfileUser">
-									<h3>Condition</h3>
-									<div class="contentConditionProfileUser">
-										<p>Sur une sélection de boissons</p> 
-										<p>A partir de deux consomations</p> 
-										<p>Reservation valable pour une personne</p>
-									</div>
-								</div>
-							</div>
-							<div class="col-xs-6 col-sm-2 col-md-2 moreReservationUser">
-								<p>Voir la fiche du bar</p>
-								<p>Inviter des amis</p>
-								<p>Annuler</p>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<h2>Evènements passés</h2>
-
+				
 				{% render(controller("CacUserBundle:UserReservations:pastReservations")) %}
 				
 			</div>
 			<div class="contentUser contentParrainage">
-				<h2>C'est cadeau !</h2>
 
-				<div class="boxsReservation">
-					<div class="boxReservation">
-						<div class="row">
-							<div class="col-xs-6 col-sm-3 col-md-3 center">
-								<p>Lundi 18 mai 2015</p>
-								<p>Via</p>
-								<p><b>Kevin Marien</b></p>
-							</div>
-							<div class="col-xs-6 col-sm-3 col-md-3 center">
-								<p><b>Le pershing hall</b></p>
-								
-								<div class="imgBarReservation" style="background-image : url('{{ asset('img/plusReserve.png') }}');">
-								</div>
-							</div>
-							<div class="col-xs-6 col-sm-4 col-md-4 center">
-								<p><span>Un verre offert</span> par Kevin Marien</p>
-								<p>Comment ça fonctionne ?</p>
-
-								<div class="ConditionProfileUser">
-									<h3>Condition</h3>
-									<div class="contentConditionProfileUser">
-										<p>Sur une sélection de boissons</p> 
-										<p>A partir de deux consomations</p> 
-										<p>Reservation valable pour une personne</p>
-									</div>
-								</div>
-							</div>
-							<div class="col-xs-6 col-sm-2 col-md-2 moreReservationUser">
-								<p>Voir la fiche du bar</p>
-								<p>Inviter des amis</p>
-								<p>Annuler</p>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<h2>Souvenirs</h2>
-				
 				{% render(controller("CacUserBundle:UserReservations:pastInvitations")) %}
 			</div>
 			<div class="contentUser contentFidelite">

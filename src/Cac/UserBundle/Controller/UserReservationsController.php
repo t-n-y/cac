@@ -25,10 +25,15 @@ class UserReservationsController extends Controller
      */
     public function pastReservationsAction()
     {
+        setlocale(LC_TIME, "fr_FR");
+        $today = ucfirst(strftime("%A"));
         $user = $this->get('security.context')->getToken()->getUser();
         $em = $this->getDoctrine()->getManager();
         $promoOffertes = $em->getRepository('CacBarBundle:PromoOffertes')->findBy(array('user'=> $user), array('id' => 'DESC'));
-        return array('promoOffertes' => $promoOffertes);
+        return array(
+            'promoOffertes' => $promoOffertes,
+            'today' => $today
+        );
     }
 
     /**

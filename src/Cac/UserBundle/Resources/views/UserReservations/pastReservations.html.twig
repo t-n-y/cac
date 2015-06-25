@@ -1,29 +1,132 @@
+
+
+{% set break = false %}
+{% for promo in promoOffertes if not break %}
+    
+    {% if promo.createdAt | date("d/m/Y") == 'now' | date("d/m/Y") %}
+    	<h2>Aujourd'hui</h2>
+        {% set break = true %}
+    {% endif %}
+{% endfor %}
+
 <div class="boxsReservation">
-	<div class="boxReservation">
-		<div class="row">
-			<div class="col-xs-6 col-sm-3 col-md-3 center">
-				<p>Lundi 18 mai 2015</p>
-				<p>5 pts</p>
-			</div>
-			<div class="col-xs-6 col-sm-3 col-md-3 center">
-				<p><b>Le pershing hall</b></p>
-				
-				<div class="imgBarReservation" style="background-image : url('{{ asset('img/plusReserve.png') }}');">
-				</div>
-			</div>
-			<div class="col-xs-6 col-sm-4 col-md-4">
-				<div class="contentPromoUser">
-					<p class="promoProfileUser">-40%</p>
-					<p class="happyhProfileUser"><span>-50%</span> de 14h à 19h</p>
+
+	{% for promo in promoOffertes %}	
+
+		{% if promo.createdAt | date("d/m/Y") == 'now' | date("d/m/Y") %}
+			
+				<div class="boxReservation">
+					<div class="row">
+						<div class="col-xs-12 col-sm-6 col-md-3 center">
+							<p>
+							{{ promo.createdAt | date("d") }}
+
+							{% set months = {'1': 'janvier', '2': 'février', '3': 'maris', '4': 'avril', '5': 'mai', '6': 'juin', '7': 'juillet', '8': 'août', '9': 'septembre', '10': 'octobre', '11': 'novembre', '12': 'décembre'} %}
+
+							    {% for j in 1..12 %}
+
+									{% if promo.createdAt |date('m') == j %}
+										{{ months[j] }}
+									{% endif %}
+								{% endfor %}
+
+							{{ promo.createdAt | date("Y") }}
+						</p>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-3 center">
+							<p><b>{{promo.bar.name}}</b></p>
+							
+							<div class="imgBarReservation" style="background-image : url({{ asset('uploads/bar/'~promo.bar.path) }});">
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-4">
+							<div class="contentPromoUser">
+								<p class="promoProfileUser">-{{ promo.bar.getPromotionByDay(today).getOption('value').value }}%</p>
+								<p class="happyhProfileUser"><span>-50%</span> de 14h à 19h</p>
+							</div>
+
+							<div class="ConditionProfileUser">
+								<h3>Condition</h3>
+								<div class="contentConditionProfileUser">
+									<p>Sur une sélection de boissons</p> 
+									<p>A partir de deux consomations</p> 
+									<p>Reservation valable pour une personne</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-2 moreReservationUser">
+							<p>Voir la fiche du bar</p>
+							<p>Inviter des amis</p>
+							<p>Annuler</p>
+						</div>
+					</div>
 				</div>
 
-				<div class="donnezAvisReservation">
-					<h3>Donnez votre avis</h3>
+
+		{% endif %}
+
+		
+	{% endfor %}
+
+</div> 
+
+
+<h2>Evènements passés</h2>
+
+<div class="boxsReservation">
+
+	{% for promo in promoOffertes %}	
+
+		{% if promo.createdAt | date("d/m/Y") != 'now' | date("d/m/Y") %}
+			
+				
+			<div class="boxReservation">
+				<div class="row">
+					<div class="col-xs-12 col-sm-6 col-md-3 center">
+						<p>
+							{{ promo.createdAt | date("d") }}
+
+							{% set months = {'1': 'janvier', '2': 'février', '3': 'maris', '4': 'avril', '5': 'mai', '6': 'juin', '7': 'juillet', '8': 'août', '9': 'septembre', '10': 'octobre', '11': 'novembre', '12': 'décembre'} %}
+
+							    {% for j in 1..12 %}
+
+									{% if promo.createdAt |date('m') == j %}
+										{{ months[j] }}
+									{% endif %}
+								{% endfor %}
+
+							{{ promo.createdAt | date("Y") }}
+						</p>
+
+						<p>5 pts</p>
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-3 center">
+						<p><b>{{promo.bar.name}}</b></p>
+						
+						<div class="imgBarReservation" style="background-image : url({{ asset('uploads/bar/'~promo.bar.path) }});">
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-4">
+						<div class="contentPromoUser">
+
+
+							<!-- <p class="promoProfileUser">-{{ promo.bar.getPromotionByDay('Lundi').getOption('value').value }}%</p>
+							<p class="happyhProfileUser"><span>-50%</span> de 14h à 19h</p> -->
+						</div>
+
+						<div class="donnezAvisReservation">
+							<h3>Donnez votre avis</h3>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-2 moreReservationUser">
+						<p>Parrainer un ami</p>
+					</div>
 				</div>
 			</div>
-			<div class="col-xs-6 col-sm-2 col-md-2 moreReservationUser">
-				<p>Parrainer un ami</p>
-			</div>
-		</div>
-	</div>
+
+		{% endif %}
+
+		
+	{% endfor %}
+
 </div> 
