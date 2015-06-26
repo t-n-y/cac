@@ -118,6 +118,8 @@ $(document).ready(function(){
   var $closeForConnexion = $('.closeForConnexion');
   var $JSinscriptionProNav = $('.JSinscriptionProNav');
   var $mesParrainage = $('.parrainage');
+  var $popupsponsorship = $('.popupsponsorship');
+  var $emailsponsorship = $('.emailsponsorship');
   
   $animConnexion.on('click',function(){
     $isConnexion.css("display","block");
@@ -129,6 +131,9 @@ $(document).ready(function(){
     $isConnexion.css("display","none");
     $forConnexion.css("display","none");
     $forParrainage.css("display","none");
+    $popupsponsorship.css("display","none");
+    $emailsponsorship.css("display","none");
+    $('.ui-state-active').removeClass('ui-state-active');
   });
 
   $closeForConnexion.on('click',function(){
@@ -1030,6 +1035,14 @@ var conceptName = $('.promotion').find(":selected").text();
 //   $(this).parent().find('.formBarman').addClass('open-formBarman');
 // });
 
+
+setInterval(function(){
+  if($('.ui-state-default').hasClass('ui-state-active')){
+    $('.popupsponsorship').hide();
+    $('.emailsponsorship').show();
+  }
+}, 700);
+
 $('.ticketVerreValidate').on('click', function(){
   var code = $(this).parent().find('.codeValue').val();
   $.ajax( {
@@ -1052,13 +1065,16 @@ $('.ticketVerreValidate').on('click', function(){
                 },
                 dateFormat: "dd-mm-yy"
               });
+            $('.forParrainage').hide();
             $('.popupsponsorship').show();
+            $('.isConnexion').show();
+
           }
           else
             alert(data.msg);
         }
     });
-})
+});
 
 $('#senddrink').on('click', function(){
   var mail = $('#mailToSend').val();
@@ -1069,6 +1085,8 @@ $('#senddrink').on('click', function(){
         url: Routing.generate('invite_friend', { 'mail': mail, 'date' : date, 'code': code}),
         success: function (data) {
           $('.popupsponsorship').hide();
+          $('.isConnexion').hide();
+          $('.emailsponsorship').hide()
           alert(data.msg);
         }
     });

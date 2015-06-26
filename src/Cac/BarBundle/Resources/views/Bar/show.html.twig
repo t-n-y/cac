@@ -40,13 +40,7 @@
 
 
 
-			<div class="popupsponsorship" style="display:none;">
-				<input id="mailToSend" type="email">
-				<button id="senddrink">ok</button>
-				<div id="datepicker"></div>
-				<input type="text" id="datepickerInput" hidden>
-				<input type="text" id="codeInput" hidden>
-			</div>
+			
 
 
 
@@ -71,7 +65,7 @@
 				</div>
 			</div>
 			<div class="noteBar col-xs-6 col-sm-3 col-md-3">
-			{% if (bar.getHappyHourByDay(today).getOption('value').value == 0 or  promoOfferte)%}
+			{% if (bar.getHappyHourByDay(today).getOption('value').value == 0 or promoOfferte)%}
 				<div class="ticket">
 			{% else %}
 				<div class="ticket JS-ticket">
@@ -107,10 +101,11 @@
 									<img src="{{asset('img/pictoPromo.png')}}" alt="">
 								{% endif %}
 								{% if bar.getPromotionByDay(today).getOption('value').value == 0 %}
-
+								<div class="obtenirPromo JS-obtenirPromo JS-promoBox" data-bar-id="{{bar.id}}">
 									<h2 class="font30 fontWeight200">PAS DE PROMO</h2>
 									<h3>Mais <span>5 cheers</span> de fidélité</h3>
-
+									<p class="voirMaConfirmation"></p>
+								</div>
 								{% else %}
 									{% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
 										<div class="obtenirPromo JS-obtenirPromo JS-promoBox" data-bar-id="{{bar.id}}">
@@ -207,11 +202,11 @@
 						{% if bar.getPromotionByDay(today).getOption('value').value == 0 %}
 							<p class="rappelPromo">Votre réservation pour {{ bar.name }} est valable jusqu'à ce soir</p>
 						{% else %}
-							<p class="rappelPromo"><span>-{{ bar.getPromotionByDay(today).getOption('value').value }}%</span>
+							<p class="rappelPromo"><span class="rappelPromotion">-{{ bar.getPromotionByDay(today).getOption('value').value }}%</span>
 
 							{% if bar.getHappyHourByDay(today).getOption('value').value !=0 %}
 
-								et -{{bar.getHappyHourByDay(today).getOption('value').value}}% de {{ bar.getHappyHourByDay(today).getOption('beginning').value }}h à {{ bar.getHappyHourByDay(today).getOption('ending').value }}h
+								<span class="rappelHappyHours">et -{{bar.getHappyHourByDay(today).getOption('value').value}}%</span> de {{ bar.getHappyHourByDay(today).getOption('beginning').value }}h à {{ bar.getHappyHourByDay(today).getOption('ending').value }}h
 							{% endif %}
 							</p>
 						{% endif %}

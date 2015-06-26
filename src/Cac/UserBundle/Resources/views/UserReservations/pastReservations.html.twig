@@ -17,7 +17,7 @@
 			
 				<div class="boxReservation">
 					<div class="row">
-						<div class="col-xs-12 col-sm-6 col-md-3 center">
+						<div class="col-xs-12 col-sm-12 col-md-3 center">
 							<p>
 							{{ promo.createdAt | date("d") }}
 
@@ -41,7 +41,11 @@
 						</div>
 						<div class="col-xs-12 col-sm-6 col-md-4">
 							<div class="contentPromoUser">
-								<p class="promoProfileUser">-{{ promo.bar.getPromotionByDay(today).getOption('value').value }}%</p>
+								{% if promo.bar.getPromotionByDay(today).getOption('value').value !=0 %}
+									<p class="promoProfileUser">-{{ promo.bar.getPromotionByDay(today).getOption('value').value }}%</p>
+								{% else %}
+									<p class="padding20"></p>
+								{% endif %}
 
 								{% if promo.bar.getHappyHourByDay(today).getOption('value').value != 0 %}
 									<p class="happyhProfileUser">
@@ -58,7 +62,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-xs-12 col-sm-6 col-md-2 moreReservationUser">
+						<div class="col-xs-12 col-sm-12 col-md-2 moreReservationUser">
 							<p>Voir la fiche du bar</p>
 							<p>Inviter des amis</p>
 							<p>Annuler</p>
@@ -76,11 +80,8 @@
 
 {% set breakpast = false %}
 {% for promo in promoOffertes if not breakpast %}
-    
-    {% if promo.createdAt | date("d/m/Y") == 'now' | date("d/m/Y") %}
-    	<h2>Evènements passés</h2>
-        {% set breakpast = true %}
-    {% endif %}
+	<h2>Evènements passés</h2>
+    {% set breakpast = true %}
 {% endfor %}
 
 
