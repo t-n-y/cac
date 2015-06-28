@@ -1048,14 +1048,6 @@ $('.deleteBarman').on('click', function(){
     });
 });
 
-
-setInterval(function(){
-  if($('.ui-state-default').hasClass('ui-state-active')){
-    $('.popupsponsorship').hide();
-    $('.emailsponsorship').show();
-  }
-}, 700);
-
 $('.ticketVerreValidate').on('click', function(){
   var code = $(this).parent().find('.codeValue').val();
   $.ajax( {
@@ -1075,6 +1067,8 @@ $('.ticketVerreValidate').on('click', function(){
                 },
                 onSelect: function(date) {
                     $('#datepickerInput').val(date);
+                    $('.popupsponsorship').hide();
+                    $('.emailsponsorship').show();
                 },
                 dateFormat: "dd-mm-yy"
               });
