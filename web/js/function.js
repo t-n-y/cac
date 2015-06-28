@@ -1035,6 +1035,19 @@ var conceptName = $('.promotion').find(":selected").text();
 //   $(this).parent().find('.formBarman').addClass('open-formBarman');
 // });
 
+$('.deleteBarman').on('click', function(){
+  var $this = $(this);
+  var id = $this.data('id');
+  $.ajax( {
+        type: 'POST',
+        url: Routing.generate('barman_delete', { 'id': id}),
+        success: function (data) {
+          $this.parentsUntil($('.listBarman')).hide();
+          alert(data);
+        }
+    });
+});
+
 
 setInterval(function(){
   if($('.ui-state-default').hasClass('ui-state-active')){

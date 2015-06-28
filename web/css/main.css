@@ -2480,8 +2480,9 @@ p.vignettePetitPlusPrix{
 	font-weight: bold;
 }
 
-.delateBarman{
+.deleteBarman{
 	color: #c90c0c;
+	cursor: pointer;
 }
 
 
