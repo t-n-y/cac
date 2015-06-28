@@ -45,9 +45,15 @@ class UserReservationsController extends Controller
      */
     public function pastInvitationsAction()
     {
+        setlocale(LC_TIME, "fr_FR");
+        $today = ucfirst(strftime("%A"));
+
         $user = $this->get('security.context')->getToken()->getUser();
         $em = $this->getDoctrine()->getManager();
         $verresOfferts = $em->getRepository('CacBarBundle:VerresOfferts')->findBy(array('user'=> $user), array('id' => 'DESC'));
-        return array('verresOfferts' => $verresOfferts);
+        return array(
+            'verresOfferts' => $verresOfferts,
+            'today' => $today,
+        );
     }
 }

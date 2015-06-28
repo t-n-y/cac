@@ -72,9 +72,9 @@
 			
 				<div class="boxReservation">
 					<div class="row">
-						<div class="col-xs-12 col-sm-6 col-md-3 center">
+						<div class="col-xs-12 col-sm-12 col-md-3 center">
 							<p>
-							{{ promo.createdAt | date("%d") }}
+							{{ promo.createdAt | date("d") }}
 
 							{% set months = {'1': 'janvier', '2': 'février', '3': 'maris', '4': 'avril', '5': 'mai', '6': 'juin', '7': 'juillet', '8': 'août', '9': 'septembre', '10': 'octobre', '11': 'novembre', '12': 'décembre'} %}
 
@@ -98,8 +98,16 @@
 						</div>
 						<div class="col-xs-12 col-sm-6 col-md-4">
 							<div class="contentPromoUser">
-								<p class="promoProfileUser">-{{ promo.bar.getPromotionByDay('Mercredi').getOption('value').value }}%</p>
-								<p class="happyhProfileUser"><span>-50%</span> de 14h à 19h</p>
+								{% if promo.bar.getPromotionByDay(today).getOption('value').value !=0 %}
+									<p class="promoProfileUser">-{{ promo.bar.getPromotionByDay(today).getOption('value').value }}%</p>
+								{% else %}
+									<p class="padding20"></p>
+								{% endif %}
+
+								{% if promo.bar.getHappyHourByDay(today).getOption('value').value != 0 %}
+									<p class="happyhProfileUser">
+										<span>-{{promo.bar.getHappyHourByDay(today).getOption('value').value}}%</span> de {{ promo.bar.getHappyHourByDay(today).getOption('beginning').value }}h à {{ promo.bar.getHappyHourByDay(today).getOption('ending').value }}h</p>
+								{% endif %}
 							</div>
 
 							<div class="ConditionProfileUser">
@@ -111,7 +119,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-xs-12 col-sm-6 col-md-2 moreReservationUser">
+						<div class="col-xs-12 col-sm-12 col-md-2 moreReservationUser">
 							<p>Voir la fiche du bar</p>
 							<p>Inviter des amis</p>
 							<p>Annuler</p>
@@ -175,7 +183,7 @@
 							<h3>Donnez votre avis</h3>
 						</div>
 					</div>
-					<div class="col-xs-12 col-sm-6 col-md-2 moreReservationUser">
+					<div class="col-xs-12 col-sm-6 col-md-2 afterReservationUser">
 						<p>Parrainer un ami</p>
 					</div>
 				</div>
