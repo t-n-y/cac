@@ -266,11 +266,11 @@ h2.font30{
 
 .popupsponsorship{
 	width: 400px;
-	height: 320px;
+	height: 380px;
 	background-color: #fff;
 	position: fixed;
 	top: 50%;
-	margin-top: -170px;
+	margin-top: -190px;
 	left:50%;
 	margin-left: -200px;
 	z-index: 10001;
@@ -278,6 +278,11 @@ h2.font30{
 	border: 3px solid #5ac4d4;
 	color: #303030;
     text-align: center;
+}
+
+.ui-datepicker{
+	margin: auto;
+	margin-top: 10px;
 }
 
 .emailsponsorship{
