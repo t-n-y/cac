@@ -458,9 +458,25 @@
 				<div class="descriptionBar noPadding">
 					<h2 class="col-xs-5 col-sm-5 col-md-5 noPadding">Description</h2>
 					<p class="col-xs-12 col-sm-12 col-md-12">{{bar.description}}</p>
+					
+
+					{% for carte in bar.carte%}
+						{% if carte.getWebPath %}
+						<h2 class="col-xs-5 col-sm-5 col-md-5 noPadding">Carte</h2>
+							<div class="carteBarPDF col-xs-12 col-sm-12 col-md-12">
+								<a href="{{asset(carte.getWebPath)}}" target="_blank">
+									<img src="{{asset('img/carteBar.png')}}" alt="Click and Cheers">
+									<p>Voir la carte du bar</p>
+								</a>
+							</div>
+						{% endif %}
+					{% endfor %}
 					<div class="clear"></div>
 				</div>
 			{% endif %}
+
+
+			
 			<div class="dresscode">
 				{% if bar.dresscode == 1%}
 					<img src="{{asset('img/pictoBar/chic.png')}}" alt="Click and Cheers">
@@ -470,9 +486,7 @@
 			</div>
 				
 				
-{% if bar.carte.getValues()[0] is defined and bar.carte.getValues()[0].visible == true %}
-	<a href="{{ asset(('uploads/carte-bar/' ~ bar.carte.getValues()[0].path)) }}" target="_blank">Voir la carte</a>
-{% endif %}
+
 		</div>
 		
 {% endblock %}

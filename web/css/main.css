@@ -2407,6 +2407,24 @@ p.rappelCondition{
 	margin-top: 10px;
 }
 
+.carteBarPDF{
+	text-align: center;
+	color: #303030;
+}
+
+.carteBarPDF img{
+	width: 50px;
+}
+
+.carteBarPDF a{
+	text-decoration: none;
+}
+
+.carteBarPDF p{
+	color: #303030;
+	padding-top: 20px;
+}
+
 .dresscode{
 	width: 100%;
   	text-align: center;
@@ -2437,6 +2455,15 @@ p.vignettePetitPlusPrix{
 	width: 70%;
 	margin: auto;
 	background-color: #fff;
+}
+
+.descriptionBar h2{
+	  color: #5ac4d4;
+	  border-bottom: 1px solid #5ac4d4;
+	  font-size: 17px;
+	  margin-left: 20px;
+	  margin-top: 20px;
+	  margin-bottom: 15px
 }
 
 .contentOption h2{
