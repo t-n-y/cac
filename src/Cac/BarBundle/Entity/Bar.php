@@ -317,6 +317,11 @@ class Bar
     private $VerresOfferts;
 
     /**
+     * @ORM\OneToMany(targetEntity="Cac\BarBundle\Entity\Avis", mappedBy="bar")
+     */
+    private $avis;
+
+    /**
      * @ORM\OneToMany(targetEntity="Cac\BarBundle\Entity\Sponsorship", mappedBy="bar")
      */
     private $sponsorships;
@@ -1572,5 +1577,39 @@ class Bar
     public function getVerresOfferts()
     {
         return $this->VerresOfferts;
+    }
+
+    /**
+     * Add avi
+     *
+     * @param \Cac\BarBundle\Entity\Avis $avi
+     *
+     * @return Bar
+     */
+    public function addAvi(\Cac\BarBundle\Entity\Avis $avi)
+    {
+        $this->avis[] = $avi;
+
+        return $this;
+    }
+
+    /**
+     * Remove avi
+     *
+     * @param \Cac\BarBundle\Entity\Avis $avi
+     */
+    public function removeAvi(\Cac\BarBundle\Entity\Avis $avi)
+    {
+        $this->avis->removeElement($avi);
+    }
+
+    /**
+     * Get avis
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAvis()
+    {
+        return $this->avis;
     }
 }
