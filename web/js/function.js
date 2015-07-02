@@ -1119,6 +1119,88 @@ $('.welcome').css('background-image', "url(../img/imgHome/" + images[Math.floor(
 
 /***** pro Vos offres *****/
 
+var changeHourAutomatique = true;
+
+$('.heure select').on('change', function(){
+    // console.log($(this).data('when'));
+    // console.log($(this).val());
+
+    // var string = JSON.stringify($(this).parentsUntil('.CreationBar').find($('#cac_barbundle_bar_schedule')).attr('value'));
+
+    // console.log(string);
+
+    if(changeHourAutomatique){
+        var days = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"];
+
+        if($(this).data('when') == 'open'){
+
+            if($(this).parentsUntil('.servicesNewBar').find($("select[data-when='close']")).val() != ""){
+                // console.log('open : ' + $(this).val() +' close : ' + $(this).parentsUntil('.servicesNewBar').find($("select[data-when='close']")).val());
+                // console.log('ok les deux sont plein : last click open');
+
+                if(confirm('Voulez vous appliquer ces horaires à tout vos jour ?')){
+                    $('.servicesNewBar').find($("select[data-when='open'] option[value=" + $(this).val() + "]")).prop('selected', true);
+                    $('.servicesNewBar').find($("select[data-when='close'] option[value=" + $(this).parentsUntil('.servicesNewBar').find($("select[data-when='close']")).val() + "]")).prop('selected', true);
+                    
+                    var hidden = $('#cac_barbundle_bar_schedule').val();
+                    hidden = JSON.parse(hidden);
+
+                    
+
+                    for(var i=0; i<days.length; i++){
+                        hidden[days[i]].close = $(this).parentsUntil('.servicesNewBar').find($("select[data-when='close']")).val();
+                        hidden[days[i]].open = $(this).val();
+                    }
+                    
+                    $('#cac_barbundle_bar_schedule').val(JSON.stringify(hidden));
+                }else{
+                    console.log('nope');
+                }
+                changeHourAutomatique = false;
+            }
+           
+        }else{
+            if($(this).parentsUntil('.servicesNewBar').find($("select[data-when='open']")).val() != ""){
+                // console.log('open : ' + $(this).parentsUntil('.servicesNewBar').find($("select[data-when='open']")).val() +' close : ' + $(this).val());
+                // console.log('ok les deux sont plein : last click close');
+                if(confirm('Voulez vous appliquer ces horaires à tout vos jour ?')){
+                    //console.log('okay');
+                    $('.servicesNewBar').find($("select[data-when='close'] option[value=" + $(this).val() + "]")).prop('selected', true);
+                    $('.servicesNewBar').find($("select[data-when='open'] option[value=" + $(this).parentsUntil('.servicesNewBar').find($("select[data-when='open']")).val() + "]")).prop('selected', true);
+                    
+                    var hidden = $('#cac_barbundle_bar_schedule').val();
+                    hidden = JSON.parse(hidden);
+
+                    
+
+                    for(var i=0; i<days.length; i++){
+                        hidden[days[i]].open = $(this).parentsUntil('.servicesNewBar').find($("select[data-when='open']")).val();
+                        hidden[days[i]].close = $(this).val();
+                    }
+                    
+                    $('#cac_barbundle_bar_schedule').val(JSON.stringify(hidden));
+
+
+                }else{
+                    console.log('nope');
+                }
+                changeHourAutomatique = false;
+            }
+        }
+    }
+    
+
+
+    //console
+});
+
+
+
+
+
+
+
+
 var $dayOngletNewBar = $('.dayOngletNewBar');
 var numberOfDayOnglet;
 var $promoHappyHour = $('.promoHappyHour');
