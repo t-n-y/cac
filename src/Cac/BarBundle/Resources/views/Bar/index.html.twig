@@ -34,6 +34,21 @@
 					<div class="infoTopListBar">
 						<h2>{bar.name}}</h2>
 						<p class="adresseTopListBar">{{ bar.zipcode }} {{ bar.town }}</p>
+						<div class="infoBarTopListBar col-xs-12 col-sm-12 col-md-12">
+							{% if bar.promo  %}
+								<p class="col-xs-4 col-sm-4 col-md-4 noPadding">-{{ bar.promo }}%</p>
+							{% endif %}
+							{% if bar.happy  %}
+								<p class="col-xs-4 col-sm-4 col-md-4 noPadding"><img src="{{asset('img/pictoHappyHours.png')}}" alt=""></p>
+							{% endif %}
+							{% if bar.nbAvis  %}
+								<div class="noteBarTopListBar col-xs-4 col-sm-4 col-md-4 noPadding">
+									<p>8,7/10</p>
+									<p class="avisBarTopListBar">30 avis</p>
+								</div>
+							{% endif %}
+							<div class="clear"></div>
+						</div>
 						<p class="enSavoirPlusTopListBar"><a href="{{ path('bar_show', { id : bar.id }) }}">En savoir plus</a></p>
 					</div>
 				{% endif%}

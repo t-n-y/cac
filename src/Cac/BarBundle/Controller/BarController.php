@@ -59,6 +59,7 @@ class BarController extends Controller
            $bars[$i]['note'] = $note;
            $bars[$i]['promo'] = $promoOfTheDay;
            $bars[$i]['happy'] = $happyHourOfTheDay;
+           $bars[$i]['author'] = $entity->getAuthor();
            $i ++;
         }
         $highlight = $em->getRepository('CacBarBundle:highlight')->findAll();

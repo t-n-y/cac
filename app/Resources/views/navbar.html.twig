@@ -93,6 +93,14 @@
                         <li class="navToggle"><a class="mesParrainage" href="{{ path('fos_user_profile_show') }}"><p>Mes parrainage</p></a></li>
                         <li class="navToggle"><a class="monCompte" href="{{ path('fos_user_profile_show') }}"><p>Mon compte</p></a></li>
                         <li class="navToggle hidden"><a href="{{ path('fos_user_profile_show') }}"><p>Mes points</p></a></li>
+
+                        {# {% for bar in bars %}
+                            
+                            {% if bar.author.id %}
+                                <p>{{bar.name}}</p>
+                            {% endif %}
+
+                        {% endfor %} #}
                     {% else %}
                         <li><a class="mesReservation" href="{{ path('fos_user_profile_show') }}"><p>Mes réservations</p></a></li>
                         <li><a class="mesParrainage" href="{{ path('fos_user_profile_show') }}"><p>Mes parrainage</p></a></li>
