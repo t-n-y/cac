@@ -5,9 +5,44 @@
 {% block body %}
 
 <div class="topListBar col-xs-12 col-sm-12 col-md-12 noPadding">
-			<img src="{{asset('img/accueil.png')}}" alt="">
+			<!-- <img src="{{asset('img/accueil.png')}}" alt="">
 			<img src="{{asset('img/pershing.png')}}" alt="">
-			<img src="{{asset('img/fondFicheBar.png')}}" alt="">
+			<img src="{{asset('img/fondFicheBar.png')}}" alt=""> -->
+
+
+
+			{% set exit = true %}
+			{% for bar in bars if exit%}
+				{% if highlight[0] is defined %}
+					<img src="{{ asset('uploads/bar/'~highlight[0].bar.path) }}" alt="">
+					<div class="infoTopListBar">
+						<h2>{{highlight[0].bar.name}}</h2>
+						<p class="adresseTopListBar">{{ highlight[0].bar.zipcode }} {{ highlight[0].bar.town }}</p>
+						<div class="infoBarTopListBar col-xs-12 col-sm-12 col-md-12">
+							<p class="col-xs-4 col-sm-4 col-md-4 noPadding">-30%</p>
+							<p class="col-xs-4 col-sm-4 col-md-4 noPadding"><img src="{{asset('img/pictoHappyHours.png')}}" alt=""></p>
+							<div class="noteBarTopListBar col-xs-4 col-sm-4 col-md-4 noPadding">
+								<p>8,7/10</p>
+								<p class="avisBarTopListBar">30 avis</p>
+							</div>
+							<div class="clear"></div>
+						</div>
+						<p class="enSavoirPlusTopListBar"><a href="{{ path('bar_show', { id : highlight[0].bar.id }) }}">En savoir plus</a></p>	
+					</div>
+				{% else%}
+					<img src="{{ asset('uploads/bar/'~bar.path) }}" alt="">
+					<div class="infoTopListBar">
+						<h2>{bar.name}}</h2>
+						<p class="adresseTopListBar">{{ bar.zipcode }} {{ bar.town }}</p>
+						<p class="enSavoirPlusTopListBar"><a href="{{ path('bar_show', { id : bar.id }) }}">En savoir plus</a></p>
+					</div>
+				{% endif%}
+
+				
+				{% set exit = false %}
+			{% endfor%}
+
+
 </div>
 <div class="headerList col-xs-12 col-sm-12 col-md-12 noPadding">
 	<div class="menuHeaderList col-xs-6 col-sm-3 col-md-3 noPadding">
@@ -19,7 +54,7 @@
 	<div class="menuHeaderList col-xs-6 col-sm-3 col-md-3 noPadding">
 		<p class="small-price">Les petits prix</p>
 	</div>
-	<div class="col-xs-6 col-sm-3 col-md-3 noPadding">
+	<div class="center col-xs-6 col-sm-3 col-md-3 noPadding">
 		<div id="recherche" class="col-xs-10 col-sm-10 col-md-10 noPadding">
 			<input type="text" name="recherche" class="col-xs-9 col-sm-9 col-md-10 noPadding" placeholder="Tapez votre recherche" id="barsSearchInput" data-target="{{ path('bars_search') }}"></input>
 		</div>

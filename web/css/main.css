@@ -196,6 +196,10 @@ h2.font30{
 	z-index: 1;
 }
 
+.addPictureHack span{
+	text-decoration: underline;
+}
+
 .addPicture label{
 	opacity: 0;
 	position: relative;
@@ -3938,14 +3942,14 @@ float: left;
 
 .topListBar{
 	position: relative;
-	height: 360px;
+	height: 250px;
 	overflow: hidden;
 }
 
 .topListBar img{
 	width: 100%;
-	min-height: 400px;
-		display: none;
+	/*min-height: 400px;*/
+	display: none;
 }
 
 .topListBar img:nth-child(1){
@@ -3953,9 +3957,70 @@ float: left;
 	display: block;
 }
 
-.headerList{
+.infoTopListBar{
+	position: absolute;
+	top: 0;
+	left: 150px;
+	width: 200px;
 	background-color: #303030;
+	opacity: 0.9;
 	color: #fff;
+	text-align: center;
+	height: 100%;
+}
+
+.infoTopListBar h2{
+	margin: 0;
+	margin-top: 60px;
+	font-size: 22px;
+}
+
+.adresseTopListBar{
+	font-size: 10px;
+  	font-weight: lighter;
+}
+
+.infoBarTopListBar{
+	margin-top: 10px;
+	margin-bottom: 14px;
+}
+
+.infoBarTopListBar p{
+	font-size: 12px;
+	margin: 0px;
+	margin-top: 6px;
+	border-right: 1px solid #fff; 
+	height: 20px;
+	line-height : 20px;	
+}
+
+.noteBarTopListBar p{
+	margin: 0;
+	border-right: none; 
+}
+
+.infoBarTopListBar img{
+	width: 20px;
+	height: 20px;
+	margin : auto;
+}
+
+.avisBarTopListBar{
+	font-size: 10px !important;
+	font-style: italic;
+	text-decoration: underline;
+	font-weight: lighter;
+	margin-top: -4px !important;
+}
+
+.enSavoirPlusTopListBar a{
+	color: #5ac4d4;
+	text-decoration: underline;
+}
+
+.headerList{
+	background-color: #fff;
+ 	color: #303030;
 	text-align: center;
 	font-family: "HelveticaNeue-Regular", Arial;
   	font-weight: normal;
@@ -3973,7 +4038,7 @@ float: left;
 
 
 .barList{
-	margin-top: 20px;
+	margin-top: 0px;
 }
 
 .barInList{
@@ -4209,6 +4274,18 @@ float: left;
 	color: #ef662f;
 	padding: 5px 0;
 	margin-bottom: 10px;
+	position: relative;
+}
+
+.closetypeFormule{
+	position: absolute;
+	top: 5px;
+	right: 10px;
+	cursor: pointer;
+}
+
+.closetypeFormule img{
+	width: 15px;
 }
 
 .typeFormule p{

@@ -360,6 +360,12 @@ $('.interrogation p').mouseleave(function() {
 
 /********PAGE SHOW BAR*****/
 
+function afficheParrainage(){
+    $('.contentUser').hide();
+    $('.contentParrainage').show();
+    console.log('lo');
+}
+
 var $body = $('body');
 
 $('.ongletRetourOffre').on('click', function(){
@@ -386,8 +392,7 @@ $('.ongletReservation').on('click', function(){
 });
 
 $('.ongletParrainage').on('click', function(){
-  $('.contentUser').hide();
-  $('.contentParrainage').show();
+    afficheParrainage();
 });
 
 $('.ongletFidelite').on('click', function(){
@@ -399,6 +404,10 @@ $('.ongletInformation').on('click', function(){
   $('.contentUser').hide();
   $('.contentInformation').show();
 });
+
+$('.mesParrainage').on('click', function(){
+    afficheParrainage();
+})
 
 
 
@@ -689,6 +698,7 @@ $('body').on('click','.closeRappel',function(){
   closeConfirmationReservation();
 });
 
+
 $('body').on('click','.voirMaConfirmationDone',function(){
   confirmationReservation();
 });
@@ -978,6 +988,10 @@ $('.contactUsBO').on('click', function() {
   $(this).parentsUntil($('.contentOptionBar')).find('.changeMyAbonnement').addClass('open-changerMyAbonnement');
 });
 
+$('body').on('click','.closetypeFormule',function(){
+  $('.changeMyAbonnement').removeClass('open-changerMyAbonnement');
+});
+
 function dateYesterday(){
   var date = new Date();
 
@@ -1138,7 +1152,7 @@ $('.heure select').on('change', function(){
                 // console.log('open : ' + $(this).val() +' close : ' + $(this).parentsUntil('.servicesNewBar').find($("select[data-when='close']")).val());
                 // console.log('ok les deux sont plein : last click open');
 
-                if(confirm('Voulez vous appliquer ces horaires à tout vos jour ?')){
+                if(confirm('Voulez vous appliquer ces horaires pour tout les jours ?')){
                     $('.servicesNewBar').find($("select[data-when='open'] option[value=" + $(this).val() + "]")).prop('selected', true);
                     $('.servicesNewBar').find($("select[data-when='close'] option[value=" + $(this).parentsUntil('.servicesNewBar').find($("select[data-when='close']")).val() + "]")).prop('selected', true);
                     
@@ -1163,7 +1177,7 @@ $('.heure select').on('change', function(){
             if($(this).parentsUntil('.servicesNewBar').find($("select[data-when='open']")).val() != ""){
                 // console.log('open : ' + $(this).parentsUntil('.servicesNewBar').find($("select[data-when='open']")).val() +' close : ' + $(this).val());
                 // console.log('ok les deux sont plein : last click close');
-                if(confirm('Voulez vous appliquer ces horaires à tout vos jour ?')){
+                if(confirm('Voulez vous appliquer ces horaires pour tout les jours ?')){
                     //console.log('okay');
                     $('.servicesNewBar').find($("select[data-when='close'] option[value=" + $(this).val() + "]")).prop('selected', true);
                     $('.servicesNewBar').find($("select[data-when='open'] option[value=" + $(this).parentsUntil('.servicesNewBar').find($("select[data-when='open']")).val() + "]")).prop('selected', true);

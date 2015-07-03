@@ -149,10 +149,9 @@
                         <a href="{{ path('bar_new') }}"><p>Créer un bar</p></a>
                       {% endif %}
                     </li>
-                    <li><a class="mesReservation" href="#"><p>Mes réservations</p></a></li>
-                    <li><a class="mesParrainage" href="#"><p>Mes parrainage</p></a></li>
-                    <li><a class="monCompte" href="{{ path('fos_user_profile_show') }}"><p>Mon compte</p></a></li>
-                    <li><a href="#"><p>Mes points</p></a></li>
+                    
+                    <li><a class="monCompte" href="{{ path('compte', { id : bar.id }) }}"><p>Mon compte pro</p></a></li>
+                    
                     <li class="logout"><a href="{{ path('fos_user_security_logout') }}"><p>Déconnexion</p></a></li>
                 </ul>
             {% else %}
