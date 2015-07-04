@@ -3,11 +3,17 @@
 {% block title %}CacBarBundle:parrainage:show{% endblock %}
 
 {% block body %}
-	{% for code in codes %}
+	<div class="toprint printCode">
 		<ul>
-			<li>{{ code }}</li>
+			{% for code in codes %}
+				
+				
+					<li>{{ code }}</li>
+				
+				
+			{% endfor %}
 		</ul>
-	{% endfor %}
+	</div>
 	<script>
 		window.print();
 	</script>
