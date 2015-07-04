@@ -360,11 +360,6 @@ $('.interrogation p').mouseleave(function() {
 
 /********PAGE SHOW BAR*****/
 
-function afficheParrainage(){
-    $('.contentUser').hide();
-    $('.contentParrainage').show();
-}
-
 var $body = $('body');
 
 $('.ongletRetourOffre').on('click', function(){
@@ -379,7 +374,6 @@ $('.ongletRetourOffre').on('click', function(){
     }
 });
 
-
 $('.ongletUser').on('click', function(){
     $('.selectedOngletUser').removeClass('selectedOngletUser');
     $(this).addClass('selectedOngletUser');
@@ -391,7 +385,8 @@ $('.ongletReservation').on('click', function(){
 });
 
 $('.ongletParrainage').on('click', function(){
-    afficheParrainage();
+  $('.contentUser').hide();
+  $('.contentParrainage').show();
 });
 
 $('.ongletFidelite').on('click', function(){
@@ -404,9 +399,49 @@ $('.ongletInformation').on('click', function(){
   $('.contentInformation').show();
 });
 
+$('.mesReservation').on('click', function(){
+    document.cookie = "onglet=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+    setCookie("onglet", "ongletReservation", 1);
+});
+
 $('.mesParrainage').on('click', function(){
-    afficheParrainage();
-})
+    document.cookie = "onglet=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+    setCookie("onglet", "ongletParrainage", 1);
+});
+
+$('.monCompte').on('click', function(){
+    document.cookie = "onglet=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+    setCookie("onglet", "ongletInformation", 1);
+});
+
+var cookie = getCookie("onglet");
+
+switch(cookie){
+    case "ongletReservation":
+        $('.ongletReservation').addClass('selectedOngletUser');
+        $('.contentReservation').addClass('selectedContentUser');
+        //console.log('lala ' + cookie);
+        break;
+    case "ongletParrainage":
+        $('.ongletParrainage').addClass('selectedOngletUser');
+        $('.contentParrainage').addClass('selectedContentUser');
+        //console.log('lala ' + cookie);
+        break;
+    case "ongletInformation":
+        $('.ongletInformation').addClass('selectedOngletUser');
+        $('.contentInformation').addClass('selectedContentUser');
+        //console.log('lala ' + cookie);
+        break;
+    default : 
+        $('.ongletInformation').addClass('selectedOngletUser');
+        $('.contentInformation').addClass('selectedContentUser');
+        break;
+
+}
+
+
+
+console.log(cookie);
 
 
 
@@ -1206,6 +1241,24 @@ $('.heure select').on('change', function(){
 
     //console
 });
+
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires="+d.toUTCString();
+    document.cookie = cname + "=" + cvalue + "; " + expires;
+}
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0; i<ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1);
+        if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+    }
+    return "";
+}
 
 
 

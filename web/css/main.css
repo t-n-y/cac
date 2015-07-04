@@ -1034,7 +1034,7 @@ nav{
 
 .administration ul.openSousNav{
 	max-height: 250px;
-	overflow: scroll;
+	overflow: hidden;
 }
 
 .administration li{
@@ -4616,6 +4616,7 @@ p.nextPointFidelite{
 .printCode ul{
 	margin: 0;
 	padding: 0;
+	margin: 0 5%; 
 }
 
 .printCode li{
@@ -4623,7 +4624,7 @@ p.nextPointFidelite{
 	display: inline-block;
 	width: 19%;
 	text-align: center;
-	margin-top: 20px;
+	margin-top: 55px;
 }
 
 
@@ -4831,7 +4832,7 @@ p.nextPointFidelite{
 
 	.contentNav a:before {
 		top : 20px;
-		left: 150px;
+		left: 5%;
 		opacity: 1;
 	}
 
@@ -4846,7 +4847,7 @@ p.nextPointFidelite{
 		top: 0;
 		left: 0;
 		right: 0;
-		max-width: 99%;
+		max-width: 100%;
 		max-height: 0px;
 		overflow: hidden;
 		-webkit-transition: max-height 0.5s ease-in-out;
@@ -4981,6 +4982,7 @@ p.nextPointFidelite{
     	position: fixed;
     	top: 0;
     	left: 0;
+    	width: 100%; margin: 0; float: none;
     }
 
     .toprint .navRetourOffre, .toprint .validationsOffre{

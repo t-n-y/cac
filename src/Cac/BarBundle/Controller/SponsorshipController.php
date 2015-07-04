@@ -22,7 +22,7 @@ class SponsorshipController extends Controller
 		$em = $this->getDoctrine()->getManager();
 		$bar = $em->getReference('Cac\BarBundle\Entity\Bar', $id);
 		$codes = array();
-		for ($i=0; $i < 20; $i++) { 
+		for ($i=0; $i < 65; $i++) { 
 			$codes[] = substr(md5(microtime()),rand(0,26),6);
 			$sponsorship = new Sponsorship();
 			$sponsorship->setBar($bar)->setCode($codes[$i]);
