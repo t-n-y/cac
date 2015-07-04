@@ -1207,56 +1207,6 @@ $('.heure select').on('change', function(){
     //console
 });
 
-var days = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"];
-
-var hidden = $('#cac_barbundle_bar_schedule').val();
-hidden = JSON.parse(hidden);
-var nbBarClose = 0;
-
-for(var i=0; i<days.length; i++){
-    if(hidden[days[i]].status === "Fermé"){
-        // $( '.servicesNewBar input[type=checkbox]' ).prop( "checked" );
-        // break;
-        nbBarClose++;
-    }
-}
-
-if(nbBarClose != 7){
-    console.log('chica');
-    $('.closeAllBar').prop( "checked", false );
-}
-
-$("[name='my-checkbox']").bootstrapSwitch();
-
- $('input[name="my-checkbox"]').on('switchChange.bootstrapSwitch', function(event, state) {
-    // console.log(this); // DOM element
-    // console.log(event); // jQuery event
-    
-
-    if(state){
-        //console.log('fermeture bar')
-        $('.close-day').prop( "checked", true );
-
-        
-
-        
-
-        for(var i=0; i<days.length; i++){
-            hidden[days[i]].status = "Fermé"
-        }
-        
-        $('#cac_barbundle_bar_schedule').val(JSON.stringify(hidden));
-    }else{
-         $('.close-day').prop( "checked", false );
-
-         for(var i=0; i<days.length; i++){
-            hidden[days[i]].status = "Ouvert"
-        }
-        
-        $('#cac_barbundle_bar_schedule').val(JSON.stringify(hidden));
-    }
-    //console.log(state); // true | false
-});
 
 
 
@@ -1265,49 +1215,6 @@ $("[name='my-checkbox']").bootstrapSwitch();
 
 
 
-var $dayOngletNewBar = $('.dayOngletNewBar');
-var numberOfDayOnglet;
-var $promoHappyHour = $('.promoHappyHour');
-
-numberOfDayOnglet = $dayOngletNewBar.length;
-
-$($dayOngletNewBar[0]).addClass('selectedOngletDay');
-$($promoHappyHour[0]).addClass('selectedPromoHappyHour');
-
-$dayOngletNewBar.on('click', function(){
-  $dayOngletNewBar.removeClass('selectedOngletDay');
-  $(this).addClass('selectedOngletDay');
-  var daySelected = $(this).data("dayselected");
-
-  $promoHappyHour.removeClass('selectedPromoHappyHour');
-  $($promoHappyHour[(daySelected-1)]).addClass('selectedPromoHappyHour');
-});
 
 
-var $dayOngletNewBar = $('.dayOngletNewBar');
-var $promoParrainnage = $('.promoParrainnage');
-var jsonBrut = $('#form_sponsorship_json').val();
-var parseJson = JSON.parse(jsonBrut);
-
-$($promoParrainnage[0]).addClass('selectedPromoParrainnage');
-
-//récupération nombre de parrainage du premier jour
-var nbParrainnageToday = parseJson["Lundi"];
-
-$('.nbParrainnageToday').html(nbParrainnageToday.number);
-
-$dayOngletNewBar.on('click', function(){
-
-  //récupération nombre de parrainage du jour selectionné
-  var daySelected = $(this).html();
-  var nbParrainnageToday = parseJson[daySelected];
-  $('.nbParrainnageToday').html(nbParrainnageToday.number);
-
-  $dayOngletNewBar.removeClass('selectedOngletDay');
-  $(this).addClass('selectedOngletDay');
-  var daySelected = $(this).data("dayselected");
-
-  $promoParrainnage.removeClass('selectedPromoParrainnage');
-  $($promoParrainnage[(daySelected-1)]).addClass('selectedPromoParrainnage');
-});
 

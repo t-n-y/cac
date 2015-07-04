@@ -179,8 +179,7 @@
 					{{ form_start(edit_dayss_form, {'attr': {'id': 'form_sponsorship'}}) }}
 						{% for day in 1..7 %}
 							<div class="promoParrainnage">
-							<p class="nbParrainnageToday" data-nbParrainnageToday=""></p>
-							<!-- <p>prout {{ days[day] }}</p> -->
+								<p class="nbParrainnageToday" data-nbParrainnageToday=""></p>
 							</div>
 							
 						{% endfor %}
@@ -214,4 +213,5 @@
  	});
  });
 </script>
+<script src="{{ asset('js/gestionOffer.js') }}" type="text/javascript" /></script>
 {% endblock %}

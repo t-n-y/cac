@@ -1979,7 +1979,7 @@ p.topPosition{
 
 .moisReservation{
 	color: #fff;
-  	font-size: 28px;
+  	font-size: 20px;
   	text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.57);
 }
 
@@ -4683,7 +4683,6 @@ p.nextPointFidelite{
 	.confirmationReservation{
 		width: 75%;
 		left: 13.5%;
-		box-shadow: 1.5px 2.598px 6px 0px rgba(0, 0, 0, 0.4);
 	}
 
 	.contentFormRegisterPro{
