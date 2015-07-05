@@ -48,10 +48,21 @@ class BigbossController extends Controller
      */
     public function compteAction($id)
     {
+         $em = $this->getDoctrine()->getManager();
+
+        $payment = $em->getRepository('CacPaymentBundle:Payment')->findOneByUser($id);
+        \Stripe\Stripe::setApiKey("sk_test_zLHsgtijLe1xYM1XPhf12zGY");
+        $customerId = $payment->getCustomerId();
+        $cu = \Stripe\Customer::retrieve($customerId);
+        $end = $cu->__toArray(true)['subscriptions']['data'][0]['current_period_end'];
+        $date = new \DateTime();
+        $date->setTimestamp($end);
+        $facturationDate = $date->format('d-m-Y');
+
         setlocale(LC_TIME, "fr_FR");
         $today = ucfirst(strftime("%A"));
 
-        $em = $this->getDoctrine()->getManager();
+       
 
         $entity = $em->getRepository('CacBarBundle:Bar')->find($id);
 
@@ -69,6 +80,7 @@ class BigbossController extends Controller
             'bar'      => $entity,
             'today' => $today,
             'restrictions' => $restrictions,
+            'facturationDate' => $facturationDate
         );     
     }
 }
