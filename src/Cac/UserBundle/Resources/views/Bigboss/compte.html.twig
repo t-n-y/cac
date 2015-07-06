@@ -36,8 +36,18 @@
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-6">
 						<p>Mon jour de facturation</p>
-						{{facturationDate}}
-						<p class="affichageBO">Le 15 de chaque mois</p>
+						
+						<p class="affichageBO">
+							{{facturationDate | date('d')}}
+
+								{% set months = {'1': 'janvier', '2': 'février', '3': 'maris', '4': 'avril', '5': 'mai', '6': 'juin', '7': 'juillet', '8': 'août', '9': 'septembre', '10': 'octobre', '11': 'novembre', '12': 'décembre'} %}
+
+							    {% for j in 1..12 %}
+									{% if facturationDate |date('m') == j %}
+										{{ months[j] }}
+									{% endif %}
+								{% endfor %} 
+							{{facturationDate | date('Y')}}</p>
 						<p class="underline showFactureBO">Voir mes factures</p>
 					</div>
 
