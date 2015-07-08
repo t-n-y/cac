@@ -48,12 +48,22 @@ class BigbossController extends Controller
      */
     public function compteAction($id)
     {
-         $em = $this->getDoctrine()->getManager();
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('CacBarBundle:Bar')->find($id);
 
-        $payment = $em->getRepository('CacPaymentBundle:Payment')->findOneByUser($id);
+        if (!$entity) {
+            throw $this->createNotFoundException('Le bar demandé n\'existe pas.');
+        }
+        if ($this->get('security.context')->getToken()->getUser() != $entity->getAuthor()) {
+            throw $this->createNotFoundException('Vous n\'avez pas accés à ce contenu.');
+        }
+
+        $payment = $em->getRepository('CacPaymentBundle:Payment')->findOneByUser($entity->getAuthor());
         \Stripe\Stripe::setApiKey("sk_test_zLHsgtijLe1xYM1XPhf12zGY");
         $customerId = $payment->getCustomerId();
         $cu = \Stripe\Customer::retrieve($customerId);
+
+        // ldd($cu->invoiceItems());
         $end = $cu->__toArray(true)['subscriptions']['data'][0]['current_period_end'];
         $date = new \DateTime();
         $date->setTimestamp($end);
@@ -64,14 +74,7 @@ class BigbossController extends Controller
 
        
 
-        $entity = $em->getRepository('CacBarBundle:Bar')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Le bar demandé n\'existe pas.');
-        }
-        if ($this->get('security.context')->getToken()->getUser() != $entity->getAuthor()) {
-            throw $this->createNotFoundException('Vous n\'avez pas accés à ce contenu.');
-        }
+        
 
         $restriction = $em->getRepository('CacBarBundle:PromotionOptionCategory')->findOneBy(array('shortcode' => 'restriction'));
         $restrictions = $em->getRepository('CacBarBundle:PromotionOption')->findBy(array('category' => $restriction->getId()));
