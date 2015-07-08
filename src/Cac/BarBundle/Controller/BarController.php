@@ -64,6 +64,34 @@ class BarController extends Controller
         }
         $highlight = $em->getRepository('CacBarBundle:highlight')->findAll();
         shuffle($highlight);
+
+        $highlightBars = array();
+        $h = 0;
+        foreach ($highlight as $high) {
+                $promoOfTheDay = $high->getBar()->getPromotionByDay($today)->getOption('value')->getValue();
+                $happyHourOfTheDay = $high->getBar()->getHappyHourByDay($today)->getOption('value')->getValue();
+                $nbAvis = count($high->getBar()->getComments()->getValues());
+                $coms = $high->getBar()->getComments()->getValues();
+                $note = 0;
+                foreach ($coms as $com) {
+                    $note += $com->getNote();
+                }
+               $highlightBars[$h]['id'] = $high->getBar()->getId();
+               $highlightBars[$h]['path'] = $high->getBar()->getPath();
+               $highlightBars[$h]['name'] = $high->getBar()->getName();
+               $highlightBars[$h]['dresscode'] = $high->getBar()->getDressCode();
+               $highlightBars[$h]['averagePrice'] = $high->getBar()->getCocktailPrice();
+               $highlightBars[$h]['adress'] = $high->getBar()->getAdress();
+               $highlightBars[$h]['zipcode'] = $high->getBar()->getZipCode();
+               $highlightBars[$h]['town'] = $high->getBar()->getTown();
+               $highlightBars[$h]['nbAvis'] = $nbAvis;
+               $highlightBars[$h]['note'] = $note;
+               $highlightBars[$h]['promo'] = $promoOfTheDay;
+               $highlightBars[$h]['happy'] = $happyHourOfTheDay;
+               $highlightBars[$h]['author'] = $high->getBar()->getAuthor();
+               $h ++;
+        }
+
         $paginator  = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
             $bars,
@@ -72,7 +100,7 @@ class BarController extends Controller
         );
         return array(
             'bars' => $pagination,
-            'highlight' => $highlight,
+            'highlight' => $highlightBars,
             'today' => $today,
         );    
     }
