@@ -1086,14 +1086,19 @@ var conceptName = $('.promotion').find(":selected").text();
 $('.deleteBarman').on('click', function(){
   var $this = $(this);
   var id = $this.data('id');
-  $.ajax( {
-        type: 'POST',
-        url: Routing.generate('barman_delete', { 'id': id}),
-        success: function (data) {
-          $this.parentsUntil($('.listBarman')).hide();
-          alert(data);
-        }
-    });
+
+  var confirmation = confirm("Êtes-vous sûre de supprimer ce barman ?");
+
+  if(confirmation){
+      $.ajax( {
+            type: 'POST',
+            url: Routing.generate('barman_delete', { 'id': id}),
+            success: function (data) {
+              $this.parentsUntil($('.listBarman')).hide();
+              alert(data);
+            }
+        });
+  }
 });
 
 $('.ticketVerreValidate').on('click', function(){
