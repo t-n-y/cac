@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8" />
+	<title>{{ 'notfound' | trans({}, '404') }}</title>
+	<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,300,100&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+</head>
+<body style="width:100%;margin:0; text-align:center;background-color:#E4E4E4;font-family:'Roboto Slab';color:#999;">
+	<p><img src="{{ asset('images/youmiam_404.png') }}" width="125" style="margin:4% 0 15px;;"/></p>
+	<hr style="border-top: dotted 2px #BBB;border-bottom: none;width:270px;">
+	<img src="{{ asset('images/oeuf.png') }}" width="280" style="margin-top: 30px;"/>
+	<h1 style="font-size: 88px;margin:0;">{{ 'title' | trans({}, '404') }}</h1>
+	<p style="font-size: 18px;line-height: 1.5;color:#A8A8A8;margin-top:0;">{{ 'text' | trans({'%br%' : '<br>'}, '404') |raw }}</p>
+</body>
+</html>
