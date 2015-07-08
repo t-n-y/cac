@@ -114,8 +114,11 @@ class RegistrationController extends Controller
                 }
                 else
                 {
-                    $this->get('session')->getFlashBag()->add('notice','Le barman a été créé !');
-                    $response = new Response('barman');
+                    $user = $this->get('security.context')->getToken()->getUser();
+                    $url = $this->generateUrl('compte', array('id' => $user->getCreatedBars()->first()->getId()));
+                    $response = new RedirectResponse($url);
+                    // $this->get('session')->getFlashBag()->add('notice','Le barman a été créé !');
+                    // $response = new Response('barman');
                 }
             }
             
