@@ -4003,7 +4003,7 @@ float: left;
 	font-size: 12px;
 	margin: 0px;
 	margin-top: 6px;
-	border-right: 1px solid #fff; 
+	/*border-right: 1px solid #fff;*/ 
 	height: 20px;
 	line-height : 20px;	
 }

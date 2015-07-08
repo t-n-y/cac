@@ -10,11 +10,11 @@
 			
 				{% if bar.cocktailPrice <= 5 %}
 					<p>€<span>€€€€</span></p>
-				{% elseif bar.cocktailPrice <= 10 and  bar.cocktailPrice > 5 %}
+				{% elseif bar.cocktailPrice <= 10 %}
 					<p>€€<span>€€€</span></p>
-				{% elseif bar.cocktailPrice <= 15 and  bar.cocktailPrice > 10 %}
+				{% elseif bar.cocktailPrice <= 15 %}
 					<p>€€€<span>€€</span></p>
-				{% elseif bar.cocktailPrice <= 20 and  bar.cocktailPrice > 15 %}
+				{% elseif bar.cocktailPrice <= 20 %}
 					<p>€€€€<span>€</span></p>
 				{% else %}
 					<p>€€€€€</p>

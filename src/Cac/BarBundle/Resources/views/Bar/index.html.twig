@@ -5,9 +5,6 @@
 {% block body %}
 
 <div class="topListBar col-xs-12 col-sm-12 col-md-12 noPadding">
-			<!-- <img src="{{asset('img/accueil.png')}}" alt="">
-			<img src="{{asset('img/pershing.png')}}" alt="">
-			<img src="{{asset('img/fondFicheBar.png')}}" alt=""> -->
 
 			{% for bar in highlight|slice(0, 1) if bar is not null %}
 				<img src="{{ asset('uploads/bar/'~bar.path) }}" alt="">
@@ -15,12 +12,38 @@
 					<h2>{{bar.name}}</h2>
 					<p class="adresseTopListBar">{{ bar.zipcode }} {{ bar.town }}</p>
 					<div class="infoBarTopListBar col-xs-12 col-sm-12 col-md-12">
-						<p class="col-xs-4 col-sm-4 col-md-4 noPadding">-{{bar.promo}}%</p>
-						<p class="col-xs-4 col-sm-4 col-md-4 noPadding"><img src="{{asset('img/pictoHappyHours.png')}}" alt=""></p>
-						<div class="noteBarTopListBar col-xs-4 col-sm-4 col-md-4 noPadding">
-							<p>8,7/10</p>
-							<p class="avisBarTopListBar">30 avis</p>
-						</div>
+
+						{% set colInfo = 0 %}
+						{% if bar.promo  %}
+							{% set colInfo = colInfo+1 %}
+						{% endif %}
+						{% if bar.happy  %}
+							{% set colInfo = colInfo+1 %}
+						{% endif %}
+						{% if bar.nbAvis  %}
+							{% set colInfo = colInfo+1 %}
+						{% endif %}
+
+						{% if colInfo == 1  %}
+							{% set colInfo = 12 %}
+						{% elseif colInfo == 2  %}
+							{% set colInfo = 6 %}
+						{% else %}
+							{% set colInfo = 4 %}
+						{% endif %}
+
+						{% if bar.promo  %}
+							<p class="col-xs-{{colInfo}} col-sm-{{colInfo}} col-md-{{colInfo}} noPadding">-{{bar.promo}}%</p>
+						{% endif %}
+						{% if bar.happy  %}
+							<p class="col-xs-{{colInfo}} col-sm-{{colInfo}} col-md-{{colInfo}} noPadding"><img src="{{asset('img/pictoHappyHours.png')}}" alt=""></p>
+						{% endif %}
+						{% if bar.nbAvis  %}
+							<div class="noteBarTopListBar col-xs-{{colInfo}} col-sm-{{colInfo}} col-md-{{colInfo}} noPadding">
+								<p>{{ bar.note }}/10</p>
+								<p class="avisBarTopListBar">{{bar.nbAvis}} avis</p>
+							</div>
+						{% endif %}
 						<div class="clear"></div>
 					</div>
 					<p class="enSavoirPlusTopListBar"><a href="{{ path('bar_show', { id : bar.id }) }}">En savoir plus</a></p>	
@@ -40,8 +63,8 @@
 							{% endif %}
 							{% if bar.nbAvis  %}
 								<div class="noteBarTopListBar col-xs-4 col-sm-4 col-md-4 noPadding">
-									<p>8,7/10</p>
-									<p class="avisBarTopListBar">30 avis</p>
+									<p>{{ bar.note }}/10</p>
+									<p class="avisBarTopListBar">{{bar.nbAvis}} avis</p>
 								</div>
 							{% endif %}
 							<div class="clear"></div>
@@ -132,20 +155,39 @@
 											</div>
 											<div class="shadowAdresse col-xs-12 col-sm-12 col-md-12 noPadding">
 												<div class="col-xs-2 col-sm-2 col-md-2 noPadding">
-													<p class="shadowPromotion">-{{ bar.promo }}%</p>
+													{% if bar.promo  %}
+														<p class="shadowPromotion">-{{ bar.promo }}%</p>
+													{% endif %}
 												</div>
 												<div class="col-xs-1 col-sm-1 col-md-1 noPadding">
 													<div class="imageHappyHours">
-														<img src="{{asset('img/pictoHappyHours.png')}}" alt="">
+														{% if bar.promo  %}
+															<img src="{{asset('img/pictoHappyHours.png')}}" alt="">
+														{% endif %}
 													</div>
 												</div>
 												<div class="col-xs-2 col-sm-2 col-md-2 noPadding">
 													
-														<p class="priceBar">€€€€€</p>
-													
+							
+														{% if bar.averagePrice <= 5 %}
+															<p class="priceBar">€<span>€€€€</span></p>
+														{% elseif bar.averagePrice <= 10 %}
+															<p class="priceBar">€€<span>€€€</span></p>
+														{% elseif bar.averagePrice <= 15 %}
+															<p class="priceBar">€€€<span>€€</span></p>
+														{% elseif bar.averagePrice <= 20 %}
+															<p class="priceBar">€€€€<span>€</span></p>
+														{% else %}
+															<p class="priceBar">€€€€€</p>
+														{% endif %}									
 												</div>
 												<div class="col-xs-3 col-sm-3 col-md-3 noPadding">
-													<p class="allureBar">Chic et élégant</p>
+													{% if bar.dresscode == 1%}
+														<p class="allureBar">Chic et élégant</p>
+													{% elseif bar.dresscode == 2%}
+														<p class="allureBar">Décontracté</p>
+													{% endif %}
+													
 												</div>
 												<div class="col-xs-4 col-sm-4 col-md-4 noPadding">
 													<p class="tagBar">Les bests, les cosy</p>
