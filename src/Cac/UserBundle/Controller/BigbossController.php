@@ -59,6 +59,7 @@ class BigbossController extends Controller
         }
 
         $payment = $em->getRepository('CacPaymentBundle:Payment')->findOneByUser($entity->getAuthor());
+
         \Stripe\Stripe::setApiKey("sk_test_zLHsgtijLe1xYM1XPhf12zGY");
         $customerId = $payment->getCustomerId();
         // $cu = \Stripe\Customer::retrieve($customerId);
@@ -85,7 +86,8 @@ class BigbossController extends Controller
             'today' => $today,
             'restrictions' => $restrictions,
             'facturationDate' => $facturationDate,
-            'amoutDue' => $amoutDue
+            'amoutDue' => $amoutDue,
+            'plan' => $payment->getPlan()
         );     
     }
 }
