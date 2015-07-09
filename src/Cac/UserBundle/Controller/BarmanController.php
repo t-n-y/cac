@@ -38,9 +38,10 @@ class BarmanController extends Controller
      * @Route("/list/{idBigboss}", name="barman_list")
      * @Template()
      */
-    public function barmanListAction($idBigboss)
+    public function barmanListAction($idBigboss, $id)
     {
         $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('CacBarBundle:Bar')->find($id);
         $bars = $em->getRepository("CacBarBundle:Bar")->findByAuthor($idBigboss);  
         $barmans = array();
         foreach ($bars as $bar) {
@@ -49,7 +50,10 @@ class BarmanController extends Controller
                 $barmans[] = $bar->getBarman()->getValues()[$i];
             }
         }    
-        return array('barmans' => $barmans);
+        return array(
+            'bar'      => $entity,
+            'barmans' => $barmans
+        );
     }
 
     /**

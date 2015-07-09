@@ -114,7 +114,8 @@
 				</div>
 			</div>
 			<div class="contentOption center contentBarmanBO col-xs-12 col-sm-12 col-md-12">
-				{% render(controller("CacUserBundle:Barman:barmanList", {'idBigboss' : app.user.id})) %}
+				{% render(controller("CacUserBundle:Barman:barmanList", {'idBigboss' : app.user.id, id : bar.id})) %}
+		
 			</div>
 			<div class="contentOption contentModifBO col-xs-12 col-sm-12 col-md-12">
 				{#{% render(controller("CacUserBundle:Profile:edit", {'id' : user.id})) %}#}
