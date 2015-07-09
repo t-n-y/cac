@@ -61,20 +61,21 @@ class BigbossController extends Controller
         $payment = $em->getRepository('CacPaymentBundle:Payment')->findOneByUser($entity->getAuthor());
         \Stripe\Stripe::setApiKey("sk_test_zLHsgtijLe1xYM1XPhf12zGY");
         $customerId = $payment->getCustomerId();
-        $cu = \Stripe\Customer::retrieve($customerId);
+        // $cu = \Stripe\Customer::retrieve($customerId);
+        
 
-        // ldd($cu->invoiceItems());
-        $end = $cu->__toArray(true)['subscriptions']['data'][0]['current_period_end'];
+        $upcomingInvoice = \Stripe\Invoice::upcoming(array("customer" => $customerId));
+        $amoutDue = $upcomingInvoice->__toArray(true)['amount_due'];
+        $amoutDue = $amoutDue / 100;
+
+        $end = $upcomingInvoice->__toArray(true)['period_end'];
+        // $end = $cu->__toArray(true)['subscriptions']['data'][0]['current_period_end'];
         $date = new \DateTime();
         $date->setTimestamp($end);
         $facturationDate = $date->format('d-m-Y');
 
         setlocale(LC_TIME, "fr_FR");
         $today = ucfirst(strftime("%A"));
-
-       
-
-        
 
         $restriction = $em->getRepository('CacBarBundle:PromotionOptionCategory')->findOneBy(array('shortcode' => 'restriction'));
         $restrictions = $em->getRepository('CacBarBundle:PromotionOption')->findBy(array('category' => $restriction->getId()));
@@ -83,7 +84,8 @@ class BigbossController extends Controller
             'bar'      => $entity,
             'today' => $today,
             'restrictions' => $restrictions,
-            'facturationDate' => $facturationDate
+            'facturationDate' => $facturationDate,
+            'amoutDue' => $amoutDue
         );     
     }
 }
