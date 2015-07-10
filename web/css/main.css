@@ -279,7 +279,6 @@ h2.font30{
 	margin-left: -200px;
 	z-index: 10001;
 	display: none;
-	border: 3px solid #5ac4d4;
 	color: #303030;
     text-align: center;
 }
@@ -300,7 +299,6 @@ h2.font30{
 	margin-left: -200px;
 	z-index: 10001;
 	display: none;
-	border: 3px solid #5ac4d4;
 	color: #303030;
     text-align: center;
 }
@@ -365,7 +363,8 @@ h2.font30{
 .champsParrainagePopUPHeader input{
 	border: 1px solid #303030;
 	background-color: #f6f6f6;
-	padding: 15px;
+	padding: 10px;
+	font-size: 20px;
 	margin-top: 5px;
 	text-align: center;
 }

@@ -31,7 +31,11 @@
 				<div class="row">
 					<div class="col-xs-12 col-sm-6 col-md-6">
 						<p>Ma formule</p>
-						<p class="affichageBO">{{plan}}</p>
+						{% if plan == 'free' %}
+							<p class="affichageBO">Shooter</p>
+						{% else %}
+							<p class="affichageBO">Cosmopolitain</p>
+						{% endif %}
 						<p class="underline contactUsBO">Changer ma formule</p>
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-6">

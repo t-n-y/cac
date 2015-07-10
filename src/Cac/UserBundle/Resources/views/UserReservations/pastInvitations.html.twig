@@ -62,7 +62,16 @@
 
 
 
-<h2>C'est cadeau !</h2>
+
+
+{% set break = false %}
+{% for promo in verresOfferts if not break %}
+    
+    {% if promo.createdAt | date("d/m/Y") == 'now' | date("d/m/Y") %}
+    	<h2>C'est cadeau !</h2>
+        {% set break = true %}
+    {% endif %}
+{% endfor %}
 
 <div class="boxsReservation">
 
@@ -136,7 +145,11 @@
 </div> 
 
 
-<h2>Souvenirs</h2>
+{% set breakpast = false %}
+{% for promo in verresOfferts if not breakpast %}
+	<h2>Souvenirs</h2>
+    {% set breakpast = true %}
+{% endfor %}
 
 <div class="boxsReservation">
 
