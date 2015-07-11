@@ -31,13 +31,19 @@
 				<div class="row">
 					<div class="col-xs-12 col-sm-6 col-md-6">
 						<p>Ma formule</p>
-						{% if plan == 'free' %}
-							<p class="affichageBO">Shooter</p>
+						{% if plan == 'shooter' %}
+							<p class="affichageBO planName" data-plan="shooter">Shooter</p>
+						{% elseif plan == 'shootercarte' %}
+							<p class="affichageBO planName" data-plan="shootercarte">Shooter + carte</p>
+						{% elseif plan == 'cosmocarte' %}
+							<p class="affichageBO planName" data-plan="cosmocarte">Cosmopolitain + carte</p>
 						{% else %}
-							<p class="affichageBO">Cosmopolitain</p>
+							<p class="affichageBO planName" data-plan="cosmo">Cosmopolitain</p>
 						{% endif %}
-						<p class="underline contactUsBO">Changer ma formule</p>
+						<p class="underline contactUsBO changePlan">Changer ma formule</p>
 					</div>
+
+					
 					<div class="col-xs-12 col-sm-6 col-md-6">
 						<p>Mon jour de facturation</p>
 						
@@ -133,4 +139,35 @@
 	{{parent()}}
 	 <script src="{{ asset('js/sort-affichage.js') }}" type="text/javascript" /></script>
 	 <script src="{{ asset('js/switchOnOffBar.js') }}" type="text/javascript" /></script>
+
+	 <script>
+		$('.contactUsBO.changePlan').on('click', function(){
+			var userid = {{app.user.id}};
+			var prevPlan = $('.planName').data('plan');
+			if (prevPlan == "shooter") {
+				var plan = 'cosmo';
+			}
+			else if(prevPlan == "shootercarte")
+			{
+				var plan = 'cosmocarte';
+			}
+			else if(prevPlan == "cosmo")
+			{
+				var plan = 'shooter';
+			}
+			else if(prevPlan == "cosmocarte")
+			{
+				var plan = 'shootercarte';
+			}
+			$.ajax( {
+	            type: 'GET',
+	            url: Routing.generate('change-plan', { 'plan': plan, 'id' : userid }),
+	            success: function (data) {
+	            	alert(data);
+	            }
+	        } );
+		});
+	</script>
+
+
 {% endblock %}

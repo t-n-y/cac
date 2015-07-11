@@ -95,7 +95,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/change-plan/{plan}/{id}")
+     * @Route("/change-plan/{plan}/{id}" , name="change-plan", options={"expose"=true})
      * @Template()
      */
     public function changePlanAction($plan, $id)
@@ -119,7 +119,7 @@ class DefaultController extends Controller
         $em->persist($payment);
         $em->flush();
 
-        return new Response('plan update');
+        return new Response('plan modifié');
     }
 
     /**
