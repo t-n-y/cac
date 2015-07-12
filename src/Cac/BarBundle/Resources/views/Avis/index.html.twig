@@ -3,14 +3,9 @@
         <td><a href="{{ path('avis_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
         <td>{{ entity.message }}</td>
         <td>
-        <ul>
-            <li>
-                <a href="{{ path('avis_show', { 'id': entity.id }) }}">show</a>
-            </li>
-            <li>
-                <a href="{{ path('avis_edit', { 'id': entity.id }) }}">edit</a>
-            </li>
-        </ul>
+            {% if app.user == entity.user %} 
+                <a href="{{ path('avis_delete', { 'id': entity.id }) }}">delete</a>
+            {% endif %}
         </td>
     </tr>
 {% else %}

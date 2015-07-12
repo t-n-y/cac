@@ -240,27 +240,28 @@ class AvisController extends Controller
     /**
      * Deletes a Avis entity.
      *
-     * @Route("/{id}", name="avis_delete")
-     * @Method("DELETE")
+     * @Route("/delete/{id}", name="avis_delete")
      */
     public function deleteAction(Request $request, $id)
     {
         $form = $this->createDeleteForm($id);
         $form->handleRequest($request);
 
-        if ($form->isValid()) {
+        // if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $entity = $em->getRepository('CacBarBundle:Avis')->find($id);
 
-            if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Avis entity.');
-            }
+        //     if (!$entity) {
+        //         throw $this->createNotFoundException('Unable to find Avis entity.');
+        //     }
 
             $em->remove($entity);
             $em->flush();
-        }
+        // }
 
-        return $this->redirect($this->generateUrl('avis'));
+        $referer = $request->headers->get('referer');
+        return $this->redirect($referer);
+        // return $this->redirect($this->generateUrl('avis'));
     }
 
     /**
