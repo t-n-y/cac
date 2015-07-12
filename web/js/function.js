@@ -440,11 +440,6 @@ switch(cookie){
 }
 
 
-
-console.log(cookie);
-
-
-
 $body.on("click", ".information",function(){
   $('.informationBar').css("display" , "block");
   $('.avisBar').css("display" , "none");

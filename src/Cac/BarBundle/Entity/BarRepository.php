@@ -37,7 +37,10 @@ class BarRepository extends EntityRepository
 
 	public function research($string)
 	{
-		setlocale(LC_TIME, "fr_FR");
+		// Mac et UNIX/Linux
+        setlocale(LC_TIME, "fr_FR");
+        // Windows
+        //setlocale(LC_TIME, "french");
         $today = ucfirst(strftime("%A"));
 
 		$query = $this->createQueryBuilder('b')

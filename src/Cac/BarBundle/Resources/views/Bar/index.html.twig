@@ -307,10 +307,14 @@
         }, 400);  
     });
 	$(document).ready(function() {
-		var search = window.location.search.replace("?search=", "");
-		$searchInput = $("#barsSearchInput");
-		$searchInput.val(search);
-		$searchInput.keyup();
+		var search = window.location.search;
+		if(search.indexOf('search') != -1) {
+			var search = search.replace("?search=", "");
+			console.log(search);
+			$searchInput = $("#barsSearchInput");
+			$searchInput.val(search);
+			$searchInput.keyup();		
+		}
 	});
 	</script>
 {% endblock %}
