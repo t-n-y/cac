@@ -162,10 +162,10 @@
     $(document).click(function(){  
         $('#searchResults').addClass('hidden');
     });
-    // $('#searchResults').on('click', '#moreResults', function() {
-    //     var search = $(this).attr('data-search');
-    //     var url = "{{ path('bars') }}" + '?search=' + search;
-    //     window.location.href = url;
-    // });
+    $('#searchResults').on('click', '#moreResults', function() {
+        var search = $(this).attr('data-search');
+        var url = "{{ path('bars') }}" + '?search=' + search;
+        window.location.href = url;
+    });
 	</script>
 {% endblock %}
