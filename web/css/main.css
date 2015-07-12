@@ -2133,7 +2133,7 @@ p.rappelCondition{
 	background-color: #fff;
 	min-height: 550px;
 	position: relative;
-	padding-bottom: 20px;
+	margin-bottom: 20px;
 	border : 1px solid #cfcccb;
 	border-top: 0px; 
 }
@@ -2308,10 +2308,8 @@ p.rappelCondition{
 
 .mapView{
 	margin: auto;
-	width: 80%;
-	margin-top: 20px;
-	height: 500px;
-	padding:0px;
+	width: 100%;
+	height: 400px;
 }
 
 .mapView #map-canvas {
@@ -2350,6 +2348,7 @@ p.rappelCondition{
 	background-color: #fff;
 	padding: 5px 0;
 	margin: auto;
+	box-shadow: 0.5px 0.866px 1px 0px rgba(48, 48, 48, 0.098);
 }
 
 .contentPrice span{
@@ -2393,6 +2392,7 @@ p.rappelCondition{
 	height: 40px;
 	margin: auto;
 	background-color: #f6f6f6;
+	box-shadow: 0.5px 0.866px 1px 0px rgba(48, 48, 48, 0.098);
 }
 
 .vignettePetitPlusPrixContent{
@@ -2431,7 +2431,6 @@ p.rappelCondition{
 	color: #fff; 
 	text-align: center;
 	color: #303030;
-	margin-bottom: 20px;
 }
 
 .carteBarPDF img{
@@ -2447,6 +2446,34 @@ p.rappelCondition{
 	padding-top: 20px;
 }
 
+.showPromoHappyHourBar{
+	background-color: #f6f6f6;
+	padding-left: 5%;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.showPromotionBar{
+	color: #5ac4d4;
+	font-size: 25px !important;
+}
+
+.showHappyHourBar{
+	color: #ea9026;
+	font-size: 25px !important;
+	margin-top: 20px;
+}
+
+.conditionsShowBar{
+	font-size: 12px !important;
+}
+
+.conditionsShowBar span{
+	font-weight: bold;
+	text-decoration: underline;
+	font-size: 12px !important;
+}
+
 .dresscode{
 	width: 100%;
   	text-align: center;
@@ -2454,7 +2481,12 @@ p.rappelCondition{
 }
 
 .dresscode img{
-	width: 50px;
+	width: 60px;
+	height: 60px;
+	border: 1px solid;
+	border-radius: 100%;
+	padding: 10px;
+	background-color: #f6f6f6;
 }
 
 
@@ -2475,7 +2507,7 @@ p.vignettePetitPlusPrix{
 
 .descriptionBar{
 	width: 100%;
-	padding: 20px 1%;
+	padding: 20px 10%;
 	margin: auto;
 	background-color: #fff;
 }
@@ -4954,10 +4986,6 @@ p.nextPointFidelite{
     .superInfoBar{
     	height: auto;
     	padding-bottom: 20px;
-    }
-
-    .mapView{
-    	height: 300px;
     }
 
     .subtitlePageRegisterBig{
