@@ -1113,7 +1113,7 @@ $('.ticketVerreValidate').on('click', function(){
             $( "#codeInput" ).val(code);
             $( "#datepicker" ).datepicker({ 
                 minDate: 0, 
-                maxDate: "+6D",
+                maxDate: "+12D",
                 firstDay: 1 ,
                 closeText: 'Fermer',
                 prevText: 'Précédent',

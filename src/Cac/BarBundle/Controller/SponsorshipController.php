@@ -76,7 +76,7 @@ class SponsorshipController extends Controller
 	  			}
 	  			$date->modify('+1 day');
 	  			$i++;
-	  		} while($i < 7);
+	  		} while($i < 14);
 
 			return new JsonResponse(array(
 				'msg' => 'code ok',
@@ -93,7 +93,7 @@ class SponsorshipController extends Controller
 		$em = $this->getDoctrine()->getManager();
 		$dayName = strftime("%A", $date->getTimestamp());
 		foreach($daySponsorships as $ds) {
-			if($ds['day'] == $dayName) {
+			if($ds['day'] == ucfirst($dayName)) {
 				$number = $ds['number'];
 				$qt = $em->getRepository('CacBarBundle:Sponsorship')->checkAvailableDay($date->format('y-m-d'), $id);
 				return $number - $qt;
