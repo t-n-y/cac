@@ -1623,12 +1623,13 @@ p.droitReserve{
 	padding: 0 20px;
 	font-size: 25px;
 	margin: 0px;
-	margin-top: 25px;
+	margin-top: 15px;
 	text-transform: uppercase;
 }
 
 .infoNameBar p{
-	margin-top: 30px;
+	margin-top: 22px;
+	margin-bottom: 0px;
 }
 
 .infoNameBar p span{
@@ -1739,8 +1740,9 @@ select:focus {
 	position: initial;
 }
 
-.noteBar{
-	
+.adresseBarShow{
+	margin-top: 4px !important;
+	margin-left: 20px !important;
 }
 
 .turn{
@@ -2081,7 +2083,7 @@ p.rappelCondition{
 
 
 .contentSuperInfoBar{
-	background-image: url('../img/fondFicheBar.png');
+	background-color: #f3f0ef;
 	background-size: cover;
 	background-repeat: no-repeat;
 }
@@ -2132,6 +2134,8 @@ p.rappelCondition{
 	min-height: 550px;
 	position: relative;
 	padding-bottom: 20px;
+	border : 1px solid #cfcccb;
+	border-top: 0px; 
 }
 
 .superContentBackOffice{
@@ -2172,12 +2176,8 @@ p.rappelCondition{
 .superInfoBar span{
 	font-size: 15px;
 	margin-left: 20px;
-	color : #5ac4d4;
-	margin-left: 5px;
-}
-
-.superInfoBar span.fermeture{
-	color: #d2232d;
+	color : #303030;
+	margin-left: -1px;
 }
 
 .ongletBarJour{
@@ -2319,11 +2319,25 @@ p.rappelCondition{
 	height: 100%;
 }
 
-.containerPriceAndServices{
-	width: 70%;
+.containerPrice{
+	width: 100%;
+	padding: 20px 1%;
 	margin: auto;
 	text-align: center;
-	background-color: rgba(255,255,255,0.7);
+	background-color: #f6f6f6;
+}
+
+.containerPrice img{
+	width: 60px;
+	margin-top: 20px;
+}
+
+.containerServices{
+	width: 100%;
+	padding: 20px 1%;
+	margin: auto;
+	text-align: center;
+	background-color: #fff;
 }
 
 .containerPriceAndServices img{
@@ -2378,14 +2392,14 @@ p.rappelCondition{
 	width: 100%;
 	height: 40px;
 	margin: auto;
-	background-color: rgba(255,255,255,0.4);
+	background-color: #f6f6f6;
 }
 
 .vignettePetitPlusPrixContent{
 	width: 40px;
 	height: 40px;
 	margin: auto;
-	background-color: rgba(255,255,255,0.4);
+	background-color: #f6f6f6;
 	float: left;
 }
 
@@ -2411,12 +2425,17 @@ p.rappelCondition{
 }
 
 .carteBarPDF{
+	width: 100%;
+	padding: 30px 0;
+	background-color: #5ac4d4;
+	color: #fff; 
 	text-align: center;
 	color: #303030;
+	margin-bottom: 20px;
 }
 
 .carteBarPDF img{
-	width: 50px;
+	width: 65px;
 }
 
 .carteBarPDF a{
@@ -2424,7 +2443,7 @@ p.rappelCondition{
 }
 
 .carteBarPDF p{
-	color: #303030;
+	color: #fff;
 	padding-top: 20px;
 }
 
@@ -2448,14 +2467,15 @@ span .vignettePetitPlusPrix{
 
 p.vignettePetitPlusPrix{
 	position: absolute;
-	top: 35%;
-	right: 23px;
-	font-size : 12px;
+  	top: 27%;
+	right: 19px;
+	font-size: 12px;
 }
 
 
 .descriptionBar{
-	width: 70%;
+	width: 100%;
+	padding: 20px 1%;
 	margin: auto;
 	background-color: #fff;
 }
@@ -2467,6 +2487,43 @@ p.vignettePetitPlusPrix{
 	  margin-left: 20px;
 	  margin-top: 20px;
 	  margin-bottom: 15px
+}
+
+.horaireBar{
+	width: 100%;
+	padding:20px 10% ;
+	background-color:#f6f6f6; 
+}
+
+.boxInfoOpenBar{
+	background-color: #fff;
+	text-align: center;
+	padding: 10px 0;
+	width: 80%;
+	margin: auto;
+	margin-top: 85px;
+}
+
+p{
+	margin-left: 0px !important;
+}
+
+.openBar{
+	color: #83db83;
+	font-size: 20px !important;
+	font-weight: bold;
+	margin-left: 0px !important;
+}
+
+.closeBar{
+	color: #f26060;
+	font-size: 20px !important;
+	font-weight: bold;
+	margin-left: 0px !important;
+}
+
+.interligneFicheBar img{
+	width: 45px;
 }
 
 .contentOption h2{
@@ -3704,6 +3761,8 @@ p.pCreez{
 	border-radius: 0px !important;
 	padding: 0px;
 }
+
+
 
 .interligneFicheBar{
 	margin-bottom: 5px !important;

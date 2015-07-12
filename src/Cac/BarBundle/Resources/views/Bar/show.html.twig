@@ -3,14 +3,16 @@
 {% block title %}CacBarBundle:Bar:show{% endblock %}
 
 {% block body %}
-	<div id="fb-root"></div>
-	<script>(function(d, s, id) {
-	  var js, fjs = d.getElementsByTagName(s)[0];
-	  if (d.getElementById(id)) return;
-	  js = d.createElement(s); js.id = id;
-	  js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.4&appId=375491089283331";
-	  fjs.parentNode.insertBefore(js, fjs);
-	}(document, 'script', 'facebook-jssdk'));</script>
+	<!-- <div id="fb-root"></div> -->
+	<script>
+		//(function(d, s, id) {
+		//   var js, fjs = d.getElementsByTagName(s)[0];
+		//   if (d.getElementById(id)) return;
+		//   js = d.createElement(s); js.id = id;
+		//   js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.4&appId=375491089283331";
+		//   fjs.parentNode.insertBefore(js, fjs);
+		// }(document, 'script', 'facebook-jssdk'));
+	</script>
 
 		<div class="topBar col-xs-12 col-sm-12 col-md-12 noPadding" style="background-image : url('{{ asset('uploads/bar/'~bar.path) }}');">
 			
@@ -29,6 +31,10 @@
 					<p>€€€€€</p>
 				{% endif %}
 
+				<p class="adresseBarShow">{{ bar.adress }} <b>{{ bar.zipcode }} {{ bar.town }}</b></p>
+
+
+
 				{% if (is_granted('ROLE_BIGBOSS')) and (bar.author.id == user.id) %}
 
 					<a href="{{ path('compte', { 'id': bar.id }) }}">Editer ce bar</a>
@@ -38,15 +44,9 @@
 		</div>
 		<div class="infoBar col-xs-12 col-sm-12 col-md-12 noPadding">
 			
-			<div class="noteBar hidden-xs col-sm-3 col-md-3">
-			{#	
-				<div class="turn"><p class="topNote">8</p><div class="slash"></div><p class="bottomNote">10</p></div>
-				<div class="clear"></div>
-				<p class="comNote">Bonne adresse</p>
-			#}
-			</div>
+			
 			 		
-			<div class="noteBar col-xs-6 col-sm-3 col-md-3">
+			<div class="noteBar col-xs-6 col-sm-offset-3 col-sm-3 col-md-offset-3 col-md-3">
 				<div class="right">
 					<div class="ticketVerre">
 						<div class="ticketBarTop">
@@ -171,12 +171,6 @@
 					{% endif %}
 				</div>
 			</div>
-			<div class="noteBar hidden-xs col-sm-3 col-md-3">
-			{#	
-				<p class="comPosition">POSITION</p>
-				<div class="turnPosition"><p class="topPosition">6</p><div class="slash"></div><p class="bottomPosition">535</p></div>
-			#}	
-			</div> 
 			<div class="confirmationReservation">
 				<div class="checkConfirmation" style="background-image : url('{{ asset('uploads/bar/'~bar.path) }}');">
 					<p class='jourReservation'>{{'now'|date('d')}}</p>
@@ -244,16 +238,155 @@
 						</div>
 					</div>
 				</div>
-				<div class="informationBar">
-					<div class="col-xs-12 col-sm-6 col-md-5">
-						<h2 class="firstElmtFicheBar">Accès</h2>
-						<div class="transportSliderWrapper">
+				<div class="containerPrice">
+					<div class="row">
+						<div class="col-xs-6 col-sm-3 col-md-3">
+							<img src="{{asset('img/pictoBar/biere.svg')}}" alt="">
+							<div class="contentPrice">
+								<span>{{ bar.beerPrice }}€</span>
+								<p>La pinte de bière</p>
+							</div>
+						</div>
+						<div class="col-xs-6 col-sm-3 col-md-3">
+							<img src="{{asset('img/pictoBar/cocktail.svg')}}" alt="">
+							<div class="contentPrice">
+								<span>{{ bar.cocktailPrice }}€</span>
+								<p>Le cocktail</p>
+							</div>
 							
 						</div>
-						<h2>Adresse</h2>
-						<p class="interligneFicheBar">{{ bar.adress }}</p>
-						<p>{{ bar.zipcode }}<span>{{ bar.town }}</span></p>
-						<h2>Les horaires</h2>
+						<div class="col-xs-6 col-sm-3 col-md-3">
+							<img src="{{asset('img/pictoBar/soft.svg')}}" alt="">
+							<div class="contentPrice">
+								<span>{{ bar.softPrice }}€</span>
+								<p>Le soft</p>
+							</div>
+						</div>
+						<div class="col-xs-6 col-sm-3 col-md-3">
+							<img src="{{asset('img/pictoBar/cafe.svg')}}" alt="">
+							<div class="contentPrice">
+								<span>{{ bar.coffeePrice }}€</span>
+								<p>Le café</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="containerServices">
+					<div class="petitplusInfoBar">
+						<div class="row">
+							{% if bar.handicappedAccess == 1 %}
+								<div class="vignettePetitPlus col-xs-6 col-sm-4 col-md-3">
+									<div class="vignettePetitPlusContent">
+										<img src="{{asset('img/pictoBar/handicape.svg')}}" alt="Click and Cheers" />
+										<p>Accessible<br>aux PMR</p>
+									</div>
+								</div>
+							{% endif %}
+							{% if bar.patio == 1%}
+								<div class="vignettePetitPlus col-xs-6 col-sm-4 col-md-3">
+									<div class="vignettePetitPlusContent">
+										<img src="{{asset('img/pictoBar/terrasse.svg')}}" alt="Click and Cheers">
+										<p>Terrasse<br>sympa</p>
+									</div>
+								</div>
+							{% endif %}
+							{% if bar.smokingArea == 1%}
+								<div class="vignettePetitPlus col-xs-6 col-sm-4 col-md-3">
+									<div class="vignettePetitPlusContent">
+										<img src="{{asset('img/pictoBar/fumoir.svg')}}" alt="Click and Cheers" />
+										<p>Espace<br>Fumeur</p>
+									</div>
+								</div> 
+							{% endif %}
+							{% if bar.breathalyser == 1%}
+								<div class="vignettePetitPlus col-xs-6 col-sm-4 col-md-3">
+									<div class="vignettePetitPlusContent">
+										<img src="{{asset('img/pictoBar/ethylotest.svg')}}" alt="Click and Cheers">
+										<p>Ethylotest<br>gratuit</p>
+									</div>
+								</div>
+							{% endif %}
+
+							{% if bar.babyfoot == 1%}
+								<div class="vignettePetitPlus col-xs-6 col-sm-4 col-md-3">
+									<div class="vignettePetitPlusContent">
+										<img src="{{asset('img/pictoBar/babyfoot.svg')}}" alt="Click and Cheers">
+										<p class="padding10">BabyFoot</p>
+									</div>
+								</div>
+							{% endif %}
+
+							{% if bar.billard == 1%}
+								<div class="vignettePetitPlus col-xs-6 col-sm-4 col-md-3">
+									<div class="vignettePetitPlusContent">
+										<img src="{{asset('img/pictoBar/billard.svg')}}" alt="Click and Cheers">
+										<p class="padding10">Billard</p>
+									</div>
+								</div>
+							{% endif %}
+
+							{% if bar.flipper == 1 %}
+								<div class="vignettePetitPlus col-xs-6 col-sm-4 col-md-3">
+									<div class="vignettePetitPlusContent">
+										<img src="{{asset('img/pictoBar/flipper.svg')}}" alt="Click and Cheers">
+										<p class="padding10">Flipper</p>
+									</div>
+								</div>
+							{% endif %}
+
+							{% if bar.canape == 1%}
+								<div class="vignettePetitPlus col-xs-6 col-sm-4 col-md-3">
+									<div class="vignettePetitPlusContent">
+										<img src="{{asset('img/pictoBar/canape.svg')}}" alt="Click and Cheers">
+										<p class="padding10">Canapé</p>
+									</div>
+								</div>
+							{% endif %}
+							{% if bar.clim == 1 %}
+								<div class="vignettePetitPlus col-xs-6 col-sm-4 col-md-3">
+									<div class="vignettePetitPlusContent">
+										<img src="{{asset('img/pictoBar/climatisation.svg')}}" alt="Click and Cheers">
+										<p class="padding10">Climatisation</p>
+									</div>
+								</div>
+							{% endif %}
+							{% if bar.valet == 1%}
+								<div class="vignettePetitPlus col-xs-6 col-sm-4 col-md-3">
+									<div class="vignettePetitPlusContent">
+										<img src="{{asset('img/pictoBar/voiturier.png')}}" alt="Click and Cheers">
+										<p>Service<br>Voiturier</p>
+										<p class="vignettePetitPlusPrix">{{ bar.valetCost }}<span> €</span></p>
+									</div>
+								</div>
+							{% endif %}
+						</div>
+						<div class="clear"></div>
+					</div>
+				</div>
+
+				{% for carte in bar.carte%}
+					{% if carte.getWebPath %}
+						<div class="carteBarPDF col-xs-12 col-sm-12 col-md-12">
+							<a href="{{asset(carte.getWebPath)}}" target="_blank">
+								<img src="{{asset('img/carteBar.png')}}" alt="Click and Cheers">
+								<p>VOIR LA CARTE DU BAR</p>
+							</a>
+						</div>
+					{% endif %}
+				{% endfor %}
+				{% if bar.description %}
+					<div class="descriptionBar noPadding">
+						<p class="col-xs-12 col-sm-12 col-md-12">{{bar.description}}</p>
+						
+
+						
+						<div class="clear"></div>
+					</div>
+				{% endif %}
+
+				<div class="informationBar">
+					<div class="horaireBar">
+
 						{% set days = {
 							'1': 'Lundi', 
 							'2': 'Mardi', 
@@ -263,23 +396,58 @@
 							'6': 'Samedi', 
 							'7': 'Dimanche'
 						} %}
-						{% for i in 1..7 %}
-						<div class="interligneFicheBar col-xs-5 col-sm-4 col-md-4 noPadding">
-							<p>{{ days[i] }}</p>
+						<div class="row">
+							<div class="col-xs-12 col-sm-12 col-md-12">
+								<div class="col-xs-12 col-sm-6 col-md-6">
+									<div class="boxInfoOpenBar">
+										{% if bar.scheduleArray[today].status == "Ouvert" %}
+											<p class="openBar">C'est Ouvert</p>
+											<p>Il est temps de sortir !</p>
+										{% else %}
+											<p class="closeBar">C'est Fermé</p>
+											<p>Pour une autre fois</p>
+										{% endif %}
+									</div>
+								</div>
+								<div class="center col-xs-12 col-sm-6 col-md-6">
+										<div class="interligneFicheBar col-xs-3 col-xs-offset-5 col-sm-offset-4 col-md-4 col-sm-offset-4 col-md-4 noPadding">
+											<img src="{{asset('img/barOuvert.png')}}" alt="Click and Cheers">
+										</div>
+										<div class="interligneFicheBar col-xs-4 col-sm-4 col-md-4 noPadding">
+											<img src="{{asset('img/barFerme.png')}}" alt="Click and Cheers">
+										</div>
+									{% for i in 1..7 %}
+										<div class="interligneFicheBar col-xs-5 col-sm-4 col-md-4 noPadding">
+											<p>{{ days[i]|slice(0, 3)}}</p>
+										</div>
+										{% if bar.scheduleArray[days[i]].status == "Ouvert" %}
+											<div class="interligneFicheBar col-xs-3 col-sm-4 col-md-4 noPadding">
+												<span>{{ bar.scheduleArray[days[i]].open }}h</span>
+											</div>
+											<div class="interligneFicheBar col-xs-4 col-sm-4 col-md-4 noPadding">
+												<span>{{ bar.scheduleArray[days[i]].close }}h</span>
+											</div>
+										{% else %}
+											<div class="interligneFicheBar center col-xs-4 col-sm-8 col-md-8 noPadding">
+												<span class="fermeture">FERMÉ</span>
+											</div>
+										{% endif %}
+									{% endfor %}
+								</div>
+							</div>
 						</div>
-						{% if bar.scheduleArray[days[i]].status == "Ouvert" %}
-						<div class="interligneFicheBar col-xs-3 col-sm-4 col-md-4 noPadding">
-							<span class="ouverture">{{ bar.scheduleArray[days[i]].open }}h</span>
+					</div>
+				</div>
+
+				<div class="informationBar">
+					<div class="col-xs-12 col-sm-6 col-md-5">
+						<h2 class="firstElmtFicheBar">Accès</h2>
+						<div class="transportSliderWrapper">
+							
 						</div>
-						<div class="interligneFicheBar col-xs-4 col-sm-4 col-md-4 noPadding">
-							<span class="fermeture">{{ bar.scheduleArray[days[i]].close }}h</span>
-						</div>
-						{% else %}
-						<div class="interligneFicheBar center col-xs-4 col-sm-5 col-md-5 noPadding">
-							<span class="fermeture">FERMÉ</span>
-						</div>
-						{% endif %}
-						{% endfor %}
+						
+						
+						
 					</div>
 					<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
 					<script>
@@ -332,150 +500,8 @@
 				</div>
 			</div>
 
-			<div class="containerPriceAndServices">
-				<div class="row">
-					<div class="col-xs-6 col-sm-3 col-md-3">
-						<img src="{{asset('img/pictoBar/biere.svg')}}" alt="">
-						<div class="contentPrice">
-							<span>{{ bar.beerPrice }}€</span>
-							<p>La pinte de bière</p>
-						</div>
-					</div>
-					<div class="col-xs-6 col-sm-3 col-md-3">
-						<img src="{{asset('img/pictoBar/cocktail.svg')}}" alt="">
-						<div class="contentPrice">
-							<span>{{ bar.cocktailPrice }}€</span>
-							<p>Le cocktail</p>
-						</div>
-						
-					</div>
-					<div class="col-xs-6 col-sm-3 col-md-3">
-						<img src="{{asset('img/pictoBar/soft.svg')}}" alt="">
-						<div class="contentPrice">
-							<span>{{ bar.softPrice }}€</span>
-							<p>Le soft</p>
-						</div>
-					</div>
-					<div class="col-xs-6 col-sm-3 col-md-3">
-						<img src="{{asset('img/pictoBar/cafe.svg')}}" alt="">
-						<div class="contentPrice">
-							<span>{{ bar.coffeePrice }}€</span>
-							<p>Le café</p>
-						</div>
-					</div>
-				</div>
-
-				<div class="petitplusInfoBar">
-					<div class="row">
-						{% if bar.handicappedAccess == 1 %}
-							<div class="vignettePetitPlus col-xs-6 col-sm-4 col-md-3">
-								<div class="vignettePetitPlusContent">
-									<img src="{{asset('img/pictoBar/handicape.svg')}}" alt="Click and Cheers" />
-									<p>Accessible<br>aux PMR</p>
-								</div>
-							</div>
-						{% endif %}
-						{% if bar.patio == 1%}
-							<div class="vignettePetitPlus col-xs-6 col-sm-4 col-md-3">
-								<div class="vignettePetitPlusContent">
-									<img src="{{asset('img/pictoBar/terrasse.svg')}}" alt="Click and Cheers">
-									<p>Terrasse<br>sympa</p>
-								</div>
-							</div>
-						{% endif %}
-						{% if bar.smokingArea == 1%}
-							<div class="vignettePetitPlus col-xs-6 col-sm-4 col-md-3">
-								<div class="vignettePetitPlusContent">
-									<img src="{{asset('img/pictoBar/fumoir.svg')}}" alt="Click and Cheers" />
-									<p>Espace<br>Fumeur</p>
-								</div>
-							</div> 
-						{% endif %}
-						{% if bar.breathalyser == 1%}
-							<div class="vignettePetitPlus col-xs-6 col-sm-4 col-md-3">
-								<div class="vignettePetitPlusContent">
-									<img src="{{asset('img/pictoBar/ethylotest.svg')}}" alt="Click and Cheers">
-									<p>Ethylotest<br>gratuit</p>
-								</div>
-							</div>
-						{% endif %}
-
-						{% if bar.babyfoot == 1%}
-							<div class="vignettePetitPlus col-xs-6 col-sm-4 col-md-3">
-								<div class="vignettePetitPlusContent">
-									<img src="{{asset('img/pictoBar/babyfoot.svg')}}" alt="Click and Cheers">
-									<p class="padding10">BabyFoot</p>
-								</div>
-							</div>
-						{% endif %}
-
-						{% if bar.billard == 1%}
-							<div class="vignettePetitPlus col-xs-6 col-sm-4 col-md-3">
-								<div class="vignettePetitPlusContent">
-									<img src="{{asset('img/pictoBar/billard.svg')}}" alt="Click and Cheers">
-									<p class="padding10">Billard</p>
-								</div>
-							</div>
-						{% endif %}
-
-						{% if bar.flipper == 1 %}
-							<div class="vignettePetitPlus col-xs-6 col-sm-4 col-md-3">
-								<div class="vignettePetitPlusContent">
-									<img src="{{asset('img/pictoBar/flipper.svg')}}" alt="Click and Cheers">
-									<p class="padding10">Flipper</p>
-								</div>
-							</div>
-						{% endif %}
-
-						{% if bar.canape == 1%}
-							<div class="vignettePetitPlus col-xs-6 col-sm-4 col-md-3">
-								<div class="vignettePetitPlusContent">
-									<img src="{{asset('img/pictoBar/canape.svg')}}" alt="Click and Cheers">
-									<p class="padding10">Canapé</p>
-								</div>
-							</div>
-						{% endif %}
-						{% if bar.clim == 1 %}
-							<div class="vignettePetitPlus col-xs-6 col-sm-4 col-md-3">
-								<div class="vignettePetitPlusContent">
-									<img src="{{asset('img/pictoBar/climatisation.svg')}}" alt="Click and Cheers">
-									<p class="padding10">Climatisation</p>
-								</div>
-							</div>
-						{% endif %}
-						{% if bar.valet == 1%}
-							<div class="vignettePetitPlus col-xs-6 col-sm-4 col-md-3">
-								<div class="vignettePetitPlusContent">
-									<img src="{{asset('img/pictoBar/voiturier.png')}}" alt="Click and Cheers">
-									<p>Service<br>Voiturier</p>
-									<p class="vignettePetitPlusPrix">{{ bar.valetCost }}<span> €</span></p>
-								</div>
-							</div>
-						{% endif %}
-					</div>
-					<div class="clear"></div>
-				</div>
-			</div>
-			{% if bar.description %}
-				<div class="descriptionBar noPadding">
-					<h2 class="col-xs-5 col-sm-5 col-md-5 noPadding">Description</h2>
-					<p class="col-xs-12 col-sm-12 col-md-12">{{bar.description}}</p>
-					
-
-					{% for carte in bar.carte%}
-						{% if carte.getWebPath %}
-						<h2 class="col-xs-5 col-sm-5 col-md-5 noPadding">Carte</h2>
-							<div class="carteBarPDF col-xs-12 col-sm-12 col-md-12">
-								<a href="{{asset(carte.getWebPath)}}" target="_blank">
-									<img src="{{asset('img/carteBar.png')}}" alt="Click and Cheers">
-									<p>Voir la carte du bar</p>
-								</a>
-							</div>
-						{% endif %}
-					{% endfor %}
-					<div class="clear"></div>
-				</div>
-			{% endif %}
+			
+			
 
 			<div class="dresscode">
 				{% if bar.dresscode == 1%}
