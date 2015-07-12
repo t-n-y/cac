@@ -66,11 +66,10 @@ class DefaultController extends Controller
         $em->persist($carte);
         $em->flush();
         $plan = $em->getRepository('CacPaymentBundle:Payment')->findOneByUser($user)->getPlan();
-        $user = $this->get('security.context')->getToken()->getUser();
         if ($plan === "shooter") {
             $option = new PaymentOptions();
             $option->setName('carte');
-            $option->setUser($user);
+            $option->setUser($em->getReference('Cac\UserBundle\Entity\Bigboss', $user));
             $option->setActive(1);
             $option->setCreatedAt(new \DateTime('now'));
             $em->persist($option);
@@ -80,7 +79,7 @@ class DefaultController extends Controller
         elseif ($plan === "cosmo") {
             $option = new PaymentOptions();
             $option->setName('carte');
-            $option->setUser($user);
+            $option->setUser($em->getReference('Cac\UserBundle\Entity\Bigboss', $user));
             $option->setActive(1);
             $option->setCreatedAt(new \DateTime('now'));
             $em->persist($option);
