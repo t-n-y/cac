@@ -64,50 +64,145 @@
 					<div class="col-xs-12 col-sm-12 col-md-12 changeMyAbonnement">
 						<div class="row">
 							<div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1">
-								<div class="containerAbonnement">
 
-									<div class="typeFormule">
-										<div class="closetypeFormule">
-											<img src="{{asset('img/crossClose.png')}}" alt="">
-										</div>
-										<p>Formule 2 : Cosmopolitain</p>
-									</div>
-									<div class="containerService">
-										<div class="row">
-											<div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2">
-												<h3 class="serviceCosmo">Tout les services de la formule Shooter</h3>
-												<h2 class="serviceCosmo">+</h2>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-xs-12 col-sm-4 col-md-4">
-												<div class="service">	
-													<p>Gestion multi-comptes</p>
-													<img src="{{asset('img/pictoAbonnement/backOffice.png')}}" alt="">
-												</div>
-											</div>
-											<div class="col-xs-12 col-sm-4 col-md-4">
-												<div class="service">	
-													<p>Gestion multi-utilisateurs</p>
-													<img src="{{asset('img/pictoAbonnement/multiUser.png')}}" alt="">
-												</div>
-											</div>
-											<div class="col-xs-12 col-sm-4 col-md-4">
-												<div class="service">	
-													<p>Photos de votre établissement</p>
-													<img src="{{asset('img/pictoAbonnement/photo.png')}}" alt="">
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="myAbonnement">
-										<h2>Abonnement mensuel : <span>49€</span></h2>
-										<p>Comission : 1€ par retour client validé</p>
+								{% if (plan == 'shooter' or plan == 'shootercarte') %}
 
-										<button class="premium"> Souscrire </button>
+									
+
+									<div class="containerAbonnement">
+
+										<div class="typeFormule">
+											<div class="closetypeFormule">
+												<img src="{{asset('img/crossClose.png')}}" alt="">
+											</div>
+											<p>Formule 2 : Cosmopolitain</p>
+										</div>
+										<div class="containerService">
+											<div class="row">
+												<div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2">
+													<h3 class="serviceCosmo">Tout les services de la formule Shooter</h3>
+													<h2 class="serviceCosmo">+</h2>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-xs-12 col-sm-4 col-md-4">
+													<div class="service">	
+														<p>Gestion multi-comptes</p>
+														<img src="{{asset('img/pictoAbonnement/backOffice.png')}}" alt="">
+													</div>
+												</div>
+												<div class="col-xs-12 col-sm-4 col-md-4">
+													<div class="service">	
+														<p>Gestion multi-utilisateurs</p>
+														<img src="{{asset('img/pictoAbonnement/multiUser.png')}}" alt="">
+													</div>
+												</div>
+												<div class="col-xs-12 col-sm-4 col-md-4">
+													<div class="service">	
+														<p>Photos de votre établissement</p>
+														<img src="{{asset('img/pictoAbonnement/photo.png')}}" alt="">
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="myAbonnement">
+											<h2>Abonnement mensuel : <span>49€</span></h2>
+											<p>Comission : 1€ par retour client validé</p>
+
+											<button class="premium"> Souscrire </button>
+										</div>
+										<div id="append-payment-premium"></div>
 									</div>
-									<div id="append-payment-premium"></div>
-								</div>
+								{% else %}
+									<div class="containerAbonnement">
+										<div class="typeFormule">
+											<p>Formule 1 : Shooter</p>
+										</div>
+										<div class="containerService">
+											<div class="row">
+												<div class="col-xs-6 col-sm-4 col-md-3">
+													<div class="service">	
+														<p>Vos photos</p>
+														<img src="{{asset('img/pictoAbonnement/photo.png')}}" alt="">
+													</div>
+												</div>
+												<div class="col-xs-6 col-sm-4 col-md-3">
+													<div class="service">	
+														<p>Vos horaires</p>
+														<img src="{{asset('img/pictoAbonnement/horaire.png')}}" alt="">
+													</div>
+												</div>
+												<div class="col-xs-6 col-sm-4 col-md-3">
+													<div class="service">	
+														<p>Vos services</p>
+														<img src="{{asset('img/pictoAbonnement/service.png')}}" alt="">
+													</div>
+												</div>
+												<div class="col-xs-6 col-sm-4 col-md-3">
+													<div class="service">	
+														<p>Votre adresse</p>
+														<img src="{{asset('img/pictoAbonnement/adresse.png')}}" alt="">
+													</div>
+												</div>
+												<div class="col-xs-6 col-sm-4 col-md-3">
+													<div class="service">	
+														<p>Système unique de parrainage</p>
+														<img src="{{asset('img/pictoAbonnement/parrainage.png')}}" alt="">
+													</div>
+												</div>
+												<div class="col-xs-6 col-sm-4 col-md-3">
+													<div class="service">	
+														<p>Plan</p>
+														<img src="{{asset('img/pictoAbonnement/plan.png')}}" alt="">
+													</div>
+												</div>
+												<div class="col-xs-6 col-sm-4 col-md-3">
+													<div class="service">	
+														<p>Vos offres</p>
+														<img src="{{asset('img/pictoAbonnement/offre.png')}}" alt="">
+													</div>
+												</div>
+												<div class="col-xs-6 col-sm-4 col-md-3">
+													<div class="service">	
+														<p>Transports<br>en commun</p>
+														<img src="{{asset('img/pictoAbonnement/transport.png')}}" alt="">
+													</div>
+												</div>
+												<div class="col-xs-6 col-sm-4 col-md-3">
+													<div class="service">	
+														<p>Un back office</p>
+														<img src="{{asset('img/pictoAbonnement/backOffice.png')}}" alt="">
+													</div>
+												</div>
+												<div class="col-xs-6 col-sm-4 col-md-3">
+													<div class="service">	
+														<p>Assistance gratuite</p>
+														<img src="{{asset('img/pictoAbonnement/assistance.png')}}" alt="">
+													</div>
+												</div>
+												<div class="col-xs-6 col-sm-4 col-md-3">
+													<div class="service">	
+														<p>Votre ambiance</p>
+														<img src="{{asset('img/pictoAbonnement/ambiance.png')}}" alt="">
+													</div>
+												</div>
+												<div class="col-xs-6 col-sm-4 col-md-3">
+													<div class="service">	
+														<p>Satistiques</p>
+														<img src="{{asset('img/pictoAbonnement/statistique.png')}}" alt="">
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="myAbonnement">
+											<h2>Abonnement mensuel : <span>Gratuit</span></h2>
+											<p>Comission : 1€ par retour client validé</p>
+
+											<button class="freemium"> Souscrire </button>
+										</div>
+										<div id="append-payment-free"></div>
+									</div>
+								{% endif %}
 							</div>
 						</div>
 					</div>

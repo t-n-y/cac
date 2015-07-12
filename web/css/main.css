@@ -2666,7 +2666,7 @@ p{
 	margin-top: 10px;
 	background-color: #fff;
 	display: inline-block;
-	margin-left: 50%;
+	margin-left: 50% !important;
 	transform: translate(-50%, 0);
 }
 
