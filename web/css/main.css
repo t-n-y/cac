@@ -303,6 +303,32 @@ h2.font30{
     text-align: center;
 }
 
+.emailsponsorship input{
+	width: 80%;
+	background-color: #f6f6f6;
+}
+
+.emailsponsorship button{
+	margin: 15px auto;
+	color: #fff;
+	background-color: #303030;
+	border: none;
+	width: 150px;
+	padding: 5px;
+} 
+
+.emailsponsorship button:hover{
+	background-color: #3e3e3e;
+}  
+
+.emailsponsorship button:active{
+	box-shadow: 0.656px 0.755px 8px 0px rgba(87, 87, 87, 0.75);
+} 
+
+.emailsponsorship button:focus{
+	outline:none;
+} 
+
 .forParrainage{
 	width: 400px;
 	height: 320px;
@@ -477,7 +503,7 @@ h2.font30{
 }
 
 .popLogin input[type=submit]:hover, .forParrainage button:hover{
-	background-color:#555;
+	background-color:#3e3e3e;
 }
 
 .loginRemember{
