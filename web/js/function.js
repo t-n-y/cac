@@ -404,6 +404,13 @@ $('.mesReservation').on('click', function(){
     setCookie("onglet", "ongletReservation", 1);
 });
 
+$('.JS-mesReservation').on('click', function(){
+    document.cookie = "onglet=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+    setCookie("onglet", "ongletReservation", 1);
+    console.log('coucou');
+});
+
+
 $('.mesParrainage').on('click', function(){
     document.cookie = "onglet=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
     setCookie("onglet", "ongletParrainage", 1);
