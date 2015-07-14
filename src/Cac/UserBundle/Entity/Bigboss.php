@@ -83,7 +83,7 @@ class Bigboss extends User
      * )
      * @Assert\Regex(
      *     pattern="#^(06|07)#",
-     *     message="Le numéro doit être un uméro de portable valide"
+     *     message="Le numéro doit être un numéro de portable valide"
      * )
      * @ORM\Column(name="mobile_phone", type="integer")
      */
