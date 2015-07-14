@@ -28,14 +28,14 @@ $($promoParrainnage[0]).addClass('selectedPromoParrainnage');
 //récupération nombre de parrainage du premier jour
 var nbParrainnageToday = parseJson["Lundi"];
 
-$('.nbParrainnageToday').html(nbParrainnageToday.number);
+$('.nbParrainnageToday').val(nbParrainnageToday.number);
 
 $dayOngletNewBar.on('click', function(){
 
   //récupération nombre de parrainage du jour selectionné
   var daySelected = $(this).html();
   var nbParrainnageToday = parseJson[daySelected];
-  $('.nbParrainnageToday').html(nbParrainnageToday.number);
+  $('.nbParrainnageToday').val(nbParrainnageToday.number);
 
   $dayOngletNewBar.removeClass('selectedOngletDay');
   $(this).addClass('selectedOngletDay');
@@ -44,3 +44,33 @@ $dayOngletNewBar.on('click', function(){
   $promoParrainnage.removeClass('selectedPromoParrainnage');
   $($promoParrainnage[(daySelected-1)]).addClass('selectedPromoParrainnage');
 });
+
+
+
+var nbMyPromoOfTheDay = $('.JS-myPromoOfTheDay').length;
+var myPromoOfTheDay = $('.JS-myPromoOfTheDay');
+
+for(var i = 0; i < nbMyPromoOfTheDay; i++){
+
+  $this = $($('.promotion-value-picker')[i]);
+
+  $this.find('option').each(function()
+  {
+      if($(this).val() === $(myPromoOfTheDay[i]).text()){
+        $(this).prop('selected', true);
+      }
+  });
+
+  
+
+
+  
+}
+
+
+
+
+
+
+
+

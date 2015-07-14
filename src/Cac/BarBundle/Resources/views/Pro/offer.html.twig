@@ -78,11 +78,13 @@
 												<div class="row">
 													
 													<div class="center valuePromo">
+
+															<div class="JS-myPromoOfTheDay">{{ bar.getPromotionByDay(days[j]).getOption('value').value }}</div>
 														
 															<select class="promotion-value-picker" data-day="{{ days[j] }}">
 																{% if bar.getPromotionByDay(days[j]).getOption('value').value > 0 %}
 																	
-																	<option value="{{ bar.getPromotionByDay(days[j]).getOption('value').value }}">{{ bar.getPromotionByDay(days[j]).getOption('value').value }}%</option>
+																	<!-- <option value="{{ bar.getPromotionByDay(days[j]).getOption('value').value }}">{{ bar.getPromotionByDay(days[j]).getOption('value').value }}%</option> -->
 																{% endif %}
 																<option value="0">Pas de promo</option>
 																{% for i in 2..6 %}
@@ -179,8 +181,26 @@
 					{{ form_start(edit_dayss_form, {'attr': {'id': 'form_sponsorship'}}) }}
 						{% for day in 1..7 %}
 							<div class="promoParrainnage">
-								<p class="nbParrainnageToday" data-nbParrainnageToday=""></p>
+								<input type="text" class="nbParrainnageToday" nbParrainnageToday="">
 							</div>
+
+							<!-- <select class="promotion-qt-picker" data-day="{{ days[day] }}">
+								<option value="Illimité" class="nbParrainnageToday"></option>
+
+								{% set nbVerrePromo = {
+									'1': '10', 
+									'2': '20', 
+									'3': '30', 
+									'4': '40', 
+									'5': '50',
+									'6': '100'
+								} %}
+								{% for k in 1..6 %}
+								<option value="{{nbVerrePromo[k]}}">
+									{{nbVerrePromo[k]}}
+								</option>
+								{% endfor %}
+							</select> -->
 							
 						{% endfor %}
 

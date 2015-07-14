@@ -3039,6 +3039,10 @@ p.closeMesOptions{
 	height: 35px;
 }
 
+.JS-myPromoOfTheDay{
+	display: none;
+}
+
 
 .widthFormPromo select{
 	background-color: #fff;
