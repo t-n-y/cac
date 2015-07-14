@@ -1251,6 +1251,27 @@ $('.heure select').on('change', function(){
     //console
 });
 
+
+var numeroTelMobileEdit = $('#fos_user_profile_form_mobile_phone').val();
+var numeroTelFixEdit = $('#fos_user_profile_form_fix_phone').val();
+
+console.log(numeroTelMobileEdit.charAt(0));
+
+if(numeroTelMobileEdit.charAt(0) != 0){
+    $('#fos_user_profile_form_mobile_phone').val('0'+numeroTelMobileEdit);
+}
+
+if(numeroTelFixEdit.charAt(0) != 0){
+    $('#fos_user_profile_form_fix_phone').val('0'+numeroTelFixEdit);
+}
+
+
+
+
+
+
+
+
 function setCookie(cname, cvalue, exdays) {
     var d = new Date();
     d.setTime(d.getTime() + (exdays*24*60*60*1000));
