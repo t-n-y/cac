@@ -215,9 +215,9 @@ class BarController extends Controller
     }
 
     /**
-     * @Route("/get-my-promotion/{id}", name="get_promo", options={"expose"=true})
+     * @Route("/get-my-promotion/{id}/{value}", name="get_promo", options={"expose"=true})
      */
-    public function getMyPromotionAction($id)
+    public function getMyPromotionAction($id, $value)
     {
         $em = $this->getDoctrine()->getManager();
         $bar = $em->getRepository('CacBarBundle:Bar')->find($id);
@@ -236,6 +236,7 @@ class BarController extends Controller
             $promo->setReference($reference);
             $promo->setEtat('confirmé');
             $promo->setBar($bar);
+            $promo->setValue($value);
             $promo->setUser($user);
             $promo->setCreatedAt(new \DateTime('now'));
             $em->persist($promo);

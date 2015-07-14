@@ -53,6 +53,12 @@ class PromoOffertes
      */
     private $createdAt;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="value", type="string", length=255)
+     */
+    private $value;
 
     /**
      * Get id
@@ -177,5 +183,29 @@ class PromoOffertes
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set value
+     *
+     * @param string $value
+     *
+     * @return PromoOffertes
+     */
+    public function setValue($value)
+    {
+        $this->value = $value;
+
+        return $this;
+    }
+
+    /**
+     * Get value
+     *
+     * @return string
+     */
+    public function getValue()
+    {
+        return $this->value;
     }
 }
