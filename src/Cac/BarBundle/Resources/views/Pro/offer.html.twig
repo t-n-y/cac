@@ -10,6 +10,32 @@
 			</div>
 		</div>
 
+		<div class="confirmationReservation">
+			<div class="checkConfirmation" style="background-image : url('{{ asset('uploads/bar/'~bar.path) }}');">
+				<p class='jourReservation'>{{'now'|date('d')}}</p>
+				<p class='moisReservation'>
+
+				{% set months = {'1': 'JANVIER', '2': 'FEVRIER', '3': 'MARS', '4': 'AVRIL', '5': 'MAI', '6': 'JUIN', '7': 'JUILLET', '8': 'AOUT', '9': 'SEPTEMBRE', '10': 'OCTOBRE', '11': 'NOVEMBRE', '12': 'DECEMBRE'} %}
+
+			      {% for j in 1..12 %}
+
+					{% if 'now'|date('m') == j %}
+						{{ months[j] }}
+					{% endif %}
+				{% endfor %}
+				</p>
+			</div>
+			<div class="contentConfirmation">
+				<div class="textContentConfirmation">
+					<div class="closeRappel">
+						<img src="{{asset('img/crossClose.png')}}" alt="">
+					</div>
+					<h2>Modification Réussi !</h2>
+					<p class="padding10">Vos modifications son pris en compte dès maintenant</p>
+				</div>
+			</div>
+		</div>
+
 		<div class="onglets col-xs-12 col-sm-12 col-md-12 noPadding">
 			<h2>Vos offres</h2>
 		</div>
@@ -239,6 +265,7 @@
 	        data: { data: data },
 	        success: function (data) {
  				console.log(data);
+ 				confirmationReservation();
 	        }
 	    });
  		return false;
