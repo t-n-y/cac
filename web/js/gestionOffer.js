@@ -46,26 +46,31 @@ $dayOngletNewBar.on('click', function(){
 });
 
 
-
-var nbMyPromoOfTheDay = $('.JS-myPromoOfTheDay').length;
 var myPromoOfTheDay = $('.JS-myPromoOfTheDay');
+var nbMyPromoOfTheDay = myPromoOfTheDay.length;
 
-for(var i = 0; i < nbMyPromoOfTheDay; i++){
-
-  $this = $($('.promotion-value-picker')[i]);
-
-  $this.find('option').each(function()
-  {
-      if($(this).val() === $(myPromoOfTheDay[i]).text()){
-        $(this).prop('selected', true);
-      }
-  });
-
-  
+var myHHOfTheDay = $('.JS-myHHOfTheDay');
+var nbMyHHOfTheDay = myHHOfTheDay.length;
 
 
-  
+
+var goToTheRightPlace = function(nbData, data, classe){
+  for(var i = 0; i < nbData; i++){
+
+    $this = $($('.'+classe)[i]);
+
+    $this.find('option').each(function()
+    {
+        if($(this).val() === $(data[i]).text()){
+          $(this).prop('selected', true);
+        }
+    });
+  }
 }
+
+goToTheRightPlace(nbMyPromoOfTheDay, myPromoOfTheDay, 'promotion-value-picker');
+
+goToTheRightPlace(nbMyHHOfTheDay, myHHOfTheDay, 'hh-value-picker');
 
 
 

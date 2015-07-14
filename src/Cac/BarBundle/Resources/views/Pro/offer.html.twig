@@ -131,11 +131,12 @@
 										{% if bar.scheduleArray[day[j]].status == 'Ouvert' %}
 											<div class="row">
 												<div class="center valuePromo">
+													<div class="JS-myHHOfTheDay">{{ bar.getHappyHourByDay(days[j]).getOption('value').value }}</div>
+
 													<select class="hh-value-picker" data-day="{{ days[j] }}">
 													{% if bar.getHappyHourByDay(days[j]).getOption('value').value == 0 %}
 														<option value="0">Pas de Happy Hour</option>
-													{% else %}
-														<option value="{{ bar.getHappyHourByDay(days[j]).getOption('value').value }}">{{ bar.getHappyHourByDay(days[j]).getOption('value').value }}%</option>
+													
 													{% endif %}
 														{% for i in 3..7 %}
 														    <option value="{{i}}0">{{i}}0%</option>
