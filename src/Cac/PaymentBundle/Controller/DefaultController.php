@@ -135,19 +135,19 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/my-options", name="display_options")
+     * @Route("/my-options/{barId}", name="display_options")
      * @Template()
      */
-    public function displayOptionsAction()
+    public function displayOptionsAction($barId)
     {
         $em = $this->getDoctrine()->getManager();
         $user = $this->get('security.context')->getToken()->getUser();
         $options = $em->getRepository('CacPaymentBundle:PaymentOptions')->findBy(array('user' => $user->getId(), 'active' => 1 ));
-        return array('options' => $options);
+        return array('options' => $options, 'barId' => $barId);
     }
 
     /**
-     * @Route("/my-finished-options", name="display_options")
+     * @Route("/my-finished-options", name="display_finish_options")
      * @Template()
      */
     public function displayFinishedOptionsAction()
@@ -159,16 +159,19 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/remove_carte", name="remove_carte_abo", options={"expose"=true})
+     * @Route("/remove_carte/{barId}", name="remove_carte_abo", options={"expose"=true})
      */
-    public function removeCarteAction()
+    public function removeCarteAction($barId)
     {
         $em = $this->getDoctrine()->getManager();
         $user = $this->get('security.context')->getToken()->getUser();
         $option = $em->getRepository('CacPaymentBundle:PaymentOptions')->findOneBy(array('user' => $user->getId(), 'name' => 'carte' ));
+        $carte = $em->getRepository('CacBarBundle:CarteBar')->findOneByBar($barId);
+        $carte->setVisible(false);
         $option->setActive(0);
         $option->setDeletedAt(new \DateTime('now'));
         $em->persist($option);
+        $em->persist($carte);
         $em->flush();
         $plan = $em->getRepository('CacPaymentBundle:Payment')->findOneByUser($user)->getPlan();
         if ($plan === "shootercarte") {

@@ -364,10 +364,9 @@
 							<div class="clear"></div>
 						</div>
 					</div>
-
-					{% for carte in bar.carte%}
+					
+					{% for carte in bar.carte if carte.visible == true %}
 						{% if carte.getWebPath %}
-
 								<div class="carteBarPDF col-xs-12 col-sm-12 col-md-12">
 									<a href="{{asset(carte.getWebPath)}}" target="_blank">
 										<img src="{{asset('img/carteBar.png')}}" alt="Click and Cheers">
@@ -375,7 +374,6 @@
 									</a>
 								</div>
 								<div class="clear"></div>
-
 						{% endif %}
 					{% endfor %}
 					<div class="showPromoHappyHourBar">

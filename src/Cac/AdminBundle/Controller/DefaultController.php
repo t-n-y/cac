@@ -66,27 +66,37 @@ class DefaultController extends Controller
         $em->persist($carte);
         $em->flush();
         $plan = $em->getRepository('CacPaymentBundle:Payment')->findOneByUser($user)->getPlan();
-        if ($plan === "shooter") {
-            $option = new PaymentOptions();
-            $option->setName('carte');
-            $option->setUser($em->getReference('Cac\UserBundle\Entity\Bigboss', $user));
+        $option = $em->getRepository('CacPaymentBundle:PaymentOptions')->findOneBy(array('user' => $user, 'name' => 'carte' ));
+        if ($option === null) 
+        {
+            if ($plan === "shooter") {
+                $option = new PaymentOptions();
+                $option->setName('carte');
+                $option->setUser($em->getReference('Cac\UserBundle\Entity\Bigboss', $user));
+                $option->setActive(1);
+                $option->setCreatedAt(new \DateTime('now'));
+                $em->persist($option);
+                $em->flush();
+                $this->forward('CacPaymentBundle:Default:changePlan', array('plan'  => 'shootercarte','id' => $user));
+            }
+            elseif ($plan === "cosmo") {
+                $option = new PaymentOptions();
+                $option->setName('carte');
+                $option->setUser($em->getReference('Cac\UserBundle\Entity\Bigboss', $user));
+                $option->setActive(1);
+                $option->setCreatedAt(new \DateTime('now'));
+                $em->persist($option);
+                $em->flush();
+                $this->forward('CacPaymentBundle:Default:changePlan', array('plan'  => 'cosmocarte','id' => $user));
+            }
+        }
+        else
+        {
             $option->setActive(1);
             $option->setCreatedAt(new \DateTime('now'));
+            $option->setDeletedAt(NULL);
             $em->persist($option);
             $em->flush();
-            $this->forward('CacPaymentBundle:Default:changePlan', array('plan'  => 'shootercarte','id' => $user));
-        }
-        elseif ($plan === "cosmo") {
-            $option = new PaymentOptions();
-            $option->setName('carte');
-            $option->setUser($em->getReference('Cac\UserBundle\Entity\Bigboss', $user));
-            $option->setActive(1);
-            $option->setCreatedAt(new \DateTime('now'));
-            $em->persist($option);
-            $em->flush();
-            $this->forward('CacPaymentBundle:Default:changePlan', array('plan'  => 'cosmocarte','id' => $user));
-        }
-        else{
             return new Response("Ce bar est deja abonné aux cartes. Carte validée");
         }
         return new Response("Carte validée");
