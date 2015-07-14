@@ -14,7 +14,7 @@ use Cac\BarBundle\Entity\VerresOfferts;
 class SponsorshipController extends Controller
 {
 	/**
-     * @Route("/generate-codes/{id}", name="generate_codes")
+     * @Route("/pro/generate-codes/{id}", name="generate_codes")
      * @Template()
      */
 	public function generateCodesAction($id)
