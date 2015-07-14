@@ -107,7 +107,7 @@
 								</div>
 								{% else %}
 									{% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-										<div class="obtenirPromo JS-obtenirPromo JS-promoBox" data-bar-id="{{bar.id}}">
+										<div class="obtenirPromo JS-obtenirPromo JS-promoBox" data-bar-id="{{bar.id}}" data-valuepromo="{{ bar.getPromotionByDay(today).getOption('value').value }}">
 									{% else %}
 										<div class="animConnexion">
 									{% endif %}

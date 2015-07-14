@@ -929,8 +929,9 @@ $( ".animConnexion" ).on( "click", function() {
 // Obtenir une promotion
 $(document).on( 'click', '.JS-obtenirPromo', function() {
   var promoId = $(this).data('bar-id');
+  var valuePromo = $(this).data('valuepromo');
   $.ajax( {
-      url: Routing.generate('get_promo', {id: promoId}),
+      url: Routing.generate('get_promo', {id: promoId, value: valuePromo}),
       data: 'json',
       success: function (data) {
         $('.testSuccess').html(data);
@@ -951,7 +952,7 @@ $(document).on( 'click', '.JS-obtenirPromo', function() {
       },
       error: function(data){
         $('.testSuccess').html(data);
-        alert("Vous n'avez pas votre promotion !!!");
+        alert("Vous n'avez pas votre promotion");
       }
   } );
 });
