@@ -52,6 +52,12 @@ var nbMyPromoOfTheDay = myPromoOfTheDay.length;
 var myHHOfTheDay = $('.JS-myHHOfTheDay');
 var nbMyHHOfTheDay = myHHOfTheDay.length;
 
+// var myHHOfTheDayBeginning = $('.JS-myHHOfTheDayBeginning');
+// var nbMyHHOfTheDayBeginning = myHHOfTheDayBeginning.length;
+
+// var myHHOfTheDayEnding = $('.JS-myHHOfTheDayEnding');
+// var nbMyHHOfTheDayEnding = myHHOfTheDayEnding.length;
+
 
 
 var goToTheRightPlace = function(nbData, data, classe){
@@ -72,7 +78,9 @@ goToTheRightPlace(nbMyPromoOfTheDay, myPromoOfTheDay, 'promotion-value-picker');
 
 goToTheRightPlace(nbMyHHOfTheDay, myHHOfTheDay, 'hh-value-picker');
 
+// goToTheRightPlace(nbMyHHOfTheDayEnding, myHHOfTheDayBeginning, 'hh-picker');
 
+// goToTheRightPlace(nbMyHHOfTheDayEnding, myHHOfTheDayEnding, 'hh-picker');
 
 
 

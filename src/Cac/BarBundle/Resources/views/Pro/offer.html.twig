@@ -132,6 +132,8 @@
 											<div class="row">
 												<div class="center valuePromo">
 													<div class="JS-myHHOfTheDay">{{ bar.getHappyHourByDay(days[j]).getOption('value').value }}</div>
+													<div class="JS-myHHOfTheDayBeginning">{{ bar.getHappyHourByDay(days[j]).getOption('beginning').value }}</div>
+													<div class="JS-myHHOfTheDayEnding">{{ bar.getHappyHourByDay(days[j]).getOption('ending').value }}</div>
 
 													<select class="hh-value-picker" data-day="{{ days[j] }}">
 													{% if bar.getHappyHourByDay(days[j]).getOption('value').value == 0 %}

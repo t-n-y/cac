@@ -3039,7 +3039,7 @@ p.closeMesOptions{
 	height: 35px;
 }
 
-.JS-myPromoOfTheDay, .JS-myHHOfTheDay{
+.JS-myPromoOfTheDay, .JS-myHHOfTheDay, .JS-myHHOfTheDayBeginning, .JS-myHHOfTheDayEnding{
 	display: none;
 }
 

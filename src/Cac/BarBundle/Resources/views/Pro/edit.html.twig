@@ -177,7 +177,11 @@
                     </div>
                     <div class="col-xs-2 col-sm-2 col-md-2 noPadding">
                       <select class="schedule-picker" data-day="{{ days[j] }}" data-when="{{ params[1]['when'] }}">
-                        <option>{{ bar.scheduleArray[days[j]].open }}h</option>
+                        {% if bar.scheduleArray[days[j]].status == "Ouvert" %}
+                            <option>{{ bar.scheduleArray[days[j]].open }}h</option>
+                        {% else %}
+                            <option></option>
+                        {% endif %}
                         {% for i in 0..23 %}
                            <option value="{{i}}">{{i}}h</option>
                         {% endfor %}
@@ -188,7 +192,11 @@
                     </div>
                     <div class="col-xs-2 col-sm-2 col-md-2 noPadding">
                       <select class="schedule-picker" data-day="{{ days[j] }}" data-when="{{ params[2]['when'] }}">
-                        <option>{{ bar.scheduleArray[days[j]].close }}h</option>
+                        {% if bar.scheduleArray[days[j]].status == "Ouvert" %}
+                            <option>{{ bar.scheduleArray[days[j]].close }}h</option>
+                        {% else %}
+                            <option></option>
+                        {% endif %}
                         {% for i in 0..23 %}
                            <option value="{{i}}">{{i}}h</option>
                         {% endfor %}
