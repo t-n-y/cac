@@ -596,7 +596,8 @@ $('body').on('click','.ModifBO',function(){
 });
 
 $body.on('click','.closeMesOptionEnCours',function(){
-  var dataGenre = $(this).parentsUntil($('.JS-contentMesOptions')).find('.dataMiseEnAvant').data("genre")
+  var dataGenre = $(this).parentsUntil($('.JS-contentMesOptions')).find('.dataMiseEnAvant').data("genre");
+  var barId = $(this).parentsUntil($('.JS-contentMesOptions')).find('.dataMiseEnAvant').data("bar")
   var dataDate = $(this).parentsUntil($('.JS-contentMesOptions')).find('.dataDate').data("date");
   var dataPrix = $(this).parentsUntil($('.JS-contentMesOptions')).find(".dataPrix").data("prix");
   var dataTotal = $(this).parentsUntil($('.JS-contentMesOptions')).find(".dataTotal").data("total");
@@ -604,7 +605,7 @@ $body.on('click','.closeMesOptionEnCours',function(){
   if (dataGenre == "carte") {
     $.ajax( {
         type: 'GET',
-        url: Routing.generate('remove_carte_abo'),
+        url: Routing.generate('remove_carte_abo', { 'barId': barId }),
     } );
   };
   var date = new Date();
