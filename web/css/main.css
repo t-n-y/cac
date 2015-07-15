@@ -1929,20 +1929,38 @@ p.topPosition{
 	padding-top: 2px;
 }
 
+.metro{
+	width: 100%;
+}
+
 .transportSliderWrapper {
 	padding: 10px 20px 0px 20px;
+	
 }
 
 .transportSliderSlide {
-	display: none;
-}
-.transportSliderSlide.activ {
 	display: block;
+	background-color: #fff;
+	box-sizing:border-box;
+	text-align: center;
+	padding-top: 10px;
 }
 
+.placeName{
+	padding-top: 30px;
+	padding-bottom: 20px;
+}
+
+/*.transportSliderSlide.activ {
+	display: block;
+}*/
+
 .transportPic {
-	width:40px; 
-	margin-right: 15px;
+	width:25px; 
+	top: 10px;
+	left: 50%;
+  	transform: translate(-50%, 0);
+	position: absolute;
 }
 
 .sliderController {
@@ -2372,11 +2390,19 @@ p.noteCommentaire span{
 	margin: auto;
 	width: 100%;
 	height: 400px;
+	position: relative;
 }
 
 .mapView #map-canvas {
 	width: 100%;
 	height: 100%;
+}
+
+.metro{
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 100;
 }
 
 .containerPrice{
@@ -5151,7 +5177,7 @@ p.nextPointFidelite{
 #searchInput {
     width: 400px;
     color: #303030;
-    font-size: 25px;
+    font-size: 15px;
     padding: 5px 15px;
     border: 1px solid #303030;
 }

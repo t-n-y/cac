@@ -33,13 +33,6 @@
 
 				<p class="adresseBarShow">{{ bar.adress }} <b>{{ bar.zipcode }} {{ bar.town }}</b></p>
 
-
-
-				{% if (is_granted('ROLE_BIGBOSS')) and (bar.author.id == user.id) %}
-
-					<a href="{{ path('compte', { 'id': bar.id }) }}">Editer ce bar</a>
-
-				{% endif %}
 			</div>
 		</div>
 		<div class="infoBar col-xs-12 col-sm-12 col-md-12 noPadding">
@@ -462,16 +455,7 @@
 					</div>
 				
 
-				
-					<!-- <div class="col-xs-12 col-sm-6 col-md-5">
-						<h2 class="firstElmtFicheBar">Accès</h2>
-						<div class="transportSliderWrapper">
-							
-						</div>
-						
-						
-						
-					</div> -->
+
 					<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
 					<script>
 					  var geocoder;
@@ -502,6 +486,16 @@
 					</script>
 
 						<div class="mapView">
+							<div class="metro">
+								<div class="row">
+									<div class="col-xs-12 col-sm-12 col-md-12">
+										<div class="transportSliderWrapper">
+											
+										</div>
+
+									</div>
+								</div>
+							</div>
 							<div id="map-canvas"></div>
 						</div>
 
@@ -546,6 +540,7 @@
 	    types: ['subway_station', 'train_station'],
 	    rankBy: google.maps.places.RankBy.DISTANCE
 	  };
+
 	  infowindow = new google.maps.InfoWindow();
       var service = new google.maps.places.PlacesService(map);
 	  service.nearbySearch(request, callback);
@@ -556,20 +551,28 @@
 	    var buttonHtml = '<div class="transportSliderController">';
 	    for (var i = 0; i < results.length; i++) {
 	      var place = results[i];
-	      if(i < 4) {
+	      if(i < 3) {
 	      	var slideHtml = '';
 	      	if(i == 0) { 
-	      		slideHtml = '<div class="transportSliderSlide activ" data-id="slide-' + i + '"><img class="transportPic" src="{{ asset('img/L_M.png') }}" alt="metro">' + place.name + '</div>';
-	      		buttonHtml += '<div class="sliderController activ" data-id="slide-' + i + '"></div>';
+	      		slideHtml = 
+	      		'<div class="col-xs-12 col-sm-4 col-md-4"><div class="transportSliderSlide activ" data-id="slide-' + i + '"><img class="transportPic" src="{{ asset('img/L_M.png') }}" alt="metro"><p class="placeName">' + place.name + '</p></div></div>';
+	      		// buttonHtml += '<div class="sliderController activ" data-id="slide-' + i + '"></div>';
 	      	} else {
-	      		slideHtml = '<div class="transportSliderSlide" data-id="slide-' + i + '"><img class="transportPic" src="{{ asset('img/L_M.png') }}" alt="metro">' + place.name + '</div>';
-	      		buttonHtml += '<div class="sliderController" data-id="slide-' + i + '"></div>';
+	      		slideHtml = 
+	      		'<div class="col-xs-12 col-sm-4 col-md-4"><div class="transportSliderSlide" data-id="slide-' + i + '"><img class="transportPic" src="{{ asset('img/L_M.png') }}" alt="metro"><p class="placeName">' + place.name + '</p></div></div>';
+	      		// buttonHtml += '<div class="sliderController" data-id="slide-' + i + '"></div>';
+
+	      		console.log(results);
 	      	}
+
 	      	$('.transportSliderWrapper').append(slideHtml);
 	      }
+
+	     
 	    }
-	    buttonHtml += '</div>';
-	    $('.transportSliderWrapper').append(buttonHtml);
+	     $('.transportSliderWrapper').append('<div class="clear"></div>');
+	    // buttonHtml += '</div>';
+	    // $('.transportSliderWrapper').append(buttonHtml);
 	  }
 	}
 
