@@ -14,7 +14,6 @@
 			 	</div>
 			</div>
 		</div>
-
 		
 		<div class="row">
 			<div class="col-xs-12 col-sm-12 col-md-12">
@@ -81,6 +80,12 @@
 			</div>
 		</div>
 		
+
+		{% set imagesHome = random(['1.jpg', '2.jpg', '3.jpg']) %}
+		<script>
+			var pathImg = "{{ asset('img/imgHome/' ~   imagesHome ) }}";
+		</script>
+
 {% endblock %}
 {% block javascripts %}
 	{{ parent() }}
@@ -167,5 +172,8 @@
         var url = "{{ path('bars') }}" + '?search=' + search;
         window.location.href = url;
     });
+
+	$('.welcome').css('background-image', "url("+pathImg+")");
+
 	</script>
 {% endblock %}

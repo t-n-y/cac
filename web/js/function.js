@@ -1167,13 +1167,6 @@ $('#senddrink').on('click', function(){
     });
 });
 
-/****GET PARRAINNAGE ****/
-
-var images = ['1.jpg', '2.jpg', '3.jpg'];
-$('.welcome').css('background-image', "url(../img/imgHome/" + images[Math.floor(Math.random() * images.length)] + ")");
-
-
-
 /***** pro Vos offres *****/
 
 var changeHourAutomatique = true;
@@ -1202,8 +1195,6 @@ $('.heure select').on('change', function(){
                     var hidden = $('#cac_barbundle_bar_schedule').val();
                     hidden = JSON.parse(hidden);
 
-                    
-
                     for(var i=0; i<days.length; i++){
                         hidden[days[i]].close = $(this).parentsUntil('.servicesNewBar').find($("select[data-when='close']")).val();
                         hidden[days[i]].open = $(this).val();
@@ -1228,8 +1219,6 @@ $('.heure select').on('change', function(){
                     var hidden = $('#cac_barbundle_bar_schedule').val();
                     hidden = JSON.parse(hidden);
 
-                    
-
                     for(var i=0; i<days.length; i++){
                         hidden[days[i]].open = $(this).parentsUntil('.servicesNewBar').find($("select[data-when='open']")).val();
                         hidden[days[i]].close = $(this).val();
@@ -1245,32 +1234,19 @@ $('.heure select').on('change', function(){
             }
         }
     }
-    
-
-
-    //console
 });
 
 
 var numeroTelMobileEdit = $('#fos_user_profile_form_mobile_phone').val();
 var numeroTelFixEdit = $('#fos_user_profile_form_fix_phone').val();
 
-console.log(numeroTelMobileEdit.charAt(0));
-
-if(numeroTelMobileEdit.charAt(0) != 0){
+if(numeroTelMobileEdit != undefined && numeroTelMobileEdit.charAt(0) != 0){
     $('#fos_user_profile_form_mobile_phone').val('0'+numeroTelMobileEdit);
 }
 
-if(numeroTelFixEdit.charAt(0) != 0){
+if(numeroTelFixEdit != undefined && numeroTelFixEdit.charAt(0) != 0){
     $('#fos_user_profile_form_fix_phone').val('0'+numeroTelFixEdit);
 }
-
-
-
-
-
-
-
 
 function setCookie(cname, cvalue, exdays) {
     var d = new Date();
@@ -1289,15 +1265,3 @@ function getCookie(cname) {
     }
     return "";
 }
-
-
-
-
-
-
-
-
-
-
-
-
