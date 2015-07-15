@@ -100,11 +100,16 @@
 									<img src="{{asset('img/pictoPromo.png')}}" alt="">
 								{% endif %}
 								{% if bar.getPromotionByDay(today).getOption('value').value == 0 %}
-								<div class="obtenirPromo JS-obtenirPromo JS-promoBox" data-bar-id="{{bar.id}}">
-									<h2 class="font30 fontWeight200">PAS DE PROMO</h2>
-									<h3>Mais <span>5 cheers</span> de fidélité</h3>
-									<p class="voirMaConfirmation"></p>
-								</div>
+									{% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+										<div class="obtenirPromo JS-obtenirPromo JS-promoBox" data-bar-id="{{bar.id}}">
+									{% else %}
+										<div class="obtenirPromo animConnexion">
+									{% endif %}
+
+											<h2 class="font30 fontWeight200">PAS DE PROMO</h2>
+											<h3>Mais <span>5 cheers</span> de fidélité</h3>
+											<p class="voirMaConfirmation"></p>
+										</div>
 								{% else %}
 									{% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
 										<div class="obtenirPromo JS-obtenirPromo JS-promoBox" data-bar-id="{{bar.id}}" data-valuepromo="{{ bar.getPromotionByDay(today).getOption('value').value }}">
