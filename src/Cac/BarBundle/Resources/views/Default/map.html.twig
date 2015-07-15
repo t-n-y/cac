@@ -2,9 +2,22 @@
 
 {% block title %}Map{% endblock %}
 
+{% block stylesheets %}
+{{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/map.css')}}">
+{% endblock %}
+
 {% block body %}
 
-<div id="map_canvas" style="width: 500px;height: 500px;"></div>
+<div id="map_canvas" style="width: 100%;height: 500px;"></div>
+
+
+<div class="loading">
+	<div class='uil-ring-css' style='-webkit-transform:scale(0.29)'>
+		<div></div>
+	</div>
+</div>
+ 
 
 {% endblock %}
 {% block javascripts %}
@@ -22,27 +35,37 @@
 		    };
 		    map = new google.maps.Map($('#map_canvas')[0], myOptions);
 		    var addresses = ($.parseJSON(adress));
+
+
 		    for (var x = 0; x < addresses.adress.length; x++) {
 		    	(function(x) {
-			        $.getJSON('http://maps.googleapis.com/maps/api/geocode/json?address='+addresses.adress[x]+'&sensor=false', null, function (data) {
-			            var p = data.results[0].geometry.location
+		    		setTimeout(function(){
+		    		 $.getJSON('http://maps.googleapis.com/maps/api/geocode/json?address='+addresses.adress[x]+'&sensor=false', null, function (data) {
+			            var p = data.results[0].geometry.location;
 			            var latlng = new google.maps.LatLng(p.lat, p.lng);
 			            var marqueur = new google.maps.Marker({
 			                position: latlng,
 			                map: map
 			            });
+
 						var marqueur = new google.maps.Marker({
 			                position: latlng,
 			                map: map
 			            });
+
 			    		var contenuInfoBulle = '<a target="_blank" href="'+ Routing.generate('bar_show', { id: addresses.id[x] })+'">'+addresses.info[x]+'</a>';
 						var infoBulle = new google.maps.InfoWindow({
 							content: contenuInfoBulle
-						})
+						});
+
 						google.maps.event.addListener(marqueur, 'click', function() {
 							infoBulle.open(map, marqueur);
 						});
 			        });
+
+		    		 $('.loading').hide();
+		    		}, 4000);
+			        
 				})(x);
 		    }
 		});
