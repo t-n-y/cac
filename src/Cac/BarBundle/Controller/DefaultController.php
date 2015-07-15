@@ -48,6 +48,7 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $entities = $em->getRepository('CacBarBundle:Bar')->findBy(array(), array('cocktailPrice'=>'ASC'));
         return array('bars' => $entities);
+
     }
 
     /**
