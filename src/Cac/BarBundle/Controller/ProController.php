@@ -172,6 +172,8 @@ class ProController extends Controller
             $em->persist($daySponsorship);
         }
 
+
+
         $em->flush();
 
         $res = array(
@@ -338,9 +340,9 @@ class ProController extends Controller
         $role = $this->get('security.context')->isGranted('ROLE_COSMO');
         $bars = $em->getRepository('CacBarBundle:Bar')->findByAuthor($user);
 
-        // if (count($bars) > 0 && $role === false ) {
-        //     ldd('nope !');
-        // }
+        if (count($bars) > 0 && $role === false ) {
+            ldd('Vous ne pouvez créer qu\'un seul bar avec la formule shooter !');
+        }
 
         $entity = new Bar();
         $form   = $this->createCreateForm($entity);
