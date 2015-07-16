@@ -1,4 +1,4 @@
-<p>Les barmans</p>
+<p>Liste des barmans</p>
 <div class="listBarman row">
 	{% for barman in barmans %}
 		{%if barman.bar.id == bar.id %}
@@ -16,7 +16,7 @@
 		{% endif %}
 	{% endfor %}
 </div>
-<div class="addBarman">
+<div class="addBarman center">
 	<a href="{{ path('barman_register') }}"><p>+</p></a>
 </div>
 <div class="formBarman">

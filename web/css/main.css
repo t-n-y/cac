@@ -2393,9 +2393,13 @@ p.noteCommentaire span{
 	position: relative;
 }
 
-.mapView #map-canvas {
-	width: 100%;
-	height: 100%;
+.loading{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 500px;
+	background-color: rgba(0,0,0,0.5);
 }
 
 .metro{
@@ -2623,10 +2627,6 @@ p.vignettePetitPlusPrix{
 	margin: auto;
 	margin-top: 85px;
 	box-shadow: 0.5px 0.866px 1px 0px rgba(48, 48, 48, 0.098);
-}
-
-p{
-	margin-left: 0px !important;
 }
 
 .openBar{
@@ -4395,7 +4395,6 @@ float: left;
 
 .hoverShadow{
 	display: none;
-
 }
 
 
