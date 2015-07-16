@@ -589,6 +589,27 @@
 			$('.sliderController[data-id="' + $(this).attr('data-id') + '"]').addClass('activ');
 			$('.transportSliderSlide[data-id="' + $(this).attr('data-id') + '"]').addClass('activ');
 		});
+
+		{% if bar.files is defined %}
+		var barImages = ["{{ asset('uploads/bar/'~bar.path) }}",
+		{% for image in bar.files %}
+			"{{ asset('uploads/bar/'~image.path) }}"
+			{% if loop.last != true %}
+			,
+			{% endif %}
+		{% endfor %}
+			],
+			loop = 1,
+			end = barImages.length - 1;
+		setInterval(function () {
+	        $('.topBar').css({"background-image": "url(" + barImages[loop] + ")"});
+	        if((loop + 1) > end) { 
+	        	loop = 0; 
+	        } else {
+	        	loop++;
+	        }
+	    }, 5000);
+		{% endif %}
 	});
 </script>
 {% endblock %}
