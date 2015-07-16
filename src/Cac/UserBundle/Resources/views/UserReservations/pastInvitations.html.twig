@@ -122,9 +122,8 @@
 							<div class="ConditionProfileUser">
 								<h3>Condition</h3>
 								<div class="contentConditionProfileUser">
-									<p>Sur une sélection de boissons</p> 
-									<p>A partir de deux consomations</p> 
-									<p>Reservation valable pour une personne</p>
+									<p>{{ promo.bar.getPromotionByDay(today).getOption('restriction').value }}</p> 
+									
 								</div>
 							</div>
 						</div>

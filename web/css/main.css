@@ -3097,7 +3097,7 @@ p.closeMesOptions{
 	height: 35px;
 }
 
-.JS-myPromoOfTheDay, .JS-myHHOfTheDay, .JS-myHHOfTheDayBeginning, .JS-myHHOfTheDayEnding{
+.JS-myPromoOfTheDay, .JS-myHHOfTheDay, .JS-myHHOfTheDayBeginning, .JS-myHHOfTheDayEnding, .JS-myRestrictionPromoOfTheDay, .JS-myRestrictionHHOfTheDay{
 	display: none;
 }
 
