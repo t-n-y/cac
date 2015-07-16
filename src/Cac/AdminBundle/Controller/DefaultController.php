@@ -16,17 +16,6 @@ use Cac\PaymentBundle\Entity\PaymentOptions;
  */
 class DefaultController extends Controller
 {
-
-    /**
-     * @Route("/error")
-     * @Template()
-     */
-    public function errorAction()
-    {
-        return array();
-    }
-
-
     /**
      * @Route("/")
      * @Template()
