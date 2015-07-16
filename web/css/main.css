@@ -1949,6 +1949,7 @@ p.topPosition{
 .placeName{
 	padding-top: 30px;
 	padding-bottom: 20px;
+	margin-left: 0px !important;
 }
 
 /*.transportSliderSlide.activ {
@@ -2659,6 +2660,10 @@ p.vignettePetitPlusPrix{
 	margin: auto;
 	margin-top: 85px;
 	box-shadow: 0.5px 0.866px 1px 0px rgba(48, 48, 48, 0.098);
+}
+
+.boxInfoOpenBar p{
+	margin-left: 0px;
 }
 
 .openBar{
