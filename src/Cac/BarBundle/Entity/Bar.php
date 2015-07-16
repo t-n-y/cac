@@ -300,6 +300,11 @@ class Bar
     public $file;
 
     /**
+     * @ORM\OneToMany(targetEntity="Cac\BarBundle\Entity\File", mappedBy="bar")
+     */
+    public $files;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="score", type="integer", nullable=true)
@@ -340,6 +345,7 @@ class Bar
         $this->daySchdules = new \Doctrine\Common\Collections\ArrayCollection();
         $this->sponsorships = new \Doctrine\Common\Collections\ArrayCollection();
         $this->daySponsorships = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->files = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -1611,5 +1617,39 @@ class Bar
     public function getAvis()
     {
         return $this->avis;
+    }
+
+    /**
+     * Add file
+     *
+     * @param \Cac\BarBundle\Entity\File $file
+     *
+     * @return Bar
+     */
+    public function addFile(\Cac\BarBundle\Entity\File $file)
+    {
+        $this->files[] = $file;
+
+        return $this;
+    }
+
+    /**
+     * Remove file
+     *
+     * @param \Cac\BarBundle\Entity\File $file
+     */
+    public function removeFile(\Cac\BarBundle\Entity\File $file)
+    {
+        $this->files->removeElement($file);
+    }
+
+    /**
+     * Get files
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getFiles()
+    {
+        return $this->files;
     }
 }

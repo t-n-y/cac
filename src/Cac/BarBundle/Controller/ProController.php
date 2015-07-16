@@ -17,6 +17,7 @@ use Cac\BarBundle\Entity\PromotionDummy;
 use Cac\BarBundle\Entity\Image;
 use Cac\BarBundle\Entity\Highlight;
 use Cac\BarBundle\Entity\DaySchedule;
+use Cac\BarBundle\Entity\File;
 use Cac\BarBundle\Form\Type\BarType;
 use Cac\BarBundle\Form\Type\PromotionType;
 use Cac\BarBundle\Form\Type\PromotionDummyType;
@@ -669,5 +670,44 @@ class ProController extends Controller
         }
         else
             return new Response("Bar non ajouté");
+    }
+
+    /**
+     * Upload a file to a Bar entity.
+     *
+     * @Route("/upload/{id}", name="file_upload", options={"expose"=true})
+     * @Method({"GET", "POST"})
+     * @Template("CacBarBundle:Pro:upload.html.twig")
+     */
+    public function uploadAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $bar = $em->getRepository('CacBarBundle:Bar')->find($id);
+
+        $file = new File();
+        $form = $this->createFormBuilder($file)
+            ->add('file')
+            ->add('submit', 
+            'submit', 
+            array(
+                'label' => 'Envoyer'
+            ))
+            ->getForm()
+        ;
+
+        if ($this->getRequest()->isMethod('POST')) {
+            $form->handleRequest($this->getRequest());
+            if ($form->isValid()) {
+                $file->setBar($bar);
+                $em->persist($file);
+                $em->flush();
+
+            }
+        }
+
+        return array(
+            'bar' => $bar,
+            'form' => $form->createView()
+        );
     }
 }
