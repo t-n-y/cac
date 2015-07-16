@@ -101,11 +101,14 @@
 									<div class="etapePromotion">
 										<p>Promo du {{ days[j] }}</p>
 											{% if bar.scheduleArray[day[j]].status == 'Ouvert' %}
+											<div class="heightBoxOffer">
 												<div class="row">
 													
 													<div class="center valuePromo">
 
 															<div class="JS-myPromoOfTheDay">{{ bar.getPromotionByDay(days[j]).getOption('value').value }}</div>
+
+
 														
 															<select class="promotion-value-picker" data-day="{{ days[j] }}">
 																{% if bar.getPromotionByDay(days[j]).getOption('value').value > 0 %}
@@ -123,18 +126,7 @@
 												</div>
 												<div class="row">
 
-													<br/><p>Condition :</p>
-													<select class="condition-name-promo" data-day="{{ days[j] }}">
-														
-														{% for restriction in restrictions %}
-															{% if restriction.name !='' %}
-																<option value="{{ restriction.name }}">
-																	{{ restriction.name }}
-																</option>
-															{% endif %}
-															
-														{% endfor %}
-													</select>
+													
 												
 													<div class="center nbpromo col-xs-12 col-sm-12 col-md-12 noPadding">
 														<p>Nombre d'offres disponibles</p>
@@ -156,7 +148,26 @@
 															{% endfor %}
 														</select>
 													</div>
+
+													<br/><p>Condition :</p>
+
+
+
+													<div class="JS-myRestrictionPromoOfTheDay">{{ bar.getPromotionByDay(days[j]).getOption('restriction').value }}</div>
+
+													<select class="condition-name-promo" data-day="{{ days[j] }}">
+														
+														{% for restriction in restrictions %}
+															{% if restriction.name !='' %}
+																<option value="{{ restriction.name }}">
+																	{{ restriction.name }}
+																</option>
+															{% endif %}
+															
+														{% endfor %}
+													</select>
 												</div>
+											</div>
 											{% else %}
 												<p>Bar Fermé aujourd'hui</p>
 											{% endif %}
@@ -169,6 +180,7 @@
 									<div class="happyHours center">
 										<p>HAPPY HOURS</p>
 										{% if bar.scheduleArray[day[j]].status == 'Ouvert' %}
+										<div class="heightBoxOffer">
 											<div class="row">
 												<div class="center valuePromo">
 													<div class="JS-myHHOfTheDay">{{ bar.getHappyHourByDay(days[j]).getOption('value').value }}</div>
@@ -202,6 +214,8 @@
 												</div>
 
 												<br/><p>Condition :</p>
+							
+												<div class="JS-myRestrictionHHOfTheDay">{{ bar.getHappyHourByDay(days[j]).getOption('restriction').value }}</div>
 													<select class="condition-name-hh" data-day="{{ days[j] }}">
 														{% for restriction in restrictions %}
 															{% if restriction.name !='' %}
@@ -213,6 +227,7 @@
 														{% endfor %}
 													</select>
 											</div>
+										</div>
 										{% else %}
 											<p>Bar Fermé aujourd'hui</p>
 										{% endif %}

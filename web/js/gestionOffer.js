@@ -58,6 +58,11 @@ var nbMyHHOfTheDay = myHHOfTheDay.length;
 // var myHHOfTheDayEnding = $('.JS-myHHOfTheDayEnding');
 // var nbMyHHOfTheDayEnding = myHHOfTheDayEnding.length;
 
+var myRestrictionPromoOfTheDay = $('.JS-myRestrictionPromoOfTheDay');
+var nbMyRestrictionPromoOfTheDay = myRestrictionPromoOfTheDay.length;
+
+var myRestrictionHHOfTheDay = $('.JS-myRestrictionHHOfTheDay');
+var nbMyRestrictionHHOfTheDay = myRestrictionHHOfTheDay.length;
 
 
 var goToTheRightPlace = function(nbData, data, classe){
@@ -82,7 +87,9 @@ goToTheRightPlace(nbMyHHOfTheDay, myHHOfTheDay, 'hh-value-picker');
 
 // goToTheRightPlace(nbMyHHOfTheDayEnding, myHHOfTheDayEnding, 'hh-picker');
 
+goToTheRightPlace(nbMyRestrictionPromoOfTheDay, myRestrictionPromoOfTheDay, 'condition-name-promo');
 
+goToTheRightPlace(nbMyRestrictionHHOfTheDay, myRestrictionHHOfTheDay, 'condition-name-hh');
 
 
 
