@@ -122,6 +122,19 @@
 
 												</div>
 												<div class="row">
+
+													<br/><p>Condition :</p>
+													<select class="condition-name-promo" data-day="{{ days[j] }}">
+														{% for restriction in restrictions %}
+															{% if restriction.name !='' %}
+																<option value="{{ restriction.name }}">
+																	{{ restriction.name }}
+																</option>
+															{% endif %}
+															
+														{% endfor %}
+													</select>
+												
 													<div class="center nbpromo col-xs-12 col-sm-12 col-md-12 noPadding">
 														<p>Nombre d'offres disponibles</p>
 														<select class="promotion-qt-picker" data-day="{{ days[j] }}">
@@ -186,6 +199,18 @@
 
 													{% endfor %}
 												</div>
+
+												<br/><p>Condition :</p>
+													<select class="condition-name-hh" data-day="{{ days[j] }}">
+														{% for restriction in restrictions %}
+															{% if restriction.name !='' %}
+																<option value="{{ restriction.name }}">
+																	{{ restriction.name }}
+																</option>
+															{% endif %}
+															
+														{% endfor %}
+													</select>
 											</div>
 										{% else %}
 											<p>Bar Fermé aujourd'hui</p>
@@ -206,37 +231,47 @@
 				</div>
 				<div class="superContentBackOffice contentBackparrainage noPadding">
 					
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12">
+							<div class="col-xs-12 col-sm-6 col-md-6">
+				    			
+									{{ form_start(edit_dayss_form, {'attr': {'id': 'form_sponsorship'}}) }}
+										<div class="contentBackOfficeBar">
+											{% for day in 1..7 %}
 
-					{{ form_start(edit_dayss_form, {'attr': {'id': 'form_sponsorship'}}) }}
-						{% for day in 1..7 %}
-							<div class="promoParrainnage">
-								<input type="text" class="nbParrainnageToday" nbParrainnageToday="">
-							</div>
+												<div class="promoParrainnage">
+													<p><b>Nombre de parrainage disponible</b></p>
+													<input type="text" class="nbParrainnageToday" nbParrainnageToday="">
 
-							<!-- <select class="promotion-qt-picker" data-day="{{ days[day] }}">
-								<option value="Illimité" class="nbParrainnageToday"></option>
+													<p>Conditions :</p> 					
+												</div>
 
-								{% set nbVerrePromo = {
-									'1': '10', 
-									'2': '20', 
-									'3': '30', 
-									'4': '40', 
-									'5': '50',
-									'6': '100'
-								} %}
-								{% for k in 1..6 %}
-								<option value="{{nbVerrePromo[k]}}">
-									{{nbVerrePromo[k]}}
-								</option>
-								{% endfor %}
-							</select> -->
-							
-						{% endfor %}
 
-				      {{ form_errors(edit_dayss_form) }}
-				      {{ form_widget(edit_dayss_form.promotion, {'id': 'form_sponsorship_json'}) }}
-				 	{{ form_end(edit_dayss_form) }}
+											{% endfor %}
+										</div>
+
+								      {{ form_errors(edit_dayss_form) }}
+								      {{ form_widget(edit_dayss_form.promotion, {'id': 'form_sponsorship_json'}) }}
+								    <div class="contentBackOfficeBar marginTopContent">
+								 		{{ form_end(edit_dayss_form) }}
+								 	</div>
+				    		</div>
+				    		<div class="col-xs-12 col-sm-6 col-md-6">
+				    			<div class="contentBackOfficeBar">
+								 	<p><b>Imprimer des codes de parrainage</b></p>
+								 	<a href="{{ path('generate_codes', { id : bar.id }) }}" ><p class="buttonPrintCode">IMPRIMER</p></a>
+								 	<p>Il suffit ensuite de les distribuer à vos clients afin qu'ils puissent parrainer leurs ami dans votre établissement</p>
+					
+								</div>
+				    		</div>
+				    	</div>
+					</div>
+					
+					
+					
 				</div>
+
+				
 			</div>
 			
 {% endblock %}

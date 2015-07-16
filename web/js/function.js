@@ -241,6 +241,24 @@ setInterval(function(){
     $('#cac_barbundle_promotion_dummy_promotion').val(JSON.stringify(hidden));
   });
 
+  $('.condition-name-promo').change(function(){
+    var day = $(this).attr('data-day');
+    var reduction = $(this).val();
+    var hidden = $('#cac_barbundle_promotion_dummy_promotion').val();
+    hidden = JSON.parse(hidden);
+    hidden[day].promotion.condition = reduction;
+    $('#cac_barbundle_promotion_dummy_promotion').val(JSON.stringify(hidden));
+  });
+
+  $('.condition-name-hh').change(function(){
+    var day = $(this).attr('data-day');
+    var condition = $(this).val();
+    var hidden = $('#cac_barbundle_promotion_dummy_promotion').val();
+    hidden = JSON.parse(hidden);
+    hidden[day]['happy-hour']['condition'] = condition;
+    $('#cac_barbundle_promotion_dummy_promotion').val(JSON.stringify(hidden));
+  });
+
   $('.promotion-qt-picker').keyup(function(){
     var day = $(this).attr('data-day');
     var qt = $(this).val();

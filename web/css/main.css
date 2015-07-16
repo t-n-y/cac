@@ -2140,6 +2140,33 @@ p.rappelCondition{
 	background-color: #f6f6f6;
 	padding: 20px;
 	text-align : center;
+box-shadow: 0.5px 0.866px 1px 0px rgba(48, 48, 48, 0.098);
+}
+
+.nbParrainnageToday{
+	margin-bottom: 20px;
+}
+
+.buttonPrintCode{
+margin: auto;
+  width: 150px;
+  color: #fff;
+  background-color: #5ac4d4;
+  border: 1px solid #838383;
+  padding: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.contentBackOfficeBar a:hover{
+	text-decoration: none;
+}
+
+.marginTopContent{
+	margin-top: 10px;
 }
 
 .contentOptionBar{
@@ -4810,6 +4837,19 @@ p.nextPointFidelite{
 }
 
 
+.contentError{
+	background-color: #f6f6f6;
+	min-height: 805px;
+	text-align: center;
+}
+
+.imgError{
+	margin-top: 200px;
+}
+
+.imgError img{
+	width: 70%;
+}
 
 
 
