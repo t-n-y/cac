@@ -4851,6 +4851,27 @@ p.nextPointFidelite{
 	width: 70%;
 }
 
+.textError{
+	margin-top: 300px;
+}
+
+.buttonTextError{
+	background-color: #303030;
+	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	width: 200px;
+	color: #fff;
+	padding: 10px 0;
+	text-align: center;
+	margin: 20px auto;
+}
+
+ a .buttonTextError{
+	color: #fff;
+	text-decoration: none;
+}
+
 
 
 /***************************************/

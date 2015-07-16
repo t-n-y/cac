@@ -1,1 +1,31 @@
-page erreur
+{% extends "::base.html.twig" %}
+
+{% block title %}404{% endblock %}
+
+{% block body %}
+
+<div class="contentError">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="col-xs-3 col-md-5">
+				<div class="imgError">
+					<img src="{{asset('img/pendaError.png')}}" alt="">
+				</div>	
+			</div>
+			<div class="col-xs-9 col-md-7">
+				<div class="textError">
+					<h2><b>Cette page n'existe plus</b></h2>
+					<p>Pas d'inquiétude, on en a pleinnnn d'autres !</p>
+					<div class="col-xs-6">
+						<a href="{{ path('home') }}"><p class="buttonTextError">Accueil</p></a>
+					</div>
+					<div class="col-xs-6">
+						<a href="{{ path('randomBar') }}"><p class="buttonTextError">Surprise !</p></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
