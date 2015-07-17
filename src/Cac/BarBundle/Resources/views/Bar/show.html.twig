@@ -380,11 +380,19 @@
 						{% if bar.getPromotionByDay(today).getOption('value').value != 0 %}
 
 							<p class="showPromotionBar">{{bar.getPromotionByDay(today).getOption('value').value}}% de réduction</p>
-							<p class="conditionsShowBar"><span>Conditions :</span> lkjlkjlkjqf</p>
+							{% if bar.getPromotionByDay(today).getOption('restriction').value %}
+								<p class="conditionsShowBar"><span>Conditions :</span> {{ bar.getPromotionByDay(today).getOption('restriction').value }}</p>
+							{% else %}	
+								<p class="conditionsShowBar">Pas de conditions</p>
+							{% endif %}
 						{% endif %}
 						{% if bar.getHappyHourByDay(today).getOption('value').value !=0  %}
 							<p class="showHappyHourBar">{{bar.getHappyHourByDay(today).getOption('value').value}}% de réduction de {{ bar.getHappyHourByDay(today).getOption('beginning').value }}h à {{ bar.getHappyHourByDay(today).getOption('ending').value }}h</p>
-							<p class="conditionsShowBar"><span>Conditions :</span> lkjlkjlkjqf</p>
+							{% if bar.getHappyHourByDay(today).getOption('restriction').value %}
+								<p class="conditionsShowBar"><span>Conditions :</span> {{ bar.getHappyHourByDay(today).getOption('restriction').value }}</p>
+							{% else %}
+								<p class="conditionsShowBar">Pas de conditions</p>
+							{% endif %}
 									
 						{% endif %}
 					</div>
