@@ -947,6 +947,7 @@ $( ".animConnexion" ).on( "click", function() {
 
 // Obtenir une promotion
 $(document).on( 'click', '.JS-obtenirPromo', function() {
+  $('.JS-obtenirPromo').removeClass('JS-obtenirPromo');
   var promoId = $(this).data('bar-id');
   var valuePromo = $(this).data('valuepromo');
   $.ajax( {
@@ -964,7 +965,7 @@ $(document).on( 'click', '.JS-obtenirPromo', function() {
         $('.ticket').find('[data-bar-id]').attr( 'data-bar-id', null );
         $('.JS-ticket').removeClass('JS-ticket');
         $('.JS-promoBox').addClass('voirMaConfirmationDone');
-        $('.JS-obtenirPromo').removeClass('JS-obtenirPromo');
+        
         closeTicketPromotion();
         confirmationReservation();
 

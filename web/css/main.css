@@ -98,6 +98,10 @@ input[type="file"] > input[type="button"]::-moz-focus-inner {
 	cursor: pointer;
 }
 
+.colorCac{
+	color: #5ac4d4 !important;
+}
+
 h2.font30{
 	font-size: 30px !important;
 	padding-top: 15px !important;

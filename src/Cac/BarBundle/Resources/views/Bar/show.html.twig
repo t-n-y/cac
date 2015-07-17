@@ -588,7 +588,7 @@
 			$('.transportSliderSlide[data-id="' + $(this).attr('data-id') + '"]').addClass('activ');
 		});
 
-		{% if bar.files is defined %}
+		{% if (bar.files is defined and bar.files|length > 0) %}
 		var barImages = ["{{ asset('uploads/bar/'~bar.path) }}",
 		{% for image in bar.files %}
 			"{{ asset('uploads/bar/'~image.path) }}"
