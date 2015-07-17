@@ -59,7 +59,7 @@ $('body').on("click", ".validerOffre",function(){
 
 $('body').on("click", ".noValiderOffre",function(){
   if (click == 0){
-    alert('En annulant ce verre on est au courant');
+    alert('Un email sera envoyé au client pour savoir pourquoi il n\'est pas venu');
     click = 1;
   }
   $(this).parentsUntil('.allOffre').addClass('selectedOffre');

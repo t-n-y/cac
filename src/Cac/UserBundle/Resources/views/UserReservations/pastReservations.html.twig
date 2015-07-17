@@ -56,7 +56,12 @@
 							<div class="ConditionProfileUser">
 								<h3>Condition</h3>
 								<div class="contentConditionProfileUser">
+								{% if (bar.getPromotionByDay(today).getOption('restriction').value or bar.getHappyHourByDay(today).getOption('restriction').value) %}
 									<p>{{ promo.bar.getPromotionByDay(today).getOption('restriction').value }}</p> 
+									<p>{{ promo.bar.getHappyHourByDay(today).getOption('restriction').value }}</p>
+								{% else %} 
+									<p>Pas de condition</p>
+								{% endif %}
 								</div>
 							</div>
 						</div>

@@ -201,7 +201,10 @@
 							{% endif %}
 							</p>
 						{% endif %}
-						<p class="rappelCondition">Conditions : {{ bar.getPromotionByDay(today).getOption('restriction').value }}</p>
+
+						{% if (bar.getPromotionByDay(today).getOption('restriction').value or bar.getHappyHourByDay(today).getOption('restriction').value) %}
+							<p class="rappelCondition"><a href="{{ path('fos_user_profile_show') }}">Voir les conditions</a></p>
+						{% endif %}
 
 						<!-- <div class="contentButtonRappel">
 							<div class="row">
