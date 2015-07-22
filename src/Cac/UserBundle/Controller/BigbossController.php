@@ -54,7 +54,12 @@ class BigbossController extends Controller
         if (!$entity) {
             throw $this->createNotFoundException('Le bar demandé n\'existe pas.');
         }
-        if ($this->get('security.context')->getToken()->getUser() != $entity->getAuthor()) {
+
+        if ($this->get('security.context')->isGranted('ROLE_ADMIN'))
+            $role = true;
+        else
+            $role = false;
+        if ($this->get('security.context')->getToken()->getUser() != $entity->getAuthor() && $role !== true ) {
             throw $this->createNotFoundException('Vous n\'avez pas accés à ce contenu.');
         }
 

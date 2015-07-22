@@ -59,7 +59,11 @@ class ProController extends Controller
         if (!$entity) {
             throw $this->createNotFoundException('Le bar demandé n\'existe pas.');
         }
-        if ($this->get('security.context')->getToken()->getUser() != $entity->getAuthor()) {
+        if ($this->get('security.context')->isGranted('ROLE_ADMIN'))
+            $role = true;
+        else
+            $role = false;
+        if ($this->get('security.context')->getToken()->getUser() != $entity->getAuthor() && $role !== true ) {
             throw $this->createNotFoundException('Vous n\'avez pas accés à ce contenu.');
         }
 
@@ -240,7 +244,11 @@ class ProController extends Controller
         if ($barId === 0) {
             return $this->redirect($this->generateUrl('bar_new'));
         }
-        if ($this->get('security.context')->getToken()->getUser() != $bar->getAuthor()) {
+        if ($this->get('security.context')->isGranted('ROLE_ADMIN'))
+            $role = true;
+        else
+            $role = false;
+        if ($this->get('security.context')->getToken()->getUser() != $entity->getAuthor() && $role !== true ) {
             throw $this->createNotFoundException('Vous n\'avez pas accés à ce contenu.');
         }
 
@@ -281,7 +289,11 @@ class ProController extends Controller
 
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository('CacBarBundle:Bar')->find($id);
-        if ($this->get('security.context')->getToken()->getUser() != $entity->getAuthor()) {
+        if ($this->get('security.context')->isGranted('ROLE_ADMIN'))
+            $role = true;
+        else
+            $role = false;
+        if ($this->get('security.context')->getToken()->getUser() != $entity->getAuthor() && $role !== true ) {
             throw $this->createNotFoundException('Vous n\'avez pas accés à ce contenu.');
         }
         $entities = $em->getRepository('CacBarBundle:Bar')->findAll();
@@ -472,7 +484,11 @@ class ProController extends Controller
         if (!$entity) {
             throw $this->createNotFoundException('Le bar demandé n\'existe pas.');
         }
-        if ($this->get('security.context')->getToken()->getUser() != $entity->getAuthor()) {
+        if ($this->get('security.context')->isGranted('ROLE_ADMIN'))
+            $role = true;
+        else
+            $role = false;
+        if ($this->get('security.context')->getToken()->getUser() != $entity->getAuthor() && $role !== true ) {
             throw $this->createNotFoundException('Vous n\'avez pas accés à ce contenu.');
         }
         $editForm = $this->createEditForm($entity);
