@@ -19,7 +19,7 @@
 <div class="forParrainage">
   
   <h2>Saisissez votre code</h2>
-  <p>Notre systeme de parrainage unique vous permet d’offrir gratuitement un verre à un ami. Pour cela il vous suffit de renseigner le code que le bar partenaire de click and cheers vous à donner avec votre addition.</p>
+  <p>Notre systeme de parrainage unique vous permet d’offrir gratuitement un verre à un ami. Pour cela il vous suffit de renseigner le code que le bar partenaire de click and cheers vous a donné avec votre addition.</p>
 
   <div class="champsParrainagePopUPHeader">
     <p>Votre code</p>
@@ -70,9 +70,9 @@
                 <div class="profileUserNav">
                   <img class="hidden-sm hidden-md hidden-lg" src="{{asset('img/imgProfilBasic.png')}}">
                   {% if is_granted('ROLE_BARMAN') and not is_granted('ROLE_BIGBOSS') %}
-                    <p>Bonjour {{ app.user.getUsername()}} </p>
+                    <p>Bonjour <span class="nameInHeader">{{ app.user.getUsername()}}</span> </p>
                   {% else %}
-                    <p>Bonjour {{ app.user.firstname}} </p>
+                    <p>Bonjour <span class="nameInHeader">{{ app.user.firstname}}</span> </p>
                   {% endif %}
                 </div>
                 <div class="row">
@@ -93,7 +93,7 @@
                         <li class="navToggleBtn logout"><a href="#" class="displayMore"><p>Afficher plus</p></a></li>
                         <li class="navToggle navLine"><div class="lisere"></div></li>
                         <li class="navToggle"><a class="mesReservation" href="{{ path('fos_user_profile_show') }}"><p>Mes réservations</p></a></li>
-                        <li class="navToggle"><a class="mesParrainage" href="{{ path('fos_user_profile_show') }}"><p>Mes parrainage</p></a></li>
+                        <li class="navToggle"><a class="mesParrainage" href="{{ path('fos_user_profile_show') }}"><p>Mes parrainages</p></a></li>
                         <li class="navToggle"><a class="monCompte" href="{{ path('fos_user_profile_show') }}"><p>Mon compte</p></a></li>
                         <li class="navToggle hidden"><a href="{{ path('fos_user_profile_show') }}"><p>Mes points</p></a></li>
 
@@ -106,7 +106,7 @@
                         {% endfor %} #}
                     {% else %}
                         <li><a class="mesReservation" href="{{ path('fos_user_profile_show') }}"><p>Mes réservations</p></a></li>
-                        <li><a class="mesParrainage" href="{{ path('fos_user_profile_show') }}"><p>Mes parrainage</p></a></li>
+                        <li><a class="mesParrainage" href="{{ path('fos_user_profile_show') }}"><p>Mes parrainages</p></a></li>
                         <li><a class="monCompte" href="{{ path('fos_user_profile_show') }}"><p>Mon compte</p></a></li>
                         <li class="navToggle hidden"><a href="{{ path('fos_user_profile_show') }}"><p>Mes points</p></a></li>
                     {% endif %}

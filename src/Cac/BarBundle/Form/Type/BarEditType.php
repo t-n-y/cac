@@ -56,7 +56,7 @@ class BarEditType extends AbstractType
             ->add('handicappedAccess', null, array('label' => 'Accès handicapés', 'required'  => false))
             ->add('patio', null, array('label' => 'Terrasse', 'required'  => false))
             ->add('smokingArea', null, array('label' => 'Espace fumeurs', 'required'  => false))
-            ->add('breathalyser', null, array('label' => 'Ethylotest gratuits', 'required'  => false))
+            ->add('breathalyser', null, array('label' => 'Ethylotests gratuits', 'required'  => false))
             ->add('babyfoot', null, array('label' => 'Baby Foot', 'required'  => false))
             ->add('billard', null, array('label' => 'Billard', 'required'  => false))
             ->add('flipper', null, array('label' => 'Flipper', 'required'  => false))

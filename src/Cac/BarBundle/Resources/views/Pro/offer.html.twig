@@ -44,7 +44,7 @@
 					<p>Gestion des offres</p>
 				</div>
 				<div class="onglet ongletVerresParrainage col-xs-6 col-sm-6 col-md-6 noPadding">
-					<p>Gestion des parrainage</p>
+					<p>Gestion des parrainages</p>
 				</div>
 			</div>
 			<div class="daysOngletNewBar">
@@ -189,7 +189,7 @@
 
 													<select class="hh-value-picker" data-day="{{ days[j] }}">
 													{% if bar.getHappyHourByDay(days[j]).getOption('value').value == 0 %}
-														<option value="0">Pas de Happy Hour</option>
+														<option value="0">Pas d'happy hour</option>
 													
 													{% endif %}
 														{% for i in 3..7 %}
@@ -256,7 +256,7 @@
 											{% for day in 1..7 %}
 
 												<div class="promoParrainnage">
-													<p><b>Nombre de parrainage disponible</b></p>
+													<p><b>Nombre de parrainages disponibles</b></p>
 													<input type="text" class="nbParrainnageToday" nbParrainnageToday="">
 
 													<p>Conditions :</p> 					
@@ -276,7 +276,7 @@
 				    			<div class="contentBackOfficeBar">
 								 	<p><b>Imprimer des codes de parrainage</b></p>
 								 	<a href="{{ path('generate_codes', { id : bar.id }) }}" ><p class="buttonPrintCode">IMPRIMER</p></a>
-								 	<p>Il suffit ensuite de les distribuer à vos clients afin qu'ils puissent parrainer leurs ami dans votre établissement</p>
+								 	<p>Il suffit ensuite de les distribuer à vos clients afin qu'ils puissent parrainer leurs amis dans votre établissement.</p>
 					
 								</div>
 				    		</div>
