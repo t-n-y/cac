@@ -55,7 +55,18 @@
 					{% if bar.carte.getValues()[0] is not defined or bar.carte.getValues()[0]|length == 0 %}
 						{% render(controller("CacBarBundle:CarteBar:new", {'barId' : bar.id})) %}
 					{% else %}
-					<img src="{{ asset(('uploads/carte-bar/' ~ bar.carte.getValues()[0].path)) }}" alt="">
+						{% for carte in bar.carte if carte.visible == true %}
+						{% if carte.getWebPath %}
+								<div class="cartePDFinPro col-xs-12 col-sm-12 col-md-12">
+									<a href="{{asset(carte.getWebPath)}}" target="_blank">
+										<img src="{{asset('img/carteBar.png')}}" alt="Click and Cheers">
+										<p>VOIR LA CARTE DU BAR</p>
+									</a>
+								</div>
+								<div class="clear"></div>
+						{% endif %}
+					{% endfor %}
+					
 						{% render(controller("CacBarBundle:CarteBar:update", {'id' : bar.carte.getValues()[0].id})) %}
 					{% endif %}
 				</div>
