@@ -301,6 +301,7 @@ class Bar
 
     /**
      * @ORM\OneToMany(targetEntity="Cac\BarBundle\Entity\File", mappedBy="bar")
+     * @ORM\OrderBy({"order" = "ASC", "id" = "ASC"})
      */
     public $files;
 

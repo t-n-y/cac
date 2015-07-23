@@ -248,7 +248,7 @@ class ProController extends Controller
             $role = true;
         else
             $role = false;
-        if ($this->get('security.context')->getToken()->getUser() != $entity->getAuthor() && $role !== true ) {
+        if ($this->get('security.context')->getToken()->getUser() != $bar->getAuthor() && $role !== true ) {
             throw $this->createNotFoundException('Vous n\'avez pas accés à ce contenu.');
         }
 
@@ -521,8 +521,7 @@ class ProController extends Controller
             array(
                 'label' => 'Mettre à jour'
             )
-        )
-         ->add('file', null, array('label' => 'Modifier la photo'));
+        );
 
         return $form;
     }
@@ -700,14 +699,21 @@ class ProController extends Controller
         $em = $this->getDoctrine()->getManager();
         $bar = $em->getRepository('CacBarBundle:Bar')->find($id);
 
+        if (!$bar) {
+            throw $this->createNotFoundException('Le bar demandé n\'existe pas.');
+        }
+
+        if ($this->get('security.context')->isGranted('ROLE_ADMIN'))
+            $role = true;
+        else
+            $role = false;
+        if ($this->get('security.context')->getToken()->getUser() != $bar->getAuthor() && $role !== true ) {
+            throw $this->createNotFoundException('Vous n\'avez pas accés à ce contenu.');
+        }
+
         $file = new File();
         $form = $this->createFormBuilder($file)
             ->add('file')
-            ->add('submit', 
-            'submit', 
-            array(
-                'label' => 'Envoyer'
-            ))
             ->getForm()
         ;
 
@@ -724,6 +730,91 @@ class ProController extends Controller
         return array(
             'bar' => $bar,
             'form' => $form->createView()
+        );
+    }
+
+    /**
+     * Delete a file from a Bar entity.
+     *
+     * @Route("/delete-file/{id}/{bar}", name="file_delete")
+     */
+    public function deleteFileAction($id, Bar $bar = null)
+    {
+        $em = $this->getDoctrine()->getManager();
+        if($id != 0) {
+            $file = $em->getRepository('CacBarBundle:File')->find($id);
+        } else {
+            $bar->setPath('defaultImageBar.jpg');
+            $em->persist($bar);
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('file_upload', array('id' => $bar->getId())));
+        }
+        if($bar === null) $bar = $em->getRepository('CacBarBundle:Bar')->find($file->getBar()->getId());
+
+        if (!$file) {
+            throw $this->createNotFoundException('Le fichier demandé n\'existe pas.');
+        }
+
+        if ($this->get('security.context')->isGranted('ROLE_ADMIN'))
+            $role = true;
+        else
+            $role = false;
+        if ($this->get('security.context')->getToken()->getUser() != $bar->getAuthor() && $role !== true ) {
+            throw $this->createNotFoundException('Vous n\'avez pas accés à ce contenu.');
+        }
+
+        $bar->removeFile($file);
+        $em->persist($bar);
+        $em->remove($file);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('file_upload', array('id' => $bar->getId())));
+    }
+
+    /**
+     * Manage slider for a Bar entity.
+     *
+     * @Route("/manage-slider/{id}", name="manage_slider")
+     * @Method({"GET", "POST"})
+     * @Template("CacBarBundle:Pro:manageSlider.html.twig")
+     */
+    public function manageSliderAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $bar = $em->getRepository('CacBarBundle:Bar')->find($id);
+
+        if (!$bar) {
+            throw $this->createNotFoundException('Le bar demandé n\'existe pas.');
+        }
+
+        if ($this->get('security.context')->isGranted('ROLE_ADMIN'))
+            $role = true;
+        else
+            $role = false;
+        if ($this->get('security.context')->getToken()->getUser() != $bar->getAuthor() && $role !== true ) {
+            throw $this->createNotFoundException('Vous n\'avez pas accés à ce contenu.');
+        }
+
+        /*$file = new File();
+        $form = $this->createFormBuilder($file)
+            ->add('file')
+            ->getForm()
+        ;
+
+        if ($this->getRequest()->isMethod('POST')) {
+            $form->handleRequest($this->getRequest());
+            if ($form->isValid()) {
+                $file->setBar($bar);
+                $em->persist($file);
+                $em->flush();
+
+            }
+        }*/
+
+        return array(
+            'bar' => $bar,
+            //'form' => $form->createView()
         );
     }
 }

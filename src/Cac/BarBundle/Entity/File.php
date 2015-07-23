@@ -40,6 +40,13 @@ class File
     protected $bar;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="order", type="integer", nullable=true)
+     */
+    private $order;
+
+    /**
      * Get id
      *
      * @return integer
@@ -145,5 +152,52 @@ class File
     {
         return $this->bar;
     }
-}
 
+    /**
+     * Set path
+     *
+     * @param string $path
+     *
+     * @return File
+     */
+    public function setPath($path)
+    {
+        $this->path = $path;
+
+        return $this;
+    }
+
+    /**
+     * Get path
+     *
+     * @return string
+     */
+    public function getPath()
+    {
+        return $this->path;
+    }
+
+    /**
+     * Set order
+     *
+     * @param integer $order
+     *
+     * @return File
+     */
+    public function setOrder($order)
+    {
+        $this->order = $order;
+
+        return $this;
+    }
+
+    /**
+     * Get order
+     *
+     * @return integer
+     */
+    public function getOrder()
+    {
+        return $this->order;
+    }
+}

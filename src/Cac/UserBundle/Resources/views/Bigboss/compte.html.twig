@@ -3,6 +3,12 @@
 {% block body %}
     <div class="topBarPro col-xs-12 col-sm-12 col-md-12 noPadding">
 		<img src="{{ asset('uploads/bar/'~bar.path) }}">
+		<div class="sliderHover">
+			<div class="editSliderTools">
+				<a class="glyphicon glyphicon-save tooltipLink" href="{{ path('file_upload', {'id' : bar.id }) }}" title="Telecharger des images" data-toggle="tooltip" data-placement="bottom" ></a>
+				<a class="glyphicon glyphicon-pencil tooltipLink" href="{{ path('manage_slider', { 'id' : bar.id}) }}" title="Modifier le slider" data-toggle="tooltip" data-placement="bottom" ></a>
+			</div>
+		</div>
 		<div class="infoNameBar">
 			<h1>{{ bar.name }}</h1>
 		</div>
@@ -261,6 +267,9 @@
 	            	alert(data);
 	            }
 	        } );
+		});
+		$(document).ready(function() {  
+		    $('.tooltipLink').tooltip();
 		});
 	</script>
 
