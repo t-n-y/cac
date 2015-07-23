@@ -5491,3 +5491,7 @@ p.nextPointFidelite{
 .sliderThumbs {
     text-align: center;
 }
+#save-order button + span {
+    color: #33cc33 !important;
+    opacity: 0;
+}

@@ -42,7 +42,7 @@ class File
     /**
      * @var integer
      *
-     * @ORM\Column(name="order", type="integer", nullable=true)
+     * @ORM\Column(name="sliderOrder", type="integer", nullable=true)
      */
     private $order;
 
