@@ -776,7 +776,7 @@ class ProController extends Controller
      * Manage slider for a Bar entity.
      *
      * @Route("/manage-slider/{id}", name="manage_slider")
-     * @Method({"GET", "POST"})
+     * @Method({"GET"})
      * @Template("CacBarBundle:Pro:manageSlider.html.twig")
      */
     public function manageSliderAction($id)
@@ -796,25 +796,33 @@ class ProController extends Controller
             throw $this->createNotFoundException('Vous n\'avez pas accés à ce contenu.');
         }
 
-        /*$file = new File();
-        $form = $this->createFormBuilder($file)
-            ->add('file')
-            ->getForm()
-        ;
-
-        if ($this->getRequest()->isMethod('POST')) {
-            $form->handleRequest($this->getRequest());
-            if ($form->isValid()) {
-                $file->setBar($bar);
-                $em->persist($file);
-                $em->flush();
-
-            }
-        }*/
-
         return array(
-            'bar' => $bar,
-            //'form' => $form->createView()
+            'bar' => $bar
         );
+    }
+
+    /**
+     * Save slider order for a Bar entity.
+     *
+     * @Route("/save-slider-order", name="save_slider_order", options={"expose"=true})
+     * @Method({"POST"})
+     */
+    public function saveSliderOrderAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $list = $request->request->get('list');
+        $res = [];
+
+        foreach($list as $value) {
+            $file = $em->getRepository('CacBarBundle:File')->find($value['id']);
+            $file->setOrder(intval($value['order']));
+            $em->persist($file);
+            array_push($res, array($value['id'] => $value['order']));
+        }
+        $em->flush();
+        array_push($res, array('status' => '1'));
+
+        return new JsonResponse($res);
     }
 }

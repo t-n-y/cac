@@ -28,13 +28,17 @@
             <h3 style="text-align: center;">Photos disponibles</h3>
             <ul id="sortable">
             {% for file in bar.files %}
-                <li class="ui-state-default" style="background-image: url('{{ asset('uploads/bar/'~file.path) }}');">
+                <li class="ui-state-default" style="background-image: url('{{ asset('uploads/bar/'~file.path) }}');" data-id="{{ file.id }}">
                     <div class="sortable-hover">
                         <span class="glyphicon glyphicon-screenshot"></span>
                     </div>
                 </li>
             {% endfor %}
             </ul>
+            <div class="clear"></div>
+            <div id="save-order" data-json="">
+                <button type="submit">Enregistrer</button> <span class="glyphicon glyphicon-ok validate"></span>
+            </div>
         </div>
     </div>
 </div>
@@ -46,8 +50,37 @@
     <script>
         $(document).ready(function() {  
             $('.tooltipLink').tooltip();
-            $( "#sortable" ).sortable();
-            $( "#sortable" ).disableSelection();
+            $("#sortable").sortable();
+            $("#sortable").disableSelection();
+            $("#sortable").on('sortstop', function(event, ui) {
+                var json = {
+                    'list': []
+                };
+                $('#sortable li').each(function(key, value) {
+                    var tmpJson = {
+                        'id': $(this).attr('data-id'),
+                        'order': (key + 1)
+                    }
+                    json['list'].push(tmpJson);
+                });
+                $('#save-order').attr('data-json', JSON.stringify(json));
+            });
+            $('#save-order button').on('click', function() {
+                var data = $('#save-order').attr('data-json');
+                $this = $(this);
+                $this.attr('disabled', 'disabled').html('En cours...');
+                $.ajax({
+                    url: '{{ path("save_slider_order") }}',
+                    method: 'POST',
+                    data : JSON.parse(data),
+                    success: function(res) {
+                        if(res[res.length-1].status == 1) {
+                            $this.removeAttr('disabled').html('Enregistrer');
+                            $('.validate').animate({opacity: '1'}, 200).animate({opacity: '0'}, 500);
+                        }
+                    }
+                })
+            });
         });
     </script>
 {% endblock %}
