@@ -75,6 +75,13 @@ class File
     private $cropH;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="slider", type="boolean")
+     */
+    private $slider = 0;
+
+    /**
      * Get id
      *
      * @return integer
@@ -323,5 +330,29 @@ class File
     public function getCropH()
     {
         return $this->cropH;
+    }
+
+    /**
+     * Set slider
+     *
+     * @param boolean $slider
+     *
+     * @return File
+     */
+    public function setSlider($slider)
+    {
+        $this->slider = $slider;
+
+        return $this;
+    }
+
+    /**
+     * Get slider
+     *
+     * @return boolean
+     */
+    public function getSlider()
+    {
+        return $this->slider;
     }
 }

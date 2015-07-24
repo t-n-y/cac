@@ -915,4 +915,29 @@ class ProController extends Controller
 
         return new JsonResponse($res);
     }
+
+    /**
+     * Add/remove image from slider for a Bar entity.
+     *
+     * @Route("/toggle-picture", name="toggle_picture", options={"expose"=true})
+     * @Method({"POST"})
+     */
+    public function togglePictureAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $list = $request->request->get('list');
+        $res = [];
+
+        foreach($list as $value) {
+            $file = $em->getRepository('CacBarBundle:File')->find($value['id']);
+            $file->setOrder(intval($value['order']));
+            $em->persist($file);
+            array_push($res, array($value['id'] => $value['order']));
+        }
+        $em->flush();
+        array_push($res, array('status' => '1'));
+
+        return new JsonResponse($res);
+    }
 }
