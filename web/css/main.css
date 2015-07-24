@@ -2564,11 +2564,30 @@ p.noteCommentaire span{
 	background-color: #8bd6e1;
 	color: #fff; 
 	text-align: center;
-	color: #303030;
+}
+
+.cartePDFinPro{
+	width: 100%;
+	padding: 30px 0;
+	color: #303030; 
+	text-align: center;
 }
 
 .carteBarPDF img{
 	width: 65px;
+}
+
+.cartePDFinPro img{
+	width: 65px !important;
+}
+
+.cartePDFinPro a{
+	text-decoration: none;
+}
+
+.cartePDFinPro p{
+	color: #303030;
+	padding-top: 20px;
 }
 
 .carteBarPDF a{
