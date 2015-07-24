@@ -47,6 +47,34 @@ class File
     private $order;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="cropX", type="integer", nullable=true)
+     */
+    private $cropX;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="cropY", type="integer", nullable=true)
+     */
+    private $cropY;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="cropW", type="integer", nullable=true)
+     */
+    private $cropW;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="cropH", type="integer", nullable=true)
+     */
+    private $cropH;
+
+    /**
      * Get id
      *
      * @return integer
@@ -199,5 +227,101 @@ class File
     public function getOrder()
     {
         return $this->order;
+    }
+
+    /**
+     * Set cropX
+     *
+     * @param integer $cropX
+     *
+     * @return File
+     */
+    public function setCropX($cropX)
+    {
+        $this->cropX = $cropX;
+
+        return $this;
+    }
+
+    /**
+     * Get cropX
+     *
+     * @return integer
+     */
+    public function getCropX()
+    {
+        return $this->cropX;
+    }
+
+    /**
+     * Set cropY
+     *
+     * @param integer $cropY
+     *
+     * @return File
+     */
+    public function setCropY($cropY)
+    {
+        $this->cropY = $cropY;
+
+        return $this;
+    }
+
+    /**
+     * Get cropY
+     *
+     * @return integer
+     */
+    public function getCropY()
+    {
+        return $this->cropY;
+    }
+
+    /**
+     * Set cropW
+     *
+     * @param integer $cropW
+     *
+     * @return File
+     */
+    public function setCropW($cropW)
+    {
+        $this->cropW = $cropW;
+
+        return $this;
+    }
+
+    /**
+     * Get cropW
+     *
+     * @return integer
+     */
+    public function getCropW()
+    {
+        return $this->cropW;
+    }
+
+    /**
+     * Set cropH
+     *
+     * @param integer $cropH
+     *
+     * @return File
+     */
+    public function setCropH($cropH)
+    {
+        $this->cropH = $cropH;
+
+        return $this;
+    }
+
+    /**
+     * Get cropH
+     *
+     * @return integer
+     */
+    public function getCropH()
+    {
+        return $this->cropH;
     }
 }

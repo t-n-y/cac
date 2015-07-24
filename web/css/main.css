@@ -5427,7 +5427,7 @@ p.nextPointFidelite{
     margin-bottom: 30px;
     text-align: center;
 }
-.img-thumb .delete-img {
+.img-thumb .delete-img, .img-thumb .crop-img {
     position: absolute;
     top: 5px;
     right: 20px;
@@ -5435,7 +5435,10 @@ p.nextPointFidelite{
     opacity: 0.6;
     transition: opacity 0.15s ease-in-out;
 }
-.img-thumb .delete-img:hover {
+.img-thumb .crop-img {
+    right: 55px;
+}
+.img-thumb .delete-img:hover, .img-thumb .crop-img:hover {
     text-decoration: none;
     opacity: 1;
     transition: opacity 0.15s ease-in-out;
@@ -5472,7 +5475,13 @@ p.nextPointFidelite{
 .sliderThumbs {
     text-align: center;
 }
-#save-order button + span {
+#save-order button + span, #save-crop button + span {
     color: #33cc33 !important;
     opacity: 0;
+}
+#crop-wrapper {
+    width: 100%;
+}
+#crop-img {
+    max-width: 100%;
 }

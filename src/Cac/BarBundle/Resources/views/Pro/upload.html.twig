@@ -31,6 +31,7 @@
             <div class="img-thumb col-xs-3">
                 <img class="materialboxed" src="{{ asset('uploads/bar/'~file.path) }}" alt="image">
                 <a href="{{ path('file_delete', {'id' : file.id}) }}" class="glyphicon glyphicon-remove delete-img tooltipLink" title="Supprimer" data-toggle="tooltip" data-placement="right" ></a>
+                <a href="{{ path('crop', {'id' : file.id}) }}" class="glyphicon glyphicon-edit crop-img tooltipLink" title="Decouper" data-toggle="tooltip" data-placement="right" ></a>
             </div>
             {% endfor %}
         </div>
