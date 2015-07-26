@@ -33,495 +33,554 @@
 				<p class="adresseBarShow">{{ bar.adress }} <b>{{ bar.zipcode }} {{ bar.town }}</b></p>
 			</div>
 		</div>
-		<div class="infoBar col-xs-12 col-sm-12 col-md-12 noPadding">
-			
-			
-			 		
-			<div class="noteBar col-xs-6 col-sm-offset-3 col-sm-3 col-md-offset-3 col-md-3">
-				<div class="right">
-					<div class="ticketVerre">
-
-						<div class="ticketBarTop">
-							<h2>OFFRIR UN VERRE</h2>
-							<h3>GRATUITEMENT</h3>
-						</div>
-						<div class="ticketCode">
-							<input class="codeValue" placeholder="Entre ton code">
-							<button class="ticketVerreValidate">Valider</button>
-						</div>
-						<div class="ticketBarBottom">
-							<p>C'EST PARTI !</p>
-
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="noteBar col-xs-6 col-sm-3 col-md-3">
-			{% if (bar.getHappyHourByDay(today).getOption('value').value == 0 or promoOfferte)%}
-				<div class="ticket">
-			{% else %}
-				<div class="ticket JS-ticket">
-			{% endif %}
-					{% if promoOfferte %}
-						<div class="reservationDone">
-							<p class="voirMaConfirmationDone">VOIR MA RESERVATION</p>
-						</div>
-						<div class="ticketPromotion col-xs-12 col-sm-12 col-md-12">
-							{% if bar.getHappyHourByDay(today).getOption('value').value != 0 %}
-								<div>
-									<div class="col-xs-7 col-sm-7 col-md-7">
-										<p class="bold">Happy Hours</p>
-										<p>De {{ bar.getHappyHourByDay(today).getOption('beginning').value }}h à {{ bar.getHappyHourByDay(today).getOption('ending').value }}h</p>
-									</div>
-									<div class="col-xs-5 col-sm-5 col-md-5">
-										<p class="reductionHappyHour">-{{ bar.getHappyHourByDay(today).getOption('value').value }}%</p> 
-									</div>
-								</div>
-							{% else %}
-								<p>Tenez moi au courant<br>Dès qu'une promo est proposé dans ce bar</p>
-							{% endif %}
-						</div>
-						<div class="clear"></div>
-						<div class="ticketBarBottom">
-							<p>POUR AUJOURD'HUI</p>
-							<p class="testSuccess"></p>
-						</div>
-					{% else %}
-						<div class="ticketBarTop">
-							{% if bar.scheduleArray[today].status == 'Ouvert' %}
-								{% if bar.getHappyHourByDay(today).getOption('value').value != 0 %}
-									<img src="{{asset('img/pictoPromo.png')}}" alt="">
-								{% endif %}
-								{% if bar.getPromotionByDay(today).getOption('value').value == 0 %}
-									{% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-										<div class="obtenirPromo JS-obtenirPromo JS-promoBox" data-bar-id="{{bar.id}}">
-									{% else %}
-										<div class="obtenirPromo animConnexion">
-									{% endif %}
-
-											<h2 class="font30 fontWeight200">PAS DE PROMO</h2>
-											<h3>Mais <span>5 cheers</span> de fidélité</h3>
-											<p class="voirMaConfirmation"></p>
-										</div>
-								{% else %}
-									{% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-										<div class="obtenirPromo JS-obtenirPromo JS-promoBox" data-bar-id="{{bar.id}}" data-valuepromo="{{ bar.getPromotionByDay(today).getOption('value').value }}">
-									{% else %}
-										<div class="animConnexion">
-									{% endif %}
-											<h2 class="font30">-{{ bar.getPromotionByDay(today).getOption('value').value }}%</h2>
-											<h3>SUR UNE CONSOMMATION</h3>
-											<p class="voirMaConfirmation"></p>
-										</div>
-									
-
-								{% endif %}
-							{% else %}
-								<p class="barClose">Ce bar est fermé<p>
-							{% endif %}
-						</div>
-						<div class="ticketPromotion col-xs-12 col-sm-12 col-md-12">
-							{% if bar.getHappyHourByDay(today).getOption('value').value != 0 %}
-
-								{% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-									<div class="obtenirPromo JS-obtenirPromo" data-bar-id="{{bar.id}}">
-								{% else %}
-									<div class="animConnexion">
-								{% endif %}
-										<div class="col-xs-7 col-sm-7 col-md-7">
-											<p class="bold">Happy Hours</p>
-											<p>De {{ bar.getHappyHourByDay(today).getOption('beginning').value }}h à {{ bar.getHappyHourByDay(today).getOption('ending').value }}h</p>
-										</div>
-										<div class="col-xs-5 col-sm-5 col-md-5">
-											<p class="reductionHappyHour">-{{ bar.getHappyHourByDay(today).getOption('value').value }}%</p> 
-										</div>
-									</div>
-							{% else %}
-								<p>Tenez moi au courant<br>Dès qu'une promo est proposé dans ce bar</p>
-							{% endif %}
-							
-							{# le {{days[2]}} -{{ bar.promotion.promotionArray[days[2]]['happy-hour'].value }}%</p> #}
-						</div>
-						<div class="clear"></div>
-						<div class="ticketBarBottom">
-						{% if bar.scheduleArray[today].status == 'Ouvert' %}
-							{% if bar.getPromotionByDay(today).getOption('value').value == 0 %}
-								{% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-									<p class="obtenirPromo JS-obtenirPromo" data-bar-id="{{bar.id}}">
-								{% else %}
-								<p class="animConnexion">	
-								{% endif %}	
-									RESERVEZ POUR AUJOURD'HUI</p>
-									<p class="testSuccess"></p>
-							{% else %}
-								{% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-									<p class="obtenirPromo JS-obtenirPromo" data-bar-id="{{bar.id}}">
-								{% else %}
-									<p class="animConnexion">	
-								{% endif %}	
-									OBTENIR LA PROMO</p>
-									<p class="testSuccess"></p>
-							{% endif %}
-						{% else %}
-							<p>AUJOURD'HUI<p>
-						{% endif %}
-						</div>
-					{% endif %}
-				</div>
-			</div>
-			<div class="confirmationReservation">
-				<div class="checkConfirmation" style="background-image : url('{{ asset('uploads/bar/'~bar.path) }}');">
-					<p class='jourReservation'>{{'now'|date('d')}}</p>
-					<p class='moisReservation'>
-
-					{% set months = {'1': 'JANVIER', '2': 'FEVRIER', '3': 'MARS', '4': 'AVRIL', '5': 'MAI', '6': 'JUIN', '7': 'JUILLET', '8': 'AOUT', '9': 'SEPTEMBRE', '10': 'OCTOBRE', '11': 'NOVEMBRE', '12': 'DECEMBRE'} %}
-
-				      {% for j in 1..12 %}
-
-						{% if 'now'|date('m') == j %}
-							{{ months[j] }}
-						{% endif %}
-					{% endfor %}
-					</p>
-				</div>
-				<div class="contentConfirmation">
-					<div class="textContentConfirmation">
-						<div class="closeRappel">
-							<img src="{{asset('img/crossClose.png')}}" alt="">
-						</div>
-						<h2>Réservation Confirmée</h2>
-						{% if bar.getPromotionByDay(today).getOption('value').value == 0 %}
-							<p class="rappelPromo">Votre réservation pour {{ bar.name }} est valable jusqu'à ce soir</p>
-						{% else %}
-							<p class="rappelPromo"><span class="rappelPromotion">-{{ bar.getPromotionByDay(today).getOption('value').value }}%</span>
-
-							{% if bar.getHappyHourByDay(today).getOption('value').value !=0 %}
-
-								<span class="rappelHappyHours">et -{{bar.getHappyHourByDay(today).getOption('value').value}}%</span> de {{ bar.getHappyHourByDay(today).getOption('beginning').value }}h à {{ bar.getHappyHourByDay(today).getOption('ending').value }}h
-							{% endif %}
-							</p>
-						{% endif %}
-
-						{% if (bar.getPromotionByDay(today).getOption('restriction').value or bar.getHappyHourByDay(today).getOption('restriction').value) %}
-							<p class="rappelCondition"><a href="{{ path('fos_user_profile_show') }}">Voir les conditions</a></p>
-						{% endif %}
-
-						<!-- <div class="contentButtonRappel">
-							<div class="row">
-								<div class="col-xs-12 col-sm-12 col-md-12">
-									<div class="col-xs-4 col-sm-4 col-md-4">
-										<p>Voir les conditions</p>
-									</div>
-									<div class="col-xs-4 col-sm-4 col-md-4">
-										<p>Inviter des amis à reserver</p>
-									</div>
-									<div class="col-xs-4 col-sm-4 col-md-4">
-										<p>Annuler</p>
-									</div>
-								</div>
-							</div>
-							
-						</div> -->
-					</div>
-				</div>
-			</div>
-		</div>
+		
 		<div class="contentSuperInfoBar col-xs-12 col-sm-12 col-md-12 noPadding">
-			<div class="superInfoBar noPadding">
-				<div class="ongletBar">
-					<div class="col-xs-6 col-sm-6 col-md-6 noPadding">
-						<div class="information selectedOngletBar">
-							<h3>Informations</h3>
-						</div>
-					</div>
-					<div class="col-xs-6 col-sm-6 col-md-6 noPadding">
-						<div class="avis">
-							<h3>Avis</h3>
-						</div>
-					</div>
-				</div>
-				<div class="informationBar">
-					<div class="containerPrice">
-						<div class="row">
-						
-							<div class="col-xs-6 col-sm-3 col-md-3">
-								<img src="{{asset('img/pictoBar/biere.svg')}}" alt="">
-								<div class="contentPrice">
-									<span>{{ bar.beerPrice }}€</span>
-									<p>La pinte de bière</p>
+			<div class="contentAffterSuperInfoBar">
+				<div class="col-xs-8 col-sm-8 col-md-8">
+					<div class="superInfoBar noPadding">
+						<div class="ongletBar">
+							<div class="col-xs-6 col-sm-6 col-md-6 noPadding">
+								<div class="information selectedOngletBar">
+									<h3>Informations</h3>
 								</div>
 							</div>
-							<div class="col-xs-6 col-sm-3 col-md-3">
-								<img src="{{asset('img/pictoBar/cocktail.svg')}}" alt="">
-								<div class="contentPrice">
-									<span>{{ bar.cocktailPrice }}€</span>
-									<p>Le cocktail</p>
+							<div class="col-xs-6 col-sm-6 col-md-6 noPadding">
+								<div class="avis">
+									<h3>Avis</h3>
 								</div>
+							</div>
+						</div>
+						<div class="informationBar">
+							<div class="containerPrice">
+								<div class="row">
 								
-							</div>
-							<div class="col-xs-6 col-sm-3 col-md-3">
-								<img src="{{asset('img/pictoBar/soft.svg')}}" alt="">
-								<div class="contentPrice">
-									<span>{{ bar.softPrice }}€</span>
-									<p>Le soft</p>
-								</div>
-							</div>
-							<div class="col-xs-6 col-sm-3 col-md-3">
-								<img src="{{asset('img/pictoBar/cafe.svg')}}" alt="">
-								<div class="contentPrice">
-									<span>{{ bar.coffeePrice }}€</span>
-									<p>Le café</p>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="containerServices">
-						<div class="petitplusInfoBar">
-							<div class="row">
-								{% if bar.handicappedAccess == 1 %}
-									<div class="vignettePetitPlus col-xs-6 col-sm-4 col-md-3">
-										<div class="vignettePetitPlusContent">
-											<img src="{{asset('img/pictoBar/handicape.svg')}}" alt="Click and Cheers" />
-											<p>Accessible<br>aux PMR</p>
+									<div class="col-xs-6 col-sm-3 col-md-3">
+										<img src="{{asset('img/pictoBar/biere.svg')}}" alt="">
+										<div class="contentPrice">
+											<span>{{ bar.beerPrice }}€</span>
+											<p>La pinte de bière</p>
 										</div>
 									</div>
-								{% endif %}
-								{% if bar.patio == 1%}
-									<div class="vignettePetitPlus col-xs-6 col-sm-4 col-md-3">
-										<div class="vignettePetitPlusContent">
-											<img src="{{asset('img/pictoBar/terrasse.svg')}}" alt="Click and Cheers">
-											<p>Terrasse<br>sympa</p>
+									<div class="col-xs-6 col-sm-3 col-md-3">
+										<img src="{{asset('img/pictoBar/cocktail.svg')}}" alt="">
+										<div class="contentPrice">
+											<span>{{ bar.cocktailPrice }}€</span>
+											<p>Le cocktail</p>
+										</div>
+										
+									</div>
+									<div class="col-xs-6 col-sm-3 col-md-3">
+										<img src="{{asset('img/pictoBar/soft.svg')}}" alt="">
+										<div class="contentPrice">
+											<span>{{ bar.softPrice }}€</span>
+											<p>Le soft</p>
 										</div>
 									</div>
-								{% endif %}
-								{% if bar.smokingArea == 1%}
-									<div class="vignettePetitPlus col-xs-6 col-sm-4 col-md-3">
-										<div class="vignettePetitPlusContent">
-											<img src="{{asset('img/pictoBar/fumoir.svg')}}" alt="Click and Cheers" />
-											<p>Espace<br>Fumeur</p>
+									<div class="col-xs-6 col-sm-3 col-md-3">
+										<img src="{{asset('img/pictoBar/cafe.svg')}}" alt="">
+										<div class="contentPrice">
+											<span>{{ bar.coffeePrice }}€</span>
+											<p>Le café</p>
 										</div>
-									</div> 
-								{% endif %}
-								{% if bar.breathalyser == 1%}
-									<div class="vignettePetitPlus col-xs-6 col-sm-4 col-md-3">
-										<div class="vignettePetitPlusContent">
-											<img src="{{asset('img/pictoBar/ethylotest.svg')}}" alt="Click and Cheers">
-											<p>Ethylotest<br>gratuit</p>
-										</div>
-									</div>
-								{% endif %}
-
-								{% if bar.babyfoot == 1%}
-									<div class="vignettePetitPlus col-xs-6 col-sm-4 col-md-3">
-										<div class="vignettePetitPlusContent">
-											<img src="{{asset('img/pictoBar/babyfoot.svg')}}" alt="Click and Cheers">
-											<p class="padding10">BabyFoot</p>
-										</div>
-									</div>
-								{% endif %}
-
-								{% if bar.billard == 1%}
-									<div class="vignettePetitPlus col-xs-6 col-sm-4 col-md-3">
-										<div class="vignettePetitPlusContent">
-											<img src="{{asset('img/pictoBar/billard.svg')}}" alt="Click and Cheers">
-											<p class="padding10">Billard</p>
-										</div>
-									</div>
-								{% endif %}
-
-								{% if bar.flipper == 1 %}
-									<div class="vignettePetitPlus col-xs-6 col-sm-4 col-md-3">
-										<div class="vignettePetitPlusContent">
-											<img src="{{asset('img/pictoBar/flipper.svg')}}" alt="Click and Cheers">
-											<p class="padding10">Flipper</p>
-										</div>
-									</div>
-								{% endif %}
-
-								{% if bar.canape == 1%}
-									<div class="vignettePetitPlus col-xs-6 col-sm-4 col-md-3">
-										<div class="vignettePetitPlusContent">
-											<img src="{{asset('img/pictoBar/canape.svg')}}" alt="Click and Cheers">
-											<p class="padding10">Canapé</p>
-										</div>
-									</div>
-								{% endif %}
-								{% if bar.clim == 1 %}
-									<div class="vignettePetitPlus col-xs-6 col-sm-4 col-md-3">
-										<div class="vignettePetitPlusContent">
-											<img src="{{asset('img/pictoBar/climatisation.svg')}}" alt="Click and Cheers">
-											<p class="padding10">Climatisation</p>
-										</div>
-									</div>
-								{% endif %}
-								{% if bar.valet == 1%}
-									<div class="vignettePetitPlus col-xs-6 col-sm-4 col-md-3">
-										<div class="vignettePetitPlusContent">
-											<img src="{{asset('img/pictoBar/voiturier.png')}}" alt="Click and Cheers">
-											<p>Service<br>Voiturier</p>
-											<p class="vignettePetitPlusPrix">{{ bar.valetCost }}<span> €</span></p>
-										</div>
-									</div>
-								{% endif %}
-							</div>
-							<div class="clear"></div>
-						</div>
-					</div>
-					
-					{% for carte in bar.carte if carte.visible == true %}
-						{% if carte.getWebPath %}
-								<div class="carteBarPDF col-xs-12 col-sm-12 col-md-12">
-									<a href="{{asset(carte.getWebPath)}}" target="_blank">
-										<img src="{{asset('img/carteBar.png')}}" alt="Click and Cheers">
-										<p>VOIR LA CARTE DU BAR</p>
-									</a>
-								</div>
-								<div class="clear"></div>
-						{% endif %}
-					{% endfor %}
-					<div class="showPromoHappyHourBar">
-						{% if bar.getPromotionByDay(today).getOption('value').value != 0 %}
-
-							<p class="showPromotionBar">{{bar.getPromotionByDay(today).getOption('value').value}}% de réduction</p>
-							{% if bar.getPromotionByDay(today).getOption('restriction').value %}
-								<p class="conditionsShowBar"><span>Conditions :</span> {{ bar.getPromotionByDay(today).getOption('restriction').value }}</p>
-							{% else %}	
-								<p class="conditionsShowBar">Pas de conditions</p>
-							{% endif %}
-						{% endif %}
-						{% if bar.getHappyHourByDay(today).getOption('value').value !=0  %}
-							<p class="showHappyHourBar">{{bar.getHappyHourByDay(today).getOption('value').value}}% de réduction de {{ bar.getHappyHourByDay(today).getOption('beginning').value }}h à {{ bar.getHappyHourByDay(today).getOption('ending').value }}h</p>
-							{% if bar.getHappyHourByDay(today).getOption('restriction').value %}
-								<p class="conditionsShowBar"><span>Conditions :</span> {{ bar.getHappyHourByDay(today).getOption('restriction').value }}</p>
-							{% else %}
-								<p class="conditionsShowBar">Pas de conditions</p>
-							{% endif %}
-									
-						{% endif %}
-					</div>
-					<div class="descriptionBar noPadding">
-						{% if bar.description %}	
-								<p>{{bar.description}}</p>	
-						{% endif %}
-
-						<div class="dresscode">
-							{% if bar.dresscode == 1%}
-								<img src="{{asset('img/pictoBar/chic.png')}}" alt="Click and Cheers">
-							{% elseif bar.dresscode == 2%}
-								<img src="{{asset('img/pictoBar/decontracte.png')}}" alt="Click and Cheers">
-							{% endif %}
-						</div>
-					</div>
-
-				
-					<div class="horaireBar">
-
-						{% set days = {
-							'1': 'Lundi', 
-							'2': 'Mardi', 
-							'3': 'Mercredi', 
-							'4': 'Jeudi', 
-							'5': 'Vendredi', 
-							'6': 'Samedi', 
-							'7': 'Dimanche'
-						} %}
-						<div class="row">
-							<div class="col-xs-12 col-sm-12 col-md-12">
-								<div class="col-xs-12 col-sm-6 col-md-6">
-									<div class="boxInfoOpenBar">
-										{% if bar.scheduleArray[today].status == "Ouvert" %}
-											<p class="openBar">C'est ouvert</p>
-											<p>Il est temps de sortir !</p>
-										{% else %}
-											<p class="closeBar">C'est fermé</p>
-											<p>Pour une autre fois</p>
-										{% endif %}
 									</div>
 								</div>
-								<div class="center col-xs-12 col-sm-6 col-md-6">
-										<div class="interligneFicheBar col-xs-3 col-xs-offset-5 col-sm-offset-4 col-md-4 col-sm-offset-4 col-md-4 noPadding">
-											<img src="{{asset('img/barOuvert.png')}}" alt="Click and Cheers">
-										</div>
-										<div class="interligneFicheBar col-xs-4 col-sm-4 col-md-4 noPadding">
-											<img src="{{asset('img/barFerme.png')}}" alt="Click and Cheers">
-										</div>
-									{% for i in 1..7 %}
-										<div class="interligneFicheBar col-xs-5 col-sm-4 col-md-4 noPadding">
-											<p>{{ days[i]|slice(0, 3)}}</p>
-										</div>
-										{% if bar.scheduleArray[days[i]].status == "Ouvert" %}
-											<div class="interligneFicheBar col-xs-3 col-sm-4 col-md-4 noPadding">
-												<span>{{ bar.scheduleArray[days[i]].open }}h</span>
-											</div>
-											<div class="interligneFicheBar col-xs-4 col-sm-4 col-md-4 noPadding">
-												<span>{{ bar.scheduleArray[days[i]].close }}h</span>
-											</div>
-										{% else %}
-											<div class="interligneFicheBar center col-xs-4 col-sm-8 col-md-8 noPadding">
-												<span class="fermeture">FERMÉ</span>
+							</div>
+							<div class="containerServices">
+								<div class="petitplusInfoBar">
+									<div class="row">
+										{% if bar.handicappedAccess == 1 %}
+											<div class="vignettePetitPlus col-xs-6 col-sm-4 col-md-3">
+												<div class="vignettePetitPlusContent">
+													<img src="{{asset('img/pictoBar/handicape.svg')}}" alt="Click and Cheers" />
+													<p>Accessible<br>aux PMR</p>
+												</div>
 											</div>
 										{% endif %}
-									{% endfor %}
+										{% if bar.patio == 1%}
+											<div class="vignettePetitPlus col-xs-6 col-sm-4 col-md-3">
+												<div class="vignettePetitPlusContent">
+													<img src="{{asset('img/pictoBar/terrasse.svg')}}" alt="Click and Cheers">
+													<p>Terrasse<br>sympa</p>
+												</div>
+											</div>
+										{% endif %}
+										{% if bar.smokingArea == 1%}
+											<div class="vignettePetitPlus col-xs-6 col-sm-4 col-md-3">
+												<div class="vignettePetitPlusContent">
+													<img src="{{asset('img/pictoBar/fumoir.svg')}}" alt="Click and Cheers" />
+													<p>Espace<br>Fumeur</p>
+												</div>
+											</div> 
+										{% endif %}
+										{% if bar.breathalyser == 1%}
+											<div class="vignettePetitPlus col-xs-6 col-sm-4 col-md-3">
+												<div class="vignettePetitPlusContent">
+													<img src="{{asset('img/pictoBar/ethylotest.svg')}}" alt="Click and Cheers">
+													<p>Ethylotest<br>gratuit</p>
+												</div>
+											</div>
+										{% endif %}
+
+										{% if bar.babyfoot == 1%}
+											<div class="vignettePetitPlus col-xs-6 col-sm-4 col-md-3">
+												<div class="vignettePetitPlusContent">
+													<img src="{{asset('img/pictoBar/babyfoot.svg')}}" alt="Click and Cheers">
+													<p class="padding10">BabyFoot</p>
+												</div>
+											</div>
+										{% endif %}
+
+										{% if bar.billard == 1%}
+											<div class="vignettePetitPlus col-xs-6 col-sm-4 col-md-3">
+												<div class="vignettePetitPlusContent">
+													<img src="{{asset('img/pictoBar/billard.svg')}}" alt="Click and Cheers">
+													<p class="padding10">Billard</p>
+												</div>
+											</div>
+										{% endif %}
+
+										{% if bar.flipper == 1 %}
+											<div class="vignettePetitPlus col-xs-6 col-sm-4 col-md-3">
+												<div class="vignettePetitPlusContent">
+													<img src="{{asset('img/pictoBar/flipper.svg')}}" alt="Click and Cheers">
+													<p class="padding10">Flipper</p>
+												</div>
+											</div>
+										{% endif %}
+
+										{% if bar.canape == 1%}
+											<div class="vignettePetitPlus col-xs-6 col-sm-4 col-md-3">
+												<div class="vignettePetitPlusContent">
+													<img src="{{asset('img/pictoBar/canape.svg')}}" alt="Click and Cheers">
+													<p class="padding10">Canapé</p>
+												</div>
+											</div>
+										{% endif %}
+										{% if bar.clim == 1 %}
+											<div class="vignettePetitPlus col-xs-6 col-sm-4 col-md-3">
+												<div class="vignettePetitPlusContent">
+													<img src="{{asset('img/pictoBar/climatisation.svg')}}" alt="Click and Cheers">
+													<p class="padding10">Climatisation</p>
+												</div>
+											</div>
+										{% endif %}
+										{% if bar.valet == 1%}
+											<div class="vignettePetitPlus col-xs-6 col-sm-4 col-md-3">
+												<div class="vignettePetitPlusContent">
+													<img src="{{asset('img/pictoBar/voiturier.png')}}" alt="Click and Cheers">
+													<p>Service<br>Voiturier</p>
+													<p class="vignettePetitPlusPrix">{{ bar.valetCost }}<span> €</span></p>
+												</div>
+											</div>
+										{% endif %}
+									</div>
+									<div class="clear"></div>
 								</div>
 							</div>
-						</div>
-					</div>
-				
+							
+							{% for carte in bar.carte if carte.visible == true %}
+								{% if carte.getWebPath %}
+										<div class="carteBarPDF col-xs-12 col-sm-12 col-md-12">
+											<a href="{{asset(carte.getWebPath)}}" target="_blank">
+												<img src="{{asset('img/carteBar.png')}}" alt="Click and Cheers">
+												<p>VOIR LA CARTE DU BAR</p>
+											</a>
+										</div>
+										<div class="clear"></div>
+								{% endif %}
+							{% endfor %}
+							<div class="showPromoHappyHourBar">
+								{% if bar.getPromotionByDay(today).getOption('value').value != 0 %}
 
+									<p class="showPromotionBar">{{bar.getPromotionByDay(today).getOption('value').value}}% de réduction</p>
+									{% if bar.getPromotionByDay(today).getOption('restriction').value %}
+										<p class="conditionsShowBar"><span>Conditions :</span> {{ bar.getPromotionByDay(today).getOption('restriction').value }}</p>
+									{% else %}	
+										<p class="conditionsShowBar">Pas de conditions</p>
+									{% endif %}
+								{% endif %}
+								{% if bar.getHappyHourByDay(today).getOption('value').value !=0  %}
+									<p class="showHappyHourBar">{{bar.getHappyHourByDay(today).getOption('value').value}}% de réduction de {{ bar.getHappyHourByDay(today).getOption('beginning').value }}h à {{ bar.getHappyHourByDay(today).getOption('ending').value }}h</p>
+									{% if bar.getHappyHourByDay(today).getOption('restriction').value %}
+										<p class="conditionsShowBar"><span>Conditions :</span> {{ bar.getHappyHourByDay(today).getOption('restriction').value }}</p>
+									{% else %}
+										<p class="conditionsShowBar">Pas de conditions</p>
+									{% endif %}
+											
+								{% endif %}
+							</div>
+							<div class="descriptionBar noPadding">
+								{% if bar.description %}	
+										<p>{{bar.description}}</p>	
+								{% endif %}
 
-					<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
-					<script>
-					  var geocoder;
-					  var map;
-					  function initialize() {
-					    geocoder = new google.maps.Geocoder();
-					    var latlng = new google.maps.LatLng(-34.397, 150.644);
-					    var mapOptions = {
-					      zoom: 15,
-					      center: latlng
-					    }
-					    var address = '{{ bar.adress }}, {{ bar.town }}, {{ bar.country }}';
-					    geocoder.geocode( { 'address': address}, function(results, status) {
-					      if (status == google.maps.GeocoderStatus.OK) {
-					        map.setCenter(results[0].geometry.location);
-					        var marker = new google.maps.Marker({
-					            map: map,
-					            position: results[0].geometry.location
-					        });
-					      } else {
-					        alert('Geocode was not successful for the following reason: ' + status);
-					      }
-					    });
-					    map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-					  }
-					  google.maps.event.addDomListener(window, 'load', initialize);
+								<div class="dresscode">
+									{% if bar.dresscode == 1%}
+										<img src="{{asset('img/pictoBar/chic.png')}}" alt="Click and Cheers">
+									{% elseif bar.dresscode == 2%}
+										<img src="{{asset('img/pictoBar/decontracte.png')}}" alt="Click and Cheers">
+									{% endif %}
+								</div>
+							</div>
 
-					</script>
+						
+							<div class="horaireBar">
 
-						<div class="mapView">
-							<div class="metro">
+								{% set days = {
+									'1': 'Lundi', 
+									'2': 'Mardi', 
+									'3': 'Mercredi', 
+									'4': 'Jeudi', 
+									'5': 'Vendredi', 
+									'6': 'Samedi', 
+									'7': 'Dimanche'
+								} %}
 								<div class="row">
 									<div class="col-xs-12 col-sm-12 col-md-12">
-										<div class="transportSliderWrapper">
-											
+										<div class="col-xs-12 col-sm-6 col-md-6">
+											<div class="boxInfoOpenBar">
+												{% if bar.scheduleArray[today].status == "Ouvert" %}
+													<p class="openBar">C'est ouvert</p>
+													<p>Il est temps de sortir !</p>
+												{% else %}
+													<p class="closeBar">C'est fermé</p>
+													<p>Pour une autre fois</p>
+												{% endif %}
+											</div>
 										</div>
-
+										<div class="center col-xs-12 col-sm-6 col-md-6">
+												<div class="interligneFicheBar col-xs-3 col-xs-offset-5 col-sm-offset-4 col-md-4 col-sm-offset-4 col-md-4 noPadding">
+													<img src="{{asset('img/barOuvert.png')}}" alt="Click and Cheers">
+												</div>
+												<div class="interligneFicheBar col-xs-4 col-sm-4 col-md-4 noPadding">
+													<img src="{{asset('img/barFerme.png')}}" alt="Click and Cheers">
+												</div>
+											{% for i in 1..7 %}
+												<div class="interligneFicheBar col-xs-5 col-sm-4 col-md-4 noPadding">
+													<p>{{ days[i]|slice(0, 3)}}</p>
+												</div>
+												{% if bar.scheduleArray[days[i]].status == "Ouvert" %}
+													<div class="interligneFicheBar col-xs-3 col-sm-4 col-md-4 noPadding">
+														<span>{{ bar.scheduleArray[days[i]].open }}h</span>
+													</div>
+													<div class="interligneFicheBar col-xs-4 col-sm-4 col-md-4 noPadding">
+														<span>{{ bar.scheduleArray[days[i]].close }}h</span>
+													</div>
+												{% else %}
+													<div class="interligneFicheBar center col-xs-4 col-sm-8 col-md-8 noPadding">
+														<span class="fermeture">FERMÉ</span>
+													</div>
+												{% endif %}
+											{% endfor %}
+										</div>
 									</div>
 								</div>
 							</div>
-							<div id="map-canvas"></div>
+						
+
+
+							<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
+							<script>
+							  var geocoder;
+							  var map;
+							  function initialize() {
+							    geocoder = new google.maps.Geocoder();
+							    var latlng = new google.maps.LatLng(-34.397, 150.644);
+							    var mapOptions = {
+							      zoom: 15,
+							      center: latlng
+							    }
+							    var address = '{{ bar.adress }}, {{ bar.town }}, {{ bar.country }}';
+							    geocoder.geocode( { 'address': address}, function(results, status) {
+							      if (status == google.maps.GeocoderStatus.OK) {
+							        map.setCenter(results[0].geometry.location);
+							        var marker = new google.maps.Marker({
+							            map: map,
+							            position: results[0].geometry.location
+							        });
+							      } else {
+							        alert('Geocode was not successful for the following reason: ' + status);
+							      }
+							    });
+							    map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+							  }
+							  google.maps.event.addDomListener(window, 'load', initialize);
+
+							</script>
+
+								<div class="mapView">
+									<div class="metro">
+										<div class="row">
+											<div class="col-xs-12 col-sm-12 col-md-12">
+												<div class="transportSliderWrapper">
+													
+												</div>
+
+											</div>
+										</div>
+									</div>
+									<div id="map-canvas"></div>
+								</div>
+
+							<div id="geocode" class="hidden">{{ bar.geocode }}</div>
+						</div>
+						<div class="avisBar">
+							<h2 class="firstElmtFicheBar col-xs-5 col-sm-5 col-md-5 noPadding">Avis</h2>
+							<div class="clear"></div>
+							{% render(controller("CacBarBundle:Avis:index", {'id' : bar.id})) %}
+						</div>
+						<div class="clear"></div>
+						<div class="shareBarRS">
+							<div class="fb-share-button" data-href="{{ app.request.schemeAndHttpHost ~ app.request.getRequestUri()}}" data-layout="icon"></div> 
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-4 col-sm-4 col-md-4">
+
+					<div class="infoBarNote col-xs-12 col-sm-12 col-md-12 noPadding">
+						<h1>Reservez avec la promo</h1>
+
+						<div class="infoReservation">
+
+								<div class="col-xs-6 noPadding">
+									<p>Réserver en 1 clic</p>
+								</div>
+								<div class="col-xs-6 noPadding">
+									<p>Service 100% gratuit</p>
+								</div>
+								<div class="clear"></div>
 						</div>
 
-					<div id="geocode" class="hidden">{{ bar.geocode }}</div>
-				</div>
-				<div class="avisBar">
-					<h2 class="firstElmtFicheBar col-xs-5 col-sm-5 col-md-5 noPadding">Avis</h2>
-					<div class="clear"></div>
-					{% render(controller("CacBarBundle:Avis:index", {'id' : bar.id})) %}
-				</div>
-				<div class="clear"></div>
-				<div class="shareBarRS">
-					<div class="fb-share-button" data-href="{{ app.request.schemeAndHttpHost ~ app.request.getRequestUri()}}" data-layout="icon"></div> 
+						<div class="contentReservation">
+							
+								{% if bar.scheduleArray[today].status == 'Ouvert' %}
+									{% if (bar.getPromotionByDay(today).getOption('value').value != 0 and bar.getHappyHourByDay(today).getOption('value').value != 0) %}
+										<div class="col-xs-6 noPadding">
+											<p class="kindOfPromo">Promo du jour</p>
+											<div class="promotionPresent">
+												<p class="reductionPresent">-{{ bar.getPromotionByDay(today).getOption('value').value }}%</p> 
+												<p class="infoPrensent">Voir conditions</p>
+											</div>
+										</div>
+										<div class="col-xs-6 noPadding">
+											<p class="kindOfPromo">Happy Hour</p>
+											<div class="HappyHourPresent">
+												<p class="reductionPresent">-{{ bar.getHappyHourByDay(today).getOption('value').value }}%</p> 
+												<p class="infoPrensent">De {{ bar.getHappyHourByDay(today).getOption('beginning').value }}h à {{ bar.getHappyHourByDay(today).getOption('ending').value }}h</p>
+											</div>
+										</div>
+										<div class="clear"></div>
+										
+									{% elseif bar.getPromotionByDay(today).getOption('value').value != 0 %}	
+										<p class="kindOfPromo">Promo du jour</p>
+										<div class="promotionPresent">
+											<p class="reductionPresent">-{{ bar.getPromotionByDay(today).getOption('value').value }}%</p> 
+											<p class="infoPrensent">Voir conditions</p>
+									{% elseif bar.getHappyHourByDay(today).getOption('value').value != 0 %}	
+										<p class="kindOfPromo">Happy Hour</p>	
+										<div class="HappyHourPresent">
+											<p class="reductionPresent">-{{ bar.getHappyHourByDay(today).getOption('value').value }}%</p> 
+											<p>De {{ bar.getHappyHourByDay(today).getOption('beginning').value }}h à {{ bar.getHappyHourByDay(today).getOption('ending').value }}h</p>
+									{% else %}
+										<div class="noOfferPresent margin20">
+											<p class="reductionPresent">Découvrez</p>
+									{% endif %}
+										</div>
+
+									{% if promoOfferte %}
+										<div class="boutonReservationPromo voirMaConfirmationDone">
+											<p>VOIR MA PROMO</p>
+										</div> 
+									{% else %}
+										{% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+											<div class="boutonReservationPromo JS-obtenirPromo JS-promoBox" data-bar-id="{{bar.id}}" data-valuepromo="{{ bar.getPromotionByDay(today).getOption('value').value }}">
+										{% else %}
+											<div class="animConnexion boutonReservationPromo">
+										{% endif %}
+												<p>OBTENIR LA PROMO</p>
+											</div> 
+										
+									{% endif %}
+								{% else %}
+										<div class="noOfferPresent margin20">
+											<p class="reductionPresent">Bar Fermé</p>
+										</div>
+								{% endif %}
+								
+
+
+						</div>
+
+						<!-- <div class="noteBar col-xs-6 col-sm-3 col-md-3">
+						{% if (bar.getHappyHourByDay(today).getOption('value').value == 0 or promoOfferte)%}
+							<div class="ticket">
+						{% else %}
+							<div class="ticket JS-ticket">
+						{% endif %}
+								{% if promoOfferte %}
+									<div class="reservationDone">
+										<p class="voirMaConfirmationDone">VOIR MA RESERVATION</p>
+									</div>
+									<div class="ticketPromotion col-xs-12 col-sm-12 col-md-12">
+										{% if bar.getHappyHourByDay(today).getOption('value').value != 0 %}
+											<div>
+												<div class="col-xs-7 col-sm-7 col-md-7">
+													<p class="bold">Happy Hours</p>
+													<p>De {{ bar.getHappyHourByDay(today).getOption('beginning').value }}h à {{ bar.getHappyHourByDay(today).getOption('ending').value }}h</p>
+												</div>
+												<div class="col-xs-5 col-sm-5 col-md-5">
+													<p class="reductionHappyHour">-{{ bar.getHappyHourByDay(today).getOption('value').value }}%</p> 
+												</div>
+											</div>
+										{% else %}
+											<p>Tenez moi au courant<br>Dès qu'une promo est proposé dans ce bar</p>
+										{% endif %}
+									</div>
+									<div class="clear"></div>
+									<div class="ticketBarBottom">
+										<p>POUR AUJOURD'HUI</p>
+										<p class="testSuccess"></p>
+									</div>
+								{% else %}
+									<div class="ticketBarTop">
+										{% if bar.scheduleArray[today].status == 'Ouvert' %}
+											{% if bar.getHappyHourByDay(today).getOption('value').value != 0 %}
+												<img src="{{asset('img/pictoPromo.png')}}" alt="">
+											{% endif %}
+											{% if bar.getPromotionByDay(today).getOption('value').value == 0 %}
+												{% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+													<div class="obtenirPromo JS-obtenirPromo JS-promoBox" data-bar-id="{{bar.id}}">
+												{% else %}
+													<div class="obtenirPromo animConnexion">
+												{% endif %}
+
+														<h2 class="font30 fontWeight200">PAS DE PROMO</h2>
+														<h3>Mais <span>5 cheers</span> de fidélité</h3>
+														<p class="voirMaConfirmation"></p>
+													</div>
+											{% else %}
+												{% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+													<div class="obtenirPromo JS-obtenirPromo JS-promoBox" data-bar-id="{{bar.id}}" data-valuepromo="{{ bar.getPromotionByDay(today).getOption('value').value }}">
+												{% else %}
+													<div class="animConnexion">
+												{% endif %}
+														<h2 class="font30">-{{ bar.getPromotionByDay(today).getOption('value').value }}%</h2>
+														<h3>SUR UNE CONSOMMATION</h3>
+														<p class="voirMaConfirmation"></p>
+													</div>
+												
+
+											{% endif %}
+										{% else %}
+											<p class="barClose">Ce bar est fermé<p>
+										{% endif %}
+									</div>
+									<div class="ticketPromotion col-xs-12 col-sm-12 col-md-12">
+										{% if bar.getHappyHourByDay(today).getOption('value').value != 0 %}
+
+											{% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+												<div class="obtenirPromo JS-obtenirPromo" data-bar-id="{{bar.id}}">
+											{% else %}
+												<div class="animConnexion">
+											{% endif %}
+													<div class="col-xs-7 col-sm-7 col-md-7">
+														<p class="bold">Happy Hours</p>
+														<p>De {{ bar.getHappyHourByDay(today).getOption('beginning').value }}h à {{ bar.getHappyHourByDay(today).getOption('ending').value }}h</p>
+													</div>
+													<div class="col-xs-5 col-sm-5 col-md-5">
+														<p class="reductionHappyHour">-{{ bar.getHappyHourByDay(today).getOption('value').value }}%</p> 
+													</div>
+												</div>
+										{% else %}
+											<p>Tenez moi au courant<br>Dès qu'une promo est proposé dans ce bar</p>
+										{% endif %}
+										
+										{# le {{days[2]}} -{{ bar.promotion.promotionArray[days[2]]['happy-hour'].value }}%</p> #}
+									</div>
+									<div class="clear"></div>
+									<div class="ticketBarBottom">
+									{% if bar.scheduleArray[today].status == 'Ouvert' %}
+										{% if bar.getPromotionByDay(today).getOption('value').value == 0 %}
+											{% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+												<p class="obtenirPromo JS-obtenirPromo" data-bar-id="{{bar.id}}">
+											{% else %}
+											<p class="animConnexion">	
+											{% endif %}	
+												RESERVEZ POUR AUJOURD'HUI</p>
+												<p class="testSuccess"></p>
+										{% else %}
+											{% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+												<p class="obtenirPromo JS-obtenirPromo" data-bar-id="{{bar.id}}">
+											{% else %}
+												<p class="animConnexion">	
+											{% endif %}	
+												OBTENIR LA PROMO</p>
+												<p class="testSuccess"></p>
+										{% endif %}
+									{% else %}
+										<p>AUJOURD'HUI<p>
+									{% endif %}
+									</div>
+								{% endif %}
+							</div>
+						</div> -->
+						<div class="confirmationReservation">
+							<div class="checkConfirmation" style="background-image : url('{{ asset('uploads/bar/'~bar.path) }}');">
+								<p class='jourReservation'>{{'now'|date('d')}}</p>
+								<p class='moisReservation'>
+
+								{% set months = {'1': 'JANVIER', '2': 'FEVRIER', '3': 'MARS', '4': 'AVRIL', '5': 'MAI', '6': 'JUIN', '7': 'JUILLET', '8': 'AOUT', '9': 'SEPTEMBRE', '10': 'OCTOBRE', '11': 'NOVEMBRE', '12': 'DECEMBRE'} %}
+
+							      {% for j in 1..12 %}
+
+									{% if 'now'|date('m') == j %}
+										{{ months[j] }}
+									{% endif %}
+								{% endfor %}
+								</p>
+							</div>
+							<div class="contentConfirmation">
+								<div class="textContentConfirmation">
+									<div class="closeRappel">
+										<img src="{{asset('img/crossClose.png')}}" alt="">
+									</div>
+									<h2>Réservation Confirmée</h2>
+									{% if bar.getPromotionByDay(today).getOption('value').value == 0 %}
+										<p class="rappelPromo">Votre réservation pour {{ bar.name }} est valable jusqu'à ce soir</p>
+									{% else %}
+										<p class="rappelPromo"><span class="rappelPromotion">-{{ bar.getPromotionByDay(today).getOption('value').value }}%</span>
+
+										{% if bar.getHappyHourByDay(today).getOption('value').value !=0 %}
+
+											<span class="rappelHappyHours">et -{{bar.getHappyHourByDay(today).getOption('value').value}}%</span> de {{ bar.getHappyHourByDay(today).getOption('beginning').value }}h à {{ bar.getHappyHourByDay(today).getOption('ending').value }}h
+										{% endif %}
+										</p>
+									{% endif %}
+
+									{% if (bar.getPromotionByDay(today).getOption('restriction').value or bar.getHappyHourByDay(today).getOption('restriction').value) %}
+										<p class="rappelCondition"><a href="{{ path('fos_user_profile_show') }}">Voir les conditions</a></p>
+									{% endif %}
+
+									<!-- <div class="contentButtonRappel">
+										<div class="row">
+											<div class="col-xs-12 col-sm-12 col-md-12">
+												<div class="col-xs-4 col-sm-4 col-md-4">
+													<p>Voir les conditions</p>
+												</div>
+												<div class="col-xs-4 col-sm-4 col-md-4">
+													<p>Inviter des amis à reserver</p>
+												</div>
+												<div class="col-xs-4 col-sm-4 col-md-4">
+													<p>Annuler</p>
+												</div>
+											</div>
+										</div>
+										
+									</div> -->
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -574,8 +633,6 @@
 	      		slideHtml = 
 	      		'<div class="col-xs-12 col-sm-4 col-md-4"><div class="transportSliderSlide" data-id="slide-' + i + '"><img class="transportPic" src="{{ asset('img/L_M.png') }}" alt="metro"><p class="placeName">' + place.name + '</p></div></div>';
 	      		// buttonHtml += '<div class="sliderController" data-id="slide-' + i + '"></div>';
-
-	      		console.log(results);
 	      	}
 
 	      	$('.transportSliderWrapper').append(slideHtml);

@@ -52,6 +52,10 @@ input[type="file"] > input[type="button"]::-moz-focus-inner {
 	padding-top: 20px;
 }
 
+.margin20{
+	margin-top: 20px;
+}
+
 .padding40{
 	padding-top: 40px;
 }
@@ -1392,6 +1396,7 @@ p.droitReserve{
 .explicationsBlock{
 	margin-top: 20px;
 	margin-bottom: 40px;
+	box-shadow: 0.5px 0.866px 1px 0px rgba(48, 48, 48, 0.098);
 }
 .blockExplication{
 	padding: 10px;
@@ -1414,6 +1419,12 @@ p.droitReserve{
 	background: url(../img/plusReserve.png) no-repeat center; 
   	-webkit-background-size: cover; /* pour anciens Chrome et Safari */
 }
+
+.nameInHeader{
+text-transform:capitalize;
+
+}
+
 /*.borderTopImage{
 	width: 0%;
 	height: 6px;
@@ -1775,9 +1786,87 @@ select:focus {
 	position: initial;
 }
 
+.infoBarNote{
+	background-color: #fff;
+	margin-top: 50px;
+	position: initial;
+}
+
+.infoBarNote h1{
+	color: #5ac4d4;
+	font-size: 23px;
+	text-align: center;
+	font-weight: normal;
+}
+
+.contentReservation{
+	background-color: #f6f6f6;
+	text-align: center;
+	padding-top: 7px;
+    margin-top: -7px;
+}
+
+.kindOfPromo{
+	margin: 0;
+	padding-top: 10px;
+	font-size: 12px;
+}
+
+.promotionPresent, .noOfferPresent{
+	background-color: #5ac4d4;
+}
+
+.HappyHourPresent{
+	background-color: #ea9026;
+}
+
+.reductionPresent{
+	color: #fff;
+	font-size: 35px;
+	padding: 5px;
+	padding-top: 0px;
+	margin: 0;
+}
+
+.infoPrensent{
+	color: #fff;
+	margin: 0;
+    padding-bottom: 5px;
+    font-size: 11px;
+    margin-top: -10px;
+}
+
+.boutonReservationPromo{
+	background-color: #696969;
+	text-align: center;
+	color: #fff;
+	width: 60%;
+	margin: 10px auto;
+	padding: 5px;
+	cursor: pointer;
+}
+
+.boutonReservationPromo p{
+	margin: 0;
+}
+
 .adresseBarShow{
 	margin-top: 4px !important;
 	margin-left: 20px !important;
+}
+
+.infoReservation{
+	background-color: #303030;
+	color: #fff;
+	width: 80%;
+	margin: auto;
+	font-size: 10px;
+	position: relative;
+}
+
+.infoReservation p{
+	margin: 0;
+	text-align: center;
 }
 
 .turn{
@@ -1885,7 +1974,7 @@ p.topPosition{
 	text-align: center;
 }
 
-.voirMaConfirmationDone, .barClose{
+.barClose{
 	line-height: 80px;
 }
 
@@ -2142,6 +2231,11 @@ p.rappelCondition{
 	background-repeat: no-repeat;
 }
 
+.contentAffterSuperInfoBar{
+	width: 90%;
+	margin:auto;
+}
+
 .coteneurBackOfficeBar{
 	background-color: #fff;
 }
@@ -2208,8 +2302,6 @@ margin: auto;
 }
 
 .superInfoBar{
-	width: 70%;
-	margin: auto;
 	margin-top: 50px;
 	background-color: #fff;
 	min-height: 550px;
@@ -5177,6 +5269,8 @@ p.nextPointFidelite{
     .superInfoBar{
     	height: auto;
     	padding-bottom: 20px;
+    	width: 100%;
+	  	background-color: #f6f6f6;
     }
 
     .subtitlePageRegisterBig{
@@ -5185,12 +5279,7 @@ p.nextPointFidelite{
 
 	.ongletCreation {
 	  text-align: center;
-	}
-
-	.superInfoBar {
-	  width: 100%;
-	  background-color: #f6f6f6;
-	}
+	}	
 
 	.confirmationReservation{
 		width: 100%;

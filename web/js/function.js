@@ -27,7 +27,6 @@ function changePaddingWelcome(heighWelcome, baseHeightCenterWelcome){
 
 changePaddingWelcome(heighWelcome, (baseHeightCenterWelcome+20) );
 
-
 $(window).on('resize',function() {
   baseHeight = $(window).height();
   navHeight = $('.menuNav').height();
@@ -425,7 +424,6 @@ $('.mesReservation').on('click', function(){
 $('.JS-mesReservation').on('click', function(){
     document.cookie = "onglet=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
     setCookie("onglet", "ongletReservation", 1);
-    console.log('coucou');
 });
 
 
@@ -445,17 +443,14 @@ switch(cookie){
     case "ongletReservation":
         $('.ongletReservation').addClass('selectedOngletUser');
         $('.contentReservation').addClass('selectedContentUser');
-        //console.log('lala ' + cookie);
         break;
     case "ongletParrainage":
         $('.ongletParrainage').addClass('selectedOngletUser');
         $('.contentParrainage').addClass('selectedContentUser');
-        //console.log('lala ' + cookie);
         break;
     case "ongletInformation":
         $('.ongletInformation').addClass('selectedOngletUser');
         $('.contentInformation').addClass('selectedContentUser');
-        //console.log('lala ' + cookie);
         break;
     default : 
         $('.ongletInformation').addClass('selectedOngletUser');
@@ -954,20 +949,26 @@ $(document).on( 'click', '.JS-obtenirPromo', function() {
       url: Routing.generate('get_promo', {id: promoId, value: valuePromo}),
       data: 'json',
       success: function (data) {
-        $('.testSuccess').html(data);
-        $('.ticket .ticketBarTop').css('background-color', '#ea9026');
-        $('.ticket .ticketBarTop h2').hide();
-        $('.ticket .ticketBarTop h3').hide();
-        $('.ticket .ticketBarTop p').html('');
-        $('.ticket .ticketBarTop p').append('VOIR MA RESERVATION');
-        $('.ticket p.obtenirPromo').html('');
-        $('.ticket p.obtenirPromo').append('POUR AUJOUR\'HUI');
-        $('.ticket').find('[data-bar-id]').attr( 'data-bar-id', null );
-        $('.JS-ticket').removeClass('JS-ticket');
-        $('.JS-promoBox').addClass('voirMaConfirmationDone');
+        // $('.testSuccess').html(data);
+        // $('.ticket .ticketBarTop').css('background-color', '#ea9026');
+        // $('.ticket .ticketBarTop h2').hide();
+        // $('.ticket .ticketBarTop h3').hide();
+        // $('.ticket .ticketBarTop p').html('');
+        // $('.ticket .ticketBarTop p').append('VOIR MA RESERVATION');
+        // $('.ticket p.obtenirPromo').html('');
+        // $('.ticket p.obtenirPromo').append('POUR AUJOUR\'HUI');
+        // $('.ticket').find('[data-bar-id]').attr( 'data-bar-id', null );
+        // $('.JS-ticket').removeClass('JS-ticket');
+        // $('.JS-promoBox').addClass('voirMaConfirmationDone');
         
-        closeTicketPromotion();
+        // closeTicketPromotion();
+        // confirmationReservation();
+
+        $('.JS-promoBox').addClass('voirMaConfirmationDone');
+        $('.JS-promoBox').html('VOIR MA PROMO');
+
         confirmationReservation();
+
 
       },
       error: function(data){
@@ -1191,12 +1192,6 @@ $('#senddrink').on('click', function(){
 var changeHourAutomatique = true;
 
 $('.heure select').on('change', function(){
-    // console.log($(this).data('when'));
-    // console.log($(this).val());
-
-    // var string = JSON.stringify($(this).parentsUntil('.CreationBar').find($('#cac_barbundle_bar_schedule')).attr('value'));
-
-    // console.log(string);
 
     if(changeHourAutomatique){
         var days = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"];
@@ -1204,8 +1199,6 @@ $('.heure select').on('change', function(){
         if($(this).data('when') == 'open'){
 
             if($(this).parentsUntil('.servicesNewBar').find($("select[data-when='close']")).val() != ""){
-                // console.log('open : ' + $(this).val() +' close : ' + $(this).parentsUntil('.servicesNewBar').find($("select[data-when='close']")).val());
-                // console.log('ok les deux sont plein : last click open');
 
                 if(confirm('Voulez vous appliquer ces horaires pour tout les jours ?')){
                     $('.servicesNewBar').find($("select[data-when='open'] option[value=" + $(this).val() + "]")).prop('selected', true);
@@ -1220,18 +1213,14 @@ $('.heure select').on('change', function(){
                     }
                     
                     $('#cac_barbundle_bar_schedule').val(JSON.stringify(hidden));
-                }else{
-                    console.log('nope');
                 }
                 changeHourAutomatique = false;
             }
            
         }else{
             if($(this).parentsUntil('.servicesNewBar').find($("select[data-when='open']")).val() != ""){
-                // console.log('open : ' + $(this).parentsUntil('.servicesNewBar').find($("select[data-when='open']")).val() +' close : ' + $(this).val());
-                // console.log('ok les deux sont plein : last click close');
                 if(confirm('Voulez vous appliquer ces horaires pour tout les jours ?')){
-                    //console.log('okay');
+
                     $('.servicesNewBar').find($("select[data-when='close'] option[value=" + $(this).val() + "]")).prop('selected', true);
                     $('.servicesNewBar').find($("select[data-when='open'] option[value=" + $(this).parentsUntil('.servicesNewBar').find($("select[data-when='open']")).val() + "]")).prop('selected', true);
                     
@@ -1246,8 +1235,6 @@ $('.heure select').on('change', function(){
                     $('#cac_barbundle_bar_schedule').val(JSON.stringify(hidden));
 
 
-                }else{
-                    console.log('nope');
                 }
                 changeHourAutomatique = false;
             }
