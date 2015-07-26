@@ -5543,12 +5543,30 @@ p.nextPointFidelite{
     opacity: 0.6;
     transition: opacity 0.15s ease-in-out;
 }
-.img-thumb .delete-img:hover {
+.img-thumb .crop-img, .sortable-tools .crop-img {
+    position: absolute;
+    top: 5px;
+    right: 55px;
+    font-size: 25px;
+    opacity: 0.6;
+    transition: opacity 0.15s ease-in-out;
+}
+.sortable-tools .crop-img {
+    top: 3px;
+    right: 35px;
+}
+.img-thumb .delete-img:hover, .img-thumb .crop-img:hover, .sortable-tools .crop-img:hover {
     text-decoration: none;
     opacity: 1;
     transition: opacity 0.15s ease-in-out;
 }
-.sortable-hover {
+.small-thumbs .small-thumb {
+    width: 100%;
+    height: 100px;
+    background-size: cover;
+    background-position: center;
+}
+.sortable-hover, .thumb-hover {
     background-color: rgba(0, 0, 0, 0.3);
     line-height: 160px;
     height: 100%;
@@ -5556,7 +5574,13 @@ p.nextPointFidelite{
     opacity: 0;
     transition: opacity 0.15s ease-in-out;
 }
-.sortable-hover:hover {
+.thumb-hover {
+    line-height: 100px;
+}
+.thumb-hover {
+    text-align: center;
+}
+.sortable-hover:hover, .thumb-hover:hover {
     opacity: 1;
     transition: opacity 0.15s ease-in-out;
 }
@@ -5576,11 +5600,33 @@ p.nextPointFidelite{
     text-align: center;
     background-size: cover;
     background-position: center;
+    position: relative;
+}
+.sortable-tools {
+    font-size: 25px;
+    position: absolute;
+    top: 2px;
+    right: 5px;
+}
+.sortable-tools .glyphicon {
+    cursor: pointer;
+}
+.sortable-tools .glyphicon-ok {
+    color: #33cc33 !important;
+}
+.sortable-tools .glyphicon-remove {
+    color: #cc3333 !important;
 }
 .sliderThumbs {
     text-align: center;
 }
-#save-order button + span {
+#save-order button + span, #save-crop button + span {
     color: #33cc33 !important;
     opacity: 0;
+}
+#crop-wrapper {
+    width: 100%;
+}
+#crop-img {
+    max-width: 100%;
 }

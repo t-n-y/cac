@@ -118,13 +118,14 @@ class BarController extends Controller
     public function showAction($id)
     {
         // Mac et UNIX/Linux
-        setlocale(LC_TIME, "fr_FR");
+        //setlocale(LC_TIME, "fr_FR");
         // Windows
-        //setlocale(LC_TIME, "french");
+        setlocale(LC_TIME, "french");
         $today = ucfirst(strftime("%A"));
 
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository('CacBarBundle:Bar')->find($id);
+        $sliderImages = $em->getRepository('CacBarBundle:File')->findBy(array('bar' => $entity->getId(), 'slider' => 1));
         $user = $this->get('security.context')->getToken()->getUser();
         $date = date('Y-m-d');
         if($user != 'anon.') {
@@ -142,6 +143,7 @@ class BarController extends Controller
         return array(
             'user' => $user,
             'bar'      => $entity,
+            'sliderImages' => $sliderImages,
             'today' => ucfirst($today),
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

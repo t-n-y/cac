@@ -86,12 +86,12 @@
     <script src="{{ asset('js/jquery.Jcrop.min.js') }}" type="text/javascript" /></script>
     <script>
     $(document).ready(function(){
-        var jcrop_api = '';
+        /*var jcrop_api = '';
 
         function tooSmall() {
             alert('Image trop petite, largeur min 1280px, hauteur min 350px');
             $('#blah').attr('src', '#');
-        }
+        }*/
 
         function readURL(input) {
 
@@ -99,8 +99,8 @@
                 var reader = new FileReader();
                 var img = new Image();
                 
-                reader.onload = function (e) {
-                    if(jcrop_api != '') {h
+                /*reader.onload = function (e) {
+                    if(jcrop_api != '') {
                         jcrop_api.destroy();
                         $('#blah').attr('style', '');
                     }
@@ -132,7 +132,7 @@
                         $('.jcrop-holder, .jcrop-keymgr + img').height(nH);
                         $('.jcrop-holder div div img').width(mW).height(nH);
                     }
-                };
+                };*/
                 
                 reader.readAsDataURL(input.files[0]);
             }

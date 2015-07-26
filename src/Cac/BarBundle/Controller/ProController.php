@@ -458,7 +458,7 @@ class ProController extends Controller
             $entity->preUpload();
             $em->persist($entity);
             $em->flush();
-            $entity->resizeImg($coords);
+            //$entity->resizeImg($coords);
             return $this->redirect($this->generateUrl('promotion_create', array('id' => $id)));
         }
         return $this->render('CacBarBundle:Pro:newPart2.html.twig', array(
@@ -724,6 +724,7 @@ class ProController extends Controller
                 $em->persist($file);
                 $em->flush();
 
+                return $this->redirect($this->generateUrl('file_upload', array('id' => $bar->getId())));
             }
         }
 
@@ -821,6 +822,137 @@ class ProController extends Controller
             array_push($res, array($value['id'] => $value['order']));
         }
         $em->flush();
+        array_push($res, array('status' => '1'));
+
+        return new JsonResponse($res);
+    }
+
+    /**
+     * Crop image for Bar entity.
+     *
+     * @Route("/crop/{id}", name="crop")
+     * @Method({"GET", "POST"})
+     * @Template("CacBarBundle:Pro:crop.html.twig")
+     */
+    public function cropAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $file = $em->getRepository('CacBarBundle:File')->find($id);
+        $bar = $em->getRepository('CacBarBundle:Bar')->find($file->getBar()->getId());
+
+        if (!$bar) {
+            throw $this->createNotFoundException('Le bar demandé n\'existe pas.');
+        }
+
+        if ($this->get('security.context')->isGranted('ROLE_ADMIN'))
+            $role = true;
+        else
+            $role = false;
+        if ($this->get('security.context')->getToken()->getUser() != $bar->getAuthor() && $role !== true ) {
+            throw $this->createNotFoundException('Vous n\'avez pas accés à ce contenu.');
+        }
+
+        list($width, $height, $type, $attr) = getimagesize($file->getAbsolutePath());
+
+        return array(
+            'bar' => $bar,
+            'file' => $file,
+            'imgWidth' => $width,
+            'imgHeight' => $height
+        );
+    }
+
+    /**
+     * Save crop size for a File entity.
+     *
+     * @Route("/save-crop/{id}", name="save_crop", options={"expose"=true})
+     * @Method({"POST"})
+     */
+    public function saveCropAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $file = $em->getRepository('CacBarBundle:File')->find($id);
+        $bar = $em->getRepository('CacBarBundle:Bar')->find($file->getBar()->getId());
+
+        if (!$bar) {
+            throw $this->createNotFoundException('Le bar demandé n\'existe pas.');
+        }
+
+        if ($this->get('security.context')->isGranted('ROLE_ADMIN'))
+            $role = true;
+        else
+            $role = false;
+        if ($this->get('security.context')->getToken()->getUser() != $bar->getAuthor() && $role !== true ) {
+            throw $this->createNotFoundException('Vous n\'avez pas accés à ce contenu.');
+        }
+
+        $ratio = $request->request->get('ratio');
+
+        $cropX = floor($request->request->get('x')/$ratio);
+        $cropY = floor($request->request->get('y')/$ratio);
+        $cropW = floor($request->request->get('w')/$ratio);
+        $cropH = floor($request->request->get('h')/$ratio);
+
+        $res = [];
+
+        $file->setCropX($cropX);
+        $file->setCropY($cropY);
+        $file->setCropH($cropW);
+        $file->setCropW($cropH);
+
+        $em->persist($file);
+
+        array_push($res, array('coords' => array(
+            'x' => $cropX,
+            'y' => $cropY,
+            'w' => $cropW,
+            'h' => $cropH
+        )));
+
+        $em->flush();
+
+        array_push($res, array('status' => '1'));
+
+        return new JsonResponse($res);
+    }
+
+    /**
+     * Add/remove image from slider for a Bar entity.
+     *
+     * @Route("/toggle-picture", name="toggle_picture", options={"expose"=true})
+     * @Method({"POST"})
+     */
+    public function togglePictureAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $id = $request->request->get('id');
+        $file = $em->getRepository('CacBarBundle:File')->find($id);
+        $bar = $em->getRepository('CacBarBundle:Bar')->find($file->getBar()->getId());
+
+        if (!$bar) {
+            throw $this->createNotFoundException('Le bar demandé n\'existe pas.');
+        }
+
+        if ($this->get('security.context')->isGranted('ROLE_ADMIN'))
+            $role = true;
+        else
+            $role = false;
+        if ($this->get('security.context')->getToken()->getUser() != $bar->getAuthor() && $role !== true ) {
+            throw $this->createNotFoundException('Vous n\'avez pas accés à ce contenu.');
+        }
+
+        $res = [];
+
+        if($file->getSlider() == 0) {
+            $file->setSlider(1);
+        } else {
+            $file->setSlider(0);
+        }
+
+        $em->persist($file);
+        $em->flush();
+
         array_push($res, array('status' => '1'));
 
         return new JsonResponse($res);

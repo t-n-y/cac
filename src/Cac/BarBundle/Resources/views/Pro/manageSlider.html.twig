@@ -2,11 +2,6 @@
 
 {% block title %}Organiser le slider{% endblock %}
 
-{% block stylesheets %}
-    {{ parent() }}
-      <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-{% endblock %}
-
 {% block body %}
 <div class="row">
     <div class="topBarPro col-xs-12 col-sm-12 col-md-12 noPadding">
@@ -21,7 +16,7 @@
         </div>
     </div>
 <div>
-    
+
 <div class="row">
     <div class="col-xs-10 col-xs-offset-1">
         <div class="col-xs-12 pictureThumbs sliderThumbs">
@@ -31,6 +26,16 @@
                 <li class="ui-state-default" style="background-image: url('{{ asset('uploads/bar/'~file.path) }}');" data-id="{{ file.id }}">
                     <div class="sortable-hover">
                         <span class="glyphicon glyphicon-screenshot"></span>
+                    </div>
+                    <div class="sortable-tools">
+                        {% if file.slider != 0 %}
+                        <span class="glyphicon glyphicon-ok tooltipLink add-{{ file.id }}" title="Apparait dans le slider" data-toggle="tooltip" data-placement="right" data-id="{{ file.id }}"></span>
+                        <span class="glyphicon glyphicon-remove tooltipLink remove-{{ file.id }} hidden" title="N'apparait pas dans le slider" data-toggle="tooltip" data-placement="right" data-action="remove" data-id="{{ file.id }}"></span>
+                        {% else %}
+                        <span class="glyphicon glyphicon-ok tooltipLink add-{{ file.id }} hidden" title="Apparait dans le slider" data-toggle="tooltip" data-placement="right" data-id="{{ file.id }}"></span>
+                        <span class="glyphicon glyphicon-remove tooltipLink remove-{{ file.id }}" title="N'apparait pas dans le slider" data-toggle="tooltip" data-placement="right" data-action="remove" data-id="{{ file.id }}"></span>
+                        {% endif %}
+                        <a href="{{ path('crop', {'id' : file.id}) }}" class="glyphicon glyphicon-edit crop-img tooltipLink" title="Decouper" data-toggle="tooltip" data-placement="right" ></a>
                     </div>
                 </li>
             {% endfor %}
@@ -50,6 +55,7 @@
     <script>
         $(document).ready(function() {  
             $('.tooltipLink').tooltip();
+
             $("#sortable").sortable();
             $("#sortable").disableSelection();
             $("#sortable").on('sortstop', function(event, ui) {
@@ -79,7 +85,29 @@
                             $('.validate').animate({opacity: '1'}, 200).animate({opacity: '0'}, 500);
                         }
                     }
-                })
+                });
+            });
+            $('.sortable-tools').on('click', 'span', function() {
+                var $this = $(this),
+                    next,
+                    id = $this.attr('data-id');
+
+                if($this.hasClass('glyphicon-ok')) {
+                    next = '.remove-' + id;
+                } else {
+                    next = '.add-' + id;
+                }
+                $.ajax({
+                    url: '{{ path("toggle_picture") }}',
+                    method: 'POST',
+                    data : {id: id},
+                    success: function(res) {
+                        if(res[res.length-1].status == 1) {
+                            $this.addClass('hidden');
+                            $(next).removeClass('hidden');
+                        }
+                    }
+                });
             });
         });
     </script>
