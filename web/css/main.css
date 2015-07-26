@@ -5454,11 +5454,19 @@ p.nextPointFidelite{
     opacity: 0.6;
     transition: opacity 0.15s ease-in-out;
 }
-.img-thumb .crop-img {
+.img-thumb .crop-img, .sortable-tools .crop-img {
+    position: absolute;
+    top: 5px;
+    right: 55px;
+    font-size: 25px;
     opacity: 0.6;
     transition: opacity 0.15s ease-in-out;
 }
-.img-thumb .delete-img:hover, .img-thumb .crop-img:hover {
+.sortable-tools .crop-img {
+    top: 3px;
+    right: 35px;
+}
+.img-thumb .delete-img:hover, .img-thumb .crop-img:hover, .sortable-tools .crop-img:hover {
     text-decoration: none;
     opacity: 1;
     transition: opacity 0.15s ease-in-out;

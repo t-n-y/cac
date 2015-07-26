@@ -29,10 +29,13 @@
                     </div>
                     <div class="sortable-tools">
                         {% if file.slider != 0 %}
-                        <span class="glyphicon glyphicon-ok tooltipLink" title="Apparait dans le slider" data-toggle="tooltip" data-placement="right" data-action="add"></span>
+                        <span class="glyphicon glyphicon-ok tooltipLink add-{{ file.id }}" title="Apparait dans le slider" data-toggle="tooltip" data-placement="right" data-id="{{ file.id }}"></span>
+                        <span class="glyphicon glyphicon-remove tooltipLink remove-{{ file.id }} hidden" title="N'apparait pas dans le slider" data-toggle="tooltip" data-placement="right" data-action="remove" data-id="{{ file.id }}"></span>
                         {% else %}
-                        <span class="glyphicon glyphicon-remove tooltipLink" title="N'apparait pas dans le slider" data-toggle="tooltip" data-placement="right" data-action="remove"></span>
+                        <span class="glyphicon glyphicon-ok tooltipLink add-{{ file.id }} hidden" title="Apparait dans le slider" data-toggle="tooltip" data-placement="right" data-id="{{ file.id }}"></span>
+                        <span class="glyphicon glyphicon-remove tooltipLink remove-{{ file.id }}" title="N'apparait pas dans le slider" data-toggle="tooltip" data-placement="right" data-action="remove" data-id="{{ file.id }}"></span>
                         {% endif %}
+                        <a href="{{ path('crop', {'id' : file.id}) }}" class="glyphicon glyphicon-edit crop-img tooltipLink" title="Decouper" data-toggle="tooltip" data-placement="right" ></a>
                     </div>
                 </li>
             {% endfor %}
@@ -85,18 +88,26 @@
                 });
             });
             $('.sortable-tools').on('click', 'span', function() {
-                console.log($(this).attr('data-action'));
-                /*$.ajax({
-                    url: '{{ path("save_slider_order") }}',
+                var $this = $(this),
+                    next,
+                    id = $this.attr('data-id');
+
+                if($this.hasClass('glyphicon-ok')) {
+                    next = '.remove-' + id;
+                } else {
+                    next = '.add-' + id;
+                }
+                $.ajax({
+                    url: '{{ path("toggle_picture") }}',
                     method: 'POST',
-                    data : JSON.parse(data),
+                    data : {id: id},
                     success: function(res) {
                         if(res[res.length-1].status == 1) {
-                            $this.removeAttr('disabled').html('Enregistrer');
-                            $('.validate').animate({opacity: '1'}, 200).animate({opacity: '0'}, 500);
+                            $this.addClass('hidden');
+                            $(next).removeClass('hidden');
                         }
                     }
-                });*/
+                });
             });
         });
     </script>

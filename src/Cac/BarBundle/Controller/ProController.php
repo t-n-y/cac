@@ -926,16 +926,33 @@ class ProController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $list = $request->request->get('list');
+        $id = $request->request->get('id');
+        $file = $em->getRepository('CacBarBundle:File')->find($id);
+        $bar = $em->getRepository('CacBarBundle:Bar')->find($file->getBar()->getId());
+
+        if (!$bar) {
+            throw $this->createNotFoundException('Le bar demandé n\'existe pas.');
+        }
+
+        if ($this->get('security.context')->isGranted('ROLE_ADMIN'))
+            $role = true;
+        else
+            $role = false;
+        if ($this->get('security.context')->getToken()->getUser() != $bar->getAuthor() && $role !== true ) {
+            throw $this->createNotFoundException('Vous n\'avez pas accés à ce contenu.');
+        }
+
         $res = [];
 
-        foreach($list as $value) {
-            $file = $em->getRepository('CacBarBundle:File')->find($value['id']);
-            $file->setOrder(intval($value['order']));
-            $em->persist($file);
-            array_push($res, array($value['id'] => $value['order']));
+        if($file->getSlider() == 0) {
+            $file->setSlider(1);
+        } else {
+            $file->setSlider(0);
         }
+
+        $em->persist($file);
         $em->flush();
+
         array_push($res, array('status' => '1'));
 
         return new JsonResponse($res);
