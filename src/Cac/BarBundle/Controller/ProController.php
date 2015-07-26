@@ -458,7 +458,7 @@ class ProController extends Controller
             $entity->preUpload();
             $em->persist($entity);
             $em->flush();
-            $entity->resizeImg($coords);
+            //$entity->resizeImg($coords);
             return $this->redirect($this->generateUrl('promotion_create', array('id' => $id)));
         }
         return $this->render('CacBarBundle:Pro:newPart2.html.twig', array(
