@@ -88,7 +88,10 @@
                         <li>
                             {% render url('navigation') %}
                             <a href="{{ path('barman_register') }}"><p>Ajouter un barman</p></a>
-                            {% if is_granted('ROLE_BIGBOSS') %}<a href="{{ path('bar_new') }}"><p>Créer un bar</p></a>{% endif %}
+                            {% if is_granted('ROLE_BIGBOSS') %}
+                              <a href="{{ path('bar_new') }}"><p>Créer un bar</p></a>
+                              <a href="{{ path('bars_list') }}"><p>Mes bars</p></a>
+                            {% endif %}
                         </li>
                         <li class="navToggleBtn logout"><a href="#" class="displayMore"><p>Afficher plus</p></a></li>
                         <li class="navToggle navLine"><div class="lisere"></div></li>
