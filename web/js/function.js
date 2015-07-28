@@ -945,6 +945,9 @@ $(document).on( 'click', '.JS-obtenirPromo', function() {
   $('.JS-obtenirPromo').removeClass('JS-obtenirPromo');
   var promoId = $(this).data('bar-id');
   var valuePromo = $(this).data('valuepromo');
+  if(!valuePromo){
+    valuePromo = 0;
+  }
   $.ajax( {
       url: Routing.generate('get_promo', {id: promoId, value: valuePromo}),
       data: 'json',
