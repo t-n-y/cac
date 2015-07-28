@@ -1161,7 +1161,7 @@ $('.ticketVerreValidate').on('click', function(){
                 dateFormat: "dd-mm-yy"
               });
             $('.forParrainage').hide();
-            $('.popupsponsorship').show();
+            $('.popupsponsorship').removeClass('completionAdresse');
             $('.isConnexion').show();
 
           }
@@ -1271,3 +1271,5 @@ function getCookie(cname) {
     }
     return "";
 }
+
+

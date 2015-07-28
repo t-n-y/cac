@@ -40,6 +40,12 @@ input[type="file"] > input[type="button"]::-moz-focus-inner {
 	display: none;
 }
 
+.floatable{
+	position: fixed !important;
+	top: 10px;
+	margin-top: 0px !important; 
+}
+
 .noPadding{
 	padding: 0px;
 }
@@ -278,7 +284,7 @@ h2.font30{
 
 .popupsponsorship{
 	width: 400px;
-	height: 380px;
+	min-height: 380px;
 	background-color: #fff;
 	position: fixed;
 	top: 50%;
@@ -286,9 +292,9 @@ h2.font30{
 	left:50%;
 	margin-left: -200px;
 	z-index: 10001;
-	display: none;
 	color: #303030;
     text-align: center;
+    padding-bottom: 10px;
 }
 
 .ui-datepicker{
@@ -1784,6 +1790,10 @@ select:focus {
 	background-color: #fff;
 	padding: 40px 0 25px 0;
 	position: initial;
+}
+
+.contentInfoBarNote{
+	position: relative;
 }
 
 .infoBarNote{
@@ -5001,6 +5011,12 @@ p.nextPointFidelite{
 	color: #fff;
 	text-decoration: none;
 }
+
+
+
+/******CALENDRIER*******/
+
+
 
 
 
