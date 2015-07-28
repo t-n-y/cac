@@ -6,13 +6,13 @@
 
 
 
-<div class="barList col-xs-12 col-sm-12 col-md-12 noPadding" id="noSearchList">
+<div class="myBarList col-xs-12 col-sm-12 col-md-12 noPadding" id="noSearchList">
 {% set nbLoops = 0 %}
 {% for bar in bars %}
 	{% if bar.author == app.user.email %}
 
-		<a href="{{ path('bar_show', { id : bar.id }) }}">
-			<div class="barInList col-xs-12 col-sm-6 col-md-3 noPadding">
+		
+			<!-- <div class="barInList col-xs-12 col-sm-6 col-md-3 noPadding">
 				<div class="contentImageBar" style="background-image:url({{ asset('uploads/bar/'~bar.path) }})">
 					<div class="shadowbarInList col-xs-12 col-sm-12 col-md-12">
 						<div class="col-xs-6 col-sm-6 col-md-5 noPadding">
@@ -42,8 +42,20 @@
 						</div>
 					</div>
 				</div>
+			</div> -->
+
+			<div class="myBarInList">
+				<div class="imgMyBarInList" style="background-image:url({{ asset('uploads/bar/'~bar.path) }})"></div>
+				<div class="infoMyBarInList">
+					<h1>{{ bar.name }}</h1>
+					<a href="{{ path('bars_offer', { id : bar.id }) }}">
+						<div class="linkMyBarInList">
+							<p>Accéder au back office de ce bar</p>
+						</div>
+					</a>
+				</div>
 			</div>
-		</a>
+
 	{% endif %}
 {% endfor %}
 

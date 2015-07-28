@@ -3114,6 +3114,59 @@ p.closeMesOptions{
 	margin-left: 0px;
 }
 
+/*********List Bar*********/
+
+.myBarList{
+	background-color: #f6f6f6;
+	padding: 20px;
+}
+
+.myBarInList{
+	width: 700px;
+	height: 150px;
+	margin: auto;
+	margin-bottom: 20px;
+	background-color: #fff;
+}
+
+.imgMyBarInList{
+	width: 150px;
+	height: 150px;
+	float: left;
+	background-size: cover;
+}
+
+.infoMyBarInList{
+    width: 550px;
+    float: left;
+    margin: auto;
+	text-align: center;
+	padding: 15px;
+}
+
+.infoMyBarInList h1{
+	color: #303030;
+	font-size: 25px;
+}
+
+.infoMyBarInList a{
+	color: #303030;
+	text-decoration: none;
+}
+
+.linkMyBarInList{
+	width: 50%;
+	margin: auto;
+	background-color: #5ac4d4;
+	padding: 5px;
+	color: #fff;
+}
+
+.linkMyBarInList p{
+	margin: 0;
+}
+
+/**************************/
 
 
 /*********FORM BAR***********/
