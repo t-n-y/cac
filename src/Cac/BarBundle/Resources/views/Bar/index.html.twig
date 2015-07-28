@@ -32,7 +32,7 @@
 							{% set colInfo = 4 %}
 						{% endif %}
 
-						{% if bar.promo  %}
+						{% if (bar.promo and bar.promo != "Valeur") %}
 							<p class="col-xs-{{colInfo}} col-sm-{{colInfo}} col-md-{{colInfo}} noPadding">-{{bar.promo}}%</p>
 						{% endif %}
 						{% if bar.happy  %}
@@ -107,7 +107,7 @@
 						<h3 id="firstWord{{ bar.id }}">{{ bar.name }}</h3>
 					</div>
 					<div class="col-xs-2 col-sm-2 col-md-2 noPadding">
-					{% if bar.promo  %}
+					{% if (bar.promo and bar.promo != "Valeur") %}
 						<p class="shadowPromotion hoverShadow">-{{ bar.promo }}%</p>
 					{% endif %}
 					</div>
@@ -155,13 +155,13 @@
 											</div>
 											<div class="shadowAdresse col-xs-12 col-sm-12 col-md-12 noPadding">
 												<div class="col-xs-2 col-sm-2 col-md-2 noPadding">
-													{% if bar.promo  %}
+													{% if (bar.promo and bar.promo != "Valeur") %}
 														<p class="shadowPromotion">-{{ bar.promo }}%</p>
 													{% endif %}
 												</div>
 												<div class="col-xs-1 col-sm-1 col-md-1 noPadding">
 													<div class="imageHappyHours">
-														{% if bar.promo  %}
+														{% if bar.happy  %}
 															<img src="{{asset('img/pictoHappyHours.png')}}" alt="">
 														{% endif %}
 													</div>

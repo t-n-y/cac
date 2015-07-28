@@ -42,8 +42,12 @@ input[type="file"] > input[type="button"]::-moz-focus-inner {
 
 .floatable{
 	position: fixed !important;
-	top: 10px;
-	margin-top: 0px !important; 
+    top: 0;
+    margin-top: 0px !important;
+    left: 65%;
+    margin-left: 15px;
+    right: 5%;
+    margin-right: 15px;
 }
 
 .noPadding{
@@ -1794,6 +1798,7 @@ select:focus {
 
 .contentInfoBarNote{
 	position: relative;
+	top:0;
 }
 
 .infoBarNote{
