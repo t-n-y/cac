@@ -5023,7 +5023,7 @@ p.nextPointFidelite{
 .printCode ul{
 	margin: 0;
 	padding: 0;
-	margin: 0 5%; 
+	margin: 0; 
 }
 
 .printCode li{
@@ -5031,7 +5031,18 @@ p.nextPointFidelite{
 	display: inline-block;
 	width: 19%;
 	text-align: center;
-	margin-top: 55px;
+	margin-top: 49px;
+	font-size: 20px;
+	letter-spacing: 1px;
+	font-weight: bold;
+}
+
+.printCode li:nth-child(-n+5){
+	margin-top: 30px;
+}
+
+.printCode li:nth-last-child(-n+15){
+	padding-top: 2px;
 }
 
 
@@ -5422,7 +5433,11 @@ p.nextPointFidelite{
     	position: fixed;
     	top: 0;
     	left: 0;
-    	width: 100%; margin: 0; float: none;
+    	right: 0;
+    	width: 129%;
+    	margin: 0; 
+    	size: letter landscape;
+    	margin: 0pt 0pt 0pt 0pt;
     }
 
     .toprint .navRetourOffre, .toprint .validationsOffre{
