@@ -481,6 +481,19 @@ h2.font30{
 	margin: auto;
 }
 
+.mdpOublie p{
+	color: #ff5a5f;
+	text-align: right;
+	font-size: 11px;
+	cursor: pointer;
+	text-decoration: underline;
+	margin-right: 10px;
+}
+
+.mdpOublie p a{
+	color: #ff5a5f;
+}
+
 .closeForConnexion{
 	position: absolute;
 	top : 14px;
