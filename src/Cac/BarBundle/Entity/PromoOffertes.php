@@ -61,6 +61,20 @@ class PromoOffertes
     private $value;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="nbpersonne", type="integer")
+     */
+    private $nbpersonne;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="hour", type="string", length=255)
+     */
+    private $hour;
+
+    /**
      * Get id
      *
      * @return integer 
@@ -207,5 +221,53 @@ class PromoOffertes
     public function getValue()
     {
         return $this->value;
+    }
+
+    /**
+     * Set nbpersonne
+     *
+     * @param integer $nbpersonne
+     *
+     * @return PromoOffertes
+     */
+    public function setNbpersonne($nbpersonne)
+    {
+        $this->nbpersonne = $nbpersonne;
+
+        return $this;
+    }
+
+    /**
+     * Get nbpersonne
+     *
+     * @return integer
+     */
+    public function getNbpersonne()
+    {
+        return $this->nbpersonne;
+    }
+
+    /**
+     * Set hour
+     *
+     * @param string $hour
+     *
+     * @return PromoOffertes
+     */
+    public function setHour($hour)
+    {
+        $this->hour = $hour;
+
+        return $this;
+    }
+
+    /**
+     * Get hour
+     *
+     * @return string
+     */
+    public function getHour()
+    {
+        return $this->hour;
     }
 }

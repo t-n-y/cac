@@ -395,7 +395,7 @@
 											</div> 
 										{% else %}
 											{% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-												<div class="boutonReservationPromo JS-obtenirPromo JS-promoBox" data-bar-id="{{bar.id}}" data-valuepromo="{{ bar.getPromotionByDay(today).getOption('value').value }}">
+												<div class="boutonReservationPromo JS-obtenirPromo JS-promoBox" data-bar-id="{{bar.id}}" data-valuepromo="{{ bar.getPromotionByDay(today).getOption('value').value }}" data-bar-nbpersone="" data-bar-hour="">
 											{% else %}
 												<div class="animConnexion boutonReservationPromo">
 											{% endif %}

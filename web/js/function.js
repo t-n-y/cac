@@ -945,11 +945,13 @@ $(document).on( 'click', '.JS-obtenirPromo', function() {
   $('.JS-obtenirPromo').removeClass('JS-obtenirPromo');
   var promoId = $(this).data('bar-id');
   var valuePromo = $(this).data('valuepromo');
+  var nbPersonne = $(this).data('nbpersone');
+  var hour = $(this).data('hour');
   if(!valuePromo){
     valuePromo = 0;
   }
   $.ajax( {
-      url: Routing.generate('get_promo', {id: promoId, value: valuePromo}),
+      url: Routing.generate('get_promo', {id: promoId, value: valuePromo, nbPersonne: nbPersonne, time: hour}),
       data: 'json',
       success: function (data) {
         // $('.testSuccess').html(data);
