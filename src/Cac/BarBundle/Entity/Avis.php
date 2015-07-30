@@ -39,6 +39,13 @@ class Avis
     private $user;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="score", type="integer")
+     */
+    private $score;
+
+    /**
      * Get id
      *
      * @return integer
@@ -118,5 +125,29 @@ class Avis
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set score
+     *
+     * @param integer $score
+     *
+     * @return Avis
+     */
+    public function setScore($score)
+    {
+        $this->score = $score;
+
+        return $this;
+    }
+
+    /**
+     * Get score
+     *
+     * @return integer
+     */
+    public function getScore()
+    {
+        return $this->score;
     }
 }

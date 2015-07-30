@@ -16,6 +16,7 @@ class AvisType extends AbstractType
     {
         $builder
             ->add('message')
+            ->add('score', 'hidden', array())
         ;
     }
     

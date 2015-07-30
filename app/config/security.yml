@@ -42,3 +42,4 @@ security:
         - { path: ^/pro/, role: ROLE_BIGBOSS }
         - { path: ^/barman/register, role: ROLE_BIGBOSS }
         - { path: ^/whostheboss/, role: ROLE_ADMIN }
+        - { path: ^/avis/, role: ROLE_USER }

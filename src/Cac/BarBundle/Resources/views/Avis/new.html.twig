@@ -37,5 +37,10 @@
 {% block javascripts %}
 {{parent()}}
 	<script src="{{ asset('js/avisEtoile.js') }}" type="text/javascript" /></script>
+	<script>
+	$('.notes-echelle li input').on('click', function(){
+		$('#cac_barbundle_avis_score').val(this.value);
+	});
+	</script>
 
 {% endblock %}
