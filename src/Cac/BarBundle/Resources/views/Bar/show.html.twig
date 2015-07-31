@@ -36,7 +36,7 @@
 		
 		<div class="contentSuperInfoBar col-xs-12 col-sm-12 col-md-12 noPadding">
 			<div class="contentAffterSuperInfoBar">
-				<div class="col-xs-8 col-sm-8 col-md-8">
+				<div class="col-xs-12 col-sm-8 col-md-8">
 					<div class="superInfoBar noPadding">
 						<div class="ongletBar">
 							<div class="col-xs-6 col-sm-6 col-md-6 noPadding">
@@ -335,7 +335,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-xs-4 col-sm-4 col-md-4">
+				<div class="col-xs-12 col-sm-4 col-md-4">
 					<div class="contentInfoBarNote">
 						
 					
@@ -388,6 +388,74 @@
 												<p class="reductionPresent">Découvrez</p>
 										{% endif %}
 											</div>
+										
+											<div class="personneAndHourModule">
+												<div class="avancementReservation">
+													{% set months = {'1': 'janvier', '2': 'Février', '3': 'Mars', '4': 'Avril', '5': 'Mai', '6': 'Juin', '7': 'Juillet', '8': 'Août', '9': 'Septembre', '10': 'Octobre', '11': 'Novembre', '12': 'Décembre'} %}
+													<p>
+													{{today}}
+													{{'now'|date('d')}}
+
+												      {% for j in 1..12 %}
+
+														{% if 'now'|date('m') == j %}
+															{{ months[j] }}
+														{% endif %}
+													{% endfor %}</p>
+												</div>
+
+												<div class="contentHourReservation">
+
+													{% set days = {'1': 'Lundi', '2': 'Mardi', '3': 'Mercredi', '4': 'Jeudi', '5': 'Vendredi', '6': 'Samedi', '7': 'Dimanche'} %}
+
+													<div class="col-xs-12 col-sm-12 col-md-12 noPadding">
+														<div class="textRight col-xs-5 col-sm-5 col-md-5 noPadding">
+															<select class="hourReservation">
+																<option></option>
+																{% for i in 1..23 %}
+																    <option value="{{i}}">{{i}}</option>
+																{% endfor %}
+																	<option value="0">minuit</option>
+															</select>
+														</div>
+														<div class="center col-xs-2 col-sm-2 col-md-2 noPadding">
+															<p>h</p>
+														</div>
+														<div class="col-xs-5 col-sm-5 col-md-5 noPadding">
+															<select class="minuteReservation">
+																	<option></option>
+																{% for j in range(0, 45, 15) %}
+																    <option value="{{j}}">{{j}}</option>
+																{% endfor %}
+															</select>
+														</div>
+														<div class="clear"></div>
+
+														<div class="boutonReservationPromo ReservePersonne">
+															<p>VALIDER CETTE HORAIRE</p>
+														</div> 
+													</div>
+													<div class="clear"></div>
+												</div>
+
+												<div class="contentNbPersonneReservation">
+
+													<div class="center col-xs-12 col-sm-12 col-md-12 noPadding">
+														
+														<select class="nbPersonneReservation">
+															<option></option>
+															{% for k in 1..10 %}
+															    <option value="{{k}}">{{k}}</option>
+															{% endfor %}
+														</select>
+														<div class="boutonReservationPromo JS-obtenirPromo JS-promoBox" data-bar-id="{{bar.id}}" data-valuepromo="{{ bar.getPromotionByDay(today).getOption('value').value }}" data-bar-nbpersone="" data-bar-hour="">
+															<p>VALIDER LA RESERVATION</p>
+														</div> 
+													</div>
+													<div class="clear"></div>
+												</div>
+												
+											</div>
 
 										{% if promoOfferte %}
 											<div class="boutonReservationPromo voirMaConfirmationDone">
@@ -395,7 +463,7 @@
 											</div> 
 										{% else %}
 											{% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-												<div class="boutonReservationPromo JS-obtenirPromo JS-promoBox" data-bar-id="{{bar.id}}" data-valuepromo="{{ bar.getPromotionByDay(today).getOption('value').value }}" data-bar-nbpersone="" data-bar-hour="">
+												<div class="boutonReservationPromo ReserveHour">
 											{% else %}
 												<div class="animConnexion boutonReservationPromo">
 											{% endif %}
@@ -480,6 +548,7 @@
 
 {% block javascripts %}
 {{parent()}}
+<script src="{{ asset('js/reservationBar.js') }}" type="text/javascript" /></script>
  <script>
 	var map;
 	var service;

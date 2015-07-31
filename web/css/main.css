@@ -1856,6 +1856,14 @@ select:focus {
 	margin: 0;
 }
 
+.personneAndHourModule select{
+	width: 50px;
+}
+
+.contentHourReservation, .contentNbPersonneReservation{
+	display: none;
+}
+
 .infoPrensent{
 	color: #fff;
 	margin: 0;
@@ -5421,6 +5429,10 @@ p.nextPointFidelite{
 
 	.formRegisterPro{
 		padding: 30px 5px;
+	}
+
+	.floatable{
+		position: relative !important;
 	}
 
 }

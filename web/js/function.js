@@ -942,45 +942,51 @@ $( ".animConnexion" ).on( "click", function() {
 
 // Obtenir une promotion
 $(document).on( 'click', '.JS-obtenirPromo', function() {
-  $('.JS-obtenirPromo').removeClass('JS-obtenirPromo');
-  var promoId = $(this).data('bar-id');
-  var valuePromo = $(this).data('valuepromo');
-  var nbPersonne = $(this).data('nbpersone');
-  var hour = $(this).data('hour');
-  if(!valuePromo){
-    valuePromo = 0;
+  if($('.JS-obtenirPromo').attr('data-nbpersone')){
+
+
+    $('.JS-obtenirPromo').removeClass('JS-obtenirPromo');
+    var promoId = $(this).data('bar-id');
+    var valuePromo = $(this).data('valuepromo');
+    var nbPersonne = $(this).data('nbpersone');
+    var hour = $(this).data('hour');
+    if(!valuePromo){
+      valuePromo = 0;
+    }
+    $.ajax( {
+        url: Routing.generate('get_promo', {id: promoId, value: valuePromo, nbPersonne: nbPersonne, time: hour}),
+        data: 'json',
+        success: function (data) {
+          // $('.testSuccess').html(data);
+          // $('.ticket .ticketBarTop').css('background-color', '#ea9026');
+          // $('.ticket .ticketBarTop h2').hide();
+          // $('.ticket .ticketBarTop h3').hide();
+          // $('.ticket .ticketBarTop p').html('');
+          // $('.ticket .ticketBarTop p').append('VOIR MA RESERVATION');
+          // $('.ticket p.obtenirPromo').html('');
+          // $('.ticket p.obtenirPromo').append('POUR AUJOUR\'HUI');
+          // $('.ticket').find('[data-bar-id]').attr( 'data-bar-id', null );
+          // $('.JS-ticket').removeClass('JS-ticket');
+          // $('.JS-promoBox').addClass('voirMaConfirmationDone');
+          
+          // closeTicketPromotion();
+          // confirmationReservation();
+
+          $('.JS-promoBox').addClass('voirMaConfirmationDone');
+          $('.JS-promoBox').html('VOIR MA PROMO');
+
+          confirmationReservation();
+
+
+        },
+        error: function(data){
+          $('.testSuccess').html(data);
+          alert("Vous n'avez pas votre promotion");
+        }
+    } );
+  }else{
+    alert("Veuillez entrer un nombre de personne pour la reservation");
   }
-  $.ajax( {
-      url: Routing.generate('get_promo', {id: promoId, value: valuePromo, nbPersonne: nbPersonne, time: hour}),
-      data: 'json',
-      success: function (data) {
-        // $('.testSuccess').html(data);
-        // $('.ticket .ticketBarTop').css('background-color', '#ea9026');
-        // $('.ticket .ticketBarTop h2').hide();
-        // $('.ticket .ticketBarTop h3').hide();
-        // $('.ticket .ticketBarTop p').html('');
-        // $('.ticket .ticketBarTop p').append('VOIR MA RESERVATION');
-        // $('.ticket p.obtenirPromo').html('');
-        // $('.ticket p.obtenirPromo').append('POUR AUJOUR\'HUI');
-        // $('.ticket').find('[data-bar-id]').attr( 'data-bar-id', null );
-        // $('.JS-ticket').removeClass('JS-ticket');
-        // $('.JS-promoBox').addClass('voirMaConfirmationDone');
-        
-        // closeTicketPromotion();
-        // confirmationReservation();
-
-        $('.JS-promoBox').addClass('voirMaConfirmationDone');
-        $('.JS-promoBox').html('VOIR MA PROMO');
-
-        confirmationReservation();
-
-
-      },
-      error: function(data){
-        $('.testSuccess').html(data);
-        alert("Vous n'avez pas votre promotion");
-      }
-  } );
 });
 
 function confirmationReservation(){
