@@ -1196,6 +1196,7 @@ $('#senddrink').on('click', function(){
           alert(data.msg);
         }
     });
+  _gaq.push(['_trackEvent', 'btn_parrainage', 'clic']);
 });
 
 /***** pro Vos offres *****/

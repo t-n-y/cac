@@ -255,7 +255,7 @@ class BarController extends Controller
             $customerId = $payment->getCustomerId();
             \Stripe\InvoiceItem::create(array(
                 "customer" => $customerId,
-                "amount" => $customer->getGlassPrice(),
+                "amount" => $customer->getGlassPrice() * $nbPersonne,
                 "currency" => "eur",
                 "description" => "Promotion")
             );
