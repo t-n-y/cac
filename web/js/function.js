@@ -943,8 +943,6 @@ $( ".animConnexion" ).on( "click", function() {
 // Obtenir une promotion
 $(document).on( 'click', '.JS-obtenirPromo', function() {
   if($('.JS-obtenirPromo').attr('data-nbpersone')){
-
-
     $('.JS-obtenirPromo').removeClass('JS-obtenirPromo');
     var promoId = $(this).data('bar-id');
     var valuePromo = $(this).data('valuepromo');
@@ -988,6 +986,7 @@ $(document).on( 'click', '.JS-obtenirPromo', function() {
   }else{
     alert("Veuillez entrer un nombre de personne pour la reservation");
   }
+  _gaq.push(['_trackEvent', 'btn_resa', 'clic']);
 });
 
 function confirmationReservation(){
