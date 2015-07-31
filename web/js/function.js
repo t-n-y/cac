@@ -949,7 +949,8 @@ $(document).on( 'click', '.JS-obtenirPromo', function() {
     var promoId = $(this).data('bar-id');
     var valuePromo = $(this).data('valuepromo');
     var nbPersonne = $(this).data('nbpersone');
-    var hour = $(this).data('hour');
+    var hour = $(this).data('bar-hour');
+
     if(!valuePromo){
       valuePromo = 0;
     }
