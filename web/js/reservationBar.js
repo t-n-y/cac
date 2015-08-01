@@ -40,6 +40,7 @@ console.log($('.JS-obtenirPromo').attr('data-nbpersone'));
 $('.ReserveHour').on('click', function(){
 	$('.ReserveHour').fadeOut(function(){
 		$('.contentHourReservation').fadeIn();
+		$('.avancementReservation').fadeIn();
 	});
 });
 
@@ -47,6 +48,8 @@ $('.ReservePersonne').on('click', function(){
 	if(verifHour && verifMinute){
 		$('.contentHourReservation').fadeOut(function(){
 			$('.contentNbPersonneReservation').fadeIn();
+			$('.ReservationEtapeNext').removeClass('ReservationEtapeNext').addClass('ReservationEtapeOK');
+			$('.ReservationEtapetoDo').removeClass('ReservationEtapetoDo').addClass('ReservationEtapeNext');
 		});
 	}else{
 		alert('Veuillez choisir une heure de réservation');

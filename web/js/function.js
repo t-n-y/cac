@@ -971,7 +971,7 @@ $(document).on( 'click', '.JS-obtenirPromo', function() {
           
           // closeTicketPromotion();
           // confirmationReservation();
-
+          $('.contentNbPersonneReservation').fadeOut();
           $('.JS-promoBox').addClass('voirMaConfirmationDone');
           $('.JS-promoBox').html('VOIR MA PROMO');
 

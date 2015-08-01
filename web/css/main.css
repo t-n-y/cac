@@ -103,6 +103,10 @@ input[type="file"] > input[type="button"]::-moz-focus-inner {
 	padding-left: 30px;
 }
 
+.positionLeft{
+	text-align: left;
+}
+
 .center{
 	text-align: center;
 }
@@ -1832,6 +1836,7 @@ select:focus {
 	text-align: center;
 	padding-top: 7px;
     margin-top: -7px;
+    padding-bottom: 1px;
 }
 
 .kindOfPromo{
@@ -1860,8 +1865,38 @@ select:focus {
 	width: 50px;
 }
 
+.avancementReservation{
+	display: none;
+}
+
+.avancementReservation p{
+	display: inline-block;
+	margin: 0;
+	font-size: 9px;
+	width: 32%;
+}
+
+.avancementReservation p:nth-last-child(1){
+	width: 33%;
+}
+
+.ReservationEtapeOK{
+	background-color: #99cc66;
+	color: #fff;
+}
+
+.ReservationEtapeNext{
+	background-color: #8bd6e1;
+	color: #fff;
+}
+
+.ReservationEtapetoDo{
+	background-color: #fff;
+}
+
 .contentHourReservation, .contentNbPersonneReservation{
 	display: none;
+	margin-top: 10px;
 }
 
 .infoPrensent{
@@ -1876,7 +1911,7 @@ select:focus {
 	background-color: #696969;
 	text-align: center;
 	color: #fff;
-	width: 60%;
+	width: 70%;
 	margin: 10px auto;
 	padding: 5px;
 	cursor: pointer;

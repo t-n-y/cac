@@ -392,7 +392,7 @@
 											<div class="personneAndHourModule">
 												<div class="avancementReservation">
 													{% set months = {'1': 'janvier', '2': 'Février', '3': 'Mars', '4': 'Avril', '5': 'Mai', '6': 'Juin', '7': 'Juillet', '8': 'Août', '9': 'Septembre', '10': 'Octobre', '11': 'Novembre', '12': 'Décembre'} %}
-													<p>
+													<p class="ReservationEtapeOK">
 													{{today}}
 													{{'now'|date('d')}}
 
@@ -402,6 +402,8 @@
 															{{ months[j] }}
 														{% endif %}
 													{% endfor %}</p>
+													<p class="ReservationEtapeNext">Choisissez l'heure</p>
+													<p class="ReservationEtapetoDo">Nombre de personnes</p>
 												</div>
 
 												<div class="contentHourReservation">
@@ -421,7 +423,7 @@
 														<div class="center col-xs-2 col-sm-2 col-md-2 noPadding">
 															<p>h</p>
 														</div>
-														<div class="col-xs-5 col-sm-5 col-md-5 noPadding">
+														<div class="positionLeft col-xs-5 col-sm-5 col-md-5 noPadding">
 															<select class="minuteReservation">
 																	<option></option>
 																{% for j in range(0, 45, 15) %}
@@ -432,7 +434,7 @@
 														<div class="clear"></div>
 
 														<div class="boutonReservationPromo ReservePersonne">
-															<p>VALIDER CETTE HORAIRE</p>
+															<p>VALIDER CET HORAIRE</p>
 														</div> 
 													</div>
 													<div class="clear"></div>
@@ -444,10 +446,12 @@
 														
 														<select class="nbPersonneReservation">
 															<option></option>
-															{% for k in 1..10 %}
+															{% for k in 2..20 %}
 															    <option value="{{k}}">{{k}}</option>
 															{% endfor %}
 														</select>
+														personnes
+
 														<div class="boutonReservationPromo JS-obtenirPromo JS-promoBox" data-bar-id="{{bar.id}}" data-valuepromo="{{ bar.getPromotionByDay(today).getOption('value').value }}" data-bar-nbpersone="" data-bar-hour="">
 															<p>VALIDER LA RESERVATION</p>
 														</div> 

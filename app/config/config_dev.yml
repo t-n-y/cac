@@ -33,4 +33,4 @@ assetic:
     use_controller: "%use_assetic_controller%"
 
 swiftmailer:
-   delivery_address: g.leclercq12@gmail.com
+    delivery_address: g.leclercq12@gmail.com
