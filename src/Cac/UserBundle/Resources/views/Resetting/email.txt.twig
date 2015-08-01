@@ -5,6 +5,8 @@
 {% endautoescape %}
 {% endblock %}
 {% block body_text %}
+
+{{confirmationUrl}}
 {% autoescape false %}
 {{ 'resetting.email.message'|trans({'%username%': user.username, '%confirmationUrl%': confirmationUrl}) }}
 {% endautoescape %}

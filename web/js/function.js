@@ -943,13 +943,12 @@ $( ".animConnexion" ).on( "click", function() {
 // Obtenir une promotion
 $(document).on( 'click', '.JS-obtenirPromo', function() {
   if($('.JS-obtenirPromo').attr('data-nbpersone')){
-
-
     $('.JS-obtenirPromo').removeClass('JS-obtenirPromo');
     var promoId = $(this).data('bar-id');
     var valuePromo = $(this).data('valuepromo');
     var nbPersonne = $(this).data('nbpersone');
-    var hour = $(this).data('hour');
+    var hour = $(this).data('bar-hour');
+
     if(!valuePromo){
       valuePromo = 0;
     }
@@ -987,6 +986,7 @@ $(document).on( 'click', '.JS-obtenirPromo', function() {
   }else{
     alert("Veuillez entrer un nombre de personne pour la reservation");
   }
+  _gaq.push(['_trackEvent', 'btn_resa', 'clic']);
 });
 
 function confirmationReservation(){
@@ -1196,6 +1196,7 @@ $('#senddrink').on('click', function(){
           alert(data.msg);
         }
     });
+  _gaq.push(['_trackEvent', 'btn_parrainage', 'clic']);
 });
 
 /***** pro Vos offres *****/

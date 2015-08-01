@@ -131,7 +131,7 @@ class Bigboss extends User
      *
      * @ORM\Column(name="glass_price", type="integer")
      */
-    protected $glassPrice = 100;
+    protected $glassPrice = 25;
 
      /**
      * Constructor

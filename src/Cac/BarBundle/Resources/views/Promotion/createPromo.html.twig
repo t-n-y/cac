@@ -218,12 +218,7 @@
 </div>
 
 	<div class="clear"></div>
-	{% if plan == "shooter" %}
-		<a href="{{ path("bars_abonnement", {'id': id }) }}">Passer cette étape</a>
-	{% else %}
-		<a href="{{ path("bars_offer", {'id': id }) }}">Passer cette étape</a>
-	{% endif %}
-
+	<a href="{{ path("bars_abonnement", {'id': id }) }}">Passer cette étape</a>
 {% endblock %}
 {% block javascripts %}
 {{ parent() }}

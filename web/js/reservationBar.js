@@ -35,8 +35,6 @@ function nbPersonne(nbPersonneReservation){
 	console.log($('.JS-obtenirPromo').attr('data-nbpersone'));
 }
 
-console.log($('.JS-obtenirPromo').attr('data-nbpersone'));
-
 $('.ReserveHour').on('click', function(){
 	$('.ReserveHour').fadeOut(function(){
 		$('.contentHourReservation').fadeIn();
