@@ -1284,4 +1284,15 @@ function getCookie(cname) {
     return "";
 }
 
+$('.delete-promo').on('click', function(){
+  var $this = $(this);
+  var id = $this.data('promo-id');
+  $.ajax( {
+        type: 'POST',
+        url: Routing.generate('delete_promo', { 'id': id}),
+        success: function (data) {
+          alert('Réservation annulée');
+        }
+    });
+});
 

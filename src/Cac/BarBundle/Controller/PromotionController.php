@@ -13,6 +13,7 @@ use Cac\BarBundle\Entity\PromotionDummy;
 use Cac\BarBundle\Form\Type\BarType;
 use Cac\BarBundle\Form\Type\PromotionType;
 use Cac\BarBundle\Form\Type\PromotionDummyType;
+use Symfony\Component\HttpFoundation\JsonResponse;
 /**
  * Bar controller.
  *
@@ -177,5 +178,30 @@ class PromotionController extends Controller
             'form'   => $editForm->createView(),
             'restrictions' => $restrictions
         );
+    }
+
+    /**
+     * delete promo.
+     *
+     * @Route("/delete/{id}", name="delete_promo", options={"expose"=true})
+     */
+    public function deletePromoAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $promo = $em->getRepository('CacBarBundle:PromoOffertes')->find($id);
+        $customer = $promo->getBar()->getAuthor();
+        \Stripe\Stripe::setApiKey("sk_test_zLHsgtijLe1xYM1XPhf12zGY");
+        $payment = $em->getRepository('CacPaymentBundle:Payment')->findOneByUser($customer);
+        $customerId = $payment->getCustomerId();
+        \Stripe\InvoiceItem::create(array(
+            "customer" => $customerId,
+            "amount" => '-'.$customer->getGlassPrice() * $promo->getNbpersonne(),
+            "currency" => "eur",
+            "description" => "Promotion")
+        );
+        $em->remove($promo);
+        $em->flush();
+
+        return new JsonResponse('Promo annulée');
     }
 }
