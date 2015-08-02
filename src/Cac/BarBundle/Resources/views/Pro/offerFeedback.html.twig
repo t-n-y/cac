@@ -58,6 +58,8 @@
 
 				<div class="allOffre">
 					{% for promo in promos %}
+					{{promo.nbpersonne}}
+{{promo.hour}}
 						{% if promo.createdAt | date("d/m/Y") == 'now'|date('d/m/Y') %}
 							<div class="retourOffre selectedRetourOffre JS-offreToday col-xs-12 col-sm-12 col-md-12">
 								{% if promo.etat == "validé" %}
