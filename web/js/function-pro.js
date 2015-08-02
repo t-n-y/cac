@@ -1,8 +1,9 @@
 $(document).ready(function(){
   $( ".validate-promo" ).on( "click", function() {
       var promoId = $(this).data('promo-id');
+      var nbPersonne = $(this).data('promo-nbpersonne');
       $.ajax( {
-          url: Routing.generate('validate_promo', {id: promoId}),
+          url: Routing.generate('validate_promo', {id: promoId, nbPersonne: nbPersonne}),
           data: 'json',
           success: function (data) {
             $('.zone-etat-'+promoId).html(data);
@@ -11,8 +12,9 @@ $(document).ready(function(){
     });
   $( ".invalidate-promo" ).on( "click", function() {
       var promoId = $(this).data('promo-id');
+      var nbPersonne = $(this).data('promo-nbpersonne');
       $.ajax( {
-          url: Routing.generate('invalidate_promo', {id: promoId}),
+          url: Routing.generate('invalidate_promo', {id: promoId, nbPersonne: nbPersonne}),
           data: 'json',
           success: function (data) {
             $('.zone-etat-'+promoId).html(data);

@@ -232,7 +232,7 @@ class BarController extends Controller
                 ->setSubject('Hello Email')
                 ->setFrom('send@example.com')
                 ->setTo('g.leclercq12@gmail.com')
-                ->setBody('promo activée, vous avez jusque a ce soir pour y aller')
+                ->setBody('promo activée, vous avez jusqu\'a ce soir pour y aller')
             ;
             $this->get('mailer')->send($message);
 

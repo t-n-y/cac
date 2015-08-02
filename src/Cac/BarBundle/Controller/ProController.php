@@ -658,9 +658,9 @@ class ProController extends Controller
     }
 
     /**
-     * @Route("/validate-promotion/{id}", name="validate_promo", options={"expose"=true})
+     * @Route("/validate-promotion/{id}/{nbPersonne}", name="validate_promo", options={"expose"=true})
      */
-    public function validatePromotionAction($id)
+    public function validatePromotionAction($id, $nbPersonne)
     {
         $em = $this->getDoctrine()->getManager();
         $promo = $em->getRepository('CacBarBundle:PromoOffertes')->find($id);
@@ -671,7 +671,7 @@ class ProController extends Controller
             $customerId = $payment->getCustomerId();
             \Stripe\InvoiceItem::create(array(
                 "customer" => $customerId,
-                "amount" => $customer->getGlassPrice(),
+                "amount" => $customer->getGlassPrice() * $nbPersonne,
                 "currency" => "eur",
                 "description" => "Promotion")
             );
@@ -686,9 +686,9 @@ class ProController extends Controller
     }
     
     /**
-     * @Route("/invalidate-promotion/{id}", name="invalidate_promo", options={"expose"=true})
+     * @Route("/invalidate-promotion/{id}/{nbPersonne}", name="invalidate_promo", options={"expose"=true})
      */
-    public function invalidatePromotionAction($id)
+    public function invalidatePromotionAction($id, $nbPersonne)
     {
         $em = $this->getDoctrine()->getManager();
         $promo = $em->getRepository('CacBarBundle:PromoOffertes')->find($id);
@@ -704,7 +704,7 @@ class ProController extends Controller
         $customerId = $payment->getCustomerId();
         \Stripe\InvoiceItem::create(array(
             "customer" => $customerId,
-            "amount" => '-'.$customer->getGlassPrice(),
+            "amount" => '-'.$customer->getGlassPrice() * $nbPersonne,
             "currency" => "eur",
             "description" => "Promotion")
         );
