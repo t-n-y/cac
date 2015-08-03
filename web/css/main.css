@@ -1831,7 +1831,7 @@ select:focus {
 	font-weight: normal;
 }
 
-.contentReservation{
+.contentReservationPromo{
 	background-color: #f6f6f6;
 	text-align: center;
 	padding-top: 7px;
@@ -5075,6 +5075,11 @@ p.nextPointFidelite{
 .moreReservationUser p{
 	margin: 0;
 	font-size: 12px;
+}
+
+.delete-promo{
+	color: #ff5a5f;
+	cursor: pointer;
 }
 
 .afterReservationUser{

@@ -341,7 +341,7 @@
 					
 						<div class="infoBarNote col-xs-12 col-sm-12 col-md-12 noPadding">
 							{% if (bar.getPromotionByDay(today).getOption('value').value != 0 or bar.getHappyHourByDay(today).getOption('value').value != 0) %}
-								<h1>Reservez avec la promo</h1>
+								<h1>Réservez avec la promo</h1>
 							{% else %}	
 								<h1 class="colorCac">Réservation</h1>
 							{% endif %}	
@@ -349,7 +349,7 @@
 							<div class="infoReservation">
 
 									<div class="col-xs-6 noPadding">
-										<p>Réserver en 1 clic</p>
+										<p>Réserver en un clic</p>
 									</div>
 									<div class="col-xs-6 noPadding">
 										<p>Service 100% gratuit</p>
@@ -357,7 +357,7 @@
 									<div class="clear"></div>
 							</div>
 
-							<div class="contentReservation">
+							<div class="contentReservationPromo">
 								
 									{% if bar.scheduleArray[today].status == 'Ouvert' %}
 										{% if (bar.getPromotionByDay(today).getOption('value').value != 0 and bar.getHappyHourByDay(today).getOption('value').value != 0) %}
@@ -435,7 +435,7 @@
 														<div class="center col-xs-2 col-sm-2 col-md-2 noPadding">
 															<p>h</p>
 														</div>
-														<div class="col-xs-5 col-sm-5 col-md-5 noPadding">
+														<div class="positionLeft col-xs-5 col-sm-5 col-md-5 noPadding">
 															<select class="minuteReservation">
 																	<option></option>
 																	<option value="00">00</option>
@@ -459,7 +459,7 @@
 														
 														<select class="nbPersonneReservation">
 															<option></option>
-															{% for k in 1..10 %}
+															{% for k in 2..15 %}
 															    <option value="{{k}}">{{k}}</option>
 															{% endfor %}
 														</select>

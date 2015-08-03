@@ -1296,6 +1296,7 @@ $('.delete-promo').on('click', function(){
         url: Routing.generate('delete_promo', { 'id': id}),
         success: function (data) {
           alert('Réservation annulée');
+          $this.parentsUntil($('.boxsReservation')).fadeOut();
         }
     });
 });
