@@ -49,9 +49,19 @@ $('.ReservePersonne').on('click', function(){
 			$('.ReservationEtapeNext').removeClass('ReservationEtapeNext').addClass('ReservationEtapeOK');
 			$('.ReservationEtapetoDo').removeClass('ReservationEtapetoDo').addClass('ReservationEtapeNext');
 		});
+
+	$('.JS-choiceHour').html(hourReservation+'h'+minuteReservation);
 	}else{
 		alert('Veuillez choisir une heure de réservation');
 	}
+});
+
+$('.JS-obtenirPromo').on('click', function(){
+	$('.contentHourReservation').fadeOut(function(){
+			$('.contentNbPersonneReservation').fadeIn();
+			$('.ReservationEtapeNext').removeClass('ReservationEtapeNext').addClass('ReservationEtapeOK');
+		});
+	$('.JS-choiceNbPersonne').html(nbPersonneReservation + ' personnes');
 });
 
 

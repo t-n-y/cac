@@ -1825,7 +1825,7 @@ select:focus {
 }
 
 .infoBarNote h1{
-	color: #5ac4d4;
+	color: #ef662f;
 	font-size: 23px;
 	text-align: center;
 	font-weight: normal;
@@ -1869,29 +1869,88 @@ select:focus {
 	display: none;
 }
 
-.avancementReservation p{
-	display: inline-block;
-	margin: 0;
-	font-size: 9px;
-	width: 32%;
-}
-
-.avancementReservation p:nth-last-child(1){
-	width: 33%;
-}
-
 .ReservationEtapeOK{
 	background-color: #99cc66;
-	color: #fff;
+    color: #fff;
+    width: 30%;
+    position: relative;
+    height: 14px;
+    float: left;
+    font-size: 9px;
+    text-align: center;
+    z-index: 10;
+    padding: 1px 0;
+}
+
+.ReservationEtapeOK:after {
+	left: 100%;
+    top: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: rgba(153, 204, 102, 0);
+    border-left-color: #99cc66;
+    border-width: 7px;
+    margin-top: -7px;
 }
 
 .ReservationEtapeNext{
 	background-color: #8bd6e1;
+	width: 30%;
 	color: #fff;
+	position: relative;
+    height: 14px;
+    float: left;
+    font-size: 9px;
+    text-align: center;
+    z-index: 9;
+    padding: 1px 0;
+}
+
+.ReservationEtapeNext:after {
+	left: 100%;
+    top: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: rgba(153, 204, 102, 0);
+    border-left-color: #8bd6e1;
+    border-width: 7px;
+    margin-top: -7px;
 }
 
 .ReservationEtapetoDo{
 	background-color: #fff;
+    position: relative;
+    height: 14px;
+    float: left;
+    font-size: 9px;
+    text-align: center;
+    z-index: 8;
+    padding: 1px 0;
+}
+
+.firstStepReservation{
+    border-width: 0px !important;
+    margin-top: 0px;
+    width: 32% !important;
+}
+
+.lastStepReservation{
+    border-width: 0px !important;
+    margin-top: 0px;
+    width: 38%;
+}
+
+.lastStepReservation:after{
+    border-width: 0px !important;
+    margin-top: 0px;
 }
 
 .contentHourReservation, .contentNbPersonneReservation{

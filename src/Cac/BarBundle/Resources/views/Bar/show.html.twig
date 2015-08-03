@@ -340,7 +340,11 @@
 						
 					
 						<div class="infoBarNote col-xs-12 col-sm-12 col-md-12 noPadding">
-							<h1>Reservez avec la promo</h1>
+							{% if (bar.getPromotionByDay(today).getOption('value').value != 0 or bar.getHappyHourByDay(today).getOption('value').value != 0) %}
+								<h1>Reservez avec la promo</h1>
+							{% else %}	
+								<h1 class="colorCac">Réservation</h1>
+							{% endif %}	
 
 							<div class="infoReservation">
 
@@ -392,20 +396,26 @@
 											<div class="personneAndHourModule">
 												<div class="avancementReservation">
 													{% set months = {'1': 'janvier', '2': 'Février', '3': 'Mars', '4': 'Avril', '5': 'Mai', '6': 'Juin', '7': 'Juillet', '8': 'Août', '9': 'Septembre', '10': 'Octobre', '11': 'Novembre', '12': 'Décembre'} %}
-													<p class="ReservationEtapeOK">
+													<div class="ReservationEtapeOK firstStepReservation">
+														<p>
 
-													{{today}}
-													{{'now'|date('d')}}
+														{{today}}
+														{{'now'|date('d')}}
 
-												      {% for j in 1..12 %}
+													      {% for j in 1..12 %}
 
-														{% if 'now'|date('m') == j %}
-															{{ months[j] }}
-														{% endif %}
-													{% endfor %}</p>
-													<p class="ReservationEtapeNext">Choisissez l'heure</p>
-													<p class="ReservationEtapetoDo">Nombre de personnes</p>
-
+															{% if 'now'|date('m') == j %}
+																{{ months[j] }}
+															{% endif %}
+														{% endfor %}</p>
+													</div>
+													<div class="ReservationEtapeNext">
+														<p class="JS-choiceHour">Choisissez l'heure</p>
+													</div>
+													<div class="ReservationEtapetoDo lastStepReservation">
+														<p class="JS-choiceNbPersonne">Nombre de personnes</p>
+													</div>
+													<div class="clear"></div>
 												</div>
 
 												<div class="contentHourReservation">
@@ -428,7 +438,8 @@
 														<div class="col-xs-5 col-sm-5 col-md-5 noPadding">
 															<select class="minuteReservation">
 																	<option></option>
-																{% for j in range(0, 45, 15) %}
+																	<option value="00">00</option>
+																{% for j in range(15, 45, 15) %}
 																    <option value="{{j}}">{{j}}</option>
 																{% endfor %}
 															</select>
@@ -471,7 +482,11 @@
 											{% else %}
 												<div class="animConnexion boutonReservationPromo">
 											{% endif %}
-													<p>OBTENIR LA PROMO</p>
+													{% if (bar.getPromotionByDay(today).getOption('value').value != 0 or bar.getHappyHourByDay(today).getOption('value').value != 0) %}
+														<p>OBTENIR LA PROMO</p>
+													{% else %}
+														<p>RÉSERVER</p>
+													{% endif %}
 												</div> 
 											
 										{% endif %}
