@@ -970,11 +970,15 @@ $(document).on( 'click', '.JS-obtenirPromo', function() {
           
           // closeTicketPromotion();
           // confirmationReservation();
-          $('.contentNbPersonneReservation').fadeOut();
-          $('.JS-promoBox').addClass('voirMaConfirmationDone');
-          $('.JS-promoBox').html('VOIR MA PROMO');
+          $('.contentNbPersonneReservation').fadeOut(function(){
+            $('.JS-promoBox').addClass('voirMaConfirmationDone');
+            $('.JS-promoBox').html('VOIR MA PROMO');
+            $('.boutonReservationPromo').removeClass('completionAdresse');
 
-          confirmationReservation();
+            confirmationReservation();
+          });
+
+          
 
 
         },
