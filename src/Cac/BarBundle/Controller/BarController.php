@@ -228,14 +228,6 @@ class BarController extends Controller
         $bar = $em->getRepository('CacBarBundle:Bar')->find($id);
         $user = $this->get('security.context')->getToken()->getUser();
         if ($user !== "anon.") {
-            $message = \Swift_Message::newInstance()
-                ->setSubject('Hello Email')
-                ->setFrom('send@example.com')
-                ->setTo('g.leclercq12@gmail.com')
-                ->setBody('promo activée, vous avez jusqu\'a ce soir pour y aller')
-            ;
-            $this->get('mailer')->send($message);
-
             $reference = mt_rand(100000,999999);
             $promo = new PromoOffertes();
             $promo->setReference($reference);
@@ -248,6 +240,14 @@ class BarController extends Controller
             $promo->setCreatedAt(new \DateTime('now'));
             $em->persist($promo);
             $em->flush();
+
+            $message = \Swift_Message::newInstance()
+                ->setSubject('Réservation confirmée : '.$bar->getName())
+                ->setFrom('noreply@click-and-cheers.com')
+                ->setTo($user->getEmail())
+                ->setBody('<p>Nous vous confirmons que votre réservation pour :'.$bar->getName().' à bien été transmise au gérant.</p><p>Il vous suffit de donner votre nom et prénom à votre arrivée.</p><p>En cas d\'empêchement n\'oubliez pas d\'annuler votre réservation dans votre espace personnel.</p><p>Rappel :</p><p>Etablissement : '.$bar->getAdress().', '.$bar->getTown().'</p><p>Horaire de réservation : '.$time.'</p><p>Nombre de personnes : '.$nbPersonne.'</p><p>Numéro de réservation : '.$reference.'</p><p>N\'oubliez pas de nous raconter comment c\'était en laissant un avis.<br>Click and cheers vous remercie de votre confiance.</p>', 'text/html')
+            ;
+            $this->get('mailer')->send($message);
 
             $customer = $promo->getBar()->getAuthor();
             \Stripe\Stripe::setApiKey("sk_test_zLHsgtijLe1xYM1XPhf12zGY");
