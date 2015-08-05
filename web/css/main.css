@@ -5151,18 +5151,14 @@ p.nextPointFidelite{
 	display: inline-block;
 	width: 19%;
 	text-align: center;
-	margin-top: 49px;
+	margin-top: 47px;
 	font-size: 20px;
 	letter-spacing: 1px;
 	font-weight: bold;
 }
 
 .printCode li:nth-child(-n+5){
-	margin-top: 30px;
-}
-
-.printCode li:nth-last-child(-n+15){
-	padding-top: 2px;
+	margin-top: 43px;
 }
 
 
@@ -5556,9 +5552,9 @@ p.nextPointFidelite{
     	visibility: visible !important;
     	position: fixed;
     	top: 10px;
-    	left: 0;
+    	left: 10px;
     	right: 0;
-    	width: 129%;
+    	width: 125%;
     	margin: 0; 
     	size: letter landscape;
     	margin: 0pt 0pt 0pt 0pt;
