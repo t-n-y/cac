@@ -13,8 +13,12 @@
 		//   fjs.parentNode.insertBefore(js, fjs);
 		// }(document, 'script', 'facebook-jssdk'));
 	</script>
-
-		<div class="topBar col-xs-12 col-sm-12 col-md-12 noPadding" style="background-image : url('{{ asset('uploads/bar/'~bar.path) }}');">		
+		{% if (sliderImages is defined and sliderImages|length > 0) %}
+			<div class="topBar col-xs-12 col-sm-12 col-md-12 noPadding" style="background-image : url('{{ asset('uploads/bar/'~sliderImages[0].path) }}');">
+		{% else %}
+			<div class="topBar col-xs-12 col-sm-12 col-md-12 noPadding" style="background-image : url('{{ asset('uploads/bar/'~bar.path) }}');">
+		{% endif %}
+				
 			<div class="infoNameBar">
 				<h1>{{ bar.name }}</h1>
 			
@@ -640,8 +644,8 @@
 			$('.transportSliderSlide[data-id="' + $(this).attr('data-id') + '"]').addClass('activ');
 		});
 
-		{% if (sliderImages is defined and sliderImages|length > 0) %}
-		var barImages = ["{{ asset('uploads/bar/'~bar.path) }}",
+		{% if (sliderImages is defined and sliderImages|length > 1) %}
+		var barImages = [
 		{% for image in sliderImages %}
 			"{{ asset('uploads/bar/'~image.path) }}"
 			{% if loop.last != true %}
