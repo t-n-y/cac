@@ -14,7 +14,7 @@
 		// }(document, 'script', 'facebook-jssdk'));
 	</script>
 		{% if (sliderImages is defined and sliderImages|length > 0) %}
-			<div class="topBar col-xs-12 col-sm-12 col-md-12 noPadding" style="background-image : url('{{ asset('uploads/bar/'~sliderImages[0].path) }}');">
+			<div class="topBar col-xs-12 col-sm-12 col-md-12 noPadding" style="background-image : url('{{ asset('uploads/bar/'~sliderImages[0].path) }}'); background-position: -{{ sliderImages[0].cropX }}px -{{ sliderImages[0].cropY }}px;">
 		{% else %}
 			<div class="topBar col-xs-12 col-sm-12 col-md-12 noPadding" style="background-image : url('{{ asset('uploads/bar/'~bar.path) }}');">
 		{% endif %}
@@ -647,7 +647,7 @@
 		{% if (sliderImages is defined and sliderImages|length > 1) %}
 		var barImages = [
 		{% for image in sliderImages %}
-			"{{ asset('uploads/bar/'~image.path) }}"
+			["{{ asset('uploads/bar/'~image.path) }}", "{{ image.cropX }}", "{{ image.cropY }}"]
 			{% if loop.last != true %}
 			,
 			{% endif %}
@@ -656,7 +656,10 @@
 			loop = 1,
 			end = barImages.length - 1;
 		setInterval(function () {
-	        $('.topBar').css({"background-image": "url(" + barImages[loop] + ")"});
+	        $('.topBar').css({
+	        	"background-image": "url(" + barImages[loop][0] + ")",
+	        	"background-position": "-" + barImages[loop][1] + "px -" + barImages[loop][2] + "px"
+	        });
 	        if((loop + 1) > end) { 
 	        	loop = 0; 
 	        } else {
