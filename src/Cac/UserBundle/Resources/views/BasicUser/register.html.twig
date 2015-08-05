@@ -13,124 +13,114 @@
 	    {% trans_default_domain 'FOSUserBundle' %}
 
 		<form action="{{ path('user_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 ac-custom ac-checkbox ac-cross">
-		<!--
 			<div class="contentFormUser">
 				<p>Inscription en 5 secondes avec facebook</p>
 			</div>
-		-->
 			<div class="contentFormUser">
 				<p>Inscription classique</p>
-				<div class="row">
-					
-				
-					<div class="inscription col-xs-6 col-sm-6 col-md-4 col-md-offset-2">
-						<div class="col-xs-4 col-sm-4 col-md-3 noPadding">
-	                        <div class="gender">
-	                            {{ form_errors(form.gender) }}
-	                            {{ form_widget(form.gender) }}
-	                        </div>
-	                    </div>
-	                    <div class="col-xs-8 col-sm-8 col-md-9 noPadding">
-	                        {{ form_label(form.name) }}<span>*</span>
-	                        <br>
-	                        {{ form_errors(form.name) }}
-	                        {{ form_widget(form.name) }}
-	                    </div>
-	            	</div>
-	            	<div class="inscription col-xs-6 col-sm-6 col-md-4">
-						{{ form_label(form.firstname) }}<span>*</span>
-						<br>
-						{{ form_errors(form.firstname) }}
-						{{ form_widget(form.firstname) }}
-					</div>
+				<div class="inscription col-xs-6 col-sm-6 col-md-4 col-md-offset-2">
+					<div class="col-xs-4 col-sm-4 col-md-3 noPadding">
+                        <div class="gender">
+                            {{ form_errors(form.gender) }}
+                            {{ form_widget(form.gender) }}
+                        </div>
+                    </div>
+                    <div class="col-xs-8 col-sm-8 col-md-9 noPadding">
+                        {{ form_label(form.name) }}<span>*</span>
+                        <br>
+                        {{ form_errors(form.name) }}
+                        {{ form_widget(form.name) }}
+                    </div>
+            	</div>
+            	<div class="inscription col-xs-6 col-sm-6 col-md-4">
+					{{ form_label(form.firstname) }}<span>*</span>
+					<br>
+					{{ form_errors(form.firstname) }}
+					{{ form_widget(form.firstname) }}
 				</div>
 
-				<div class="row">
-	            	<div class="inscription col-xs-6 col-sm-6 col-md-4 col-md-offset-2">
-	                    <div class="interrogation">
-	                    	{{ form_label(form.email.first) }}<span>*</span>
-							<br>
-							{{ form_errors(form.email.first) }}
-							{{ form_widget(form.email.first) }}
 
-							<p>?</p>
-							<div class="informationInterrogation">
-								<p>C’est sur cette adresse email que vous seront envoyé vos confirmations de réservation.</p>
-							</div>
-	                    </div>
-	                </div>
-	            
-
-	                <div class="inscription col-xs-6 col-sm-6 col-md-4">
-						{{ form_label(form.email.second) }}<span>*</span>
+            	<div class="inscription col-xs-6 col-sm-6 col-md-4 col-md-offset-2">
+                    <div class="interrogation">
+                    	{{ form_label(form.email.first) }}<span>*</span>
 						<br>
-						{{ form_errors(form.email.second) }}
-						{{ form_widget(form.email.second) }}
-					</div>
+						{{ form_errors(form.email.first) }}
+						{{ form_widget(form.email.first) }}
+
+						<p>?</p>
+						<div class="informationInterrogation">
+							<p>C’est sur cette adresse email que vous seront envoyé vos confirmations de réservation.</p>
+						</div>
+                    </div>
+                </div>
+
+                <div class="inscription col-xs-6 col-sm-6 col-md-4">
+					{{ form_label(form.email.second) }}<span>*</span>
+					<br>
+					{{ form_errors(form.email.second) }}
+					{{ form_widget(form.email.second) }}
 				</div>
-				<div class="row">
-	                    
-					<div class="inscription col-xs-6 col-sm-6 col-md-4 col-md-offset-2">
-						{{ form_label(form.plainPassword.first) }}<span>*</span>
-						<br>
-						{{ form_errors(form.plainPassword.first) }}
-						{{ form_widget(form.plainPassword.first) }}
-					</div>
-					<div class="inscription col-xs-6 col-sm-6 col-md-4">
-
-
-						{{ form_label(form.plainPassword.second) }}<span>*</span>
-						<br>
-						{{ form_errors(form.plainPassword.second) }}
-						{{ form_widget(form.plainPassword.second) }}
-					</div>
+                    
+				<div class="inscription col-xs-6 col-sm-6 col-md-4 col-md-offset-2">
+					{{ form_label(form.plainPassword.first) }}<span>*</span>
+					<br>
+					{{ form_errors(form.plainPassword.first) }}
+					{{ form_widget(form.plainPassword.first) }}
 				</div>
-				<div class="row">
 
-					<div class="inscription col-xs-6 col-sm-6 col-md-4 col-md-offset-2">
-						<div class="interrogation">
-							{{ form_label(form.mobile_phone) }}<span>*</span>
-							<br>
-							{{ form_errors(form.mobile_phone) }}
-							{{ form_widget(form.mobile_phone) }}
+				<div class="inscription col-xs-6 col-sm-6 col-md-4">
 
-							<p>?</p>
-							<div class="informationInterrogation">
-								<p>Votre numéro ne servira que dans le cadre de nos services. Il ne sera jamais vendu à d’autre sociétés</p>
-							</div>
+
+					{{ form_label(form.plainPassword.second) }}<span>*</span>
+					<br>
+					{{ form_errors(form.plainPassword.second) }}
+					{{ form_widget(form.plainPassword.second) }}
+				</div>
+
+				<div class="inscription col-xs-6 col-sm-6 col-md-4 col-md-offset-2">
+					<div class="interrogation">
+						{{ form_label(form.mobile_phone) }}<span>*</span>
+						<br>
+						{{ form_errors(form.mobile_phone) }}
+						{{ form_widget(form.mobile_phone) }}
+
+						<p>?</p>
+						<div class="informationInterrogation">
+							<p>Votre numéro ne servira que dans le cadre de nos services. Il ne sera jamais vendu à d’autre sociétés</p>
 						</div>
 					</div>
+				</div>
 
-					<div class="inscription col-xs-6 col-sm-6 col-md-4">
-				
-							{{ form_label(form.adress) }}<span>*</span>
+
+				<div class="inscription col-xs-6 col-sm-6 col-md-4">
+			
+						{{ form_label(form.adress) }}<span>*</span>
+						<br>
+						{{ form_errors(form.adress) }}
+						{{ form_widget(form.adress) }}
+
+						<div class="completionAdresse">
+							{{ form_label(form.zipcode) }}
 							<br>
-							{{ form_errors(form.adress) }}
-							{{ form_widget(form.adress) }}
-
-							<div class="completionAdresse">
-								{{ form_label(form.zipcode) }}
-								<br>
-								{{ form_errors(form.zipcode) }}
-								{{ form_widget(form.zipcode, { 'id': 'postal_code' }) }}
-								<br>
-								{{ form_label(form.town) }}
-								<br>
-								{{ form_errors(form.town) }}
-								{{ form_widget(form.town, { 'id': 'locality' } ) }}
-								<br>
-								{{ form_label(form.region) }}
-								<br>
-								{{ form_errors(form.region) }}
-								{{ form_widget(form.region, { 'id': 'administrative_area_level_1' } ) }}
-								<br>
-								{{ form_label(form.country) }}
-								<br>
-								{{ form_errors(form.country) }}
-								{{ form_widget(form.country, { 'id': 'country' }) }}
-							</div>
-							{{ form_widget(form.geocode) }}
-					</div>
+							{{ form_errors(form.zipcode) }}
+							{{ form_widget(form.zipcode, { 'id': 'postal_code' }) }}
+							<br>
+							{{ form_label(form.town) }}
+							<br>
+							{{ form_errors(form.town) }}
+							{{ form_widget(form.town, { 'id': 'locality' } ) }}
+							<br>
+							{{ form_label(form.region) }}
+							<br>
+							{{ form_errors(form.region) }}
+							{{ form_widget(form.region, { 'id': 'administrative_area_level_1' } ) }}
+							<br>
+							{{ form_label(form.country) }}
+							<br>
+							{{ form_errors(form.country) }}
+							{{ form_widget(form.country, { 'id': 'country' }) }}
+						</div>
+						{{ form_widget(form.geocode) }}
 				</div>
 				<div class="inscription center col-xs-12 col-sm-12 col-md-12">
 					{{ form_label(form.birthday) }}
@@ -138,7 +128,6 @@
 					{{ form_errors(form.birthday) }}
 					{{ form_widget(form.birthday) }}
 				</div>
-
 
 				<div class="CGU inscription center col-xs-12 col-sm-12 col-md-12">
 					<div class="myService">
