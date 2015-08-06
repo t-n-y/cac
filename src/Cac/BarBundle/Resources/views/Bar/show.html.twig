@@ -19,7 +19,8 @@
 			<div class="contentAffterSuperInfoBar">
 				<div class="col-xs-12 col-sm-8 col-md-8">
 					{% if (sliderImages is defined and sliderImages|length > 0) %}
-						<div class="topBar col-xs-12 col-sm-12 col-md-12 noPadding" style="background-image : url('{{ asset('uploads/bar/'~sliderImages[0].path) }}'); background-position: -{{ sliderImages[0].cropX }}px -{{ sliderImages[0].cropY }}px;">
+						<div class="topBar col-xs-12 col-sm-12 col-md-12 noPadding" style="background-image : url('{{ asset('uploads/bar/'~sliderImages[0].path) }}');">
+						<!-- background-position: -{{ sliderImages[0].cropX }}px -{{ sliderImages[0].cropY }}px; -->
 					{% else %}
 						<div class="topBar col-xs-12 col-sm-12 col-md-12 noPadding" style="background-image : url('{{ asset('uploads/bar/'~bar.path) }}');">
 					{% endif %}
