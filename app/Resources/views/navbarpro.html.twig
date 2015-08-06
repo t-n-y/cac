@@ -79,11 +79,11 @@
                     <div class="clear"></div>
                     <div class="separationHeader"></div>
                     {% if is_granted('ROLE_BIGBOSS') %}
-                      <div class="col-xs-12 hidden-sm hidden-md noPadding noPadding">
+                      <div class="col-xs-12 hidden-sm hidden-md hidden-lg noPadding">
                           <p class="leftMobile"><a href="{{ path('bar_new') }}">Créer un bar</a></p>
                       </div>
                     {% endif %}
-                    <div class="col-xs-12 hidden-sm hidden-md noPadding">
+                    <div class="col-xs-12 hidden-sm hidden-md hidden-lg noPadding">
                         <p class="leftMobile"><a href="{{ path('compte', { id : bar.id }) }}">Mon compte pro</a></p>
                         <p class="logout"><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></p>
                     </div>

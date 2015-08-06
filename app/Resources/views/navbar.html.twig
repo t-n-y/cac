@@ -131,7 +131,7 @@
         <div class="contentNav">
             <div class="row">
                 <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2">
-                    <div class="col-xs-12 hidden-sm hidden-md noPadding">
+                    <div class="col-xs-12 hidden-sm hidden-md hidden-lg noPadding">
                     {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
                         {% if is_granted('ROLE_BARMAN') and not is_granted('ROLE_BIGBOSS') %}
                           <p>Bonjour <span class="nameInHeader">{{ app.user.getUsername()}}</span> </p>
@@ -139,8 +139,7 @@
                           <p>Bonjour <span class="nameInHeader">{{ app.user.firstname}}</span> </p>
                         {% endif %}
                       {% else %}
-                        <div class="col-xs-12 hidden-sm hidden-md noPadding">
-
+                        <div class="col-xs-12 hidden-sm hidden-md hidden-lg noPadding">
                             <p class="leftMobile animConnexion">Connexion</p>
                             <p class="leftMobile"><a href="{{ path('user_register') }}">Inscription</a></p>
                         </div>
@@ -163,7 +162,7 @@
                     <div class="separationHeader"></div>
                     {% if is_granted('ROLE_BIGBOSS') or is_granted('ROLE_BARMAN') %}
 
-                        <div class="col-xs-12 hidden-sm hidden-md noPadding">
+                        <div class="col-xs-12 hidden-sm hidden-md hidden-lg noPadding">
                           <p class="leftMobile"><a href="{{ path('barman_register') }}">Ajouter un barman</a></p>
                    
                         {% if is_granted('ROLE_BIGBOSS') %}
@@ -176,7 +175,7 @@
                         <div class="clear"></div>
                         <div class="separationHeader"></div>
                       {% endif %}
-                      <div class="col-xs-12 hidden-sm hidden-md noPadding">
+                      <div class="col-xs-12 hidden-sm hidden-md hidden-lg noPadding">
 
                         <p class="leftMobile mesReservation"><a href="{{ path('fos_user_profile_show') }}">Mes réservations</a></p>
 

@@ -998,6 +998,7 @@ nav{
 	margin-top: 0;
 	padding: 10px 0;
 	background-color: #fff;
+	text-transform: uppercase;
 }
 
 .contentNav p{
@@ -5405,6 +5406,7 @@ p.nextPointFidelite{
 		background-color: #555;
 	    z-index: 1000;
 	    padding: 0;
+	    text-transform: inherit;
 	}
 
 	.contentNav p{
