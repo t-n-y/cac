@@ -13,34 +13,36 @@
 		//   fjs.parentNode.insertBefore(js, fjs);
 		// }(document, 'script', 'facebook-jssdk'));
 	</script>
-		{% if (sliderImages is defined and sliderImages|length > 0) %}
-			<div class="topBar col-xs-12 col-sm-12 col-md-12 noPadding" style="background-image : url('{{ asset('uploads/bar/'~sliderImages[0].path) }}'); background-position: -{{ sliderImages[0].cropX }}px -{{ sliderImages[0].cropY }}px;">
-		{% else %}
-			<div class="topBar col-xs-12 col-sm-12 col-md-12 noPadding" style="background-image : url('{{ asset('uploads/bar/'~bar.path) }}');">
-		{% endif %}
-				
-			<div class="infoNameBar">
-				<h1>{{ bar.name }}</h1>
-			
-				{% if bar.cocktailPrice <= 5 %}
-					<p>€<span>€€€€</span></p>
-				{% elseif bar.cocktailPrice <= 10 %}
-					<p>€€<span>€€€</span></p>
-				{% elseif bar.cocktailPrice <= 15 %}
-					<p>€€€<span>€€</span></p>
-				{% elseif bar.cocktailPrice <= 20 %}
-					<p>€€€€<span>€</span></p>
-				{% else %}
-					<p>€€€€€</p>
-				{% endif %}
-
-				<p class="adresseBarShow">{{ bar.adress }} <b>{{ bar.zipcode }} {{ bar.town }}</b></p>
-			</div>
-		</div>
+		
 		
 		<div class="contentSuperInfoBar col-xs-12 col-sm-12 col-md-12 noPadding">
 			<div class="contentAffterSuperInfoBar">
 				<div class="col-xs-12 col-sm-8 col-md-8">
+					{% if (sliderImages is defined and sliderImages|length > 0) %}
+						<div class="topBar col-xs-12 col-sm-12 col-md-12 noPadding" style="background-image : url('{{ asset('uploads/bar/'~sliderImages[0].path) }}'); background-position: -{{ sliderImages[0].cropX }}px -{{ sliderImages[0].cropY }}px;">
+					{% else %}
+						<div class="topBar col-xs-12 col-sm-12 col-md-12 noPadding" style="background-image : url('{{ asset('uploads/bar/'~bar.path) }}');">
+					{% endif %}
+							
+						<div class="infoNameBar">
+							<h1>{{ bar.name }}</h1>
+						
+							{% if bar.cocktailPrice <= 5 %}
+								<p>€<span>€€€€</span></p>
+							{% elseif bar.cocktailPrice <= 10 %}
+								<p>€€<span>€€€</span></p>
+							{% elseif bar.cocktailPrice <= 15 %}
+								<p>€€€<span>€€</span></p>
+							{% elseif bar.cocktailPrice <= 20 %}
+								<p>€€€€<span>€</span></p>
+							{% else %}
+								<p>€€€€€</p>
+							{% endif %}
+
+							<p class="adresseBarShow">{{ bar.adress }} <b>{{ bar.zipcode }} {{ bar.town }}</b></p>
+						</div>
+					</div>
+					<div class="clear"></div>
 					<div class="superInfoBar noPadding">
 						<div class="ongletBar">
 							<div class="col-xs-6 col-sm-6 col-md-6 noPadding">

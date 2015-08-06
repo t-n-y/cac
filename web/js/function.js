@@ -835,30 +835,30 @@ var nbImage = $( ".topPage img" ).length;
    }
 
 
-$(document).ready(function() {
-$(".topBar").animate({
-      height: "360px"
-    }, 300);
+// $(document).ready(function() {
+// $(".topBar").animate({
+//       height: "400px"
+//     }, 300);
 
-    var timer;
-    $(".topBar").hover(function() {
-        timer = setTimeout(function() {
-            $(".topBar").animate({
-              height: "550px"
-          }, 300);
-        },1000);
-    },function() {
-        clearTimeout(timer);
-    });
+//     var timer;
+//     $(".topBar").hover(function() {
+//         timer = setTimeout(function() {
+//             $(".topBar").animate({
+//               height: "550px"
+//           }, 300);
+//         },1000);
+//     },function() {
+//         clearTimeout(timer);
+//     });
 
-    $( ".topBar" ).mouseleave(function() {
+//     $( ".topBar" ).mouseleave(function() {
   
-    $(".topBar").animate({
-      height: "360px"
-    }, 300);
+//     $(".topBar").animate({
+//       height: "360px"
+//     }, 300);
 
-  });
-});
+//   });
+// });
 
 /*********************************************************************************/
 
