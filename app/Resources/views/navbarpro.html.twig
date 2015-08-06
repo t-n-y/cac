@@ -17,112 +17,6 @@
   <div class="forConfirmation">
     <p>Un mail viens de vous être envoyé, cliquer sur le lien pour confirmer définitivement votre inscription.<br><br>A tout de suite ! </p>
   </div>
-<!-- <nav class="navbar navbar-default" role="navigation">
-  <div class="container-fluid">
-
-
-    <div class="navbar-header">
-      <div class="center hidden-sm hidden-md hidden-lg">
-        <a class="logo-afterscroll" href="{{ path('home') }}"><img src="{{asset('img/logopro.png')}}" alt="Click and Cheers"></a>
-      </div>
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-    </div>
-
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navPro hidden-xs col-sm-5 col-md-5 noPadding">
-        <li class="col-sm-6 col-md-6 noPadding"><a class="gestionOffre" href="{{ path('bars_offer', { id : bar.id }) }}">GESTION DES OFFRES</a></li>
-        <li class="col-sm-6 col-md-6 noPadding"><a class="retourOffre" href="{{ path('bars_offerFeedback', { id : bar.id }) }}">RETOUR DES OFFRES</a></li>
-      </ul>
-
-      <ul class="nav navbar-nav col-xs-12 hidden-sm hidden-md hidden-lg">
-        <li><a href="{{ path('bars_offer', { id : bar.id }) }}">GESTION DES OFFRES</a></li>
-        <li><a href="{{ path('bars_offerFeedback', { id : bar.id }) }}">RETOUR DES OFFRES</a></li>
-      </ul>
-
-      <div class="nav navbar-nav hidden-xs col-sm-2 col-md-2">
-        <div class="containeurLogo">
-          <div class="logoradius">
-            <a href="{{ path('home') }}"><img src="{{asset('img/logopro.png')}}" alt="Click and Cheers"></a>
-          </div>
-        </div>
-      </div>
-      <ul class="nav navbar-nav navPro hidden-xs col-sm-5 col-md-5 noPadding">
-        <li class="col-sm-4 col-md-4 noPadding"><a class="option" href="{{ path('bars_option', { id : bar.id }) }}">OPTIONS</a></li>
-        <li class="col-sm-4 col-md-4 noPadding"><a class="statistiques" href="{{ path('map') }}">STATISTIQUES</a></li>
-        <li class="col-sm-4 col-md-4 noPadding">
-          <a href="#" class="monCompte dropdown-toggle pull-right" data-toggle="dropdown" role="button" aria-expanded="false">Mon compte</a>
-          <ul class="dropdown-menu pull-right" role="menu">
-            <li><a href="{{ path('fos_user_security_login') }}">{{ app.user.username }}</a></li>
-            {% if is_granted('ROLE_BIGBOSS') %}
-              <li><a href="{{ path('bar_new') }}">Créer un bar</a></li>
-            {% endif %}
-            <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
-          </ul>
-        </li> 
-      </ul>
-      <ul class="nav navbar-nav col-xs-12 hidden-sm hidden-md hidden-lg">
-        <li><a href="{{ path('bars_offerFeedback', { id : bar.id }) }}">OPTIONS</a></li>
-        <li><a href="{{ path('map') }}">STATISTIQUES</a></li>
-        {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-          <li class="pull-right"><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
-        {% else %}
-          <li class="pull-right"><a href="{{ path('fos_user_security_login') }}">Connexion</a></li>
-        {% endif %}
-         
-      </ul>
-    </div>
-
-  </div>
-</nav>
-
-
-<div class="navbar navbar-afterscroll stuck">
-  <div class="container-fluid">
-
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-    </div>
-
-
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      
-      <ul class="nav navbar-nav navPro col-xs-12 col-sm-5 col-md-5 noPadding">
-        <li class="col-sm-6 col-md-6 noPadding"><a href="{{ path('bars_offer', { id : bar.id }) }}">GESTION DES OFFRES</a></li>
-        <li class="col-sm-6 col-md-6 noPadding"><a href="{{ path('bars_offerFeedback', { id : bar.id }) }}">RETOUR DES OFFRES</a></li>
-      </ul>
-      <div class="nav navbar-nav hidden-xs col-sm-2 col-md-2">
-        <div class="containeurLogo">
-            <a class="logo-afterscroll" href="{{ path('home') }}"><img src="{{asset('img/logopro.png')}}" alt="Click and Cheers"></a>
-        </div>
-      </div>
-      <ul class="nav navbar-nav navPro Propcol-xs-12 col-sm-5 col-md-5 noPadding">
-        <li class="col-sm-4 col-md-4 noPadding"><a href="{{ path('bars_offerFeedback', { id : bar.id }) }}">OPTIONS</a></li>
-        <li class="col-sm-4 col-md-4 noPadding"><a href="{{ path('map') }}">STATISTIQUES</a></li>
-        <li class="col-sm-4 col-md-4 noPadding">
-          <a href="#" class="dropdown-toggle pull-right" data-toggle="dropdown" role="button" aria-expanded="false">Mon compte <span class="caret"></span></a>
-          <ul class="dropdown-menu pull-right" role="menu">
-            <li><a href="{{ path('fos_user_security_login') }}">{{ app.user.username }}</a></li>
-            {% if is_granted('ROLE_BIGBOSS') %}
-              <li><a href="{{ path('bar_new') }}">Créer un bar</a></li>
-            {% endif %}
-            <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-  </div>  
-</div> -->
-
 <nav>
     <button class="hidden-sm hidden-md hidden-lg menu__handle">
         <span>Menu</span>
@@ -174,13 +68,24 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2">
                     <div class="col-xs-12 col-sm-4 col-md-4 noPadding">
-                        <p><a href="{{ path('bars_offer', { id : bar.id }) }}">GESTION DES OFFRES</a></p>
+                        <p class="leftMobile"><a href="{{ path('bars_offer', { id : bar.id }) }}">Gestions des offres</a></p>
                     </div>
                     <div class="col-xs-12 col-sm-4 col-md-4 noPadding">
-                        <p><a href="{{ path('bars_offerFeedback', { id : bar.id }) }}">RETOUR DES OFFRES</a></p>
+                        <p class="leftMobile"><a href="{{ path('bars_offerFeedback', { id : bar.id }) }}">Retour des offres</a></p>
                     </div>
                     <div class="col-xs-12 col-sm-4 col-md-4 noPadding">
-                        <p><a href="{{ path('bars_option', { id : bar.id }) }}">OPTIONS</a></p>
+                        <p class="leftMobile"><a href="{{ path('bars_option', { id : bar.id }) }}">Options</a></p>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="separationHeader"></div>
+                    {% if is_granted('ROLE_BIGBOSS') %}
+                      <div class="col-xs-12 hidden-sm hidden-md noPadding noPadding">
+                          <p class="leftMobile"><a href="{{ path('bar_new') }}">Créer un bar</a></p>
+                      </div>
+                    {% endif %}
+                    <div class="col-xs-12 hidden-sm hidden-md noPadding">
+                        <p class="leftMobile"><a href="{{ path('compte', { id : bar.id }) }}">Mon compte pro</a></p>
+                        <p class="logout"><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></p>
                     </div>
                 </div>
             </div>

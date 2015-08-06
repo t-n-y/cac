@@ -348,9 +348,8 @@ $(document).on('click','.menu__handle' ,function() {
     $(this).parent().addClass('menu_open');
 });
 
-$(document).on('click','.menu_open' ,function() {
-    $(this).removeClass('menu_open');
-    $(this).children().removeClass('menu_open');
+$(document).on('click','button.menu_open' ,function() {
+    $('.menu_open').removeClass('menu_open');
 });
 
 $(document).on('click','.inscriptionNewProNav', function() {

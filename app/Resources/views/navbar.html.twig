@@ -131,15 +131,65 @@
         <div class="contentNav">
             <div class="row">
                 <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2">
-                    <div class="col-xs-12 col-sm-4 col-md-4 noPadding">
-                        <p><a class="trouverBar" href="{{ path('bars') }}">TROUVER UN BAR</a></p>
+                    <div class="col-xs-12 hidden-sm hidden-md noPadding">
+                    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                        {% if is_granted('ROLE_BARMAN') and not is_granted('ROLE_BIGBOSS') %}
+                          <p>Bonjour <span class="nameInHeader">{{ app.user.getUsername()}}</span> </p>
+                        {% else %}
+                          <p>Bonjour <span class="nameInHeader">{{ app.user.firstname}}</span> </p>
+                        {% endif %}
+                      {% else %}
+                        <div class="col-xs-12 hidden-sm hidden-md noPadding">
+
+                            <p class="leftMobile animConnexion">Connexion</p>
+                            <p class="leftMobile"><a href="{{ path('user_register') }}">Inscription</a></p>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="separationHeader"></div>
+                     {% endif %}
                     </div>
                     <div class="col-xs-12 col-sm-4 col-md-4 noPadding">
-                        <p><a class="hasard" href="{{ path('randomBar') }}">AU HASARD</a></p>
+                        <p class="leftMobile"><a class="trouverBar" href="{{ path('bars') }}">Trouver un bar</a></p>
                     </div>
                     <div class="col-xs-12 col-sm-4 col-md-4 noPadding">
-                        <p><a class="parrainage" href="#">PARRAINAGE</a></p>
+                        <p class="leftMobile"><a class="hasard" href="{{ path('randomBar') }}">Au hasard</a></p>
                     </div>
+                    <div class="col-xs-12 col-sm-4 col-md-4 noPadding">
+                        <p class="leftMobile"><a class="parrainage" href="#">Parrainage</a></p>
+                    </div>
+                    
+                    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                    <div class="clear"></div>
+                    <div class="separationHeader"></div>
+                    {% if is_granted('ROLE_BIGBOSS') or is_granted('ROLE_BARMAN') %}
+
+                        <div class="col-xs-12 hidden-sm hidden-md noPadding">
+                          <p class="leftMobile"><a href="{{ path('barman_register') }}">Ajouter un barman</a></p>
+                   
+                        {% if is_granted('ROLE_BIGBOSS') %}
+                         
+                            <p class="leftMobile"><a href="{{ path('bar_new') }}">Créer un bar</a></p>
+                            <p class="leftMobile"><a href="{{ path('bars_list') }}">Mes bars</a></p>
+               
+                        {% endif %}
+                        </div>
+                        <div class="clear"></div>
+                        <div class="separationHeader"></div>
+                      {% endif %}
+                      <div class="col-xs-12 hidden-sm hidden-md noPadding">
+
+                        <p class="leftMobile mesReservation"><a href="{{ path('fos_user_profile_show') }}">Mes réservations</a></p>
+
+                        <p class="leftMobile mesParrainage"><a href="{{ path('fos_user_profile_show') }}">Mes parrainages</a></p>
+
+                        <p class="leftMobile monCompte"><a href="{{ path('fos_user_profile_show') }}">Mon compte</a></p>
+
+                        <p class="leftMobile"><a href="{{ path('fos_user_profile_show') }}">Mes points</a></p>
+
+                        <p class="logout"><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></p>
+                      </div>
+
+                      {% endif %}
                 </div>
             </div>
         </div>
