@@ -5354,6 +5354,10 @@ p.nextPointFidelite{
 		font-size: 9px;
 	}
 
+	.contentAffterSuperInfoBar{
+		width: 100%;
+	}
+
 /*	.contentPetitPlus{
 		padding: 0 0%;
 	}*/
