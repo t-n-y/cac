@@ -1636,7 +1636,7 @@ text-transform:capitalize;
 	position: relative;
 	height: 360px;
 	overflow: hidden;
-	background-size: cover;
+    background-repeat: no-repeat;
     -webkit-transition: background-image 2s ease-in-out;
     -moz-transition: background-image 2s ease-in-out;
     -o-transition: background-image 2s ease-in-out;
