@@ -36,6 +36,13 @@ class DaySponsorship
     private $number;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="restriction", type="string", length=255, nullable=true)
+     */
+    private $restriction;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Cac\BarBundle\Entity\Bar", inversedBy="daySponsorships")
      */
     protected $bar;
@@ -120,5 +127,29 @@ class DaySponsorship
     public function getBar()
     {
         return $this->bar;
+    }
+
+    /**
+     * Set restriction
+     *
+     * @param string $restriction
+     *
+     * @return DaySponsorship
+     */
+    public function setRestriction($restriction)
+    {
+        $this->restriction = $restriction;
+
+        return $this;
+    }
+
+    /**
+     * Get restriction
+     *
+     * @return string
+     */
+    public function getRestriction()
+    {
+        return $this->restriction;
     }
 }

@@ -1,23 +1,30 @@
 {
 	"Lundi": {
-        "number": "5"
+        "number": "5",
+        "restriction": ""
     },
     "Mardi": {
-        "number": "5"
+        "number": "5",
+        "restriction": ""
     },
     "Mercredi": {
-        "number": "5"
+        "number": "5",
+        "restriction": ""
     },
     "Jeudi": {
-        "number": "5"
+        "number": "5",
+        "restriction": ""
     },
     "Vendredi": {
-        "number": "5"
+        "number": "5",
+        "restriction": ""
     },
     "Samedi": {
-        "number": "5"
+        "number": "5",
+        "restriction": ""
     },
     "Dimanche": {
-        "number": "5"
+        "number": "5",
+        "restriction": ""
     }
 }
