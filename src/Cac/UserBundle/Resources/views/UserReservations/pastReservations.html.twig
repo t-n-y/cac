@@ -53,19 +53,24 @@
 								{% endif %}
 							</div>
 
+							
 							<div class="ConditionProfileUser">
 								<h3>Condition</h3>
-								<div class="contentConditionProfileUser">
 
-									<p>{{ promo.bar.getPromotionByDay(today).getOption('restriction').value }}</p> 
-									<p>{{ promo.bar.getHappyHourByDay(today).getOption('restriction').value }}</p>
+								<div class="contentConditionProfileUser">
+									{% if promo.bar.getPromotionByDay(today).getOption('restriction').value or promo.bar.getHappyHourByDay(today).getOption('restriction').value%}
+										<p>{{ promo.bar.getPromotionByDay(today).getOption('restriction').value }}</p> 
+										<p>{{ promo.bar.getHappyHourByDay(today).getOption('restriction').value }}</p>
+									{% else %}
+										<p>Pas de condition</p>
+									{% endif %}
 
 								</div>
 							</div>
+							
 						</div>
 						<div class="col-xs-12 col-sm-12 col-md-2 moreReservationUser">
-							<p>Voir la fiche du bar</p>
-							<p>Inviter des amis</p>
+							<p><a href="{{ path('bar_show', { id : promo.bar.id }) }}">Voir la fiche du bar</a></p>
 							<p class="delete-promo" data-promo-id="{{promo.id}}">Annuler</p>
 						</div>
 					</div>

@@ -3,7 +3,15 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 {% block fos_user_content %}
+<div class="resettingPassword" style="background-color: #f6f6f6;
+    width: 50%;
+    margin: auto;
+    text-align: center;
+    margin-top: 10%;
+    padding: 30px;
+    box-shadow: 0.5px 0.866px 1px 0px rgba(48, 48, 48, 0.098);">
 <p>
-{{ 'resetting.check_email'|trans({'%email%': email}) }}
+Nous vous envoyons un lien pour changer votre mot de passe
 </p>
+</div>
 {% endblock %}
