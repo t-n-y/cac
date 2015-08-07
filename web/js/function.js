@@ -967,6 +967,7 @@ $(document).on( 'click', '.JS-obtenirPromo', function() {
         url: Routing.generate('get_promo', {'id': promoId, 'value': valuePromo, 'nbPersonne': nbPersonne, 'time': hour}),
         data: 'json',
         success: function (data) {
+          console.log('success ' + data);
           $('.contentNbPersonneReservation').fadeOut(function(){
             $('.JS-promoBox').addClass('voirMaConfirmationDone');
             $('.JS-promoBox').html('VOIR MA PROMO');
@@ -975,8 +976,14 @@ $(document).on( 'click', '.JS-obtenirPromo', function() {
           });
         },
         error: function(data){
-          $('.testSuccess').html(data);
-          alert("Vous n'avez pas votre promotion");
+          // $('.testSuccess').html(data);
+          // alert("Vous n'avez pas votre promotion");
+          $('.contentNbPersonneReservation').fadeOut(function(){
+            $('.JS-promoBox').addClass('voirMaConfirmationDone');
+            $('.JS-promoBox').html('VOIR MA PROMO');
+            $('.boutonReservationPromo').removeClass('completionAdresse');
+            confirmationReservation();
+          });
         }
     } );
   }else{
