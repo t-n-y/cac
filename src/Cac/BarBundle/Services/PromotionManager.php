@@ -113,7 +113,7 @@ class PromotionManager
         foreach($this->days as $day) {
             $daySponsorship = new DaySponsorship();
             $daySponsorship->setDay($day);
-            $daySponsorship->setNumber('');
+            $daySponsorship->setNumber('5');
 
             $this->addEmptyDaySponsorship($daySponsorship);
         }

@@ -307,6 +307,15 @@ setInterval(function(){
     $('#cac_barbundle_promotion_dummy_promotion').val(JSON.stringify(hidden));
   });
 
+  $('.sponsorship-value-input').keyup(function(){
+    var day = $(this).attr('data-day');
+    var reduction = $(this).val();
+    var hidden = $('#form_sponsorship_json').val();
+    hidden = JSON.parse(hidden);
+    hidden[day].number = reduction;
+    $('#form_sponsorship_json').val(JSON.stringify(hidden));
+  });
+
   function loadTemplate(template) {
     $.getJSON( "http://www.click-and-cheers.com/json/" + template + ".template.json", function( data ) {
       var bundle = {

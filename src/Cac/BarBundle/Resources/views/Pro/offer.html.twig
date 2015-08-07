@@ -74,7 +74,7 @@
 
 			<div class="coteneurBackOfficeBar col-xs-12 col-sm-12 col-md-12 noPadding">
 				<div class="superContentBackOffice contentBackOffre noPadding">
-				{{ form_start(edit_form) }}
+				{{ form_start(edit_form, {'attr': {'id': 'form_promotion'}}) }}
 				      {{ form_errors(edit_form) }}
 				      {{ form_widget(edit_form.promotion) }}
 
@@ -257,7 +257,7 @@
 
 												<div class="promoParrainnage">
 													<p><b>Nombre de parrainages disponibles</b></p>
-													<input type="text" class="nbParrainnageToday" nbParrainnageToday="">
+													<input type="text" class="nbParrainnageToday sponsorship-value-input" nbParrainnageToday="" data-day="{{ days[day] }}">
 
 													<p>Conditions :</p> 					
 												</div>
@@ -305,10 +305,26 @@
 <script src="{{ asset('js/svgcheckbx.js') }}" type="text/javascript" /></script>
  <script>
  $(document).ready(function() {
- 	$('#cac_barbundle_promotion_dummy_submit').on('click', function() {
- 		var form = $('form[name="cac_barbundle_promotion_dummy"]');
+ 	$('#form_promotion #cac_barbundle_promotion_dummy_submit').on('click', function() {
+ 		var form = $('#form_promotion');
  		var formAction = form.attr('action');
- 		var data = $('#cac_barbundle_promotion_dummy_promotion').val();
+ 		var data = $('#form_promotion #cac_barbundle_promotion_dummy_promotion').val();
+
+ 		$.ajax({
+	        type: 'POST',
+	        url: formAction,
+	        data: { data: data },
+	        success: function (data) {
+ 				console.log(data);
+ 				confirmationReservation();
+	        }
+	    });
+ 		return false;
+ 	});
+ 	$('#form_sponsorship #cac_barbundle_promotion_dummy_submit').on('click', function() {
+ 		var form = $('#form_sponsorship');
+ 		var formAction = form.attr('action');
+ 		var data = $('#form_sponsorship #form_sponsorship_json').val();
 
  		$.ajax({
 	        type: 'POST',
