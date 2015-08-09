@@ -112,7 +112,7 @@ class SponsorshipController extends Controller
 		$user = $this->get('security.context')->getToken()->getUser();
 
 		$newdate = \DateTime::createFromFormat('d-m-Y', $date);
-		$used = $newdate->format('y-m-d');
+		$used = $newdate->format('d-m-Y');
 
 // ld($newdate);
 // ldd($used);
