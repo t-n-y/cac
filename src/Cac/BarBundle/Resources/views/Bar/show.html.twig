@@ -470,7 +470,11 @@
 															    <option value="{{k}}">{{k}}</option>
 															{% endfor %}
 														</select>
+														{% if bar.getPromotionByDay(today).getOption('value').value == 0 or bar.getPromotionByDay(today).getOption('value').value == 'Valeur' %}
+														<div class="boutonReservationPromo JS-obtenirPromo JS-promoBox" data-bar-id="{{bar.id}}" data-valuepromo="0" data-bar-hour="">
+														{% else %}
 														<div class="boutonReservationPromo JS-obtenirPromo JS-promoBox" data-bar-id="{{bar.id}}" data-valuepromo="{{ bar.getPromotionByDay(today).getOption('value').value }}" data-bar-hour="">
+														{% endif %}
 															<p>VALIDER LA RESERVATION</p>
 														</div> 
 
@@ -658,17 +662,63 @@
 			],
 			loop = 1,
 			end = barImages.length - 1;
-		setInterval(function () {
-	        $('.topBar').css({
-	        	"background-image": "url(" + barImages[loop][0] + ")",
-	        	"background-position": "-" + barImages[loop][1] + "px -" + barImages[loop][2] + "px"
-	        });
-	        if((loop + 1) > end) { 
-	        	loop = 0; 
-	        } else {
-	        	loop++;
-	        }
-	    }, 5000);
+
+			setTimeout(function () {
+				annimSilder();
+			}, 5000);
+
+			function annimSilder(){
+				$('.topBar').animate({opacity: 0}, function() {
+					$('.topBar').css({
+				    	"background-image": "url(" + barImages[loop][0] + ")"
+				    	//"background-position": "-" + barImages[loop][1] + "px -" + barImages[loop][2] + "px"
+				    });
+
+				    $('.topBar').animate({opacity: 1}, function() {
+						if((loop + 1) > end) { 
+				    		loop = 0; 
+					    	
+					    } else {
+					    	loop++;
+					    }
+
+					    setTimeout(function () {
+					    	annimSilder();
+					    }, 5000);
+					    
+					});
+
+				});
+				// $('.topBar').css({
+			 //    	"background-image": "url(" + barImages[loop][0] + ")"
+			 //    	//"background-position": "-" + barImages[loop][1] + "px -" + barImages[loop][2] + "px"
+			 //    });
+
+				// if((loop + 1) > end) { 
+			 //    	loop = 0; 
+			    	
+			 //    } else {
+			 //    	loop++;
+			 //    }
+
+			    
+			};			
+
+			
+
+
+		// setInterval(function () {
+	 //        $('.topBar').css({
+	 //        	"background-image": "url(" + barImages[loop][0] + ")"
+	 //        	//"background-position": "-" + barImages[loop][1] + "px -" + barImages[loop][2] + "px"
+	 //        });
+	 //        if((loop + 1) > end) { 
+	 //        	loop = 0; 
+	 //        } else {
+	 //        	loop++;
+
+	 //        }
+	 //    }, 5000);
 		{% endif %}
 	});
 

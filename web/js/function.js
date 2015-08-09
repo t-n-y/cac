@@ -317,7 +317,7 @@ setInterval(function(){
   });
 
   function loadTemplate(template) {
-    $.getJSON( "http://localhost/cac/web/json/" + template + ".template.json", function( data ) {
+    $.getJSON( "http://www.click-and-cheers.com/json/" + template + ".template.json", function( data ) {
       var bundle = {
         "schedule": "bar",
         "promotion": "promotion_dummy"
@@ -957,42 +957,33 @@ $(document).on( 'click', '.JS-obtenirPromo', function() {
     var nbPersonne = $(this).data('nbpersone');
     var hour = $(this).data('bar-hour');
 
-    if(!valuePromo){
+
+    console.log(promoId + ' - ' + valuePromo + ' - ' + nbPersonne + ' - ' + hour); 
+
+    if(!valuePromo || isNaN(valuePromo) ){
       valuePromo = 0;
     }
     $.ajax( {
-        url: Routing.generate('get_promo', {id: promoId, value: valuePromo, nbPersonne: nbPersonne, time: hour}),
+        url: Routing.generate('get_promo', {'id': promoId, 'value': valuePromo, 'nbPersonne': nbPersonne, 'time': hour}),
         data: 'json',
         success: function (data) {
-          // $('.testSuccess').html(data);
-          // $('.ticket .ticketBarTop').css('background-color', '#ea9026');
-          // $('.ticket .ticketBarTop h2').hide();
-          // $('.ticket .ticketBarTop h3').hide();
-          // $('.ticket .ticketBarTop p').html('');
-          // $('.ticket .ticketBarTop p').append('VOIR MA RESERVATION');
-          // $('.ticket p.obtenirPromo').html('');
-          // $('.ticket p.obtenirPromo').append('POUR AUJOUR\'HUI');
-          // $('.ticket').find('[data-bar-id]').attr( 'data-bar-id', null );
-          // $('.JS-ticket').removeClass('JS-ticket');
-          // $('.JS-promoBox').addClass('voirMaConfirmationDone');
-          
-          // closeTicketPromotion();
-          // confirmationReservation();
+          console.log('success ' + data);
           $('.contentNbPersonneReservation').fadeOut(function(){
             $('.JS-promoBox').addClass('voirMaConfirmationDone');
             $('.JS-promoBox').html('VOIR MA PROMO');
             $('.boutonReservationPromo').removeClass('completionAdresse');
-
             confirmationReservation();
           });
-
-          
-
-
         },
         error: function(data){
-          $('.testSuccess').html(data);
-          alert("Vous n'avez pas votre promotion");
+          // $('.testSuccess').html(data);
+          // alert("Vous n'avez pas votre promotion");
+          $('.contentNbPersonneReservation').fadeOut(function(){
+            $('.JS-promoBox').addClass('voirMaConfirmationDone');
+            $('.JS-promoBox').html('VOIR MA PROMO');
+            $('.boutonReservationPromo').removeClass('completionAdresse');
+            confirmationReservation();
+          });
         }
     } );
   }else{
