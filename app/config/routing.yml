@@ -3,17 +3,6 @@ cac_navigation:
     type:     annotation
     prefix:   /
 
-hwi_oauth_redirect:
-    resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
-    prefix:   /connect
-
-facebook_login:
-    pattern: /login/check-facebook
-
-hwi_oauth_login:
-  resource: "@HWIOAuthBundle/Resources/config/routing/login.xml"
-  prefix: /oauth-login
-
 cac_mailing:
     resource: "@CacMailingBundle/Controller/"
     type:     annotation

@@ -63,7 +63,6 @@ class BarController extends Controller
            $bars[$i]['promo'] = $promoOfTheDay;
            $bars[$i]['happy'] = $happyHourOfTheDay;
            $bars[$i]['author'] = $entity->getAuthor();
-           $bars[$i]['files'] = $entity->getFiles();
            $i ++;
         }
         $highlight = $em->getRepository('CacBarBundle:highlight')->findAll();
@@ -93,7 +92,6 @@ class BarController extends Controller
                $highlightBars[$h]['promo'] = $promoOfTheDay;
                $highlightBars[$h]['happy'] = $happyHourOfTheDay;
                $highlightBars[$h]['author'] = $high->getBar()->getAuthor();
-               $highlightBars[$i]['files'] = $high->getFiles();
                $h ++;
         }
 
@@ -252,7 +250,7 @@ class BarController extends Controller
             $this->get('mailer')->send($message);
 
             $customer = $promo->getBar()->getAuthor();
-            \Stripe\Stripe::setApiKey("sk_test_zLHsgtijLe1xYM1XPhf12zGY");
+            \Stripe\Stripe::setApiKey("sk_live_Dll7mDB9GfHar05vQ5a8c41P");
             $payment = $em->getRepository('CacPaymentBundle:Payment')->findOneByUser($customer);
             $customerId = $payment->getCustomerId();
             \Stripe\InvoiceItem::create(array(

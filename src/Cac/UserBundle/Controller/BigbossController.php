@@ -65,7 +65,7 @@ class BigbossController extends Controller
 
         $payment = $em->getRepository('CacPaymentBundle:Payment')->findOneByUser($entity->getAuthor());
 
-        \Stripe\Stripe::setApiKey("sk_test_zLHsgtijLe1xYM1XPhf12zGY");
+        \Stripe\Stripe::setApiKey("sk_live_Dll7mDB9GfHar05vQ5a8c41P");
         $customerId = $payment->getCustomerId();
         // $cu = \Stripe\Customer::retrieve($customerId);
         

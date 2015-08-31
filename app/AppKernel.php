@@ -27,7 +27,6 @@ class AppKernel extends Kernel
             new Cac\PaymentBundle\CacPaymentBundle(),
             new Hip\MandrillBundle\HipMandrillBundle(),
             new Cac\MailingBundle\CacMailingBundle(),
-            new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
             new Cac\NavigationBundle\CacNavigationBundle(),
         );
 
@@ -35,7 +34,6 @@ class AppKernel extends Kernel
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
             $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
-            $bundles[] = new CoreSphere\ConsoleBundle\CoreSphereConsoleBundle();
         }
 
         return $bundles;
