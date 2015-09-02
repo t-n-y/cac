@@ -6,34 +6,189 @@
 {% endblock %}
 {% block body %}
 
-		<h1 class="center">Bientôt Disponible</h1>
+		<!-- <h1 class="center">Bientôt Disponible</h1> -->
 
-    <!-- <h1>Avis creation</h1>
+	<div class="avisAccueil">
+		<p>Alors <span class="nameInHeader">{{ app.user.firstname}},</span> c'était comment le {{bar.name}} ?</p>
+	</div>
+	<div class="containeurAvis">
+		
+	
+	    <div class="row">
+	    	<div class="col-xs-12 col-md-5 col-sm-5">
+	    		<div class="contentAvis">
+		    		<div class="row">
+		    			<div class="col-xs-12 col-md-5 col-sm-5">
+			    			<h2 class="nameBarAvis">{{bar.name}}</h2>
+			    			<p class="backgroundBarAvis">Donnez votre avis pour la réservation du 14/11/1992</p>
+			    		</div>
+			    		<div class="col-xs-12 col-md-7 col-sm-7">
+			    			<div class="imageBarAvis col-xs-12 col-sm-12 col-md-12 noPadding" style="background-image : url('{{ asset('uploads/bar/'~bar.path) }}');">
+			    			</div>
+			    			<p>Note actuelle : <span>7</span>/10</p>
+			    		</div>
+			    	</div>
 
-    <ul class="notes-echelle">
-		<li>
-			<label for="note01" title="Note&nbsp;: 1 sur 5"><p>1</p></label>
-			<input type="radio" name="notesA" id="note01" value="1" />
-		</li>
-		<li>
-			<label for="note02" title="Note&nbsp;: 2 sur 5"><p>2</p></label>
-			<input type="radio" name="notesA" id="note02" value="2" />
-		</li>
-		<li>
-			<label for="note03" title="Note&nbsp;: 3 sur 5"><p>3</p></label>
-			<input type="radio" name="notesA" id="note03" value="3" />
-		</li>
-		<li>
-			<label for="note04" title="Note&nbsp;: 4 sur 5"><p>4</p></label>
-			<input type="radio" name="notesA" id="note04" value="4" />
-		</li>
-		<li>
-			<label for="note05" title="Note&nbsp;: 5 sur 5"><p>5</p></label>
-			<input type="radio" name="notesA" id="note05" value="5" />
-		</li>
-	</ul>
+			    	<h3>Comment faire ?</h3>
+			    	<p>Donnez votre avis de la même manière que vous aimez les lire lorsque vous choisissez un établissement.</p>
 
-    {{ form(form) }} -->
+			    	<h3>Que dire ?</h3>
+			    	<p>Racontez nous votre expérience comme vous le feriez avec un amis à vous.</p>
+			    	<p>Soyez mesuré, si cela vous à plus, dites le, si c'était en dessa de vos espérences dites le aussi. Mais dans tout les cas, n'utilisez pas trop de superlatifs.</p>
+			    	<p>Restez pondéré pour être crédible auprès des autres internautes.</p>
+	    		</div>
+	    		
+	    	</div>
+	    	<div class="col-xs-12 col-md-7 col-sm-7">
+	    		<div class="contentAvis">
+		    		<div class="row">
+		    			<div class="col-xs-12 col-md-6 col-sm-6">
+		    				<div class="contentVote">
+		    					<h4>L'ambiance</h4>
+		    					<ul class="notes-echelle">
+									<li>
+										<label for="ambiance-note01" title="Note&nbsp;: 1 sur 5"><p>1</p></label>
+										<input type="radio" name="notesA" id="ambiance-note01" value="1" />
+									</li>
+									<li>
+										<label for="ambiance-note02" title="Note&nbsp;: 2 sur 5"><p>2</p></label>
+										<input type="radio" name="notesA" id="ambiance-note02" value="2" />
+									</li>
+									<li>
+										<label for="ambiance-note03" title="Note&nbsp;: 3 sur 5"><p>3</p></label>
+										<input type="radio" name="notesA" id="ambiance-note03" value="3" />
+									</li>
+									<li>
+										<label for="ambiance-note04" title="Note&nbsp;: 4 sur 5"><p>4</p></label>
+										<input type="radio" name="notesA" id="ambiance-note04" value="4" />
+									</li>
+									<li>
+										<label for="ambiance-note05" title="Note&nbsp;: 5 sur 5"><p>5</p></label>
+										<input type="radio" name="notesA" id="ambiance-note05" value="5" />
+									</li>
+								</ul>
+								<div class="clear"></div>
+		    				</div>
+
+		    				<div class="contentVote">
+		    					<h4>Les conso</h4>
+		    					<ul class="notes-echelle">
+									<li>
+										<label for="conso-note01" title="Note&nbsp;: 1 sur 5"><p>1</p></label>
+										<input type="radio" name="notesA" id="conso-note01" value="1" />
+									</li>
+									<li>
+										<label for="conso-note02" title="Note&nbsp;: 2 sur 5"><p>2</p></label>
+										<input type="radio" name="notesA" id="conso-note02" value="2" />
+									</li>
+									<li>
+										<label for="conso-note03" title="Note&nbsp;: 3 sur 5"><p>3</p></label>
+										<input type="radio" name="notesA" id="conso-note03" value="3" />
+									</li>
+									<li>
+										<label for="conso-note04" title="Note&nbsp;: 4 sur 5"><p>4</p></label>
+										<input type="radio" name="notesA" id="conso-note04" value="4" />
+									</li>
+									<li>
+										<label for="conso-note05" title="Note&nbsp;: 5 sur 5"><p>5</p></label>
+										<input type="radio" name="notesA" id="conso-note05" value="5" />
+									</li>
+								</ul>
+								<div class="clear"></div>
+		    				</div>
+
+		    				<div class="contentVote">
+		    					<h4>La déco</h4>
+		    					<ul class="notes-echelle">
+									<li>
+										<label for="deco-note01" title="Note&nbsp;: 1 sur 5"><p>1</p></label>
+										<input type="radio" name="notesA" id="deco-note01" value="1" />
+									</li>
+									<li>
+										<label for="deco-note02" title="Note&nbsp;: 2 sur 5"><p>2</p></label>
+										<input type="radio" name="notesA" id="deco-note02" value="2" />
+									</li>
+									<li>
+										<label for="deco-note03" title="Note&nbsp;: 3 sur 5"><p>3</p></label>
+										<input type="radio" name="notesA" id="deco-note03" value="3" />
+									</li>
+									<li>
+										<label for="deco-note04" title="Note&nbsp;: 4 sur 5"><p>4</p></label>
+										<input type="radio" name="notesA" id="deco-note04" value="4" />
+									</li>
+									<li>
+										<label for="deco-note05" title="Note&nbsp;: 5 sur 5"><p>5</p></label>
+										<input type="radio" name="notesA" id="deco-note05" value="5" />
+									</li>
+								</ul>
+								<div class="clear"></div>
+		    				</div>
+		    			</div>
+		    			<div class="col-xs-12 col-md-6 col-sm-6">
+		    				<div class="contentVote">
+		    					<h4>Le service</h4>
+		    					<ul class="notes-echelle">
+									<li>
+										<label for="service-note01" title="Note&nbsp;: 1 sur 5"><p>1</p></label>
+										<input type="radio" name="notesA" id="service-note01" value="1" />
+									</li>
+									<li>
+										<label for="service-note02" title="Note&nbsp;: 2 sur 5"><p>2</p></label>
+										<input type="radio" name="notesA" id="service-note02" value="2" />
+									</li>
+									<li>
+										<label for="service-note03" title="Note&nbsp;: 3 sur 5"><p>3</p></label>
+										<input type="radio" name="notesA" id="service-note03" value="3" />
+									</li>
+									<li>
+										<label for="service-note04" title="Note&nbsp;: 4 sur 5"><p>4</p></label>
+										<input type="radio" name="notesA" id="service-note04" value="4" />
+									</li>
+									<li>
+										<label for="service-note05" title="Note&nbsp;: 5 sur 5"><p>5</p></label>
+										<input type="radio" name="notesA" id="service-note05" value="5" />
+									</li>
+								</ul>
+								<div class="clear"></div>
+		    				</div>
+		    			</div>
+		    			<div class="clear"></div>
+		    			<div class="col-xs-12 col-md-6 col-sm-6">
+		    				<div class="contentVote contentVoteCac">
+		    					<h4>Votre avis sur click and cheers</h4>
+		    					<ul class="notes-echelle">
+									<li>
+										<label for="cac-note01" title="Note&nbsp;: 1 sur 5"><p>1</p></label>
+										<input type="radio" name="notesA" id="cac-note01" value="1" />
+									</li>
+									<li>
+										<label for="cac-note02" title="Note&nbsp;: 2 sur 5"><p>2</p></label>
+										<input type="radio" name="notesA" id="cac-note02" value="2" />
+									</li>
+									<li>
+										<label for="cac-note03" title="Note&nbsp;: 3 sur 5"><p>3</p></label>
+										<input type="radio" name="notesA" id="cac-note03" value="3" />
+									</li>
+									<li>
+										<label for="cac-note04" title="Note&nbsp;: 4 sur 5"><p>4</p></label>
+										<input type="radio" name="notesA" id="cac-note04" value="4" />
+									</li>
+									<li>
+										<label for="cac-note05" title="Note&nbsp;: 5 sur 5"><p>5</p></label>
+										<input type="radio" name="notesA" id="cac-note05" value="5" />
+									</li>
+								</ul>
+								<div class="clear"></div>
+		    				</div>
+		    			</div>
+		    		</div>
+		    	</div>
+	    	</div>
+	    </div>
+    </div>
+
+
+    {{ form(form) }}
 
 {% endblock %}
 

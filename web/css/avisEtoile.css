@@ -1,11 +1,87 @@
-ul.notes-echelle {
+.avisAccueil{
+	background-color: #303030;
+	padding: 5px 0;
+	text-align: center;
+	color: #fff;
+}
+
+.avisAccueil p{
 	margin:0;
-	padding:0;
+	font-weight: 300;
+}
+
+.containeurAvis{
+	width: 90%;
+	margin: auto;
+}
+
+.contentAvis{
+	background-color: #f6f6f6;
+	padding: 10px;
+	margin-top: 20px;
+}
+
+.contentAvis p{
+	margin: 0;
+}
+
+.contentAvis h3{
+	font-size: 14px;
+	margin-bottom: 0px;
+}
+
+.backgroundBarAvis{
+	background-color: #fff;
+	padding: 5px;
+}
+
+.imageBarAvis{
+	height: 80px;
+    background-size: cover;
+    background-position: 0 -20px; 
+}
+
+
+.nameBarAvis{
+	background-color: #5ac4d4;
+	color: #fff;
+	font-size: 14px;
+	text-align: center;
+	font-weight: 300;
+	padding: 5px 0;
+	margin: 0;
+}
+
+.contentVote{
+	border: 1px solid #ddd;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.contentVote h4{
+	background-color: #303030;
+    margin: 0;
+    color: #fff;
+    font-size: 14px;
+    padding: 5px 0;
+    font-weight: 300;
+}
+
+.contentVoteCac h4{
+background-color: #5ac4d4;
+}
+
+
+ul.notes-echelle {
 	font:.75em/1.2 Arial, Helvetica, sans-serif;
+	margin: auto;
+    text-align: center;
+    display: inline-block;
+    padding: 10px 0;
 }
 ul.notes-echelle li {
 	float:left;
-	margin:0;
+	margin:0 5px;
 	padding:0;
 	list-style:none;
 	min-width:20px;
@@ -43,3 +119,16 @@ ul.notes-echelle.js input {
  ul.notes-echelle li.note-checked {
 	font-weight:bold;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

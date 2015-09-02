@@ -128,9 +128,14 @@ class AvisController extends Controller
         $entity = new Avis();
         $form   = $this->createCreateForm($entity, $barId);
 
+        $em = $this->getDoctrine()->getManager();
+        $bar = $em->getRepository('CacBarBundle:Bar')->find($barId);
+
         return array(
             'entity' => $entity,
             'form'   => $form->createView(),
+            'bar'    => $bar
+
         );
     }
 

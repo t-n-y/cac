@@ -59,16 +59,27 @@ The required Stripe lib
     <div class="form-row">
       <label>
         <span>Expiration (MM/YYYY)</span>
-        <input type="text" size="2" data-stripe="exp-month"/>
+        
+        <select class="schedule-picker" data-stripe="exp-month">
+          {% for i in 1..12 %}
+                <option value="{{i}}">{{i}}</option>
+          {% endfor %}
+        </select>
+        <!-- <input type="text" size="2" data-stripe="exp-month"/> -->
       </label>
       <span> / </span>
-      <input type="text" size="4" data-stripe="exp-year"/>
+      <select class="schedule-picker" data-stripe="exp-year">
+        {% for i in "now"|date("Y")..("now"|date("Y")+10) %}
+              <option value="{{i}}">{{i}}</option>
+        {% endfor %}
+      </select>
+      <!-- <input type="text" size="4" data-stripe="exp-year"/> -->
     </div>
 
     <div class="form-row">
       <label>
         <span>CVC</span>
-        <input type="text" size="4" data-stripe="cvc"/>
+        <input type="text" size="4" data-stripe="cvc" placeholder="123"/>
       </label>
     </div>
 
