@@ -65,10 +65,10 @@ class BigbossController extends Controller
 
         $payment = $em->getRepository('CacPaymentBundle:Payment')->findOneByUser($entity->getAuthor());
 
-        \Stripe\Stripe::setApiKey("%stripe_api_key%");
+        $stripeApikey = $this->container->getParameter('stripe_api_key');
+
+        \Stripe\Stripe::setApiKey($stripeApikey);
         $customerId = $payment->getCustomerId();
-        // $cu = \Stripe\Customer::retrieve($customerId);
-        
 
         $upcomingInvoice = \Stripe\Invoice::upcoming(array("customer" => $customerId));
         $amoutDue = $upcomingInvoice->__toArray(true)['amount_due'];

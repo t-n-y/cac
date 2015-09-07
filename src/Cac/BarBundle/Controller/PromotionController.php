@@ -190,7 +190,9 @@ class PromotionController extends Controller
         $em = $this->getDoctrine()->getManager();
         $promo = $em->getRepository('CacBarBundle:PromoOffertes')->find($id);
         $customer = $promo->getBar()->getAuthor();
-        \Stripe\Stripe::setApiKey("%stripe_api_key%");
+        $stripeApikey = $this->container->getParameter('stripe_api_key');
+
+        \Stripe\Stripe::setApiKey($stripeApikey);
         $payment = $em->getRepository('CacPaymentBundle:Payment')->findOneByUser($customer);
         $customerId = $payment->getCustomerId();
         \Stripe\InvoiceItem::create(array(
