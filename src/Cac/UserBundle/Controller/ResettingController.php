@@ -48,7 +48,7 @@ class ResettingController extends Controller
         $user = $this->get('fos_user.user_manager')->findUserByUsernameOrEmail($username);
 
         if (null === $user) {
-            return $this->render('UserBundle:Resetting:request.html.twig', array(
+            return $this->render('CacUserBundle:Resetting:request.html.twig', array(
                 'invalid_username' => $username
             ));
         }

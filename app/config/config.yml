@@ -85,6 +85,9 @@ fos_user:
 #    registration:
 #        form:
 #            type: cac_bigboss_registration
+    resetting:
+        form:
+            validation_groups: [MyChangePassword]
     service:
         user_manager: pugx_user_manager
 fos_js_routing:
