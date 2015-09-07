@@ -250,7 +250,7 @@ class BarController extends Controller
             $this->get('mailer')->send($message);
 
             $customer = $promo->getBar()->getAuthor();
-            \Stripe\Stripe::setApiKey("sk_live_Dll7mDB9GfHar05vQ5a8c41P");
+            \Stripe\Stripe::setApiKey("%stripe_api_key%");
             $payment = $em->getRepository('CacPaymentBundle:Payment')->findOneByUser($customer);
             $customerId = $payment->getCustomerId();
             \Stripe\InvoiceItem::create(array(

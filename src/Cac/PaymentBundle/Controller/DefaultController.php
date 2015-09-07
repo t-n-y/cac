@@ -22,7 +22,7 @@ class DefaultController extends Controller
     	$user = $this->get('security.context')->getToken()->getUser();
 
     	if ($this->getRequest()->isMethod('POST')) {
-    		\Stripe\Stripe::setApiKey("sk_live_Dll7mDB9GfHar05vQ5a8c41P");
+    		\Stripe\Stripe::setApiKey("%stripe_api_key%");
 			$token = $_POST['stripeToken'];
 
 			$this->createFreeStripeUser($user, $em, $token);
@@ -40,7 +40,7 @@ class DefaultController extends Controller
     	$em = $this->getDoctrine()->getManager();
     	$user = $this->get('security.context')->getToken()->getUser();
     	if ($this->getRequest()->isMethod('POST')) {
-    		\Stripe\Stripe::setApiKey("sk_live_Dll7mDB9GfHar05vQ5a8c41P");
+    		\Stripe\Stripe::setApiKey("%stripe_api_key%");
     		
 			$token = $_POST['stripeToken'];
 			$this->createPremiumStripeUser($user, $em, $token);
@@ -104,7 +104,7 @@ class DefaultController extends Controller
     	$payment = $em->getRepository('CacPaymentBundle:Payment')->findOneByUser($id);
     	$newPlan = $plan;
 
-    	\Stripe\Stripe::setApiKey("sk_live_Dll7mDB9GfHar05vQ5a8c41P");
+    	\Stripe\Stripe::setApiKey("%stripe_api_key%");
 
     	$customerId = $payment->getCustomerId();
 

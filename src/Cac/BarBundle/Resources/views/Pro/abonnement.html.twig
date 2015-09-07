@@ -14,7 +14,7 @@
 
   <script type="text/javascript">
     // This identifies your website in the createToken call below
-    Stripe.setPublishableKey('pk_live_66OKhXZG99lL3UnxFFUh7kT2');
+    Stripe.setPublishableKey('{{stripe_api_secret}}');
 
     var stripeResponseHandler = function(status, response) {
       var $form = $('#payment-form');
