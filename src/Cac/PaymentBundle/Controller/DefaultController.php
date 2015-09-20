@@ -22,13 +22,25 @@ class DefaultController extends Controller
     	$user = $this->get('security.context')->getToken()->getUser();
 
     	if ($this->getRequest()->isMethod('POST')) {
-    		$stripeApikey = $this->container->getParameter('stripe_api_key');
 
-            \Stripe\Stripe::setApiKey($stripeApikey);
-			$token = $_POST['stripeToken'];
+            try {
+                $stripeApikey = $this->container->getParameter('stripe_api_key');
 
-			$this->createFreeStripeUser($user, $em, $token);
-			return $this->redirect($this->generateUrl('confirm_payment'));
+                \Stripe\Stripe::setApiKey($stripeApikey);
+                $token = $_POST['stripeToken'];
+
+                $this->createFreeStripeUser($user, $em, $token);
+                return $this->redirect($this->generateUrl('confirm_payment'));
+            } catch (\Stripe\Error\Card $e) {
+                // Card was declined.
+                $this->get('session')->getFlashBag()->add(
+                    'notice',
+                    'Votre carte n\'a pas pu être enregistrée.
+                    Il semble que les informations que vous avez renseignées comportent une erreur, merci de recommencer.'
+                );
+                $referer = $this->getRequest()->headers->get('referer');
+                return $this->redirect($referer);
+            }
     	}
         return array();
     }
@@ -42,13 +54,27 @@ class DefaultController extends Controller
     	$em = $this->getDoctrine()->getManager();
     	$user = $this->get('security.context')->getToken()->getUser();
     	if ($this->getRequest()->isMethod('POST')) {
-    		$stripeApikey = $this->container->getParameter('stripe_api_key');
 
-            \Stripe\Stripe::setApiKey($stripeApikey);
-    		
-			$token = $_POST['stripeToken'];
-			$this->createPremiumStripeUser($user, $em, $token);
-			return $this->redirect($this->generateUrl('confirm_payment'));
+
+
+            try {
+                $stripeApikey = $this->container->getParameter('stripe_api_key');
+
+                \Stripe\Stripe::setApiKey($stripeApikey);
+                
+                $token = $_POST['stripeToken'];
+                $this->createPremiumStripeUser($user, $em, $token);
+                return $this->redirect($this->generateUrl('confirm_payment'));
+            } catch (\Stripe\Error\Card $e) {
+                // Card was declined.
+                $this->get('session')->getFlashBag()->add(
+                    'notice',
+                    'Votre carte n\'a pas pu être enregistrée.
+                    Il semble que les informations que vous avez renseignées comportent une erreur, merci de recommencer.'
+                );
+                $referer = $this->getRequest()->headers->get('referer');
+                return $this->redirect($referer);
+            }
     	}
         return array();
     }
