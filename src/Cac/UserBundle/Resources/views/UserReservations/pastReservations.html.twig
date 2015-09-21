@@ -120,9 +120,10 @@
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-3 center">
 						<p><b>{{promo.bar.name}}</b></p>
-						
-						<div class="imgBarReservation" style="background-image : url({{ asset('uploads/bar/'~promo.bar.path) }});">
-						</div>
+						<a href="{{ path('bar_show', { id : promo.bar.id }) }}">
+							<div class="imgBarReservation" style="background-image : url({{ asset('uploads/bar/'~promo.bar.path) }});">
+							</div>
+						</a>
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-4">
 						<div class="contentPromoUser">
@@ -137,7 +138,7 @@
 						</div>
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-2 afterReservationUser">
-						<p>Parrainer un ami</p>
+						<a class="parrainage" href="#"><p>Parrainer un ami</p></a>
 					</div>
 				</div>
 			</div>

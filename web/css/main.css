@@ -5155,6 +5155,11 @@ p.nextPointFidelite{
 	font-size: 12px;
 }
 
+.afterReservationUser p, .afterReservationUser a, .moreReservationUser p, .moreReservationUser a{
+	color:#303030;
+	text-decoration: none;
+}
+
 .boxPointFidelite{
 	text-align: center;
 	width: 200px;
