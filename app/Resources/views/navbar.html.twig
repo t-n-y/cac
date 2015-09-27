@@ -69,7 +69,7 @@
         
     
         <div class="administration">
-            {% if is_granted('ROLE_USER') %}
+            {% if app.user and is_granted('ROLE_USER') %}
                 <div class="profileUserNav">
                   <img class="hidden-sm hidden-md hidden-lg" src="{{asset('img/imgProfilBasic.png')}}">
                   {% if is_granted('ROLE_BARMAN') and not is_granted('ROLE_BIGBOSS') %}
