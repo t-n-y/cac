@@ -493,7 +493,7 @@
 												<p>VOIR MA PROMO</p>
 											</div> 
 										{% else %}
-											{% app.user and if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+											{% if app.user and is_granted('IS_AUTHENTICATED_REMEMBERED') %}
 												<div class="boutonReservationPromo ReserveHour">
 											{% else %}
 												<div class="animConnexion boutonReservationPromo">
