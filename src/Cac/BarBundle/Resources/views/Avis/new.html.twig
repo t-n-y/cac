@@ -154,7 +154,7 @@
 		    			</div>
 		    			<div class="col-xs-12 col-md-6 col-sm-6">
 		    				<div class="contentVote">
-		    					<h4>En sortant vous vous êtes dit :</h4>
+		    					<h4>Votre note</h4>
 		    					 <div class="noteBar">
 		    					 	<p><span>0</span>/10</p>
 		    					 </div>
@@ -162,7 +162,7 @@
 		    				</div>
 		    			</div>
 		    			<div class="clear"></div>
-		    			<div class="col-xs-12 col-md-6 col-sm-6">
+		    			<!-- <div class="col-xs-12 col-md-6 col-sm-6">
 		    				<div class="contentVote contentVoteCac">
 		    					<h4>Votre avis sur click and cheers</h4>
 		    					<ul class="notes-echelle">
@@ -189,9 +189,17 @@
 								</ul>
 								<div class="clear"></div>
 		    				</div>
+		    			</div> -->
+		    			<div class="col-xs-12">
+		    				<div class="contentVote">
+		    					<h4>En sortant vous vous êtes dit :</h4>
+		    					 {{ form(form) }}
+								<div class="clear"></div>
+		    				</div>
+		    				
 		    			</div>
-		    			{{ form(form) }}
 		    		</div>
+		    		
 		    	</div>
 	    	</div>
 	    </div>

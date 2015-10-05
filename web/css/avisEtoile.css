@@ -120,6 +120,30 @@ ul.notes-echelle.js input {
 	font-weight:bold;
 }
 
+.noteBar{
+	padding: 30px;
+}
+
+.noteBar p{
+	font-size: 35px;
+}
+
+.noteBar span{
+	font-size: 55px;
+	color: #5ac4d4;
+}
+
+#cac_barbundle_avis label{
+	display: none;
+}
+
+#cac_barbundle_avis textarea{
+	width: 100%;
+    background-color: #f6F6F6;
+    border: none;
+}
+
+    
 
 
 

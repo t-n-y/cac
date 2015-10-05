@@ -63,4 +63,6 @@ function changeNote(noteAmbiance, noteConso, noteDeco, noteService){
 
 	$('.noteBar span').html();
 	$('.noteBar span').html(note);
+
+	$('#cac_barbundle_avis_score').val(note);
 }
