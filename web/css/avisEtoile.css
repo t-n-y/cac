@@ -137,7 +137,7 @@ ul.notes-echelle.js input {
 	display: none;
 }
 
-#cac_barbundle_avis textarea{
+#cac_barbundle_avis textarea, #cac_barbundle_avis input{
 	width: 100%;
     background-color: #f6F6F6;
     border: none;

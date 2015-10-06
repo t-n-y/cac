@@ -15,8 +15,12 @@ class AvisType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('message')
+            ->add('message', 'text', array(
+                'attr' => array(
+                    'placeholder' => 'Soyer constructif, bref, objectif',
+                )))
             ->add('score', 'hidden', array())
+            
         ;
     }
     
