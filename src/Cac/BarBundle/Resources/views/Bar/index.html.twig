@@ -54,7 +54,7 @@
 				</div>
 			{% else %}
 				{% for bar in bars|slice(0, 1) %}
-				{% if bar.files|length > 0 %}
+				{% if bar.files is defined and bar.files|length > 0 %}
 				<img src="{{ asset('uploads/bar/'~bar.files[0].path) }}" alt="">
 				{% else %}
 				<img src="{{ asset('uploads/bar/'~bar.path) }}" alt="">
