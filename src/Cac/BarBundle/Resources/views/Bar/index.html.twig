@@ -7,7 +7,7 @@
 <div class="topListBar col-xs-12 col-sm-12 col-md-12 noPadding">
 
 			{% for bar in highlight|slice(0, 1) if bar is not null %}
-				{% if bar.files|length > 0 %}
+				{% if bar.files is defined and bar.files|length > 0 %}
 				<img src="{{ asset('uploads/bar/'~bar.files[0].path) }}" alt="">
 				{% else %}
 				<img src="{{ asset('uploads/bar/'~bar.path) }}" alt="">
@@ -109,7 +109,7 @@
 {% for bar in bars %}
 	<a href="{{ path('bar_show', { id : bar.id }) }}">
 		<div class="barInList col-xs-12 col-sm-6 col-md-3 noPadding">
-			{% if bar.files|length > 0 %}
+			{% if bar.files is defined and bar.files|length > 0 %}
 			<div class="contentImageBar" style="background-image:url({{ asset('uploads/bar/'~bar.files[0].path) }})">
 			{% else %}
 			<div class="contentImageBar" style="background-image:url({{ asset('uploads/bar/'~bar.path) }})">
