@@ -5385,6 +5385,10 @@ p.nextPointFidelite{
 	.donnezAvisReservation{
 		margin-top: 15px;
 	}
+
+	.noneInMobile{
+		display: none;
+	}
 }
 
 @media (max-width: 945px) {
@@ -5470,6 +5474,25 @@ p.nextPointFidelite{
 		right: 0;
 	    z-index: 1000;
 	    display: none;
+	}
+
+	.forConnexion{
+		width: 100%;
+		left:0;
+		margin-left: 0;
+		height: 85%;
+		top:0;
+		margin-top: 0;
+	}
+
+	.forConnexion label{
+		margin-left: 0px;
+   		float: none;
+	}
+
+	.inscrivezVous{
+		width: 100%;
+		margin-left: 0px;
 	}
 
 	.profileUserNav{
@@ -5660,6 +5683,10 @@ p.nextPointFidelite{
 	    margin-left: 0;
 	    right: 0;
 	    margin-right: 0;
+	}
+
+	.contentFormUser{
+		padding: 40px 50px;
 	}
 
 }
