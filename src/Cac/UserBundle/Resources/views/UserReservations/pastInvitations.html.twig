@@ -161,7 +161,7 @@
 			<div class="boxReservation">
 				<div class="row">
 					<div class="col-xs-12 col-sm-6 col-md-3 center">
-						<p>
+						<p class="dateForPoints">
 							{{ promo.createdAt | date("d") }}
 
 							{% set months = {'1': 'janvier', '2': 'février', '3': 'maris', '4': 'avril', '5': 'mai', '6': 'juin', '7': 'juillet', '8': 'août', '9': 'septembre', '10': 'octobre', '11': 'novembre', '12': 'décembre'} %}
@@ -176,7 +176,7 @@
 							{{ promo.createdAt | date("Y") }}
 						</p>
 
-						<p>5 pts</p>
+						<p class="addPoints">5 pts</p>
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-3 center">
 						<p><b>{{promo.bar.name}}</b></p>
