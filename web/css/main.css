@@ -1849,7 +1849,7 @@ select:focus {
 	font-size: 12px;
 }
 
-.promotionPresent, .noOfferPresent{
+.promotionPresent{
 	background-color: #5ac4d4;
 }
 
@@ -1971,7 +1971,7 @@ select:focus {
 }
 
 .boutonReservationPromo{
-	background-color: #696969;
+	background-color: #5ac4d4;
 	text-align: center;
 	color: #fff;
 	width: 70%;
@@ -5060,6 +5060,22 @@ p.nextPointFidelite{
 	background-color:#f6f6f6;
 	padding : 10px;
 	margin-bottom: 10px;
+}
+
+.dateForPoints{
+	margin-bottom: 25px;
+}
+
+.addPoints{
+    border: 1px solid #303030;
+    width: 50px;
+    padding: 13px 0 0 0;
+    border-radius: 100px;
+    height: 50px;
+    text-align: center;
+    margin: auto;
+    color: #fff;
+    background-color: #5ac4d4;
 }
 
 .imgBarReservation{

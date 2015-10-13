@@ -96,7 +96,7 @@ ul.notes-echelle li label {
 	display:block;
 	text-align:center;
 	line-height:20px;
-	background:url('../img/etoiles.gif') center top no-repeat;
+	background:url('../img/etoiles.png') center top no-repeat;
 	cursor:pointer;
 }
 

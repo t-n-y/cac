@@ -68,7 +68,7 @@
 {% for promo in verresOfferts if not break %}
     
     {% if promo.createdAt | date("d/m/Y") == 'now' | date("d/m/Y") %}
-    	<h2>C'est cadeau !</h2>
+    	<h2>Vos parrainages du jour</h2>
         {% set break = true %}
     {% endif %}
 {% endfor %}
@@ -147,7 +147,7 @@
 
 {% set breakpast = false %}
 {% for promo in verresOfferts if not breakpast %}
-	<h2>Souvenirs</h2>
+	<h2>Tous les amis que vous avez parrainé</h2>
     {% set breakpast = true %}
 {% endfor %}
 
@@ -192,13 +192,13 @@
 							<p class="happyhProfileUser"><span>-50%</span> de 14h à 19h</p> -->
 						</div>
 
-						<div class="donnezAvisReservation">
+						<!-- <div class="donnezAvisReservation">
 							<h3>Donnez votre avis</h3>
-						</div>
+						</div> -->
 					</div>
-					<div class="col-xs-12 col-sm-6 col-md-2 afterReservationUser">
-						<p>Parrainer un ami</p>
-					</div>
+					<!-- <div class="col-xs-12 col-sm-6 col-md-2 afterReservationUser">
+						<a class="parrainage" href="#"><p>Parrainer un ami</p></a>
+					</div> -->
 				</div>
 			</div>
 
@@ -208,3 +208,13 @@
 	{% endfor %}
 
 </div> 
+
+{% set ifReservation = false %}
+
+{% for promo in verresOfferts if not ifReservation %}
+    	{% set ifReservation = true %}
+{% endfor %}
+
+{% if not ifReservation %}
+	<p class="center">Vous n'avez pas encore parrainez vos amis.</p>
+{% endif %}
