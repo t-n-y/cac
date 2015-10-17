@@ -30,7 +30,7 @@
         
     
         <div class="administration">
-            {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+            {% if app.user and is_granted('IS_AUTHENTICATED_REMEMBERED') %}
                 <div class="profileUserNav">
                   <img class="hidden-sm hidden-md hidden-lg" src="{{asset('img/imgProfilBasic.png')}}">
                   <p>Bonjour <span class="nameInHeader">{{ app.user.firstname}}</span> </p>
@@ -78,7 +78,7 @@
                     </div>
                     <div class="clear"></div>
                     <div class="separationHeader"></div>
-                    {% if is_granted('ROLE_BIGBOSS') %}
+                    {% if app.user and is_granted('ROLE_BIGBOSS') %}
                       <div class="col-xs-12 hidden-sm hidden-md hidden-lg noPadding">
                           <p class="leftMobile"><a href="{{ path('bar_new') }}">Créer un bar</a></p>
                       </div>

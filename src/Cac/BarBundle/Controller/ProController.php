@@ -743,6 +743,19 @@ class ProController extends Controller
     }
 
     /**
+     * @Route("/remove-highlight/{id}", name="remove_highlight_bar", options={"expose"=true})
+     */
+    public function removeHighlightAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $hightlightedBar = $em->getRepository('CacBarBundle:Highlight')->findOneByBar($id);
+        $em->remove($hightlightedBar);
+        $em->flush();
+
+        return new Response("Mise en avant annulée");
+    }
+
+    /**
      * Upload a file to a Bar entity.
      *
      * @Route("/upload/{id}", name="file_upload", options={"expose"=true})

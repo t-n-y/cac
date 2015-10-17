@@ -86,8 +86,10 @@
 
 {% set breakpast = false %}
 {% for promo in promoOffertes if not breakpast %}
-	<h2>Évènements passés</h2>
-    {% set breakpast = true %}
+	 {% if promo.createdAt | date("d/m/Y") != 'now' | date("d/m/Y") %}
+    	<h2>Évènements passés</h2>
+    	{% set breakpast = true %}
+    {% endif %}	
 {% endfor %}
 
 
@@ -101,7 +103,7 @@
 			<div class="boxReservation">
 				<div class="row">
 					<div class="col-xs-12 col-sm-6 col-md-3 center">
-						<p>
+						<p class="dateForPoints">
 							{{ promo.createdAt | date("d") }}
 
 							{% set months = {'1': 'janvier', '2': 'février', '3': 'maris', '4': 'avril', '5': 'mai', '6': 'juin', '7': 'juillet', '8': 'août', '9': 'septembre', '10': 'octobre', '11': 'novembre', '12': 'décembre'} %}
@@ -116,13 +118,14 @@
 							{{ promo.createdAt | date("Y") }}
 						</p>
 
-						<p>5 pts</p>
+						<p class="addPoints">5 pts</p>
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-3 center">
 						<p><b>{{promo.bar.name}}</b></p>
-						
-						<div class="imgBarReservation" style="background-image : url({{ asset('uploads/bar/'~promo.bar.path) }});">
-						</div>
+						<a href="{{ path('bar_show', { id : promo.bar.id }) }}">
+							<div class="imgBarReservation" style="background-image : url({{ asset('uploads/bar/'~promo.bar.path) }});">
+							</div>
+						</a>
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-4">
 						<div class="contentPromoUser">
@@ -137,7 +140,7 @@
 						</div>
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-2 afterReservationUser">
-						<p>Parrainer un ami</p>
+						<a class="parrainage" href="#"><p>Parrainer un ami</p></a>
 					</div>
 				</div>
 			</div>
@@ -148,3 +151,16 @@
 	{% endfor %}
 
 </div> 
+
+
+
+
+{% set ifReservation = false %}
+
+{% for promo in promoOffertes if not ifReservation %}
+    	{% set ifReservation = true %}
+{% endfor %}
+
+{% if not ifReservation %}
+	<p class="center">Vous n'avez pas de réservation.</p>
+{% endif %}

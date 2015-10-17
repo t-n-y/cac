@@ -22,7 +22,7 @@ $(document).ready(function(){
       } );
     });
 
-  $( ".mettreBarEnAvant p" ).on( "click", function() {
+  $( ".mettreBarEnAvant p.barEnAvant" ).on( "click", function() {
       var barId = $(this).data('bar-id');
       $.ajax( {
           url: Routing.generate('highlight_bar', {id: barId}),
@@ -36,6 +36,22 @@ $(document).ready(function(){
             }
             else{
               alert('Bar mis en avant');
+            }
+          }
+      } );
+    });
+
+  $( ".mettreBarEnAvant p.removeBarEnAvant" ).on( "click", function() {
+      var barId = $(this).data('bar-id');
+      $.ajax( {
+          url: Routing.generate('remove_highlight_bar', {id: barId}),
+          data: 'json',
+          success: function (data) {
+            if(data === "Mise en avant annulée"){
+              alert(data);
+            }
+            else{
+              alert('Erreur');
             }
           }
       } );
