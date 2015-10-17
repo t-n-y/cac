@@ -243,13 +243,39 @@ class BarController extends Controller
             $em->persist($promo);
             $em->flush();
 
-            $message = \Swift_Message::newInstance()
+            $md = $this->get('hip_mandrill.dispatcher');
+
+            $message = new Message();
+            $templateName = 'reservation-confirmation';
+            $templateContent = array(
+                array(
+                    'name' => 'barname',
+                    'content' => $bar->getName()
+                ),
+                array(
+                    'name' => 'adress',
+                    'content' => $bar->getAdress().', '.$bar->getZipcode().', '.$bar->getTown()
+                ),
+                array(
+                    'name' => 'nb',
+                    'content' => $nbPersonne
+                ),
+                array(
+                    'name' => 'time',
+                    'content' => $time
+                ),
+                array(
+                    'name' => 'reference',
+                    'content' => $reference
+                ),
+            );
+            $message
+                ->addTo($user->getEmail(), $user->getFirstname().' '.$user->getName())
                 ->setSubject('Réservation confirmée : '.$bar->getName())
-                ->setFrom('noreply@click-and-cheers.com')
-                ->setTo($user->getEmail())
-                ->setBody('<p>Nous vous confirmons que votre réservation pour :'.$bar->getName().' à bien été transmise au gérant.</p><p>Il vous suffit de donner votre nom et prénom à votre arrivée.</p><p>En cas d\'empêchement n\'oubliez pas d\'annuler votre réservation dans votre espace personnel.</p><p>Rappel :</p><p>Etablissement : '.$bar->getAdress().', '.$bar->getTown().'</p><p>Horaire de réservation : '.$time.'</p><p>Nombre de personnes : '.$nbPersonne.'</p><p>Numéro de réservation : '.$reference.'</p><p>N\'oubliez pas de nous raconter comment c\'était en laissant un avis.<br>Click and cheers vous remercie de votre confiance.</p>', 'text/html')
-            ;
-            $this->get('mailer')->send($message);
+                ->setTrackOpens(true)
+                ->setTrackClicks(true);
+
+            $result = $md->send($message, $templateName, $templateContent);
 
             $customer = $promo->getBar()->getAuthor();
             $stripeApikey = $this->container->getParameter('stripe_api_key');
