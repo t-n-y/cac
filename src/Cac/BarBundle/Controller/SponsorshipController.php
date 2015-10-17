@@ -112,7 +112,7 @@ class SponsorshipController extends Controller
 		$user = $this->get('security.context')->getToken()->getUser();
 
 		$newdate = \DateTime::createFromFormat('d-m-Y', $date);
-		$used = $newdate->format('d-m-Y');
+		$used = $newdate->format('d/m/Y');
 
 // ld($newdate);
 // ldd($used);
@@ -120,6 +120,7 @@ class SponsorshipController extends Controller
 
 		$sponsorship = $em->getRepository('CacBarBundle:Sponsorship')->findOneByCode($code);
 		$sponsorship->setUsedAt($newdate);
+		$restriction = $sponsorship->getRestriction();
 		$em->persist($sponsorship);
 		$bar = $em->getRepository('CacBarBundle:Bar')->findOneById($sponsorship->getBar());
 
@@ -168,7 +169,7 @@ class SponsorshipController extends Controller
 			),
 			array(
 				'name' => 'restriction',
-				'content' => 'Aucune'
+				'content' => $restriction
 			),
         );
         $message
@@ -178,6 +179,38 @@ class SponsorshipController extends Controller
             ->setTrackClicks(true);
 
         $result = $md->send($message, $templateName, $templateContent);
+
+        $message2 = new Message();
+        $templateName2 = 'invitation-confirmation';
+        $templateContent2 = array(
+            array(
+                'name' => 'date',
+                'content' => $used
+            ),
+            array(
+                'name' => 'barname',
+                'content' => $bar->getName()
+            ),
+            array(
+                'name' => 'adress',
+                'content' => $bar->getAdress().', '.$bar->getZipcode().', '.$bar->getTown()
+            ),
+            array(
+                'name' => 'ref',
+                'content' => $reference
+            ),
+            array(
+                'name' => 'restriction',
+                'content' => $restriction
+            ),
+        );
+        $message2
+            ->addTo($user->getEmail(), $user->getFirstname().' '.$user->getName())
+            ->setSubject('Confirmation d\'invitation')
+            ->setTrackOpens(true)
+            ->setTrackClicks(true);
+
+        $result2 = $md->send($message2, $templateName2, $templateContent2);
 
 		return new JsonResponse(array('msg' => 'invitation envoyée'));
 	}
