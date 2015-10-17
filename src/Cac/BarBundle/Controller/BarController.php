@@ -277,6 +277,34 @@ class BarController extends Controller
 
             $result = $md->send($message, $templateName, $templateContent);
 
+            $message2 = new Message();
+            $templateName2 = 'bigboss-reservation';
+            $templateContent2 = array(
+                array(
+                    'name' => 'barname',
+                    'content' => $bar->getName()
+                ),
+                array(
+                    'name' => 'nb',
+                    'content' => $nbPersonne
+                ),
+                array(
+                    'name' => 'time',
+                    'content' => $time
+                ),
+                array(
+                    'name' => 'reference',
+                    'content' => $reference
+                ),
+            );
+            $message2
+                ->addTo($bar->getAuthor()->getEmail(), $bar->getAuthor()->getFirstname().' '.$bar->getAuthor()->getName())
+                ->setSubject('Nouvelle réservation : '.$bar->getName())
+                ->setTrackOpens(true)
+                ->setTrackClicks(true);
+
+            $result2 = $md->send($message2, $templateName2, $templateContent2);
+
             $customer = $promo->getBar()->getAuthor();
             $stripeApikey = $this->container->getParameter('stripe_api_key');
 
