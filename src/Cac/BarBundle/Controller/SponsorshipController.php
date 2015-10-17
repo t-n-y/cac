@@ -212,6 +212,30 @@ class SponsorshipController extends Controller
 
         $result2 = $md->send($message2, $templateName2, $templateContent2);
 
+        $message3 = new Message();
+        $templateName3 = 'bigboss-sponsorship';
+        $templateContent3 = array(
+            array(
+                'name' => 'barname',
+                'content' => $bar->getName()
+            ),
+            array(
+                'name' => 'date',
+                'content' => $used
+            ),
+            array(
+                'name' => 'reference',
+                'content' => $reference
+            ),
+        );
+        $message3
+            ->addTo($bar->getAuthor()->getEmail(), $bar->getAuthor()->getFirstname().' '.$bar->getAuthor()->getName())
+            ->setSubject('Nouveau parrainage : '.$bar->getName())
+            ->setTrackOpens(true)
+            ->setTrackClicks(true);
+
+        $result3 = $md->send($message3, $templateName3, $templateContent3);
+
 		return new JsonResponse(array('msg' => 'invitation envoyée'));
 	}
 }
