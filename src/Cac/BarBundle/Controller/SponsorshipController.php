@@ -127,7 +127,8 @@ class SponsorshipController extends Controller
 		$reference = mt_rand(100000,999999);
 	    $promo = new VerresOfferts();
 	    $promo->setReference($reference);
-	    $promo->setEtat('confirmé');
+		$promo->setEtat('confirmé');
+		$promo->setEmail($mail);
 	    $promo->setBar($bar);
 	    $promo->setUser($user);
 	    $promo->setCreatedAt(new \DateTime('now'));
@@ -161,10 +162,14 @@ class SponsorshipController extends Controller
                 'name' => 'adress',
                 'content' => $bar->getAdress().', '.$bar->getZipcode().', '.$bar->getTown()
             ),
-            array(
-                'name' => 'ref',
-                'content' => $reference
-            ),
+			array(
+				'name' => 'ref',
+				'content' => $reference
+			),
+			array(
+				'name' => 'restriction',
+				'content' => 'Aucune'
+			),
         );
         $message
             ->addTo($mail, 'ami')

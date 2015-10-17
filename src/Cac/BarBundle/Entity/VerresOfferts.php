@@ -36,6 +36,13 @@ class VerresOfferts
     private $etat;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=255)
+     */
+    private $email;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Cac\BarBundle\Entity\Bar", inversedBy="VerresOfferts")
      */
     private $bar;
@@ -107,6 +114,29 @@ class VerresOfferts
     public function getEtat()
     {
         return $this->etat;
+    }
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     * @return VerresOfferts
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
     }
 
     /**
