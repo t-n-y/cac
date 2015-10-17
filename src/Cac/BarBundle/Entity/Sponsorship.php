@@ -47,6 +47,11 @@ class Sponsorship
      */
     protected $bar;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Cac\BarBundle\Entity\Restriction")
+     */
+    protected $restriction;
+
     public function __construct()
     {
         $this->createdAt = new \Datetime();
@@ -156,5 +161,28 @@ class Sponsorship
     public function getBar()
     {
         return $this->bar;
+    }
+    /**
+     * Set restriction
+     *
+     * @param \Cac\BarBundle\Entity\Restriction $bar
+     *
+     * @return restriction
+     */
+    public function setRestriction(\Cac\BarBundle\Entity\Restriction $restriction = null)
+    {
+        $this->restriction = $restriction;
+
+        return $this;
+    }
+
+    /**
+     * Get restriction
+     *
+     * @return \Cac\BarBundle\Entity\Restriction
+     */
+    public function getRestriction()
+    {
+        return $this->restriction;
     }
 }

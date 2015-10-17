@@ -259,7 +259,18 @@
 													<p><b>Nombre de parrainages disponibles</b></p>
 													<input type="text" class="nbParrainnageToday sponsorship-value-input" nbParrainnageToday="" data-day="{{ days[day] }}">
 
-													<p>Conditions : Venir accompagné et valable sur toute une sélection de boissons</p> 					
+													<p>
+														<select class="sponsorshipRestriction sponsorship-restriction-select" data-day="{{ days[day] }}">
+															{% for restriction in restrictions %}
+																{% if restriction.name !='' %}
+																	<option value="{{ restriction.name }}">
+																		{{ restriction.name }}
+																	</option>
+																{% endif %}
+
+															{% endfor %}
+														</select>
+                                                    </p>
 												</div>
 
 

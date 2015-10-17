@@ -33,9 +33,9 @@ class BarController extends Controller
     public function indexAction()
     {
         // Mac et UNIX/Linux
-        setlocale(LC_TIME, "fr_FR");
+        //setlocale(LC_TIME, "fr_FR");
         // Windows
-        //setlocale(LC_TIME, "french");
+        setlocale(LC_TIME, "french");
         $today = ucfirst(strftime("%A"));
         $em = $this->getDoctrine()->getManager();
         $entities = $em->getRepository('CacBarBundle:Bar')->findAll();
@@ -63,6 +63,7 @@ class BarController extends Controller
            $bars[$i]['promo'] = $promoOfTheDay;
            $bars[$i]['happy'] = $happyHourOfTheDay;
            $bars[$i]['author'] = $entity->getAuthor();
+           $bars[$i]['files'] = $entity->getFiles();
            $i ++;
         }
         $highlight = $em->getRepository('CacBarBundle:highlight')->findAll();
@@ -92,6 +93,7 @@ class BarController extends Controller
                $highlightBars[$h]['promo'] = $promoOfTheDay;
                $highlightBars[$h]['happy'] = $happyHourOfTheDay;
                $highlightBars[$h]['author'] = $high->getBar()->getAuthor();
+               $highlightBars[$i]['files'] = $high->getFiles();
                $h ++;
         }
 
@@ -118,9 +120,9 @@ class BarController extends Controller
     public function showAction($id)
     {
         // Mac et UNIX/Linux
-        setlocale(LC_TIME, "fr_FR");
+        //setlocale(LC_TIME, "fr_FR");
         // Windows
-        //setlocale(LC_TIME, "french");
+        setlocale(LC_TIME, "french");
         $today = ucfirst(strftime("%A"));
 
         $em = $this->getDoctrine()->getManager();

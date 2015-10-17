@@ -2,6 +2,12 @@
 
 {% block title %}{{bar.name}} : Réservez dans cet établissement ! Avis, réservation, parrainage, verre offert, promotion. {% endblock %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('slick/slick.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('slick/slick-theme.css') }}"/>
+    {{ parent() }}
+{% endblock %}
+
 {% block body %}
 	<!-- <div id="fb-root"></div> -->
 	<script>
@@ -17,14 +23,24 @@
 		
 		<div class="contentSuperInfoBar col-xs-12 col-sm-12 col-md-12 noPadding">
 			<div class="contentAffterSuperInfoBar">
+
 				<div class="col-xs-12 col-sm-8 col-md-8">
-					{% if (sliderImages is defined and sliderImages|length > 0) %}
-						<div class="topBar col-xs-12 col-sm-12 col-md-12 noPadding" style="background-image : url('{{ asset('uploads/bar/'~sliderImages[0].path) }}');">
-						<!-- background-position: -{{ sliderImages[0].cropX }}px -{{ sliderImages[0].cropY }}px; -->
-					{% else %}
-						<div class="topBar col-xs-12 col-sm-12 col-md-12 noPadding" style="background-image : url('{{ asset('uploads/bar/'~bar.path) }}');">
-					{% endif %}
-							
+                    <div class="topBar col-xs-12 col-sm-12 col-md-12 noPadding">
+                        <div class="SlickSlider">
+
+                        {% if (sliderImages is defined and sliderImages|length > 0) %}
+                            {% for slide in sliderImages %}
+                            <div class="SlickSlider-slickSlide">
+                                <img src="{{ asset('uploads/bar/'~slide.path) }}" alt="slider-image-1">
+                            </div>
+                            {% endfor %}
+                        {% else %}
+                            <div class="SlickSlider-slickSlide">
+                                <img src="{{ asset('uploads/bar/'~bar.path) }}" alt="slider-image-1">
+                            </div>
+					    {% endif %}
+                        </div>
+						
 						<div class="infoNameBar">
 							<h1>{{ bar.name }}</h1>
 						
@@ -583,7 +599,17 @@
 
 {% block javascripts %}
 {{parent()}}
-<script src="{{ asset('js/reservationBar.js') }}" type="text/javascript" /></script>
+<script src="{{ asset('js/reservationBar.js') }}" type="text/javascript"></script>
+<script type="text/javascript" src="{{ asset('slick/slick.min.js') }}"></script>
+<script>
+    $(document).ready(function() {
+        $('.SlickSlider').slick({
+            autoplay: false,
+            dots: true,
+            adaptiveHeight: true
+        });
+    });
+</script>
  <script>
 	var map;
 	var service;
@@ -650,76 +676,6 @@
 			$('.sliderController[data-id="' + $(this).attr('data-id') + '"]').addClass('activ');
 			$('.transportSliderSlide[data-id="' + $(this).attr('data-id') + '"]').addClass('activ');
 		});
-
-		{% if (sliderImages is defined and sliderImages|length > 1) %}
-		var barImages = [
-		{% for image in sliderImages %}
-			["{{ asset('uploads/bar/'~image.path) }}", "{{ image.cropX }}", "{{ image.cropY }}"]
-			{% if loop.last != true %}
-			,
-			{% endif %}
-		{% endfor %}
-			],
-			loop = 1,
-			end = barImages.length - 1;
-
-			setTimeout(function () {
-				annimSilder();
-			}, 5000);
-
-			function annimSilder(){
-				$('.topBar').animate({opacity: 0}, function() {
-					$('.topBar').css({
-				    	"background-image": "url(" + barImages[loop][0] + ")"
-				    	//"background-position": "-" + barImages[loop][1] + "px -" + barImages[loop][2] + "px"
-				    });
-
-				    $('.topBar').animate({opacity: 1}, function() {
-						if((loop + 1) > end) { 
-				    		loop = 0; 
-					    	
-					    } else {
-					    	loop++;
-					    }
-
-					    setTimeout(function () {
-					    	annimSilder();
-					    }, 5000);
-					    
-					});
-
-				});
-				// $('.topBar').css({
-			 //    	"background-image": "url(" + barImages[loop][0] + ")"
-			 //    	//"background-position": "-" + barImages[loop][1] + "px -" + barImages[loop][2] + "px"
-			 //    });
-
-				// if((loop + 1) > end) { 
-			 //    	loop = 0; 
-			    	
-			 //    } else {
-			 //    	loop++;
-			 //    }
-
-			    
-			};			
-
-			
-
-
-		// setInterval(function () {
-	 //        $('.topBar').css({
-	 //        	"background-image": "url(" + barImages[loop][0] + ")"
-	 //        	//"background-position": "-" + barImages[loop][1] + "px -" + barImages[loop][2] + "px"
-	 //        });
-	 //        if((loop + 1) > end) { 
-	 //        	loop = 0; 
-	 //        } else {
-	 //        	loop++;
-
-	 //        }
-	 //    }, 5000);
-		{% endif %}
 	});
 
 	var positionElementInPage = $('.contentInfoBarNote').offset().top;

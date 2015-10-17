@@ -316,6 +316,15 @@ setInterval(function(){
     $('#form_sponsorship_json').val(JSON.stringify(hidden));
   });
 
+  $('.sponsorship-restriction-select').change(function(){
+    var day = $(this).attr('data-day');
+    var restriction = $(this).val();
+    var hidden = $('#form_sponsorship_json').val();
+    hidden = JSON.parse(hidden);
+    hidden[day].restriction = restriction;
+    $('#form_sponsorship_json').val(JSON.stringify(hidden));
+  });
+
   function loadTemplate(template) {
     $.getJSON( "http://www.click-and-cheers.com/json/" + template + ".template.json", function( data ) {
       var bundle = {
@@ -803,73 +812,6 @@ var nbImage = $( ".topPage img" ).length;
             }
 
     },annimationTime);
-
-
-/*****************************************************************************/
-
-
-/*****************************************SLIDER Page Bar*************************/
-
-    var nbImageBar = $( ".topBar img" ).length;
-    var compteurBar = 0;
-    var annimationTimeBar = 5000;   /******REGLER VITESSE DU SLIDER******/
-
- if(nbImageBar !=1){
-
-   setInterval(function(){
-        
-        $($(".topBar img")[compteurBar]).fadeOut(300);
-        $($(".topBar img")[compteurBar]).removeClass("current");
-        $($(".topBar img")[compteurBar +1]).addClass("current");
-        $($(".topBar img")[compteurBar +1]).fadeIn(300);
-        
-
-        compteurBar ++;
-
-        if($( ".topBar img" ).last().hasClass( "current" )){ 
-
-                setTimeout(function() {  
-
-                    compteurBar = 0;
-                   $(".topBar img").fadeIn(300);
-                  
-
-                },annimationTimeBar);
-
-            }
-            
-
-    },annimationTimeBar);
-   }
-
-
-// $(document).ready(function() {
-// $(".topBar").animate({
-//       height: "400px"
-//     }, 300);
-
-//     var timer;
-//     $(".topBar").hover(function() {
-//         timer = setTimeout(function() {
-//             $(".topBar").animate({
-//               height: "550px"
-//           }, 300);
-//         },1000);
-//     },function() {
-//         clearTimeout(timer);
-//     });
-
-//     $( ".topBar" ).mouseleave(function() {
-  
-//     $(".topBar").animate({
-//       height: "360px"
-//     }, 300);
-
-//   });
-// });
-
-/*********************************************************************************/
-
 
 
 

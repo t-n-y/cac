@@ -35,3 +35,6 @@
 
 # Sessions
 /app/sessions/*
+
+# Idea
+.idea/

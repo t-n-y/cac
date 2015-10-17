@@ -172,8 +172,10 @@ class ProController extends Controller
         $sponsorshipDummy->setPromotion($dummyJSON);
 
         $newDaySponsorships = json_decode($request->request->get('data'), true);
+
         foreach($daySponsorships as $daySponsorship) {
             $daySponsorship->setNumber($newDaySponsorships[$daySponsorship->getDay()]['number']);
+            $daySponsorship->setRestriction($newDaySponsorships[$daySponsorship->getDay()]['restriction']);
             $em->persist($daySponsorship);
         }
 
