@@ -114,6 +114,7 @@ class PromotionManager
             $daySponsorship = new DaySponsorship();
             $daySponsorship->setDay($day);
             $daySponsorship->setNumber('5');
+            $daySponsorship->setRestriction('Aucune');
 
             $this->addEmptyDaySponsorship($daySponsorship);
         }
@@ -193,6 +194,7 @@ class PromotionManager
 
         foreach($daySponsorships as $daySponsorship) {
             $dummyArray[$daySponsorship->getDay()]['number'] = $daySponsorship->getNumber();
+            $dummyArray[$daySponsorship->getDay()]['restriction'] = $daySponsorship->getRestriction();
         }
 
         $newDummyJSON = json_encode($dummyArray);

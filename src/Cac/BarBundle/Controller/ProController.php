@@ -172,8 +172,10 @@ class ProController extends Controller
         $sponsorshipDummy->setPromotion($dummyJSON);
 
         $newDaySponsorships = json_decode($request->request->get('data'), true);
+
         foreach($daySponsorships as $daySponsorship) {
             $daySponsorship->setNumber($newDaySponsorships[$daySponsorship->getDay()]['number']);
+            $daySponsorship->setRestriction($newDaySponsorships[$daySponsorship->getDay()]['restriction']);
             $em->persist($daySponsorship);
         }
 
@@ -697,11 +699,34 @@ class ProController extends Controller
         $promo->setEtat('non validé');
         $user = $promo->getUser();
         $user->setScore($user->getScore()-15);
+        $bar = $promo->getBar();
         $em->persist($user);
         $em->persist($promo);
         $em->flush();
         $customer = $promo->getBar()->getAuthor();
         $stripeApikey = $this->container->getParameter('stripe_api_key');
+
+        $md = $this->get('hip_mandrill.dispatcher');
+
+        $message = new Message();
+        $templateName = 'reservation-cancelled';
+        $templateContent = array(
+            array(
+                'name' => 'barname',
+                'content' => $bar->getName()
+            ),
+            array(
+                'name' => 'reference',
+                'content' => $promo->getReference()
+            ),
+        );
+        $message
+            ->addTo($user->getEmail(), $user->getFirstname().' '.$user->getName())
+            ->setSubject('Réservation annulée : '.$bar->getName())
+            ->setTrackOpens(true)
+            ->setTrackClicks(true);
+
+        $result = $md->send($message, $templateName, $templateContent);
 
         \Stripe\Stripe::setApiKey($stripeApikey);
         $payment = $em->getRepository('CacPaymentBundle:Payment')->findOneByUser($customer);

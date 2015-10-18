@@ -112,7 +112,7 @@ class SponsorshipController extends Controller
 		$user = $this->get('security.context')->getToken()->getUser();
 
 		$newdate = \DateTime::createFromFormat('d-m-Y', $date);
-		$used = $newdate->format('d-m-Y');
+		$used = $newdate->format('d/m/Y');
 
 // ld($newdate);
 // ldd($used);
@@ -120,6 +120,7 @@ class SponsorshipController extends Controller
 
 		$sponsorship = $em->getRepository('CacBarBundle:Sponsorship')->findOneByCode($code);
 		$sponsorship->setUsedAt($newdate);
+		$restriction = $sponsorship->getRestriction();
 		$em->persist($sponsorship);
 		$bar = $em->getRepository('CacBarBundle:Bar')->findOneById($sponsorship->getBar());
 
@@ -127,7 +128,8 @@ class SponsorshipController extends Controller
 		$reference = mt_rand(100000,999999);
 	    $promo = new VerresOfferts();
 	    $promo->setReference($reference);
-	    $promo->setEtat('confirmé');
+		$promo->setEtat('confirmé');
+		$promo->setEmail($mail);
 	    $promo->setBar($bar);
 	    $promo->setUser($user);
 	    $promo->setCreatedAt(new \DateTime('now'));
@@ -161,10 +163,14 @@ class SponsorshipController extends Controller
                 'name' => 'adress',
                 'content' => $bar->getAdress().', '.$bar->getZipcode().', '.$bar->getTown()
             ),
-            array(
-                'name' => 'ref',
-                'content' => $reference
-            ),
+			array(
+				'name' => 'ref',
+				'content' => $reference
+			),
+			array(
+				'name' => 'restriction',
+				'content' => $restriction
+			),
         );
         $message
             ->addTo($mail, 'ami')
@@ -173,6 +179,62 @@ class SponsorshipController extends Controller
             ->setTrackClicks(true);
 
         $result = $md->send($message, $templateName, $templateContent);
+
+        $message2 = new Message();
+        $templateName2 = 'invitation-confirmation';
+        $templateContent2 = array(
+            array(
+                'name' => 'date',
+                'content' => $used
+            ),
+            array(
+                'name' => 'barname',
+                'content' => $bar->getName()
+            ),
+            array(
+                'name' => 'adress',
+                'content' => $bar->getAdress().', '.$bar->getZipcode().', '.$bar->getTown()
+            ),
+            array(
+                'name' => 'ref',
+                'content' => $reference
+            ),
+            array(
+                'name' => 'restriction',
+                'content' => $restriction
+            ),
+        );
+        $message2
+            ->addTo($user->getEmail(), $user->getFirstname().' '.$user->getName())
+            ->setSubject('Confirmation d\'invitation')
+            ->setTrackOpens(true)
+            ->setTrackClicks(true);
+
+        $result2 = $md->send($message2, $templateName2, $templateContent2);
+
+        $message3 = new Message();
+        $templateName3 = 'bigboss-sponsorship';
+        $templateContent3 = array(
+            array(
+                'name' => 'barname',
+                'content' => $bar->getName()
+            ),
+            array(
+                'name' => 'date',
+                'content' => $used
+            ),
+            array(
+                'name' => 'reference',
+                'content' => $reference
+            ),
+        );
+        $message3
+            ->addTo($bar->getAuthor()->getEmail(), $bar->getAuthor()->getFirstname().' '.$bar->getAuthor()->getName())
+            ->setSubject('Nouveau parrainage : '.$bar->getName())
+            ->setTrackOpens(true)
+            ->setTrackClicks(true);
+
+        $result3 = $md->send($message3, $templateName3, $templateContent3);
 
 		return new JsonResponse(array('msg' => 'invitation envoyée'));
 	}

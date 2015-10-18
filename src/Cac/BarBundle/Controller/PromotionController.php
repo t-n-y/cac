@@ -189,7 +189,9 @@ class PromotionController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $promo = $em->getRepository('CacBarBundle:PromoOffertes')->find($id);
+        $bar = $promo->getBar();
         $customer = $promo->getBar()->getAuthor();
+        $user = $promo->getUser();
         $stripeApikey = $this->container->getParameter('stripe_api_key');
 
         \Stripe\Stripe::setApiKey($stripeApikey);
@@ -203,6 +205,28 @@ class PromotionController extends Controller
         );
         $em->remove($promo);
         $em->flush();
+
+        $md = $this->get('hip_mandrill.dispatcher');
+
+        $message = new Message();
+        $templateName = 'reservation-user-cancelled';
+        $templateContent = array(
+            array(
+                'name' => 'barname',
+                'content' => $bar->getName()
+            ),
+            array(
+                'name' => 'reference',
+                'content' => $promo->getReference()
+            ),
+        );
+        $message
+            ->addTo($user->getEmail(), $user->getFirstname().' '.$user->getName())
+            ->setSubject('Confirmation d\'annulation : '.$bar->getName())
+            ->setTrackOpens(true)
+            ->setTrackClicks(true);
+
+        $result = $md->send($message, $templateName, $templateContent);
 
         return new JsonResponse('Promo annulée');
     }
