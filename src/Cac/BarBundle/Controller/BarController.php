@@ -93,7 +93,7 @@ class BarController extends Controller
                $highlightBars[$h]['promo'] = $promoOfTheDay;
                $highlightBars[$h]['happy'] = $happyHourOfTheDay;
                $highlightBars[$h]['author'] = $high->getBar()->getAuthor();
-               $highlightBars[$i]['files'] = $high->getFiles();
+               $highlightBars[$i]['files'] = $high->getBar()->getFiles();
                $h ++;
         }
 
