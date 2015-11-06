@@ -1242,3 +1242,7 @@ $('.delete-promo').on('click', function(){
     });
 });
 
+$('.contentPopUpExplicationCac').on('click', function(){
+  $(this).addClass('forDisplayNone');
+});
+
