@@ -36,7 +36,7 @@ input[type="file"] > input[type="button"]::-moz-focus-inner {
     outline : 0;
 }
 
-.completionAdresse{
+.completionAdresse, .forDisplayNone{
 	display: none;
 }
 
@@ -6006,4 +6006,90 @@ p.nextPointFidelite{
 }
 .slick-slider {
 	margin-bottom: 0px;
+}
+
+.contentPopUpExplicationCac{
+	position: absolute;
+	top: -120px;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0,0,0,0.4); 
+	z-index: 10000;
+}
+
+.popUpExplicationCac{
+	width: 700px;
+    background-color: #fff;
+    padding: 20px;
+    position: fixed;
+    margin: auto;
+    left: 50%;
+    top: 250px;
+    margin-left: -350px;
+    text-align: center;
+}
+
+.titlePopUpExplicationCac{
+	color: #5ac4d4;
+	font-size: 25px;
+	font-weight: 600;
+}
+
+.stepPopUpExplicationCac{
+	text-align: center;
+	width: 55px;
+    height: 55px;
+    display: inline-block;
+	padding: 5px;
+	border: 4px dotted #303030;
+	font-size: 25px;
+	border-radius: 50%;
+}
+
+/*.stepPopUpExplicationCac:before, .stepPopUpExplicationCac:after { 
+	content:''; 
+	display:inline-block; 
+	vertical-align: middle; 
+	width: 50%; 
+	height: 1px; 
+	background: #303030;
+}
+*/
+.popUpExplicationCac img{
+	width: 85px;
+    display: inherit;
+    margin: auto;
+}
+
+.textPopUpExplicationCac{
+	padding-top: 20px;
+	font-size: 16px;
+	font-weight: 600;
+	text-align: left;
+}
+
+.textPopUpExplicationCac span{
+	color: #5ac4d4;
+}
+
+.row .colPopUpExplicationCac:nth-child(2) .textPopUpExplicationCac {
+	margin-top: 7px;
+}
+
+.playerExplicationCac{
+	width: 700px;
+	height: 100px;
+    background-color: #ddd;
+    text-align: center;
+    margin-left: -20px;
+    margin-bottom: -20px; 
+}
+
+.playerExplicationCac p{
+	font-weight: 600;
+}
+
+.playerExplicationCac span{
+	font-weight: 300;
 }
