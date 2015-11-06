@@ -5989,7 +5989,7 @@ p.nextPointFidelite{
 	width: 100%;
 }
 .slick-arrow {
-	z-index: 1000000;
+	z-index: 500;
 }
 .slick-prev {
 	left: 10px;

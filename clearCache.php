@@ -18,6 +18,5 @@ elseif(is_dir($str)){
 recursiveDelete($str);
 
 //here you can redirect to any page
-echo(__DIR__.'/app/cache/*'.' -> Clear completed'); 
-
+// echo(__DIR__.'/app/cache/*'.' -> Clear completed'); 
 ?>
