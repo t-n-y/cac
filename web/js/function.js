@@ -1109,7 +1109,7 @@ $('.ticketVerreValidate').on('click', function(){
 
           var disableddates = data.weekdays;
             $( "#codeInput" ).val(code);
-            $( "#datepicker" ).datepicker({ 
+            /*$( "#datepicker" ).datepicker({
                 minDate: 0, 
                 maxDate: "+12D",
                 firstDay: 1 ,
@@ -1134,7 +1134,7 @@ $('.ticketVerreValidate').on('click', function(){
                     $('.emailsponsorship').show();
                 },
                 dateFormat: "dd-mm-yy"
-              });
+              });*/
             $('.forParrainage').hide();
             $('.popupsponsorship').removeClass('completionAdresse');
             $('.isConnexion').show();
@@ -1142,6 +1142,19 @@ $('.ticketVerreValidate').on('click', function(){
           }
           else
             alert(data.msg);
+        }
+    });
+});
+
+$('.ss-method').on('click', function() {
+    var $this = $(this),
+        method = $this.attr('data-method'),
+        popup = $this.parents('.ss-method-container');
+    $.ajax({
+        type: 'POST',
+        url: Routing.generate('sponsorship_method', {'methodName': method}),
+        success: function (data) {
+            popup.html(data);
         }
     });
 });

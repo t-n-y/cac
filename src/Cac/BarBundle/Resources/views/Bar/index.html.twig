@@ -268,11 +268,7 @@
 
                         $.each(data, function (key, val) {
                             var image = val.path;
-                            console.log(image);
-                            console.log(val.files[0].path);
-                            console.log(typeof(val.files[0]));
                             if(typeof(val.files[0]) !== 'undefined') image = val.files[0].path;
-                            console.log(image);
                         	strToAppend += '<a href="' + Routing.generate('bar_show', { id: val.id }) + '">'
 											+ '<div class="barInList col-xs-12 col-sm-6 col-md-3 noPadding">'
 											+ '	<div class="contentImageBar" style="background-image:url(\'/cac/web/uploads/bar/' + image + '\')">'

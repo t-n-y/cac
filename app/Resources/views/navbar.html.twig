@@ -35,9 +35,20 @@
 </div>
 
 <div class="popupsponsorship completionAdresse">
-  <h2>On lui offre quand ?</h2>
-  <div id="datepicker"></div>
-  <input type="text" id="datepickerInput" hidden>
+  <h2>Quelle méthode utiliser ?</h2>
+  {#<div id="datepicker"></div>
+  <input type="text" id="datepickerInput" hidden>#}
+    <div class="ss-method-container">
+        <div class="ss-Email ss-btn-container">
+            <button class="btn btn-ss-method ss-method" data-method="email">Courriel</button>
+        </div>
+        <div class="ss-Messenger ss-btn-container">
+            <button class="btn btn-ss-method ss-method" data-method="messenger">Messenger</button>
+        </div>
+        <div class="ss-SMS ss-btn-container">
+            <button class="btn btn-ss-method ss-method" data-method="sms">SMS</button>
+        </div>
+    </div>
   <input type="text" id="codeInput" hidden>
 </div>
 

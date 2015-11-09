@@ -297,7 +297,6 @@ h2.font30{
 
 .popupsponsorship{
 	width: 400px;
-	min-height: 380px;
 	background-color: #fff;
 	position: fixed;
 	top: 50%;
@@ -342,19 +341,19 @@ h2.font30{
 	border: none;
 	width: 150px;
 	padding: 5px;
-} 
+}
 
 .emailsponsorship button:hover{
 	background-color: #3e3e3e;
-}  
+}
 
 .emailsponsorship button:active{
 	box-shadow: 0.656px 0.755px 8px 0px rgba(87, 87, 87, 0.75);
-} 
+}
 
 .emailsponsorship button:focus{
 	outline:none;
-} 
+}
 
 .forParrainage{
 	width: 400px;
@@ -590,7 +589,7 @@ h2.font30{
 }
 
 .dropdown-menu li a:hover, .dropdown-menu li.logout a:hover{
-	background-color: #5ac4d4;	
+	background-color: #5ac4d4;
 	color: #fff;
 }
 
@@ -1050,7 +1049,7 @@ nav{
 
 .contentNav a:hover:before {
  	margin-top: 0px;
- 	opacity: 1;	
+ 	opacity: 1;
 }
 
 .contentNav a.trouverBar:before {
@@ -1180,7 +1179,7 @@ nav{
 
 .administration a:hover:before {
  	margin-left: -20px;
- 	opacity: 1;	
+ 	opacity: 1;
 }
 
 .administration a.monCompte:before {
@@ -1214,7 +1213,7 @@ footer{
 
 .colFooter h2{
 	color: #303030;
-	background-color: #5ac4d4; 
+	background-color: #5ac4d4;
 	font-size: 12px;
 	display: inline-table;
 	padding: 5px 20px;
@@ -1252,22 +1251,22 @@ footer p, footer a,footer p:focus, footer a:focus{
 	cursor: pointer;
 }
 
-.footerRS:before, .footerRS:after { 
-	content:''; 
-	display:inline-block; 
-	vertical-align: middle; 
-	width: 40%; 
-	height: 1px; 
+.footerRS:before, .footerRS:after {
+	content:'';
+	display:inline-block;
+	vertical-align: middle;
+	width: 40%;
+	height: 1px;
 	background: #fff;
 }
 
-.footerRS:before{ 
+.footerRS:before{
 	position: absolute;
 	left:0;
 	top: 50%;
 }
 
-.footerRS:after{ 
+.footerRS:after{
 	margin-left: 20px;
 	position: absolute;
 	right:0;
@@ -1303,7 +1302,7 @@ p.droitReserve{
 }
 
 .topPage img{
-	
+
 	width: 100%;
 	/*background-image: url('../img/accueil.png');*/
 	min-height: 360px;
@@ -1314,14 +1313,14 @@ p.droitReserve{
 }
 
 .topPage img:nth-child(1){
-	
+
 	display: block;
 }
 
 .welcome{
 	position: relative;
 	width: 100%;
-	background: url(../img/defaultImageBar.jpg) no-repeat center fixed; 
+	background: url(../img/defaultImageBar.jpg) no-repeat center fixed;
   	-webkit-background-size: cover; /* pour anciens Chrome et Safari */
   	background-size: cover; /* version standardisée */
   	color: $white;
@@ -1336,7 +1335,7 @@ p.droitReserve{
 	bottom: 0;
 	left: 0;
 	right: 0;
-	/*background: url(../img/pattern303030cac.png); 
+	/*background: url(../img/pattern303030cac.png);
 	zoom: 0.4;*/
 }
 
@@ -1401,7 +1400,7 @@ p.droitReserve{
 }
 
 .blockWelcome p{
-	padding: 5px 20px; 
+	padding: 5px 20px;
 	color: #fff;
 	background-color: #5ac4d4;
 	border-radius: 5px;
@@ -1450,17 +1449,17 @@ p.droitReserve{
 }
 
 .petitsPrix{
-	background: url(../img/petitsPrix.png) no-repeat center; 
+	background: url(../img/petitsPrix.png) no-repeat center;
   	-webkit-background-size: cover; /* pour anciens Chrome et Safari */
 }
 
 .carteHome{
-	background: url(../img/carte.png) no-repeat center; 
+	background: url(../img/carte.png) no-repeat center;
   	-webkit-background-size: cover; /* pour anciens Chrome et Safari */
 }
 
 .plusReserve{
-	background: url(../img/plusReserve.png) no-repeat center; 
+	background: url(../img/plusReserve.png) no-repeat center;
   	-webkit-background-size: cover; /* pour anciens Chrome et Safari */
 }
 
@@ -1520,7 +1519,7 @@ opacity: 1 !important;
 	top: 0;
 	max-width: 184px;
 	width: 100%;
-	
+
 	background: -webkit-linear-gradient(bottom,rgba(000000,0,0,0.6),rgba(000000,0,0,0));
 	background: -o-linear-gradient(bottom,rgba(000000,0,0,0.6),rgba(000000,0,0,0));
 	background: -moz-linear-gradient(bottom,rgba(000000,0,0,0.6),rgba(000000,0,0,0));
@@ -1682,7 +1681,7 @@ opacity: 1 !important;
 }
 
 .topBarPro img:nth-child(1){
-	
+
 	display: block;
 }
 
@@ -1761,7 +1760,7 @@ opacity: 1 !important;
 .ongletselect{
 	background-color: #5ac4d4;
 	color : #fff;
-	
+
 }
 
 .mesOptions{
@@ -2178,7 +2177,7 @@ p.topPosition{
 
 .transportSliderWrapper {
 	padding: 10px 20px 0px 20px;
-	
+
 }
 
 .transportSliderSlide {
@@ -2200,7 +2199,7 @@ p.topPosition{
 }*/
 
 .transportPic {
-	width:25px; 
+	width:25px;
 	top: 10px;
 	left: 50%;
   	transform: translate(-50%, 0);
@@ -2239,7 +2238,7 @@ p.topPosition{
 	left: 30px;
 	height: 100px;
 	z-index: 1000;
-	text-align: center;	
+	text-align: center;
 }
 
 .checkConfirmation{
@@ -2543,7 +2542,7 @@ margin: auto;
 	position: relative;
 	margin-bottom: 20px;
 	border : 1px solid #cfcccb;
-	border-top: 0px; 
+	border-top: 0px;
 }
 
 .superContentBackOffice{
@@ -2829,7 +2828,7 @@ p.noteCommentaire span{
 
 
 .vignettePetitPlus{
-	
+
 	text-align: center;
 	color: #000;
 	height : 40px;
@@ -2837,8 +2836,8 @@ p.noteCommentaire span{
 }
 
 .vignettePetitPlusPrix{
-	
-	text-align: center;	
+
+	text-align: center;
 	color: #000;
 	height : 40px;
 	margin-bottom: 15px;
@@ -2889,14 +2888,14 @@ p.noteCommentaire span{
 	width: 100%;
 	padding: 30px 0;
 	background-color: #8bd6e1;
-	color: #fff; 
+	color: #fff;
 	text-align: center;
 }
 
 .cartePDFinPro{
 	width: 100%;
 	padding: 30px 0;
-	color: #303030; 
+	color: #303030;
 	text-align: center;
 }
 
@@ -3004,7 +3003,7 @@ p.vignettePetitPlusPrix{
 .horaireBar{
 	width: 100%;
 	padding:20px 10% ;
-	background-color:#f6f6f6; 
+	background-color:#f6f6f6;
 }
 
 .boxInfoOpenBar{
@@ -3508,7 +3507,7 @@ p.closeMesOptions{
 	cursor: pointer;
 	padding: 5px 0;
 	border-left: 1px solid #fff;
-	text-align: center; 
+	text-align: center;
 }
 
 .borderDayOngletNewBar{
@@ -3516,7 +3515,7 @@ p.closeMesOptions{
 }
 
 .dayOngletNewBar:nth-child(1){
-	border-left: 0px solid #fff; 
+	border-left: 0px solid #fff;
 }
 
 .selectedOngletDay{
@@ -3609,7 +3608,7 @@ p.closeMesOptions{
 }
 
 .programmeFidelite p{
-	background-color:transparent !important; 
+	background-color:transparent !important;
 }
 
 .programmeFidelite span{
@@ -3692,16 +3691,16 @@ p.closeMesOptions{
 /************New Bar****************/
 
 #etablissement{
-	border-bottom:3px solid #f8ad85; 
+	border-bottom:3px solid #f8ad85;
 }
 #photo{
-	border-bottom:3px solid #5ac4d4; 
+	border-bottom:3px solid #5ac4d4;
 }
 #promo{
-	border-bottom:3px solid #66cc33; 
+	border-bottom:3px solid #66cc33;
 }
 #formule{
-	border-bottom:3px solid #ef662f; 
+	border-bottom:3px solid #ef662f;
 }
 
 .ongletCreation{
@@ -3925,7 +3924,7 @@ a .ongletCreation:hover p{
 .nameNewBar h1{
 	margin: 0;
 	line-height: 50px;
-	font-weight: normal; 
+	font-weight: normal;
 }
 
 #finalName{
@@ -3943,7 +3942,7 @@ a .ongletCreation:hover p{
 }
 
 .CreationBar span{
-	color : #5ac4d4; 
+	color : #5ac4d4;
 }
 
 .imageRemplissage img{
@@ -3955,7 +3954,7 @@ a .ongletCreation:hover p{
 	margin-top: 20px;
 }
 
-.AdresseAndDresscode select{ 
+.AdresseAndDresscode select{
 	background-color: #fff;
  	-webkit-border-radius: 1px;
  	-moz-border-radius: 1px;
@@ -4030,7 +4029,7 @@ a .ongletCreation:hover p{
 	margin: auto;
 	width:100%;
 	color: #fff;
-	background-color: #5ac4d4; 
+	background-color: #5ac4d4;
 	border: 1px solid #838383;
 	padding: 5px;
 	-webkit-border-radius: 5px;
@@ -4050,7 +4049,7 @@ a .ongletCreation:hover p{
 
 .ongletsRetourOffre{
 	background-color: #f6f6f6;
-	border-top: 1px solid #303030; 
+	border-top: 1px solid #303030;
 	border-bottom: 5px solid #303030;
 	padding: 10px 0;
 }
@@ -4160,7 +4159,7 @@ a .ongletCreation:hover p{
 
 
 .offreValide .statutOffre{
-	
+
 	color : #00a453;
 }
 
@@ -4424,7 +4423,7 @@ p.pCreez{
 .btn-primary-checkbox{
 	width: 18% !important;
 	margin-top: 15px !important;
-	margin-left: 2% !important; 
+	margin-left: 2% !important;
 	background-color: #fff !important;
 	color: #4d4d4d !important;
 	border: 1px solid #a8a8a8 !important;
@@ -4568,7 +4567,7 @@ float: left;
 }
 
 #zeroFrai{
-	border-color: #5ac4d4; 
+	border-color: #5ac4d4;
 }
 
 #sansEngagement{
@@ -4599,7 +4598,7 @@ float: left;
 	margin: auto;
 	background-color: #303030;
 	text-align: center;
-	color: #fff; 
+	color: #fff;
 }
 
 .inscrireEtablissement h1{
@@ -4614,7 +4613,7 @@ float: left;
 	margin: auto;
 	background-color: #f9f9f9;
 	padding: 30px 60px;
-	color: #303030; 
+	color: #303030;
 }
 
 .formRegisterPro input{
@@ -4631,7 +4630,7 @@ float: left;
 	position: relative;
 	padding-bottom: 30px;
 	padding-top: 30px;
-	border-bottom: 2px solid #fff; 
+	border-bottom: 2px solid #fff;
 }
 
 .inscriptionBigBoss ul{
@@ -4700,7 +4699,7 @@ float: left;
 }
 
 .topListBar img:nth-child(1){
-	
+
 	display: block;
 }
 
@@ -4736,14 +4735,14 @@ float: left;
 	font-size: 12px;
 	margin: 0px;
 	margin-top: 6px;
-	/*border-right: 1px solid #fff;*/ 
+	/*border-right: 1px solid #fff;*/
 	height: 20px;
-	line-height : 20px;	
+	line-height : 20px;
 }
 
 .noteBarTopListBar p{
 	margin: 0;
-	border-right: none; 
+	border-right: none;
 }
 
 .infoBarTopListBar img{
@@ -4793,7 +4792,7 @@ float: left;
 	height: 300px;
 	overflow: hidden;
 	border: 5px solid rgba(0,0,0,0);
-	
+
 }
 
 .navigation{
@@ -4897,7 +4896,7 @@ float: left;
 	width: 100%;
 	color: #fff;
 	background-color: rgba(0,0,0,0.8);
-	
+
 	padding: 0px;
 }
 
@@ -4917,7 +4916,7 @@ float: left;
 .shadowbarInList p.shadowPromotion{
 	color: #e99026;
 	margin: 10px 0px;
-	border-right: 1px solid rgba(255,255,255,0.2); 
+	border-right: 1px solid rgba(255,255,255,0.2);
 	text-align: center;
 }
 
@@ -4948,7 +4947,7 @@ float: left;
 }
 
 .shadowAdresse{
-	border-top: 1px solid #4f4f4f; 
+	border-top: 1px solid #4f4f4f;
 }
 
 .shadowAdresse p{
@@ -4987,8 +4986,8 @@ float: left;
 .barInListHighlight .shadowbarInList p.priceBar{
 	color: #5ac4d4;
 	margin: 10px 0px;
-	border-left: 1px solid rgba(255,255,255,0.2); 
-	border-right: 1px solid rgba(255,255,255,0.2); 
+	border-left: 1px solid rgba(255,255,255,0.2);
+	border-right: 1px solid rgba(255,255,255,0.2);
 	text-align: center;
 	font-size: 17px;
 }
@@ -4999,7 +4998,7 @@ float: left;
 
 .barInListHighlight .shadowbarInList p.allureBar{
 	margin: 10px 0px;
-	border-right: 1px solid rgba(255,255,255,0.2); 
+	border-right: 1px solid rgba(255,255,255,0.2);
 	text-align: center;
 	font-size: 17px;
 }
@@ -5106,7 +5105,7 @@ h3.serviceCosmo{
 	margin: 20px 0 0 0;
 	font-size: 16px;
 	background-color: #f3f3f3;
-	padding: 10px 0; 
+	padding: 10px 0;
 	font-weight: normal;
 }
 
@@ -5171,12 +5170,12 @@ p.nextPointFidelite{
 .ongletUser{
 	background-color: #303030;
 	color: #fff;
-	border-left: 3px solid #f6f6f6; 
+	border-left: 3px solid #f6f6f6;
 	cursor: pointer;
 }
 
 .ongletUser:nth-child(1){
-	border-left: 0px solid #f6f6f6; 
+	border-left: 0px solid #f6f6f6;
 }
 
 .selectedOngletUser{
@@ -5285,7 +5284,7 @@ p.nextPointFidelite{
 .ConditionProfileUser p{
 	margin: 0;
 	font-size: 12px;
-	
+
 }
 
 .contentConditionProfileUser{
@@ -5388,7 +5387,7 @@ p.nextPointFidelite{
 .printCode ul{
 	margin: 0;
 	padding: 0;
-	margin: 0; 
+	margin: 0;
 }
 
 .printCode li{
@@ -5504,7 +5503,7 @@ p.nextPointFidelite{
 		height: 30px;
 	}
 
-	
+
 }
 
 @media (max-width: 1040px) {
@@ -5654,7 +5653,7 @@ p.nextPointFidelite{
 	.profileUserNav{
 		text-align: center;
 		padding-top: 20px;
-		background-color: #f5f5f5; 
+		background-color: #f5f5f5;
 	}
 
 	.profileUserNav img{
@@ -5747,7 +5746,7 @@ p.nextPointFidelite{
 		  top: 0;
 		  left: 0;
 		  right: 0;
-		  max-height: 500px;		 
+		  max-height: 500px;
 	}
 
 	.menu_open .contentNav{
@@ -5787,12 +5786,12 @@ p.nextPointFidelite{
 
 	.ongletCreation {
 	  text-align: center;
-	}	
+	}
 
 	.confirmationReservation{
 		width: 100%;
 		left: 0;
-	}	
+	}
 
 	.containerPriceAndServices {
 	  width: 100%;
@@ -5892,8 +5891,8 @@ p.nextPointFidelite{
     	top: 20px;
     	left: 10px;
     	right: 0;
-    	width: 100%;
-    	margin: 0; 
+    	width: 125%;
+    	margin: 0;
     	size: letter landscape;
     	margin: 0pt 0pt 0pt 0pt;
     }
@@ -6131,19 +6130,19 @@ p.nextPointFidelite{
     opacity: 1;
     transition: opacity 0.15s ease-in-out;
 }
-#sortable { 
-    list-style-type: none; 
-    margin: 0; 
-    padding: 0; 
-    width: 100%; 
+#sortable {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
 }
-#sortable li { 
-    margin: 3px 3px 3px 0; 
-    padding: 1px; 
-    float: left; 
-    width: 19.7%; 
-    height: 160px; 
-    font-size: 4em; 
+#sortable li {
+    margin: 3px 3px 3px 0;
+    padding: 1px;
+    float: left;
+    width: 19.7%;
+    height: 160px;
+    font-size: 4em;
     text-align: center;
     background-size: cover;
     background-position: center;
@@ -6210,7 +6209,7 @@ p.nextPointFidelite{
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background-color: rgba(0,0,0,0.4); 
+	background-color: rgba(0,0,0,0.4);
 	z-index: 10000;
 }
 
@@ -6275,6 +6274,7 @@ p.nextPointFidelite{
 	border-radius: 50%;
 }
 
+<<<<<<< HEAD
 .separationRight{
 	position: absolute;
 	top : 25px;
@@ -6299,6 +6299,14 @@ p.nextPointFidelite{
 	vertical-align: middle; 
 	width: 50%; 
 	height: 1px; 
+=======
+/*.stepPopUpExplicationCac:before, .stepPopUpExplicationCac:after {
+	content:'';
+	display:inline-block;
+	vertical-align: middle;
+	width: 50%;
+	height: 1px;
+>>>>>>> Sponsorship new methods p1
 	background: #303030;
 }
 */
@@ -6343,7 +6351,7 @@ p.nextPointFidelite{
     background-color: #ddd;
     text-align: center;
     margin-left: -20px;
-    margin-bottom: -20px; 
+    margin-bottom: -20px;
     cursor: pointer;
     padding: 10px;
 }
@@ -6402,8 +6410,22 @@ p.nextPointFidelite{
     z-index: 1;
 }
 
-.concept p{
-	margin: 0;
+.concept p {
+    margin: 0;
+}
+
+.ss-btn-container {
+	margin: 15px;
+}
+
+.ss-btn-container .btn {
+	width: 60%;
+}
+
+.btn-ss-method {
+	background-color: #ffffff;
+	color: #5ac4d4;
+	border-color: #cccccc;
 }
 
 /*.pagination span{

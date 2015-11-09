@@ -79,12 +79,18 @@ class SponsorshipController extends Controller
 	  		} while($i < 14);
 
 			return new JsonResponse(array(
+                'msg' => 'code ok',
+                'bar' => $bar->getId(),
+                'barName' => $bar->getName()
+            ));
+
+			/*return new JsonResponse(array(
 				'msg' => 'code ok',
 				'bar' => $bar->getId(),
 				'barName' => $bar->getName(),
 				'ssSchedule' => $daySponsorships,
 				'weekdays' => $weekDays
-			));
+			));*/
 		}
 	}
 
@@ -247,4 +253,18 @@ class SponsorshipController extends Controller
 
 		return new JsonResponse(array('msg' => 'invitation envoyée'));
 	}
+
+    /**
+     * @Route("/sponsorship-method/{methodName}", name="sponsorship_method", options={"expose"=true})
+     */
+    public function getSponsorshipMethod($methodName)
+    {
+        $acceptedMethodNames = array('email', 'messenger', 'sms');
+
+        if(in_array($methodName, $acceptedMethodNames)) {
+            return $this->render('CacBarBundle:Sponsorship:'.$methodName.'.html.twig');
+        } else {
+            return $this->render('CacBarBundle:Sponsorship:nope.html.twig');
+        }
+    }
 }
