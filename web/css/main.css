@@ -6274,7 +6274,6 @@ p.nextPointFidelite{
 	border-radius: 50%;
 }
 
-<<<<<<< HEAD
 .separationRight{
 	position: absolute;
 	top : 25px;
@@ -6298,15 +6297,7 @@ p.nextPointFidelite{
 	display:inline-block; 
 	vertical-align: middle; 
 	width: 50%; 
-	height: 1px; 
-=======
-/*.stepPopUpExplicationCac:before, .stepPopUpExplicationCac:after {
-	content:'';
-	display:inline-block;
-	vertical-align: middle;
-	width: 50%;
 	height: 1px;
->>>>>>> Sponsorship new methods p1
 	background: #303030;
 }
 */

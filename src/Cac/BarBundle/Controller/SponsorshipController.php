@@ -267,4 +267,28 @@ class SponsorshipController extends Controller
             return $this->render('CacBarBundle:Sponsorship:nope.html.twig');
         }
     }
+
+    /**
+     * @Route("/sponsorship-messenger/{code}", name="sponsorship_messenger", options={"expose"=true})
+     */
+    public function getSponsorshipMessenger($code)
+    {
+        if($code) {
+
+        }
+
+        return $this->render('CacBarBundle:Sponsorship:messengerIFrame.html.twig');
+    }
+
+    /**
+     * @Route("/parrainage/derniere-etape", name="sponsorship_last_step")
+     * @Template()
+     */
+    public function sponsorshipLastStepAction()
+    {
+
+        return array(
+
+        );
+    }
 }
