@@ -6405,32 +6405,79 @@ p.nextPointFidelite{
     margin: 0;
 }
 
+.ss-method-container {
+	padding: 10px;
+}
+
 .ss-btn-container {
-	margin: 15px;
+	margin: 20px;
 }
 
 .ss-btn-container .btn {
-	width: 60%;
+	width: 170px;
 }
 
 .btn-ss-method {
-	background-color: #ffffff;
-	color: #5ac4d4;
-	border-color: #cccccc;
+	background-color: #333333;
+	color: #ffffff;
+	border: none;
+	text-align: left;
+	box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+	transition: background-color 0.14s;
 }
 
-/*.pagination span{
-    border-left: 1px solid #ddd;
-    border-top: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
-    padding: 2px 5px;
-    position: relative;
+.btn-ss-method:hover {
+	color: #ffffff;
+	transition: background-color 0.14s;
+}
 
-    padding: 6px 12px;
-    margin-left: -1px;
-    line-height: 1.42857143;
-    color: #337ab7;
-    text-decoration: none;
-    background-color: #fff;
+.btn-ss-email {
+	background-color: #a0a1a1;
+}
 
-}*/
+.btn-ss-sms {
+	background-color: #3fc74a;
+}
+
+.btn-ss-messenger {
+	background-color: #0186ea;
+}
+
+.btn-ss-email:hover {
+	background-color: #7e7f7f;
+}
+
+.btn-ss-sms:hover {
+	background-color: #32a13b;
+}
+
+.btn-ss-messenger:hover {
+	background-color: #016ab9;
+}
+
+div.fb-send iframe { min-width: 59px !important; min-height: 20px !important; }
+
+.btn-ss-method-picto {
+	width: 25px;
+	height: 25px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	margin-right: 5px;
+}
+
+.btn-ss-method-picto, .btn-ss-method-text {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.picto-sms {
+	background-image: url('../img/pictoSponsorship/p-sms.png');
+}
+.picto-messenger {
+	background-image: url('../img/pictoSponsorship/p-messenger.png');
+}
+.picto-email {
+	background-image: url('../img/pictoSponsorship/p-email.png');
+}
+

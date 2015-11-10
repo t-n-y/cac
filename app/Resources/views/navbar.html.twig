@@ -35,18 +35,27 @@
 </div>
 
 <div class="popupsponsorship completionAdresse">
-  <h2>Quelle méthode utiliser ?</h2>
+  <h2>Offrez un verre gratuitement</h2>
   {#<div id="datepicker"></div>
   <input type="text" id="datepickerInput" hidden>#}
     <div class="ss-method-container">
-        <div class="ss-Email ss-btn-container">
-            <button class="btn btn-ss-method ss-method" data-method="email">Courriel</button>
+        <div class="ss-SMS ss-btn-container">
+            <button class="btn btn-ss-method btn-ss-sms ss-method" data-method="sms">
+                <span class="btn-ss-method-picto picto-sms"></span>
+                <span class="btn-ss-method-text">Par SMS</span>
+            </button>
         </div>
         <div class="ss-Messenger ss-btn-container">
-            <button class="btn btn-ss-method ss-method" data-method="messenger">Messenger</button>
+            <button class="btn btn-ss-method btn-ss-messenger ss-method" data-method="messenger">
+                <span class="btn-ss-method-picto picto-messenger"></span>
+                <span class="btn-ss-method-text">Par Messenger</span>
+            </button>
         </div>
-        <div class="ss-SMS ss-btn-container">
-            <button class="btn btn-ss-method ss-method" data-method="sms">SMS</button>
+        <div class="ss-Email ss-btn-container">
+            <button class="btn btn-ss-method btn-ss-email ss-method" data-method="email">
+                <span class="btn-ss-method-picto picto-email"></span>
+                <span class="btn-ss-method-text">Par Email</span>
+            </button>
         </div>
     </div>
   <input type="text" id="codeInput" hidden>
