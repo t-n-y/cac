@@ -1243,6 +1243,34 @@ $('.delete-promo').on('click', function(){
 });
 
 $('.contentPopUpExplicationCac').on('click', function(){
-  $(this).addClass('forDisplayNone');
+  $(this).removeClass('forDisplayBlock').addClass('forDisplayNone');
+  $('.popUpExplicationCac').removeClass('forDisplayNone');
+  $('.contentVideoCac').addClass('forDisplayNone').removeClass( "forDisplayBlock");
 });
+
+$(document).ready(function(){
+  setTimeout(function() {  
+     $('.contentPopUpExplicationCac').addClass( "forDisplayBlock", 1000, "easeOutQuint" );
+  },1000);
+
+  $('.btn-concept').on('click', function(){
+    $('.contentPopUpExplicationCac').removeClass('forDisplayNone').addClass( "forDisplayBlock", 1000, "easeOutQuint" );
+  });
+
+  $('.playerExplicationCac').on('click', function(e) {
+    e.stopPropagation();
+    $('.popUpExplicationCac').addClass('forDisplayNone');
+    $('.contentVideoCac').removeClass('forDisplayNone').addClass( "forDisplayBlock", 1000, "easeOutQuint" );
+  });
+
+  $('.boxVideoConcept').on('click', function(e) {
+    e.stopPropagation();
+    $('.popUpExplicationCac').addClass('forDisplayNone');
+    $('.contentVideoCac').removeClass('forDisplayNone').addClass( "forDisplayBlock", 1000, "easeOutQuint" );
+    $('.contentPopUpExplicationCac').addClass("forDisplayBlock", 1000, "easeOutQuint" );
+  });
+
+});
+
+
 
