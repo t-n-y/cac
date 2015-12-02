@@ -4649,7 +4649,7 @@ float: left;
 
 .barInList{
 	position: relative;
-	height: 170px;
+	height: 300px;
 	overflow: hidden;
 	border: 5px solid rgba(0,0,0,0);
 	
