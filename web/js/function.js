@@ -1249,10 +1249,7 @@ $('.contentPopUpExplicationCac').on('click', function(){
 });
 
 $(document).ready(function(){
-  setTimeout(function() {  
-     $('.contentPopUpExplicationCac').addClass( "forDisplayBlock", 1000, "easeOutQuint" );
-  },1000);
-
+  
   $('.btn-concept').on('click', function(){
     $('.contentPopUpExplicationCac').removeClass('forDisplayNone').addClass( "forDisplayBlock", 1000, "easeOutQuint" );
   });
@@ -1273,4 +1270,32 @@ $(document).ready(function(){
 });
 
 
+function get_cookie(Name) {
+    var search = Name + "="
+    var returnvalue = "";
+    if (document.cookie.length > 0) {
+        offset = document.cookie.indexOf(search)
+        // if cookie exists
+        if (offset != -1) { 
+            offset += search.length
+            // set index of beginning of value
+            end = document.cookie.indexOf(";", offset);
+            // set index of end of cookie value
+            if (end == -1) end = document.cookie.length;
+            returnvalue=unescape(document.cookie.substring(offset, end))
+        }
+    }
+    return returnvalue;
+}
+ 
+function set_cookie(what){
+    document.cookie = "vu=" + what;
+}
+ 
+if (get_cookie("vu") == ""){
+  setTimeout(function() {  
+     $('.contentPopUpExplicationCac').addClass( "forDisplayBlock", 1000, "easeOutQuint" );
+  },1000);
+  set_cookie("vu");
+}
 

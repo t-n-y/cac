@@ -6042,7 +6042,8 @@ p.nextPointFidelite{
     position: fixed;
     margin: auto;
     left: 50%;
-    top: 250px;
+    top: 50%;
+    margin-top: -200px;
     margin-left: -350px;
     text-align: center;
 }
