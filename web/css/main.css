@@ -5689,6 +5689,19 @@ p.nextPointFidelite{
 		padding: 40px 50px;
 	}
 
+	.popUpExplicationCac{
+		position: absolute !important;
+		width: 100% !important;
+	    left: 0% !important;
+	    top:8% !important;
+	    margin-top: 0px !important;
+    	margin-left: 0px !important;
+	}
+
+	.playerExplicationCac{
+		width: calc(100% + 40px) !important;
+	}
+
 }
 
 @media (max-width: 670px) {
