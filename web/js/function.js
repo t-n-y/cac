@@ -1245,7 +1245,7 @@ $('.delete-promo').on('click', function(){
 $('.contentPopUpExplicationCac').on('click', function(){
   $(this).removeClass('forDisplayBlock').addClass('forDisplayNone');
   $('.popUpExplicationCac').removeClass('forDisplayNone');
-  $('.contentVideoCac').addClass('forDisplayNone').removeClass( "forDisplayBlock");
+  $('.contentVideoCac').html('');
 });
 
 $(document).ready(function(){
@@ -1257,13 +1257,13 @@ $(document).ready(function(){
   $('.playerExplicationCac').on('click', function(e) {
     e.stopPropagation();
     $('.popUpExplicationCac').addClass('forDisplayNone');
-    $('.contentVideoCac').removeClass('forDisplayNone').addClass( "forDisplayBlock", 1000, "easeOutQuint" );
+    $('.contentVideoCac').html('<div class="contentIframeVideo"><iframe width="560" height="315" src="https://www.youtube.com/embed/l4VZ9-oe4BE" frameborder="0" allowfullscreen></iframe></div>');
   });
 
   $('.boxVideoConcept').on('click', function(e) {
     e.stopPropagation();
     $('.popUpExplicationCac').addClass('forDisplayNone');
-    $('.contentVideoCac').removeClass('forDisplayNone').addClass( "forDisplayBlock", 1000, "easeOutQuint" );
+    $('.contentVideoCac').html('<div class="contentIframeVideo"><iframe width="560" height="315" src="https://www.youtube.com/embed/l4VZ9-oe4BE" frameborder="0" allowfullscreen></iframe></div>');
     $('.contentPopUpExplicationCac').addClass("forDisplayBlock", 1000, "easeOutQuint" );
   });
 
