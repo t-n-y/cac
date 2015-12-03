@@ -5702,6 +5702,10 @@ p.nextPointFidelite{
 		width: calc(100% + 40px) !important;
 	}
 
+	.contentTitleHome{
+		top: 85px;
+	}
+
 }
 
 @media (max-width: 670px) {
