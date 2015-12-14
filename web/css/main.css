@@ -6064,19 +6064,25 @@ p.nextPointFidelite{
     margin: auto;
     left: 50%;
     top: 50%;
-    margin-top: -200px;
+    margin-top: -250px;
     margin-left: -350px;
     text-align: center;
 }
 
 .contentVideoCac{
-	width: 560px;
+	width: 580px;
     position: fixed;
     margin: auto;
     left: 50%;
-    top: 250px;
-    margin-left: -280px;
+    top: 220px;
+    margin-left: -290px;
     text-align: center;
+    background-color: #fff;
+}
+
+.contentVideoCac .titlePopUpExplicationCac{
+	padding-top: 30px;
+    padding-bottom: 30px; 
 }
 
 .titlePopUpExplicationCac{
@@ -6122,18 +6128,31 @@ p.nextPointFidelite{
 	color: #5ac4d4;
 }
 
+.infoTextePopUpBlack{
+	color: #303030;
+	border: 1px solid #303030;
+	padding: 5px;
+}
+
+.infoTextePopUpOrange{
+	color: #ef662f;
+	border: 1px solid #ef662f;
+	padding: 5px;
+}
+
 .row .colPopUpExplicationCac:nth-child(2) .textPopUpExplicationCac {
 	margin-top: 7px;
 }
 
 .playerExplicationCac{
 	width: 700px;
-	height: 100px;
+	height: 120px;
     background-color: #ddd;
     text-align: center;
     margin-left: -20px;
     margin-bottom: -20px; 
     cursor: pointer;
+    padding: 10px;
 }
 
 .playerExplicationCac p{

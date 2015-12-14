@@ -1245,7 +1245,7 @@ $('.delete-promo').on('click', function(){
 $('.contentPopUpExplicationCac').on('click', function(){
   $(this).removeClass('forDisplayBlock').addClass('forDisplayNone');
   $('.popUpExplicationCac').removeClass('forDisplayNone');
-  $('.contentVideoCac').html('');
+  $('.contentVideoCac').html('').css('padding', '0px');
 });
 
 $(document).ready(function(){
@@ -1257,13 +1257,13 @@ $(document).ready(function(){
   $('.playerExplicationCac').on('click', function(e) {
     e.stopPropagation();
     $('.popUpExplicationCac').addClass('forDisplayNone');
-    $('.contentVideoCac').html('<div class="contentIframeVideo"><iframe width="560" height="315" src="https://www.youtube.com/embed/l4VZ9-oe4BE" frameborder="0" allowfullscreen></iframe></div>');
+    $('.contentVideoCac').html('<p class="titlePopUpExplicationCac">Comment ça fonctionne ?</p><div class="contentIframeVideo"><iframe width="560" height="315" src="https://www.youtube.com/embed/l4VZ9-oe4BE" frameborder="0" allowfullscreen></iframe></div>').css('padding','10px');
   });
 
   $('.boxVideoConcept').on('click', function(e) {
     e.stopPropagation();
     $('.popUpExplicationCac').addClass('forDisplayNone');
-    $('.contentVideoCac').html('<div class="contentIframeVideo"><iframe width="560" height="315" src="https://www.youtube.com/embed/l4VZ9-oe4BE" frameborder="0" allowfullscreen></iframe></div>');
+    $('.contentVideoCac').html('<p class="titlePopUpExplicationCac">Comment ça fonctionne ?</p><div class="contentIframeVideo"><iframe width="560" height="315" src="https://www.youtube.com/embed/l4VZ9-oe4BE" frameborder="0" allowfullscreen></iframe></div>').css('padding','10px');
     $('.contentPopUpExplicationCac').addClass("forDisplayBlock", 1000, "easeOutQuint" );
   });
 
