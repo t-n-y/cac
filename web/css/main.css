@@ -6057,16 +6057,24 @@ p.nextPointFidelite{
 }
 
 .popUpExplicationCac{
-	width: 700px;
+	width: 800px;
     background-color: #fff;
     padding: 20px;
     position: fixed;
     margin: auto;
     left: 50%;
     top: 50%;
-    margin-top: -250px;
-    margin-left: -350px;
+    margin-top: -275px;
+    margin-left: -400px;
     text-align: center;
+}
+
+.crossClosePopUpExplicationCac{
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    width: 20px !important;
+    cursor: pointer;
 }
 
 .contentVideoCac{
@@ -6074,10 +6082,16 @@ p.nextPointFidelite{
     position: fixed;
     margin: auto;
     left: 50%;
-    top: 220px;
+    top: 140px;
     margin-left: -290px;
     text-align: center;
     background-color: #fff;
+}
+
+.popUpGratuit{
+	font-size: 18px;
+    font-weight: bold;
+    margin: 20px;
 }
 
 .contentVideoCac .titlePopUpExplicationCac{
@@ -6089,6 +6103,7 @@ p.nextPointFidelite{
 	color: #5ac4d4;
 	font-size: 25px;
 	font-weight: 600;
+	margin-bottom: 40px;
 }
 
 .stepPopUpExplicationCac{
@@ -6100,6 +6115,24 @@ p.nextPointFidelite{
 	border: 4px dotted #303030;
 	font-size: 25px;
 	border-radius: 50%;
+}
+
+.separationRight{
+	position: absolute;
+	top : 25px;
+	right: 0;
+	height: 1px;
+	width: 90px;
+	background-color: #303030;
+}
+
+.separationLeft{
+	position: absolute;
+	top : 25px;
+	left: 0;
+	height: 1px;
+	width: 90px;
+	background-color: #303030;
 }
 
 /*.stepPopUpExplicationCac:before, .stepPopUpExplicationCac:after { 
@@ -6118,9 +6151,9 @@ p.nextPointFidelite{
 }
 
 .textPopUpExplicationCac{
-	padding-top: 20px;
-	font-size: 16px;
-	font-weight: 600;
+	padding: 20px 33px 0px;
+	font-size: 15px;
+	font-weight: 400;
 	text-align: left;
 }
 
@@ -6132,12 +6165,14 @@ p.nextPointFidelite{
 	color: #303030;
 	border: 1px solid #303030;
 	padding: 5px;
+	margin: 0 20px;
 }
 
 .infoTextePopUpOrange{
 	color: #ef662f;
 	border: 1px solid #ef662f;
 	padding: 5px;
+	margin: 0 20px;
 }
 
 .row .colPopUpExplicationCac:nth-child(2) .textPopUpExplicationCac {
@@ -6145,7 +6180,7 @@ p.nextPointFidelite{
 }
 
 .playerExplicationCac{
-	width: 700px;
+	width: 800px;
 	height: 120px;
     background-color: #ddd;
     text-align: center;
