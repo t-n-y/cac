@@ -2365,6 +2365,25 @@ p.rappelCondition{
 	background-repeat: no-repeat;
 }
 
+.bandeauEvent{
+	background-color: #5ac4d4;
+    padding: 20px;
+    text-align: center;
+}
+
+.titleBandeauEvent{
+	color: #F7F7F7;
+    text-transform: uppercase;
+    font-size: 20px;
+}
+
+.btnBandeauEvent{
+	background-color: #F7F7F7;
+    padding: 10px 30px;
+    display: inline-block;
+    margin-bottom: 0px;
+}
+
 .contentAffterSuperInfoBar{
 	width: 90%;
 	margin:auto;
