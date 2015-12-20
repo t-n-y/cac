@@ -2382,6 +2382,7 @@ p.rappelCondition{
     padding: 10px 30px;
     display: inline-block;
     margin-bottom: 0px;
+    cursor: pointer;
 }
 
 .contentAffterSuperInfoBar{
@@ -4685,6 +4686,21 @@ float: left;
 	left: 0;
 	width: 100%;
 	height: 100%;
+}
+
+.vignetteEvent{
+	position: absolute;
+    text-align: center;
+    transform: rotate(35deg);
+    background-color: #5ac4d4;
+    width: 140%;
+    top: 12%;
+    right: -43%;
+    color: #fff;
+}
+
+.titleVignetteEvent{
+	text-transform: uppercase;
 }
 
 .barInListHighlight{
