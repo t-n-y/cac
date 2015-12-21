@@ -25,7 +25,7 @@ class DefaultController extends Controller
     public function mapAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $entities = $em->getRepository('CacBarBundle:Bar')->findAll();
+        $entities = $em->getRepository('CacBarBundle:Bar')->findByVisible(true);
 
         $adress = array();
         $i = 0;

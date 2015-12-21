@@ -276,7 +276,7 @@ class ProController extends Controller
         //setlocale(LC_TIME, "french");
         $today = ucfirst(strftime("%A"));
         $em = $this->getDoctrine()->getManager();
-        $entities = $em->getRepository('CacBarBundle:Bar')->findAll();
+        $entities = $em->getRepository('CacBarBundle:Bar')->findByVisible(true);
         $bars = array();
         $i = 0;
         foreach ($entities as $entity) {
@@ -347,7 +347,7 @@ class ProController extends Controller
         if ($this->get('security.context')->getToken()->getUser() != $entity->getAuthor() && $role !== true ) {
             throw $this->createNotFoundException('Vous n\'avez pas accés à ce contenu.');
         }
-        $entities = $em->getRepository('CacBarBundle:Bar')->findAll();
+        $entities = $em->getRepository('CacBarBundle:Bar')->findByVisible(true);
 
         $paginator  = $this->get('knp_paginator');
         $pagination = $paginator->paginate(

@@ -1299,3 +1299,11 @@ if (get_cookie("vu") == ""){
   set_cookie("vu");
 }
 
+// suspend bar
+$( ".suspendButton" ).on( "click", function() {
+  var barId = $(this).attr('data-barId');
+  $.ajax( {
+    type: 'GET',
+    url: Routing.generate('bar_suspend', { 'id': barId }),
+  } );
+});

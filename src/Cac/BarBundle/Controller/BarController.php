@@ -38,7 +38,7 @@ class BarController extends Controller
         //setlocale(LC_TIME, "french");
         $today = ucfirst(strftime("%A"));
         $em = $this->getDoctrine()->getManager();
-        $entities = $em->getRepository('CacBarBundle:Bar')->findAll();
+        $entities = $em->getRepository('CacBarBundle:Bar')->findByVisible(true);
         $bars = array();
         $i = 0;
         foreach ($entities as $entity) {
@@ -323,5 +323,43 @@ class BarController extends Controller
         else{
             return new Response('user not connected');
         }
+    }
+
+    /**
+     * @Route("/suspend/{id}", name="bar_suspend", options={"expose"=true})
+     * @Template()
+     */
+    public function suspendAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('CacBarBundle:Bar')->find($id);
+        $bigBoss = $entity->getAuthor();
+        $highlight = $em->getRepository('CacBarBundle:Highlight')->findByBar($id);
+
+
+        $entity->setVisible(false);
+        $em->remove($highlight[0]);
+        $em->persist($entity);
+        $em->flush();
+
+        $bars = $em->getRepository('CacBarBundle:Bar')->findBy(array(
+            'visible' => true,
+            'author' => $bigBoss->getId()
+        ));
+
+        if(count($bars) == 0){
+            $response = $this->forward('CacPaymentBundle:Default:changePlan', array(
+                'plan'  => 'shooter',
+                'id' => $bigBoss->getId(),
+            ));
+
+            $bigBoss->addRole('ROLE_SHOOTER');
+            $bigBoss->removeRole('ROLE_COSMO');
+            $em->persist($bigBoss);
+            $em->flush();
+
+            return $response;
+        }
+        return new Response('suspended');
     }
 }

@@ -333,6 +333,13 @@ class Bar
     private $sponsorships;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="visible", type="boolean", nullable=true)
+     */
+    private $visible = true;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -1652,5 +1659,29 @@ class Bar
     public function getFiles()
     {
         return $this->files;
+    }
+
+    /**
+     * Set visible
+     *
+     * @param boolean $visible
+     *
+     * @return Bar
+     */
+    public function setVisible($visible)
+    {
+        $this->visible = $visible;
+
+        return $this;
+    }
+
+    /**
+     * Get visible
+     *
+     * @return boolean
+     */
+    public function getVisible()
+    {
+        return $this->visible;
     }
 }
