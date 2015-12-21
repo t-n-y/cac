@@ -2382,6 +2382,7 @@ p.rappelCondition{
     padding: 10px 30px;
     display: inline-block;
     margin-bottom: 0px;
+    cursor: pointer;
 }
 
 .contentAffterSuperInfoBar{
@@ -3037,6 +3038,47 @@ p.vignettePetitPlusPrix{
 	background-color: #f6f6f6;
 	padding: 10px 20px;
 	margin-bottom: 20px;
+}
+
+.insideTextSMS{
+    width: 40%;
+    margin: auto;
+}
+
+.insideTextSMS p{
+	text-align: left;
+	font-size: 12px;
+}
+
+.contentTextSMS{
+	text-align: center;
+	margin: 40px 0;
+}
+
+.erreurSMS{
+	color: red;
+	text-transform: bold;
+}
+
+.textSMS{
+	width: 100%;
+    height: 120px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.sendSMS{
+	font-size: 18px;
+	width: 40%;
+	min-width: 300px;
+    color: #fff;
+    background-color: #5ac4d4;
+    border: 1px solid #838383;
+    padding: 10px 30px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    margin: 20px auto;
 }
 
 .prochainement{
@@ -4685,6 +4727,21 @@ float: left;
 	left: 0;
 	width: 100%;
 	height: 100%;
+}
+
+.vignetteEvent{
+	position: absolute;
+    text-align: center;
+    transform: rotate(35deg);
+    background-color: #5ac4d4;
+    width: 140%;
+    top: 12%;
+    right: -43%;
+    color: #fff;
+}
+
+.titleVignetteEvent{
+	text-transform: uppercase;
 }
 
 .barInListHighlight{
