@@ -1299,3 +1299,22 @@ if (get_cookie("vu") == ""){
   set_cookie("vu");
 }
 
+$(document).ready(function(e) {
+ 
+  $('#message').keyup(function() {
+ 
+    var nombreCaractere = $(this).val().length;
+ 
+    // var nombreMots = jQuery.trim($(this).val()).split(' ').length;
+    // if($(this).val() === '') {
+    //   nombreMots = 0;
+    // }
+ 
+    var msg = ' ' + nombreCaractere + '/160 (maximum 160 caractères)';
+    //$('#compteur').text(msg);
+    if (nombreCaractere > 160) { $('#compteur').text(msg + ' (Attention vous dépassez le nombre maximum de caractères.)').addClass("erreurSMS"); } else { $('#compteur').text(msg).removeClass("erreurSMS"); }
+ 
+  })
+ 
+});
+

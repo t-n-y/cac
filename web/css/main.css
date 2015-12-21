@@ -3040,6 +3040,47 @@ p.vignettePetitPlusPrix{
 	margin-bottom: 20px;
 }
 
+.insideTextSMS{
+    width: 40%;
+    margin: auto;
+}
+
+.insideTextSMS p{
+	text-align: left;
+	font-size: 12px;
+}
+
+.contentTextSMS{
+	text-align: center;
+	margin: 40px 0;
+}
+
+.erreurSMS{
+	color: red;
+	text-transform: bold;
+}
+
+.textSMS{
+	width: 100%;
+    height: 120px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.sendSMS{
+	font-size: 18px;
+	width: 40%;
+	min-width: 300px;
+    color: #fff;
+    background-color: #5ac4d4;
+    border: 1px solid #838383;
+    padding: 10px 30px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    margin: 20px auto;
+}
+
 .prochainement{
 	text-align: center;
 	padding: 80px 0;
