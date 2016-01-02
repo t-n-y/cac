@@ -225,7 +225,11 @@
 
 
                 </div>
-                <div class="suspendButton" data-barId="{{ bar.id }}"><p>suspendre ce bar</p></div>
+                {% if bar.visible %}
+                    <div class="suspendButton" data-barId="{{ bar.id }}"><p>suspendre ce bar</p></div>
+                {%  else %}
+                    <p class="reactiveCompte">Veuillez nous recontacter pour ré-activer votre compte</p>
+                {% endif %}
             </div>      
       </div>
           
