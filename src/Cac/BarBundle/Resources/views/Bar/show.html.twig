@@ -368,8 +368,11 @@
 						
 					
 						<div class="infoBarNote col-xs-12 col-sm-12 col-md-12 noPadding">
+
 							{% if (bar.getPromotionByDay(today).getOption('value').value != 0 or bar.getHappyHourByDay(today).getOption('value').value != 0) %}
 								<h1>Réservez avec la promo</h1>
+							{% elseif bar.scheduleArray[today].status == "Fermé" %}	
+								<h1 class="colorCac">Réservation</h1>
 							{% else %}	
 								<h1 class="colorCac">Réservation</h1>
 							{% endif %}	
@@ -386,7 +389,6 @@
 							</div>
 
 							<div class="contentReservationPromo">
-								
 									{% if bar.scheduleArray[today].status == 'Ouvert' %}
 										{% if (bar.getPromotionByDay(today).getOption('value').value != 0 and bar.getHappyHourByDay(today).getOption('value').value != 0) %}
 											<div class="col-xs-6 noPadding">
@@ -454,10 +456,19 @@
 														<div class="textRight col-xs-5 col-sm-5 col-md-5 noPadding">
 															<select class="hourReservation">
 																<option></option>
-																{% for i in 1..23 %}
-																    <option value="{{i}}">{{i}}</option>
-																{% endfor %}
-																	<option value="0">minuit</option>
+																{% if bar.scheduleArray[today].open < bar.scheduleArray[today].close %}
+																	{% for i in bar.scheduleArray[today].open..bar.scheduleArray[today].close %}
+																	    <option value="{{i}}">{{i}}h</option>
+																	{% endfor %}
+																{% else %}
+																	{% for i in bar.scheduleArray[today].open..23 %}
+																	    <option value="{{i}}">{{i}}h</option>
+																	{% endfor %}
+																		<option value="0">minuit</option>
+																	{% for j in 1..(bar.scheduleArray[today].close - 1) %}
+																		<option value="{{j}}">{{j}}h</option>
+																	{% endfor %}
+																{% endif %}
 															</select>
 														</div>
 														<div class="center col-xs-2 col-sm-2 col-md-2 noPadding">
