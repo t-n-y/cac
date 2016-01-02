@@ -46,7 +46,7 @@ class DefaultController extends Controller
     public function sortByPriceAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $entities = $em->getRepository('CacBarBundle:Bar')->findBy(array(), array('cocktailPrice'=>'ASC'));
+        $entities = $em->getRepository('CacBarBundle:Bar')->findBy(array('visible' => true), array('cocktailPrice'=>'ASC'));
         return array('bars' => $entities);
 
     }
@@ -58,7 +58,7 @@ class DefaultController extends Controller
     public function sortByDateAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $entities = $em->getRepository('CacBarBundle:Bar')->findBy(array(), array('creationDate'=>'DESC'));
+        $entities = $em->getRepository('CacBarBundle:Bar')->findBy(array('visible' => true), array('creationDate'=>'DESC'));
         return array('bars' => $entities);
     }
 
@@ -69,7 +69,7 @@ class DefaultController extends Controller
     public function sortByBestAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $entities = $em->getRepository('CacBarBundle:Bar')->findBy(array(), array('score'=>'DESC'));
+        $entities = $em->getRepository('CacBarBundle:Bar')->findBy(array('visible' => true), array('score'=>'DESC'));
         return array('bars' => $entities);
     }
 

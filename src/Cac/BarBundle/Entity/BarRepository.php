@@ -23,7 +23,7 @@ class BarRepository extends EntityRepository
 	public function findOneRandom(){
 	   $max=$this->getMaxId();
 	   return $this->getEntityManager()
-	     ->createQuery('SELECT b.id FROM CacBarBundle:Bar b WHERE b.id >= :rand')
+	     ->createQuery('SELECT b.id FROM CacBarBundle:Bar b WHERE b.id >= :rand AND b.visible = 1')
 	     ->setParameter('rand',rand(0,$max))
 	     ->setMaxResults(1)
 	     ->getSingleResult();
