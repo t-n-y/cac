@@ -22,6 +22,7 @@ use Cac\BarBundle\Form\Type\BarType;
 use Cac\BarBundle\Form\Type\PromotionType;
 use Cac\BarBundle\Form\Type\PromotionDummyType;
 use Cac\BarBundle\Form\Type\BarEditType;
+use Hip\MandrillBundle\Message;
 /**
  * Bar controller.
  *
