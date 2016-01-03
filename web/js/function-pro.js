@@ -22,6 +22,29 @@ $(document).ready(function(){
       } );
     });
 
+  $( ".validate-verre" ).on( "click", function() {
+      var verreId = $(this).data('verre-id');
+      var nbPersonne = 1;
+      $.ajax( {
+          url: Routing.generate('validate_promo', {id: promoId, nbPersonne: nbPersonne}),
+          data: 'json',
+          success: function (data) {
+            $('.zone-etat-'+promoId).html(data);
+          }
+      } );
+    });
+  $( ".invalidate-verre" ).on( "click", function() {
+      var promoId = $(this).data('verre-id');
+      var nbPersonne = 1;
+      $.ajax( {
+          url: Routing.generate('invalidate_promo', {id: promoId, nbPersonne: nbPersonne}),
+          data: 'json',
+          success: function (data) {
+            $('.zone-etat-'+promoId).html(data);
+          }
+      } );
+    });
+
   $( ".mettreBarEnAvant p.barEnAvant" ).on( "click", function() {
       var barId = $(this).data('bar-id');
       $.ajax( {

@@ -248,7 +248,7 @@
 									<div class="validationOffre col-xs-6 col-sm-6 col-md-6 noPadding">
 										<div class="validerOffre">
 											{% if verre.etat == "validé" %}
-												<p class="validate-promo offreValider" data-verre-id="{{verre.id}}">Utilisé</p>
+												<p class="validate-verre offreValider" data-verre-id="{{verre.id}}">Utilisé</p>
 											{% else %}
 												<p class="validate-verre" data-verre-id="{{verre.id}}">Utilisé</p>
 											{% endif %}
@@ -258,9 +258,9 @@
 									<div class="noValidationOffre col-xs-6 col-sm-6 col-md-6 noPadding">
 										<div class="noValiderOffre">
 											{% if verre.etat == "non validé" %}
-												<p class="invalidate-promo offrePasValider" data-verre-id="{{verre.id}}">Pas Vu</p>
+												<p class="invalidate-verre offrePasValider" data-verre-id="{{verre.id}}">Pas Vu</p>
 											{% else %}
-												<p class="invalidate-promo" data-verre-id="{{verre.id}}">Pas Vu</p>
+												<p class="invalidate-verre" data-verre-id="{{verre.id}}">Pas Vu</p>
 											{% endif %}
 										</div>
 									</div>
