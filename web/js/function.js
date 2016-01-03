@@ -912,7 +912,7 @@ $(document).on( 'click', '.JS-obtenirPromo', function() {
           console.log('success ' + data);
           $('.contentNbPersonneReservation').fadeOut(function(){
             $('.JS-promoBox').addClass('voirMaConfirmationDone');
-            $('.JS-promoBox').html('VOIR MA PROMO');
+            $('.JS-promoBox').html('VOIR MA RESERVATION');
             $('.boutonReservationPromo').removeClass('completionAdresse');
             confirmationReservation();
           });
@@ -922,7 +922,7 @@ $(document).on( 'click', '.JS-obtenirPromo', function() {
           // alert("Vous n'avez pas votre promotion");
           $('.contentNbPersonneReservation').fadeOut(function(){
             $('.JS-promoBox').addClass('voirMaConfirmationDone');
-            $('.JS-promoBox').html('VOIR MA PROMO');
+            $('.JS-promoBox').html('VOIR MA RESERVATION');
             $('.boutonReservationPromo').removeClass('completionAdresse');
             confirmationReservation();
           });

@@ -457,17 +457,44 @@
 															<select class="hourReservation">
 																<option></option>
 																{% if bar.scheduleArray[today].open < bar.scheduleArray[today].close %}
-																	{% for i in bar.scheduleArray[today].open..bar.scheduleArray[today].close %}
-																	    <option value="{{i}}">{{i}}h</option>
-																	{% endfor %}
+																	{% if 'now'|date('H') > bar.scheduleArray[today].open %}
+																		{% for i in 'now'|date('H')..bar.scheduleArray[today].close %}
+																		    <option value="{{i}}">{{i}}h</option>
+																		{% endfor %}
+																	{%else%}
+																		{% for i in bar.scheduleArray[today].open..bar.scheduleArray[today].close %}
+																		    <option value="{{i}}">{{i}}h</option>
+																		{% endfor %}
+																	{% endif %}
+
 																{% else %}
-																	{% for i in bar.scheduleArray[today].open..23 %}
-																	    <option value="{{i}}">{{i}}h</option>
-																	{% endfor %}
+
+																	{% if 'now'|date('H') > bar.scheduleArray[today].open and 'now'|date('H') < 0  %}
+																		{% for i in 'now'|date('H')..23 %}
+																		    <option value="{{i}}">{{i}}h</option>
+																		{% endfor %}
 																		<option value="0">minuit</option>
-																	{% for j in 1..(bar.scheduleArray[today].close - 1) %}
-																		<option value="{{j}}">{{j}}h</option>
-																	{% endfor %}
+																		{% for j in 1..(bar.scheduleArray[today].close - 1) %}
+																			<option value="{{j}}">{{j}}h</option>
+																		{% endfor %}
+																	{% elseif 'now'|date('H') == 0 %}
+																		<option value="0">minuit</option>
+																		{% for j in 1..(bar.scheduleArray[today].close - 1) %}
+																			<option value="{{j}}">{{j}}h</option>
+																		{% endfor %}
+																	{% elseif 'now'|date('H') < bar.scheduleArray[today].close and 'now'|date('H') > 0 %}
+																		{% for j in 'now'|date('H')..(bar.scheduleArray[today].close - 1) %}
+																			<option value="{{j}}">{{j}}h</option>
+																		{% endfor %}
+																	{% else %}
+																		{% for i in bar.scheduleArray[today].open..23 %}
+																		    <option value="{{i}}">{{i}}h</option>
+																		{% endfor %}
+																			<option value="0">minuit</option>
+																		{% for j in 1..(bar.scheduleArray[today].close - 1) %}
+																			<option value="{{j}}">{{j}}h</option>
+																		{% endfor %}
+																	{% endif %}
 																{% endif %}
 															</select>
 														</div>
