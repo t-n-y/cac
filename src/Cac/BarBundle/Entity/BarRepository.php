@@ -50,6 +50,7 @@ class BarRepository extends EntityRepository
 			->leftJoin('b.comments', 'c')
 			->leftJoin('b.files', 'f')
             ->where('b.name LIKE :name OR b.adress LIKE :adress OR b.zipcode LIKE :zipcode OR b.town LIKE :town')
+			->andWhere('b.visible = 1')
             ->andWhere('p.day = :today')
             ->andWhere('o.categoryShortcode = :value')
             ->setParameters(array('name' => '%'.$string.'%', 'adress' => '%'.$string.'%', 'zipcode' => '%'.$string.'%', 'town' => '%'.$string.'%', 'today' => $today, 'value' => 'value'));

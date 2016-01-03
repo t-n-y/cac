@@ -19,6 +19,7 @@ use Cac\BarBundle\Entity\Image;
 use Cac\BarBundle\Form\Type\BarType;
 use Cac\BarBundle\Form\Type\PromotionType;
 use Cac\BarBundle\Form\Type\BarEditType;
+use Hip\MandrillBundle\Message;
 /**
  * Bar controller.
  *
@@ -338,7 +339,10 @@ class BarController extends Controller
 
 
         $entity->setVisible(false);
-        $em->remove($highlight[0]);
+        if(count($highlight) != 0)
+        {
+            $em->remove($highlight[0]);
+        }
         $em->persist($entity);
         $em->flush();
 

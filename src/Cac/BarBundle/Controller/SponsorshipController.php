@@ -114,10 +114,6 @@ class SponsorshipController extends Controller
 		$newdate = \DateTime::createFromFormat('d-m-Y', $date);
 		$used = $newdate->format('d/m/Y');
 
-// ld($newdate);
-// ldd($used);
-		
-
 		$sponsorship = $em->getRepository('CacBarBundle:Sponsorship')->findOneByCode($code);
 		$sponsorship->setUsedAt($newdate);
 		$restriction = $sponsorship->getRestriction();
@@ -135,6 +131,19 @@ class SponsorshipController extends Controller
 	    $promo->setCreatedAt(new \DateTime('now'));
 	    $em->persist($promo);
 	    $em->flush();
+
+		$customer = $promo->getBar()->getAuthor();
+		$stripeApikey = $this->container->getParameter('stripe_api_key');
+
+		\Stripe\Stripe::setApiKey($stripeApikey);
+		$payment = $em->getRepository('CacPaymentBundle:Payment')->findOneByUser($customer);
+		$customerId = $payment->getCustomerId();
+		\Stripe\InvoiceItem::create(array(
+				"customer" => $customerId,
+				"amount" => $customer->getGlassPrice() * $nbPersonne,
+				"currency" => "eur",
+				"description" => "Parainage")
+		);
 
 
 		$md = $this->get('hip_mandrill.dispatcher');

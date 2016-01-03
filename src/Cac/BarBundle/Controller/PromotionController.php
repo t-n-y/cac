@@ -14,6 +14,7 @@ use Cac\BarBundle\Form\Type\BarType;
 use Cac\BarBundle\Form\Type\PromotionType;
 use Cac\BarBundle\Form\Type\PromotionDummyType;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Hip\MandrillBundle\Message;
 /**
  * Bar controller.
  *
