@@ -2338,6 +2338,12 @@ p.rappelCondition{
 	color: #303030;
 }
 
+.telephoneCacReservationMax{
+	text-align: center;
+	font-size: 11px;
+	padding: 10px 20px;
+}
+
 .contentButtonRappel{
 	position: absolute;
 	bottom: 5px;

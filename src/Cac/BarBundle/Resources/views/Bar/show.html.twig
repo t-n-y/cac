@@ -473,15 +473,19 @@
 																		{% for i in 'now'|date('H')..23 %}
 																		    <option value="{{i}}">{{i}}h</option>
 																		{% endfor %}
+																		{% if bar.scheduleArray[today].close != 0  %}
 																		<option value="0">minuit</option>
-																		{% for j in 1..(bar.scheduleArray[today].close - 1) %}
-																			<option value="{{j}}">{{j}}h</option>
-																		{% endfor %}
+																			{% for j in 1..(bar.scheduleArray[today].close - 1) %}
+																				<option value="{{j}}">{{j}}h</option>
+																			{% endfor %}
+																		{% endif %}
 																	{% elseif 'now'|date('H') == 0 %}
+																	{% if bar.scheduleArray[today].close != 0  %}
 																		<option value="0">minuit</option>
-																		{% for j in 1..(bar.scheduleArray[today].close - 1) %}
-																			<option value="{{j}}">{{j}}h</option>
-																		{% endfor %}
+																			{% for j in 1..(bar.scheduleArray[today].close - 1) %}
+																				<option value="{{j}}">{{j}}h</option>
+																			{% endfor %}
+																		{% endif %}
 																	{% elseif 'now'|date('H') < bar.scheduleArray[today].close and 'now'|date('H') > 0 %}
 																		{% for j in 'now'|date('H')..(bar.scheduleArray[today].close - 1) %}
 																			<option value="{{j}}">{{j}}h</option>
@@ -490,10 +494,12 @@
 																		{% for i in bar.scheduleArray[today].open..23 %}
 																		    <option value="{{i}}">{{i}}h</option>
 																		{% endfor %}
+																		{% if bar.scheduleArray[today].close != 0  %}
 																			<option value="0">minuit</option>
-																		{% for j in 1..(bar.scheduleArray[today].close - 1) %}
-																			<option value="{{j}}">{{j}}h</option>
-																		{% endfor %}
+																			{% for j in 1..(bar.scheduleArray[today].close - 1) %}
+																				<option value="{{j}}">{{j}}h</option>
+																			{% endfor %}
+																		{% endif %}
 																	{% endif %}
 																{% endif %}
 															</select>
@@ -634,6 +640,7 @@
 								</div>
 							</div>
 						</div>
+						<p class="telephoneCacReservationMax">Pour les réservations de plus de 15 personnes, merci de contacter Click and Cheers au <a href="tel:01.85.09.25.82">01.85.09.25.82</a></p>
 					</div>
 				</div>
 			</div>
