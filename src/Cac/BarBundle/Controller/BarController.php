@@ -39,7 +39,7 @@ class BarController extends Controller
         //setlocale(LC_TIME, "french");
         $today = ucfirst(strftime("%A"));
         $em = $this->getDoctrine()->getManager();
-        $entities = $em->getRepository('CacBarBundle:Bar')->findByVisible(true);
+        $entities = $em->getRepository('CacBarBundle:Bar')->findBy(array('visible' => true), array('score'=>'DESC'));
         $bars = array();
         $i = 0;
         foreach ($entities as $entity) {
