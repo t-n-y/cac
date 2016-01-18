@@ -678,7 +678,7 @@ class ProController extends Controller
                 "customer" => $customerId,
                 "amount" => $customer->getGlassPrice() * $nbPersonne,
                 "currency" => "eur",
-                "description" => "Promotion")
+                "description" => "Verres offerts")
             );
         }
         $promo->setEtat('validé');
@@ -697,6 +697,80 @@ class ProController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $promo = $em->getRepository('CacBarBundle:PromoOffertes')->find($id);
+        $promo->setEtat('non validé');
+        $user = $promo->getUser();
+        $user->setScore($user->getScore()-15);
+        $em->persist($user);
+        $em->persist($promo);
+        $em->flush();
+        $customer = $promo->getBar()->getAuthor();
+        $stripeApikey = $this->container->getParameter('stripe_api_key');
+
+        \Stripe\Stripe::setApiKey($stripeApikey);
+        $payment = $em->getRepository('CacPaymentBundle:Payment')->findOneByUser($customer);
+        $customerId = $payment->getCustomerId();
+        \Stripe\InvoiceItem::create(array(
+            "customer" => $customerId,
+            "amount" => '-'.$customer->getGlassPrice() * $nbPersonne,
+            "currency" => "eur",
+            "description" => "Verres offerts")
+        );
+        return new Response($promo->getEtat());
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /**
+     * @Route("/validate-verre/{id}", name="validate_verre", options={"expose"=true})
+     */
+    public function validateVerreAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $promo = $em->getRepository('CacBarBundle:VerresOfferts')->find($id);
+        if ($promo->getEtat() === "non validé") {
+            $customer = $promo->getBar()->getAuthor();
+            $stripeApikey = $this->container->getParameter('stripe_api_key');
+
+            \Stripe\Stripe::setApiKey($stripeApikey);
+            $payment = $em->getRepository('CacPaymentBundle:Payment')->findOneByUser($customer);
+            $customerId = $payment->getCustomerId();
+            \Stripe\InvoiceItem::create(array(
+                    "customer" => $customerId,
+                    "amount" => $customer->getGlassPrice(),
+                    "currency" => "eur",
+                    "description" => "Promotion")
+            );
+        }
+        $promo->setEtat('validé');
+        $em->persist($promo);
+        $user = $promo->getUser();
+        $user->setScore($user->getScore()+10);
+        $em->persist($user);
+        $em->flush();
+        return new Response($promo->getEtat());
+    }
+
+    /**
+     * @Route("/invalidate-verre/{id}", name="invalidate_verre", options={"expose"=true})
+     */
+    public function invalidateVerreAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $promo = $em->getRepository('CacBarBundle:VerresOfferts')->find($id);
         $promo->setEtat('non validé');
         $user = $promo->getUser();
         $user->setScore($user->getScore()-15);
@@ -733,13 +807,20 @@ class ProController extends Controller
         $payment = $em->getRepository('CacPaymentBundle:Payment')->findOneByUser($customer);
         $customerId = $payment->getCustomerId();
         \Stripe\InvoiceItem::create(array(
-            "customer" => $customerId,
-            "amount" => '-'.$customer->getGlassPrice() * $nbPersonne,
-            "currency" => "eur",
-            "description" => "Promotion")
+                "customer" => $customerId,
+                "amount" => '-'.$customer->getGlassPrice() * $nbPersonne,
+                "currency" => "eur",
+                "description" => "Promotion")
         );
         return new Response($promo->getEtat());
     }
+
+
+
+
+
+
+
 
     /**
      * @Route("/highlight/{id}", name="highlight_bar", options={"expose"=true})
