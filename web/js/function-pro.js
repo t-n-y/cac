@@ -98,7 +98,7 @@ $('body').on("click", ".validerOffre",function(){
 
 });
 
-$('body').on("click", ".noValiderOffre",function(){
+$('body').on("click", ".affichePopUp",function(){
   if (click == 0){
     alert('Un email sera envoyé au client pour savoir pourquoi il n\'est pas venu');
     click = 1;
