@@ -195,15 +195,18 @@ class PromotionController extends Controller
         $user = $promo->getUser();
         $stripeApikey = $this->container->getParameter('stripe_api_key');
 
-        \Stripe\Stripe::setApiKey($stripeApikey);
-        $payment = $em->getRepository('CacPaymentBundle:Payment')->findOneByUser($customer);
-        $customerId = $payment->getCustomerId();
-        \Stripe\InvoiceItem::create(array(
-            "customer" => $customerId,
-            "amount" => '-'.$customer->getGlassPrice() * $promo->getNbpersonne(),
-            "currency" => "eur",
-            "description" => "Promotion")
-        );
+        if($promo->getEtat() !== "non validé")
+        {
+            \Stripe\Stripe::setApiKey($stripeApikey);
+            $payment = $em->getRepository('CacPaymentBundle:Payment')->findOneByUser($customer);
+            $customerId = $payment->getCustomerId();
+            \Stripe\InvoiceItem::create(array(
+                "customer" => $customerId,
+                "amount" => '-'.$customer->getGlassPrice() * $promo->getNbpersonne(),
+                "currency" => "eur",
+                "description" => "Promotion")
+            );
+        }
         $em->remove($promo);
         $em->flush();
 

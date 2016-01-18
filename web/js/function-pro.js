@@ -24,23 +24,21 @@ $(document).ready(function(){
 
   $( ".validate-verre" ).on( "click", function() {
       var verreId = $(this).data('verre-id');
-      var nbPersonne = 1;
       $.ajax( {
-          url: Routing.generate('validate_promo', {id: promoId, nbPersonne: nbPersonne}),
+          url: Routing.generate('validate_verre', {id: verreId}),
           data: 'json',
           success: function (data) {
-            $('.zone-etat-'+promoId).html(data);
+            $('.zone-etat-'+verreId).html(data);
           }
       } );
     });
   $( ".invalidate-verre" ).on( "click", function() {
-      var promoId = $(this).data('verre-id');
-      var nbPersonne = 1;
+      var verreId = $(this).data('verre-id');
       $.ajax( {
-          url: Routing.generate('invalidate_promo', {id: promoId, nbPersonne: nbPersonne}),
+          url: Routing.generate('invalidate_verre', {id: verreId}),
           data: 'json',
           success: function (data) {
-            $('.zone-etat-'+promoId).html(data);
+            $('.zone-etat-'+verreId).html(data);
           }
       } );
     });
