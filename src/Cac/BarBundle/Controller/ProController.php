@@ -729,15 +729,17 @@ class ProController extends Controller
 
         $result = $md->send($message, $templateName, $templateContent);
 
-        \Stripe\Stripe::setApiKey($stripeApikey);
-        $payment = $em->getRepository('CacPaymentBundle:Payment')->findOneByUser($customer);
-        $customerId = $payment->getCustomerId();
-        \Stripe\InvoiceItem::create(array(
-            "customer" => $customerId,
-            "amount" => '-'.$customer->getGlassPrice() * $nbPersonne,
-            "currency" => "eur",
-            "description" => "Réservation")
-        );
+        if($promo->getEtat() !== "non validé") {
+            \Stripe\Stripe::setApiKey($stripeApikey);
+            $payment = $em->getRepository('CacPaymentBundle:Payment')->findOneByUser($customer);
+            $customerId = $payment->getCustomerId();
+            \Stripe\InvoiceItem::create(array(
+                    "customer" => $customerId,
+                    "amount" => '-' . $customer->getGlassPrice() * $nbPersonne,
+                    "currency" => "eur",
+                    "description" => "Réservation")
+            );
+        }
         return new Response($promo->getEtat());
     }
 
