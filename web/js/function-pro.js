@@ -28,7 +28,7 @@ $(document).ready(function(){
           url: Routing.generate('validate_verre', {id: verreId}),
           data: 'json',
           success: function (data) {
-            $('.zone-etat-'+promoId).html(data);
+            $('.zone-etat-'+verreId).html(data);
           }
       } );
     });
@@ -38,7 +38,7 @@ $(document).ready(function(){
           url: Routing.generate('invalidate_verre', {id: verreId}),
           data: 'json',
           success: function (data) {
-            $('.zone-etat-'+promoId).html(data);
+            $('.zone-etat-'+verreId).html(data);
           }
       } );
     });
