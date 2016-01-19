@@ -89,7 +89,12 @@
                 <ul>
                     {% if app.user and is_granted('ROLE_BIGBOSS') or is_granted('ROLE_BARMAN') %}
                         <li>
-                            {% render url('navigation') %}
+                            {% if is_granted('ROLE_BARMAN') %}
+                                <a href="{{ path('bars_offerFeedback', { id : app.user.bar.id }) }}"><p>Mon back office</p></a>
+                                <a href="{{ path('bars_offer', { id : app.user.bar.id }) }}"><p>Mes offres</p></a>
+                            {% else %}
+                                {% render url('navigation') %}
+                            {% endif %}
                             <a href="{{ path('barman_register') }}"><p>Ajouter un barman</p></a>
                             {% if is_granted('ROLE_BIGBOSS') %}
                               <a href="{{ path('bar_new') }}"><p>Créer un bar</p></a>
