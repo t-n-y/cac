@@ -892,8 +892,8 @@ $( ".animConnexion" ).on( "click", function() {
 
 // Obtenir une promotion
 $(document).on( 'click', '.JS-obtenirPromo', function() {
-  if($('.JS-obtenirPromo').attr('data-nbpersone')){
-    $('.JS-obtenirPromo').removeClass('JS-obtenirPromo');
+  $('.JS-obtenirPromo').removeClass('JS-obtenirPromo');
+  if($('.JS-promoBox').attr('data-nbpersone')){  
     var promoId = $(this).data('bar-id');
     var valuePromo = $(this).data('valuepromo');
     var nbPersonne = $(this).data('nbpersone');
@@ -930,6 +930,7 @@ $(document).on( 'click', '.JS-obtenirPromo', function() {
     } );
   }else{
     alert("Veuillez entrer un nombre de personne pour la reservation");
+    $('.JS-promoBox').addClass('JS-obtenirPromo');
   }
   _gaq.push(['_trackEvent', 'btn_resa', 'clic']);
 });
@@ -1326,3 +1327,9 @@ $(document).ready(function(e) {
   })
  
 });
+
+$('.contentFormRegisterPro .center input').on('click', function(){
+  $('.formRegisterPro form').attr('action','');
+  $('.formRegisterPro form').attr('class','');
+});
+
