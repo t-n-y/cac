@@ -81,14 +81,6 @@
 						<div class="informationBar">
 							<div class="containerPrice">
 								<div class="row">
-								
-									<div class="col-xs-6 col-sm-3 col-md-3">
-										<img src="{{asset('img/pictoBar/biere.svg')}}" alt="">
-										<div class="contentPrice">
-											<span>{{ bar.beerPrice }}€</span>
-											<p>La pinte de bière</p>
-										</div>
-									</div>
 									<div class="col-xs-6 col-sm-3 col-md-3">
 										<img src="{{asset('img/pictoBar/cocktail.svg')}}" alt="">
 										<div class="contentPrice">
@@ -96,6 +88,13 @@
 											<p>Le cocktail</p>
 										</div>
 										
+									</div>
+									<div class="col-xs-6 col-sm-3 col-md-3">
+										<img src="{{asset('img/pictoBar/biere.svg')}}" alt="">
+										<div class="contentPrice">
+											<span>{{ bar.beerPrice }}€</span>
+											<p>La pinte de bière</p>
+										</div>
 									</div>
 									<div class="col-xs-6 col-sm-3 col-md-3">
 										<img src="{{asset('img/pictoBar/soft.svg')}}" alt="">
@@ -531,7 +530,7 @@
 														
 														<select class="nbPersonneReservation">
 															<option></option>
-															{% for k in 2..15 %}
+															{% for k in 2..10 %}
 															    <option value="{{k}}">{{k}}</option>
 															{% endfor %}
 														</select>
@@ -640,7 +639,7 @@
 								</div>
 							</div>
 						</div>
-						<p class="telephoneCacReservationMax">Pour les réservations de plus de 15 personnes, merci de contacter Click and Cheers au <a href="tel:01.85.09.25.82">01.85.09.25.82</a></p>
+						<p class="telephoneCacReservationMax">Pour les réservations de plus de 10 personnes, merci de contacter Click and Cheers au <a href="tel:01.85.09.25.82">01.85.09.25.82</a></p>
 					</div>
 				</div>
 			</div>
