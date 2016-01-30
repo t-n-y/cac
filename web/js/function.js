@@ -1150,50 +1150,64 @@ $('#senddrink').on('click', function(){
 var changeHourAutomatique = true;
 
 $('.heure select').on('change', function(){
+  var $this = $(this);
 
     if(changeHourAutomatique){
         var days = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"];
 
-        if($(this).data('when') == 'open'){
+        if($this.data('when') == 'open'){
 
-            if($(this).parentsUntil('.servicesNewBar').find($("select[data-when='close']")).val() != ""){
-
-                if(confirm('Voulez vous appliquer ces horaires pour tout les jours ?')){
-                    $('.servicesNewBar').find($("select[data-when='open'] option[value=" + $(this).val() + "]")).prop('selected', true);
-                    $('.servicesNewBar').find($("select[data-when='close'] option[value=" + $(this).parentsUntil('.servicesNewBar').find($("select[data-when='close']")).val() + "]")).prop('selected', true);
+            if($this.parentsUntil('.servicesNewBar').find($("select[data-when='close']")).val() != ""){
+                $('.popUpAppliquerLesHeures').show(function(){
+                  $('.AppliquerOUI').on('click', function(){
+                    $('.popUpAppliquerLesHeures').hide();
+                    $('.servicesNewBar').find($("select[data-when='open'] option[value=" + $this.val() + "]")).prop('selected', true);
+                    $('.servicesNewBar').find($("select[data-when='close'] option[value=" + $this.parentsUntil('.servicesNewBar').find($("select[data-when='close']")).val() + "]")).prop('selected', true);
                     
                     var hidden = $('#cac_barbundle_bar_schedule').val();
                     hidden = JSON.parse(hidden);
 
                     for(var i=0; i<days.length; i++){
-                        hidden[days[i]].close = $(this).parentsUntil('.servicesNewBar').find($("select[data-when='close']")).val();
-                        hidden[days[i]].open = $(this).val();
+                        hidden[days[i]].close = $this.parentsUntil('.servicesNewBar').find($("select[data-when='close']")).val();
+                        hidden[days[i]].open = $this.val();
                     }
                     
                     $('#cac_barbundle_bar_schedule').val(JSON.stringify(hidden));
-                }
+                    
+                  });
+                  $('.AppliquerNON').on('click', function(){
+                    $('.popUpAppliquerLesHeures').hide();
+                    });
+                });
+               
                 changeHourAutomatique = false;
             }
            
         }else{
-            if($(this).parentsUntil('.servicesNewBar').find($("select[data-when='open']")).val() != ""){
-                if(confirm('Voulez vous appliquer ces horaires pour tout les jours ?')){
+            if($this.parentsUntil('.servicesNewBar').find($("select[data-when='open']")).val() != ""){
+              $('.popUpAppliquerLesHeures').show(function(){
+                $('.AppliquerOUI').on('click', function(){
+                    $('.popUpAppliquerLesHeures').hide();
 
-                    $('.servicesNewBar').find($("select[data-when='close'] option[value=" + $(this).val() + "]")).prop('selected', true);
-                    $('.servicesNewBar').find($("select[data-when='open'] option[value=" + $(this).parentsUntil('.servicesNewBar').find($("select[data-when='open']")).val() + "]")).prop('selected', true);
+                    $('.servicesNewBar').find($("select[data-when='close'] option[value=" + $this.val() + "]")).prop('selected', true);
+                    $('.servicesNewBar').find($("select[data-when='open'] option[value=" + $this.parentsUntil('.servicesNewBar').find($("select[data-when='open']")).val() + "]")).prop('selected', true);
                     
                     var hidden = $('#cac_barbundle_bar_schedule').val();
                     hidden = JSON.parse(hidden);
 
                     for(var i=0; i<days.length; i++){
-                        hidden[days[i]].open = $(this).parentsUntil('.servicesNewBar').find($("select[data-when='open']")).val();
-                        hidden[days[i]].close = $(this).val();
+                        hidden[days[i]].open = $this.parentsUntil('.servicesNewBar').find($("select[data-when='open']")).val();
+                        hidden[days[i]].close = $this.val();
                     }
                     
                     $('#cac_barbundle_bar_schedule').val(JSON.stringify(hidden));
 
 
-                }
+                });
+                  $('.AppliquerNON').on('click', function(){
+                    $('.popUpAppliquerLesHeures').hide();
+                    });
+                });
                 changeHourAutomatique = false;
             }
         }

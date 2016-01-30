@@ -3772,6 +3772,29 @@ a .ongletCreation:hover p{
 	padding-left: 60px;
 }
 
+.popUpAppliquerLesHeures{
+	display: none;
+	position: absolute;
+    text-align: center;
+    background-color: rgba(255,255,255,0.8);
+    width: 65%;
+    left: 18%;
+    height: 120px;
+    border: 3px solid #5ac4d4;
+}
+
+.AppliquerOUI, .AppliquerNON{
+	width: 20%;
+    float: left;
+    margin-left: 20%;
+    cursor: pointer;
+}
+
+.AppliquerOUI:hover, .AppliquerNON:hover{
+	background-color: #5ac4d4;
+	color: #fff;
+}
+
 .serviceNewBar{
 	position: relative;
 }
