@@ -900,13 +900,13 @@ $(document).on( 'click', '.JS-obtenirPromo', function() {
     var hour = $(this).data('bar-hour');
 
 
-    console.log(promoId + ' - ' + valuePromo + ' - ' + nbPersonne + ' - ' + hour); 
+    //var date => format 15-02-2016
 
     if(!valuePromo || isNaN(valuePromo) ){
       valuePromo = 0;
     }
     $.ajax( {
-        url: Routing.generate('get_promo', {'id': promoId, 'value': valuePromo, 'nbPersonne': nbPersonne, 'time': hour}),
+        url: Routing.generate('get_promo', {'id': promoId, 'value': valuePromo, 'nbPersonne': nbPersonne, 'time': hour, 'date': date}),
         data: 'json',
         success: function (data) {
           console.log('success ' + data);
