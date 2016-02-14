@@ -223,10 +223,13 @@ class BarController extends Controller
     }
 
     /**
-     * @Route("/get-my-promotion/{id}/{value}/{nbPersonne}/{time}", name="get_promo", options={"expose"=true})
+     * @Route("/get-my-promotion/{id}/{value}/{nbPersonne}/{time}/{date}", name="get_promo", options={"expose"=true})
      */
-    public function getMyPromotionAction($id, $value, $nbPersonne, $time)
+    public function getMyPromotionAction($id, $value, $nbPersonne, $time, $date)
     {
+
+        $day = new \DateTime($date);
+
         $em = $this->getDoctrine()->getManager();
         $bar = $em->getRepository('CacBarBundle:Bar')->find($id);
         $user = $this->get('security.context')->getToken()->getUser();
@@ -240,7 +243,7 @@ class BarController extends Controller
             $promo->setNbpersonne($nbPersonne);
             $promo->setHour($time);
             $promo->setUser($user);
-            $promo->setCreatedAt(new \DateTime('now'));
+            $promo->setCreatedAt($day);
             $em->persist($promo);
             $em->flush();
 
