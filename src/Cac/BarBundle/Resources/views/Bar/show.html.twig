@@ -458,11 +458,11 @@
 																{% if bar.scheduleArray[today].open < bar.scheduleArray[today].close %}
 																	{% if 'now'|date('H') > bar.scheduleArray[today].open %}
 																		{% for i in 'now'|date('H')..bar.scheduleArray[today].close %}
-																		    <option value="{{i}}">{{i}}h</option>
+																		    <option value="{{i}}">{{i}}</option>
 																		{% endfor %}
 																	{%else%}
 																		{% for i in bar.scheduleArray[today].open..bar.scheduleArray[today].close %}
-																		    <option value="{{i}}">{{i}}h</option>
+																		    <option value="{{i}}">{{i}}</option>
 																		{% endfor %}
 																	{% endif %}
 
@@ -470,19 +470,19 @@
 
 																	{% if 'now'|date('H') > bar.scheduleArray[today].open and 'now'|date('H') < 0  %}
 																		{% for i in 'now'|date('H')..23 %}
-																		    <option value="{{i}}">{{i}}h</option>
+																		    <option value="{{i}}">{{i}}</option>
 																		{% endfor %}
 																		{% if bar.scheduleArray[today].close != 0  %}
 																		<option value="0">minuit</option>
 																			{% for j in 1..(bar.scheduleArray[today].close - 1) %}
-																				<option value="{{j}}">{{j}}h</option>
+																				<option value="{{j}}">{{j}}</option>
 																			{% endfor %}
 																		{% endif %}
 																	{% elseif 'now'|date('H') == 0 %}
 																	{% if bar.scheduleArray[today].close != 0  %}
 																		<option value="0">minuit</option>
 																			{% for j in 1..(bar.scheduleArray[today].close - 1) %}
-																				<option value="{{j}}">{{j}}h</option>
+																				<option value="{{j}}">{{j}}</option>
 																			{% endfor %}
 																		{% endif %}
 																	{% elseif 'now'|date('H') < bar.scheduleArray[today].close and 'now'|date('H') > 0 %}
@@ -491,12 +491,12 @@
 																		{% endfor %}
 																	{% else %}
 																		{% for i in bar.scheduleArray[today].open..23 %}
-																		    <option value="{{i}}">{{i}}h</option>
+																		    <option value="{{i}}">{{i}}</option>
 																		{% endfor %}
 																		{% if bar.scheduleArray[today].close != 0  %}
 																			<option value="0">minuit</option>
 																			{% for j in 1..(bar.scheduleArray[today].close - 1) %}
-																				<option value="{{j}}">{{j}}h</option>
+																				<option value="{{j}}">{{j}}</option>
 																			{% endfor %}
 																		{% endif %}
 																	{% endif %}
