@@ -898,6 +898,7 @@ $(document).on( 'click', '.JS-obtenirPromo', function() {
     var valuePromo = $(this).data('valuepromo');
     var nbPersonne = $(this).data('nbpersone');
     var hour = $(this).data('bar-hour');
+    var date = $(this).data('dateReservation');
 
 
     //var date => format 15-02-2016

@@ -426,9 +426,9 @@
 												<div class="avancementReservation">
 													{% set months = {'1': 'janvier', '2': 'Février', '3': 'Mars', '4': 'Avril', '5': 'Mai', '6': 'Juin', '7': 'Juillet', '8': 'Août', '9': 'Septembre', '10': 'Octobre', '11': 'Novembre', '12': 'Décembre'} %}
 													<div class="ReservationEtapeOK firstStepReservation">
-														<p>
+														<p class="choiceReservationDate">
 
-														{{today}}
+														<!--{{today}}
 														{{'now'|date('d')}}
 
 													      {% for j in 1..12 %}
@@ -436,7 +436,8 @@
 															{% if 'now'|date('m') == j %}
 																{{ months[j] }}
 															{% endif %}
-														{% endfor %}</p>
+														{% endfor %}-->
+														Choisissez la date</p>
 													</div>
 													<div class="ReservationEtapeNext">
 														<p class="JS-choiceHour">Choisissez l'heure</p>
@@ -445,6 +446,15 @@
 														<p class="JS-choiceNbPersonne">Nombre de personnes</p>
 													</div>
 													<div class="clear"></div>
+												</div>
+
+												<div class="contentSelectDayReservation">
+													<div class="datepickerForReservation">	
+																<p>DatePicker</p>
+																<div id="datepickerResa"></div>
+															  <input type="text" id="datepickerReservation" hidden>
+															  
+														</div>	
 												</div>
 
 												<div class="contentHourReservation">
@@ -535,9 +545,9 @@
 															{% endfor %}
 														</select>
 														{% if bar.getPromotionByDay(today).getOption('value').value == 0 or bar.getPromotionByDay(today).getOption('value').value == 'Valeur' %}
-														<div class="boutonReservationPromo JS-obtenirPromo JS-promoBox" data-bar-id="{{bar.id}}" data-valuepromo="0" data-bar-hour="">
+														<div class="boutonReservationPromo JS-obtenirPromo JS-promoBox" data-bar-id="{{bar.id}}" data-valuepromo="0" data-bar-hour="" data-dateReservation="">
 														{% else %}
-														<div class="boutonReservationPromo JS-obtenirPromo JS-promoBox" data-bar-id="{{bar.id}}" data-valuepromo="{{ bar.getPromotionByDay(today).getOption('value').value }}" data-bar-hour="">
+														<div class="boutonReservationPromo JS-obtenirPromo JS-promoBox" data-bar-id="{{bar.id}}" data-valuepromo="{{ bar.getPromotionByDay(today).getOption('value').value }}" data-bar-hour="" data-dateReservation="">
 														{% endif %}
 															<p>VALIDER LA RESERVATION</p>
 														</div> 

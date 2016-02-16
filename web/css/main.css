@@ -1958,7 +1958,15 @@ select:focus {
     margin-top: 0px;
 }
 
-.contentHourReservation, .contentNbPersonneReservation{
+.datepickerForReservation .ui-datepicker{
+	width: 100%;
+}
+
+.datepickerForReservation .ui-state-default, .datepickerForReservation .ui-widget-content .ui-state-default, .datepickerForReservation .ui-widget-header .ui-state-default{
+	width: auto;
+}
+
+.contentSelectDayReservation, .contentHourReservation, .contentNbPersonneReservation{
 	display: none;
 	margin-top: 10px;
 }
