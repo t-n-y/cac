@@ -39,6 +39,7 @@ $('.ReserveHour').on('click', function(){
 	$('.ReserveHour').fadeOut(function(){
 		$('.contentSelectDayReservation').fadeIn();
 		$('.avancementReservation').fadeIn();
+		var disableddates = ["21-02-2016","23-02-2016","25-02-2016"];
 		$(function() {
 		    $( "#datepickerResa" ).datepicker({ 
                 minDate: 0, 
@@ -66,6 +67,11 @@ $('.ReserveHour').on('click', function(){
 					madate = madate.split("-").join(" ");
 					$('.choiceReservationDate').html(madate);
 
+                },
+                beforeShowDay: function(date){
+                    var string = jQuery.datepicker.formatDate('dd-mm-yy', date);
+                    console.log([ disableddates.indexOf(string)]) ;
+                    return [ disableddates.indexOf(string) == -1]
                 },
                 dateFormat: "dd-mm-yy"});
 		  });
