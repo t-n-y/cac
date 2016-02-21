@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Cac\BarBundle\Entity\Bar;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class DefaultController extends Controller
 {
@@ -97,5 +98,35 @@ class DefaultController extends Controller
     public function randomBarAction()
     {   
         return $this->redirect($this->generateUrl('bar_show', array('id' => $this->randomBar()['id'])));
+    }
+
+    /**
+     * @Route("/bars/closed-days/{id}", name="closed_days", options={"expose"=true})
+     */
+    public function closedDaysAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $bar = $em->getRepository('CacBarBundle:Bar')->findOneById($id);
+
+        setlocale(LC_TIME, "fr_FR");
+        $date = new \Datetime();
+        $weekDays = [];
+
+        $i = 0;
+        do {
+            $today = $date->format('d-m-Y');
+            $dayName = strftime("%A", $date->getTimestamp());
+            $timestamp = strtotime($today);
+            $day = date('w', $timestamp);
+            if($em->getRepository('CacBarBundle:DaySchedule')->checkClosedDays($dayName, $bar->getId()) === 'Fermé') {
+                $weekDays[] = $day;
+            }
+            $date->modify('+1 day');
+            $i++;
+        } while($i < 7);
+
+        return new JsonResponse(array(
+            'weekdays' => $weekDays,
+        ));
     }
 }
