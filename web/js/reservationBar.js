@@ -39,43 +39,63 @@ $('.ReserveHour').on('click', function(){
 	$('.ReserveHour').fadeOut(function(){
 		$('.contentSelectDayReservation').fadeIn();
 		$('.avancementReservation').fadeIn();
-		var disableddates = ["21-02-2016","23-02-2016","25-02-2016"];
-		$(function() {
-		    $( "#datepickerResa" ).datepicker({ 
-                minDate: 0, 
-                maxDate: "+40D",
-                firstDay: 1 ,
-                closeText: 'Fermer',
-                prevText: 'Précédent',
-                nextText: 'Suivant',
-                currentText: 'Aujourd\'hui',
-                monthNames: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
-                monthNamesShort: ['Janv.', 'Févr.', 'Mars', 'Avril', 'Mai', 'Juin', 'Juil.', 'Août', 'Sept.', 'Oct.', 'Nov.', 'Déc.'],
-                dayNames: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
-                dayNamesShort: ['Dim.', 'Lun.', 'Mar.', 'Mer.', 'Jeu.', 'Ven.', 'Sam.'],
-                dayNamesMin: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
-                weekHeader: 'Sem.',
-                onSelect: function(date) {
-                    var madate = $('#datepickerReservation').val(date)[0].value;
-                    console.log($('#datepickerReservation').val(date));
-                    $('.contentSelectDayReservation').fadeOut(function(){
-						$('.contentHourReservation').fadeIn();
-					});
+		var idBar = $('.JS-obtenirPromo').attr('data-bar-id');
 
-					$('.JS-obtenirPromo').attr('data-dateReservation', madate);
 
-					madate = madate.split("-").join(" ");
-					$('.choiceReservationDate').html(madate);
+		$.ajax( {
+	        type: 'POST',
+	        url: Routing.generate('closed_days', { 'id': idBar }),
+	        error: function (data) {
+	        	var disableddates = ["21-02-2016","23-02-2016","25-02-2016"];
+	        	console.log(data.weekdays);
+				$(function() {
+				    $( "#datepickerResa" ).datepicker({ 
+		                minDate: 0, 
+		                maxDate: "+40D",
+		                firstDay: 1 ,
+		                closeText: 'Fermer',
+		                prevText: 'Précédent',
+		                nextText: 'Suivant',
+		                currentText: 'Aujourd\'hui',
+		                monthNames: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+		                monthNamesShort: ['Janv.', 'Févr.', 'Mars', 'Avril', 'Mai', 'Juin', 'Juil.', 'Août', 'Sept.', 'Oct.', 'Nov.', 'Déc.'],
+		                dayNames: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
+		                dayNamesShort: ['Dim.', 'Lun.', 'Mar.', 'Mer.', 'Jeu.', 'Ven.', 'Sam.'],
+		                dayNamesMin: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
+		                weekHeader: 'Sem.',
+		                onSelect: function(date) {
+		                    var madate = $('#datepickerReservation').val(date)[0].value;
+		                    //console.log($('#datepickerReservation').val(date));
+		                    $('.contentSelectDayReservation').fadeOut(function(){
+								$('.contentHourReservation').fadeIn();
+							});
 
-                },
-                beforeShowDay: function(date){
-                    var string = jQuery.datepicker.formatDate('dd-mm-yy', date);
-                    console.log([ disableddates.indexOf(string)]) ;
-                    return [ disableddates.indexOf(string) == -1]
-                },
-                dateFormat: "dd-mm-yy"});
-		  });
-		$('.datepickerForReservation input').show().focus().hide();
+							$('.JS-obtenirPromo').attr('data-dateReservation', madate);
+
+							madate = madate.split("-").join(" ");
+							$('.choiceReservationDate').html(madate);
+
+		                },
+		                beforeShowDay: /*function(date){
+		                    var string = jQuery.datepicker.formatDate('dd-mm-yy', date);
+		                    console.log([ disableddates.indexOf(string)]) ;
+		                    return [ disableddates.indexOf(string) == -1]
+		                }*/
+		                function(date) {
+					      var day = date.getDay();
+					      //console.log(day);
+					      return [(day != 1 && day != 2)];
+					    },
+		                dateFormat: "dd-mm-yy"});
+				});
+				$('.datepickerForReservation input').show().focus().hide();
+	        }
+	    });
+
+
+
+
+		
 	});
 });
 
