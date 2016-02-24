@@ -319,7 +319,7 @@ class BarController extends Controller
                 "customer" => $customerId,
                 "amount" => $customer->getGlassPrice() * $nbPersonne,
                 "currency" => "eur",
-                "description" => "Promotion")
+                "description" => "Réservation")
             );
 
             return new Response('get glass');
