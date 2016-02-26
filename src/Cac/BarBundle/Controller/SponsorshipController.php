@@ -140,7 +140,7 @@ class SponsorshipController extends Controller
 		$customerId = $payment->getCustomerId();
 		\Stripe\InvoiceItem::create(array(
 				"customer" => $customerId,
-				"amount" => $customer->getGlassPrice() * $nbPersonne,
+				"amount" => $customer->getGlassPrice(),
 				"currency" => "eur",
 				"description" => "Parainage")
 		);

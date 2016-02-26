@@ -204,7 +204,7 @@ class PromotionController extends Controller
                 "customer" => $customerId,
                 "amount" => '-'.$customer->getGlassPrice() * $promo->getNbpersonne(),
                 "currency" => "eur",
-                "description" => "Promotion")
+                "description" => "Réservation")
             );
         }
         $em->remove($promo);
