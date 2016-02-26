@@ -92,35 +92,35 @@ $('.ReserveHour').on('click', function(){
 					      //console.log(day);
 
 					      
-					      if (data.weekdays != 0){
-						      for(var i = 0; i < data.weekdays.length; i++){
-						      	switch (data.weekdays[i]) {
-								    case "Dimanche":
-								        data.weekdays[i] = 0;
-								        break;
-								    case "Lundi":
-								        data.weekdays[i] = 1;
-								        break;
-								    case "Mardi":
-								        data.weekdays[i] = 2;
-								        break;
-								    case "Mercredi":
-								        data.weekdays[i] = 3;
-								        break;
-								    case "Jeudi":
-								        data.weekdays[i] = 4;
-								        break;
-								    case "Vendredi":
-								        data.weekdays[i] = 5;
-								        break;
-								    case "Samedi":
-								        data.weekdays[i] = 6;
-								        break;
-								}
-							  }
-						}
-						console.log(data.weekdays);
-						console.log(data.weekdays.length);
+					 //      if (data.weekdays != 0){
+						//       for(var i = 0; i < data.weekdays.length; i++){
+						//       	switch (data.weekdays[i]) {
+						// 		    case "Dimanche":
+						// 		        data.weekdays[i] = 0;
+						// 		        break;
+						// 		    case "Lundi":
+						// 		        data.weekdays[i] = 1;
+						// 		        break;
+						// 		    case "Mardi":
+						// 		        data.weekdays[i] = 2;
+						// 		        break;
+						// 		    case "Mercredi":
+						// 		        data.weekdays[i] = 3;
+						// 		        break;
+						// 		    case "Jeudi":
+						// 		        data.weekdays[i] = 4;
+						// 		        break;
+						// 		    case "Vendredi":
+						// 		        data.weekdays[i] = 5;
+						// 		        break;
+						// 		    case "Samedi":
+						// 		        data.weekdays[i] = 6;
+						// 		        break;
+						// 		}
+						// 	  }
+						// }
+						// console.log(data.weekdays);
+						// console.log(data.weekdays.length);
 
 						switch (data.weekdays.length) {
 							    case 1:
