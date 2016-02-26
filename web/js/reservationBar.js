@@ -45,9 +45,9 @@ $('.ReserveHour').on('click', function(){
 		$.ajax( {
 	        type: 'POST',
 	        url: Routing.generate('closed_days', { 'id': idBar }),
-	        error: function (data) {
-	        	var disableddates = ["21-02-2016","23-02-2016","25-02-2016"];
-	        	console.log(data.weekdays);
+	        success: function (data) {
+
+	        	//data.weekdays = ['Lundi'];
 				$(function() {
 				    $( "#datepickerResa" ).datepicker({ 
 		                minDate: 0, 
@@ -70,10 +70,12 @@ $('.ReserveHour').on('click', function(){
 								$('.contentHourReservation').fadeIn();
 							});
 
-							$('.JS-obtenirPromo').attr('data-dateReservation', madate);
+							madate = madate.split("-");
+							var dateBack = madate[1] + "-" + madate[2] + "-" + madate[4];
+							var dateFront = madate[0] + " " + madate[1] + " " + madate[3];
 
-							madate = madate.split("-").join(" ");
-							$('.choiceReservationDate').html(madate);
+							$('.JS-obtenirPromo').attr('data-dateReservation', dateBack);
+							$('.choiceReservationDate').html(dateFront);
 
 		                },
 		                beforeShowDay: /*function(date){
@@ -81,12 +83,71 @@ $('.ReserveHour').on('click', function(){
 		                    console.log([ disableddates.indexOf(string)]) ;
 		                    return [ disableddates.indexOf(string) == -1]
 		                }*/
+		               
+		                
 		                function(date) {
+		                	 
+
 					      var day = date.getDay();
 					      //console.log(day);
-					      return [(day != 1 && day != 2)];
+
+					      
+					      if (data.weekdays != 0){
+						      for(var i = 0; i < data.weekdays.length; i++){
+						      	switch (data.weekdays[i]) {
+								    case "Dimanche":
+								        data.weekdays[i] = 0;
+								        break;
+								    case "Lundi":
+								        data.weekdays[i] = 1;
+								        break;
+								    case "Mardi":
+								        data.weekdays[i] = 2;
+								        break;
+								    case "Mercredi":
+								        data.weekdays[i] = 3;
+								        break;
+								    case "Jeudi":
+								        data.weekdays[i] = 4;
+								        break;
+								    case "Vendredi":
+								        data.weekdays[i] = 5;
+								        break;
+								    case "Samedi":
+								        data.weekdays[i] = 6;
+								        break;
+								}
+							  }
+						}
+						console.log(data.weekdays);
+						console.log(data.weekdays.length);
+
+						switch (data.weekdays.length) {
+							    case 1:
+							        return [(day != data.weekdays[0])];
+							        break;
+							    case 2:
+							        return [(day != data.weekdays[0] && day != data.weekdays[1])];
+							        break;
+							    case 3:
+							        return [(day != data.weekdays[0] && day != data.weekdays[1] && day != data.weekdays[2])];
+							        break;
+							    case 4:
+							        return [(day != data.weekdays[0] && day != data.weekdays[1] && day != data.weekdays[2] && day != data.weekdays[3])];
+							        break;
+							    case 5:
+							        return [(day != data.weekdays[0] && day != data.weekdays[1] && day != data.weekdays[2] && day != data.weekdays[3] && day != data.weekdays[4])];
+							        break;
+							    case 6:
+							        return [(day != data.weekdays[0] && day != data.weekdays[1] && day != data.weekdays[2] && day != data.weekdays[3] && day != data.weekdays[4] && day != data.weekdays[5])];
+							        break;
+							    case 7:
+							        return [(day != data.weekdays[0] && day != data.weekdays[1] && day != data.weekdays[2] && day != data.weekdays[3] && day != data.weekdays[4] && day != data.weekdays[5] && day != data.weekdays[6])];
+							        break;
+							    default : return [(day != 7)];
+							}					      
 					    },
-		                dateFormat: "dd-mm-yy"});
+		                dateFormat: "DD-dd-mm-MM-yy"});
 				});
 				$('.datepickerForReservation input').show().focus().hide();
 	        }
