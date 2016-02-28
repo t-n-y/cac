@@ -67,7 +67,7 @@
 {% set break = false %}
 {% for promo in verresOfferts if not break %}
     
-    {% if promo.createdAt | date("d/m/Y") == 'now' | date("d/m/Y") %}
+    {% if promo.createdAt | date("d/m/Y") >= 'now' | date("d/m/Y") %}
     	<h2>Vos parrainages à venir</h2>
         {% set break = true %}
     {% endif %}
@@ -164,7 +164,7 @@
 						<p class="dateForPoints">
 							{{ promo.createdAt | date("d") }}
 
-							{% set months = {'1': 'janvier', '2': 'février', '3': 'maris', '4': 'avril', '5': 'mai', '6': 'juin', '7': 'juillet', '8': 'août', '9': 'septembre', '10': 'octobre', '11': 'novembre', '12': 'décembre'} %}
+							{% set months = {'1': 'janvier', '2': 'février', '3': 'mars', '4': 'avril', '5': 'mai', '6': 'juin', '7': 'juillet', '8': 'août', '9': 'septembre', '10': 'octobre', '11': 'novembre', '12': 'décembre'} %}
 
 							    {% for j in 1..12 %}
 
