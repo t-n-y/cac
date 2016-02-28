@@ -272,6 +272,10 @@ class BarController extends Controller
                     'name' => 'reference',
                     'content' => $reference
                 ),
+                array(
+                    'name' => 'date',
+                    'content' => $promo->getCreatedAt()->format('d/m/Y')
+                ),
             );
             $message
                 ->addTo($user->getEmail(), $user->getFirstname().' '.$user->getName())
@@ -299,6 +303,10 @@ class BarController extends Controller
                 array(
                     'name' => 'reference',
                     'content' => $reference
+                ),
+                array(
+                    'name' => 'date',
+                    'content' => $promo->getCreatedAt()->format('d/m/Y')
                 ),
             );
             $message2

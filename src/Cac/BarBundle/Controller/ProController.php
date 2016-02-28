@@ -720,6 +720,10 @@ class ProController extends Controller
                 'name' => 'reference',
                 'content' => $promo->getReference()
             ),
+            array(
+                'name' => 'date',
+                'content' => $promo->getCreatedAt()->format('d/m/Y')
+            ),
         );
         $message
             ->addTo($user->getEmail(), $user->getFirstname().' '.$user->getName())

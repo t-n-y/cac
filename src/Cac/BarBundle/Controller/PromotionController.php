@@ -194,6 +194,7 @@ class PromotionController extends Controller
         $customer = $promo->getBar()->getAuthor();
         $user = $promo->getUser();
         $stripeApikey = $this->container->getParameter('stripe_api_key');
+        $date = $promo->getCreatedAt()->format('d/m/Y');
 
         if($promo->getEtat() !== "non validé")
         {
@@ -222,6 +223,10 @@ class PromotionController extends Controller
             array(
                 'name' => 'reference',
                 'content' => $promo->getReference()
+            ),
+            array(
+                'name' => 'date',
+                'content' => $date
             ),
         );
         $message

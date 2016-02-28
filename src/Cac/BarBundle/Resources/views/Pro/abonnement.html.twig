@@ -170,7 +170,9 @@
 
 							<button class="freemium"> Souscrire </button>
 						</div>
-						<div id="append-payment-free"></div>
+						<div id="append-payment-free" class="hidden">
+							{% include 'CacPaymentBundle:Default:index.html.twig' %}
+						</div>
 					</div>
 				</div>
 			</div>
@@ -215,7 +217,9 @@
 
 							<button class="premium"> Souscrire </button>
 						</div>
-						<div id="append-payment-premium"></div>
+						<div id="append-payment-premium" class="hidden">
+                            {% include 'CacPaymentBundle:Default:premium.html.twig' %}
+                        </div>
 					</div>
 				</div>
 			</div>
@@ -229,23 +233,11 @@
       
 	<script type="text/javascript">
 		$( "button.freemium" ).on( "click", function() {
-	        $.ajax( {
-	            type: 'GET',
-	            url: Routing.generate('free-pay'),
-	            success: function (data) {
-	            	$('#append-payment-free').html(data);
-	            }
-	        } );
+            $('#append-payment-free').removeClass('hidden');
 	    });
 
 	    $( "button.premium" ).on( "click", function() {
-	        $.ajax( {
-	            type: 'GET',
-	            url: Routing.generate('premium-pay'),
-	            success: function (data) {
-	            	$('#append-payment-premium').html(data);
-	            }
-	        } );
+            $('#append-payment-premium').removeClass('hidden');
 	    });
 
 	</script>    
