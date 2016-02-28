@@ -388,7 +388,7 @@
 							</div>
 
 							<div class="contentReservationPromo">
-									{% if bar.scheduleArray[today].status == 'Ouvert' %}
+									
 										{% if (bar.getPromotionByDay(today).getOption('value').value != 0 and bar.getHappyHourByDay(today).getOption('value').value != 0) %}
 											<div class="col-xs-6 noPadding">
 												<p class="kindOfPromo">Promo du jour</p>
@@ -450,9 +450,9 @@
 
 												<div class="contentSelectDayReservation">
 													<div class="datepickerForReservation">	
-																<p>DatePicker</p>
-																<div id="datepickerResa"></div>
-															  <input type="text" id="datepickerReservation" hidden>
+															
+														<div id="datepickerResa"></div>
+													  <input type="text" id="datepickerReservation" hidden>
 															  
 														</div>	
 												</div>
@@ -545,7 +545,7 @@
 															{% endfor %}
 														</select>
 														{% if bar.getPromotionByDay(today).getOption('value').value == 0 or bar.getPromotionByDay(today).getOption('value').value == 'Valeur' %}
-														<div class="boutonReservationPromo JS-obtenirPromo JS-promoBox" data-bar-id="{{bar.id}}" data-valuepromo="0" data-bar-hour="" data-dateReservation="">
+														<div class="boutonReservationPromo JS-obtenirPromo JS-promoBox" data-bar-id="{{bar.id}}" data-valuepromo="0" data-bar-hour="" data-datereservation="">
 														{% else %}
 														<div class="boutonReservationPromo JS-obtenirPromo JS-promoBox" data-bar-id="{{bar.id}}" data-valuepromo="{{ bar.getPromotionByDay(today).getOption('value').value }}" data-bar-hour="" data-dateReservation="">
 														{% endif %}
@@ -580,11 +580,7 @@
 												</div> 
 											
 										{% endif %}
-									{% else %}
-											<div class="noOfferPresent margin20">
-												<p class="reductionPresent">Bar Fermé</p>
-											</div>
-									{% endif %}
+									
 									
 
 
@@ -593,17 +589,17 @@
 							
 							<div class="confirmationReservation">
 								<div class="checkConfirmation" style="background-image : url('{{ asset('uploads/bar/'~bar.path) }}');">
-									<p class='jourReservation'>{{'now'|date('d')}}</p>
+									<p class='jourReservation'><!-- {{'now'|date('d')}} --></p>
 									<p class='moisReservation'>
 
-									{% set months = {'1': 'JANVIER', '2': 'FEVRIER', '3': 'MARS', '4': 'AVRIL', '5': 'MAI', '6': 'JUIN', '7': 'JUILLET', '8': 'AOUT', '9': 'SEPTEMBRE', '10': 'OCTOBRE', '11': 'NOVEMBRE', '12': 'DECEMBRE'} %}
+									<!-- {% set months = {'1': 'JANVIER', '2': 'FEVRIER', '3': 'MARS', '4': 'AVRIL', '5': 'MAI', '6': 'JUIN', '7': 'JUILLET', '8': 'AOUT', '9': 'SEPTEMBRE', '10': 'OCTOBRE', '11': 'NOVEMBRE', '12': 'DECEMBRE'} %}
 
 								      {% for j in 1..12 %}
 
 										{% if 'now'|date('m') == j %}
 											{{ months[j] }}
 										{% endif %}
-									{% endfor %}
+									{% endfor %} -->
 									</p>
 								</div>
 								<div class="contentConfirmation">
@@ -613,7 +609,7 @@
 										</div>
 										<h2>Réservation Confirmée</h2>
 										{% if bar.getPromotionByDay(today).getOption('value').value == 0 %}
-											<p class="rappelPromo">Votre réservation pour {{ bar.name }} est valable jusqu'à ce soir</p>
+											<p class="rappelPromo">Réservation validée<br>Éclatez-vous !</p>
 										{% else %}
 											<p class="rappelPromo"><span class="rappelPromotion">-{{ bar.getPromotionByDay(today).getOption('value').value }}%</span>
 

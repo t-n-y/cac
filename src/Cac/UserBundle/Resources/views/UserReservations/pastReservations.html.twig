@@ -4,7 +4,7 @@
 {% for promo in promoOffertes if not break %}
     
     {% if promo.createdAt | date("d/m/Y") == 'now' | date("d/m/Y") %}
-    	<h2>Aujourd'hui</h2>
+    	<h2>A venir</h2>
         {% set break = true %}
     {% endif %}
 {% endfor %}
@@ -13,7 +13,7 @@
 
 	{% for promo in promoOffertes %}	
 
-		{% if promo.createdAt | date("d/m/Y") == 'now' | date("d/m/Y") %}
+		{% if promo.createdAt | date("d/m/Y") >= 'now' | date("d/m/Y") %}
 			
 				<div class="boxReservation">
 					<div class="row">
@@ -86,7 +86,7 @@
 
 {% set breakpast = false %}
 {% for promo in promoOffertes if not breakpast %}
-	 {% if promo.createdAt | date("d/m/Y") != 'now' | date("d/m/Y") %}
+	 {% if promo.createdAt | date("d/m/Y") <= 'now' | date("d/m/Y") %}
     	<h2>Évènements passés</h2>
     	{% set breakpast = true %}
     {% endif %}	

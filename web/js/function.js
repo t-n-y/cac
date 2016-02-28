@@ -898,8 +898,9 @@ $(document).on( 'click', '.JS-obtenirPromo', function() {
     var valuePromo = $(this).data('valuepromo');
     var nbPersonne = $(this).data('nbpersone');
     var hour = $(this).data('bar-hour');
-    var date = $(this).data('dateReservation');
+    var date = $(this).data('datereservation');
 
+    console.log(date);
 
     //var date => format 15-02-2016
 
@@ -937,6 +938,25 @@ $(document).on( 'click', '.JS-obtenirPromo', function() {
 });
 
 function confirmationReservation(){
+
+    var jour = $('.JS-promoBox').data('datereservation');
+    var mois = {'1': 'JANVIER', '2': 'FEVRIER', '3': 'MARS', '4': 'AVRIL', '5': 'MAI', '6': 'JUIN', '7': 'JUILLET', '8': 'AOUT', '9': 'SEPTEMBRE', '10': 'OCTOBRE', '11': 'NOVEMBRE', '12': 'DECEMBRE'};
+    if(jour){
+      jour = jour.split('-');
+      $('.jourReservation').html(jour[0]);
+      $('.moisReservation').html(mois[parseInt(jour[1])]);
+    }else{
+      var d = new Date();
+      var day = d.getDate();
+      var month = d.getMonth() + 1;
+      $('.jourReservation').html(day);
+      $('.moisReservation').html(mois[(month)]);
+    }
+    
+
+
+
+
     $('.confirmationReservation').show();
     $('.checkConfirmation').addClass('open-checkConfirmation');
     setTimeout(function(){
@@ -1109,6 +1129,7 @@ $('.ticketVerreValidate').on('click', function(){
                 weekHeader: 'Sem.',
                 beforeShowDay: function(date){
                     var string = jQuery.datepicker.formatDate('dd-mm-yy', date);
+                    console.log(disableddates);
                     return [ disableddates.indexOf(string) == -1 ]
                 },
                 onSelect: function(date) {
