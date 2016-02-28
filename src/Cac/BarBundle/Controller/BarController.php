@@ -272,6 +272,10 @@ class BarController extends Controller
                     'name' => 'reference',
                     'content' => $reference
                 ),
+                array(
+                    'name' => 'date',
+                    'content' => $promo->getCreatedAt()
+                ),
             );
             $message
                 ->addTo($user->getEmail(), $user->getFirstname().' '.$user->getName())
