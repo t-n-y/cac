@@ -67,7 +67,7 @@
 {% set break = false %}
 {% for promo in verresOfferts if not break %}
     
-    {% if promo.createdAt | date("d/m/Y") >= 'now' | date("d/m/Y") %}
+    {% if promo.createdAt | date("Ymd") >= 'now' | date("Ymd") %}
     	<h2>Vos parrainages à venir</h2>
         {% set break = true %}
     {% endif %}
@@ -77,7 +77,7 @@
 
 	{% for promo in verresOfferts %}	
 
-		{% if promo.createdAt | date("d/m/Y") >= 'now' | date("d/m/Y") %}
+		{% if promo.createdAt | date("Ymd") >= 'now' | date("Ymd") %}
 			
 				<div class="boxReservation">
 					<div class="row">
@@ -147,15 +147,17 @@
 
 {% set breakpast = false %}
 {% for promo in verresOfferts if not breakpast %}
-	<h2>Tous les amis que vous avez parrainé</h2>
-    {% set breakpast = true %}
+	{% if promo.createdAt | date("Ymd") <= 'now' | date("Ymd") %}
+		<h2>Tous les amis que vous avez parrainé</h2>
+    	{% set breakpast = true %}
+    {% endif %}
 {% endfor %}
 
 <div class="boxsReservation">
 
 	{% for promo in verresOfferts %}	
 
-		{% if promo.createdAt | date("d/m/Y") <= 'now' | date("d/m/Y") %}
+		{% if promo.createdAt | date("Ymd") <= 'now' | date("Ymd") %}
 			
 				
 			<div class="boxReservation">
