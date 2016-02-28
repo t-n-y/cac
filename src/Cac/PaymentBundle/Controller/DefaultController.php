@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/free-pay", name="free-pay", options={"expose"=true})
+     * @Route("/free-pay", name="free-pay")
      * @Template()
      */
     public function indexAction(Request $request)
@@ -46,7 +46,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/premium-pay", name="premium-pay", options={"expose"=true})
+     * @Route("/premium-pay", name="premium-pay")
      * @Template()
      */
     public function premiumAction(Request $request)
