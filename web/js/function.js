@@ -953,10 +953,6 @@ function confirmationReservation(){
       $('.moisReservation').html(mois[(month)]);
     }
     
-
-
-
-
     $('.confirmationReservation').show();
     $('.checkConfirmation').addClass('open-checkConfirmation');
     setTimeout(function(){
@@ -1367,5 +1363,12 @@ $(document).ready(function(e) {
 $('.contentFormRegisterPro .center input').on('click', function(){
   $('.formRegisterPro form').attr('action','');
   $('.formRegisterPro form').attr('class','');
+});
+
+$(document).ready(function() {
+    $(".fos_user_registration_register").submit(function() {
+        $('.basicUserRegistration').attr('disabled', 'disabled');
+        return true;
+    });
 });
 
