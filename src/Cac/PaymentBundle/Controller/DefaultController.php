@@ -96,6 +96,24 @@ class DefaultController extends Controller
 			$user->removeRole('ROLE_COSMO');
 			$em->persist($payment);
 			$em->flush();
+
+
+
+
+            // générer un nouveau token
+            $token = new \Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken(
+                $user,
+                null,
+                'main',
+                $user->getRoles()
+            );
+            $this->container->get('security.context')->setToken($token);
+
+// faire un refresh du user a l'aide du user manager
+            $userManager = $this->container->get('fos_user.user_manager');
+            $userManager->refreshUser($user);
+
+
 		} catch (Exception $e) {
 			
 		}
@@ -119,6 +137,20 @@ class DefaultController extends Controller
 			$em->persist($user);
 			$em->persist($payment);
 			$em->flush();
+
+
+            // générer un nouveau token
+            $token = new \Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken(
+                $user,
+                null,
+                'main',
+                $user->getRoles()
+            );
+            $this->container->get('security.context')->setToken($token);
+
+// faire un refresh du user a l'aide du user manager
+            $userManager = $this->container->get('fos_user.user_manager');
+            $userManager->refreshUser($user);
 		} catch (Exception $e) {
 			
 		}

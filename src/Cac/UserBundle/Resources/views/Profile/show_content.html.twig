@@ -27,36 +27,38 @@
 
 				{% render(controller("CacUserBundle:UserReservations:pastInvitations")) %}
 			</div>
-			<div class="contentUser contentFidelite">
-				<h2>Cumul des points</h2>
+			{% if user.score is defined %}
+				<div class="contentUser contentFidelite">
+					<h2>Cumul des points</h2>
 
-				<div class="boxPointFidelite">
-					<p class="scoreFidelite">{{user.score}}</p>
-					{% if user.score <= 1 and user.score >= -1%}
-						<p>point</p>
-					{%else%}
-						<p>points</p>
-					{%endif%}
+					<div class="boxPointFidelite">
+						<p class="scoreFidelite">{{user.score}}</p>
+						{% if user.score <= 1 and user.score >= -1%}
+							<p>point</p>
+						{%else%}
+							<p>points</p>
+						{%endif%}
+					</div>
+					<div class="explicationBoxPointFidelite">
+						<p>50 points = 1 verre gratuit</p>
+					</div>
+
+					<div class="restPointToFree">
+						<p>Plus que {{ 50 - user.score }} points pour obtenir une conso gratuite</p>
+					</div>
+
+					<div class="explicationRestPointToFree">
+						<h3>Comment ça marche</h3>
+						<p>C’est très simple, à chaque réservation, 5 points sont crédités sur ton compte. Au bout de 50 points nous t’offrons une consommation dans un bar participant au programme de fidélité.</p>
+
+						<p>Tu peux utiliser cette consommation dans le cadre des conditions imposées par l’établissement.</p>
+
+						<p>Attention, si tu oublies d'annuler ta réservation, une pénalité de 5 points sera appliquée</p>
+
+						<p>À très vite !</p>
+					</div>
 				</div>
-				<div class="explicationBoxPointFidelite">
-					<p>50 points = 1 verre gratuit</p>
-				</div>
-
-				<div class="restPointToFree">
-					<p>Plus que {{ 50 - user.score }} points pour obtenir une conso gratuite</p>
-				</div>
-
-				<div class="explicationRestPointToFree">
-					<h3>Comment ça marche</h3>
-					<p>C’est très simple, à chaque réservation, 5 points sont crédités sur ton compte. Au bout de 50 points nous t’offrons une consommation dans un bar participant au programme de fidélité.</p> 
-
-					<p>Tu peux utiliser cette consommation dans le cadre des conditions imposées par l’établissement.</p>
-
-					<p>Attention, si tu oublies d'annuler ta réservation, une pénalité de 5 points sera appliquée</p>
-
-					<p>À très vite !</p>
-				</div>
-			</div>
+			{% endif %}
 			<div class="contentUser contentInformation">
 				<h2>Mes Informations</h2>
 

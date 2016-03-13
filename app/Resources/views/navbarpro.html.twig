@@ -33,7 +33,9 @@
             {% if app.user and is_granted('IS_AUTHENTICATED_REMEMBERED') %}
                 <div class="profileUserNav">
                   <img class="hidden-sm hidden-md hidden-lg" src="{{asset('img/imgProfilBasic.png')}}">
-                  <p>Bonjour <span class="nameInHeader">{{ app.user.firstname}}</span> </p>
+                    {% if app.user.firstname is defined %}
+                        <p>Bonjour <span class="nameInHeader">{{ app.user.firstname}}</span> </p>
+                    {% endif %}
                 </div>
                 <div class="row">
                   <div class="col-xs-12 hidden-sm hidden-md hidden-lg">

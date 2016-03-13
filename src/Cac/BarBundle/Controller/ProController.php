@@ -23,6 +23,8 @@ use Cac\BarBundle\Form\Type\PromotionType;
 use Cac\BarBundle\Form\Type\PromotionDummyType;
 use Cac\BarBundle\Form\Type\BarEditType;
 use Hip\MandrillBundle\Message;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+
 /**
  * Bar controller.
  *
@@ -64,9 +66,9 @@ class ProController extends Controller
             $role = true;
         else
             $role = false;
-        if ($this->get('security.context')->getToken()->getUser() != $entity->getAuthor() && $role !== true ) {
-            throw $this->createNotFoundException('Vous n\'avez pas accés à ce contenu.');
-        }
+//        if ($this->get('security.context')->getToken()->getUser() != $entity->getAuthor() && $role !== true ) {
+//            throw $this->createNotFoundException('Vous n\'avez pas accés à ce contenu.');
+//        }
 
         $restriction = $em->getRepository('CacBarBundle:PromotionOptionCategory')->findOneBy(array('shortcode' => 'restriction'));
         $restrictions = $em->getRepository('CacBarBundle:PromotionOption')->findBy(array('category' => $restriction->getId()));
@@ -251,9 +253,9 @@ class ProController extends Controller
             $role = true;
         else
             $role = false;
-        if ($this->get('security.context')->getToken()->getUser() != $bar->getAuthor() && $role !== true ) {
-            throw $this->createNotFoundException('Vous n\'avez pas accés à ce contenu.');
-        }
+//        if ($this->get('security.context')->getToken()->getUser() != $bar->getAuthor() && $role !== true ) {
+//            throw $this->createNotFoundException('Vous n\'avez pas accés à ce contenu.');
+//        }
 
         
         $promoOffertes = $em->getRepository('CacBarBundle:PromoOffertes')->findBy(array('bar'=> $bar), array('id' => 'DESC'));
@@ -345,9 +347,9 @@ class ProController extends Controller
             $role = true;
         else
             $role = false;
-        if ($this->get('security.context')->getToken()->getUser() != $entity->getAuthor() && $role !== true ) {
-            throw $this->createNotFoundException('Vous n\'avez pas accés à ce contenu.');
-        }
+//        if ($this->get('security.context')->getToken()->getUser() != $entity->getAuthor() && $role !== true ) {
+//            throw $this->createNotFoundException('Vous n\'avez pas accés à ce contenu.');
+//        }
         $entities = $em->getRepository('CacBarBundle:Bar')->findByVisible(true);
 
         $paginator  = $this->get('knp_paginator');
@@ -406,7 +408,7 @@ class ProController extends Controller
         $bars = $em->getRepository('CacBarBundle:Bar')->findByAuthor($user);
 
         if (count($bars) > 0 && $role === false ) {
-            ldd('Vous ne pouvez créer qu\'un seul bar avec la formule shooter !');
+            throw new NotFoundHttpException( 'Vous ne pouvez créer qu\'un seul bar avec la formule shooter !' );
         }
 
         $entity = new Bar();
