@@ -15,7 +15,7 @@
 		</div>
 		<div class="colFooter col-xs-12 col-sm-4 col-md-4 noPadding">
 			<h2>Click and cheers pro</h2><br/>
-			{% if app.user and is_granted('ROLE_BIGBOSS') %}
+			{% if app.user is not null and is_granted('ROLE_BIGBOSS') %}
 				<a href="{{ path('fos_user_security_logout') }}"><p>Se déconnecter</p></a><br/>
 			{% else %}
 				<a href="{{ path('bigboss_register') }}"><p>Inscrivez-vous !</p></a><br/>

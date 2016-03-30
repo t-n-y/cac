@@ -61,7 +61,7 @@
 				{{ form_widget(form.mobile_phone) }}
 	        </div>
 
-	        {% if not is_granted('ROLE_BIGBOSS') %}
+	        {% if app.user is not null and not is_granted('ROLE_BIGBOSS') %}
 
 		        <div class="inscription col-xs-6 col-sm-6 col-md-4">
 				
@@ -102,7 +102,7 @@
 					</div>
 		    {% endif %}
 
-	        {% if app.user and is_granted('ROLE_BIGBOSS') %}
+	        {% if app.user is not null and is_granted('ROLE_BIGBOSS') %}
 
 		        <div class="inscription col-xs-6 col-sm-6 col-md-4">
 			        {{ form_label(form.fix_phone) }}<span>*</span>

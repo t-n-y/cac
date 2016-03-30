@@ -69,10 +69,10 @@
         
     
         <div class="administration">
-            {% if app.user and is_granted('ROLE_USER') %}
+            {% if app.user is not null and is_granted('ROLE_USER') %}
                 <div class="profileUserNav">
                   <img class="hidden-sm hidden-md hidden-lg" src="{{asset('img/imgProfilBasic.png')}}">
-                  {% if is_granted('ROLE_BARMAN') and not is_granted('ROLE_BIGBOSS') %}
+                  {% if app.user is not null and is_granted('ROLE_BARMAN') and not is_granted('ROLE_BIGBOSS') %}
                     <p>Bonjour <span class="nameInHeader">{{ app.user.getUsername()}}</span> </p>
                   {% else %}
                     <p>Bonjour <span class="nameInHeader">{{ app.user.firstname}}</span> </p>
@@ -87,16 +87,16 @@
                 </div>
                 <div class="clear"></div>
                 <ul>
-                    {% if app.user and is_granted('ROLE_BIGBOSS') or is_granted('ROLE_BARMAN') %}
+                    {% if app.user is not null and is_granted('ROLE_BIGBOSS') or is_granted('ROLE_BARMAN') %}
                         <li>
-                            {% if is_granted('ROLE_BARMAN') and app.user.bar.id is defined %}
+                            {% if app.user is not null and is_granted('ROLE_BARMAN') and app.user.bar.id is defined %}
                                 <a href="{{ path('bars_offerFeedback', { id : app.user.bar.id }) }}"><p>Mon back office</p></a>
                                 <a href="{{ path('bars_offer', { id : app.user.bar.id }) }}"><p>Mes offres</p></a>
                             {% else %}
                                 {% render url('navigation') %}
                             {% endif %}
                             <a href="{{ path('barman_register') }}"><p>Ajouter un barman</p></a>
-                            {% if is_granted('ROLE_BIGBOSS') %}
+                            {% if app.user is not null and is_granted('ROLE_BIGBOSS') %}
                               <a href="{{ path('bar_new') }}"><p>Créer un bar</p></a>
                               <a href="{{ path('bars_list') }}"><p>Mes bars</p></a>
                             {% endif %}
@@ -137,8 +137,8 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2">
                     <div class="col-xs-12 hidden-sm hidden-md hidden-lg noPadding">
-                    {% if app.user and is_granted('ROLE_USER') %}
-                        {% if is_granted('ROLE_BARMAN') and not is_granted('ROLE_BIGBOSS') %}
+                    {% if app.user is not null and is_granted('ROLE_USER') %}
+                        {% if app.user is not null and is_granted('ROLE_BARMAN') and not is_granted('ROLE_BIGBOSS') %}
                           <p>Bonjour <span class="nameInHeader">{{ app.user.getUsername()}}</span> </p>
                         {% else %}
                           <p>Bonjour <span class="nameInHeader">{{ app.user.firstname}}</span> </p>
@@ -162,15 +162,15 @@
                         <p class="leftMobile"><a class="parrainage" href="#">Parrainage</a></p>
                     </div>
                     
-                    {% if app.user and is_granted('ROLE_USER') %}
+                    {% if app.user is not null and is_granted('ROLE_USER') %}
                     <div class="clear"></div>
                     <div class="separationHeader"></div>
-                    {% if is_granted('ROLE_BIGBOSS') or is_granted('ROLE_BARMAN') %}
+                    {% if app.user is not null and is_granted('ROLE_BIGBOSS') or is_granted('ROLE_BARMAN') %}
 
                         <div class="col-xs-12 hidden-sm hidden-md hidden-lg noPadding">
                           <p class="leftMobile"><a href="{{ path('barman_register') }}">Ajouter un barman</a></p>
                    
-                        {% if is_granted('ROLE_BIGBOSS') %}
+                        {% if app.user is not null and is_granted('ROLE_BIGBOSS') %}
                          
                             <p class="leftMobile"><a href="{{ path('bar_new') }}">Créer un bar</a></p>
                             <p class="leftMobile"><a href="{{ path('bars_list') }}">Mes bars</a></p>

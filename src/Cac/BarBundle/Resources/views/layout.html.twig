@@ -5,7 +5,7 @@
     </head>
     <body>
         <div>
-            {% if app.user and is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            {% if app.user is not null and is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                 {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
                 <a href="{{ path('fos_user_security_logout') }}">
                     {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}

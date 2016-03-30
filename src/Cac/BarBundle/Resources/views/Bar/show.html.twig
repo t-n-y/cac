@@ -567,7 +567,7 @@
 												<p>VOIR MA RESERVATION</p>
 											</div> 
 										{% else %}
-											{% if app.user and is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+											{% if app.user is not null and is_granted('IS_AUTHENTICATED_REMEMBERED') %}
 												<div class="boutonReservationPromo ReserveHour">
 											{% else %}
 												<div class="animConnexion boutonReservationPromo">
