@@ -1,50 +1,30 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <link href='https://fonts.googleapis.com/css?family=Roboto:400' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.css')}}">
-    <link rel="stylesheet" href="{{ asset('css/ss-laststep.css') }}">
-    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+{% extends "::base.html.twig" %}
 
-    <title>Click & Cheers, Choisissez une date pour votre verre offert</title>
-</head>
-<body>
-    <header>
-        <img src="{{ asset('img/LogoClickandcheers.svg') }}" alt="Click & Cheers">
-    </header>
-    <div class="main">
-        <div class="row">
-            <div class="col-xs-12">
-                <header>
-                    <h1>XXX <span>t'as offert un verre</span> au YYY</h1>
-                    <em>Aucune inscription n'est nécessaire</em>
-                </header>
-                <div class="row">
-                    <div class="col-xs-12 col-md-6">
-                        <h3>Choisissez la date de réservation</h3>
-                        <div>Datepicker</div>
-                    </div>
-                    <div class="col-xs-12 col-md-6">
-                        <form action="">
-                            <h3>Votre e-mail</h3>
-                            <p class="helper">Cet e-mail sera uniquement utilisé pour confirmer votre réservation.</p>
-                            <div>
-                                <input type="text">
-                            </div>
-                            <h3>Votre Nom et Prénom</h3>
-                            <p class="helper">Votre nom et prénom seront uniquement transmis à l'établissement pour confirmer votre réservation.</p>
-                            <div>
-                                <input type="text">
-                            </div>
-                        </form>
-                    </div>
+{% block title %}Dernière étape pour bénéficier de votre verre gratuit !{% endblock %}
+
+{% block body %}
+<div>
+    <h1>XXX <span>t'as offert un verre</span> au YYY</h1>
+    <h4>Aucune inscription n'est nécessaire</h4>
+    <div>
+        <div>
+            <h2>Choisissez la date de réservation</h2>
+            <div>Datepicker</div>
+        </div>
+        <div>
+            <form action="">
+                <h2>Votre e-mail</h2>
+                <p>Cet e-mail sera uniquement utilisé pour confirmer votre réservation.</p>
+                <div>
+                    <input type="text">
                 </div>
-            </div>
+                <h2>Votre Nom et Prénom</h2>
+                <p>Votre nom et prénom seront uniquement transmis à l'établissement pour confirmer votre réservation.</p>
+                <div>
+                    <input type="text">
+                </div>
+            </form>
         </div>
     </div>
-    <footer>
-        <p>Le verre que jean rené vous a offert est déjà payé.<br>
-            Une fois la réservation faite, il vous suffit de vous rendre dans l’établissement en question et de profiter</p>
-    </footer>
-</body>
-</html>
+</div>
+{% endblock %}
