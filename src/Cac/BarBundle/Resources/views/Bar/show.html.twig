@@ -83,32 +83,56 @@
 								<div class="row">
 									<div class="col-xs-6 col-sm-3 col-md-3">
 										<img src="{{asset('img/pictoBar/cocktail.svg')}}" alt="">
-										<div class="contentPrice">
-											<span>{{ bar.cocktailPrice }}€</span>
-											<p>Le cocktail</p>
-										</div>
+										{% if bar.cocktailPrice == 0 %}
+											<div class="contentPriceZero">
+												<p>Boisson indisponible</p>
+											</div>
+										{% else %}
+											<div class="contentPrice">
+												<span>{{ bar.cocktailPrice }}€</span>
+												<p>Le cocktail</p>
+											</div>
+										{% endif %}
 										
 									</div>
 									<div class="col-xs-6 col-sm-3 col-md-3">
 										<img src="{{asset('img/pictoBar/biere.svg')}}" alt="">
-										<div class="contentPrice">
-											<span>{{ bar.beerPrice }}€</span>
-											<p>La pinte de bière</p>
-										</div>
+										{% if bar.beerPrice == 0 %}
+											<div class="contentPriceZero">
+												<p>Boisson indisponible</p>
+											</div>
+										{% else %}
+											<div class="contentPrice">
+												<span>{{ bar.beerPrice }}€</span>
+												<p>La pinte de bière</p>
+											</div>
+										{% endif %}
 									</div>
 									<div class="col-xs-6 col-sm-3 col-md-3">
 										<img src="{{asset('img/pictoBar/soft.svg')}}" alt="">
-										<div class="contentPrice">
-											<span>{{ bar.softPrice }}€</span>
-											<p>Le soft</p>
-										</div>
+										{% if bar.softPrice == 0 %}
+											<div class="contentPriceZero">
+												<p>Boisson indisponible</p>
+											</div>
+										{% else %}
+											<div class="contentPrice">
+												<span>{{ bar.softPrice }}€</span>
+												<p>Le soft</p>
+											</div>
+										{% endif %}
 									</div>
 									<div class="col-xs-6 col-sm-3 col-md-3">
 										<img src="{{asset('img/pictoBar/cafe.svg')}}" alt="">
-										<div class="contentPrice">
-											<span>{{ bar.coffeePrice }}€</span>
-											<p>Le café</p>
-										</div>
+										{% if bar.coffeePrice == 0 %}
+											<div class="contentPriceZero">
+												<p>Boisson indisponible</p>
+											</div>
+										{% else %}
+											<div class="contentPrice">
+												<span>{{ bar.coffeePrice }}€</span>
+												<p>Le café</p>
+											</div>
+										{% endif %}
 									</div>
 								</div>
 							</div>
