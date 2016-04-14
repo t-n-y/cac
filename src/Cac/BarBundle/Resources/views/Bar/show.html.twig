@@ -590,7 +590,7 @@
 											<div class="boutonReservationPromo voirMaConfirmationDone">
 												<p>VOIR MA RESERVATION</p>
 											</div> 
-										{#{% else %}
+										{% else %}
 											{% if app.user is not null and is_granted('IS_AUTHENTICATED_REMEMBERED') %}
 												<div class="boutonReservationPromo ReserveHour">
 											{% else %}
@@ -601,7 +601,7 @@
 													{% else %}
 														<p>RÉSERVER</p>
 													{% endif %}
-												</div>  #}
+												</div> 
 											
 										{% endif %}
 									
@@ -767,26 +767,6 @@
 		}else{
 			$('.contentInfoBarNote').removeClass("floatable");
 		}
-
-		// var blockacheter = $('.contentInfoBarNote');
-		// var offset = blockacheter.offset();
-		// var top = offset.top;
-		// var menuNav = $('.menuNav').height();
-		// var heightBlockAcheter = blockacheter.height();
-		// var bottom = top + blockacheter.outerHeight();
-		// var heightblockPage = $('.contentSuperInfoBar ').height()
-
-		// bottom = bottom-menuNav;
-		// if(bottom < heightblockPage){
-		// 	$('.contentInfoBarNote').removeClass("floatablefixed");
-		// }else{
-		// 	$('.contentInfoBarNote').addClass("floatablefixed");
-		// 	$('.floatablefixed').css('margin-top', bottom+' !important');
-		// }
-
-
-		// console.log(bottom-menuNav);
-		// console.log('MT : ' + heightBlockAcheter);
 	});
 </script>
 {% endblock %}

@@ -55,16 +55,6 @@ input[type="file"] > input[type="button"]::-moz-focus-inner {
     margin-right: 15px;
 }
 
-.floatablefixed{
-	position: relative !important;
-    top: 0;
-    
-    left: 0% !important;
-    margin-left: 0px !important;
-    right: 0% !important;
-    margin-right: 0px !important;
-}
-
 .noPadding{
 	padding: 0px;
 }
@@ -1976,12 +1966,9 @@ select:focus {
 	width: auto;
 }
 
-.contentSelectDayReservation{
-	display: block;
-	margin-top: 10px;
-}
 
-.contentHourReservation, .contentNbPersonneReservation{
+
+.contentSelectDayReservation, .contentHourReservation, .contentNbPersonneReservation{
 	display: none;
 	margin-top: 10px;
 }
@@ -2002,10 +1989,6 @@ select:focus {
 	margin: 10px auto;
 	padding: 5px;
 	cursor: pointer;
-}
-
-.boutonReservationPromo {
-	display: none;
 }
 
 .boutonReservationPromo p{

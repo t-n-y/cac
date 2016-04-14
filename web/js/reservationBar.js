@@ -35,8 +35,8 @@ function nbPersonne(nbPersonneReservation){
 	console.log($('.JS-obtenirPromo').attr('data-nbpersone'));
 }
 
-
-	
+$('.ReserveHour').on('click', function(){
+	$('.ReserveHour').fadeOut(function(){
 		$('.contentSelectDayReservation').fadeIn();
 		$('.avancementReservation').fadeIn();
 		var idBar = $('.JS-obtenirPromo').attr('data-bar-id');
@@ -157,8 +157,8 @@ function nbPersonne(nbPersonneReservation){
 
 
 		
-
-
+	});
+});
 
 $('.ReservePersonne').on('click', function(){
 	if(verifHour && verifMinute){
