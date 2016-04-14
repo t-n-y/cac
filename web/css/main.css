@@ -55,6 +55,16 @@ input[type="file"] > input[type="button"]::-moz-focus-inner {
     margin-right: 15px;
 }
 
+.floatablefixed{
+	position: relative !important;
+    top: 0;
+    
+    left: 0% !important;
+    margin-left: 0px !important;
+    right: 0% !important;
+    margin-right: 0px !important;
+}
+
 .noPadding{
 	padding: 0px;
 }
@@ -1966,7 +1976,12 @@ select:focus {
 	width: auto;
 }
 
-.contentSelectDayReservation, .contentHourReservation, .contentNbPersonneReservation{
+.contentSelectDayReservation{
+	display: block;
+	margin-top: 10px;
+}
+
+.contentHourReservation, .contentNbPersonneReservation{
 	display: none;
 	margin-top: 10px;
 }
@@ -1987,6 +2002,10 @@ select:focus {
 	margin: 10px auto;
 	padding: 5px;
 	cursor: pointer;
+}
+
+.boutonReservationPromo {
+	display: none;
 }
 
 .boutonReservationPromo p{
@@ -4441,11 +4460,11 @@ p.pCreez{
 	margin-bottom: 5px !important;
 }
 
-.active{
+/*.active{
 	background-color: #5ac4d4 !important;
 	color: #fff !important;
 	border: 1px solid #a8a8a8;
-}
+}*/
 
 .choice:hover, .petitplus:hover{
 	background-color: #5ac4d4 !important;
@@ -5850,6 +5869,7 @@ p.nextPointFidelite{
 	    top:8% !important;
 	    margin-top: 0px !important;
     	margin-left: 0px !important;
+    	display: none;
 	}
 
 	.playerExplicationCac{
@@ -5861,6 +5881,7 @@ p.nextPointFidelite{
 	}
 
 	.concept{
+		display: none;
 	    bottom: 5px !important;
 	}
 
@@ -6401,3 +6422,19 @@ p.nextPointFidelite{
 .concept p{
 	margin: 0;
 }
+
+/*.pagination span{
+    border-left: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    padding: 2px 5px;
+    position: relative;
+
+    padding: 6px 12px;
+    margin-left: -1px;
+    line-height: 1.42857143;
+    color: #337ab7;
+    text-decoration: none;
+    background-color: #fff;
+
+}*/

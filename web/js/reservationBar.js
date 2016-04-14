@@ -35,8 +35,8 @@ function nbPersonne(nbPersonneReservation){
 	console.log($('.JS-obtenirPromo').attr('data-nbpersone'));
 }
 
-$('.ReserveHour').on('click', function(){
-	$('.ReserveHour').fadeOut(function(){
+
+	
 		$('.contentSelectDayReservation').fadeIn();
 		$('.avancementReservation').fadeIn();
 		var idBar = $('.JS-obtenirPromo').attr('data-bar-id');
@@ -45,9 +45,9 @@ $('.ReserveHour').on('click', function(){
 		$.ajax( {
 	        type: 'POST',
 	        url: Routing.generate('closed_days', { 'id': idBar }),
-	        success: function (data) {
+	        error: function (data) {
 
-	        	//data.weekdays = ['Lundi'];
+	        	data.weekdays = [1,2];
 				$(function() {
 				    $( "#datepickerResa" ).datepicker({ 
 		                minDate: 0, 
@@ -157,8 +157,8 @@ $('.ReserveHour').on('click', function(){
 
 
 		
-	});
-});
+
+
 
 $('.ReservePersonne').on('click', function(){
 	if(verifHour && verifMinute){
