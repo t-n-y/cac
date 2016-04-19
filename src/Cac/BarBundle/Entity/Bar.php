@@ -340,6 +340,11 @@ class Bar
     private $visible = true;
 
     /**
+     * @ORM\OneToOne(targetEntity="Cac\BarBundle\Entity\Event", mappedBy="bar")
+     */
+    private $event;
+
+    /**
      * Constructor
      */
     public function __construct()

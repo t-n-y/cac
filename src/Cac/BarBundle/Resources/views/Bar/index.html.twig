@@ -109,6 +109,10 @@
 {% for bar in bars %}
 	<a href="{{ path('bar_show', { id : bar.id }) }}">
 		<div class="barInList col-xs-12 col-sm-6 col-md-3 noPadding">
+			<div class="SmallEventBanner">
+                <div class="SmallEventBanner-brief">Karaoké</div>
+                <div class="SmallEventBanner-time">46 Mars</div>
+            </div>
 			{% if bar.files is defined and bar.files|length > 0 %}
 			<div class="contentImageBar" style="background-image:url({{ asset('uploads/bar/'~bar.files[0].path) }})">
 			{% else %}

@@ -6480,4 +6480,52 @@ div.fb-send iframe { min-width: 59px !important; min-height: 20px !important; }
 .picto-email {
 	background-image: url('../img/pictoSponsorship/p-email.png');
 }
-
+.EventBanner {
+    background-color: #5ac4d4;
+    padding: 10px;
+    text-align: center;
+}
+.EventBanner div {
+    margin: 3px;
+}
+.EventBanner-description {
+    color: #ffffff;
+    text-transform: uppercase;
+    font-size: 16px;
+}
+.EventBanner-time {
+    font-size: 12px;
+}
+.EventBanner-button {
+    background: #ffffff;
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+    color: #333333;
+    cursor: pointer;
+    font-weight: bold;
+    display: inline-block;
+    padding: 5px 10px;
+    transition: background-color 0.18s;
+}
+.EventBanner-button:hover {
+    background-color: #eeeeee;
+    transition: background-color 0.18s;
+}
+.SmallEventBanner {
+    background-color: #5ac4d4;
+    padding: 5px;
+    text-align: center;
+    color: #ffffff;
+    position: absolute;
+    width: 100%;
+    z-index: 1000;
+    -ms-transform: rotate(35deg); /* IE 9 */
+    -webkit-transform: rotate(35deg); /* Chrome, Safari, Opera */
+    transform: rotate(35deg);
+    right: -80px;
+    top: 40px;
+}
+.SmallEventBanner-brief {
+    text-transform: uppercase;
+    font-size: 18px;
+}
