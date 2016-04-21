@@ -96,6 +96,10 @@ fos_js_routing:
 services:
     pugx_multi_user.registration_controller:
       class: Cac\UserBundle\Controller\RegistrationController
+    twig.extension.intl:
+      class: Twig_Extensions_Extension_Intl
+      tags:
+          - { name: twig.extension }
 
 hip_mandrill:
     api_key: kdeO-J7BhI4qZR--UAR6Qg

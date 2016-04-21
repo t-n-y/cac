@@ -38,21 +38,14 @@ class Event
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="eventDate", type="datetime")
-     */
-    private $eventDate;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="startAt", type="datetime")
+     * @ORM\Column(name="startAt", type="datetime", nullable=true)
      */
     private $startAt;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="endAt", type="datetime")
+     * @ORM\Column(name="endAt", type="datetime", nullable=true)
      */
     private $endAt;
 
@@ -66,14 +59,14 @@ class Event
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="displayStartAt", type="datetime")
+     * @ORM\Column(name="displayStartAt", type="datetime", nullable=true)
      */
     private $displayStartAt;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="displayEndAt", type="datetime")
+     * @ORM\Column(name="displayEndAt", type="datetime", nullable=true)
      */
     private $displayEndAt;
 
@@ -147,30 +140,6 @@ class Event
     public function getDescription()
     {
         return $this->description;
-    }
-
-    /**
-     * Set eventDate
-     *
-     * @param \DateTime $eventDate
-     *
-     * @return Event
-     */
-    public function setEventDate($eventDate)
-    {
-        $this->eventDate = $eventDate;
-
-        return $this;
-    }
-
-    /**
-     * Get eventDate
-     *
-     * @return \DateTime
-     */
-    public function getEventDate()
-    {
-        return $this->eventDate;
     }
 
     /**

@@ -15,20 +15,20 @@
 			<p class="mesOptions">Afficher mes options</p>
 		</div>
 		<div class="onglets ongletsOptionPro col-xs-12 col-sm-12 col-md-12 noPadding">
-			<div class="ongletOptionPro ongletVerresOffert carte col-xs-3 col-sm-3 col-md-3 noPadding">
+			<div class="ongletOptionPro ongletVerresOffert carte col-xs-2 col-sm-2 col-md-2 col-xs-offset-1 noPadding">
 				<p>Carte PDF</p>
 			</div>
-			<div class="ongletOptionPro ongletVerresPromotion miseAvant col-xs-3 col-sm-3 col-md-3 noPadding">
+			<div class="ongletOptionPro ongletVerresPromotion miseAvant col-xs-2 col-sm-2 col-md-2 noPadding">
 				<p>Mise en avant</p>
 			</div>
-			<div class="ongletOptionPro ongletVerresPromotion sms col-xs-3 col-sm-3 col-md-3 noPadding">
+			<div class="ongletOptionPro ongletVerresPromotion sms col-xs-2 col-sm-2 col-md-2 noPadding">
 				<p>SMS</p>
 			</div>
-			<div class="ongletOptionPro ongletVerresPromotion email col-xs-3 col-sm-3 col-md-3 noPadding">
+			<div class="ongletOptionPro ongletVerresPromotion email col-xs-2 col-sm-2 col-md-2 noPadding">
 				<p>E-mail</p>
 			</div>
-			<div class="ongletOptionPro ongletVerresPromotion js-event col-xs-3 col-sm-3 col-md-3 noPadding">
-				<p>E-mail</p>
+			<div class="ongletOptionPro ongletVerresPromotion js-event col-xs-2 col-sm-2 col-md-2 noPadding">
+				<p>Bandeau</p>
 			</div>
 		</div>
 
@@ -261,10 +261,9 @@
 
 				<div class="contentOption contentEvent col-xs-12 col-sm-12 col-md-12">
                     {% if bar.event is not null %}
-                        {% render(controller("CacBarBundle:Event:show", {'id' : bar.event.id})) %}
                         {% render(controller("CacBarBundle:Event:edit", {'id' : bar.event.id})) %}
                     {% else %}
-                        {% render(controller("CacBarBundle:Event:create", {'id' : bar.id})) %}
+                        {% render(controller("CacBarBundle:Event:new", {'id' : bar.id})) %}
                     {% endif %}
                 </div>
 

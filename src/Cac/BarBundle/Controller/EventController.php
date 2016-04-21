@@ -2,6 +2,7 @@
 
 namespace Cac\BarBundle\Controller;
 
+use Cac\BarBundle\Entity\Bar;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -32,10 +33,13 @@ class EventController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $bar = $em->getRepository('CacBarBundle:Bar')->find($this->get('session')->get('barId'));
+            $entity->setBar($bar);
+
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('event_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('bars_option', array('id' => $entity->getBar()->getId())));
         }
 
         return array(
@@ -57,8 +61,7 @@ class EventController extends Controller
             'action' => $this->generateUrl('event_create'),
             'method' => 'POST',
         ));
-
-        $form->add('submit', 'submit', array('label' => 'Create'));
+        $form->add('submit', 'submit', array('label' => 'Créer'));
 
         return $form;
     }
@@ -70,8 +73,9 @@ class EventController extends Controller
      * @Method("GET")
      * @Template()
      */
-    public function newAction()
+    public function newAction($id)
     {
+        $this->get('session')->set('barId', $id);
         $entity = new Event();
         $form   = $this->createCreateForm($entity);
 
@@ -147,7 +151,7 @@ class EventController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        $form->add('submit', 'submit', array('label' => 'Modifier'));
 
         return $form;
     }
@@ -175,7 +179,7 @@ class EventController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('event_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('bars_option', array('id' => $entity->getBar()->getId())));
         }
 
         return array(
@@ -222,7 +226,7 @@ class EventController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('event_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+            ->add('submit', 'submit', array('label' => 'Supprimer'))
             ->getForm()
         ;
     }

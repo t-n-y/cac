@@ -1,6 +1,10 @@
 annimationShowBar();
 firstWord();
 
+$(".EventBanner-button").on('click', function() {
+    $('.ReserveHour').click();
+});
+
  $('body').removeClass('load');
 
  $('.navToggle').slideToggle(150);

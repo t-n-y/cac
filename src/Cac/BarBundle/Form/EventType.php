@@ -15,14 +15,12 @@ class EventType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('brief')
-            ->add('description')
-            ->add('eventDate')
-            ->add('startAt')
-            ->add('endAt')
-            ->add('displayStartAt')
-            ->add('displayEndAt')
-            ->add('bar')
+            ->add('brief', null, array('label' => 'Texte bandeau (15 caractères)', 'required'  => true))
+            ->add('description', null, array('label' => 'Description', 'required'  => true))
+            ->add('startAt', null, array('label' => 'Début de l\'évènement', 'required'  => false))
+            ->add('endAt', null, array('label' => 'Fin de l\'évènement', 'required'  => false))
+            ->add('displayStartAt', null, array('label' => 'Début de l\'affichage', 'required'  => false))
+            ->add('displayEndAt', null, array('label' => 'Fin de l\'affichage', 'required'  => false))
         ;
     }
     
