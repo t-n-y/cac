@@ -1689,4 +1689,33 @@ class Bar
     {
         return $this->visible;
     }
+
+    /**
+     * Set event
+     *
+     * @param \Cac\BarBundle\Entity\Event $event
+     *
+     * @return Bar
+     */
+    public function setEvent($event)
+    {
+        $this->event = $event;
+
+        return $this;
+    }
+
+    /**
+     * Get event
+     *
+     * @return \Cac\BarBundle\Entity\Event
+     */
+    public function getEvent()
+    {
+        return $this->event;
+    }
+
+    public function __toString()
+    {
+        return $this->name;
+    }
 }

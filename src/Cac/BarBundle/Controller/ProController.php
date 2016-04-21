@@ -274,9 +274,9 @@ class ProController extends Controller
     public function listBarAction()
     {
         // Mac et UNIX/Linux
-        setlocale(LC_TIME, "fr_FR");
+        //setlocale(LC_TIME, "fr_FR");
         // Windows
-        //setlocale(LC_TIME, "french");
+        setlocale(LC_TIME, "french");
         $today = ucfirst(strftime("%A"));
         $em = $this->getDoctrine()->getManager();
         $entities = $em->getRepository('CacBarBundle:Bar')->findByVisible(true);

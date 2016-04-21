@@ -27,6 +27,9 @@
 			<div class="ongletOptionPro ongletVerresPromotion email col-xs-3 col-sm-3 col-md-3 noPadding">
 				<p>E-mail</p>
 			</div>
+			<div class="ongletOptionPro ongletVerresPromotion js-event col-xs-3 col-sm-3 col-md-3 noPadding">
+				<p>E-mail</p>
+			</div>
 		</div>
 
 
@@ -71,7 +74,6 @@
 					{% endif %}
 				</div>
 
-
 				<div class="contentOption contentSms col-xs-12 col-sm-12 col-md-12">
 					<!--<h2>Description</h2>
 					<p>Envoyez un sms à l’ensemble des personnes ayant honoré un ticket ou un verre dans votre établissement.<br>
@@ -103,12 +105,10 @@
 					</div>
 
 				</div>
-
 				<!--<div class="contentOption center contentSms col-xs-12 col-sm-12 col-md-12">
 							<p class="sendSMS">Envoyer mon SMS</p>
 				</div>-->
 					<div class="clear"></div>
-
 
 				<div class="contentOption contentEmail col-xs-12 col-sm-12 col-md-12">
 					<!--<h2>Description</h2>
@@ -150,11 +150,9 @@
 						<p>Bientôt disponible</p>
 					</div>
 				</div>
-
 				<!--<div class="contentOption center contentEmail col-xs-12 col-sm-12 col-md-12">
 							<p class="sendEmail">Prévisualiser mon e-mail</p>
 				</div>-->
-
 
 				<div class="contentOption contentMiseAvant col-xs-12 col-sm-12 col-md-12">
 					<h2>Description</h2>
@@ -260,6 +258,15 @@
 						{% endif %}
 					</div>
 				</div>
+
+				<div class="contentOption contentEvent col-xs-12 col-sm-12 col-md-12">
+                    {% if bar.event is not null %}
+                        {% render(controller("CacBarBundle:Event:show", {'id' : bar.event.id})) %}
+                        {% render(controller("CacBarBundle:Event:edit", {'id' : bar.event.id})) %}
+                    {% else %}
+                        {% render(controller("CacBarBundle:Event:create", {'id' : bar.id})) %}
+                    {% endif %}
+                </div>
 
 				<div class="contentOption contentMesOptions col-xs-12 col-sm-12 col-md-12">
 					<div class="row">

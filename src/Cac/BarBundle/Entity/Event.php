@@ -24,7 +24,7 @@ class Event
     /**
      * @var string
      *
-     * @ORM\Column(name="brief", type="string", length=255)
+     * @ORM\Column(name="brief", type="string", length=15)
      */
     private $brief;
 
@@ -83,6 +83,13 @@ class Event
      */
     private $bar;
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->createdAt = new \Datetime();
+    }
 
     /**
      * Get id
@@ -284,6 +291,30 @@ class Event
     public function getDisplayEndAt()
     {
         return $this->displayEndAt;
+    }
+
+    /**
+     * Set bar
+     *
+     * @param \Cac\BarBundle\Entity\Bar $bar
+     *
+     * @return Event
+     */
+    public function setBar($bar)
+    {
+        $this->bar = $bar;
+
+        return $this;
+    }
+
+    /**
+     * Get bar
+     *
+     * @return \Cac\BarBundle\Entity\Bar
+     */
+    public function getBar()
+    {
+        return $this->bar;
     }
 }
 

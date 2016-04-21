@@ -532,6 +532,7 @@ $('body').on('click','.sms',function(){
   $('.contentMiseAvant').hide();
   $('.contentMesOptions').hide();
   $('.contentSms').show();
+    $('.contentEvent').hide();
   heightSuperInfoBar();
 });
 
@@ -541,6 +542,7 @@ $body.on('click','.email',function(){
   $('.contentMiseAvant').hide();
   $('.contentMesOptions').hide();
   $('.contentEmail').show();
+    $('.contentEvent').hide();
   heightSuperInfoBar();
 });
 
@@ -550,6 +552,7 @@ $body.on('click','.carte',function(){
   $('.contentMiseAvant').hide();
   $('.contentMesOptions').hide();
   $('.contentCarte').show();
+    $('.contentEvent').hide();
   heightSuperInfoBar();
 });
 
@@ -559,6 +562,7 @@ $body.on('click','.miseAvant',function(){
   $('.contentSms').hide();
   $('.contentMesOptions').hide();
   $('.contentMiseAvant').show();
+    $('.contentEvent').hide();
   heightSuperInfoBar();
 });
 
@@ -568,6 +572,17 @@ $body.on('click','.mesOptions',function(){
   $('.contentSms').hide();
   $('.contentMiseAvant').hide();
   $('.contentMesOptions').show();
+    $('.contentEvent').hide();
+  heightSuperInfoBar();
+});
+
+$('body').on('click','.js-event',function(){
+  $('.contentEmail').hide();
+  $('.contentCarte').hide();
+  $('.contentMiseAvant').hide();
+  $('.contentMesOptions').hide();
+  $('.contentSms').hide();
+  $('.contentEvent').show();
   heightSuperInfoBar();
 });
 
