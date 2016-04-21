@@ -39,8 +39,11 @@ class BarController extends Controller
             $ip = $m[1];
             $details = json_decode(file_get_contents("http://ipinfo.io/".$ip));
             if(!is_null($details->city)) {
-                $url = $this->generateUrl('bars', array('search' => $details->city));
-                return $this->redirect($url, 301);
+                $res = $this->getDoctrine()->getRepository('CacBarBundle:Bar')->research($details->city);
+                if(count($res) > 0) {
+                    $url = $this->generateUrl('bars', array('search' => $details->city));
+                    return $this->redirect($url);
+                }
             }
         }
 
