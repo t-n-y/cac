@@ -31,8 +31,19 @@ class BarController extends Controller
      * @Route("/list", name="bars")
      * @Template()
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
+        if(is_null($request->query->get('search'))) {
+            $externalContent = file_get_contents('http://checkip.dyndns.com/');
+            preg_match('/Current IP Address: ([\[\]:.[0-9a-fA-F]+)</', $externalContent, $m);
+            $ip = $m[1];
+            $details = json_decode(file_get_contents("http://ipinfo.io/".$ip));
+            if(!is_null($details->city)) {
+                $url = $this->generateUrl('bars', array('search' => $details->city));
+                return $this->redirect($url, 301);
+            }
+        }
+
         // Mac et UNIX/Linux
         //setlocale(LC_TIME, "fr_FR");
         // Windows
