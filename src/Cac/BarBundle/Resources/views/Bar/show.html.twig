@@ -28,9 +28,9 @@
                 <div class="EventBanner-time">
                     {% if bar.event.endAt is not null %}
                         {% if bar.event.startAt|date('Ymd') == bar.event.endAt|date('Ymd') %}
-                            De {{ bar.event.startAt|localizeddate("medium", "none", null, null, "cccc d LLLL hh'h'mm")|capitalize }} à {{ date.event.endAt|localizeddate("medium", "none", null, null, "hh'h'mm")|capitalize }}
+                            {{ bar.event.startAt|localizeddate("medium", "none", null, null, "cccc d LLLL 'de' hh'h'mm")|capitalize }} à {{ bar.event.endAt|localizeddate("medium", "none", null, null, "hh'h'mm")|capitalize }}
                         {% else %}
-                            De {{ bar.event.startAt|localizeddate("medium", "none", null, null, "cccc d LLLL hh'h'mm")|capitalize }} à {{ date.event.endAt|localizeddate("medium", "none", null, null, "cccc d LLLL hh’h’mm")|capitalize }}
+                            De {{ bar.event.startAt|localizeddate("medium", "none", null, null, "cccc d LLLL hh'h'mm")|capitalize }} à {{ bar.event.endAt|localizeddate("medium", "none", null, null, "cccc d LLLL hh'h'mm")|capitalize }}
                         {% endif %}
                     {% else %}
                         {{ bar.event.startAt|localizeddate("medium", "none", null, null, "cccc d LLLL à hh'h'mm")|capitalize }}

@@ -211,7 +211,7 @@ class EventController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('event'));
+        return $this->redirect($this->generateUrl('bars_option', array('id' => $id)));
     }
 
     /**
