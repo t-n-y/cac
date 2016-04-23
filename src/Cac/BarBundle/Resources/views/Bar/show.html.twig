@@ -20,27 +20,55 @@
 		// }(document, 'script', 'facebook-jssdk'));
 	</script>
         {% if bar.event is not null %}
-        <div class="col-xs-12 noPadding">
-            <div class="EventBanner">
-                <div class="EventBanner-description">
-                    {{ bar.event.description }}
-                </div>
-                <div class="EventBanner-time">
-                    {% if bar.event.endAt is not null %}
-                        {% if bar.event.startAt|date('Ymd') == bar.event.endAt|date('Ymd') %}
-                            {{ bar.event.startAt|localizeddate("medium", "none", null, null, "cccc d LLLL 'de' hh'h'mm")|capitalize }} à {{ bar.event.endAt|localizeddate("medium", "none", null, null, "hh'h'mm")|capitalize }}
-                        {% else %}
-                            De {{ bar.event.startAt|localizeddate("medium", "none", null, null, "cccc d LLLL hh'h'mm")|capitalize }} à {{ bar.event.endAt|localizeddate("medium", "none", null, null, "cccc d LLLL hh'h'mm")|capitalize }}
-                        {% endif %}
-                    {% else %}
-                        {{ bar.event.startAt|localizeddate("medium", "none", null, null, "cccc d LLLL à hh'h'mm")|capitalize }}
+            {% if bar.event.displayEndAt is not null %}
+                    {% if bar.event.displayStartAt|date('Ymd') >= "now"|date('Ymd') and bar.event.displayEndAt|date('Ymd') <= "now"|date('Ymd') %}
+                        <div class="col-xs-12 noPadding">
+                            <div class="EventBanner">
+                                <div class="EventBanner-description">
+                                    {{ bar.event.description }}
+                                </div>
+                                <div class="EventBanner-time">
+                                    {% if bar.event.endAt is not null %}
+                                        {% if bar.event.startAt|date('Ymd') == bar.event.endAt|date('Ymd') %}
+                                            {{ bar.event.startAt|localizeddate("medium", "none", null, null, "cccc d LLLL 'de' hh'h'mm")|capitalize }} à {{ bar.event.endAt|localizeddate("medium", "none", null, null, "hh'h'mm")|capitalize }}
+                                        {% else %}
+                                            De {{ bar.event.startAt|localizeddate("medium", "none", null, null, "cccc d LLLL hh'h'mm")|capitalize }} à {{ bar.event.endAt|localizeddate("medium", "none", null, null, "cccc d LLLL hh'h'mm")|capitalize }}
+                                        {% endif %}
+                                    {% else %}
+                                        {{ bar.event.startAt|localizeddate("medium", "none", null, null, "cccc d LLLL à hh'h'mm")|capitalize }}
+                                    {% endif %}
+                                </div>
+                                <div class="EventBanner-button">
+                                    Réserver
+                                </div>
+                            </div>
+                        </div>
                     {% endif %}
-                </div>
-                <div class="EventBanner-button">
-                    Réserver
-                </div>
-            </div>
-        </div>
+                {% else %}
+                    {% if bar.event.displayStartAt|date('Ymd') == "now"|date('Ymd') %}
+                        <div class="col-xs-12 noPadding">
+                            <div class="EventBanner">
+                                <div class="EventBanner-description">
+                                    {{ bar.event.description }}
+                                </div>
+                                <div class="EventBanner-time">
+                                    {% if bar.event.endAt is not null %}
+                                        {% if bar.event.startAt|date('Ymd') == bar.event.endAt|date('Ymd') %}
+                                            {{ bar.event.startAt|localizeddate("medium", "none", null, null, "cccc d LLLL 'de' hh'h'mm")|capitalize }} à {{ bar.event.endAt|localizeddate("medium", "none", null, null, "hh'h'mm")|capitalize }}
+                                        {% else %}
+                                            De {{ bar.event.startAt|localizeddate("medium", "none", null, null, "cccc d LLLL hh'h'mm")|capitalize }} à {{ bar.event.endAt|localizeddate("medium", "none", null, null, "cccc d LLLL hh'h'mm")|capitalize }}
+                                        {% endif %}
+                                    {% else %}
+                                        {{ bar.event.startAt|localizeddate("medium", "none", null, null, "cccc d LLLL à hh'h'mm")|capitalize }}
+                                    {% endif %}
+                                </div>
+                                <div class="EventBanner-button">
+                                    Réserver
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+            {% endif %}
         {% endif %}
 
 		<div class="contentSuperInfoBar col-xs-12 col-sm-12 col-md-12 noPadding">

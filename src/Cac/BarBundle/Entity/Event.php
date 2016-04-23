@@ -38,7 +38,7 @@ class Event
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="startAt", type="datetime", nullable=true)
+     * @ORM\Column(name="startAt", type="datetime")
      */
     private $startAt;
 
@@ -59,7 +59,7 @@ class Event
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="displayStartAt", type="datetime", nullable=true)
+     * @ORM\Column(name="displayStartAt", type="datetime")
      */
     private $displayStartAt;
 
