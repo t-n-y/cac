@@ -1115,4 +1115,60 @@ class ProController extends Controller
 
         return new JsonResponse($res);
     }
+
+    /**
+     * Change number of max promoOffertes by day.
+     *
+     * @Route("/change-poday", name="change_poday", options={"expose"=true})
+     * @Method({"POST"})
+     */
+    public function changePODayAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $id = intval($request->request->get('id'));
+        $day = $request->request-get('day');
+        $limit = intval($request->request->get('limit'));
+        var_dump($id, $day, $limit);die;
+        $validDays = array(
+            'Lundi' => 'monday',
+            'Mardi' => 'tuesday',
+            'Mercredi' => 'wednesday',
+            'Jeudi' => 'thursday',
+            'Vendredi' => 'friday',
+            'Samedi' => 'saturday',
+            'Dimanche' => 'sunday'
+        );
+
+        $bar = $em->getRepository('CacBarBundle:Bar')->find($id);
+
+        $res = [];
+
+        if (!$bar) {
+            array_push($res, array('status' => '2'));
+        }
+
+        if ($this->get('security.context')->isGranted('ROLE_ADMIN'))
+            $role = true;
+        else
+            $role = false;
+        if ($this->get('security.context')->getToken()->getUser() != $bar->getAuthor() && $role !== true ) {
+            array_push($res, array('status' => '3'));
+        }
+
+        if(is_null($day) || empty($day) || is_null($limit) || empty($limit) || !array_key_exists($day, $validDays)) {
+            array_push($res, array('status' => '4'));
+        }
+
+        if(empty($res)) {
+            $methodName = 'setPO'.ucfirst($validDays[$day]);
+            $bar->{$methodName}($limit);
+            $em->persist($bar);
+            $em->flush();
+
+            array_push($res, array('status' => '1'));
+        }
+
+        return new JsonResponse($res);
+    }
 }

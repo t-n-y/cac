@@ -40,11 +40,14 @@
 			<h2>Vos offres</h2>
 		</div>
 			<div class="onglets col-xs-12 col-sm-12 col-md-12 noPadding">
-				<div class="onglet ongletVerresOffert col-xs-6 col-sm-6 col-md-6 noPadding">
+				<div class="onglet ongletVerresOffert col-xs-4 col-sm-4 col-md-4 noPadding">
 					<p>Gestion des offres</p>
 				</div>
-				<div class="onglet ongletVerresParrainage col-xs-6 col-sm-6 col-md-6 noPadding">
+				<div class="onglet ongletVerresParrainage col-xs-4 col-sm-4 col-md-4 noPadding">
 					<p>Gestion des parrainages</p>
+				</div>
+				<div class="onglet ongletLimitResa col-xs-4 col-sm-4 col-md-4 noPadding">
+					<p>Limites des réservations classiques</p>
 				</div>
 			</div>
 			<div class="daysOngletNewBar">
@@ -297,7 +300,27 @@
 					
 					
 				</div>
-
+				<div class="superContentBackOffice contentBackLimitResa">
+                    <div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="contentBackOfficeBar">
+                                {% for day in 1..7 %}
+                                <form id="change-limit-po" action="{{ path('change_poday') }}" method="POST" data-day="{{ days[day] }}">
+                                    <input type="hidden" value="{{ days[day] }}" name="day">
+                                    <input type="text" name="limit">
+                                </form>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row validationUpdatePromo">
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="contentBackOfficeBar">
+                                <input type="submit" value="Valider" form="change-limit-po">
+                            </div>
+                        </div>
+                    </div>
+				</div>
 				
 			</div>
 			
@@ -326,7 +349,6 @@
 	        url: formAction,
 	        data: { data: data },
 	        success: function (data) {
- 				console.log(data);
  				confirmationReservation();
 	        }
 	    });
@@ -342,7 +364,6 @@
 	        url: formAction,
 	        data: { data: data },
 	        success: function (data) {
- 				console.log(data);
  				confirmationReservation();
 	        }
 	    });

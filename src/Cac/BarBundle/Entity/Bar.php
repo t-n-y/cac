@@ -318,6 +318,55 @@ class Bar
     private $PromoOffertes;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="po_monday", type="integer", nullable=true)
+     */
+    private $POMonday;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="po_tuesday", type="integer", nullable=true)
+     */
+    private $POTuesday;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="po_wednesday", type="integer", nullable=true)
+     */
+    private $POWednesday;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="po_thursday", type="integer", nullable=true)
+     */
+    private $POThursday;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="po_friday", type="integer", nullable=true)
+     */
+    private $POFriday;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="po_saturday", type="integer", nullable=true)
+     */
+    private $POSaturday;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="po_sunday", type="integer", nullable=true)
+     */
+    private $POSunday;
+
+    /**
      * @ORM\OneToMany(targetEntity="Cac\BarBundle\Entity\VerresOfferts", mappedBy="bar")
      */
     private $VerresOfferts;
@@ -1717,5 +1766,166 @@ class Bar
     public function __toString()
     {
         return $this->name;
+    }
+
+    /**
+     * Set POMonday
+     *
+     * @param integer $POMonday
+     * @return Bar
+     */
+    public function setPOMonday($POMonday)
+    {
+        $this->POMonday = $POMonday;
+
+        return $this;
+    }
+
+    /**
+     * Get POMonday
+     *
+     * @return integer
+     */
+    public function getPOMonday()
+    {
+        return $this->POMonday;
+    }
+
+    /**
+     * Set POTuesday
+     *
+     * @param integer $POTuesday
+     * @return Bar
+     */
+    public function setPOTuesday($POTuesday)
+    {
+        $this->POTuesday = $POTuesday;
+
+        return $this;
+    }
+
+    /**
+     * Get POTuesday
+     *
+     * @return integer
+     */
+    public function getPOTuesday()
+    {
+        return $this->POTuesday;
+    }
+
+    /**
+     * Set POWednesday
+     *
+     * @param integer $POWednesday
+     * @return Bar
+     */
+    public function setPOWednesday($POWednesday)
+    {
+        $this->POWednesday = $POWednesday;
+
+        return $this;
+    }
+
+    /**
+     * Get POWednesday
+     *
+     * @return integer
+     */
+    public function getPOWednesday()
+    {
+        return $this->POWednesday;
+    }
+
+    /**
+     * Set POThursday
+     *
+     * @param integer $POThursday
+     * @return Bar
+     */
+    public function setPOThursday($POThursday)
+    {
+        $this->POThursday = $POThursday;
+
+        return $this;
+    }
+
+    /**
+     * Get POThursday
+     *
+     * @return integer
+     */
+    public function getPOThursday()
+    {
+        return $this->POThursday;
+    }
+
+    /**
+     * Set POFriday
+     *
+     * @param integer $POFriday
+     * @return Bar
+     */
+    public function setPOFriday($POFriday)
+    {
+        $this->POFriday = $POFriday;
+
+        return $this;
+    }
+
+    /**
+     * Get POFriday
+     *
+     * @return integer
+     */
+    public function getPOFriday()
+    {
+        return $this->POFriday;
+    }
+
+    /**
+     * Set POSaturday
+     *
+     * @param integer $POSaturday
+     * @return Bar
+     */
+    public function setPOSaturday($POSaturday)
+    {
+        $this->POSaturday = $POSaturday;
+
+        return $this;
+    }
+
+    /**
+     * Get POSaturday
+     *
+     * @return integer
+     */
+    public function getPOSaturday()
+    {
+        return $this->POSaturday;
+    }
+
+    /**
+     * Set POSunday
+     *
+     * @param integer $POSunday
+     * @return Bar
+     */
+    public function setPOSunday($POSunday)
+    {
+        $this->POSunday = $POSunday;
+
+        return $this;
+    }
+
+    /**
+     * Get POSunday
+     *
+     * @return integer
+     */
+    public function getPOSunday()
+    {
+        return $this->POSunday;
     }
 }
