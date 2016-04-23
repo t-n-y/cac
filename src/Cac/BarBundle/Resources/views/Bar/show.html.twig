@@ -21,7 +21,7 @@
 	</script>
         {% if bar.event is not null %}
             {% if bar.event.displayEndAt is not null %}
-                    {% if bar.event.displayStartAt|date('Ymd') >= "now"|date('Ymd') and bar.event.displayEndAt|date('Ymd') <= "now"|date('Ymd') %}
+                    {% if bar.event.displayStartAt|date('Ymd') <= "now"|date('Ymd') and bar.event.displayEndAt|date('Ymd') >= "now"|date('Ymd') %}
                         <div class="col-xs-12 noPadding">
                             <div class="EventBanner">
                                 <div class="EventBanner-description">
