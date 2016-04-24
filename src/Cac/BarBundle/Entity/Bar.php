@@ -1928,4 +1928,37 @@ class Bar
     {
         return $this->POSunday;
     }
+
+    /**
+     * Get PODay
+     *
+     * @return integer
+     */
+    public function getPODay($day)
+    {
+        $methodName = 'get'.ucfirst($day);
+        $limit = 0;
+        if(method_exists($this, $methodName)) {
+            $limit = $this->{$methodName}();
+        }
+        return $limit;
+    }
+
+    /**
+     * Get PODays
+     *
+     * @return array
+     */
+    public function getPODaysFr()
+    {
+        return array(
+            'Lundi' => $this->getPOMonday(),
+            'Mardi' => $this->getPOTuesday(),
+            'Mercredi' => $this->getPOWednesday(),
+            'Jeudi' => $this->getPOThursday(),
+            'Vendredi' => $this->getPOFriday(),
+            'Samedi' => $this->getPOSaturday(),
+            'Dimanche' => $this->getPOSunday()
+        );
+    }
 }

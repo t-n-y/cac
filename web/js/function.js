@@ -592,12 +592,20 @@ $('body').on('click','.js-event',function(){
 
 $body.on('click', '.ongletVerresOffert', function(){
   $('.contentBackOffre').show();
-  $('.contentBackparrainage').hide();
+    $('.contentBackparrainage').hide();
+    $('.contentBackLimitResa').hide();
 });
 
 $body.on('click', '.ongletVerresParrainage', function(){
   $('.contentBackparrainage').show();
-    $('.contentBackOffre').hide();
+  $('.contentBackOffre').hide();
+    $('.contentBackLimitResa').hide();
+});
+
+$body.on('click', '.ongletLimitResa', function(){
+  $('.contentBackLimitResa').show();
+  $('.contentBackOffre').hide();
+  $('.contentBackparrainage').hide();
 });
 
 /******** Mon compte BB********/

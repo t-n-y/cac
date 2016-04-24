@@ -34,6 +34,7 @@ $dayOngletNewBar.on('click', function(){
 
   //récupération nombre de parrainage du jour selectionné
   var daySelected = $(this).html();
+  var dayName = daySelected;
   var nbParrainnageToday = parseJson[daySelected];
   $('.nbParrainnageToday').val(nbParrainnageToday.number);
 
@@ -43,8 +44,35 @@ $dayOngletNewBar.on('click', function(){
 
   $promoParrainnage.removeClass('selectedPromoParrainnage');
   $($promoParrainnage[(daySelected-1)]).addClass('selectedPromoParrainnage');
+  var $poForm = $('#change-limit-po-' + dayName);
+  var $poCurrent = $('.form-max-resa.current');
+  if(!$poForm.hasClass('current')) {
+      $poForm.toggleClass('hidden').toggleClass('current');
+      $poCurrent.toggleClass('hidden').toggleClass('current');
+  }
 });
 
+var $poLimitButton = $('.change-limit-po');
+$poLimitButton.on('click', function() {
+   var $currentForm = $('.form-max-resa.current');
+    var json = {
+        'id': $(this).data('barid'),
+        'limit': $currentForm.find('input[name="limit"]').val(),
+        'day': $currentForm.find('input[name="day"]').val()
+    };
+    $.ajax( {
+        type: 'POST',
+        url: Routing.generate('change_poday'),
+        data: json,
+        success: function (data) {
+            if(data[0].status == 1) {
+                confirmationReservation();
+            } else {
+                console.error('Erreur ' + data[0].status + ' : ' + data[0].err);
+            }
+        }
+    });
+});
 
 var myPromoOfTheDay = $('.JS-myPromoOfTheDay');
 var nbMyPromoOfTheDay = myPromoOfTheDay.length;

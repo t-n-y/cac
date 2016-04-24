@@ -1127,9 +1127,8 @@ class ProController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $id = intval($request->request->get('id'));
-        $day = $request->request-get('day');
+        $day = $request->request->get('day');
         $limit = intval($request->request->get('limit'));
-        var_dump($id, $day, $limit);die;
         $validDays = array(
             'Lundi' => 'monday',
             'Mardi' => 'tuesday',
@@ -1145,7 +1144,10 @@ class ProController extends Controller
         $res = [];
 
         if (!$bar) {
-            array_push($res, array('status' => '2'));
+            array_push($res, array(
+                'status' => '2',
+                'err' => 'Ce bar n\'existe pas.'
+            ));
         }
 
         if ($this->get('security.context')->isGranted('ROLE_ADMIN'))
@@ -1153,11 +1155,17 @@ class ProController extends Controller
         else
             $role = false;
         if ($this->get('security.context')->getToken()->getUser() != $bar->getAuthor() && $role !== true ) {
-            array_push($res, array('status' => '3'));
+            array_push($res, array(
+                'status' => '3',
+                'err' => 'Vous n\'êtes pas autorisé à modifier ces informations.'
+            ));
         }
 
-        if(is_null($day) || empty($day) || is_null($limit) || empty($limit) || !array_key_exists($day, $validDays)) {
-            array_push($res, array('status' => '4'));
+        if(is_null($day) || empty($day) || is_null($limit) || (empty($limit) && $limit != 0) || !array_key_exists($day, $validDays)) {
+            array_push($res, array(
+                'status' => '4',
+                'err' => 'Une erreur s\'est produite.'
+            ));
         }
 
         if(empty($res)) {
