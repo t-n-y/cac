@@ -1,3 +1,29 @@
- <h1>Event creation</h1>
+{{ form_start(form) }}
 
- {{ form(form) }}
+    {{ form_errors(form) }}
+
+    <h2>Texte bandeau court <small>(15 caractères max)</small></h2>
+    {{ form_errors(form.brief) }}
+    {{ form_widget(form.brief) }}
+    <h2>Texte bandeau long</h2>
+    {{ form_errors(form.description) }}
+    {{ form_widget(form.description) }}
+    <h2>Date du début de l'évènement</h2>
+    {{ form_errors(form.startAt) }}
+    {{ form_widget(form.startAt, { 'attr': {'class': 'event-date'}}) }}
+    <h2>Date de fin de l'évènement <small>Laisser vide si jour unique</small></h2>
+    {{ form_errors(form.endAt) }}
+    {{ form_widget(form.endAt, { 'attr': {'class': 'event-date'}}) }}
+    <h2>Date de début de l'affichage ou date d'affichage si pas de fin renseignée</h2>
+    {{ form_errors(form.displayStartAt) }}
+    {{ form_widget(form.displayStartAt, { 'attr': {'class': 'event-date'}}) }}
+    <h2>Date de fin de l'affichage <small>Laisser vide si jour unique</small></h2>
+    {{ form_errors(form.displayEndAt) }}
+    {{ form_widget(form.displayEndAt, { 'attr': {'class': 'event-date'}}) }}
+
+    {{ form_widget(form._token) }}
+    <div style="text-align: center;">
+    {{ form_row(form.submit) }}
+    </div>
+
+{{ form_end(form) }}

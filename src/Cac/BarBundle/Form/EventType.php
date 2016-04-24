@@ -17,9 +17,9 @@ class EventType extends AbstractType
         $builder
             ->add('brief', null, array('label' => 'Texte bandeau (15 caractères)', 'required'  => true))
             ->add('description', null, array('label' => 'Description', 'required'  => true))
-            ->add('startAt', null, array('label' => 'Début de l\'évènement', 'required'  => true))
+            ->add('startAt', null, array('label' => 'Début de l\'évènement', 'required'  => true, 'data' => new \DateTime('now')))
             ->add('endAt', null, array('label' => 'Fin de l\'évènement', 'required'  => false))
-            ->add('displayStartAt', null, array('label' => 'Début de l\'affichage', 'required'  => true))
+            ->add('displayStartAt', null, array('label' => 'Début de l\'affichage', 'required'  => true, 'data' => new \DateTime('now')))
             ->add('displayEndAt', null, array('label' => 'Fin de l\'affichage', 'required'  => false))
         ;
     }

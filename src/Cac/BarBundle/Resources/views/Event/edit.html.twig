@@ -1,5 +1,32 @@
-<h1>Event edit</h1>
+{{ form_start(edit_form) }}
 
-{{ form(edit_form) }}
+    {{ form_errors(edit_form) }}
 
-{{ form(delete_form) }}
+<h2>Texte bandeau court <small>(15 caractères max)</small></h2>
+{{ form_errors(edit_form.brief) }}
+    {{ form_widget(edit_form.brief) }}
+<h2>Texte bandeau long</h2>
+{{ form_errors(edit_form.description) }}
+    {{ form_widget(edit_form.description) }}
+<h2>Date du début de l'évènement</h2>
+{{ form_errors(edit_form.startAt) }}
+    {{ form_widget(edit_form.startAt, { 'attr': {'class': 'event-date'}}) }}
+<h2>Date de fin de l'évènement <small>Laisser vide si jour unique</small></h2>
+{{ form_errors(edit_form.endAt) }}
+    {{ form_widget(edit_form.endAt, { 'attr': {'class': 'event-date'}}) }}
+<h2>Date de début de l'affichage ou date d'affichage si pas de fin renseignée</h2>
+{{ form_errors(edit_form.displayStartAt) }}
+    {{ form_widget(edit_form.displayStartAt, { 'attr': {'class': 'event-date'}}) }}
+<h2>Date de fin de l'affichage <small>Laisser vide si jour unique</small></h2>
+{{ form_errors(edit_form.displayEndAt) }}
+    {{ form_widget(edit_form.displayEndAt, { 'attr': {'class': 'event-date'}}) }}
+
+    {{ form_widget(edit_form._token) }}
+
+<div style="text-align: center;">
+    {{ form_row(edit_form.submit) }}
+</div>
+
+{{ form_end(edit_form) }}
+
+{{ form(delete_form, { 'attr': {'class': 'delete-event'}}) }}

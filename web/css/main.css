@@ -6529,3 +6529,12 @@ div.fb-send iframe { min-width: 59px !important; min-height: 20px !important; }
     text-transform: uppercase;
     font-size: 18px;
 }
+.event-date div {
+	display: inline-block;
+}
+.event-date div:first-child {
+    margin-right: 20px;
+}
+.delete-event {
+    text-align: center;
+}
