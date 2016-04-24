@@ -22,4 +22,18 @@ class PromoOffertesRepository extends EntityRepository
                         ->getArrayResult();
         return $result;
     }
+
+    public function getTodayPromos($barId)
+    {
+        $query = $this->createQueryBuilder('p')
+                    ->select('p.id')
+                    ->where('p.bar = :barId')
+                    ->andWhere('SUBSTRING(p.createdAt, 1, 10) = :today')
+                    ->setParameters(array('barId' => $barId, 'today' => date('Y-m-d')));
+
+        $result = $query->getQuery()
+                        ->getArrayResult();
+
+        return $result;
+    }
 }

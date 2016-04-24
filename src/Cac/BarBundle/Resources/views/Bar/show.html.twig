@@ -438,8 +438,7 @@
 				</div>
 				<div class="col-xs-12 col-sm-4 col-md-4">
 					<div class="contentInfoBarNote">
-						
-					
+                        {% if POAvailable == true %}
 						<div class="infoBarNote col-xs-12 col-sm-12 col-md-12 noPadding">
 
 							{% if (bar.getPromotionByDay(today).getOption('value').value != 0 or bar.getHappyHourByDay(today).getOption('value').value != 0) %}
@@ -720,6 +719,7 @@
 							</div>
 						</div>
 						<p class="telephoneCacReservationMax">Pour les réservations de plus de 10 personnes, merci de contacter Click and Cheers au <a href="tel:01.85.09.25.82">01.85.09.25.82</a></p>
+                        {% endif %}
 					</div>
 				</div>
 			</div>

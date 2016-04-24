@@ -1936,7 +1936,7 @@ class Bar
      */
     public function getPODay($day)
     {
-        $methodName = 'get'.ucfirst($day);
+        $methodName = 'getPO'.ucfirst($day);
         $limit = 0;
         if(method_exists($this, $methodName)) {
             $limit = $this->{$methodName}();

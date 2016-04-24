@@ -20,6 +20,8 @@ use Cac\BarBundle\Form\Type\BarType;
 use Cac\BarBundle\Form\Type\PromotionType;
 use Cac\BarBundle\Form\Type\BarEditType;
 use Hip\MandrillBundle\Message;
+use Symfony\Component\Validator\Constraints\DateTime;
+
 /**
  * Bar controller.
  *
@@ -147,6 +149,14 @@ class BarController extends Controller
         $sliderImages = $em->getRepository('CacBarBundle:File')->findBy(array('bar' => $entity->getId(), 'slider' => 1));
         $user = $this->get('security.context')->getToken()->getUser();
         $date = date('Y-m-d');
+        $dayPromos = $em->getRepository('CacBarBundle:PromoOffertes')->getTodayPromos($entity->getId());
+
+        $POAvailable = false;
+        $dayName = date('l');
+        if(!is_null($entity->getPODay($dayName)) && $entity->getPODay($dayName) != 0 && count($dayPromos) < $entity->getPODay($dayName)) {
+            $POAvailable = true;
+        }
+
         if($user != 'anon.') {
             $promoOfferte = $em->getRepository('CacBarBundle:PromoOffertes')->getDayPromo($entity->getId(), $user->getId(), $date);
         } else {
@@ -167,6 +177,7 @@ class BarController extends Controller
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
             'promoOfferte' => $promoOfferte,
+            'POAvailable' => $POAvailable
         );
     }
 
