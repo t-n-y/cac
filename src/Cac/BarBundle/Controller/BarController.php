@@ -50,9 +50,9 @@ class BarController extends Controller
         }
 
         // Mac et UNIX/Linux
-        //setlocale(LC_TIME, "fr_FR");
+        setlocale(LC_TIME, "fr_FR");
         // Windows
-        setlocale(LC_TIME, "french");
+        //setlocale(LC_TIME, "french");
         $today = ucfirst(strftime("%A"));
         $em = $this->getDoctrine()->getManager();
         $entities = $em->getRepository('CacBarBundle:Bar')->findBy(array('visible' => true), array('score'=>'DESC'));
@@ -139,9 +139,9 @@ class BarController extends Controller
     public function showAction($id)
     {
         // Mac et UNIX/Linux
-        //setlocale(LC_TIME, "fr_FR");
+        setlocale(LC_TIME, "fr_FR");
         // Windows
-        setlocale(LC_TIME, "french");
+        //setlocale(LC_TIME, "french");
         $today = ucfirst(strftime("%A"));
 
         $em = $this->getDoctrine()->getManager();

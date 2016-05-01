@@ -322,49 +322,49 @@ class Bar
      *
      * @ORM\Column(name="po_monday", type="integer", nullable=true)
      */
-    private $POMonday;
+    private $POMonday = 50;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="po_tuesday", type="integer", nullable=true)
      */
-    private $POTuesday;
+    private $POTuesday = 50;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="po_wednesday", type="integer", nullable=true)
      */
-    private $POWednesday;
+    private $POWednesday = 50;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="po_thursday", type="integer", nullable=true)
      */
-    private $POThursday;
+    private $POThursday = 50;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="po_friday", type="integer", nullable=true)
      */
-    private $POFriday;
+    private $POFriday = 50;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="po_saturday", type="integer", nullable=true)
      */
-    private $POSaturday;
+    private $POSaturday = 50;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="po_sunday", type="integer", nullable=true)
      */
-    private $POSunday;
+    private $POSunday = 50;
 
     /**
      * @ORM\OneToMany(targetEntity="Cac\BarBundle\Entity\VerresOfferts", mappedBy="bar")
