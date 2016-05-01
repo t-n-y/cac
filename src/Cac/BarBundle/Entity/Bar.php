@@ -320,49 +320,49 @@ class Bar
     /**
      * @var integer
      *
-     * @ORM\Column(name="po_monday", type="integer", nullable=true)
+     * @ORM\Column(name="po_monday", type="integer", nullable=true, options={"default":50})
      */
     private $POMonday = 50;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="po_tuesday", type="integer", nullable=true)
+     * @ORM\Column(name="po_tuesday", type="integer", nullable=true, options={"default":50})
      */
     private $POTuesday = 50;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="po_wednesday", type="integer", nullable=true)
+     * @ORM\Column(name="po_wednesday", type="integer", nullable=true, options={"default":50})
      */
     private $POWednesday = 50;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="po_thursday", type="integer", nullable=true)
+     * @ORM\Column(name="po_thursday", type="integer", nullable=true, options={"default":50})
      */
     private $POThursday = 50;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="po_friday", type="integer", nullable=true)
+     * @ORM\Column(name="po_friday", type="integer", nullable=true, options={"default":50})
      */
     private $POFriday = 50;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="po_saturday", type="integer", nullable=true)
+     * @ORM\Column(name="po_saturday", type="integer", nullable=true, options={"default":50})
      */
     private $POSaturday = 50;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="po_sunday", type="integer", nullable=true)
+     * @ORM\Column(name="po_sunday", type="integer", nullable=true, options={"default":50})
      */
     private $POSunday = 50;
 
