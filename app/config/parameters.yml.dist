@@ -25,4 +25,15 @@ parameters:
     debug_redirects:        false
     use_assetic_controller: true
 
+    octopush_parameters:
+        domain: http://www.octopush-dm.com
+        port: 80
+        path: ''
+        path_bis: ''
+        path_sms: '/api/sms'
+        path_balance: '/api/balance'
+        cut: 7
+        user_login: jeremy.serval@click-and-cheers.com
+        api_key: cP6o8NF73yLHIyOS90kRqtBn7zS1NQuK
+
     
