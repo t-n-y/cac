@@ -4,3 +4,7 @@ services:
     cac_bar.promotion_manager:
         class: Cac\BarBundle\Services\PromotionManager
         arguments: [@doctrine.orm.entity_manager]
+
+    octopush.sms_manager:
+        class: Cac\BarBundle\Services\OctopushSMSManager
+        arguments: ['%octopush_parameters%']
