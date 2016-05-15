@@ -108,7 +108,11 @@ STOP au XXXXX</textarea>
 
 				</div>
 				<div class="contentOption center contentSms col-xs-12 col-sm-12 col-md-12">
-                    <p class="sendSMS" id="send-sms">Envoyer mon SMS</p>
+                    {% if clients|length == 0 %}
+                        <p class="sendSMS disabled" id="send-sms" title="Vous n'avez aucun contact">Envoyer mon SMS</p>
+                    {% else %}
+                        <button class="sendSMS" id="send-sms">Envoyer mon SMS</button>
+                    {% endif %}
 				</div>
 
                 <div class="clear"></div>

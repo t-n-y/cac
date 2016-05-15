@@ -6538,3 +6538,8 @@ div.fb-send iframe { min-width: 59px !important; min-height: 20px !important; }
 .delete-event {
     text-align: center;
 }
+.sendSMS.disabled {
+	background-color: #cccccc;
+	cursor: not-allowed;
+	border-color: #bbbbbb;
+}
