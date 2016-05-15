@@ -80,6 +80,16 @@ $(document).ready(function(){
 
 });
 
+$('body').on('click', '#send-sms', function() {
+    $.ajax({
+        type: 'POST',
+        url: Routing.generate('campaign_send'),
+        data: {'test': 'test'},
+        success: function (data) {
+            
+        }
+    });
+});
 
 /*******PAGE RETOUR OFFRE********/
 
