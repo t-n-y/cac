@@ -35,4 +35,26 @@ class BasicUserRepository extends EntityRepository
                         ->getArrayResult();
         return $result;
     }
+
+    public function getClients($bar)
+    {
+        $query = $this->createQueryBuilder('bu')
+            ->select('bu.id')
+            ->leftJoin(
+                'Cac\UserBundle\Entity\User',
+                'u',
+                \Doctrine\ORM\Query\Expr\Join::WITH,
+                'bu.id = u.id'
+            )
+            ->leftJoin('u.PromoOffertes', 'p')
+            ->leftJoin('u.VerresOfferts', 'v')
+            ->where('bu.id = p.user AND p.bar = :bar')
+            ->orWhere('bu.id = v.user AND v.bar = :bar')
+            ->setParameter('bar', $bar);
+
+        $result = $query->getQuery()
+            ->getArrayResult();
+
+        return $result;
+    }
 }

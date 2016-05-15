@@ -75,15 +75,22 @@
 				</div>
 
 				<div class="contentOption contentSms col-xs-12 col-sm-12 col-md-12">
-					<!--<h2>Description</h2>
-					<p>Envoyez un sms à l’ensemble des personnes ayant honoré un ticket ou un verre dans votre établissement.<br>
-					Cette solution vous permet de communiquer avec des personnes qui ont déjà évoquer un intéret pour votre établissement. Un ciblage qui permet un meilleur retour sur investissement</p>
+					<h2>Description</h2>
+					<p>
+                        Envoyez des vous permet de communiquer sur le moyen le plus efficace à ce jour, avec l'ensemble des clients ayant réservé pour votre établissement via Click and Cheers.<br>
+					    Vos clients recevront un SMS avec comme expéditeur le nom de votre établissement même si ils ne vous ont pas enregistré dans leur répertoire téléphonique. Magique !
+                    </p>
 
 					<h2>Votre SMS</h2>
 					<div class="contentTextSMS">
 						<div class="insideTextSMS">
-							<p id="compteur">0/160 (maximum 160 caractères)</p>
-						<textarea id="message" name="message" class="textSMS"></textarea>
+							<p id="compteur"><span id="sms-word-count">17</span>/160 (maximum 160 caractères)</p>
+						<textarea id="message" name="message" class="textSMS" maxlength="160">
+
+
+
+
+STOP au XXXXX</textarea>
 						</div>
 						
 					</div>
@@ -91,24 +98,20 @@
 					<div class="row">
 						<div class="col-xs-12 col-sm-6 col-md-6">
 							<h2>Tarifs HT</h2>
-							<p><b>0,09€/MOIS</b></p>
+							<p><b>0,09€/SMS</b></p>
 						</div>
 						<div class="col-xs-12 col-sm-6 col-md-6">
 							<h2>Nombre de contact mobile disponible</h2>
-							<p><b>78 -> rendre dynamique</b></p>
+							<p><b>{{ clients|length }} contacts</b></p>
 						</div>
-					</div>-->
-
-					<div class="prochainement">
-						<img src="{{asset('img/smsDispo.png')}}" alt="">
-						<p>Bientôt disponible</p>
 					</div>
 
 				</div>
-				<!--<div class="contentOption center contentSms col-xs-12 col-sm-12 col-md-12">
-							<p class="sendSMS">Envoyer mon SMS</p>
-				</div>-->
-					<div class="clear"></div>
+				<div class="contentOption center contentSms col-xs-12 col-sm-12 col-md-12">
+                    <p class="sendSMS" id="send-sms">Envoyer mon SMS</p>
+				</div>
+
+                <div class="clear"></div>
 
 				<div class="contentOption contentEmail col-xs-12 col-sm-12 col-md-12">
 					<!--<h2>Description</h2>

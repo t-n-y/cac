@@ -352,6 +352,8 @@ class ProController extends Controller
 //        }
         $entities = $em->getRepository('CacBarBundle:Bar')->findByVisible(true);
 
+        $clients = $em->getRepository('CacUserBundle:BasicUser')->getClients($id);
+
         $paginator  = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
             $entities,
@@ -364,7 +366,8 @@ class ProController extends Controller
         return array(
             'bars' => $pagination,
             'bar'      => $entity,
-            'highlight' => $highlight
+            'highlight' => $highlight,
+            'clients' => $clients
         );  
     }
 
